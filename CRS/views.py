@@ -1637,7 +1637,6 @@ def others_studyplan(request):
 def fHome(request):
     if request.user.is_authenticated and request.user.is_faculty:
         user = request.user
-        id_adv = request.user.id
         facultyInfo = request.user.facultyinfo
         acad = AcademicYearInfo.objects.all
         departmentid=facultyInfo.departmentID_id
@@ -2156,7 +2155,9 @@ def fStudents_viewStudentGrade (request,stud_id):
                 grade_file.comment = request.POST.get('message')
                 grade_file.save()
                 messages.success(request,'Feedback is successfully sent!')
+
         context = {'checklist': checklist,'checklist2': checklist2,'checklist3': checklist3,'checklist4': checklist4,'checklist5': checklist5,'checklist6': checklist6, 'checklist7': checklist7,'checklist8': checklist8,'checklist9': checklist9, 'checklist10': checklist10, 'checklist11': checklist11, 'checklist12': checklist12, 'ave':ave, 'ave2': ave2, 'ave3':ave3, 'ave4':ave4, 'ave5':ave5, 'ave6':ave6, 'ave7':ave7, 'ave8' :ave8, 'ave9':ave9, 'ave10':ave10, 'ave11':ave11, 'ave12':ave12, 'stud_id': stud_id, 'grade_file':grade_file, 'fcount':fcount, 'flag':flag, 'flag2':flag2, 'flag3':flag3, 'flag4':flag4, 'flag5':flag5, 'flag6':flag6, 'flag7':flag7, 'flag8':flag8, 'flag9':flag9, 'flag10':flag10, 'flag11':flag11, 'flag12':flag12, 'semester':semester}
+
         return render(request, 'faculty/fStudents_viewStudentGrade.html', context)
     else:
         return redirect('index')
@@ -2184,7 +2185,9 @@ def fViewSched(request):
         info = FacultyInfo.objects.get(facultyUser=id)
         schedule = studentScheduling.objects.filter(instructor=info)
         subjects = schedule.count()
+
         context = {'id': id, 'info':info, 'acad': acad, 'schedule' : schedule, 'subjects' : subjects, 'facultyInfo':facultyInfo, 'curric':curric}
+
         return render(request, 'faculty/fViewSched.html', context)
     else:
         return redirect('index')
