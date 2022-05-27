@@ -176,7 +176,6 @@
     display: inline;
     width: 1100px;
     }
-
     </style>
 
 </head>
@@ -225,15 +224,12 @@
                                 <div class="semdet row">
                                     <div class="sdtext col">Academic Year:</div>
                                     <div class="field col">{{acad.yearstarted}}-{{acad.yearended}}</div>
-                                    <!--DB ACADEMIC YEAR-->
                                 </div>
                                 <div class="semdet row">
-                                    
                                     <div class="sdtext col">Semester:</div>
                                     <div class="field col">{{acad.semester}}</div><!--DB SEMESTER-->
-                                    
                                 </div>
-
+                            
                             </div>
                         </div>
 
@@ -264,9 +260,7 @@
                                     <th scope="col" colspan="2" id="schedtext"><b>Session Type</b></th>
                                 </tr>
                                 <!-----------FROM THIS POINT LAHAT NG <TD> TAG GALING DATABASE-------------------------------------------->
-                                {% for sched  in schedule %}
-                                {% for c in curric %}
-                                {% if c.subjectCode_id == sched.subjectCode_id and c.schoolSem == acad.semester %}
+                                    {% for sched  in schedule %}
                                 <tr class="tabletext2">
                                     <td id="schedtext-1">{{sched.subjectCode.subjectCode.subjectCode}}</td>
                                     <td><p  class="dataStyle"><b>{{sched.subjectCode.subjectCode.subjectName}}</b></p></td>
@@ -278,8 +272,6 @@
                                     <td id="schedtext-1">{{sched.type}}</td>
                                     <td id="schedtext-1"><a href="{% url 'viewstudent' sched.id  %}" id="buttonView"><button type="button" class="btn">View</button></a></td>
                                 </tr>
-                                {% endif %}
-                                {% endfor %}
                                 {% endfor %}
                             </table>
                         </div>
