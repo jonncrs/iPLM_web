@@ -491,6 +491,7 @@
                         <span id="note-text">The grade shall be verified through<br> the screenshots submitted by the students.</span>
                     </div>
                     <!--end info-->
+<<<<<<< HEAD
 
                     <div class="searchbox">
 
@@ -546,9 +547,9 @@
 
 =======
 >>>>>>> 8e232f25 (Faculty)
+=======
+>>>>>>> 9ee33b47 (Revert "Faculty Part 4")
                 </div>
-                 
-
                 <br>
                 <div class="clist row"> 
                     <div class="col-lg-8">
@@ -563,9 +564,12 @@
                                
                             </tr>
                             <!-----------FROM THIS POINT LAHAT NG <TD> TAG GALING DATABASE-------------------------------------------->
+<<<<<<< HEAD
 
                             {% if semester == '1' %}
 
+=======
+>>>>>>> 9ee33b47 (Revert "Faculty Part 4")
                             <tr class="tabletext1" style="box-shadow: 0 0 10px rgb(138, 138, 138);">
                                 <td colspan="3" style="font-size: 20px; background-color: #cae2ff;"><b>1st Yr, 1st Sem</b></td>
                                 <td colspan="2" style="background-color: #cae2ff;"><p id="head3"><b>GWA: </b>{{ ave | floatformat:2 }}
@@ -593,7 +597,7 @@
                             {% endfor %}
 
                             <!---------------------------------------------------------->
-                            {% elif semester == '2' %}
+
                             <tr class="tabletext1" style="box-shadow: 0 0 10px rgb(138, 138, 138);">
                                 <td colspan="3" style="font-size: 20px; background-color: #cae2ff;"><b>1st Yr, 2nd Sem</b></td>
                                 <td colspan="2" style="background-color: #cae2ff;"><p id="head3"><b>GWA: </b>{{ ave2|floatformat:2 }}
@@ -620,8 +624,12 @@
                             </tr>
                             {% endfor %}
 
+<<<<<<< HEAD
                             {% elif semester == '3' %}
 
+=======
+                            <!------------------------------------------------------->
+>>>>>>> 9ee33b47 (Revert "Faculty Part 4")
                             <tr class="tabletext1" style="box-shadow: 0 0 10px rgb(138, 138, 138);">
                                 <td colspan="3" style="font-size: 20px; background-color: #cae2ff;"><b>2nd Yr, 1st Sem</b></td>
                                 <td colspan="2" style="background-color: #cae2ff;"><p id="head3"><b>GWA: </b>{{ ave3|floatformat:2 }}
@@ -650,7 +658,7 @@
                             {% endfor %}
 
                             <!---------------------------------------------------------->
-                            {% elif semester == '4' %}
+
                             <tr class="tabletext1" style="box-shadow: 0 0 10px rgb(138, 138, 138);">
                                 <td colspan="3"style="font-size: 20px; background-color: #cae2ff;"><b>2nd Yr, 2nd Sem</b></td>
                                 <td colspan="2" style="background-color: #cae2ff;"><p id="head3"><b>GWA: </b>{{ ave4|floatformat:2 }}
@@ -679,7 +687,7 @@
                             {% endfor %}
 
                             <!---------------------------------------------------------->
-                            {% elif semester == '5' %}
+
                             <tr class="tabletext1" style="box-shadow: 0 0 10px rgb(138, 138, 138);">
                                 <td colspan="3" style="font-size: 20px; background-color: #cae2ff;"><b>3rd Yr, 1st Sem</b></td>
                                 <td colspan="3" style="font-size: 20px; background-color: #cae2ff;"><p id="head3"><b>GWA: </b>{{ ave5|floatformat:2 }}
@@ -706,8 +714,6 @@
                                         {% endif %}</td>
                             </tr>
                             {% endfor %}
-
-                            {% elif semester == '6' %}
                             <tr class="tabletext1" style="box-shadow: 0 0 10px rgb(138, 138, 138);">
                                 <td colspan="3"style="font-size: 20px; background-color: #cae2ff;"><b>3rd Yr, 2nd Sem</b></td>
                                 <td colspan="2" style="background-color: #cae2ff;"><p id="head3"><b>GWA: </b>{{ ave6 |floatformat:2 }}
@@ -734,7 +740,6 @@
                             </tr>
                             {% endfor %}
 
-                            {% elif semester == '7' %}
                             <tr class="tabletext1" style="box-shadow: 0 0 10px rgb(138, 138, 138);">
                                 <td colspan="3" style="font-size: 20px; background-color: #cae2ff;"><b>4th Yr, 1st Sem</b></td>
                                 <td colspan="3" style="background-color: #cae2ff;"><p id="head3"><b>GWA: </b>{{ ave7|floatformat:2 }}
@@ -762,7 +767,6 @@
                             </tr>
                             {% endfor %}
 
-                            {% elif semester == '8' %}
                             <tr class="tabletext1" style="box-shadow: 0 0 10px rgb(138, 138, 138);">
                                 <td colspan="3" style="font-size: 20px; background-color: #cae2ff;"><b>4th Yr, 2nd Sem</b></td>
                                 <td colspan="3" style="background-color: #cae2ff;"><p id="head3"><b>GWA: </b>{{ ave8|floatformat:2 }}
@@ -790,7 +794,6 @@
                             </tr>
                             {% endfor %}
                             <!---------------------------------------------------------->
-                            {% elif semester == '9' %}
                             <tr class="tabletext1" style="box-shadow: 0 0 10px rgb(138, 138, 138);">
                                 <td colspan="3" style="font-size: 20px; background-color: #cae2ff;"><b>5th Yr, 1st Sem</b></td>
                                 <td colspan="3" style="background-color: #cae2ff;"><p id="head3"><b>GWA: </b>{{ ave9|floatformat:2 }}
@@ -817,7 +820,6 @@
                             </tr>
                             {% endfor %}
                             <!---------------------------------------------------------->
-                            {% elif semester == '10' %}
                             <tr class="tabletext1" style="box-shadow: 0 0 10px rgb(138, 138, 138);">
                                 <td colspan="3" style="font-size: 20px; background-color: #cae2ff;"><b>5th Yr, 2nd Sem</b></td>
                                 <td colspan="3" style="background-color: #cae2ff;"><p id="head3"><b>GWA: </b>{{ ave10|floatformat:2 }}
@@ -845,7 +847,6 @@
                             </tr>
                             {% endfor %}
                             <!---------------------------------------------------------->
-                            {% elif semester == '11' %}
                             <tr class="tabletext1" style="box-shadow: 0 0 10px rgb(138, 138, 138);">
                                 <td colspan="3" style="font-size: 20px; background-color: #cae2ff;"><b>6th Yr, 1st Sem</b></td>
                                 <td colspan="3" style="background-color: #cae2ff;"><p id="head3"><b>GWA: </b>{{ ave11|floatformat:2 }}
@@ -873,7 +874,6 @@
                             </tr>
                             {% endfor %}
                             <!---------------------------------------------------------->
-                            {% elif semester == '12' %}
                             <tr class="tabletext1" style="box-shadow: 0 0 10px rgb(138, 138, 138);">
                                 <td colspan="3" style="font-size: 20px; background-color: #cae2ff;"><b>6th Yr, 2nd Sem</b></td>
                                 <td colspan="3" style="background-color: #cae2ff;"><p id="head3"><b>GWA: </b>{{ ave12|floatformat:2 }}
@@ -900,7 +900,6 @@
                                 <td><a href="{% url 'sChecklistEmptyConfirmation' subject.id %}"><button id="delete" ><img id="delete" src="{% static 'CRS/images/sClassroom/deleteSubject.png' %}" width="24px" height="auto"></button></a></td>
                             </tr>
                             {% endfor %}
-                            {% endif %}
 
                         </table>
                     

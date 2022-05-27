@@ -1920,7 +1920,6 @@ def fStudents_advisory(request):
         return redirect('index')
 
 def fStudents_viewStudentGrade (request,stud_id):
-    semester = '1'
     fcount = 0
     flag = 0
     flag2 = 0
@@ -2137,9 +2136,6 @@ def fStudents_viewStudentGrade (request,stud_id):
         if 'submit' in request.POST:
             if (request.method=='POST'):
                 status=request.POST.get('slct')
-                semester = request.POST.get('semester')
-                if semester == None:
-                    semester = '1'
                 if status=='Submitted':
                     grade_file.remarks = "Submitted"
                     grade_file.save()
@@ -2182,8 +2178,7 @@ def fviewstudent(request, sched_id):
 
 def fViewSched(request):
     if request.user.is_authenticated and request.user.is_faculty:
-        acad = AcademicYearInfo.objects.get(pk=1)
-        curric = curriculumInfo.objects.all
+        acad = AcademicYearInfo.objects.all
         id= request.user.id
         facultyInfo = request.user.facultyinfo
         info = FacultyInfo.objects.get(facultyUser=id)
@@ -2684,7 +2679,7 @@ def sGradeSubmission2(request):
             crsFile = request.FILES.get('crsFile')
             try:
                 grade_file = crsGrade.objects.get(studentID_id=id)
-                if grade_file.remarks == "Returned" or grade_file.remarks == "Approved":
+                if grade_file.remarks == "Returned":
                     if (request.method == 'POST'):
                         grade_file.crsFile = request.FILES.get('crsFile')
                         grade_file.remarks = 'Submitted'
