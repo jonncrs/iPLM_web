@@ -1,4 +1,3 @@
-from contextlib import nullcontext
 import dataclasses
 from django.contrib.messages.api import error
 from django.shortcuts import render, redirect
@@ -2580,23 +2579,16 @@ def fHome(request):
         return render(request,'./faculty/fHome.html',{'user':user,'facultyInfo':facultyInfo,'department':department,'college':college,'acad':acad, 'count_block':count_block, 'count_stud':count_stud, 'grade_file':grade_file, 'stud_advisory':stud_advisory})
     else:
         return redirect('index')
-
-
+        
 def fHomeNotification(request):
-     if request.user.is_authenticated and request.user.is_faculty:
-        id= request.user.id
-        acad = AcademicYearInfo.objects.all
-        context = {'id': id,'acad':acad}
-        return render(request, './faculty/fHomeNotifcations.html', context) 
-     else:
-         return redirect('index')
+    return render(request,'./faculty/fHomeNotifications.html')
 
 def fProfileEdit(request):
     if request.user.is_authenticated and request.user.is_faculty:
         user = request.user
         facultyInfo = request.user.facultyinfo
         departmentid=facultyInfo.departmentID_id
-        collegeid=facultyInfo.collegeID_id
+        collegeid=facultyInfo.departmentID_id
         college=College.objects.get(id=collegeid)
         department=Department.objects.get(id = departmentid)
         
@@ -2830,18 +2822,6 @@ def fStudents_advisory(request):
 
 def fStudents_viewStudentGrade (request,stud_id):
     fcount = 0
-    flag = 0
-    flag2 = 0
-    flag3 = 0
-    flag4 = 0
-    flag5 = 0
-    flag6 = 0
-    flag7 = 0
-    flag8 = 0
-    flag9 = 0
-    flag10 = 0
-    flag11 = 0
-    flag12 = 0
     if request.user.is_authenticated and request.user.is_faculty: 
         try:
             checklist = currchecklist.objects.filter(owner_id=stud_id).filter(yearTaken='1').filter(semTaken='1')
@@ -2884,8 +2864,6 @@ def fStudents_viewStudentGrade (request,stud_id):
             for subj in checklist.filter(curriculumCode__in = count):
                 n = float(subj.curriculumCode.subjectUnits)
                 g = float(subj.subjectGrades)
-                if g >= 3:
-                    flag = 1
                 unitprod = n * g
                 prevunitsum = prevunitsum+unitprod
                 unitsum = unitsum + n
@@ -2896,8 +2874,6 @@ def fStudents_viewStudentGrade (request,stud_id):
             for subj in checklist2.filter(curriculumCode__in = count):
                 n2 = float(subj.curriculumCode.subjectUnits)
                 g2 = float(subj.subjectGrades)
-                if g2 >= 3:
-                    flag2 = 1
                 unitprod2 = n2 * g2
                 prevunitsum2 = prevunitsum2+unitprod2
                 unitsum2 = unitsum2 + n2
@@ -2908,8 +2884,6 @@ def fStudents_viewStudentGrade (request,stud_id):
             for subj in checklist3.filter(curriculumCode__in = count):
                 n3 = float(subj.curriculumCode.subjectUnits)
                 g3 = float(subj.subjectGrades)
-                if g3 >= 3:
-                    flag3 = 1
                 unitprod3 = n3 * g3
                 prevunitsum3 = prevunitsum3+unitprod3
                 unitsum3 = unitsum3 + n3
@@ -2920,8 +2894,6 @@ def fStudents_viewStudentGrade (request,stud_id):
             for subj in checklist4.filter(curriculumCode__in = count):
                 n4 = float(subj.curriculumCode.subjectUnits)
                 g4 = float(subj.subjectGrades)
-                if g4 >= 3:
-                    flag4 = 1
                 unitprod4 = n4 * g4
                 prevunitsum4 = prevunitsum4+unitprod4
                 unitsum4 = unitsum4 + n4
@@ -2932,8 +2904,6 @@ def fStudents_viewStudentGrade (request,stud_id):
             for subj in checklist5.filter(curriculumCode__in = count):
                 n5 = float(subj.curriculumCode.subjectUnits)
                 g5 = float(subj.subjectGrades)
-                if g5 >= 3:
-                    flag5 = 1
                 unitprod5 = n5 * g5
                 prevunitsum5 = prevunitsum5+unitprod5
                 unitsum5 = unitsum5 + n5
@@ -2944,8 +2914,6 @@ def fStudents_viewStudentGrade (request,stud_id):
             for subj in checklist6.filter(curriculumCode__in = count):
                 n6 = float(subj.curriculumCode.subjectUnits)
                 g6 = float(subj.subjectGrades)
-                if g6 >= 3:
-                    flag6 = 1
                 unitprod6 = n6 * g6
                 prevunitsum6 = prevunitsum6+unitprod6
                 unitsum6 = unitsum6 + n6
@@ -2956,8 +2924,6 @@ def fStudents_viewStudentGrade (request,stud_id):
             for subj in checklist7.filter(curriculumCode__in = count):
                 n7 = float(subj.curriculumCode.subjectUnits)
                 g7 = float(subj.subjectGrades)
-                if g7 >= 3:
-                    flag7 = 1
                 unitprod7 = n7 * g7
                 prevunitsum7 = prevunitsum7+unitprod7
                 unitsum7 = unitsum7 + n7
@@ -2968,8 +2934,6 @@ def fStudents_viewStudentGrade (request,stud_id):
             for subj in checklist8.filter(curriculumCode__in = count):
                 n8 = float(subj.curriculumCode.subjectUnits)
                 g8 = float(subj.subjectGrades)
-                if g8 >= 3:
-                    flag8 = 1
                 unitprod8 = n8 * g8
                 prevunitsum8 = prevunitsum8+unitprod8
                 unitsum8 = unitsum8 + n8
@@ -2980,8 +2944,6 @@ def fStudents_viewStudentGrade (request,stud_id):
             for subj in checklist9.filter(curriculumCode__in = count):
                 n9 = float(subj.curriculumCode.subjectUnits)
                 g9 = float(subj.subjectGrades)
-                if g9 >= 3:
-                    flag9 = 1
                 unitprod9 = n9 * g9
                 prevunitsum9 = prevunitsum9+unitprod9
                 unitsum9 = unitsum9 + n9
@@ -2992,8 +2954,6 @@ def fStudents_viewStudentGrade (request,stud_id):
             for subj in checklist10.filter(curriculumCode__in = count):
                 n10 = float(subj.curriculumCode.subjectUnits)
                 g10 = float(subj.subjectGrades)
-                if g10 >= 3:
-                    flag10 = 1
                 unitprod10 = n10 * g10
                 prevunitsum10 = prevunitsum10+unitprod10
                 unitsum10 = unitsum10 + n10
@@ -3004,8 +2964,6 @@ def fStudents_viewStudentGrade (request,stud_id):
             for subj in checklist11.filter(curriculumCode__in = count):
                 n11 = float(subj.curriculumCode.subjectUnits)
                 g11 = float(subj.subjectGrades)
-                if g11 >= 3:
-                    flag11 = 1
                 unitprod11 = n11 * g11
                 prevunitsum11 = prevunitsum11+unitprod11
                 unitsum11 = unitsum11 + n11
@@ -3016,8 +2974,6 @@ def fStudents_viewStudentGrade (request,stud_id):
             for subj in checklist12.filter(curriculumCode__in = count):
                 n12 = float(subj.curriculumCode.subjectUnits)
                 g12 = float(subj.subjectGrades)
-                if g12 >= 3:
-                    flag12 = 1
                 unitprod12 = n12 * g12
                 prevunitsum12 = prevunitsum12+unitprod12
                 unitsum12 = unitsum12 + n12
@@ -3052,11 +3008,9 @@ def fStudents_viewStudentGrade (request,stud_id):
                     grade_file.remarks = "Returned"
                     grade_file.crsFile.delete()
                     grade_file.save()
-                    messages.success(request,'File is Returned! No file.')
+                    messages.success(request,'File is Returned, No file.')
                 elif status=='Approved':
                     grade_file.remarks = "Approved"
-                    grade_file.crsFile.delete()
-                    messages.success(request,'File is Approved!')
                     grade_file.save()
         if 'feedbackBtn' in request.POST:
             fcount = 1
@@ -3065,7 +3019,7 @@ def fStudents_viewStudentGrade (request,stud_id):
                 grade_file.comment = request.POST.get('message')
                 grade_file.save()
                 messages.success(request,'Feedback is successfully sent!')
-        context = {'checklist': checklist,'checklist2': checklist2,'checklist3': checklist3,'checklist4': checklist4,'checklist5': checklist5,'checklist6': checklist6, 'checklist7': checklist7,'checklist8': checklist8,'checklist9': checklist9, 'checklist10': checklist10, 'checklist11': checklist11, 'checklist12': checklist12, 'ave':ave, 'ave2': ave2, 'ave3':ave3, 'ave4':ave4, 'ave5':ave5, 'ave6':ave6, 'ave7':ave7, 'ave8' :ave8, 'ave9':ave9, 'ave10':ave10, 'ave11':ave11, 'ave12':ave12, 'stud_id': stud_id, 'grade_file':grade_file, 'fcount':fcount, 'flag':flag, 'flag2':flag2, 'flag3':flag3, 'flag4':flag4, 'flag5':flag5, 'flag6':flag6, 'flag7':flag7, 'flag8':flag8, 'flag9':flag9, 'flag10':flag10, 'flag11':flag11, 'flag12':flag12, 'semester':semester}
+        context = {'checklist': checklist,'checklist2': checklist2,'checklist3': checklist3,'checklist4': checklist4,'checklist5': checklist5,'checklist6': checklist6, 'checklist7': checklist7,'checklist8': checklist8,'checklist9': checklist9, 'checklist10': checklist10, 'checklist11': checklist11, 'checklist12': checklist12, 'ave':ave, 'ave2': ave2, 'ave3':ave3, 'ave4':ave4, 'ave5':ave5, 'ave6':ave6, 'ave7':ave7, 'ave8' :ave8, 'ave9':ave9, 'ave10':ave10, 'ave11':ave11, 'ave12':ave12, 'stud_id': stud_id, 'grade_file':grade_file, 'fcount':fcount}
         return render(request, 'faculty/fStudents_viewStudentGrade.html', context)
     else:
         return redirect('index')
@@ -3089,7 +3043,6 @@ def fViewSched(request):
     if request.user.is_authenticated and request.user.is_faculty:
         acad = AcademicYearInfo.objects.all
         id= request.user.id
-        facultyInfo = request.user.facultyinfo
         info = FacultyInfo.objects.get(facultyUser=id)
         schedule = studentScheduling.objects.filter(instructor=info)
         subjects = schedule.count()
@@ -6225,3 +6178,49 @@ def pw_reset(request):
         'password_form': password_form,
     }
     return render(request, 'pw_reset/password_reset.html', context)
+
+def events(request, event_id=None):
+    if not event_id == None:
+        try:
+            event = Event.objects.filter(pk=event_id).first()
+        except Event.DoesNotExist:
+            event = None
+        return render(request, 'testfiles/event-view.html', {'event': event} )
+    if not request.user.is_authenticated:
+        return redirect('index')
+    authorization = 'none'
+    if request.user.is_chairperson: 
+        authorization = 'chairperson'
+    if request.user.is_student:
+        authorization = 'student'
+    events = Event.objects.all().order_by('eventStartDate')
+    if request.GET.get('sortCategory'):
+        events = Event.objects.filter(eventCategory=request.GET['sortCategory']).order_by('eventStartDate')
+    return render(request, 'testfiles/event-test.html', {'authorization': authorization, 'events': events}) 
+
+def eventsCreate(request):
+    if request.user.is_authenticated and not request.user.is_chairperson:
+        return redirect('events')
+    if request.method == 'POST':
+        try:
+            event = Event(
+                eventCategory=request.POST['eventCategory'],
+                eventTitle=request.POST['eventTitle'],
+                eventDescription=request.POST['eventDescription'],
+                eventStartDate=request.POST['eventStartDate'],
+                eventEndDate=request.POST['eventEndDate']
+                )
+            event.validate_frontend()
+            event.save()
+            messages.success(request, 'Event Created!')
+            return redirect('events.create')
+        except ValidationError as error:
+            messages.error(request, error.message)
+            return redirect('events.create')
+    return render(request, 'testfiles/event-create.html')
+
+# For rendering in homapages
+def eventsComponent(request):
+    if request.GET.get('sortCategory'):
+        return Event.objects.filter(eventCategory=request.GET['sortCategory']).order_by('eventStartDate')
+    return Event.objects.all().order_by('eventStartDate')
