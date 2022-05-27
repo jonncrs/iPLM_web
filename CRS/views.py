@@ -34,6 +34,7 @@ from django.db.models.query_utils import Q
 from django.contrib.auth.tokens import default_token_generator
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
+from datetime import datetime
 
 def error_404_view(request,exception):
     return render(request, 'error.html')
@@ -1921,6 +1922,7 @@ def fStudents_advisory(request):
         return redirect('index')
 
 def fStudents_viewStudentGrade (request,stud_id):
+    semester = '1'
     fcount = 0
     flag = 0
     flag2 = 0
@@ -2137,6 +2139,9 @@ def fStudents_viewStudentGrade (request,stud_id):
         if 'submit' in request.POST:
             if (request.method=='POST'):
                 status=request.POST.get('slct')
+                semester = request.POST.get('semester')
+                if semester == None:
+                    semester = '1'
                 if status=='Submitted':
                     grade_file.remarks = "Submitted"
                     grade_file.save()
@@ -2179,13 +2184,14 @@ def fviewstudent(request, sched_id):
 
 def fViewSched(request):
     if request.user.is_authenticated and request.user.is_faculty:
-        acad = AcademicYearInfo.objects.all
+        acad = AcademicYearInfo.objects.get(pk=1)
+        curric = curriculumInfo.objects.all
         id= request.user.id
         facultyInfo = request.user.facultyinfo
         info = FacultyInfo.objects.get(facultyUser=id)
         schedule = studentScheduling.objects.filter(instructor=info)
         subjects = schedule.count()
-        context = {'id': id, 'info':info, 'acad': acad, 'schedule' : schedule, 'subjects' : subjects}
+        context = {'id': id, 'info':info, 'acad': acad, 'schedule' : schedule, 'subjects' : subjects, 'facultyInfo' : facultyInfo, 'curric':curric}
         return render(request, 'faculty/fViewSched.html', context)
     else:
         return redirect('index')
@@ -2680,7 +2686,7 @@ def sGradeSubmission2(request):
             crsFile = request.FILES.get('crsFile')
             try:
                 grade_file = crsGrade.objects.get(studentID_id=id)
-                if grade_file.remarks == "Returned":
+                if grade_file.remarks == "Returned" or grade_file.remarks == "Approved":
                     if (request.method == 'POST'):
                         grade_file.crsFile = request.FILES.get('crsFile')
                         grade_file.remarks = 'Submitted'
