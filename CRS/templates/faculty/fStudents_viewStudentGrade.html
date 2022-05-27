@@ -491,9 +491,9 @@
                         <span id="note-text">The grade shall be verified through<br> the screenshots submitted by the students.</span>
                     </div>
                     <!--end info-->
-                
 
-                <div class="searchbox">
+                    <div class="searchbox">
+
                         <div class="dropdown">
                             <form method="POST">
                                 {% csrf_token %}
@@ -559,7 +559,9 @@
                                
                             </tr>
                             <!-----------FROM THIS POINT LAHAT NG <TD> TAG GALING DATABASE-------------------------------------------->
+
                             {% if semester == '1' %}
+
                             <tr class="tabletext1" style="box-shadow: 0 0 10px rgb(138, 138, 138);">
                                 <td colspan="3" style="font-size: 20px; background-color: #cae2ff;"><b>1st Yr, 1st Sem</b></td>
                                 <td colspan="2" style="background-color: #cae2ff;"><p id="head3"><b>GWA: </b>{{ ave | floatformat:2 }}
@@ -586,7 +588,6 @@
                             </tr>
                             {% endfor %}
 
-    
                             <!---------------------------------------------------------->
                             {% elif semester == '2' %}
                             <tr class="tabletext1" style="box-shadow: 0 0 10px rgb(138, 138, 138);">
@@ -615,7 +616,6 @@
                             </tr>
                             {% endfor %}
 
-                            
                             {% elif semester == '3' %}
                             <tr class="tabletext1" style="box-shadow: 0 0 10px rgb(138, 138, 138);">
                                 <td colspan="3" style="font-size: 20px; background-color: #cae2ff;"><b>2nd Yr, 1st Sem</b></td>

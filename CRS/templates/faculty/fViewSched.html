@@ -176,6 +176,7 @@
     display: inline;
     width: 1100px;
     }
+
     </style>
 
 </head>
@@ -222,7 +223,6 @@
                             <div class="col-lg-12">
                                 <div id="sdhtext">Semester Details</div>
                                 <div class="semdet row">
-                                   
                                     <div class="sdtext col">Academic Year:</div>
                                     <div class="field col">{{acad.yearstarted}}-{{acad.yearended}}</div>
                                     <!--DB ACADEMIC YEAR-->
@@ -234,15 +234,16 @@
                                     
                                 </div>
 
-                                                       
                             </div>
                         </div>
 
                         <!--Schedule Image Flipped-->
                         <div class="row">
+
                             {% if facultyInfo.facultyWorkstatus == 'Part-Time' %}
                             <a href="{% url 'parttime_sched' %}" id="buttonPartTIme"><button type="button" class="btn">Part Time Availability</button></a>
                             {% endif %}
+
                             <img src="{% static 'CRS/images/fClassroom/clip-homework.png' %}" height="350" width="auto">
                         </div>
                     </div>  
