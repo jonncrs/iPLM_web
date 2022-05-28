@@ -1660,6 +1660,18 @@ def fHome(request):
         return render(request,'./faculty/fHome.html',{'user':user,'facultyInfo':facultyInfo,'department':department,'college':college,'acad':acad, 'count_block':count_block, 'count_stud':count_stud, 'grade_file':grade_file, 'stud_advisory':stud_advisory})
     else:
         return redirect('index')
+
+def fProfile(request):
+    if request.user.is_authenticated and request.user.is_faculty:
+        user = request.user
+        facultyInfo = request.user.facultyinfo
+        departmentid=facultyInfo.departmentID_id
+        collegeid=facultyInfo.collegeID_id
+        college=College.objects.get(id=collegeid)
+        department=Department.objects.get(id = departmentid)
+        return render(request,'./faculty/fProfile.html',{'user':user,'facultyInfo':facultyInfo,'department':department,'college':college})
+    else:
+        return redirect('index')
         
 def fHomeNotification(request):
      if request.user.is_authenticated and request.user.is_faculty:
