@@ -60,11 +60,15 @@ _Optional_
 : **pwede mo lang ito magamit pag fresh pa ang database mo (walang laman)**
 You can run `python manage.py databaseseed` to add users with default password of `password`
 
-11. Run server
+12. Run update
+```cmd
+update
+```
+13. Run server
 ```cmd
 run
 ```
-12. Server address = 127.0.0.1:8000 or localhost:8000
+14. Server address = 127.0.0.1:8000 or localhost:8000
 
 # Usage
 1. Run XAMPP Control Panel and make sure Apache & MySQL is running.
@@ -73,7 +77,11 @@ run
 ```cmd
 env
 ```
-4. Run server
+4. Run update
+```cmd
+update
+```
+5. Run server
 ```cmd
 run
 ```
