@@ -7,4 +7,4 @@ echo    author: jonncrs
 echo.
 pip install -r update\install.txt
 echo.
-update\run.py
+python update\run.py
