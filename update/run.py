@@ -37,7 +37,7 @@ try:
             for x in _config:
                 _events = x['events']
                 try:
-                    Q_events = f"CREATE TABLE IF NOT EXISTS crs_event (id INT AUTO_INCREMENT PRIMARY KEY, {_events['eventTitle']} TEXT, {_events['eventDescription']} TEXT, {_events['eventCategory']} TEXT, {_events['eventStartDate']} TEXT, {_events['eventDate']} TEXT)"
+                    Q_events = f"CREATE TABLE IF NOT EXISTS crs_event (id INT AUTO_INCREMENT PRIMARY KEY, {_events['eventTitle']} TEXT, {_events['eventDescription']} TEXT, {_events['eventCategory']} TEXT, {_events['eventStartDate']} DATETIME, {_events['eventEndDate']} DATETIME)"
                     Q.execute(Q_events) # to run query
                     print("                 ADDED EVENTS TABLE\n")
                 except:

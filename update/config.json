@@ -5,7 +5,7 @@
             "eventDescription": "eventDescription",
             "eventCategory": "eventCategory",
             "eventStartDate": "eventStartDate",
-            "eventDate": "eventDate"
+            "eventEndDate": "eventEndDate"
         }
     }
 ]
