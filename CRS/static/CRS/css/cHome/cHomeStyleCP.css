@@ -77,6 +77,12 @@ body {
         display: block;
     }
 
+    #bglogo {
+      height: 710px;
+      top: 70px;
+      right: -310px;
+      position: fixed;
+    }
 
 /*******NAVBAR********/
     .navbar {
@@ -407,7 +413,7 @@ body {
         -moz-transition: all 0.3s ease;
         -o-transition: all 0.3s ease;
         transition: all 0.3s ease;
-        padding-bottom: 70px;
+        padding-bottom: 70px;        
       }
       
       #mainwrapper.toggled #sidebar-wrapper {
@@ -470,7 +476,6 @@ body {
         #page-content-wrapper {
           padding: 20px;
           position: relative;
-          background-color: #f3f6ff;
         }
         #mainwrapper.toggled #page-content-wrapper {
           position: relative;
@@ -570,8 +575,7 @@ body {
         -moz-transition: all 0.3s ease;
         -o-transition: all 0.3s ease;
         transition: all 0.3s ease;
-        overflow:auto;
-        background: #f3f6ff;
+        overflow:auto;        
         top: 65px;
       }
               
