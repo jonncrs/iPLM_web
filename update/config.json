@@ -1,0 +1,11 @@
+[
+    {
+        "events": {
+            "eventTitle": "eventTitle",
+            "eventDescription": "eventDescription",
+            "eventCategory": "eventCategory",
+            "eventStartDate": "eventStartDate",
+            "eventEndDate": "eventEndDate"
+        }
+    }
+]

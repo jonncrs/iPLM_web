@@ -1,0 +1,4 @@
+django-session-timeout
+django-auto-logout
+mysql
+mysql-connector
