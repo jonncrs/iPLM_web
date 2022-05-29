@@ -21,6 +21,7 @@ pip install virtualenv
 python -m venv env
 ```
 4. Activate virtual environment
+
 if using bash:
 ```bash
 $ source ./env/Scripts/Activate
