@@ -1,7 +1,7 @@
 # iPLM
 An Integrated PLM Website
 
-| [**View Code**](https://github.com/YoungGod27/iPLM-master-FINAL) |
+| [**View Code**](https://github.com/jonncrs/iPLM_web) |
 |--------------------------------------------|
 
 # Requirements
@@ -21,11 +21,18 @@ pip install virtualenv
 python -m venv env
 ```
 4. Activate virtual environment
+
+if using bash:
 ```bash
-if using bash: $ source ./env/Scripts/Activate
+$ source ./env/Scripts/Activate
 ```
+if using cmd
 ```cmd
-if using cmd: env
+env
+```
+or
+```cmd
+env\Scripts\Activate.bat
 ```
 5. Install dependencies
 ```cmd
@@ -68,6 +75,10 @@ update
 ```cmd
 run
 ```
+or
+```cmd
+python manage.py runserver
+```
 14. Server address = 127.0.0.1:8000 or localhost:8000
 
 # Usage
@@ -84,4 +95,8 @@ update
 5. Run server
 ```cmd
 run
+```
+or
+```cmd
+python manage.py runserver
 ```
