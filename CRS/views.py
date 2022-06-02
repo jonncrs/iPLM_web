@@ -2571,14 +2571,19 @@ def fHome(request):
         stud_advisory = StudentInfo.objects.filter(studentSection__in = advisory)
         count_block = advisory.count()
         count_stud = stud_advisory.count()
-        	
+        
+        #FOR NOTIF SUBJS
+        curric = curriculumInfo.objects.all
+        info = FacultyInfo.objects.get(facultyUser=id_adv)
+        schedule = studentScheduling.objects.filter(instructor=info)
+
         #FOR NOTIF GRADES
         try:
             grade_file = crsGrade.objects.all
         except crsGrade.DoesNotExist:
             grade_file = None
 
-        return render(request,'./faculty/fHome.html',{'user':user,'facultyInfo':facultyInfo,'department':department,'college':college,'acad':acad, 'count_block':count_block, 'count_stud':count_stud, 'grade_file':grade_file, 'stud_advisory':stud_advisory})
+        return render(request,'./faculty/fHome.html',{'user':user,'facultyInfo':facultyInfo,'department':department,'college':college,'acad':acad, 'count_block':count_block, 'count_stud':count_stud, 'grade_file':grade_file, 'stud_advisory':stud_advisory, 'curric':curric, 'info':info, 'schedule':schedule})
     else:
         return redirect('index')
 
@@ -3059,6 +3064,7 @@ def fStudents_viewStudentGrade (request,stud_id):
             if (request.method=='POST'):
                 status=request.POST.get('slct')
                 semester = request.POST.get('semester')
+                grade_file.comment = request.POST.get('message')
                 if semester == None:
                     semester = '1'
                 if status=='Submitted':
@@ -3074,13 +3080,13 @@ def fStudents_viewStudentGrade (request,stud_id):
                     grade_file.crsFile.delete()
                     messages.success(request,'File is Approved!')
                     grade_file.save()
-        if 'feedbackBtn' in request.POST:
+        """if 'feedbackBtn' in request.POST:
             fcount = 1
-        if 'feedback' in request.POST:
-            if (request.method=='POST'):
-                grade_file.comment = request.POST.get('message')
-                grade_file.save()
-                messages.success(request,'Feedback is successfully sent!')
+        if 'feedback' in request.POST: 
+            if (request.method=='POST'):"""
+            
+            #grade_file.save()
+            #messages.success(request,'Feedback is successfully sent!')
         context = {'checklist': checklist,'checklist2': checklist2,'checklist3': checklist3,'checklist4': checklist4,'checklist5': checklist5,'checklist6': checklist6, 'checklist7': checklist7,'checklist8': checklist8,'checklist9': checklist9, 'checklist10': checklist10, 'checklist11': checklist11, 'checklist12': checklist12, 'ave':ave, 'ave2': ave2, 'ave3':ave3, 'ave4':ave4, 'ave5':ave5, 'ave6':ave6, 'ave7':ave7, 'ave8' :ave8, 'ave9':ave9, 'ave10':ave10, 'ave11':ave11, 'ave12':ave12, 'stud_id': stud_id, 'grade_file':grade_file, 'fcount':fcount, 'flag':flag, 'flag2':flag2, 'flag3':flag3, 'flag4':flag4, 'flag5':flag5, 'flag6':flag6, 'flag7':flag7, 'flag8':flag8, 'flag9':flag9, 'flag10':flag10, 'flag11':flag11, 'flag12':flag12, 'semester':semester}
         return render(request, 'faculty/fStudents_viewStudentGrade.html', context)
     else:
@@ -3093,10 +3099,26 @@ def fviewstudent(request, sched_id):
         id= request.user.id
         info = FacultyInfo.objects.get(facultyUser=id)
         schedule = studentScheduling.objects.get(id=sched_id)
-        student = StudentInfo.objects.filter(studentSection=schedule.realsection)
+        student = StudentInfo.objects.filter(studentSection=schedule.realsection).order_by('studentUser__lastName')
         students = student.count()
-        result = filters.Search(request.GET, queryset=student); student = result.qs
-        context = {'result':result, 'id': id, 'info':info, 'acad': acad, 'schedule' : schedule, 'student' : student, 'students' : students}
+  
+        if (request.method == 'GET'):
+            if request.GET.get('studentID1'):
+                search = request.GET['studentID1']
+                student = student.filter(
+                    Q(studentID__contains=search) |
+                    Q(studentUser__firstName__icontains=search) |
+                    Q(studentUser__lastName__icontains=search) |
+                    Q(studentUser__middleName__icontains=search)
+                )
+        
+        count = student.count()
+        if count == 0:
+            messages.error (request, 'No record found!')
+            context = {'student': student, 'schedule':schedule}
+            return render (request, './faculty/viewstudent.html', context)   
+
+        context = {'id': id, 'info':info, 'acad': acad, 'schedule' : schedule, 'student' : student, 'students':students,  'count':count}
         return render(request, 'faculty/viewstudent.html', context)
     else:
         return redirect('index')
