@@ -218,6 +218,16 @@
                                                         {% endif %}
                                                     {% endfor %}
                                                 {% endfor %}
+                                                {% for acads in acad %}
+                                                    {% for sched in schedule reversed %}
+                                                        {% for c in curric %}
+                                                            {% if c.subjectCode_id == sched.subjectCode_id and c.schoolSem == acads.semester %}
+                                                                <a href="{% url 'fViewSched' %}"><p id="notifdrops"><b>{{sched.subjectCode.subjectCode.subjectCode}} - {{sched.subjectCode.subjectCode.subjectName}}</b><br>You have new subject added!</p></a>
+                                                                <!--<td id="schedtext-1"><a href="{% url 'viewstudent' sched.id  %}" id="buttonView"><button type="button" class="btn">View</button></a></td>-->
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    {% endfor %}
+                                                {% endfor %}
                                             </div>
                                         </td>
                                         <td>
@@ -358,11 +368,19 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script type="text/javascript">
+    
+   <!-- <script type="text/javascript">
         function changeText(obj, text) {
             obj.innerText = text;
         }
     </script>
+
+    <script>
+        function remove(el){
+            var element = el;
+            element.remove();
+        }
+    </script> -->
 
 </body>
 

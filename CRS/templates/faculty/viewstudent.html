@@ -29,6 +29,41 @@
         background: #ECECEC;
         border-radius: 10px 10px 10px 10px;
     }
+    #error{
+        font-size: 24px;
+        color: #f86f14;
+        font-family: 'Nunito';
+        margin-bottom: 20px;
+        margin-top: 10px;
+        margin-left: 250px;
+        font-weight: bold;
+
+      }
+    .alertError{
+        padding: 20px;
+        background-color: #f34e01;
+        border-radius: 15px;
+        color: white;
+        font-size: 18px;
+        width: 50%;
+        box-shadow: 0 0 10px rgb(216, 216, 216);
+        float: center;
+        animation: zoom-in-zoom-out 1s ease;
+        }
+     .closebtnError {
+        margin-left: 15px;
+        color: white;
+        font-weight: bold;
+        float: right;
+        font-size: 22px;
+        line-height: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+        }
+
+        .closebtnError:hover {
+            color: #a33908;
+        }
 
     #studentCount {
 
@@ -50,6 +85,22 @@
     right:110px;
     top:350px;
     }
+    #search1 {
+            border-radius: 12px 12px 12px 12px;
+            width: 250px;
+            height: 50px;
+            background-color: #E9E9E9;
+            border: transparent;
+        }
+
+    #submit1 {
+            background-color: #0C66CC;
+            color: white;
+            border-radius: 12px 12px 12px 12px;
+            width: 80px;
+            height: 50px;
+            border: transparent;
+        }
 
     .grayline{
     border-bottom: 4px solid;
@@ -180,7 +231,7 @@
                     <p id="fulltime" style="margin-left: 50px;">
                         {{schedule.subjectCode.subjectCode.subjectName}}
                     </p><!-- DB BLOCK -->
-                    <div class="row" id="studentCount">Student: {{students}}</div><!-- STUDENT COUNT -->
+                    <div class="row" id="studentCount">Students: {{count}}</div><!-- STUDENT COUNT -->
                 </div>
                 
                 <hr class="new">
@@ -217,20 +268,34 @@
                                 </tr>
                                 {% endfor %}
                             </table>
+                            <br><br><br>
+
+                            <div id="error">
+                                {% if messages %}
+                                            {% for message in messages %}
+                                            <div class="alertError">
+                                                <span class="closebtnError" onclick="this.parentElement.style.display='none';">&times;</span> 
+                                                {{ message }}
+                                            </div>
+                                            {% endfor %}
+                                {% endif %}
+                            
+                            </div>
                         </div>
                     </div>
 
 
-
-                
-                <!--Search box-->
+                  <!--Search box-->
                 <div class="searchbox">
                     <form method ="get">
-                     {{ result.form }}&nbsp;&nbsp;
-                    <button type="submit" id="submit" value="Search"> Search </button>
+                        <input type="text" name="studentID1" id="search1" placeholder="Search Student">
+                        {{ result.form }}&nbsp;
+                        <button type="submit" id="submit1" value="Search"> Search </button>
                     </form>
                 </div>
                 <!--End of Search box-->
+                
+             
                 
 
                 <!--Gray Line-->

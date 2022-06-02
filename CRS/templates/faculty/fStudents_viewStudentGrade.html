@@ -313,6 +313,8 @@
         border-radius: 10px;
         border-color: #0C66CC;
         border-width: 2px;
+        margin-left: 12px;
+        margin-top: 120px;
         text-align: left;
     }
 
@@ -393,6 +395,7 @@
             margin-top: 43px;
             margin-left: 5px;
         }
+       
         #note-text
         {
             position: absolute;
@@ -448,6 +451,7 @@
             transform: scale(1, 1);
         }
         }
+        
 
     </style>
 </head>
@@ -542,10 +546,6 @@
                             </form>
                         </div>
                     </div>
-<<<<<<< HEAD
-
-=======
->>>>>>> 8e232f25 (Faculty)
                 </div>
                  
 
@@ -967,12 +967,15 @@
                                                     <option disabled style="font-style:italic">&nbsp;&nbsp;&nbsp;(Set Status to submitted if the student submitted the required file)</option>
                                                     <option disabled value="Returned"> &nbsp; Returned </option>
                                                     <option disabled style="font-style:italic">&nbsp;&nbsp;&nbsp;(Set the status to returned if there are any errors in the grades)</option>
-
                                                     {%endif%}
                                                 </select>
-                                                <button name="submit" class="saveBtn" alt="submit" value="submit"><img src="{% static 'CRS/images/cOthers/savebutton.png' %}" width="35" height="35" ></button>
+                                                <button name="submit" id= "submit" class="saveBtn" alt="submit" value="submit"><img src="{% static 'CRS/images/cOthers/savebutton.png' %}" width="35" height="35"></button>
+                                                <label for="feedback"> </label>
+                                                <textarea class="form-control" id="message" name="message" cols="30" rows="5" placeholder="Write something here..." required></textarea>
+                                                <!-- {% csrf_token %} -->
+                                               
+                                                
                                             </span>
-                                            
                                         </form>
                                     </div>
                                    
@@ -989,31 +992,23 @@
                                 <button type="button" class="cswBtn3" disabled><img src="{% static 'CRS/images/cOthers/download2.png' %}" width="auto" height="42"><br>Download Screenshot</button>
                                 {% endif %}
                                 
-                                <!--FEEDBACK BUTTON-->
+                                <!--FEEDBACK BUTTON
                                 <form method="POST">
                                     {% csrf_token %}
                                     <button class="feedbackBtn" value="feedbackBtn" name="feedbackBtn"><img src="{% static 'CRS/images/cOthers/feedback.png' %}" width="auto" height="42"><br>Feedback</button></a>
                                 </form>        
-                                {% if fcount == 1 %}
-                                    <form method='POST'> 
-                                        {% csrf_token %}
-                                        <label for="Commenthere" class="sr-only">Comment</label>
-                                        <br>
-                                        <textarea class="form-control" id="message" name="message" cols="30" rows="5" placeholder="Write something here...">
-                                        </textarea>
-                                        <button type="submit" class="btn btn-primary mb-2" name="feedback">Submit</button>
-                                    </form>
-                                {% endif %}
+                                {% if fcount == 1 %}-->
+                                
+                                <!-- {% endif %}
                                 {% with fcount=0 %}
-                                {% endwith %}
+                                {% endwith %} -->
                         </div>
-                        {% else %}
-                        <td>
-                        <div class="gradeScreenshot">No file</div>
-                    </td>
-                        {% endif %}
-                        
-                        <br><br><br><img src="{% static 'CRS/images/fStudents/studclassroom_checklist-img.png' %}" width=456 height=456>            
+                            {% else %}
+                            <td>
+                            <div class="gradeScreenshot">No file</div>
+                        </td>
+                            {% endif %}
+    
                     </div> 
                     <!--End of Right Side-->
                 </div>
