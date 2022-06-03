@@ -1,0 +1,419 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+	<title>Shifter</title>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS --> 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'CRS/css/Applicants/Students/Shifter/shifter2.css' %}">
+    <script src="{% static 'CRS/js/Applicants/Students/Shifter/shifter2.js' %}"> </script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+	<!--  ICON -->
+    <link rel="icon" href="{% static '/CRS/images/cHome/iPLM.png' %}" type="image/png" sizes="16x16">
+
+	<style>
+		#imageSubmit
+	{
+		position:absolute;
+		top:     0px;
+		left:    95px;
+		width:   280px;
+        height:  100px;
+	}
+	body {
+			overflow-x: hidden;
+		}
+		/*SCROLLBAR*/
+		::-webkit-scrollbar {
+			width: 10px;
+		}
+
+		/* Track */
+		::-webkit-scrollbar-track {
+			background: #e4e4e4;
+			border-radius: 12px;
+		}
+		
+		/* Handle */
+		::-webkit-scrollbar-thumb {
+			background: #cbcbcb;
+			border-radius: 12px;
+		}
+
+		/* Handle on hover */
+		::-webkit-scrollbar-thumb:hover {
+			background: #8f8f8f; 
+		} input[type="radio"] {
+			display: none; 
+		}
+
+		#GWA{
+			top: 175px;
+			left: 145px;
+			text-align: center;
+		}
+		#buttons{
+		font-size:18px;
+		font-family:Nunito;
+		color: #0C66CC;
+		position:absolute;
+		top: 220px;
+		left: 145px;
+		text-align: center;
+		}
+		
+		#greet{
+		font-size:15px;
+		font-family:Nunito;
+		color: #0C66CC;
+		position:absolute;
+		top: 260px;
+		left: 135px;
+		text-align: center;
+		}
+/*RADIO BUTTON STYLES*/
+.donate-now {
+  list-style-type: none;
+  margin: 0 0 0 0;
+  padding: 0;
+}
+
+.donate-now li {
+  float: left;
+  margin: 0 20px 0 0;
+  width: 80px;
+  height: 40px;
+  position: relative;
+}
+
+.donate-now label,
+.donate-now input {
+  display: block;
+  position: absolute;
+  font-size: 17px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.donate-now input[type="radio"] {
+  opacity: 0.01;
+  z-index: 100;
+}
+
+.donate-now input[type="radio"]:checked+label,
+.Checked+label {
+  background: #0C66CC ;
+  color: white;
+  
+}
+
+.donate-now label {
+  padding: 5px;
+  border: 1px solid #CCC;
+  cursor: pointer;
+  z-index: 90;
+}
+
+.donate-now label:hover {
+  background: #DDD;
+}
+		
+
+.alert{
+		padding: 10px;
+        background-color: #ff5f02;
+        border-radius: 10px;
+        color: white;
+        margin-top: 10px;	
+        animation: zoom-in-zoom-out 1s ease;
+        border: none;
+        font-size: 12px;
+        width: 200px;
+		top: 320px;
+		left: 135px;
+		animation: zoom-in-zoom-out 1s ease;
+        }
+
+.closebtn {
+        margin-left: 15px;
+        color: white;
+        font-weight: bold;
+        float: right;
+        font-size: 22px;
+        line-height: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+        margin-top: -5px;
+		animation: zoom-in-zoom-out 1s ease;
+        }
+#roundbg1{
+		border-radius: 25px;
+		background: white;
+		display: table;
+		width: 70%;
+		height: 490px;
+		position: relative;
+		top: 75px;
+		left: 130px;
+}
+#round{
+
+		border-radius: 25px;
+		background: white;
+		width: 500px;
+		height: 490px;
+		left: 50%;
+		position: absolute;
+		margin-bottom: 50px;
+	
+}
+#round1{
+
+border-radius: 25px;
+background: white;
+width: 510px;
+height: 490px;
+position: absolute;
+
+
+}
+#SubSS{
+	left: 120px;
+}
+#input{
+	left: 120px;
+}
+#homebutton{
+	top: 420px;
+	left: 320px;
+}
+
+#ShifterQualifications
+	{
+		font-size:22px;
+		font-family:Nunito;
+		font-weight:bold;
+		color: #0C66CC;
+		position: absolute;
+		top: 30px;
+		left: 40px;
+	}
+	
+	#SubDescription1
+	{
+		font-size: 12px;
+		font-family: Nunito;
+		color: #0C66CC;
+		position: absolute;
+		top: 60px;
+		left: 40px;
+	}
+
+	#Qualification
+	{
+		font-size: 16px;
+		font-family: Nunito;
+		color: #0C66CC;
+		position: absolute;
+		top: 90px;
+		left: 40px;
+	}
+
+	#line2
+	{
+		position:absolute;
+		top: 180px;
+		left: 40px;
+		width: 100%;
+		color: #0C66CC;
+	}
+
+	#ShifterRequirements
+	{
+		font-size:22px;
+		font-family:Nunito;
+		font-weight:bold;
+		color: #0C66CC;
+		position: absolute;
+		top: 212px;
+		left: 40px;
+	}
+
+	#SubDescription2
+	{
+		font-size: 12px;
+		font-family: Nunito;
+		color: #0C66CC;
+		position: absolute;
+		top: 240px;
+		left: 40px;
+	}
+	#SubDescription3
+	{
+		font-size: 12px;
+		font-family: Nunito;
+		color: #0C66CC;
+		position: absolute;
+		top: 255px;
+		left: 40px;
+	}
+	#SubDescription4
+	{
+		font-size: 12px;
+		font-family: Nunito;
+		color: #0C66CC;
+		position: absolute;
+		top: 270px;
+		left: 40px;
+	}
+
+	
+	#ListOfRequirements
+	{
+		font-size: 16px;
+		font-family: Nunito;
+		color: #0C66CC;
+		position: absolute;
+		top: 290px;
+		left: 40px;
+	}
+
+	</style>
+</head>
+
+<body>
+	{%block button%}
+	<p id="backbutton"><a href="{% url 'applicant' %}"><img src="{% static 'CRS/images/Applicants/Students/Shifter/back.png'%}" alt="back" width="35px" height="35px"> </a> <!--Applicants/Students/Shifter/shifter1.html--> </p>
+	{%endblock%}
+	<div id="roundbg1">
+		<div id="round1">
+			<p id="ShifterQualifications">Shifter Qualifications</p>
+			<p id="SubDescription1">Be sure to have the following upon registration.</p>
+			<p id="Qualification">
+				{%block qualification%}
+				No grade below 2.75 or its equivalent in 
+				Chemistry, Math, <br>Physics, and Programming 
+				subjects (for CS/IT)
+				{%endblock%}</p>
+			<hr id="line2" color="#0C66CC">
+			<p id="ShifterRequirements">Shifter Requirements</p>
+			<!--<p id="SubDescription2">Be sure to have the following upon registration.</p>-->
+			<p id="SubDescription2">File fromat is SURNAME_NAME OF REQUIREMENT.pdf</p>
+			<p id="SubDescription3">The System only accepts PDF files</p>
+			<p id="ListOfRequirements">
+				{%block reqs%}
+				<br>
+				
+				{%endblock%}
+			</p>
+		</div>
+	<div id="round">
+		<picture> <p id="imageSubmit"><img src="{% static 'CRS/images/Applicants/Students/Shifter/clip.png'%}" alt="clip" width="230px" height="180px" class="rounded mx-auto d-block align-middle"></p> </picture>
+		
+				<div id="GWA">GWA Qualification
+				</div>
+					<br>
+					<p></p>
+					<form method ="POST">
+					<div id="buttons">
+					<ul class="donate-now">
+						<li>
+						  <input type="radio" id="BSIT" name="dept" value="BSIT" onclick="ITREQ()">
+						  <label for="BSIT">BSIT</label>
+						</li>
+						<li>
+						  <input type="radio" id="BSEE" name="dept" value ="BSEE" onclick="EEREQ()">
+						  <label for="BSEE">BSEE</label>
+						</li>
+					  </ul>
+					</div>
+<!--
+					<button onclick="ITREQ()" name = "dept" value = "BSIT" id="dept">BSIT</button>
+					<button onclick="EEREQ()" id = "dept">BSEE</button>
+					<br>	
+-->
+					<div id="greet">
+					<p id ="req"></p>
+					</div>
+				
+					
+				<div id="SubSS"><br><br><br> Enter previous semester's GWA <span style="color:#ff0000"><b>*</b></span></div>
+				<div id = "mess">
+					{% if messages %}
+					{% for message in messages %}
+						<div class="alert">
+						<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+						{{ message }}
+						</div>
+					{% endfor %}
+					{% endif %}
+
+
+				</div>
+	           	{% csrf_token %}<br><br><br><br>
+				<input type="text" id="input" name="GWA" required> <!--DB GWA --><br><br>
+                
+
+
+			<button id="homebutton" type="submit"  onclick="submitbtn()"> Submit </button><!--Applicants/Students/Shifter/shifter3.html--> <!--Applicants/Students/Shifter/shifter3.2.html-->          
+					</form>
+			<p id="checking"></p>
+</div>
+</div>
+
+			<script>
+				/*function submitbtn(){
+					val = document.getElementById('input').value;
+					dept = document.querySelector('input[type="radio"]:checked').value;
+					if (dept != null){
+						if (dept == 'BSIT' && val >2.75){
+							alert('GWA is not qualified');
+						}
+						else if (dept == 'BSEE' && val >2.25){
+							alert('GWA is not qualified');
+						}
+
+					}
+					else{
+						alert('Nothing is selected');
+					}
+				}
+*/
+				/*
+				$('button').on('click', function(){
+					$('button').removeClass('selected');
+					$(this).addClass('selected');
+				});
+*/
+				
+				function ITREQ(){
+					document.getElementById("req").innerHTML = "GWA REQUIREMENT IS 2.75";
+				}
+				function EEREQ(){
+					document.getElementById("req").innerHTML ="GWA REQUIREMENT IS 2.25";
+				}
+					
+			</script>
+
+ <!-- tether, jQuery first, then Tether, then Bootstrap JS. -->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+	
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
+</body>
+</html>

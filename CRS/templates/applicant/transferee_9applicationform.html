@@ -41,6 +41,69 @@
 	::-webkit-scrollbar-thumb:hover {
 		background: #8f8f8f; 
 	}
+
+	.donate-now {
+		list-style-type: none;
+		margin: 0 0 0 0;
+		padding: 0;
+		}
+
+		.donate-now li {
+		float: left;
+		margin: 0 20px 0 0;
+		width: 80px;
+		height: 40px;
+		position: relative;
+		}
+
+		.donate-now label,
+		.donate-now input {
+		display: block;
+		position: absolute;
+		font-size: 17px;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		}
+
+		.donate-now input[type="radio"] {
+		opacity: 0.01;
+		position: absolute;
+		width: 100%;
+		border: 0px;
+		height: 2em;
+		z-index: 120;
+		}
+
+		.donate-now input[type="radio"]:checked+label,
+		.Checked+label {
+		background: #0C66CC ;
+		color: white;
+		
+		}
+
+		.donate-now label {
+		padding: 5px;
+		border: 1px solid #CCC;
+		border-radius: 20px;
+		cursor: pointer;
+		z-index: 90;
+		}
+
+		.donate-now label:hover {
+		background: #DDD;
+		}
+
+		#gender{
+		font-size:18px;
+		font-family:Nunito;
+		color: #0C66CC;
+		position:absolute;
+		top: 135px;
+		left: 531px;
+		text-align: center;
+		}
 </style>
 <script>
 		function checkforblank()
@@ -76,6 +139,10 @@
 			if (document.getElementById('studyPLan').value == ""){
 			errormessage += "Upload your Studyplan\n";
 			}
+			var x = document.querySelector('input[type="radio"]:checked');
+			if ( x == null) {
+				errormessage += "Please select a Sex\n";
+			}
 			if (errormessage != ""){
 			alert(errormessage)
 			return false;
@@ -85,7 +152,7 @@
 </head>
 
 <body>
-	<div id="backbutton"><a href="{% url 'transferee_3GWAQual' %}"><img src="{% static 'CRS/images/Applicants/Students/Transferee/back.png' %}" alt="iplm" width="35px" height="35px"></a></div>
+	<div id="backbutton"><a href="{% url 'transferee_2GWA' %}"><img src="{% static 'CRS/images/Applicants/Students/Transferee/back.png' %}" alt="iplm" width="35px" height="35px"></a></div>
     
 	<div id="roundbg">
 	<p id="TransApplicationFormTitle">Student Application Form</p>
@@ -97,11 +164,22 @@
 	<form method ="POST" action="" enctype="multipart/form-data" onsubmit ="return checkforblank()">
 		{% csrf_token %}
 			<!--Student Number-->
-			<input type="text" id="StudNum" name="StudentNumber" pattern="[0-9]{9}" required>
+			<input type="text" id="StudNum" name="StudentNumber" pattern="[0-9]{9}" placeholder="202012345" required>
 			<p id="subStudNum">Student Number</p>
 
-			<input type="text" id="degree" name="degree" placeholder="BSIT/BSEE" required>
-			<p id="subDegree">Degree Applying For</p>
+			<p id="subDegree">Sex</p>
+			<div id="gender">
+			<ul class="donate-now">
+				<li>
+				  <input type="radio" id="Male" name="sex" value="Male" >
+				  <label for="BSIT">Male</label>
+				</li>
+				<li>
+				  <input type="radio" id="Female" name="sex" value ="Female">
+				  <label for="BSEE">Female</label>
+				</li>
+			  </ul>
+			</div>
 
 			<p id="FullNametext">Full Name <span style="color:#ff0000"><b>*</b></span></p>
             <!--last name-->
@@ -142,20 +220,35 @@
 	<p id="studyPlanShape">&nbsp;&nbsp;&nbsp;&nbsp;Studyplan</p>
 	
      <!--Choose file-->       
-	<input type="file" id="HonDis" name="HonorableDis" mr-4>
+	<input type="file" id="HonDis" name="HonorableDis" mr-4 accept=".pdf">
             
-	<input type="file" id="GoodMoral" name="GoodMoral" >
+	<input type="file" id="GoodMoral" name="GoodMoral" accept=".pdf" >
             
-	<input type="file" id="NOU" name="NoteofUndertaking">
+	<input type="file" id="NOU" name="NoteofUndertaking" accept=".pdf">
             
-	<input type="file" id="Grades" name="Grades">
+	<input type="file" id="Grades" name="Grades" accept=".pdf">
 
-	<input type="file" id="studyPLan" name="studyPLan">
-	
+	<input type="file" id="studyPLan" name="studyPLan" accept=".pdf">
+	<script>
+		const types = ["HonDis", "GoodMoral", "NOU", "Grades", "studyPLan"];
+		for(let x=0; x<5; x++){
+		var file = document.getElementById(types[x]);
+		file.onchange = function(e) {
+		var ext = this.value.match(/\.([^\.]+)$/)[1];
+		switch (ext) {
+			case 'pdf':
+			break;
+			default:
+			alert('File type you are uploading is incorrect. \nAccepted file is only PDF');
+			this.value = '';
+		}
+		};
+	}
+	</script>
 	
 	<picture><a><p id="imageForm"><img src="{% static 'CRS/images/Applicants/Students/Transferee/clip-1712.png' %}" alt="iplm" width="290px" height="230px"></a></p></picture>
     
-	<a><button type="submit" value="Submit" id="submitbutton">Submmit</a> 
+	<a><button type="submit" value="Submit" id="submitbutton">Submit</a> 
 	{%csrf_token%}
 	</form>
 	</div>

@@ -1,10 +1,11 @@
 {% load static %}
+
 <!DOCTYPE html>
 
 <html lang="en">
 
 <head> 
-	<title>Transferee</title>
+	<title>Faculty Applicant</title>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -13,12 +14,16 @@
     <!-- Bootstrap CSS --> 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-  <link rel="stylesheet" href="{% static 'CRS/css/Applicants/Students/Transferee/transf3.css' %}">
+  <link rel="stylesheet" href="{% static 'CRS/css/Applicants/Faculty/applicantsubmit.css' %}">
 
   <!--  ICON -->
   <link rel="icon" href="{% static '/CRS/images/cHome/iPLM.png' %}" type="image/png" sizes="16x16">
 
   <style>
+
+	body {
+		overflow-x: hidden;
+	}
 	/*SCROLLBAR*/
 	::-webkit-scrollbar {
 		width: 10px;
@@ -43,18 +48,26 @@
 </style>
 </head>
     <body>
-      <a href="{% url 'transferee_2GWA' %}"> <!--templates/Applicants/Students/Transferee--> <img src="{% static 'CRS/images/Applicants/Students/Transferee/back.png' %}" alt="iplm" id="backbutton" width="35px" height="35px" class=""></a>
+      <a href="{% url 'applicant_facultyapplicationform_workexpsheet' %}"> <!--templates/Applicants/Faculty--> <img src="{% static 'CRS/images/Applicants/Faculty/back.png' %}" alt="iplm" id="backbutton" width="35px" height="35px" class=""></a>
 <div id="roundbg">
     
-	   <img src="{% static 'CRS/images/Applicants/Students/Transferee/clip-1.png' %}" alt="clip-1" id="imageSubmit3" class="rounded mx-auto d-block align-middle">
+	   <img src="{% static 'CRS/images/Applicants/Faculty/clip-1044.png' %}" alt="clip-1044" id="imageSubmit" width="230px" height="230px" class="rounded mx-auto d-block align-middle">
 
-	       <div id="GWAQualified">Your GWA is Qualified</div>
+	       <div id="SuccessfullySubmitted">Successfully Submitted!</div>
 	
 	           <div id="SubSS">
-		          Your GWA is qualified for you to be admitted
+				You have sucessfully submitted your shifting documents.
+				<br>
+				Your application number is {{app}} and please screeenshot or <br>
+				copy paste your email and password for updates regarding your application.
+				<br>
+				<br>
+				Email: {{mail}}
+				<br>
+				Password: {{app}}
 	               </div>
-
-					<a href="{% url 'transferee_9applicationform' %}"> <!--templates/Applicants/Students/Transferee--><button id="homebutton">Proceed</button></a>
+	
+		       <a href="{% url 'index' %}">   <button type="submit" id="homebutton"> <!-- templates/Landing Page/ -->Done</button> </a>
 </div>
 
  <!-- tether, jQuery first, then Tether, then Bootstrap JS. -->

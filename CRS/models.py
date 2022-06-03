@@ -84,6 +84,7 @@ class User(AbstractBaseUser):
     is_chairperson = models.BooleanField(default=False)
     is_faculty = models.BooleanField(default=False)
     is_student = models.BooleanField(default=False)
+    is_applicant = models.BooleanField(default=False)
 
     objects = UserManager()
 
@@ -610,7 +611,6 @@ class HD_DroppingForm(models.Model):
     class Meta:
             verbose_name_plural = "HD Dropping Form"
 
-
 # SHIFTER APPLICANT
 class ShifterApplicant(models.Model):
     studentID = models.CharField(max_length=100, verbose_name="StudentNumber", null=True)
@@ -627,6 +627,10 @@ class ShifterApplicant(models.Model):
     shifter_dateSubmitted = models.DateField(default=now)
     signature1 = models.ImageField(upload_to='ShifterSign/', null=True, blank=True)
     signature2 = models.ImageField(upload_to='ShifterSign/', null=True, blank=True)
+    applicant_num = models.CharField(max_length=10, verbose_name="applicant_num", null=True)
+    sex = models.CharField(max_length=100, verbose_name="sex", null=True)
+    shiftingForm = models.FileField(upload_to='ShifterSubmission/', blank=True, null=True)
+    
 
     # dateApproved = models.DateTimeField()
 
@@ -655,7 +659,8 @@ class TransfereeApplicant(models.Model):
     transfer_dateSubmitted = models.DateField(default=now)
     signature1 = models.ImageField(upload_to='TransfereeSign/', null=True, blank=True)
     signature2 = models.ImageField(upload_to='TransfereeSign/', null=True, blank=True)
-
+    applicant_num = models.CharField(max_length=10, verbose_name="applicant_num", null=True)
+    sex = models.CharField(max_length=100, verbose_name="sex", null=True)
     # dateApproved = models.DateTimeField()
 
     class Meta:
@@ -665,6 +670,44 @@ class TransfereeApplicant(models.Model):
         return '| %s  %s ' % (self.studentID, self.lname)
 
     # dateApproved = models.DateTimeField()
+
+
+
+# --------------------------- Faculty Applicant Database ---------------------------------------
+class FacultyApplicant(models.Model):
+    lastName = models.CharField(max_length=100, verbose_name="Last Name", null=True)
+    firstName = models.CharField(max_length=100, verbose_name="First Name", null=True)
+    middleName = models.CharField(max_length=100, verbose_name="Middle Name", null=True)
+    email = models.CharField(max_length=100, verbose_name="email", null=True)
+    phoneNumber = models.CharField(max_length=100, verbose_name="phoneNumber", null=True)
+    sex = models.CharField(max_length=100, verbose_name="sex", null=True)
+    department = models.CharField(max_length=100, verbose_name="Department", null=True)
+    time = models.CharField(max_length=100, verbose_name="Available Time", null=True)
+    CV = models.FileField(upload_to='facultyApplicant/', blank=True, null=True)
+    certificates = models.FileField(upload_to='facultyApplicant/', blank=True, null=True)
+    credentials = models.FileField(upload_to='facultyApplicant/', blank=True, null=True)
+    TOR = models.FileField(upload_to='facultyApplicant/', blank=True, null=True)
+    PDS = models.FileField(upload_to='facultyApplicant/', blank=True, null=True)
+    remarks = models.CharField(max_length=150, default='Submitted', verbose_name='Status')
+#----------------------------WORK EXPERIENCE SHEET-------------------------------------------------
+
+    durationwork = models.CharField(max_length=100, verbose_name="Durationwork", null=True)
+    positionwork = models.CharField(max_length=100, verbose_name="positionwork", null=True)
+    officeunit = models.CharField(max_length=100, verbose_name="office unit", null=True)
+    agencyorg = models.CharField(max_length=100, verbose_name="agency", null=True)
+    accomplishments = models.FileField(upload_to='facultyApplicant/', blank=True, null=True)
+    summaryduties = models.FileField(upload_to='facultyApplicant/', blank=True, null=True)
+    applicant_num = models.CharField(max_length=10, verbose_name="applicant_num", null=True)
+    
+    class Meta:
+        verbose_name_plural = "Faculty Applicants"
+
+    def __str__(self):
+        return self.email
+
+
+
+
 
 class studentScheduling(models.Model):
     MONTH = (
@@ -693,25 +736,6 @@ class studentScheduling(models.Model):
         verbose_name_plural = "Student Scheduling"
 
 
-# --------------------------- Faculty Applicant Database ---------------------------------------
-class FacultyApplicant(models.Model):
-    lastName = models.CharField(max_length=150)
-    firstName = models.CharField(max_length=150)
-    middleName = models.CharField(max_length=150)
-    email = models.EmailField()
-    phoneNumber = models.CharField(max_length=150)
-    department = models.CharField(max_length=100, verbose_name="Department", null=True)
-    CV = models.FileField(upload_to='facultyApplicant/', blank=True, null=True)
-    certificates = models.FileField(upload_to='facultyApplicant/', blank=True, null=True)
-    credentials = models.FileField(upload_to='facultyApplicant/', blank=True, null=True)
-    TOR = models.FileField(upload_to='facultyApplicant/', blank=True, null=True)
-    remarks = models.CharField(max_length=150, default='Submitted', verbose_name='Status')
-
-    class Meta:
-        verbose_name_plural = "Faculty Applicants"
-
-    def __str__(self):
-        return self.email
 
 
 

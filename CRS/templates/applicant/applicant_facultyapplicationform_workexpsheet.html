@@ -1,0 +1,244 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+	<title>Applicant</title>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">
+	 <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS --> 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+<link rel="stylesheet" href="{% static 'CRS/css/Applicants/Faculty/styles.css' %}">
+
+<script src="{% static 'CRS/js/Applicants/Faculty/applicationform.js' %}"> </script>
+
+<!--  ICON -->
+<link rel="icon" href="{% static '/CRS/images/cHome/iPLM.png' %}" type="image/png" sizes="16x16">
+
+<style>
+
+	body {
+		overflow-x: hidden;
+	}
+	/*SCROLLBAR*/
+	::-webkit-scrollbar {
+		width: 10px;
+	}
+
+	/* Track */
+	::-webkit-scrollbar-track {
+		background: #e4e4e4;
+		border-radius: 12px;
+	}
+	
+	/* Handle */
+	::-webkit-scrollbar-thumb {
+		background: #cbcbcb;
+		border-radius: 12px;
+	}
+
+	/* Handle on hover */
+	::-webkit-scrollbar-thumb:hover {
+		background: #8f8f8f; 
+	}
+
+	#ContactInformationText, #DepartmentInformationText, #AvailabilityTimeText, #DurationWorkText
+	{
+		font-size: 18px;
+		font-family: Nunito;
+		color: #0C66CC;
+		position:absolute;
+	}
+	#DurationWorkText
+	{
+		top: 150px;
+		left: 80px;
+	}
+	
+	#ContactInformationText
+	{
+		top: 220px;
+		left: 80px;
+	}
+		
+	#DepartmentInformationText
+	{
+		top: 290px;
+		left: 80px;
+	}
+
+	#AvailabilityTimeText
+	{
+		top: 360px;
+		left: 80px;
+	}
+
+
+
+	#LastName, #EmailAddress, #department, #time
+	{
+		width: 240px;
+		height:25px;
+		box-sizing: border-box;
+		border: 2px solid #ECECEC;
+		border-radius: 7px;
+		background-color: #ECECEC;
+		color: black;
+		text-indent:10px;
+		font-family: Nunito;
+        
+	}
+
+	#EmailAddress
+	{
+		position:absolute;
+		top: 220px;
+		left: 280px;
+	}
+
+	#department
+	{
+		position:absolute;
+		top: 290px;
+		left: 280px;
+	}
+
+	/* para kahanay ng mga pag lalagyan ng input*/
+	#time
+	{
+		position:absolute;
+		top: 360px;
+		left: 470px;
+	}
+	#subDepartment
+	{
+		font-size: 12px;
+		font-family: Nunito;
+		color: #0C66CC;
+		position:absolute;
+		top: 320px;
+		left: 27%;
+	}
+	
+	#subEmailAddress
+	{
+		top: 250px;
+		left: 27%;
+	}
+
+	/* para nasa ibaba ng lalagyan ng input*/
+
+	#subTime
+	{
+		font-size: 12px;
+		font-family: Nunito;
+		color: #0C66CC;
+		position:absolute;
+		top: 385px;
+		left: 500px;
+	}
+	#line2{
+		top: 400px;
+	}
+	#UploadDocumentsTitle{
+		top: 420px;
+	}
+	#UDSub{
+		top: 450px;
+	}
+
+</style>
+
+
+</head>
+
+<body>
+	<div id="backbutton"><a href="{% url 'applicant_facultyapplicationform' %}"> <!--templates/Applicants/Faculty--><img src="{% static 'CRS/images/Applicants/Faculty/back.png' %}" alt="iplm" width="35px" height="35px"></a></div>
+    
+	<div id="roundbg">
+	<p id="FacultyApplicationFormTitle">Work Experience Sheet</p>
+	
+	<p id="FAFSub">Please complete the form below to be admitted in our department.</p> 
+
+	<p id="DurationWorkText">Duration of Work<span style="color:#ff0000"><b>*</b></span></p>
+		<form method ="POST" enctype="multipart/form-data" onsubmit ="return checkforblank()">
+			{%csrf_token%}
+
+			<input type="text" id="LastName" name="durationwork" placeholder="JUNE 13,2017-_____">		<!--duration work-->
+			<p id="subLastname">Date</p>
+
+	<p id="ContactInformationText">Position in work<span style="color:#ff0000"><b>*</b></span></p>            <!--position work-->
+			<input type="text" id="EmailAddress" name="position" placeholder="MASTER TEACHER I">
+			<p id="subEmailAddress">Position</p>
+	
+	<p id="DepartmentInformationText">Name of Office/Unit <span style="color:#ff0000"><b>*</b></span></p>            <!--office unit-->
+			<input type="text" id="department" name="officeunit" placeholder="_______ School/Company">
+			<p id="subDepartment">Office/Unit</p>
+
+			<p id="AvailabilityTimeText">Name of Agency/Organization and Location<span style="color:#ff0000"><b>*</b></span></p>            <!--agency organization-->
+			<input type="text" id="time" name="agencyorg" placeholder="DEPED - School Division_______">
+			<p id="subTime">Agency/Organization & Location</p>
+		
+		
+	<hr id="line2" color="#d3d3d3" width="980px">
+
+	<p id="UploadDocumentsTitle">Upload Documents</p>
+	<p id="UDSub">Please upload the following documents.</p>
+            
+	<!--left side-->
+
+	<p id="CVShape">&nbsp;&nbsp;&nbsp;&nbsp;LIST OF ACCOMPLISHMENTS ---& CONTRIBUTIONS</p>
+            
+	<p id="CertificateShape"> &nbsp;&nbsp;&nbsp;&nbsp;---SUMMARY OF ACTUAL ------DUTIES</p>
+
+     <!--Choose file-->
+
+	<input type="file" id="CVFile" name="accomplishments" accept=".pdf">
+            
+	<input type="file" id="CertificateFile" name="summaryduties" accept=".pdf">
+
+	
+	
+	<picture><a><p id="imageForm"><img src="{% static 'CRS/images/Applicants/Faculty/clip-1712.png' %}" alt="iplm" width="290px" height="230px"></a></p></picture>
+
+
+	<a href="{% url 'applicant_facultyapplicationform_workexpsheet_submitted' %}"> <button id="submitbutton"> <!--templates/Applicants/Faculty--> Submit </button></a>
+</form> </div>
+	<script>
+		const types = ["CVFile", "CertificateFile"];
+		for(let x=0; x<5; x++){
+		var file = document.getElementById(types[x]);
+		file.onchange = function(e) {
+		var ext = this.value.match(/\.([^\.]+)$/)[1];
+		switch (ext) {
+			case 'pdf':
+			case 'PDF':
+			break;
+			default:
+			alert('File type you are uploading is incorrect. \nAccepted file is only PDF');
+			this.value = '';
+		}
+		};
+	}
+	</script>
+
+
+<!-- tether, jQuery first, then Tether, then Bootstrap JS. -->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+	
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
+</body>
+
+</html>

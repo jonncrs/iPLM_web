@@ -1,0 +1,94 @@
+{%extends "applicant/profile/BaseProfile2.html"%}
+{%load static%}
+
+
+{%block title%} Faculty Applicant | Profile {%endblock%}
+
+{% block profile%}
+    <div class="col-lg-11 py-2">
+        <div class="phor row">
+            <div class="col-lg-3">
+                <p id="text-pbox">Last Name:</p>
+            </div>
+            <div class="col-lg-3">
+                <p id="text-pbox">  {{info.lastName}} </p>
+            </div>
+            <div class="col-lg-3">
+                <p id="text-pbox">Application Status:</p>
+            </div>
+            <div class="col-lg-3">
+                <p id="text-pbox"> {{info.remarks}}</p>
+            </div>
+        </div>
+        
+        <div class="phor row">
+            <div class="col-lg-3">
+                <p id="text-pbox">First Name:</p>
+            </div>
+            <div class="col-lg-3">
+                <p id="text-pbox"> {{info.firstName}} </p>
+            </div>
+            <div class="col-lg-3">
+                <p id="text-pbox">Application Number:</p>
+            </div>
+            <div class="col-lg-3">
+                <p id="text-pbox"> {{info.applicant_num}}</p>
+            </div>
+        </div>
+        
+        <div class="phor row">
+            <div class="col-lg-3">
+                <p id="text-pbox">Middle Name:</p>
+            </div>
+            <div class="col-lg-3">
+                <p id="text-pbox"> {{info.middleName}} </p>
+            </div>
+            <div class="col-lg-3">
+                <p id="text-pbox">Availability Time:</p>
+            </div>
+            <div class="col-lg-3">
+                <p id="text-pbox">{{info.time}} </p>
+            </div>
+        </div>
+        
+        <div class="phor row">
+            <div class="col-lg-3">
+                <p id="text-pbox">Sex:</p>
+            </div>
+            <div class="col-lg-3">
+                <p id="text-pbox">{{info.sex}} </p>
+            </div>
+            <div class="col-lg-3">
+                <p id="text-pbox">Department Applying For:</p>
+            </div>
+            <div class="col-lg-3">
+                <p id="text-pbox">{{info.department}} </p>
+            </div>
+        </div>
+
+        <div class="phor row">
+            <div class="col-lg-3">
+                <p id="text-pbox">Email:</p>
+            </div>
+            <div class="col-lg-3">
+                <p id="text-pbox">{{info.email}}</p>
+            </div>
+            <div class="col-lg-3">
+                <p id="text-pbox">PLM Email:</p>
+            </div>
+            <div class="col-lg-3">
+                <p id="text-pbox">{{mail}} </p>
+            </div>
+        </div>
+        <div class="phor row">
+            <div class="col-lg-3">
+                <p id="text-pbox">Contact Number:</p>
+            </div>
+            <div class="col-lg-3">
+                <p id="text-pbox">{{info.phoneNumber}} </p>
+            </div>
+        </div>
+        
+    </div>
+
+{%endblock%}
