@@ -1,0 +1,354 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>  {%block title%} {%endblock%} </title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
+    <link rel="stylesheet" href="{% static 'CRS/css/sHome/sHomeStyle.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">
+    <link rel="icon" href="{% static 'CRS/images/sClassroom/iPLM.png' %}" type="image/png" sizes="16x16">
+    <!--NEW-->
+    
+    <style>
+        #subjectMessage {
+        margin-top: 50px;
+        margin-left: 1100px;
+        padding: 10px;
+        padding-top: 20px;
+        font-size: 18px;
+        color: #ffffff;
+        font-family: 'Nunito';
+        background-color: #0C66CC;
+        border: 2px solid #0C66CC;
+        border-radius: 16px;
+        box-shadow: 0 0 10px rgb(199, 199, 199);
+        height: 70px;
+        padding-right: 50px;
+        padding-left: 50px;
+    }
+
+    .alertError{
+    padding: 20px;
+    background-color: #f34e01;
+    border-radius: 15px;
+    color: white;
+    box-shadow: 0 0 10px rgb(216, 216, 216);
+    margin-top: 50px;
+    margin-left: 1100px;
+    margin-bottom: 10px;
+    animation: zoom-in-zoom-out 1s ease;
+    }
+
+    .alertSuccess{
+    padding: 20px;
+    background-color: #3fb328;
+    border-radius: 15px;
+    color: white;
+    box-shadow: 0 0 10px rgb(216, 216, 216);
+    bottom: 100px;
+    animation: zoom-in-zoom-out 1s ease;
+    }
+
+    .closebtnError {
+        margin-left: 15px;
+        color: white;
+        font-weight: bold;
+        float: right;
+        font-size: 22px;
+        line-height: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+        }
+
+        .closebtnError:hover {
+            color: #a33908;
+        }
+
+        .closebtnSuccess {
+        margin-left: 15px;
+        color: white;
+        font-weight: bold;
+        float: right;
+        font-size: 22px;
+        line-height: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+        }
+
+        .closebtnSuccess:hover {
+            color: #1c6b0c;
+        }
+
+
+
+        @keyframes zoom-in-zoom-out {
+        0% {
+            transform: scale(1, 1);
+        }
+        50% {
+            transform: scale(1.1, 1.1);
+        }
+        100% {
+            transform: scale(1, 1);
+        }
+        }
+
+    
+	#Shape1, #Shape2, #Shape3, #Shape4 ,#Shape5
+	{
+		border: 1px solid #0C66CC;
+		background: #0C66CC;
+		font-size: 14px;
+		font-family: Nunito;
+		margin-right: 10px;
+		color: white;
+		border-radius: 10px;
+		height: 40px;
+		width: 210px;
+		display: flex;
+		align-items: center;
+		justify-content: left;
+		position:absolute;
+		filter:drop-shadow(1px 1px 3px gray);
+	}
+	
+	#Shape1
+	{
+		top: 150px;
+		
+	}
+
+	#Shape2
+	{
+		top: 220px;
+		
+	}
+
+	#Shape3
+	{
+		top: 290px;
+		
+	}
+
+    #Shape4
+	{
+		top: 360px;
+		
+	}
+
+    #Shape5
+	{
+		top: 430px;
+		
+	}
+	#File1
+	{
+		top: 150px;
+		left: 250px;
+	}
+	
+	#File2
+	{
+		top: 220px;
+        left: 250px;
+
+	}
+
+	#File3
+	{
+		top: 290px;
+        left: 250px;
+
+	}
+
+    #File4
+	{
+		top: 360px;
+        left: 250px;
+
+	}
+    
+    #File5
+	{
+		top: 430px;
+        left: 250px;
+
+	}
+	#File1, #File2, #File3, #File4, #File5
+	{
+		font-family: Nunito;
+		font-size:  14px;
+		background: white;
+		border-radius: 10px;
+		filter:drop-shadow(0px 0px 10px rgb(211,211,211));
+		height: 40px;
+		width: 210px;
+		outline: none;
+		position:absolute;
+	}
+	
+	::-webkit-file-upload-button
+	{
+		color: #0C66CC;
+		background: white;
+		padding: 13px;
+		border: none;
+		border-radius: 10px;
+		cursor: pointer;
+	}
+	
+	::-webkit-file-upload-button:hover
+	{
+		background: #ECC429;
+	}
+	
+	
+	#submitbutton
+	{
+		border: 1px solid #0C66CC;
+		background: #0C66CC;
+		font-size: 14px;
+		font-family: Nunito;
+		cursor: pointer;
+		margin: 10px;
+		color: white;
+		transition: 0.8;
+		border-radius: 10px;
+		height: 43px;
+		width: 128px;
+		transition-duration: 0.4s;
+		position:absolute;
+		top: 500px;
+		left: 5px;
+	}
+	
+	#submitbutton:hover
+	{
+		
+		background-color: #2852A4;
+		border: 1px solid #2852A4;
+	}
+	
+	#imageForm
+	{
+		position:absolute;
+		top: 518px;
+		left: 740px;
+	}
+    
+    </style>
+</head>
+
+<body>
+{% block content %}
+    <div class="wrapper">
+
+        <!-- Sidebar -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <li>
+                    <p><br><br><img src="{% static 'CRS/images/fHomeAndProfile/hat.png' %}" width="126px" height="87px"><br><br>
+                </li>
+            </div>
+            <ul class="sidebar components">
+                <li><a href="{% url 'logout' %}"><img src="{% static 'CRS/images/cIcons/log-out2.png' %}" width="97px" height="auto"></a></li>
+            </ul>
+        </nav>
+        <!--End of Sidebar -->
+
+
+
+        <!-- Content -->
+        <div id="content">
+            <div class="container-fluid">
+
+
+                <!--Profile-->
+                <div class="sub-box row">
+                    <p class="text-profile">Profile</p>
+                    
+                </div>
+                <div class="profile-box row">
+                    
+                    {% block profile%}
+
+                    {%endblock%}
+                    
+                </div>
+                <!--END of Profile-->
+                <br><br>
+                <div class="profile-border row">
+                    
+                    <div class="col-12-lg">
+                        {% if messages %}
+                    {% for message in messages %}
+                    {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                    <div class="alertSuccess">
+                        <span class="closebtnSuccess" onclick="this.parentElement.style.display='none';">&times;</span> 
+                        {{ message }}
+                    </div>
+                    {% endif %}
+                        
+                    {% endfor %}
+                    {% endif %}
+                    </div>
+                </div>
+
+                <!--Edit Account-->
+                <div class="edit-box row">
+
+
+                    
+                        
+
+
+                    <div class="col-lg-5 img">
+                    
+                        <!-- style="background-color: purple"-->
+                        <img src="{% static 'CRS/images/sHome/view_profile_img.png' %}" width="100%" height="400">
+                    </div>
+                    
+                </div>
+                <!--END of Edit Account-->
+
+
+
+            </div>
+        </div>
+
+    </div>
+    {% endblock content %}   
+    <script type= "text/Javascript">
+        const types = ["File1", "File2", "File3", "File4", "File5"];
+        for(let x=0; x<5; x++){
+        var file = document.getElementById(types[x]);
+        file.onchange = function(e) {
+        var ext = this.value.match(/\.([^\.]+)$/)[1];
+        switch (ext) {
+            case 'pdf':
+            case 'PDF':
+            break;
+            default:
+            alert('File type you are uploading is incorrect. \nAccepted file is only PDF');
+            this.value = '';
+        }
+        };
+    }
+    </script>
+    <!-- Javascript -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+    
+    
+</body>
+
+</html>

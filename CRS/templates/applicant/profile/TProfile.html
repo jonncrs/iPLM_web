@@ -1,0 +1,85 @@
+{%extends "applicant/profile/BaseProfile.html"%}
+{%load static%}
+
+
+{%block title%} Transferee Applicant | Profile {%endblock%}
+
+{% block profile%}
+    <div class="col-lg-11 py-2">
+        <div class="phor row">
+            <div class="col-lg-3">
+                <p id="text-pbox">Last Name:</p>
+            </div>
+            <div class="col-lg-3">
+                <p id="text-pbox">  {{info.lname}} </p>
+            </div>
+            <div class="col-lg-3">
+                <p id="text-pbox">Application Status:</p>
+            </div>
+            <div class="col-lg-3">
+                <p id="text-pbox"> {{info.remarks}}</p>
+            </div>
+        </div>
+        <div class="phor row">
+            <div class="col-lg-3">
+                <p id="text-pbox">First Name:</p>
+            </div>
+            <div class="col-lg-3">
+                <p id="text-pbox"> {{info.fname}} </p>
+            </div>
+            <div class="col-lg-3">
+                <p id="text-pbox">Application Number:</p>
+            </div>
+            <div class="col-lg-3">
+                <p id="text-pbox"> {{info.applicant_num}}</p>
+            </div>
+        </div>
+        
+        <div class="phor row">
+            <div class="col-lg-3">
+                <p id="text-pbox">Middle Name:</p>
+            </div>
+            <div class="col-lg-3">
+                <p id="text-pbox"> {{info.mname}} </p>
+            </div>
+            <div class="col-lg-3">
+                <p id="text-pbox">Contact Number:</p>
+            </div>
+            <div class="col-lg-3">
+                <p id="text-pbox">{{info.cnum}}</p>
+            </div>
+        </div>
+        
+        <div class="phor row">
+            <div class="col-lg-3">
+                <p id="text-pbox">Gender:</p>
+            </div>
+            <div class="col-lg-3">
+                <p id="text-pbox">{{info.studentID}} </p>
+            </div>
+            <div class="col-lg-3">
+                <p id="text-pbox">Degree Program:</p>
+            </div>
+            <div class="col-lg-3">
+                <p id="text-pbox">{{info.department}} </p>
+            </div>
+        </div>
+        
+    </div>
+
+{%endblock%}
+
+{% block submission%}
+<p id="Shape1">&nbsp;&nbsp;&nbsp;&nbsp;Honorable Dismissal</p>
+<p id="Shape2"> &nbsp;&nbsp;&nbsp;&nbsp; Good Moral</p>	
+<p id="Shape3"> &nbsp;&nbsp;&nbsp;&nbsp; Note of Undertaking</p>	
+<p id="Shape4"> &nbsp;&nbsp;&nbsp;&nbsp; Grades</p>
+<p id="Shape5"> &nbsp;&nbsp;&nbsp;&nbsp; Study plan</p>
+ <!--Choose file-->    
+<input type="file" id="File1" name="HD" accept=".pdf">
+<input type="file" id="File2" name="GM" accept=".pdf">
+<input type="file" id="File3" name="NU" accept=".pdf">
+<input type="file" id="File4" name="Grade" accept=".pdf">
+<input type="file" id="File5" name="studyPlan" accept=".pdf">
+
+{%endblock%}

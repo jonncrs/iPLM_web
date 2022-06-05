@@ -49,7 +49,7 @@ class UserChangeForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ('email', 'password', 'firstName', 'middleName',
-                  'lastName', 'is_active', 'is_admin', 'is_chairperson', 'is_faculty', 'is_student')
+                  'lastName', 'is_active', 'is_admin', 'is_chairperson', 'is_faculty', 'is_student' , 'is_applicant')
 
 
 class FacultyInfoInline(admin.StackedInline):
@@ -78,12 +78,12 @@ class UserAdmin(BaseUserAdmin):
      that reference specific fields on auth.User.
      '''
     list_display = ('email', 'firstName', 'middleName', 'lastName',
-                    'is_active', 'is_admin', 'is_chairperson', 'is_faculty', 'is_student')
+                    'is_active', 'is_admin', 'is_chairperson', 'is_faculty', 'is_student', 'is_applicant')
     list_filter = ('is_admin',)
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
         ('Personal info', {'fields': ('firstName', 'middleName', 'lastName')}),
-        ('Permissions', {'fields': ('is_active', 'is_admin', 'is_chairperson', 'is_faculty', 'is_student')}),
+        ('Permissions', {'fields': ('is_active', 'is_admin', 'is_chairperson', 'is_faculty', 'is_student', 'is_applicant')}),
     )
     # add_fieldsets is not a standard ModelAdmin attribute. UserAdmin
     # overrides get_fieldsets to use this attribute when creating a user.
@@ -91,7 +91,7 @@ class UserAdmin(BaseUserAdmin):
         (None, {
             'classes': ('wide',),
             'fields': ('email', 'password1', 'password2',
-                       'firstName', 'middleName', 'lastName', 'is_admin', 'is_chairperson', 'is_faculty', 'is_student'),
+                       'firstName', 'middleName', 'lastName', 'is_admin', 'is_chairperson', 'is_faculty', 'is_student', 'is_applicant'),
         }),
     )
     search_fields = ('email',)

@@ -35,6 +35,14 @@ from django.contrib.auth.tokens import default_token_generator
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
 
+#new import
+import datetime 
+import MySQLdb
+from django.contrib.auth import get_user_model
+import string
+#global variable
+psw = "a"
+
 def error_404_view(request,exception):
     return render(request, 'error.html')
 
@@ -56,11 +64,12 @@ def send_notifications(user_id, title, description):
     return 'Successfully Send Notification'
     
 def index(request):
+    global psw
     if request.method == 'POST':
         username = request.POST.get('email')
         password = request.POST.get('password')
         user = authenticate(request, username=username, password=password)
-
+        
         if user is not None:
             login(request, user)
             type_obj = request.user
@@ -72,6 +81,17 @@ def index(request):
                 return redirect('fHome')
             elif user.is_authenticated and type_obj.is_student:
                 return redirect('sHome')
+            elif user.is_authenticated and type_obj.is_applicant:
+                psw = password
+                x = psw[0]
+                if x == "T":
+                    return redirect('TProfile')
+                elif x == "S":
+                    return redirect('ShProfile')
+                elif x == "F":
+                    return redirect('FProfile')
+                else:
+                    return render(request, 'error2.html')
             else:
                 messages.error (request,'You have entered an invalid email or password.')
                 return render(request, 'index.html')
@@ -6103,6 +6123,69 @@ def sendmailfile(request, faculty_id):
     messages.success(request,"Successfully sent!")
     return HttpResponseRedirect(reverse('faculty_view', args=(faculty_id)))
 
+#APPLICATION NUMBER FUNCTION AND GLOBAL VARIABLES 
+def app_num(b):
+    x = datetime.datetime.now()
+    y = x.strftime("%y")
+    z = x.strftime("%d")
+    v = x.strftime("%m")
+    connec = MySQLdb.connect("localhost","root","","iplmdatabase")
+    cursor = connec.cursor()
+    a = 1
+    if b == 1:
+        a = cursor.execute("SELECT LAST_INSERT_ID() from crs_transfereeapplicant;")
+        num = int(a) + 1
+        num =str(num)
+        test = len(num)
+        if test < 2:
+            num2 = "T" + y + z +v + "00" +num
+        elif test <3:
+            num2 = "T" + y + z +v + "0" +num
+        else:
+            num2 = "T" + y + z +v +num
+        applicant_num = num2
+        return applicant_num
+    elif b == 2:
+        a = cursor.execute("SELECT LAST_INSERT_ID() from crs_shifterapplicant;")
+        num = int(a) + 1
+        num =str(num)
+        test = len(num)
+        if test < 2:
+            num2 = "S" + y + z +v + "00" +num
+        elif test <3:
+            num2 = "S" + y + z +v + "0" +num
+        else:
+            num2 = "S" + y + z +v +num
+        applicant_num = num2
+        return applicant_num
+    elif b == 3:
+        a = cursor.execute("SELECT LAST_INSERT_ID() from crs_facultyapplicant;")
+        num = int(a) + 1
+        num =str(num)
+        test = len(num)
+        if test < 2:
+            num2 = "F" + y + z +v + "00" +num
+        elif test <3:
+            num2 = "F" + y + z +v + "0" +num
+        else:
+            num2 = "F" + y + z +v +num
+        applicant_num = num2
+        return applicant_num
+    else:
+        error = "ERROR"
+        return error
+
+t_num = app_num(1)
+s_num = app_num(2)
+f_num = app_num(3)
+t_mail = "a"
+s_mail = "a"
+f_mail = "a"
+s_dept = "a"
+t_dept = "a"
+# note: DO NOT READJUST ABOVE VARIABLES ^^ 
+
+
 #TRANSFEREE APPLICANT
 def transferee_1requirements(request):
     return render(request, './applicant/transferee_1requirements.html')
@@ -6111,29 +6194,50 @@ def transferee_2GWA(request):
     return render(request, './applicant/transferee_2GWA.html')
 
 def transferee_2GWA(request):
+    global t_dept
     if (request.method == 'POST'):
         GWA = float(request.POST.get('GWA'))
-        if (GWA <= 2.25 and GWA >= 1):
-            return redirect('transferee_3GWAQual')
+        dept = request.POST.get("dept")
+        t_dept = dept
+        if (dept == None):
+            messages.error(request,'Please choose a department')
+
         else:
-            return redirect('transferee_3.2GWANotQual')
+            if (GWA <= 2.75 and GWA >= 1 and dept == "BSIT"):
+                return redirect('transferee_9applicationform')
+            if (GWA <= 2.25 and GWA >= 1 and dept == "BSEE"):
+                return redirect('transferee_9applicationform')
+            else:
+                messages.error(request,'GWA is not Qualified')
     return render(request, './applicant/transferee_2GWA.html')
 
-def transferee_3GWAQual(request):
-    return render(request, './applicant/transferee_3GWAQual.html')
-
-def transferee_3_2GWANotQual(request):
-    return render(request, './applicant/transferee_3.2GWANotQual.html')
 
 def transferee_9applicationform(request):
+    global t_mail, t_dept
     if (request.method == 'POST'):
+        studentID = request.POST.get("StudentNumber")
+        applicant_num = app_num(1)
+        pw = str(applicant_num)
+        department = t_dept
+        lname = request.POST.get("LastName")
+        fname = request.POST.get("FirstName")
+        mname = request.POST.get("MiddleName")
+        first = fname.lower()
+        middle = mname.lower()
+        last = lname.lower()
+        last = last.translate({ord(c): None for c in string.whitespace})
+        f = first[0]
+        m = middle[0]
+        email = f + m + last +"@plm.edu.ph"
+        t_mail = email
+        User = get_user_model()
+        log = User.objects.create_user(email = email, password = pw, firstName = fname, middleName = mname, lastName = lname)
+        log.is_admin = False
+        log.is_applicant = True
+        log.save()
         try:
-            studentID = request.POST.get("StudentNumber")
-            department = request.POST.get("degree")
-            lname = request.POST.get("LastName")
-            fname = request.POST.get("FirstName")
-            mname = request.POST.get("MiddleName")
             eadd = request.POST.get("EmailAddress")
+            sex = request.POST.get("sex")
             cnum = request.POST.get("Phone")
             studentStudyplan = request.FILES.get("studyPLan")
             studentNote = request.FILES.get("NoteofUndertaking")
@@ -6141,63 +6245,249 @@ def transferee_9applicationform(request):
             studentGoodmoral = request.FILES.get("GoodMoral")
             studentGrade = request.FILES.get("Grades")
             transfer_dateSubmitted = timezone.now()
-            transferee = TransfereeApplicant(studentID=studentID, department=department, lname=lname, fname=fname, mname=mname, eadd=eadd, cnum=cnum, studentStudyplan=studentStudyplan, studentNote=studentNote, studentHD=studentHD, studentGoodmoral=studentGoodmoral, studentGrade=studentGrade,transfer_dateSubmitted=transfer_dateSubmitted)
+            transferee = TransfereeApplicant(studentID=studentID, department=department, lname=lname, fname=fname, mname=mname, eadd=eadd, cnum=cnum, studentStudyplan=studentStudyplan, studentNote=studentNote, studentHD=studentHD, studentGoodmoral=studentGoodmoral, studentGrade=studentGrade,transfer_dateSubmitted=transfer_dateSubmitted, applicant_num=applicant_num, sex=sex)
             transferee.save()
             return redirect('transferee_10success')
         except:          
             messages.error(request,'You have already submitted an application!')
             return render(request,'./applicant/transferee_9applicationform.html')
     return render(request, './applicant/transferee_9applicationform.html')
-    
+
+
 def transferee_10success(request):
-    return render(request, './applicant/transferee_10success.html')
+    return render(request, './applicant/transferee_10success.html',{'num':t_num, 'mail':t_mail})
 
 #SHIFTER APPLICANT
-def shifter1(request):
-    return render(request, './applicant/shifter1.html')
-
 def shifter2(request):
     return render(request, './applicant/shifter2.html')
 
 def shifter2(request):
+    global s_dept
     if (request.method == 'POST'):
         GWA = float(request.POST.get('GWA'))
-        if (GWA <= 2.25 and GWA >= 1):
-            return redirect('shifter3')
+        dept = request.POST.get("dept")
+        if (dept == None):
+            messages.error(request,'Please choose a department')
+
         else:
-            return redirect('shifter3.2')
+            s_dept = dept
+            if (GWA <= 2.75 and GWA >= 1 and dept == "BSIT"):
+                return redirect('shifter9')
+            if (GWA <= 2.25 and GWA >= 1 and dept == "BSEE"):
+                return redirect('shifter9')
+            else:
+                messages.error(request,'GWA is not Qualified')
+
+
     return render(request, './applicant/shifter2.html')
 
-def shifter3(request):
-    return render(request, './applicant/shifter3.html')
-
-def shifter3_2(request):
-    return render(request, './applicant/shifter3.2.html')
 
 def shifter9(request):
+    global s_mail, s_dept
     if (request.method == 'POST'):
+        applicant_num = app_num(2)
+        pw = str(applicant_num)
+        lname = request.POST.get("lname")
+        fname = request.POST.get("fname")
+        mname = request.POST.get("mname")
+        first = fname.lower()
+        middle = mname.lower()
+        last = lname.lower()
+        last = last.translate({ord(c): None for c in string.whitespace})
+        fname = fname.title()
+        mname = mname.title()
+        lname = lname.title()
+        f = first[0]
+        m = middle[0]
+        email = f + m + last +"@plm.edu.ph"
+        s_mail=email
+        User = get_user_model()
+        log = User.objects.create_user(email = email, password = pw, firstName = fname, middleName = mname, lastName = lname)
+        log.is_admin = False
+        log.is_applicant = True
+        log.save()
         try:
             studentID = request.POST.get("StudID")
-            department = request.POST.get("Deg")
-            lname = request.POST.get("lname")
-            fname = request.POST.get("fname")
-            mname = request.POST.get("mname")
+            sex = request.POST.get("sex")
+            department = s_dept
             eadd = request.POST.get("eadd")
             cnum = request.POST.get("cnum")
             studentshifterletter = request.FILES.get("LetterofIntentFile")
             studentGrade = request.FILES.get("GradeScreenshotFile")
             studentStudyplan = request.FILES.get("studyPlanFile")
+            collegeLetter = request.FILES.get("letterOfApproval")
             shifter_dateSubmitted = timezone.now()
-            shiftee = ShifterApplicant(studentID=studentID, department=department, lname=lname, fname=fname, mname=mname, eadd=eadd, cnum=cnum, studentshifterletter=studentshifterletter, studentGrade=studentGrade, studentStudyplan=studentStudyplan,shifter_dateSubmitted=shifter_dateSubmitted)
+            shiftee = ShifterApplicant(studentID=studentID, department=department, lname=lname, fname=fname, mname=mname, eadd=eadd, cnum=cnum, studentshifterletter=studentshifterletter, studentGrade=studentGrade, studentStudyplan=studentStudyplan,shifter_dateSubmitted=shifter_dateSubmitted, applicant_num=applicant_num, sex=sex,shiftingForm = collegeLetter)
             shiftee.save()
             return redirect('shifter10')
         except:          
             messages.error(request,'You have already submitted an application!')
             return render(request,'./applicant/shifter9.html')
     return render(request, './applicant/shifter9.html')
-    
+   
+
+
 def shifter10(request):
-    return render(request, './applicant/shifter10.html')
+        return render(request, './applicant/shifter10.html',{'app':s_num, 'mail':s_mail})
+
+
+#------------------- FACULTY APPLICANT -----------------------
+
+def applicantrequirements(request):
+    return render(request, './applicant/applicantrequirements.html')
+    
+
+def applicant_facultyapplicationform(request):
+    global f_mail, f_num
+    if (request.method == 'POST'):
+        applicant_num = app_num(3)
+        pw = str(applicant_num)
+        firstName = request.POST.get("firstName")
+        lastName = request.POST.get("lastName")
+        middleName = request.POST.get("middleName")
+        first = firstName.lower()
+        middle = middleName.lower()
+        last = lastName.lower()
+        last = last.translate({ord(c): None for c in string.whitespace})
+        firstName = firstName.title()
+        middleName = middleName.title()
+        lastName = lastName.title()
+        f = first[0]
+        m = middle[0]
+        mail = f + m + last +"@plm.edu.ph"
+        f_mail=mail
+        User = get_user_model()
+        log = User.objects.create_user(email = mail, password = pw, firstName = firstName, middleName = middleName, lastName = lastName)
+        log.is_admin = False
+        log.is_applicant = True
+        log.save()
+        try:
+            email = request.POST.get("email")
+            phoneNumber = request.POST.get("phoneNumber")
+            sex = request.POST.get("sex")
+            department = request.POST.get("department")
+            time = request.POST.get("Time")
+            cv1 = request.FILES.get("CV")
+            certificates = request.FILES.get("certificates")
+            credentials = request.FILES.get("credentials")
+            Tor = request.FILES.get("TOR")
+            pds = request.FILES.get("PDS")
+            f_num = applicant_num
+            facultyApplicantInfo = FacultyApplicant(firstName=firstName,lastName=lastName,middleName=middleName,email=email,phoneNumber=phoneNumber,sex= sex,department= department,time=time,CV= cv1, certificates=certificates, credentials=credentials,TOR=Tor,PDS=pds, applicant_num = f_num)
+            facultyApplicantInfo.save()
+            return redirect('applicant_facultyapplicationform_workexpsheet')
+        except:
+            messages.error(request, 'You have already submitted an application')
+            return render(request,'./applicant/applicant_facultyapplicationform.html')
+    return render(request, './applicant/applicant_facultyapplicationform.html')
+
+
+#--------------------WORK EXPERIENCE SHEET --------------------------
+
+
+def applicant_facultyapplicationform_workexpsheet(request):
+    global f_num
+    if (request.method == 'POST'):
+        try:
+            durationwork = request.POST.get("durationwork")
+            positionwork = request.POST.get("position")
+            officeunit = request.POST.get("officeunit")
+            agencyorg = request.POST.get("agencyorg")
+            accomplishments = request.FILES.get("accomplishments")
+            summaryduties = request.FILES.get("summaryduties")
+            facultyApplicantInfo = FacultyApplicant.objects.get(applicant_num = f_num)
+            facultyApplicantInfo.durationwork=durationwork 
+            facultyApplicantInfo.positionwork=positionwork
+            facultyApplicantInfo.officeunit=officeunit
+            facultyApplicantInfo.agencyorg=agencyorg
+            facultyApplicantInfo.accomplishments=accomplishments
+            facultyApplicantInfo.summaryduties=summaryduties
+            facultyApplicantInfo.save()
+            return redirect('applicant_facultyapplicationform_workexpsheet_submitted')
+
+        except:
+            messages.error(request, 'Fill everything on the form!')
+            return render(request, './applicant/applicant_facultyapplicationform_workexpsheet.html')
+    return render(request, './applicant/applicant_facultyapplicationform_workexpsheet.html')
+
+def applicant_facultyapplicationform_workexpsheet_submitted(request):
+    global f_num, f_mail
+    return render(request,'./applicant/applicant_facultyapplicationform_workexpsheet_submitted.html',{'app':f_num, 'mail':f_mail})
+
+
+
+
+#--------------------- APPLICANT PROFILE ----------------------------
+
+def TProfile(request):
+    global psw 
+    if request.user.is_authenticated and request.user.is_applicant:
+        info = TransfereeApplicant.objects.get(applicant_num = psw)
+        context = {'info':info}
+        if (request.method == 'POST'):
+            HD = request.FILES.get("HD")
+            GM = request.FILES.get("GM")
+            NU = request.FILES.get("NU")
+            Grade = request.FILES.get("Grade")
+            Studyplan = request.FILES.get("studyPlan")
+            if HD != None:
+                info.studentHD = HD
+                info.save()
+            if GM != None:
+                info.studentGoodmoral = GM
+                info.save()
+            if Studyplan != None:
+                info.studentStudyplan = Studyplan
+                info.save()
+            if NU != None:
+                info.studentNote = NU
+                info.save()
+            if Grade != None:
+                info.studentGrade = Grade
+                info.save()
+            
+            messages.success(request, 'Files submitted successfully.')
+        return render(request, 'applicant/profile/TProfile.html', context)
+    else:
+         return redirect('index')
+def ShProfile(request):
+    global psw 
+    if request.user.is_authenticated and request.user.is_applicant:
+        mail = request.user.email
+        info = ShifterApplicant.objects.get(applicant_num = psw)
+        context = {'info':info,'mail':mail}
+        if (request.method == 'POST'):
+            Letter = request.FILES.get("LetterofIntentFile")
+            Grade = request.FILES.get("GradeScreenshotFile")
+            Studyplan = request.FILES.get("studyPlanFile")
+            collegeLetter = request.FILES.get("collegeLetter")
+            if Studyplan != None:
+                info.studentStudyplan = Studyplan
+                info.save()
+            if Letter != None:
+                info.studentshifterletter = Letter
+                info.save()
+            if Grade != None:
+                info.studentGrade = Grade
+                info.save()
+            if collegeLetter != None:
+                info.shiftingForm = collegeLetter
+                info.save()
+            messages.success(request, 'Files submitted successfully.')
+        return render(request, 'applicant/profile/SProfile.html', context)
+    else:
+         return redirect('index')
+def FProfile(request):
+    global psw 
+    if request.user.is_authenticated and request.user.is_applicant:
+        info = FacultyApplicant.objects.get(applicant_num = psw)
+        mail = request.user.email
+        context = {'info':info, 'mail':mail}
+        return render(request, 'applicant/profile/FProfile.html', context)
+    else:
+         return redirect('index')
+
+
 
 def GradesNotif(request):
     if request.user.is_authenticated and request.user.is_student:

@@ -49,7 +49,8 @@
 		background: #8f8f8f; 
 	}
 
-	#FullNametext, #ContactInformationText, #DepartmentInformationText
+	/* para maging kulay blue yung font */
+	#FullNametext, #ContactInformationText, #DepartmentInformationText, #AvailabilityTimeText
 	{
 		font-size: 18px;
 		font-family: Nunito;
@@ -75,7 +76,15 @@
 		left: 80px;
 	}
 
-	#LastName, #FirstName, #MiddleName, #EmailAddress, #Phone, #department
+	/* para kalinya ng header */
+	#AvailabilityTimeText
+	{
+		top: 360px;
+		left: 80px;
+	}
+
+	/* yung sa effect ng paglalagyan ng input */
+	#LastName, #FirstName, #MiddleName, #EmailAddress, #Phone, #department, #Time, #Sex
 	{
 		width: 240px;
 		height:25px;
@@ -103,10 +112,26 @@
 		top: 220px;
 		left: 48%;
 	}
+
+	#Sex
+	{
+		position:absolute;
+		top: 220px;
+		left: 70.5%;
+	}
+
 	#department
 	{
 		position:absolute;
 		top: 290px;
+		left: 280px;
+	}
+
+	/* para kahanay ng mga paglalagyan ng input */
+	#Time
+	{
+		position:absolute;
+		top: 360px;
 		left: 280px;
 	}
 
@@ -131,8 +156,131 @@
 		top: 250px;
 		left: 49%;
 	}
-	
-	
+
+	#subSex
+	{
+		font-size: 12px;
+		font-family: Nunito;
+		color: #0C66CC;
+		position:absolute;
+		top: 250px;
+		left: 72%;
+	}
+
+	/* para nasa ibaba ng lalagyan ng input */
+	#subTime
+	{
+		font-size: 12px;
+		font-family: Nunito;
+		color: #0C66CC;
+		position:absolute;
+		top: 390px;
+		left: 27%;
+	}
+	#line2{
+		top: 400px;
+	}
+	#UploadDocumentsTitle{
+		top: 420px;
+	}
+	#UDSub{
+		top: 450px;
+	}
+	.donate-now {
+		list-style-type: none;
+		margin: 0 0 0 0;
+		padding: 0;
+		}
+
+		.donate-now li {
+		float: left;
+		margin: 0 20px 0 0;
+		width: 80px;
+		height: 40px;
+		position: relative;
+		}
+
+		.donate-now label,
+		.donate-now input {
+		display: block;
+		position: absolute;
+		font-size: 17px;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		}
+
+		.donate-now input[type="radio"] {
+		opacity: 0.01;
+		position: absolute;
+		width: 100%;
+		border: 0px;
+		height: 2em;
+		z-index: 120;
+		}
+
+		.donate-now input[type="radio"]:checked+label,
+		.Checked+label {
+		background: #0C66CC ;
+		color: white;
+		
+		}
+
+		.donate-now label {
+		padding: 5px;
+		border: 1px solid #CCC;
+		border-radius: 20px;
+		cursor: pointer;
+		z-index: 90;
+		}
+
+		.donate-now label:hover {
+		background: #DDD;
+		}
+
+		#gender{
+		font-size:18px;
+		font-family:Nunito;
+		color: #0C66CC;
+		position:absolute;
+		position:absolute;
+		top: 216px;
+		left: 71%;
+		text-align: center;
+		}
+		#PDSShape{
+		border: 1px solid #0C66CC;
+		background: #0C66CC;
+		font-size: 14px;
+		font-family: Nunito;
+		margin-right: 10px;
+		color: white;
+		border-radius: 10px;
+		height: 40px;
+		width: 210px;
+		display: flex;
+		align-items: center;
+		justify-content: left;
+		position:absolute;
+		filter:drop-shadow(1px 1px 3px gray);
+		top: 768px;
+		left: 80px;
+		}
+		#PDSFile{
+			font-family: Nunito;
+		font-size:14px;
+		background: white;
+		filter:drop-shadow(0px 0px 10px rgb(211,211,211));
+		border-radius:10px;
+		height: 40px;
+		width: 210px;
+		outline: none;
+		position:absolute;
+		margin-left: 20px;
+		top: 768px;
+		left: 320px;
+		}
 </style>
 
 
@@ -161,20 +309,42 @@
 			<input type="text" id="MiddleName" name="middleName" placeholder="Cortez">
 			<p id="subMiddlename">Middle Name</p>
 		
-	<p id="ContactInformationText">Contact Information<span style="color:#ff0000"><b>*</b></span></p>            <!--email address-->
+	<p id="ContactInformationText">Additional Information<span style="color:#ff0000"><b>*</b></span></p>            <!--email address-->
 			<input type="email" id="EmailAddress" name="email" placeholder="name@email.com">
 			<p id="subEmailAddress">Email Address</p>
             
             <!--phone number-->
 			<input type="tel" id="Phone" name="phoneNumber" pattern="[0-9]{11}" placeholder="09123456789">
 			<p id="subPhone">Phone Number</p>
-	
+
+			<div id="gender">
+				<ul class="donate-now">
+					<li>
+					  <input type="radio" id="Male" name="sex" value="Male" >
+					  <label for="BSIT">Male</label>
+					</li>
+					<li>
+					  <input type="radio" id="Female" name="sex" value ="Female">
+					  <label for="BSEE">Female</label>
+					</li>
+				  </ul>
+			</div>
+			<p id="subSex">Sex</p>
+
+
 	<p id="DepartmentInformationText">Department to Apply <span style="color:#ff0000"><b>*</b></span></p>            <!--email address-->
-			<input type="text" id="department" name="department" placeholder="BSIT">
+			<select id="department" name="department">
+				<option value="BSIT">BSIT</option>
+				<option value="BSEE">BSEE</option>
+			</select>
 			<p id="subDepartment">Department</p>
-			
-		
-		
+
+	<p id="AvailabilityTimeText">Availability Time <span style="color:#ff0000"><b>*</b></span></p>
+			<input type="text" id="Time" name="Time" placeholder="12:00AM-12:00PM">
+			<p id="subTime">Time</p>
+
+
+
 	<hr id="line2" color="#d3d3d3" width="980px">
 	
 	<p id="UploadDocumentsTitle">Upload Documents</p>
@@ -188,29 +358,44 @@
 	<p id="CredentialsShape"> &nbsp;&nbsp;&nbsp;&nbsp; Credentials</p>
             
 	<p id="TORShape">&nbsp;&nbsp;&nbsp;&nbsp;TOR</p>
-	
+
+	<p id="PDSShape">&nbsp;&nbsp;&nbsp;&nbsp;PDS</p>
+
+
+
      <!--Choose file-->       
-	<input type="file" id="CVFile" name="CV" mr-4>
+	<input type="file" id="CVFile" name="CV" mr-4 accept=".pdf">
             
-	<input type="file" id="CertificateFile" name="certificates" multiple>
+	<input type="file" id="CertificateFile" name="certificates" multiple accept=".pdf">
             
-	<input type="file" id="CredentialsFile" name="credentials">
+	<input type="file" id="CredentialsFile" name="credentials" accept=".pdf">
             
-	<input type="file" id="TORFile" name="TOR">
-	{% if messages %}
-	{% for message in messages %}
-			{{ message }}
-		</div>
-	{% endfor %}
-{% endif %}
-	
-	
+	<input type="file" id="TORFile" name="TOR" accept=".pdf">
+
+	<input type="file" id="PDSFile" name="PDS" accept=".pdf">
+
 	<picture><a><p id="imageForm"><img src="{% static 'CRS/images/Applicants/Faculty/clip-1712.png' %}" alt="iplm" width="290px" height="230px"></a></p></picture>
-        
-	<a> <button id="submitbutton"> <!--templates/Applicants/Faculty--> Submit </button></a>
+
+
+<script>
+	const types = ["CVFile", "CertificateFile", "CredentialsFile", "TORFile", "PDSFile"];
+	for(let x=0; x<5; x++){
+	var file = document.getElementById(types[x]);
+	file.onchange = function(e) {
+	var ext = this.value.match(/\.([^\.]+)$/)[1];
+	switch (ext) {
+		case 'pdf':
+		case 'PDF':
+		break;
+		default:
+		alert('File type you are uploading is incorrect. \nAccepted file is only PDF');
+		this.value = '';
+	}
+	};
+}
+</script>
+	<a href="{% url 'applicant_facultyapplicationform_workexpsheet' %}"> <button id="submitbutton"> <!--templates/Applicants/Faculty--> Next </button></a>
 </form> </div>
-
-
 
 
 <!-- tether, jQuery first, then Tether, then Bootstrap JS. -->

@@ -12,7 +12,11 @@ urlpatterns = [
     # Login or Index
     url(r'^$', views.index, name='index'),
     url(r'^AboutUs/$', views.aboutUs, name='aboutUs'),
-
+    
+    #APPLICANT PROFILES
+    url(r'^Transferee_Applicant/$', views.TProfile, name='TProfile'),
+    url(r'^Shifter_Applicant/$', views.ShProfile, name='ShProfile'),
+    url(r'^Faculty_Applicant/$', views.FProfile, name='FProfile'),
     
     # Chairperson
     url(r'^chairperson/$', views.chairperson, name='chairperson'),
@@ -329,6 +333,9 @@ urlpatterns = [
     url(r'^faculty_applicant_form_submitted/$', views.faculty_applicant_form_submitted, name='faculty_applicant_form_submitted'),
     url(r'^cOthers-partTime/$',views.pta_request, name='cOthers-partTime'),
     path(r'^cOthers-partTimeView/<pt_id>$',views.pta_view,name='cOthers-partTimeView'),
+    url(r'^applicant_facultyapplicationform/$', views.applicant_facultyapplicationform, name='applicant_facultyapplicationform'),
+    url(r'^applicant_facultyapplicationform_workexpsheet/$', views.applicant_facultyapplicationform_workexpsheet, name='applicant_facultyapplicationform_workexpsheet'),
+    url(r'^applicant_facultyapplicationform_workexpsheet_submitted/$', views.applicant_facultyapplicationform_workexpsheet_submitted, name='applicant_facultyapplicationform_workexpsheet_submitted'),
     #Student Applicant 
     url(r'^student_applicant/$', views.student_applicant, name='student_applicant'),
     path(r'cOthers-transferee', views.transferee_list, name='cOthers-transferee'),
@@ -337,16 +344,10 @@ urlpatterns = [
     path(r'cOthers-transferee-csw/<transf_id>', views.transferee_csw, name="cOthers-transferee-csw"),
     path(r'transferee_Pdf/<transf_id>', views.transferee_Pdf, name="transferee_Pdf"),
     path(r'del_alltransferee/<transf_id>', views.del_alltransferee, name="del_alltransferee"),
-    url(r'^transferee_1requirements/$', views.transferee_1requirements, name='transferee_1requirements'),
     url(r'^transferee_2GWA/$', views.transferee_2GWA, name='transferee_2GWA'),
-    url(r'^transferee_3.2GWANotQual/$', views.transferee_3_2GWANotQual, name='transferee_3.2GWANotQual'),
-    url(r'^transferee_3GWAQual/$', views.transferee_3GWAQual, name='transferee_3GWAQual'),
     url(r'^transferee_9applicationform/$', views.transferee_9applicationform, name='transferee_9applicationform'),
     url(r'^transferee_10success/$', views.transferee_10success, name='transferee_10success'),
-    url(r'^shifter1/$', views.shifter1, name='shifter1'),
     url(r'^shifter2/$', views.shifter2, name='shifter2'),
-    url(r'^shifter3.2/$', views.shifter3_2, name='shifter3.2'),
-    url(r'^shifter3/$', views.shifter3, name='shifter3'),
     url(r'^shifter9/$', views.shifter9, name='shifter9'),
     url(r'^shifter10/$', views.shifter10, name='shifter10'),
 

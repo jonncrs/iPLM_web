@@ -1,0 +1,111 @@
+{%extends "applicant/profile/BaseProfile.html"%}
+{%load static%}
+
+
+{%block title%} Shifter Applicant | Profile {%endblock%}
+
+{% block profile%}
+    <div class="col-lg-11 py-2">
+        <div class="phor row">
+            <div class="col-lg-3">
+                <p id="text-pbox">Last Name:</p>
+            </div>
+            <div class="col-lg-3">
+                <p id="text-pbox">  {{info.lname}} </p>
+            </div>
+            <div class="col-lg-3">
+                <p id="text-pbox">Application Status:</p>
+            </div>
+            <div class="col-lg-3">
+                <p id="text-pbox"> {{info.remarks}}</p>
+            </div>
+        </div>
+        
+        <div class="phor row">
+            <div class="col-lg-3">
+                <p id="text-pbox">First Name:</p>
+            </div>
+            <div class="col-lg-3">
+                <p id="text-pbox"> {{info.fname}} </p>
+            </div>
+            <div class="col-lg-3">
+                <p id="text-pbox">Application Number:</p>
+            </div>
+            <div class="col-lg-3">
+                <p id="text-pbox"> {{info.applicant_num}}</p>
+            </div>
+        </div>
+        
+        <div class="phor row">
+            <div class="col-lg-3">
+                <p id="text-pbox">Middle Name:</p>
+            </div>
+            <div class="col-lg-3">
+                <p id="text-pbox"> {{info.mname}} </p>
+            </div>
+            <div class="col-lg-3">
+                <p id="text-pbox">Student Number:</p>
+            </div>
+            <div class="col-lg-3">
+                <p id="text-pbox">{{info.studentID}} </p>
+            </div>
+        </div>
+        
+        <div class="phor row">
+            <div class="col-lg-3">
+                <p id="text-pbox">Sex:</p>
+            </div>
+            <div class="col-lg-3">
+                <p id="text-pbox">{{info.sex}} </p>
+            </div>
+            <div class="col-lg-3">
+                <p id="text-pbox">Degree Program:</p>
+            </div>
+            <div class="col-lg-3">
+                <p id="text-pbox">{{info.department}} </p>
+            </div>
+        </div>
+
+        <div class="phor row">
+            <div class="col-lg-3">
+                <p id="text-pbox">Email:</p>
+            </div>
+            <div class="col-lg-3">
+                <p id="text-pbox">{{info.eadd}}</p>
+            </div>
+            <div class="col-lg-3">
+                <p id="text-pbox">PLM Email:</p>
+            </div>
+            <div class="col-lg-3">
+                <p id="text-pbox">{{mail}} </p>
+            </div>
+        </div>
+        <div class="phor row">
+            <div class="col-lg-3">
+                <p id="text-pbox">Contact Number:</p>
+            </div>
+            <div class="col-lg-3">
+                <p id="text-pbox">{{info.cnum}} </p>
+            </div>
+        </div>
+        
+    </div>
+
+{%endblock%}
+
+{% block submission%}
+<p id="Shape1">&nbsp;&nbsp;&nbsp;&nbsp;Letter Of Intent</p>
+<p id="Shape2"> &nbsp;&nbsp;&nbsp;&nbsp; Grade Screenshot</p>	
+<p id="Shape3"> &nbsp;&nbsp;&nbsp;&nbsp; Study Plan</p>	
+<p id="Shape4"> &nbsp;&nbsp;&nbsp;&nbsp; Shifting Form</p>	
+
+
+ <!--Choose file-->    
+<input type="file" id="File1" name="LetterofIntentFile" accept=".pdf">
+<input type="file" id="File2" name="GradeScreenshotFile" accept=".pdf">
+<input type="file" id="File3" name="studyPlanFile" accept=".pdf">
+<input type="file" id="File4" name="collegeLetter" accept=".pdf">
+
+
+
+{%endblock%}

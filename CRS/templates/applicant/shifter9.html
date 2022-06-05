@@ -41,6 +41,102 @@
 		::-webkit-scrollbar-thumb:hover {
 			background: #8f8f8f; 
 		}
+		.donate-now {
+		list-style-type: none;
+		margin: 0 0 0 0;
+		padding: 0;
+		}
+
+		.donate-now li {
+		float: left;
+		margin: 0 20px 0 0;
+		width: 80px;
+		height: 40px;
+		position: relative;
+		}
+
+		.donate-now label,
+		.donate-now input {
+		display: block;
+		position: absolute;
+		font-size: 17px;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		}
+
+		.donate-now input[type="radio"] {
+		opacity: 0.01;
+		position: absolute;
+		width: 100%;
+		border: 0px;
+		height: 2em;
+		z-index: 120;
+		}
+
+		.donate-now input[type="radio"]:checked+label,
+		.Checked+label {
+		background: #0C66CC ;
+		color: white;
+		
+		}
+
+		.donate-now label {
+		padding: 5px;
+		border: 1px solid #CCC;
+		border-radius: 20px;
+		cursor: pointer;
+		z-index: 90;
+		}
+
+		.donate-now label:hover {
+		background: #DDD;
+		}
+
+		#gender{
+		font-size:18px;
+		font-family:Nunito;
+		color: #0C66CC;
+		position:absolute;
+		top: 135px;
+		left: 531px;
+		text-align: center;
+		}
+		#studPlanShape2
+	{
+		border: 1px solid #0C66CC;
+		background: #0C66CC;
+		font-size: 14px;
+		font-family: Nunito;
+		margin-right: 10px;
+		color: white;
+		border-radius: 10px;
+		height: 40px;
+		width: 210px;
+		display: flex;
+		align-items: center;
+		justify-content: left;
+		position:absolute;
+		filter:drop-shadow(1px 1px 3px gray);
+		top: 698px;
+		left: 80px;
+	}
+
+	#studyPlanFile2
+	{
+		font-family: Nunito;
+		font-size:14px;
+		background: white;
+		border-radius: 10px;
+		filter:drop-shadow(0px 0px 10px rgb(211,211,211));
+		height: 40px;
+		width: 210px;
+		outline: none;
+		position:absolute;
+		top: 698px;
+		left: 320px;
+	}
 	</style>
 	<script>
 		function checkforblank()
@@ -70,16 +166,24 @@
 			if (document.getElementById('studyPlanFile').value == ""){
 			errormessage += "Upload your Studyplan File\n";
 			}
+			if (document.getElementById('studyPlanFile2').value == ""){
+			errormessage += "Upload your Shifting Form\n";
+			}
+			var x = document.querySelector('input[type="radio"]:checked');
+			if ( x == null) {
+				errormessage += "Please select a Sex\n";
+			}
 			if (errormessage != ""){
 			alert(errormessage)
 			return false;
 			}
+			
 		}
 	</script>
 </head>
 
 <body>
-	<div id="backbutton"><a href="{% url 'shifter3' %}"><img src="{% static 'CRS/images/Applicants/Students/Shifter/back.png'%}" alt="iplm" width="35px" height="35px"></a></div>
+	<div id="backbutton"><a href="{% url 'shifter2' %}"><img src="{% static 'CRS/images/Applicants/Students/Shifter/back.png'%}" alt="iplm" width="35px" height="35px"></a></div>
 	<div id="roundbg">
 	<p id="StudentApplicationFormTitle">Student Application Form</p>
 	<p id="SAFSub">Please complete the form below to be admitted in our department.</p> 
@@ -88,11 +192,22 @@
 	<form method ="POST" action="" enctype="multipart/form-data" onsubmit ="return checkforblank()">
 		{% csrf_token %}
 			<!--Student Number-->
-			<input type="text" id="StudNum" name="StudID" pattern="[0-9]{9}" required>
+			<input type="text" id="StudNum" name="StudID" pattern="[0-9]{9}" placeholder="202010101" required>
 			<p id="subStudNum">Student Number</p>
-
-			<input type="text" id="degree" name="Deg" placeholder="BSIT/BSEE" required>
-			<p id="subDegree">Degree Applying For</p>
+			<p id="subDegree">Sex</p>
+			<div id="gender">
+			<ul class="donate-now">
+				<li>
+				  <input type="radio" id="Male" name="sex" value="Male" >
+				  <label for="BSIT">Male</label>
+				</li>
+				<li>
+				  <input type="radio" id="Female" name="sex" value ="Female">
+				  <label for="BSEE">Female</label>
+				</li>
+			  </ul>
+			</div>
+			
 
 	<p id="FullNametext">Full Name <span style="color:#ff0000"><b>*</b></span></p>
             <!--last name-->
@@ -119,12 +234,30 @@
 	<p id="UDSub">Please upload the following documents.</p>
 	<p id="LetterofIntentShape">&nbsp;&nbsp;&nbsp;&nbsp;Letter Of Intent</p>
 	<p id="GradeSSShape"> &nbsp;&nbsp;&nbsp;&nbsp; Grade Screenshot</p>	
-	<p id="studPlanShape"> &nbsp;&nbsp;&nbsp;&nbsp; Studyplan</p>	
+	<p id="studPlanShape"> &nbsp;&nbsp;&nbsp;&nbsp; Study Plan</p>	
+	<p id="studPlanShape2"> &nbsp;&nbsp;&nbsp;&nbsp; Shifting Form</p>	
      <!--Choose file-->       
-	<input type="file" id="LetterofIntentFile" name="LetterofIntentFile">
-	<input type="file" id="GradeScreenshotFile" name="GradeScreenshotFile">
-	<input type="file" id="studyPlanFile" name="studyPlanFile">
-
+	<input type="file" id="LetterofIntentFile" name="LetterofIntentFile" accept=".pdf">
+	<input type="file" id="GradeScreenshotFile" name="GradeScreenshotFile" accept=".pdf">
+	<input type="file" id="studyPlanFile" name="studyPlanFile" accept=".pdf">
+	<input type="file" id="studyPlanFile2" name="letterOfApproval" accept=".pdf">
+	<script>
+		const types = ["LetterofIntentFile", "GradeScreenshotFile", "studyPlanFile", "studyPlanFile2"];
+		for(let x=0; x<5; x++){
+		var file = document.getElementById(types[x]);
+		file.onchange = function(e) {
+		var ext = this.value.match(/\.([^\.]+)$/)[1];
+		switch (ext) {
+			case 'pdf':
+			case 'PDF':
+			break;
+			default:
+			alert('File type you are uploading is incorrect. \nAccepted file is only PDF');
+			this.value = '';
+		}
+		};
+	}
+	</script>
 	<picture><a><p id="imageForm"><img src="{% static 'CRS/images/Applicants/Students/Shifter/clip-1712.png'%}" alt="iplm" width="290px" height="230px"></a></p></picture>
 	<a> <button type="submit" value="Submit" id="submitbutton"> Submit </button></a>
 	</form> </div>
