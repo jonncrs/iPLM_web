@@ -43,6 +43,8 @@
                 <div class="card-body">
                   <h5 class="card-title">{{ event.eventTitle }}</h5>
                   <a href="{% url 'events' event.id %}" class="card-link">View</a>
+                  <a href="{% url 'events.update' event.id %}" class="card-link">Edit</a>
+                  <a href="{% url 'events.delete' event.id %}" class="card-link">Delete</a>
                 </div>
               </div>
             {% endfor %}

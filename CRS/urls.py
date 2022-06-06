@@ -424,6 +424,8 @@ urlpatterns = [
          
     path('events/', views.events, name='events'),
     path('events/<event_id>', views.events, name='events'),
+    path('events/<event_id>/update', views.eventsUpdate, name='events.update'),
+    path('events/<event_id>/delete', views.eventsDelete, name='events.delete'),
     path('events-create', views.eventsCreate, name='events.create')
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) \
