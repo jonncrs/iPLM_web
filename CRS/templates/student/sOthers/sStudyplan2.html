@@ -59,11 +59,12 @@
 
         <!-- Content -->
         <div id="content">
+            
             <div class="container-fluid">
 
                 <div class="backrw row">
 
-                    <a href="{% url 'stdplnyr' %}" id="back-edit"><img src="{% static 'CRS/images/sClassroom/back.svg' %}" width="50" style="margin-top: 30px;"></a>
+                    <!-- <a href="{% url 'stdplnyr' %}" id="back-edit"><img src="{% static 'CRS/images/sClassroom/back.svg' %}" width="50" style="margin-top: 30px;"></a> -->
                    
                    
 
@@ -80,8 +81,9 @@
                             <div class="col-lg-12">
                                 <div class="progress-bar "></div>
                                 <div class="progressbar">
-                                        <li class="active progress-text-active">Upcoming<br>Semester</li>
-                                        <li class="active progress-text-active">Subjects<br>Taken</li>
+                                    <div class="progress-bars "></div>
+                                    <li class="active progress-text-active">Upcoming<br>Semester</br><img src="{% static 'CRS/images/sOthers/check.png' %}" width="45" height="45" style="margin-top: -60%"></li>
+                                    <li class="active progress-text-active">Subjects<br>Taken</br></li>
                                         <li class="progress-text">Study<br>Plan</li>
                                         <li class="progress-text">Upload<br>Documents</li>
                                         <li class="progress-text">Confirmation<br>Submission</li>
@@ -92,42 +94,7 @@
                 </div>
                 <!--END Progress Bar-->
 
-                <div class="subtaken row pt-5">
-                    <div class="col-lg-4">
-
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <p id="head2"><b>Subjects Taken</b></p>
-                            </div>
-                        </div>
-
-                        <div class="row pt-3">
-                            <div id="head3" class="col-lg-3">
-                                <b>Before</b>
-                            </div>
-                            <div id="head3" class="col-lg-5">
-                                {% if status.curricula %}
-                                    <p style="text-align:left; width: 300px;"><b>{{ status.curricula.cYear }}, {{ status.curricula.cSem }}</b></p>
-                                {% endif %}
-                                <!--
-                                <select class="curfield col-lg-5" id="upsem" onchange="nxtsem();">
-                                    <option selected disabled>Select upcoming semester</option>
-                                    <option></option>
-                                </select>-->
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-lg-12 pt-3">
-                                <hr>
-                                <p id="head3">Tick all the subjects taken that has a <br> failed remark.</p>
-                            </div>
-                            <form method="POST" enctype="multipart/form-data">
-                            {%csrf_token%}
-                                <input type="submit" id="submitbtn" value="Submit">
-                        </div>
-
-                    </div>
+                <div class="subtaken row pt-5" style="width:90%;"> 
 
                     <div class="fill-in col-lg-8 pr-0">
 
@@ -136,12 +103,12 @@
                                 <table class="borderless table">
 
 
-                                    <tr class="primary-att">
-                                        <th scope="col"><p id="head3"><b>Code</b></p></th>
-                                        <th scope="col"><p id="head3"><b>Course Name</b></p></th>
-                                        <th scope="col"><p id="head3"><b>Units</b></p></th>
-                                        <th scope="col"><p id="head3" style="font-size: 15px;"><b>Pre(Co)-Requisites</b></p></th>
-                                        <th scope="col"><p id="head3"><b>Failed</b></p></th>
+                                    <tr class="primary-att" style="text-align: center;" >
+                                        <th scope="col" style="border-radius: 12px 0px 0px 0px;"><p id="head3"><b>Code</b></p></th>
+                                        <th scope="col" style="margin-top: 2%;"><p id="head3"><b>Course Name</b></p></th>
+                                        <th scope="col" style="margin-top: 2%;"><p id="head3"><b>Units</b></p></th>
+                                        <th scope="col" style="margin-top: 2%;"><p id="head3"><b>Pre(Co)-Requisites</b></p></th>
+                                        <th scope="col" style="border-radius: 0px 12px 0px 0px;"><p id="head3"><b>Failed</b></p></th>
                                     </tr>
                                     <!----------------------DATABASE STUFF---------------------->
                                     {% if status.curricula %}
@@ -154,7 +121,7 @@
                                                         {% else %}
 
                                                             <tr class="tabletext1">
-                                                                <td colspan="5" style="background-color: #cae2ff; box-shadow: 0 0 10px rgb(189, 189, 189);"><b>{{ semester.cYear }}, {{ semester.cSem }}</b></td>
+                                                                <td colspan="5" style="background-color: #0892dd; box-shadow: 0 0 10px rgb(189, 189, 189);"><b>{{ semester.cYear }}, {{ semester.cSem }}</b></td>
                                                             </tr>
                                                             {% for subject in subjects %}
                                                                 {% if semester == subject.curricula %}
@@ -183,6 +150,59 @@
                             </div>
 
                         </form>
+                        
+                    </div>
+
+                    <div class="col-lg-4" style="padding-left: 5%">
+                        <div class="subbox"> <br/><br/> <style>* {
+                            box-sizing: border-box;
+                          }
+                          
+                          </style>
+                        <div class="row">
+                            
+                            <div class="col-lg-12">
+                                <p id="head2" style="margin-top:10px; padding-left: 8%"><b>Subjects Taken</b></p> 
+                                 <div class="sub-border row">
+                                <div class="col-12-lg">
+                                </div>
+                            </div>
+
+                            </div>
+                        </div>
+
+                        <div class="row pt-3">
+                            
+                            <div id="head3" class="col-lg-3" style= "color: #06529b; margin-top: 3%;padding-left: 10%;">
+                                <b>Before</b>
+                            </div>
+                            
+                            
+                            <div id="head3" class="col-lg-5" style="color: #06529b;margin-top: 3%;">
+                                {% if status.curricula %}
+                                    <p style="text-align:left; width: 300px;"><b>{{ status.curricula.cYear }}, {{ status.curricula.cSem }}</b></p>
+                                {% endif %}
+                                <!--
+                                <select class="curfield col-lg-5" id="upsem" onchange="nxtsem();">
+                                    <option selected disabled>Select upcoming semester</option>
+                                    <option></option>
+                                </select>-->
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-12 pt-3">
+                                
+                                <p id="head3" style="color: #06529b; padding-left: 8%;margin-top: 4%;">Tick all the subjects taken that has a <br> failed remark.</p>
+                            </div>
+                            <form method="POST" enctype="multipart/form-data">
+                                {%csrf_token%}
+                                <div>
+                                    <a href="{% url 'stdplnyr' %}"><img src="{% static 'CRS/images/sOthers/arrow-left.png' %}" height="50;" width="50;" style="margin-left: 350%; margin-top: 218%; text-: right;"></a>                                    
+                                    <input type="submit" id="submitbtn" value="Submit">
+                                </div>
+                        </div>
+</div>
                     </div>
 
                 </div>

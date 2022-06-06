@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap');
 
 body {
     overflow: hidden;
@@ -13,7 +13,7 @@ body {
 }
 
 
-/*Side Bar*/
+/*Side Bar*/    
 .wrapper {
     display: flex;
     text-decoration: none;
@@ -119,23 +119,32 @@ a:focus {
     margin-left: 90px;
     margin-right: 90px;
     border-radius: 30px 30px 30px 30px;
-    background: #0C66CC;
+    background: #06529B;
     padding-left: 150px;
     padding-right: 150px;
     padding-top: 50px;
 }
 
+.progress-bars {
+    height: 5px;
+    width: 80%;
+
+    position:relative; 
+    bottom: 5px;
+
+    background: #0892DD;
+}
 .progress-bar {
     height: 5px;
     width: 100%;
-    background: #3C84D6;
+    background: #FFFFFF;
 }
 
 .progress-text {
     letter-spacing: 1px;
     font-size: 15px;
-    color: #3C84D6;
-    font-family: 'Nunito';
+    color: rgba(243, 246, 255, 0.6);
+    font-family: 'Lato';
 }
 
 .progressbar li {
@@ -152,25 +161,26 @@ a:focus {
     width: 50px;
     height: 50px;
     line-height: 30px;
-    border: 1px solid #3C84D6;
+    border: 1px solid #F3F6FF;
     display: block;
     text-align: center;
     margin: 0 auto 10px auto;
     border-radius: 50%;
-    background-color: #3C84D6;
+    background-color: #FFFFFF;
 }
 
 .progress-text-active {
     letter-spacing: 1px;
     font-size: 15px;
-    color: #B6D1EF;
-    font-family: 'Nunito';
+    color: #FFFFFF;
+    font-family: 'Lato';
+    
 }
 
 .progressbar li.active:before {
-    font-family: 'Nunito';
-    border-color: #B6D1EF;
-    background-color: #B6D1EF;
+    font-family: 'Lato';
+    border-color: #0892DD;
+    background-color: #0892DD;
 }
 
 
@@ -181,32 +191,50 @@ a:focus {
     margin-left: 80px;
 }
 
+
+/*BOX*/
+
+          .box1 {
+            box-shadow: 0px 7px 4px lightgray; border-radius: 25px;
+            background: rgba(8,146,221,0.10000000149011612);
+            border-radius: 20px;
+            width: 50%;
+            height: 140%;
+            margin-top: 1%;
+            padding-left: 3%;
+          }
+          .upload-border {
+            height: 10%;
+            width:50%;
+            margin: 0px 100px;
+            margin-left:-0%;
+            margin-top:-5%;
+            border-bottom: solid;
+            border-bottom-width: 3px;
+            border-bottom-color: rgba(95, 110, 131, 0.3);
+
+          }
 /*****DONE BUTTON *****/
 
 #submitbtn {
     width: 180px;
-    height: 60px;
+    height: 66px;
+    margin-left: 1600px; 
     background: #0C66CC;
     color: white;
     border-radius: 15px;
     text-align: center;
-    padding-top: 13px;
     font-size: 20px;
     letter-spacing: 1px;
-    font-family: 'Nunito';
-    position: absolute;
-    top: 500px;
-    right: 380px;
+    font-family: 'Lato';
+    margin-top: -400%;
     border: 2px solid #0C66CC;
+    
 }
 
 #submitbtn:hover {
     background: #2852A4;
-   
 }
-
-
-
 
 
 #button2hvr {
@@ -214,19 +242,16 @@ a:focus {
         color: white;
         text-align: left;
         width: 370px;
-        height: 55px;
-        margin-top: 20px;
+        height: 60px;
+        margin-top: 40px;
         font-size: 18px;
-        font-family: 'Nunito';
+        font-family: 'Lato';
         top: 10px;
-        background-color: #0C66CC;
+        background-color: #06529B;
         border-radius: 15px;
-
 }
 
-
 #button2hvr:hover {
-        margin-top: 20px;
         background-color: #0360AD;
         color: white;
         border-radius: 20px 20px 20px 20px;
@@ -234,15 +259,14 @@ a:focus {
 
 
 .button4hvr {
+    height: 90px;
     background-color: white;
     color: #0360AD;
     text-align: center;
     margin-left: 25px;
     margin-top: 20px;
-    width: 170px;
-    height: 55px;
     font-size: 18px;
-    font-family: 'Nunito';
+    font-family: 'Lato';
     border: none;
     box-shadow: 0 3px 2px 0 rgba(0, 0, 0, 0.1), 0 3px 12px 0 rgba(0, 0, 0, 0.19); 
     border-radius: 15px;
@@ -273,7 +297,7 @@ a:focus {
         width: 170px;
         height: auto;
         font-size: 18px;
-        font-family: 'Nunito';
+        font-family: 'Lato';
         box-shadow: 0 3px 2px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.19); 
         border-radius: 15px;
 	}
@@ -321,4 +345,4 @@ a:focus {
 
 }
 
-/********END BREAKPOINTS*******/
+/********END BREAKPOINTS*******/    
