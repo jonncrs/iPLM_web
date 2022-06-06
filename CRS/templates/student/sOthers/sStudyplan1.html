@@ -11,7 +11,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source Sans Pro">
     <link rel="stylesheet" href="{% static 'CRS/css/sOthers/sStudyplan1.css' %}">
     <!--  ICON -->
     <link rel="icon" href="{% static 'CRS/images/sOthers/iPLM.png' %}" type="image/png" sizes="16x16">
@@ -21,15 +22,46 @@
             border: none;
             padding-bottom: 15px;
         }
+
+       
     </style>
 </head>
 
 <body>
+    
 
-    <div class="wrapper">
+    <div class="wrapper">   
 
        <!-- Sidebar -->
-       <nav id="sidebar">
+
+       <div class="v5_4">	
+        <span class="v5_5"><a href="/sProfile/">Home</a></span>
+        <span class="v5_12"><a href="/sProfile/">Schedule</a></span>
+        <span class="v5_21"><a href="/sProfile/">Study  Plan</a></span>
+        <span class="v5_23"><a href="/sProfile/">Leave of Absence</a></span>
+        <span class="v5_25"><a href="/sProfile/">Honorable Dismissal</a></span>
+        <span class="v5_27"><a href="/sProfile/">Practicum</a></span>
+        <span class="v5_14"><a href="/sProfile/">Checklist</a></span>
+        <span class="v5_15"><a href="/sProfile/">My Grades</a></span>
+        <span class="v5_8">CLASSROOM</span>
+        <span class="v5_18">OTHERS</span>
+        <div class="v5_11"></div><div class="v5_13"></div>
+        <div class="v5_16"></div><div class="v5_20"></div>
+        <div class="v5_22"></div><div class="v5_24"></div>
+        <div class="v5_26"></div><div class="name"></div>
+        <div class="name"></div><div class="v5_7"></div>
+        </div>
+
+        <div class="v3_2"><div class="v2_5">
+            <div class="iplm-logo"><img src="https://i.postimg.cc/Z5Kc9KQv/iplm-logo.png" class="logo"></div>
+            <span class="v2_7">iPLM</span><span class="v2_8">Integrated PLM</span></div>
+            <div class="v5_6"></div><div class="v9_343"></div>
+            <div class="v9_360"></div>
+            <span class="v9_345"></span></div>
+            <div class="name"></div>
+
+       
+       <!-- <nav id="sidebar" style="width:30%;">
         <div class="sidebar-header">
             <li>
                 <p><br><br><img src="{% static 'CRS/images/fHomeAndProfile/hat.png' %}" width="126px" height="87px"><br><br>
@@ -42,29 +74,30 @@
             <li><a href="{% url 'sOthers' %}"><img src="{% static 'CRS/images/cIcons/others2.png' %}" width="97px" height="auto"></a></li>
             <li><a href="{% url 'logout' %}"><img src="{% static 'CRS/images/cIcons/log-out2.png' %}" width="97px" height="auto"></a></li>
         </ul>
-    </nav>
+    </nav> -->
     <!--End of Sidebar -->
 
         <!-- Content -->
+        <!-- Content -->
+        
         <div id="content">
             <div class="container-fluid">
-
-                <div class="backrw row">
-                    <a href="{% url 'sOthers' %}" id="back-edit"><img src="{% static 'CRS/images/sClassroom/back.svg' %}" width="50" style="margin-top: 30px;"></a>
-                   
+           <div class="backrw row">  
+               <div>
+                <div class="backrw row">          
                    <p id="head1">
-                        Study Plan
+                        <b>Study Plan</b>
                     </p>
-
-                </div>
-
-                <!-- Progress Bar -->
-                <div class="row">
-                    <div class="col-lg-12">
+                    </div>
+                    <!-- Progress Bar -->
+                <div class="container-fluid">
+                <div class="backrw row"> 
+                    <div class="col-lg-12" style="margin-top: -50px;">
                         <div class="progress row">
                             <div class="col-lg-12">
                                 <div class="progress-bar "></div>
                                 <div class="progressbar">
+                                    <div class="progress-bars "></div>
                                         <li class="active progress-text-active">Upcoming<br>Semester</li>
                                         <li class="progress-text">Subjects<br>Taken</li>
                                         <li class="progress-text">Study<br>Plan</li>
@@ -75,28 +108,48 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Progress Bar -->
+                <!--<div class="row">
+                    <div class="col-lg-12">
+                        <div class="progress row">
+                            <div class="col-lg-12">
+                                <div class="progress-bar"></div>
+                                <div class="progressbar" style="background: #06529b">
+                                        <li class="active progress-text-active">Upcoming<br>Semester</li>
+                                        <li class="progress-text">Subjects<br>Taken</li>
+                                        <li class="progress-text">Study<br>Plan</li>
+                                        <li class="progress-text">Upload<br>Documents</li>
+                                        <li class="progress-text">Confirmation<br>Submission</li>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>-->
+                <!--END Progress Bar-->
+                <!-- Progress Bar -->
                 <!--END Progress Bar-->
 
                 <div class="imgrow row">
                     <div class="col-lg-12">
-                        <div class="row">
-                            <div class="col-lg-12"><img src="{% static 'CRS/images/sOthers/studyplan_img.png' %}" height="300px" width="400px">
-                            </div>
-                        </div>
-                        <div class="row">
+                        <div class="center">
                             <div class="col-lg-12">
-                                <p id="head2"><b>Upcoming Semester<br></b></p>
-                                <p id="head3">Choose semester to take</p>
-                            </div>
-                        </div>
+                                <div class="box"></html><br/><br/> <style>* {
+                                    box-sizing: border-box;
+                                }
+                                  </style>
+                                <p id="head2" style="font-family: Source Sans Pro;"><b>Upcoming Semester<br></b></p>
+                                <p id="head3">Choose semester to take</p>    
                         
-                        <form method="POST" enctype="multipart/form-data">
+                        <form method="POST" enctype="multipart/form-data" >
                         {%csrf_token%}
                         <div class="row justify-content-center">
-                            <div class="col-lg-2 px-4">
+                            <div class="col-lg-8 px-4" >
                                 <div class="select-box">
+
                                     {{ form }}
-                                    <!--select class="option" name="upsem" required>
+
+                            <!--select class="option" name="upsem" required>
                                         <option selected disabled>Select upcoming semester</option>
                                         {% for semester in semesters %}
                                         {% if semester.departmentID == department %}
@@ -106,22 +159,31 @@
                                     </select-->
                                 </div>
                             </div>
-                            <input type="submit" id="nextbtn" value="Next" {{ magic }}>
                             <!--a class="next" href="{% url 'stdplnsub' %}">
                                 <div id="nextbtn">
                                     Next
                                 </div>
                             </a-->
                         </div>
-                        </form>
-
                     </div>
-
+                    </div>
+                        <div style="margin-left:1500px; margin-top:100px;">
+                            <a href="{% url 'sOthers' %}" button id="back-edit" style="background: none; border: none;"><img src="https://i.postimg.cc/y8HXXdBs/arrow-left.png" height="50" width="50"></button></a>
+                            <button type="submit" style="background: none; border: none;" value="Next" {{ magic }}><img src="https://i.postimg.cc/FKPy4VSH/arrow-right.png" height="50" width="50"></button>
+                        </div>
+                    </form>
+                    </div>
                 </div>
 
             </div>
         </div>
     </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+</body>
     <!-- END Content -->
 
 
