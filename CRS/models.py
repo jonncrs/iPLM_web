@@ -1,3 +1,4 @@
+import datetime
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.db import models
 from django.db.models.deletion import CASCADE, DO_NOTHING
@@ -848,6 +849,11 @@ class Event(models.Model):
             raise ValidationError('Cannot Add Events in the Past')
         if utc.localize(parse_datetime(self.eventStartDate)) > utc.localize(parse_datetime(self.eventEndDate)):
             raise ValidationError('Cannot Add End Date if in the Past of Start Date')
+    
+    def format_startDate(self):
+        return datetime.date.strftime(self.eventStartDate, '%Y-%m-%dT%H:%M')
+    def format_endDate(self):
+        return datetime.date.strftime(self.eventEndDate, '%Y-%m-%dT%H:%M')
 
     def __str__(self):
         return '%s - %s' %(self.eventTitle, self.eventCategory) 

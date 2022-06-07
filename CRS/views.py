@@ -6589,12 +6589,53 @@ def eventsCreate(request):
             event.validate_frontend()
             event.save()
             messages.success(request, 'Event Created!')
-            return redirect('events.create')
+            return redirect('events')
         except ValidationError as error:
             messages.error(request, error.message)
             return redirect('events.create')
     return render(request, 'testfiles/event-create.html')
 
+def eventsUpdate(request, event_id):
+    if request.user.is_authenticated and not request.user.is_chairperson:
+        return redirect('events')
+    if (request.method == 'POST'):
+        try :
+            tempEvent = Event(
+                eventCategory=request.POST['eventCategory'],
+                eventTitle=request.POST['eventTitle'],
+                eventDescription=request.POST['eventDescription'],
+                eventStartDate=request.POST['eventStartDate'],
+                eventEndDate=request.POST['eventEndDate']
+            )
+            tempEvent.validate_frontend()
+            event = Event.objects.filter(pk = event_id)
+            event.update(
+                eventCategory=request.POST['eventCategory'],
+                eventTitle=request.POST['eventTitle'],
+                eventDescription=request.POST['eventDescription'],
+                eventStartDate=request.POST['eventStartDate'],
+                eventEndDate=request.POST['eventEndDate']
+            )
+            messages.success(request, 'Event Updated!')
+            return redirect('events')
+        except ValidationError as error:
+            messages.error(request, error.message)
+            return redirect('events')
+    else:
+        event = Event.objects.filter(pk=event_id).first()
+        return render(request, 'testfiles/event-edit.html', {'event' : event}) 
+
+def eventsDelete(request, event_id):
+    if request.user.is_authenticated and not request.user.is_chairperson:
+        return redirect('events')
+    if (request.method == 'POST'):
+        event = Event.objects.filter(pk = request.POST['eventID'])
+        event.delete()
+        messages.success(request, 'Event Deleted!')
+        return redirect('events')
+    else:
+        event = Event.objects.filter(pk=event_id).first()
+        return render(request, 'testfiles/event-delete.html', {'event' : event})
 # For rendering in homapages
 def eventsComponent(request):
     if request.GET.get('sortCategory'):
