@@ -257,6 +257,8 @@ urlpatterns = [
     url(r'^fStudents_viewStudentGrade/$', views.fStudents_viewStudentGrade, name='fStudents_viewStudentGrade'),
     url(r'^fViewSched/$', views.fViewSched, name='fViewSched'),
     path(r'^fStudents_viewStudentGrade/<stud_id>$', views.fStudents_viewStudentGrade, name='fStudents_viewStudentGrade'),
+    url(r'^fStudents_advisoryChecklist/$', views.fStudents_advisoryChecklist, name='fStudents_advisoryChecklist'),
+    path(r'^fStudents_viewStudentChecklist/<stud_id>$', views.fStudents_viewStudentChecklist, name='fStudents_viewStudentChecklist'),
      
     #STUDENT  PART
     url(r'^student/$', views.student, name='student'),
@@ -271,6 +273,7 @@ urlpatterns = [
     #checklist
     url(r'^sChecklist/$', views.sChecklist, name='sChecklist'),
     path(r'^sChecklistEmptyConfirmation/<currchecklist_id>$', views.sChecklistEmptyConfirmation, name='sChecklistEmptyConfirmation'),
+    url(r'^sChecklistSubmission/$', views.sChecklistSubmission, name='sChecklistSubmission'),
     #classroon
     url(r'^sClassroom/$', views.sClassroom, name='sClassroom'),
     #grade submission

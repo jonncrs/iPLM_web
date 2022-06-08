@@ -2,386 +2,258 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <title>Faculty | Home </title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
-    <!-- CSS -->
-    <link rel="stylesheet" href="{% static 'CRS/css/fHomeAndProfile/fHomeStyle.css' %}">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">
-    <!-- JS -->
-    <script src="fHomeMain.js"></script>
-    <!--  ICON -->
-    <link rel="icon" href="{% static 'CRS/images/cHome/iPLM.png' %}" type="image/png" sizes="16x16">
+    <head>
+        <title> Faculty | Home </title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <!-- include -->
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
-    <style>
-        .academicYearHeader{
-    font-size: 20px;
-    font-family: 'Nunito';
-    color: white;
-    padding-right: 20px;
-    padding-top: 20px;
-}
+        <!-- CSS -->
+        <link href="https://fonts.googleapis.com/css?family=Lato:200,300,400,600,700,900&subset=latin-ext" rel="stylesheet">
+        <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900&subset=latin-ext' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="{% static '/CRS/css/fHomeAndProfile/fHomeStyle.css' %}">
 
-    .academicYearDetail{
-        font-size: 20px;
-        font-family: 'Nunito';
-        color: #BADBFF;
-        padding-right: 50px;
-        padding-top: 20px;
-    }
-
-    .semesterHeader{
-        font-size: 20px;
-        font-family: 'Nunito';
-        color: white;
-        padding-right: 20px;
-        padding-top: 10px;
-    }
-
-    .semesterDetails{
-        font-size: 20px;
-        font-family: 'Nunito';
-        color: #BADBFF;
-        padding-right: 50px;
-        padding-top: 10px;
-    }
-
-    tr{
-    padding-bottom: 100px;
-    }
-
-    #uname {
-    padding-left: 15px;
-    padding-top: -15px;
-    font-size: 25px;
-    color: #ffff;
-    font-family: 'Nunito';
-    margin-top: 100px;
-    }
-
-    .main {
-    padding-left: 50px;
-    background: #0C66CC;
-    border-radius: 40px 40px 40px 40px;
-    margin-left: 100px;
-    margin-top: 60px;
-    margin-right: 100px;
-    box-shadow: 0 0 10px rgb(172, 170, 170);
-    padding-bottom: 30px;
-    }
-
-    .academicYearHeader{
-    font-size: 20px;
-    font-family: 'Nunito';
-    color: white;
-    padding-right: 20px;
-    margin-top: 70px;
-}
-
-.academicYearDetail{
-    font-size: 20px;
-    font-family: 'Nunito';
-    color: #BADBFF;
-    padding-right: 50px;
-    margin-top: 70px;
-}
-
-.semesterHeader{
-    font-size: 20px;
-    font-family: 'Nunito';
-    color: white;
-    padding-right: 20px;
-    padding-top: 10px;
-}
-
-.semesterDetails{
-    font-size: 20px;
-    font-family: 'Nunito';
-    color: #BADBFF;
-    padding-right: 50px;
-    padding-top: 10px;
-}
-#current_date{
-    background: #0C66CC;
-    border-radius: 40px 40px 40px 40px;
-    width:500px;
-    height:250px;
-}
-
-#current_month-day-year{
-    font-size: 50px;
-    font-family: 'Nunito';
-    color: #ECC429;
-    padding-right: 20px;
-    padding-top: 10px;
-    text-align: center;
-}
-#block_advisory{
-    background: #0C66CC;
-    border-radius: 40px 40px 40px 40px;
-    width:500px;
-    height:250px;
-    margin-right:100px;
-    margin-left: 30px;
-}
-.blockNumber{
-    font-size: 70px;
-    font-family: 'Nunito';
-    color: white;
-    padding-right: 20px;
-    padding-top: 40px;
-    text-align: center;
-    
-}
-
-.blockDetails{
-    font-size: 50px;
-    font-family: 'Nunito';
-    color: #ECC429;
-    padding-right: 20px;
-    padding-top: 10px;
-    text-align: center;
-}
-
-#nameday{
-    font-size: 30px;
-    font-family: 'Nunito';
-    color: white;
-    padding-right: 20px;
-    padding-top: 40px;
-    text-align: center;
-}
-
-    </style>
-
-</head>
-
-<body>
-
-    <div class="wrapper">
-
-        <!-- Sidebar -->
-        <nav id="sidebar">
-            <div class="sidebar-header">
-                <li>
-                    <p><br><br><img src="{% static 'CRS/images/fHomeAndProfile/hat.png' %}" width="126px" height="87px"><br><br>
-                </li>
-            </div>
-            <ul class="sidebar components">
-                <!-- FILE PATH: Faculty/fHomeAndProfile/fHome.html-->
-                <li class="active"><a href="{% url 'fHome' %}"><img src="{% static 'CRS/images/cIcons/home2.png' %}" width="97px" height="auto"></a></li>
-                <!-- FILE PATH: Faculty/fHomeAndProfile/fProfile.html-->
-                <li><a href="{% url 'fProfile' %}"><img src="{% static 'CRS/images/cIcons/profile2.png' %}" width="97px" height="auto"></a></li>
-                <!-- FILE PATH: Faculty/fStudents/fStudents.html-->
-                <li><a href="{% url 'fStudents_advisory' %}"><img src="{% static 'CRS/images/cIcons/students2.png' %}" width="97px" height="auto"></a></li>
-                <!-- FILE PATH: Faculty/fClassroom/fViewSched.html-->
-                <li><a href="{% url 'fViewSched' %}"><img src="{% static 'CRS/images/cIcons/classroom2.png' %}" width="97px" height="auto"></a></li>
-                <!-- FILE PATH: LOG-OUT -->
-                <li><a href="{% url 'logout' %}"><img src="{% static 'CRS/images/cIcons/log-out2.png' %}" width="97px" height="auto"></a></li>
-            </ul>
-        </nav>
-        <!--End of Sidebar -->
+        <!--  ICON -->
+        <link rel="icon" href="{% static '/CRS/images/cHome/iPLM.png' %}" type="image/png" sizes="16x16">
 
 
-        <!-- Content -->
-        <div id="content">
+    </head>
 
-            <div class=" container-fluid">
 
-                <!-- Welcome Panel -->
-                <div class="main row">
+    <!--Start na to nung layput natin tapos based dun sa code ng chairperson-->
+<body class="content-scrollbar" onload="today()">
+    <img src="{% static 'CRS/images/cHome/bglogo.png' %}" id="bglogo">
 
-                    <div class="col-lg-9">
-                        <div class="row" id="head">
-                            <p>Welcome</p>
-                            <p>&nbsp;Faculty!</p>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-9 pt-3">
-                                <table>
-                                    <tr>
-
-                                       <td class="notification"><!--<a href="{% url 'fHomeNotification' %}">--><img id="notif" src="{% static 'CRS/images/cHome/notification.svg' %}" width="40px" height="30px"></a>
-
-                                            <div class="dropdown-menu">
-                                                <p id="notiftitle">Notifications<br></p>
-                                                {% for i in grade_file reversed %}
-                                                    {% for x in stud_advisory %}
-                                                        {% if i.studentID_id == x.studentUser_id and i.remarks != 'Approved' and i.remarks != 'Returned' %}
-                                                            <a href="{% url 'fStudents_viewStudentGrade' x.studentUser.id %}"><p id="notifdrops"><b>{{x.studentUser.lastName}}, {{x.studentUser.firstName}} {{x.studentUser.middleName}} - {{x.studentSection}}</b><br>Submitted a grade! Please verify.</p></a>
-                                                        {% endif %}
-                                                    {% endfor %}
-                                                {% endfor %}
-                                                {% for acads in acad %}
-                                                    {% for sched in schedule reversed %}
-                                                        {% for c in curric %}
-                                                            {% if c.subjectCode_id == sched.subjectCode_id and c.schoolSem == acads.semester %}
-                                                                <a href="{% url 'fViewSched' %}"><p id="notifdrops"><b>{{sched.subjectCode.subjectCode.subjectCode}} - {{sched.subjectCode.subjectCode.subjectName}}</b><br>You have new subject added!</p></a>
-                                                                <!--<td id="schedtext-1"><a href="{% url 'viewstudent' sched.id  %}" id="buttonView"><button type="button" class="btn">View</button></a></td>-->
-                                                            {% endif %}
-                                                        {% endfor %}
-                                                    {% endfor %}
-                                                {% endfor %}
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <p id="pipe">|</p>
-                                        </td>
-                                        <td><img id="user" src="{% static 'CRS/images/cHome/user.svg' %}" width="35px" height="35px"></td>
-                                        <td id="uname">{{user.firstName}} {{user.middleName}} {{user.lastName}}</td><!-- Yung Fullname daw dito galing DB -->
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3">
-                        <br><br>
-                        <table>
-                            {% for acads in acad %}
-                           <tr>
-                                <td class="academicYearHeader">Academic Year:</td>
-                                <td class = "academicYearDetail">{{acads.yearstarted}}-{{acads.yearended}}</td><!-- DB ACADEMIC YEAR  --> 
-                            </tr>
-                            <tr>
-                                <td class="semesterHeader">Semester:</td>
-                                <td class = "semesterDetails">{{acads.semester}}</td>
-                                <!-- DB SEMESTER -->
-                            </tr>
-
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-sm navbar-dark flex-sm-nowrap flex-wrap">                          
+        <a id="iplm" href="{% url 'chairperson' %}">
+            <img class="iplmlogo unselectable" src="{% static 'CRS/images/fHomeAndProfile/iplmlogo.png' %}" height="35">
+        </a>            
+               
+        <!-- Notification dropdown -->
+        <div class="unselectable dropdown notificon d-none d-sm-block">
+            <a class="dropdown-toggle profilehover" id="dropdownNotif" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                {% if notifications %} 
+                    <span class="badge"> </span> <!-- red notif badge -->
+                {% endif %}
+                <img id="notif" src="{% static 'CRS/images/cIcons/notif.png' %}" height="20">
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end dropdownNotifInfo p-3 text-muted custom-scrollbar" aria-labelledby="dropdownNotif">
+                <div id="notiftitle"><p>Notifications<br></p></div>
+                <div class="dropdown-divider-title"></div>
+                <!-- DB NOTIFICATION DATA BELOW -->
+                                   
+                    {% for i in grade_file reversed %}
+                      {% for x in stud_advisory %}
+                         {% if i.studentID_id == x.studentUser_id and i.remarks != 'Approved' and i.remarks != 'Returned' %}
+                            <a href="{% url 'fStudents_viewStudentGrade' x.studentUser.id %}"><p id="notifdrops"><b class="notiftext">{{x.studentUser.lastName}}, {{x.studentUser.firstName}} {{x.studentUser.middleName}} - {{x.studentSection}}</b><br>Submitted a grade! Please verify.</p></a>
+                         {% endif %}
+                      {% endfor %}
+                    {% endfor %}
+                    {% for acads in acad %}
+                         {% for sched in schedule reversed %}
+                            {% for c in curric %}
+                               {% if c.subjectCode_id == sched.subjectCode_id and c.schoolSem == acads.semester %}
+                                  <a href="{% url 'fViewSched' %}"><p id="notifdrops"><b class="notiftext">{{sched.subjectCode.subjectCode.subjectCode}} - {{sched.subjectCode.subjectCode.subjectName}}</b><br>You have new subject added!</p></a>
+                               {% endif %}
                             {% endfor %}
-                        </table>
-                    </div>
-
-                </div>
-
-                <!-- Quick Access -->
-                <div class="sub-quick row">
-                    <p id="quick">Quick Access</p>
-                </div>
-
-                <div class="sub-buttons row">
-                    <!-- FILE PATH: Faculty/fClassroom/fViewSched.html-->
-                    <div class="quickmargin col-lg-3 col-md-6 col-sm-12"><a href="{% url 'fViewSched' %}" id="buttons"><button type="button" class=" btn">View Schedule</button></a></div>
-                    <!-- FILE PATH: Faculty/fStudents/fStudents.html-->
-                    <div class="quickmargin col-lg-3 col-md-6 col-sm-12"><a href="{% url 'fStudents_advisory' %}" id="buttons"><button type="button" class="btn">View Advisory</button></a></div>
-                    <!-- FILE PATH: Faculty/fHome/fProfileEdit.html-->
-                    <div class="quickmargin col-lg-3 col-md-6 col-sm-12"><a href="{%url 'fProfileEdit' %}" id="buttons"><button type="button" class="btn ">Edit Profile</button></a></div>
-                    <!-- FILE PATH: Faculty/fHome/fProfileChangePass.html-->
-                    <div class="quickmargin col-lg-3 col-md-6 col-sm-12"><a href="{%url 'fProfileChangePass'%}" id="buttons"><button type="button" class=" btn">Change Password</button></a></div>
-                </div>
-                <!-- END of Quick Access -->
-                <div class="line row">
-                    <hr>
-                </div>
-                <!-- Overview 
-                <div class="sub-overview row">
-                    <p id="over">Brief User Profile</p>
-                </div>
-
-                <div class="sub-over row">
-
-                    <div class="col-yellow yellow-box col-lg-8">
-                        <div class="col-lg-12 mt-1">
-                            <table>
-                                <tr>
-                                    <td class="briefProfileHeader"><b>Faculty Number:</b></td>
-                                    <td class = "briefProfileInfo">{{facultyInfo.facultyID}}</td><!-- DB STUDENT NUMBER  
-                                </tr>
-
-                                <tr>
-                                    <td class="briefProfileHeader"><b>College:</b></td>
-                                    <td class = "briefProfileInfo">{{college}}</td><!-- DB COLLEGE 
-                                </tr>
-
-                                <tr>
-                                    <td class="briefProfileHeader"><b>Faculty Type:</b></td>
-                                    <td class = "briefProfileInfo">{{facultyInfo.facultyWorkstatus}}</td><!-- DB DEPARTMENT 
-                                </tr>
-
-                                <tr>
-                                    <td class="briefProfileHeader"><b>Department:</b></td>
-                                    <td class = "briefProfileInfo">{{department}}</td><!-- DB DEPARTMENT  
-                                </tr>
-                            </table>
-                        </div>
-                    </div>  -->
-                <div class="sub-buttons row">
-                    <div id="block_advisory">
-                 
-                        <div class="blockNumber">  {{count_block}} </div>       
-                        <div class="blockDetails"> Block Advisory</div>
-                            
-                    </div>
-
-                    <div id="block_advisory">
-                 
-                                <div class="blockNumber">  {{count_stud}} </div>
-                                <div class="blockDetails"> Student Advisory</div>
-                            
-                    </div>
-                    
-                    <div id="current_date"></p>
-                        <div id="nameday"></p>
-                            <script>
-                                const dayIndex = new Date().getDay();
-                                const getDayName = (dayIndex) =>{
-                                    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-                                    return days[dayIndex];
-                                }
-                                const dayName = getDayName(dayIndex)
-                                document.getElementById("nameday").innerHTML = dayName
-                            </script>
-                        </div>
-                        <div id="current_month-day-year"></p>
-                            <script>
-                                mo = null
-                                strMonth = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-                                date = new Date();
-                                month = date.getMonth() + 1;
-                                day = date.getDate();
-                                year = date.getFullYear();
-                                for (i=0;i<12;i++) {
-                                    if (month-1 == i){
-                                        mo = strMonth[i];
-                                    }
-                                }
-                                document.getElementById("current_month-day-year").innerHTML = mo +" "+ day + " ," + year;
-                            </script>
-                        </div>
-                    </div>
-                </div>
-                </div>
-
-            </div> 
-
+                         {% endfor %}
+                    {% endfor %}
+                    <div class="dropdown-divider"></div>
+            </ul>
         </div>
-    </div>
 
-    <!-- Javascript -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    
-   <!-- <script type="text/javascript">
-        function changeText(obj, text) {
-            obj.innerText = text;
-        }
-    </script>
+        <!-- navbar user name and title  -->
+        <p class="d-none d-sm-block usertitle unselectable">
+            Faculty
+        </p>
+        <p href="{% url 'fProfile' %}" class="d-none d-sm-block user unselectable">
+            {{user.firstName}} {{user.middleName}} {{user.lastName}}
+        </p>
 
-    <script>
-        function remove(el){
-            var element = el;
-            element.remove();
-        }
-    </script> -->
+        <!-- user profile dropdown -->
+        <div class="unselectable dropdown pficon">
+            <a class="dropdown-toggle profilehover" id="dropdownProfile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <img id="profileicon" src="{% static 'CRS/images/fHomeAndProfile/userprofile.png' %}" width="35px" height="35px">
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end dropdownProfileMenu p-3 text-muted" aria-labelledby="dropdownProfile">
+                <img id="profileicon" src="{% static 'CRS/images/fHomeAndProfile/userprofile.png' %}" width="40px" height="40px">
+                <p id="profilemenutitle">{{user.firstName}}<br></p>
+                <p id="profilemenuemail">{{user.email}}<br></p>
+                <div class="dropdown-divider"></div>
+                <li><a class="profilelinks" href="{% url 'fProfile' %}">View Profile</a></li>
+                <li><a class="profilelinks" href="{% url 'logout' %}">Log out</a></li>
+            </ul>
+        </div>
+    </nav>
 
-</body>
+        <div id="mainwrapper" class="toggled">
+            <!-- Sidebar -->
+            <div id="sidebar-wrapper" class="custom-scrollbar">
+                <ul class="sidebar-nav">
+                    <li class="active"> <a class="sb-links" href="{% url 'fHome' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/home.png' %}" height="15"> Home</a> </li>
+                    <li class="sb-section unselectable"><span>Students</span></li>
+                    <li> <a class="sb-links" href="{% url 'fStudents_advisory' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/department.png' %}" height="15"> Advisory</a> </li>
+                    
+                    <li class="sb-section unselectable"><span>Classroom</span></li>
+                    <li> <a class="sb-links" href="{% url 'fViewSched' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/studyplan.png' %}" height="15"> Schedule</a> </li>
+                    {% if facultyInfo.facultyWorkstatus == 'Part-Time' %} 
+                    <li> <a class="sb-links" href="{% url 'parttime_sched' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/loa.png' %}" height="15"> Part-Time Availability</a> </li>
+                    {% endif %}
+                    <!-- FILE PATH: Faculty/fStudents_advisoryChecklist-->
+                    <li><a class="sb-links" href="{% url 'fStudents_advisoryChecklist' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/loa.png' %}" height="15"> Checklist Submissions</a> </li>
+
+                </ul>
+            </div> 
+            <!-- end sidebar -->
+            
+        
+        <!-- Page Content -->
+        <!--ito yung opart ng Semester Details-->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <!-- navbar page title blue -->
+                <div class="headertitle unselectable d-none d-md-block">Dashboard</div>
+                <!-- content start-->
+                <!-- body page title grey -->
+                <h1 class="unselectable">Overview</h1> 
+                <!-- overview blocks row 1 -->
+                <div class="d-flex flex-wrap justify-content-center align-content-center">
+                    <!-- 1st block -->
+                    <div class="p-2 overview-block lg-overview-block">                            
+                        <div class="d-flex flex-wrap ov-block-content-1">
+                            <div class="p-2 unselectable">                                    
+                                <img src="{% static '/CRS/images/cHome/semesterDetails.png' %}" height="38">
+                            </div>  
+                            <div class="p-2">                                    
+                                <span class="ov-heading-1">Semester Details</span>
+                                <table class="table table-sm table-borderless" id="ov-sem-details">
+                                    <tbody>
+                                        {% for acads in acad %}
+                                        <tr>
+                                            <td>Academic Year: <br> Semester:</td>
+                                            <td>{{acads.yearstarted}} - {{acads.yearended}} <br> {{acads.semester}}</td>
+                                        </tr>                                          
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>                            
+                        </div> 
+                    </div>
+                    <!-- 2nd block -->
+                    <!-- Date block-->
+                   <!-- 2nd block -->
+                   <div class="p-2 overview-block sm-overview-block">
+                    <div class="d-flex flex-wrap justify-content-center ov-block-content-3 ov-block-content-top">                                
+                            Today is                                                        
+                    </div> 
+                    <div class="d-flex flex-wrap justify-content-center ov-block-content-2">                                
+                        <div class="p-2 ov-heading-2">                                    
+                            <h3 id="datetoday" class="ov-heading-2"></h3>  
+                            <div id="current_month-day"></p>
+                                <script>
+                                    mo = null
+                                    strMonth = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+                                    date = new Date();
+                                    month = date.getMonth() + 1;
+                                    day = date.getDate();
+                                    for (i=0;i<12;i++) {
+                                        if (month-1 == i){
+                                            mo = strMonth[i];
+                                        }
+                                    }
+                                    document.getElementById("current_month-day").innerHTML = mo +" "+ day ;
+                                </script>
+                            </div>                              
+                        </div>                                          
+                    </div> 
+                    <div class="d-flex flex-wrap justify-content-center ov-block-content-2">                                
+                        <div class="p-2">                                    
+                            <h3 id="daytoday" class="ov-block-content-2"></h3>  
+                            <div id="current_date"></p>
+                                <div id="nameday"></p>
+                                    <script>
+                                        const dayIndex = new Date().getDay();
+                                        const getDayName = (dayIndex) =>{
+                                            const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+                                            return days[dayIndex];
+                                        }
+                                        const dayName = getDayName(dayIndex)
+                                        document.getElementById("nameday").innerHTML = dayName
+                                    </script>
+                                </div>                                  
+                        </div>                                          
+                    </div>                             
+                </div>
+            </div> 
+            <!--Next Block yung 3 sa baba na blocks-->
+            <div class="d-flex flex-wrap justify-content-center align-content-center">
+                <!-- 1st block -->
+                <div class="p-2 overview-block sm-overview-block">
+                    <div class="d-flex flex-wrap justify-content-center ov-block-content-2">                                
+                        <div class="p-2 ov-heading-2">                                    
+                            <p style ="margin-top: 30px;margin-bottom:0px;">
+                                {% if facultyInfo.departmentID_id == 1 %} 
+                                    IT DEPARTMENT
+                                {% else %}
+                                    EE DEPARTMENT
+                                {% endif %}
+                            </p>
+                        </div>                                          
+                    </div> 
+                    <div class="d-flex flex-wrap justify-content-center ov-block-content-2">                                
+                        <div class="blockDetails">CET</div>                                          
+                    </div>  
+                </div>
+                <!--Katabing Block-->
+                <div class="p-2 overview-block sm-overview-block"><div class="d-flex flex-wrap justify-content-center ov-block-content-2">                                
+                    <div class="p-2 ov-heading-3">                                    
+                        {{count_block}}
+                    </div>                                          
+                    </div> 
+                    <div class="d-flex flex-wrap justify-content-center ov-block-content-3">                                
+                        <div class="blockDetails"> Blocks</div>                                        
+                    </div> 
+                </div>
+                <!--Last Block-->
+                <div class="p-2 overview-block sm-overview-block"><div class="d-flex flex-wrap justify-content-center ov-block-content-2">                                
+                    <div class="p-2 ov-heading-3">                                    
+                        {{count_stud}}
+                    </div>                                          
+                    </div> 
+                    <div class="d-flex flex-wrap justify-content-center ov-block-content-2">                                
+                        <div class="p-2">                                    
+                            Total Students
+                        </div>                                          
+                    </div>  
+                </div>
+            </div>  
+        </div>
+    </div> <!-- /#page-content-wrapper -->  
+</div> <!-- /#wrapper -->
+
+
+        <img src="{% static 'CRS/images/cIcons/up-arrow.png' %}" id="btn-back-to-top" class="unselectable"> <!-- scroll to top -->
+        
+        <!-- Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        
+        <!-- JS -->
+        <script src="{% static '/CRS/js/fHome/fHomeMain.js' %}"></script>   
+        <script>
+            let mybutton = document.getElementById("btn-back-to-top");
+            window.onscroll = function () {
+              scrollFunction();
+            };
+            mybutton.addEventListener("click", backToTop);
+        </script>     
+    </body>
 
 </html>

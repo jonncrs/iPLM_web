@@ -2865,6 +2865,60 @@ def fStudents_advisory(request):
     else:
         return redirect('index')
 
+def fStudents_advisoryChecklist(request):
+    if request.user.is_authenticated and request.user.is_faculty:
+        id= request.user.id
+        f_user = FacultyInfo.objects.get(pk = id)
+        advisory = BlockSection.objects.filter(adviser = f_user)
+        stud_advisory = StudentInfo.objects.filter(studentSection__in = advisory) 
+        try:
+            stud_checklist = crsChecklist.objects.all
+        except crsChecklist.DoesNotExist:
+            stud_checklist = None
+
+        context = {'advisory': advisory, 'stud_advisory': stud_advisory, 'stud_checklist':stud_checklist}
+        return render(request, 'faculty/fStudents_advisoryChecklist.html', context)
+    else:
+        return redirect('index')
+
+def fStudents_viewStudentChecklist(request, stud_id):
+    if request.user.is_authenticated and request.user.is_faculty:
+        fcount=0
+        stud_checklist = crsChecklist.objects.get(studentID_id=stud_id)#
+        if (request.method == 'POST'):
+                stud_checklist.crsApprovedChecklist = request.FILES.get('checkListApproved')
+                if ('feedback' in request.POST):
+                    stud_checklist.comment = request.POST.get('message')
+                stud_checklist.save()
+                status = request.POST.get('slct')
+                if status=='Submitted':
+                    stud_checklist.remarks = "Submitted"
+                    stud_checklist.save()
+                elif status=='Returned':
+                    stud_checklist.remarks = "Returned"
+                    stud_checklist.crsChecklist.delete()
+                    stud_checklist.crsChecklist = None
+                    stud_checklist.checkList.delete()
+                    stud_checklist.checkList = None
+                    stud_checklist.save()
+                    messages.success(request,'File is Returned, No file.')
+                elif status=='Approved':
+                    stud_checklist.remarks = "Approved"
+                    messages.success(request,'File is Approved.')
+                    stud_checklist.save()
+                #messages.success(request,'Feedback is successfully sent!')
+                #return redirect('fHome') 
+
+        """f_user = FacultyInfo.objects.get(pk = id)
+        advisory = BlockSection.objects.filter(adviser = f_user)
+        stud_advisory = StudentInfo.objects.filter(studentSection__in = advisory) 
+        count = stud_advisory.count()"""
+
+        context = {'stud_checklist':stud_checklist, 'fcount':fcount}
+        return render(request, 'faculty/fStudents_viewStudentChecklist.html', context)
+    else:
+        return redirect('index')
+
 def fStudents_viewStudentGrade (request,stud_id):
     semester = '1'
     fcount = 0
@@ -3682,6 +3736,49 @@ def donecrs(request):
                 return redirect('sGradeSubmission3') 
         except ObjectDoesNotExist:
             return redirect('sGradeSubmission1')
+    else:
+        return redirect('index')
+
+def sChecklistSubmission(request):
+    if request.user.is_authenticated and request.user.is_student:
+        id= request.user.id
+        info = StudentInfo.objects.get(studentUser=id)
+        flag = 1
+        if (request.method == 'POST'):
+            checkList= request.FILES.get('checkList')#sa html
+            CrsChecklist= request.FILES.get('crsChecklist')#sa html
+            try:
+                user_checklist = crsChecklist.objects.get(studentID_id=id)
+                if user_checklist.remarks == "Returned":
+                    if (request.method == 'POST'):
+                        user_checklist.checkList = request.FILES.get('checkList')
+                        user_checklist.crsChecklist = request.FILES.get('crsChecklist')
+                        user_checklist.remarks = 'Submitted'
+                        user_checklist.save()
+                        #return redirect('sGradeSubmission3') 
+                else:
+                    messages.error(request,'You have already submitted an application!')
+                    return redirect('sChecklistSubmission')
+                    #return render(request,'student/sClassroom/sGradeSubmission2.html')
+            except ObjectDoesNotExist:
+                student = crsChecklist(studentID=info, checkList=checkList, crsChecklist=CrsChecklist)
+                student.save()
+                return redirect('sChecklistSubmission')
+                #return redirect('sGradeSubmission3')
+        
+        try:
+            approved_file = crsChecklist.objects.get(studentID=id)
+            if approved_file.remarks == "Returned":
+                flag = 1
+            else:
+                flag = 0
+        except crsChecklist.DoesNotExist:
+            approved_file = None
+            flag = 1
+        
+
+        
+        return render(request, 'student/sClassroom/scrsChecklistSubmission.html', {'approved_file': approved_file, 'flag':flag})
     else:
         return redirect('index')
 
