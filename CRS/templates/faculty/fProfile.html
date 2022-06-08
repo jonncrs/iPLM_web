@@ -3,129 +3,713 @@
 <html>
 
 <head>
-    <title>Faculty | Profile </title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
-    <!-- CSS -->
-    <link rel="stylesheet" href="{% static 'CRS/css/fHomeAndProfile/fHomeStyle.css' %}">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">
-    <!--  ICON -->
-    <link rel="icon" href="{% static 'CRS/images/cHome/iPLM.png' %}" type="image/png" sizes="16x16">
+        <title> Faculty | Profile </title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <!-- include -->
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
+        <!-- CSS -->
+        <link href="https://fonts.googleapis.com/css?family=Lato:200,300,400,600,700,900&subset=latin-ext" rel="stylesheet">
+        <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900&subset=latin-ext' rel='stylesheet' type='text/css'>
+        <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Arial&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="{% static '/CRS/css/fHomeAndProfile/fHomeStyle.css' %}">
+
+        <!--  ICON -->
+        <link rel="icon" href="{% static '/CRS/images/cHome/iPLM.png' %}" type="image/png" sizes="16x16">
+    
     <style>
+    * {
+  box-sizing: border-box;
+}
+body {
+  font-size: 14px;
+}
+.v121_2 {
+  width: 100%;
+  height: 675px;
+  opacity: 1;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+.v125_2 {
+  width: 100%;
+  height: 675px;
+  background: url("../images/v125_2.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+.v121_4 {
+  width: 970px;
+  height: 520px;
+  background: rgba(255,255,255,1);
+  opacity: 1;
+  position: absolute;
+  top: 110px;
+  left: 322px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.07000000029802322);
+  overflow: hidden;
+}
+.name {
+  color: #fff;
+}
+.name {
+  color: #fff;
+}
+.v121_7 {
+  width: 216px;
+  color: rgba(8,146,221,1);
+  position: absolute;
+  top: 220px;
+  left: 410px;
+  font-family: Lato;
+  font-weight: Regular;
+  font-size: 15px;
+  opacity: 1;
+  text-align: left;
+}
+.v121_8 {
+  width: 216px;
+  color: rgba(95,110,131,1);
+  position: absolute;
+  top: 220px;
+  left: 609px;
+  font-family: Lato;
+  font-weight: Regular;
+  font-size: 15px;
+  opacity: 1;
+  text-align: left;
+}
+.name {
+  position: absolute;
+width: 340px;
+height: 0px;
+left: 390px;
+top: 256px;
 
-    .alertError{
-    padding: 20px;
-    background-color: #f34e01;
-    border-radius: 15px;
-    color: white;
-    box-shadow: 0 0 10px rgb(216, 216, 216);
-    margin-top: 50px;
-    margin-left: 1100px;
-    margin-bottom: 10px;
-    animation: zoom-in-zoom-out 1s ease;
-    }
+border: 0.5px solid #5F6E83;
+  color: #fff;
+}
+.v121_10 {
+  width: 216px;
+  color: rgba(8,146,221,1);
+  position: absolute;
+  top: 544px;
+  left: 410px;
+  font-family: Lato;
+  font-weight: Regular;
+  font-size: 15px;
+  opacity: 1;
+  text-align: left;
+}
+.v121_11 {
+  width: 216px;
+  color: rgba(95,110,131,1);
+  position: absolute;
+  top: 544px;
+  left: 609px;
+  font-family: Lato;
+  font-weight: Regular;
+  font-size: 15px;
+  opacity: 1;
+  text-align: left;
+}
+.name {
+  color: #fff;
+}
+.v121_13 {
+  width: 216px;
+  color: rgba(8,146,221,1);
+  position: absolute;
+  top: 490px;
+  left: 410px;
+  font-family: Lato;
+  font-weight: Regular;
+  font-size: 15px;
+  opacity: 1;
+  text-align: left;
+}
+.v121_14 {
+  width: 216px;
+  color: rgba(95,110,131,1);
+  position: absolute;
+  top: 490px;
+  left: 609px;
+  font-family: Lato;
+  font-weight: Regular;
+  font-size: 15px;
+  opacity: 1;
+  text-align: left;
+}
+.name {
+  color: #fff;
+}
+.v121_16 {
+  width: 216px;
+  color: rgba(8,146,221,1);
+  position: absolute;
+  top: 436px;
+  left: 410px;
+  font-family: Lato;
+  font-weight: Regular;
+  font-size: 15px;
+  opacity: 1;
+  text-align: left;
+}
+.v121_17 {
+  width: 216px;
+  color: rgba(95,110,131,1);
+  position: absolute;
+  top: 436px;
+  left: 609px;
+  font-family: Lato;
+  font-weight: Regular;
+  font-size: 15px;
+  opacity: 1;
+  text-align: left;
+}
+.name {
+  color: #fff;
+}
+.v121_19 {
+  width: 216px;
+  color: rgba(8,146,221,1);
+  position: absolute;
+  top: 382px;
+  left: 410px;
+  font-family: Lato;
+  font-weight: Regular;
+  font-size: 15px;
+  opacity: 1;
+  text-align: left;
+}
+.v121_20 {
+  width: 216px;
+  color: rgba(95,110,131,1);
+  position: absolute;
+  top: 382px;
+  left: 609px;
+  font-family: Lato;
+  font-weight: Regular;
+  font-size: 15px;
+  opacity: 1;
+  text-align: left;
+}
+.name {
+position: absolute;
+opacity:0.4;
+width: 400px;
+height: 0px;
+left: 600px;
+top: 365px;
 
-    .alertSuccess{
-    padding: 20px;
-    background-color: #3fb328;
-    border-radius: 15px;
-    color: white;
-    box-shadow: 0 0 10px rgb(216, 216, 216);
-    margin-top: 50px;
-    margin-left: 1100px;
-    margin-bottom: 10px;
-    animation: zoom-in-zoom-out 1s ease;
-    }
+border: 0.3px solid #5F6E83;
+transform: rotate(90deg);
+  color: #fff;
+}
+.v121_22 {
+  width: 216px;
+  color: rgba(8,146,221,1);
+  position: absolute;
+  top: 328px;
+  left: 410px;
+  font-family: Lato;
+  font-weight: Regular;
+  font-size: 15px;
+  opacity: 1;
+  text-align: left;
+}
+.v121_23 {
+  width: 216px;
+  color: rgba(95,110,131,1);
+  position: absolute;
+  top: 328px;
+  left: 609px;
+  font-family: Lato;
+  font-weight: Regular;
+  font-size: 15px;
+  opacity: 1;
+  text-align: left;
+}
+.name {
+  color: #fff;
+}
+.v121_25 {
+  width: 216px;
+  color: rgba(8,146,221,1);
+  position: absolute;
+  top: 274px;
+  left: 410px;
+  font-family: Lato;
+  font-weight: Regular;
+  font-size: 15px;
+  opacity: 1;
+  text-align: left;
+}
+.v121_26 {
+  width: 216px;
+  color: rgba(95,110,131,1);
+  position: absolute;
+  top: 274px;
+  left: 609px;
+  font-family: Lato;
+  font-weight: Regular;
+  font-size: 15px;
+  opacity: 1;
+  text-align: left;
+}
+.v121_27 {
+  width: 301px;
+  color: rgba(6,82,155,1);
+  position: absolute;
+  top: 145px;
+  left: 410px;
+  font-family: Lato;
+  font-weight: Bold;
+  font-size: 32px;
+  opacity: 1;
+  text-align: left;
+}
+.v121_28 {
+  width: 149px;
+  height: 42px;
+  background: url("../images/v121_28.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 533px;
+  left: 1070px;
+  overflow: hidden;
+}
+.v121_29 {
+  width: 149px;
+  height: 42px;
+  background: url("../images/v121_29.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 533px;
+  left: 1070px;
+  overflow: hidden;
+}
+.v121_30 {
+  width: 149px;
+  height: 42px;
+  background: rgba(6,82,155,1);
+  opacity: 1;
+  position: absolute;
+  top: 533px;
+  left: 1070px;
+  border: 0.5px solid rgba(8,146,221,1);
+}
+.v121_31 {
+  width: 85px;
+  color: rgba(255,255,255,1);
+  position: absolute;
+  top: 543px;
+  left: 1112px;
+  font-family: Arial;
+  font-weight: Bold;
+  font-size: 15px;
+  opacity: 1;
+  text-align: right;
+}
+#edittext{
+    color:white;
+}
 
-    .closebtnError {
-        margin-left: 15px;
-        color: white;
-        font-weight: bold;
-        float: right;
-        font-size: 22px;
-        line-height: 20px;
-        cursor: pointer;
-        transition: 0.3s;
-        }
+.v121_32 {
+  width: 20px;
+  height: 20px;
+  opacity: 1;
+  position: absolute;
+  top: 540px;
+  left: 1088px;
+}
+.name {
+  color: #fff;
+}
+.v121_34 {
+  width: 216px;
+  color: rgba(8,146,221,1);
+  position: absolute;
+  top: 197px;
+  left: 885px;
+  font-family: Lato;
+  font-weight: Regular;
+  font-size: 15px;
+  opacity: 1;
+  text-align: left;
+}
+.v121_35 {
+  width: 216px;
+  color: rgba(95,110,131,1);
+  position: absolute;
+  top: 197px;
+  left: 1076px;
+  font-family: Lato;
+  font-weight: Regular;
+  font-size: 15px;
+  opacity: 1;
+  text-align: left;
+}
+.name {
+  color: #fff;
+}
+.v121_40 {
+  width: 216px;
+  color: rgba(8,146,221,1);
+  position: absolute;
+  top: 413px;
+  left: 885px;
+  font-family: Lato;
+  font-weight: Regular;
+  font-size: 15px;
+  opacity: 1;
+  text-align: left;
+}
+.v121_41 {
+  width: 216px;
+  color: rgba(95,110,131,1);
+  position: absolute;
+  top: 413px;
+  left: 1076px;
+  font-family: Lato;
+  font-weight: Regular;
+  font-size: 15px;
+  opacity: 1;
+  text-align: left;
+}
+.name {
+  color: #fff;
+}
+.v121_43 {
+  width: 216px;
+  color: rgba(8,146,221,1);
+  position: absolute;
+  top: 359px;
+  left: 885px;
+  font-family: Lato;
+  font-weight: Regular;
+  font-size: 15px;
+  opacity: 1;
+  text-align: left;
+}
+.v121_44 {
+  width: 216px;
+  color: rgba(95,110,131,1);
+  position: absolute;
+  top: 359px;
+  left: 1076px;
+  font-family: Lato;
+  font-weight: Regular;
+  font-size: 15px;
+  opacity: 1;
+  text-align: left;
+}
+.name {
+  color: #fff;
+}
+.v121_46 {
+  width: 216px;
+  color: rgba(8,146,221,1);
+  position: absolute;
+  top: 305px;
+  left: 885px;
+  font-family: Lato;
+  font-weight: Regular;
+  font-size: 15px;
+  opacity: 1;
+  text-align: left;
+}
+.v121_47 {
+  width: 216px;
+  color: rgba(95,110,131,1);
+  position: absolute;
+  top: 305px;
+  left: 1076px;
+  font-family: Lato;
+  font-weight: Regular;
+  font-size: 15px;
+  opacity: 1;
+  text-align: left;
+}
+.name {
+  color: #fff;
+}
+.v121_49 {
+  width: 216px;
+  color: rgba(8,146,221,1);
+  position: absolute;
+  top: 251px;
+  left: 885px;
+  font-family: Lato;
+  font-weight: Regular;
+  font-size: 15px;
+  opacity: 1;
+  text-align: left;
+}
+.v121_50 {
+  width: 216px;
+  color: rgba(95,110,131,1);
+  position: absolute;
+  top: 251px;
+  left: 1076px;
+  font-family: Lato;
+  font-weight: Regular;
+  font-size: 15px;
+  opacity: 1;
+  text-align: left;
+}
 
-        .closebtnError:hover {
-            color: #a33908;
-        }
+#horizontallineln{
+    width: 330px;
+    position: absolute;
+    opacity:0.4;
+    height: 0px;
+    left: 415px;
+    top: 255px;
+    
 
-        .closebtnSuccess {
-        margin-left: 15px;
-        color: white;
-        font-weight: bold;
-        float: right;
-        font-size: 22px;
-        line-height: 20px;
-        cursor: pointer;
-        transition: 0.3s;
-        }
+    border: 0.3px solid #5F6E83;
+    transform: rotate(180deg);
+    color: #fff;
+}
 
-        .closebtnSuccess:hover {
-            color: #1c6b0c;
-        }
+#horizontallinefn{
+    width: 330px;
+    position: absolute;
+    opacity:0.4;
+    height: 0px;
+    left: 415px;
+    top: 310px;
+    
 
+    border: 0.3px solid #5F6E83;
+    transform: rotate(180deg);
+    color: #fff;
+}
 
+#horizontallinemn{
+    width: 330px;
+    position: absolute;
+    opacity:0.4;
+    height: 0px;
+    left: 415px;
+    top: 365px;
+    
 
-    @keyframes zoom-in-zoom-out {
-    0% {
-        transform: scale(1, 1);
-    }
-    50% {
-        transform: scale(1.1, 1.1);
-    }
-    100% {
-        transform: scale(1, 1);
-    }
-    }
+    border: 0.3px solid #5F6E83;
+    transform: rotate(180deg);
+    color: #fff;
+}
+#horizontallinews{
+    width: 330px;
+    position: absolute;
+    opacity:0.4;
+    height: 0px;
+    left: 415px;
+    top: 420px;
+    
+
+    border: 0.3px solid #5F6E83;
+    transform: rotate(180deg);
+    color: #fff;
+}
+
+#horizontallineg{
+    width: 330px;
+    position: absolute;
+    opacity:0.4;
+    height: 0px;
+    left: 415px;
+    top: 470px;
+    
+
+    border: 0.3px solid #5F6E83;
+    transform: rotate(180deg);
+    color: #fff;
+}
+
+#horizontallinecs{
+    width: 330px;
+    position: absolute;
+    opacity:0.4;
+    height: 0px;
+    left: 415px;
+    top: 525px;
+    
+
+    border: 0.3px solid #5F6E83;
+    transform: rotate(180deg);
+    color: #fff;
+}
+
+#horizontallinecz{
+    width: 330px;
+    position: absolute;
+    opacity:0.4;
+    height: 0px;
+    left: 415px;
+    top: 580px;
+    
+
+    border: 0.3px solid #5F6E83;
+    transform: rotate(180deg);
+    color: #fff;
+}
+
+#horizontallinefno{
+    width: 330px;
+    position: absolute;
+    opacity:0.4;
+    height: 0px;
+    left: 890px;
+    top: 230px;
+    
+
+    border: 0.3px solid #5F6E83;
+    transform: rotate(180deg);
+    color: #fff;
+}
+
+#horizontallinecoll{
+    width: 330px;
+    position: absolute;
+    opacity:0.4;
+    height: 0px;
+    left: 890px;
+    top: 285px;
+    
+
+    border: 0.3px solid #5F6E83;
+    transform: rotate(180deg);
+    color: #fff;
+}
+
+#horizontallinedept{
+    width: 330px;
+    position: absolute;
+    opacity:0.4;
+    height: 0px;
+    left: 890px;
+    top: 340px;
+    
+
+    border: 0.3px solid #5F6E83;
+    transform: rotate(180deg);
+    color: #fff;
+}
+#horizontallineemail{
+    width: 330px;
+    position: absolute;
+    opacity:0.4;
+    height: 0px;
+    left: 890px;
+    top: 395px;
+    
+
+    border: 0.3px solid #5F6E83;
+    transform: rotate(180deg);
+    color: #fff;
+}
+#horizontallinecon{
+    width: 330px;
+    position: absolute;
+    opacity:0.4;
+    height: 0px;
+    left: 890px;
+    top: 450px;
+    
+
+    border: 0.3px solid #5F6E83;
+    transform: rotate(180deg);
+    color: #fff;
+}
     </style>
 </head>
 
-<body>
+<body class="content-scrollbar" onload="today()">
+    <img src="{% static 'CRS/images/cHome/bglogo.png' %}" id="bglogo">
 
-    <div class="wrapper">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-sm navbar-dark flex-sm-nowrap flex-wrap">                      
+        <a id="iplm" href="{% url 'chairperson' %}">
+            <img class="iplmlogo unselectable" src="{% static 'CRS/images/fHomeAndProfile/iplmlogo.png' %}" height="35">
+        </a>    
+        
+        <p class="d-none d-sm-block usertitle unselectable">
+            Faculty
+        </p>
+        <p href="{% url 'fProfile' %}" class="d-none d-sm-block user unselectable">
+            {{user.firstName}} {{user.middleName}} {{user.lastName}}
+        </p>
 
-        <!-- Sidebar -->
-        <nav id="sidebar">
-            <div class="sidebar-header">
-                <li>
-                    <p><br><br><img src="{% static 'CRS/images/fHomeAndProfile/hat.png' %}" width="126px" height="87px"><br><br>
-                </li>
-            </div>
-            <ul class="sidebar components">
-                <!-- FILE PATH: Faculty/fHomeAndProfile/fHome.html-->
-                <li class="active"><a href="{% url 'fHome' %}"><img src="{% static 'CRS/images/cIcons/home2.png' %}" width="97px" height="auto"></a></li>
-                <!-- FILE PATH: Faculty/fHomeAndProfile/fProfile.html-->
-                <li><a href="{% url 'fProfile' %}"><img src="{% static 'CRS/images/cIcons/profile2.png' %}" width="97px" height="auto"></a></li>
-                <!-- FILE PATH: Faculty/fStudents/fStudents.html-->
-                <li><a href="{% url 'fStudents_advisory' %}"><img src="{% static 'CRS/images/cIcons/students2.png' %}" width="97px" height="auto"></a></li>
-                <!-- FILE PATH: Faculty/fClassroom/fViewSched.html-->
-                <li><a href="{% url 'fViewSched' %}"><img src="{% static 'CRS/images/cIcons/classroom2.png' %}" width="97px" height="auto"></a></li>
-                <!-- FILE PATH: LOG-OUT -->
-                <li><a href="{% url 'logout' %}"><img src="{% static 'CRS/images/cIcons/log-out2.png' %}" width="97px" height="auto"></a></li>
+        <!-- user profile dropdown -->
+        <div class="unselectable dropdown pficon">
+            <a class="dropdown-toggle profilehover" id="dropdownProfile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <img id="profileicon" src="{% static 'CRS/images/fHomeAndProfile/userprofile.png' %}" width="35px" height="35px">
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end dropdownProfileMenu p-3 text-muted" aria-labelledby="dropdownProfile">
+                <img id="profileicon" src="{% static 'CRS/images/fHomeAndProfile/userprofile.png' %}" width="40px" height="40px">
+                <p id="profilemenutitle">{{user.firstName}}<br></p>
+                <p id="profilemenuemail">{{user.email}}<br></p>
+                <div class="dropdown-divider"></div>
+                <li><a class="profilelinks" href="{% url 'fProfile' %}">View Profile</a></li>
+                <li><a class="profilelinks" href="{% url 'logout' %}">Log out</a></li>
             </ul>
-        </nav>
-        <!--End of Sidebar -->
+        </div>
+    </nav>
+
+        <div id="mainwrapper" class="toggled">
+            <!-- Sidebar -->
+            <div id="sidebar-wrapper" class="custom-scrollbar">
+                <ul class="sidebar-nav">
+                    <li class="active"> <a class="sb-links" href="{% url 'fHome' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/home.png' %}" height="15"> Home</a> </li>
+                    <li class="sb-section unselectable"><span>Students</span></li>
+                    <li> <a class="sb-links" href="{% url 'fStudents_advisory' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/department.png' %}" height="15"> Advisory</a> </li>
+                    
+                    <li class="sb-section unselectable"><span>Classroom</span></li>
+                    <li> <a class="sb-links" href="{% url 'fViewSched' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/studyplan.png' %}" height="15"> Schedule</a> </li>
+                    {% if facultyInfo.facultyWorkstatus == 'Part-Time' %} 
+                    <li> <a class="sb-links" href="{% url 'parttime_sched' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/loa.png' %}" height="15"> Part-Time Availability</a> </li>
+                    {% endif %}
+                </ul>
+            </div> 
+            </div> 
+            <!-- end sidebar -->
 
 
 
 
-        <!-- Content -->
+        <!-- Content 
         <div id="content">
             <div class="container-fluid">
 
 
-                <!--Profile-->
+                <!--Profile
                 <div class="sub-box row">
-                    <p class="text-profile">Profile</p>
                     {% if messages %}
                     {% for message in messages %}
                     {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
@@ -144,165 +728,81 @@
                         
                     {% endfor %}
                     {% endif %}
-                </div>
+                </div> -->
 
-                <div class="profile-box row">
-                    
-                    <div class="col-lg-11 py-2">
-                        <div class="phor row">
-                            <div class="col-lg-3">
-                                <p id="text-pbox">Last Name:</p>
-                            </div>
-                            <div class="col-lg-3" id="text-pbox">
-                                {{user.lastName}}
-                            </div>
-                            <div class="col-lg-3">
-                                <p id="text-pbox">Faculty Number:</p>
-                            </div>
-                            <div class="col-lg-3" id="text-pbox">
-                                {{facultyInfo.facultyID}}
-                            </div>
-                        </div>
-                        
-                        <div class="phor row">
-                            <div class="col-lg-3">
-                                <p id="text-pbox">First Name:</p>
-                            </div>
-                            <div class="col-lg-3" id="text-pbox">
-                                {{user.firstName}}
-                            </div>
-                            <div class="col-lg-3">
-                                <p id="text-pbox">College:</p>
-                            </div>
-                            <div class="col-lg-3" id="text-pbox">
-                                {{college}}
-                            </div>
-                        </div>
-                        
-                        <div class="phor row">
-                            <div class="col-lg-3">
-                                <p id="text-pbox">Middle Name:</p>
-                            </div>
-                            <div class="col-lg-3" id="text-pbox">
-                                {{user.lastName}}
-                            </div>
-                            <div class="col-lg-3">
-                                <p id="text-pbox">Department:</p>
-                            </div>
-                            <div class="col-lg-3" id="text-pbox">
-                                {{department}}
-                            </div>
-                        </div>
-                        
-                        <div class="phor row">
-                            <div class="col-lg-3">
-                                <p id="text-pbox">Pedegree:</p>
-                            </div>
-                            <div class="col-lg-3" id="text-pbox">
-                                None
-                            </div>
-                            <div class="col-lg-3" >
-                                <p id="text-pbox">PLM Email:</p>
-                            </div>
-                            <div class="col-lg-3"id="text-pbox">
-                                {{user.email}}
-                            </div>
-                        </div>
-                        
-                        <div class="phor row">
-                            <div class="col-lg-3">
-                                <p id="text-pbox">Gender:</p>
-                            </div>
-                            <div class="col-lg-3" id="text-pbox">
-                                {{facultyInfo.facultyGender}}
-                            </div>
-
-                            <div class="col-lg-3" >
-                                <p id="text-pbox">Contact Number:</p>
-                            </div>
-                            <div class="col-lg-3"id="text-pbox">
-                                {{facultyInfo.facultyContact}}
-                            </div>
-                        
-                        </div>
-                        
-                        <div class="phor row">
-                            <div class="col-lg-3">
-                                <p id="text-pbox">Civil Status:</p>
-                            </div>
-                            <div class="col-lg-3" id="text-pbox">
-                                {{facultyInfo.facultyCivilstatus}}
-                            </div>
-
-                           
-                            
-                        </div>
-                        
-                        <div class="phor row">
-                            <div class="col-lg-3">
-                                <p id="text-pbox">Country of Citizenship:</p>
-                            </div>
-                            <div class="col-lg-3"id="text-pbox">
-                                {{facultyInfo.facultyCitizenship}}
-                            </div>
-                        </div>
-                    </div>
-                    <!-- FILE PATH: Faculty/cHome/fProfileEdit.html-->
-                    <div class="col-lg-1"><a href="{%url 'fProfileEdit' %}" id="pichover"><img id="picpic" src="{% static 'CRS/images/cHome/view_profile_edit_img.png' %}" height="30px" width="30px" ></a></div>
-                </div>
+               <div class="v121_2">
+                  <div class="v125_2"></div>
+                  <div class="v121_4"></div>
+                  <div class="name"></div>
+                  <div class="name" id="horizontallineln"></div>
+                  <span class="v121_7">LAST NAME</span>
+                  <span class="v121_8">{{user.lastName}}</span>
+                  <div class="name"  id="horizontallinecz"></div>
+                  <span class="v121_10">CITIZENSHIP</span>
+                  <span class="v121_11">{{facultyInfo.facultyCitizenship}}</span>
+                  <div class="name"  id="horizontallinecs"></div>
+                  <span class="v121_13">CIVIL STATUS</span>
+                  <span class="v121_14"> {{facultyInfo.facultyCivilstatus}}</span>
+                  <div class="name" id="horizontallineg"></div>
+                  <span class="v121_16">GENDER</span>
+                  <span class="v121_17">{{facultyInfo.facultyGender}}</span>
+                  <div class="name" id="horizontallinews"></div>
+                  <span class="v121_19">WORK STATUS</span>
+                  <span class="v121_20">{{facultyInfo.facultyWorkstatus}}</span>
+                  <div class="name" id="horizontallinemn"></div>
+                  <span class="v121_22">MIDDLE NAME</span>
+                  <span class="v121_23">{{user.middleName}}</span>
+                  <div class="name" id="horizontallinefn"></div>
+                  <span class="v121_25">FIRST NAME</span>
+                  <span class="v121_26"> {{user.firstName}}</span>
+                  <span class="v121_27"> Profile </span>
+                  <div class="v121_28"></div>
+                    <a href="{%url 'fProfileEdit' %}" class="pichover">
+                    <div class="v121_29"></div>
+                    <div class="v121_30"></div>
+                    <span class="v121_31" id="edittext">Edit Profile</span>
+                    <div class="v121_32"><img id="picpic" src="{% static 'CRS/images/fHomeAndProfile/view_profile_edit_img.png' %}" height="20px" width="20px"></div>
+                    </a>
+                    <div class="name" id="horizontallinefno"></div>
+                    <span class="v121_34">FACULTY NUMBER</span>
+                    <span class="v121_35">{{facultyInfo.facultyID}}</span>
+                    <div class="name" id="horizontallinecon"></div>
+                    <span class="v121_40">CONTACT NUMBER</span>
+                    <span class="v121_41">{{facultyInfo.facultyContact}}</span>
+                    <div class="name" id="horizontallineemail"></div>
+                    <span class="v121_43">PLM E-MAIL</span>
+                    <span class="v121_44">{{user.email}}</span>
+                    <div class="name" id="horizontallinedept"></div>
+                    <span class="v121_46">DEPARTMENT</span>
+                    <span class="v121_47">{{department}}</span>
+                    <div class="name" id="horizontallinecoll"></div>
+                    <span class="v121_49">COLLEGE</span>
+                    <span class="v121_50">{{college}}</span></div>
+                   
                 <!--END of Profile-->
-
-                <div class="profile-border row">
-                    <div class="col-12-lg"></div>
-                </div>
-
-                <!--Edit Account-->
-                <div class="edit-box row">
-
-                    <div class="col-lg-5">
-
-                        <p class="text-profile" id="edit">Edit Account</p>
-
-                        <div class="small-pbox ">
-                            <div class="row">
-                                <div class="text-details col">
-                                    <p id="password-text">Password</p>
-                                    <p>Change Password</p>
-                                </div>
-                                <div class="change-spacing col">
-                                    <!-- FILE PATH: Faculty/cHome/fProfileChangePass.html-->
-                                    <a href="{%url 'fProfileChangePass'%}" id="change"><div class="change-box" >
-                                        Change
-                                    </div></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-2">
-                    </div>
-
-                    <div class="col-lg-5 img">
-                        <!-- style="background-color: purple"-->
-                        <img src="{% static 'CRS/images/cHome/view_profile_img.png' %}" width="100%" height="400">
-                    </div>
-                </div>
-                <!--END of Edit Account-->
-
-
-
-            </div>
-        </div>
-
-    </div>
 
 
     <!-- Javascript -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<!-- Javascript -->
+<img src="{% static 'CRS/images/cIcons/up-arrow.png' %}" id="btn-back-to-top" class="unselectable"> <!-- scroll to top -->
+        
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-    
+<!-- JS -->
+<script src="{% static '/CRS/js/fHome/fHomeMain.js' %}"></script>   
+<script>
+    let mybutton = document.getElementById("btn-back-to-top");
+    window.onscroll = function () {
+      scrollFunction();
+    };
+    mybutton.addEventListener("click", backToTop);
+</script>
 </body>
 
 </html>

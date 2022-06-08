@@ -432,7 +432,34 @@ class crsGradeAdmin(admin.ModelAdmin):
 
 admin.site.register(crsGrade, crsGradeAdmin)
 
+#CRS CHECKLIST SUBMISSION
+class crsChecklistSubmission(admin.ModelAdmin):
+    search_fields = ['studentID__studentID']
+    model = crsChecklist
+    list_display = ('get_id','studentID','firstname','MiddleName','LastName','ApplicationStatus')
 
+    def get_id(self, obj):
+        return obj.id
+
+    def studentID(self, obj):
+        return obj.studentID
+
+    def firstname(self, obj):
+        return obj.studentID.studentUser.firstName
+
+    def MiddleName(self, obj):
+        return obj.studentID.studentUser.middleName
+
+    def LastName(self, obj):
+        return obj.studentID.studentUser.middleName
+
+    def ApplicationStatus(self, obj):
+        return obj.remarks
+
+    list_filter = [('studentID',RelatedDropdownFilter),('studentID__studentCourse',DropdownFilter),('remarks',DropdownFilter)]
+
+
+admin.site.register(crsChecklist, crsChecklistSubmission)
 
 #BLOCK SCHEDULING
 class studentSchedulingAdmin(admin.ModelAdmin):

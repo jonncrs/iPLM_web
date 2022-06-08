@@ -532,6 +532,19 @@ class crsGrade(models.Model):
     def __str__(self):
         return self.studentID.studentUser.lastName
 
+class crsChecklist(models.Model):
+    studentID =  models.ForeignKey(StudentInfo, null=True, verbose_name='Student', on_delete=models.CASCADE,blank=True)
+    checkList = models.FileField(upload_to='checklist/', blank=True, null=True)
+    crsChecklist = models.FileField(upload_to='crsChecklist/', blank=True, null=True)
+    crsApprovedChecklist = models.FileField(upload_to='approvedChecklist/', blank=True, null=True)
+    comment = models.TextField(null=True, blank=True, verbose_name='Feedback')
+    remarks = models.CharField(max_length=150, default='Submitted', verbose_name='Status')
+
+    class Meta:
+            verbose_name_plural = "CRS Checklist"
+
+    def __str__(self):
+        return self.studentID.studentUser.lastName
 
 # FORMS TO FILL-UP
 class hdClearanceForm(models.Model):
@@ -720,8 +733,8 @@ class studentScheduling(models.Model):
     ('Saturday','Saturday')
 )
     TYPE = (
-    ('Asychronous','Asychronous'),
-    ('Sychronous','Sychronous'),
+    ('Asynchronous','Asynchronous'),
+    ('Synchronous','Synchronous'),
 )
     instructor = ForeignKey(FacultyInfo,  null=True, verbose_name='Instructor', on_delete=models.SET_NULL,blank=True)
     subjectCode = models.ForeignKey(curriculumInfo, null=True, verbose_name='Subjects', on_delete=models.CASCADE)

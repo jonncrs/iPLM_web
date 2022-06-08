@@ -1,0 +1,531 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Faculty | Student Grade</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
+    <link rel="stylesheet" href="{% static 'CRS/css/fStudents/fViewStudGrade.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">
+    <!--Icon-->
+    <link rel="icon" href="{% static 'CRS/images/fStudents/iPLM.png' %}" type="image/png" sizes="16x16">
+
+    <style>
+
+        body{
+            overflow: scroll;
+            overflow-x: hidden;
+        }
+
+                /*SCROLLBAR*/
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            background: #e4e4e4;
+            border-radius: 12px;
+        }
+        
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: #cbcbcb;
+            border-radius: 12px;
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #8f8f8f; 
+        }
+
+
+
+        #head3 {
+            letter-spacing: 1px;
+            font-size: 18px;
+            color: #0C66CC;
+            font-family: 'Nunito';
+        }
+        #head3-1 {
+            letter-spacing: 1px;
+            font-size: 18px;
+            color: #0C66CC;
+            font-family: 'Nunito';
+            width: 20%;
+        }
+
+        .primary-att {
+            position: sticky;
+            text-align: left;
+            position: sticky;
+            top: 0;
+            /* Don't forget this, required for the stickiness */
+            background-color: #fcfcfc;
+        }
+        .empty{
+            color:#fcfcfc;
+        }
+        .fill-in {
+            border-radius: 20px;
+            margin-left: 100px;
+        }
+
+        .tablepanel {
+            overflow-y: scroll;
+            width: 100%;
+            height: 660px;
+            margin-left: 50px;
+            border-radius: 25px;
+        }
+
+        .borderless td,
+        .borderless th {
+            border: none;
+        }
+
+        tr:nth-child(even) {background-color: #f2f2f2;}
+
+        .tablepanel::-webkit-scrollbar {
+            width: 10px;
+            background: white;
+            border-radius: 0 8px 8px 0;
+            height: 200px;
+            
+        }
+
+        .tablepanel::-webkit-scrollbar-thumb {
+            background:#c5c5c5;
+            border-radius: 0 8px 8px 0;
+            height: 300px;
+        }
+
+        .tabletext1 {
+            text-align: left;
+            letter-spacing: 1px;
+            font-size: 14px;
+            font-family: 'Nunito';
+            color: #0C66CC;
+            
+        }
+
+        .gradeScreenshot {
+            text-align: left;
+            letter-spacing: 1px;
+            font-size: 20px;
+            font-family: 'Nunito';
+            color: #0C66CC;
+            font-weight: bold;
+        }
+
+
+
+        .tabletext2 {
+            text-align: left;
+            letter-spacing: 1px;
+            font-size: 18px;
+            font-family: 'Nunito';
+            color: #252525;
+        }
+
+        .dataStyle {
+            width: 300px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            color: #252525;
+        }
+
+        #remarks {
+            padding-left: 5px;
+            border: none;
+            background: #0C66CC;
+            font-size: 15px;
+            font-family: Nunito;
+            cursor: pointer;
+            color: white;
+            border-radius: 10px;
+            height: 33px;
+            width: 88px;
+
+        }
+
+        #grade {
+            padding-left: 5px;
+            border: none;
+            background: #0C66CC;
+            font-size: 15px;
+            font-family: Nunito;
+            cursor: pointer;
+            color: white;
+            border-radius: 10px;
+            height: 33px;
+            width: 88px;
+
+        }
+
+        .imgSubmit{
+            margin-left: 20px;
+            margin-top: 150px;
+        }
+
+        #delete{
+            border:none;
+            background-color: transparent;
+            cursor: pointer;
+        }
+        /***** END OF CHECKLIST *****/
+
+
+        .clist{
+            margin-left: 50px;
+            margin-right: 100px;    
+        }
+
+        .downloadBtn {
+            background-color: #0C66CC;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 20px;
+            border-radius: 15px;
+            margin-left: 5px;
+
+        }
+
+        .downloadBtn:hover{
+            background-color: #2852A4;
+        }
+
+        .feedbackBtn {
+        background-color: #0C66CC;
+        border: none;
+        color: white;
+        padding: 30px 30px 30px 30px;
+        margin-left: 190px;
+        cursor: pointer;
+        font-size: 20px;
+        border-radius: 20px;
+    }
+
+        .feedbackBtn:hover{
+            background-color: #2852A4;
+        }
+
+        .cswBtn2 {
+        background-color: #0C66CC;
+        border: none;
+        color: white;
+        padding: 30px 30px 30px 30px;
+        cursor: pointer;
+        font-size: 16px;
+        border-radius: 20px;
+        height: 130px;
+        width: 140px;
+        position: absolute;
+
+    }
+
+    .cswBtn2:hover{
+        background-color: #2852A4;
+    }
+
+        #stat {
+        margin-left: 10px;
+        margin-top: 30px;
+        font-size: 20px;
+        font-weight: bold;
+        color: #0C66CC;
+        font-family: 'Nunito';
+    }
+
+    #stat-slct {
+        background-color: white;
+        color: #0C66CC;
+        border-width: 2px;
+        border-radius: 8px;
+        border-color: #0C66CC;
+        padding: 2px;
+        font-family: 'Nunito';
+        font-size: 18px;
+        margin-right: -50px;
+        margin-top: 28px;
+        padding-left: 20px;
+        padding-right: 10px;
+    }
+                
+    #stat-slct option {
+        font-family: 'Nunito';
+        font-size: 15px;
+        color: #0C66CC;
+        background-color: white;
+        border-radius: 10px;
+        border-color: #0C66CC;
+        border-width: 2px;
+    }
+
+
+    .status-select:hover::after {
+        color: #0C66CC;
+    }
+
+    .saveBtn{
+    margin-left: 75px;
+    margin-top: 30px;
+    background-color: transparent;
+    border: none;
+    }
+
+    .btn-primary{
+        background-color: #0C66CC;
+        border-radius: 10px;
+        border-color: #0C66CC;
+        border-width: 2px;
+        float: right;
+        margin-top: 10px;
+    }
+
+    .form-control{
+        border-radius: 10px;
+        border-color: #0C66CC;
+        border-width: 2px;
+        text-align: left;
+    }
+
+    #subjectMessage {
+        padding: 20px;
+        background-color: white;
+        border-radius: 15px;
+        color: #0C66CC;
+        box-shadow: 0 0 10px rgb(216, 216, 216);
+        margin-top: 50px;
+        animation: zoom-in-zoom-out 1s ease;
+    }
+
+        .alertError{
+        padding: 20px;
+        background-color: #f34e01;
+        border-radius: 15px;
+        color: white;
+        box-shadow: 0 0 10px rgb(216, 216, 216);
+        animation: zoom-in-zoom-out 1s ease;
+        }
+
+        .alertSuccess{
+        padding: 20px;
+        background-color: #3fb328;
+        border-radius: 15px;
+        color: white;
+        box-shadow: 0 0 10px rgb(216, 216, 216);
+        animation: zoom-in-zoom-out 1s ease;
+        }
+
+        .closebtnError {
+        margin-left: 15px;
+        color: white;
+        font-weight: bold;
+        float: right;
+        font-size: 22px;
+        line-height: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+        }
+
+        .closebtnError:hover {
+            color: #a33908;
+        }
+
+        .closebtnSuccess {
+        margin-left: 15px;
+        color: white;
+        font-weight: bold;
+        float: right;
+        font-size: 22px;
+        line-height: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+        }
+
+        .closebtnSuccess:hover {
+            color: #1c6b0c;
+        }
+
+
+
+        @keyframes zoom-in-zoom-out {
+        0% {
+            transform: scale(1, 1);
+        }
+        50% {
+            transform: scale(1.1, 1.1);
+        }
+        100% {
+            transform: scale(1, 1);
+        }
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+
+        <!-- Sidebar -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <li>
+                    <p><br><br><img src="{% static 'CRS/images/fHomeAndProfile/hat.png' %}" width="126px" height="87px"><br><br>
+                </li>
+            </div>
+            <ul class="sidebar components">
+                <!-- FILE PATH: Faculty/fHomeAndProfile/fHome.html-->
+                <li class="active"><a href="{% url 'fHome' %}"><img src="{% static 'CRS/images/cIcons/home2.png' %}" width="97px" height="auto"></a></li>
+                <!-- FILE PATH: Faculty/fHomeAndProfile/fProfile.html-->
+                <li><a href="{% url 'fProfile' %}"><img src="{% static 'CRS/images/cIcons/profile2.png' %}" width="97px" height="auto"></a></li>
+                <!-- FILE PATH: Faculty/fStudents/fStudents.html-->
+                <li><a href="{% url 'fStudents_advisory' %}"><img src="{% static 'CRS/images/cIcons/students2.png' %}" width="97px" height="auto"></a></li>
+                <!-- FILE PATH: Faculty/fClassroom/fViewSched.html-->
+                <li><a href="{% url 'fViewSched' %}"><img src="{% static 'CRS/images/cIcons/classroom2.png' %}" width="97px" height="auto"></a></li>
+                <!-- FILE PATH: LOG-OUT -->
+                <li><a href="{% url 'logout' %}"><img src="{% static 'CRS/images/cIcons/log-out2.png' %}" width="97px" height="auto"></a></li>
+            </ul>
+        </nav>
+        <!--End of Sidebar -->
+
+        <!-- Content -->
+        <div id="content">
+
+            <div class=" container-fluid">
+                <div class="back row">
+                    <a href="{% url 'fStudents_advisory' %}" id="back-edit"><img src="{% static 'CRS/images/cHome/back.svg' %}" width="50" style="margin-top: 35px;"></a>
+                    <p id="schedtitle">Student Grade</p>
+                </div>
+                <br>
+                </div>
+                {% if stud_checklist.remarks == "Approved"%}
+                    {% if stud_checklist.crsApprovedChecklist == null or stud_checklist.crsApprovedChecklist == none%}
+                    <form method="POST" enctype="multipart/form-data">
+                        {%csrf_token%}	   
+                        <div>
+                            <button  id="button2hvr">&nbsp;&nbsp;&nbsp;Upload Approved Checklist</button>
+                            <input type="file" name="checkListApproved" required>
+                        </div>
+                        <input type="submit" id="submitbtn" value="Submit">
+                    </form>
+                    {% else %}
+                    <p>you have succesfully submitted an approved checklist!</p>
+                    {% endif %}
+                {% else %}
+                    <form method="POST">
+                        <div class="gradeScreenshot">
+                            {% if stud_checklist != null %}              
+                                <!--DROPDOWN-->
+                                    <div class= "stat-drop row">
+                                        <p id="stat">Status:&nbsp;&nbsp;</p>
+                                        <div class="dropdown">
+                                            <form method="POST">
+                                                {% csrf_token %}
+                                                <span class="status-select">
+                                                    <select name="slct" id="stat-slct">
+                                                        {% if stud_checklist.remarks == "Submitted" %}
+                                                        <option value="{{grade_file.remarks}}"> &nbsp; {{stud_checklist.remarks}} </option> 
+                                                        <option value="Returned"> &nbsp; Returned </option>
+                                                        <option value="Approved"> &nbsp; Approved </option>
+                                                        {% elif stud_checklist.remarks == "Returned" %}
+                                                        <option value="{{stud_checklist.remarks}}"> &nbsp; {{stud_checklist.remarks}} </option> 
+                                                        <option value="Submitted"> &nbsp; Submitted </option>
+                                                        <option value="Approved"> &nbsp; Approved </option>
+                                                        {% elif stud_checklist.remarks == "Approved" %}
+                                                        <option value="{{stud_checklist.remarks}}"> &nbsp; {{stud_checklist.remarks}} </option> 
+                                                        <option value="Submitted"> &nbsp; Submitted </option>
+                                                        <option value="Returned"> &nbsp; Returned</option>
+                                                        {%endif%}
+                                                    </select>
+                                                </span>
+                                            </form>
+                                        </div>
+                                    </div>
+                                   
+                                    <!--END DROPDOWN-->
+                                   
+                                <br><hr><br>
+                                
+                                <!--FEEDBACK BUTTON-->
+                                <div class="back row">    
+                                    {% csrf_token %}
+                                    <label for="Commenthere" class="sr-only">Comment</label>
+                                    <br>
+                                    <textarea class="form-control" id="message" name="message" cols="10" rows="5" placeholder="Write something here...">
+                                    </textarea>
+                                </div>
+
+                                
+                                <button type="submit" class="btn btn-primary mb-2" name="feedback">Submit</button>
+                            {% endif %}
+                        </div>
+                                              
+                    </form>
+                
+                    <div>
+                        {% if stud_checklist.checkList != null %}       
+                        <a href="{{stud_checklist.crsChecklist.url}}"  target="_blank" download><button type="button" class="cswBtn1"><img src="{% static 'CRS/images/cOthers/download2.png' %}" width="auto" height="42"><br>Download CRS Grade</button></a>
+                        {% endif %}
+                    </div>
+
+                    <div>
+                        {% if stud_checklist.crsChecklist != null %}
+                        <a href="{{stud_checklist.checkList.url}}"  target="_blank" download><button type="button" class="cswBtn1"><img src="{% static 'CRS/images/cOthers/download2.png' %}" width="auto" height="42"><br>Download Checklist</button></a><!-- DB DOWNLOAD CSW BUTTON -->
+                        {% endif %}
+                    </div>
+                    <!--End of Left Side-->
+                {% endif %}   
+                    <!--Right Side | Edit Grades-->
+                    <div class="checklist-img row col-lg-1"></div> 
+                    
+                    <div class="checklist-img row col-lg-3">
+                        {% if messages %}
+                        {% for message in messages %}
+                        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                        <div class="alertError">
+                            <span class="closebtnError" onclick="this.parentElement.style.display='none';">&times;</span> 
+                            {{ message }}
+                        </div>
+                        {% endif %}
+                        
+
+                        {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                        <div class="alertSuccess">
+                            <span class="closebtnSuccess" onclick="this.parentElement.style.display='none';">&times;</span> 
+                            {{ message }}
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                        {% endif %}
+
+                        
+                        <br><br><br><img src="{% static 'CRS/images/fStudents/studclassroom_checklist-img.png' %}" width=456 height=456>            
+                    </div> 
+                    <!--End of Right Side-->
+                </div>
+                
+            </div><br><br><br>
+
+
+        </div>
+    </div>
+    <!-- Javascript -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+</body>
+
+</html>
