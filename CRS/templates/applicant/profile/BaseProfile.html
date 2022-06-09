@@ -40,10 +40,9 @@
     border-radius: 15px;
     color: white;
     box-shadow: 0 0 10px rgb(216, 216, 216);
-    margin-top: 50px;
-    margin-left: 1100px;
-    margin-bottom: 10px;
     animation: zoom-in-zoom-out 1s ease;
+    bottom: 100px;
+
     }
 
     .alertSuccess{
@@ -242,6 +241,7 @@
 		top: 518px;
 		left: 740px;
 	}
+
     
     </style>
 </head>
@@ -294,6 +294,11 @@
                         <span class="closebtnSuccess" onclick="this.parentElement.style.display='none';">&times;</span> 
                         {{ message }}
                     </div>
+                    {% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                    <div class="alertError">
+                        <span class="closebtnSuccess" onclick="this.parentElement.style.display='none';">&times;</span> 
+                        {{ message }}
+                    </div>
                     {% endif %}
                         
                     {% endfor %}
@@ -308,10 +313,15 @@
 
                         <p class="text-profile" id="edit">Re-Upload Files</p>
                         <form method ="POST" action="" enctype="multipart/form-data">
+                        
                         {% csrf_token %}
                         {%block submission%}
                         {%endblock%}
-                        <a> <button type="submit" value="Submit" id="submitbutton"> Submit </button></a>
+                        {%if info.remarks == "Returned"%}
+                            <a> <button type="submit" value="Submit" id="submitbutton"> Submit </button></a>
+                        {%elif info.remarks == "Submitted"%}
+                            <a> <button type="button" value="Submit" id="submitbutton"> Submit </button></a>
+                        {% endif %}
                         </form>
                     </div>
 

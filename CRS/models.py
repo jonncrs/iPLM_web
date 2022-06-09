@@ -644,6 +644,8 @@ class ShifterApplicant(models.Model):
     applicant_num = models.CharField(max_length=10, verbose_name="applicant_num", null=True)
     sex = models.CharField(max_length=100, verbose_name="sex", null=True)
     shiftingForm = models.FileField(upload_to='ShifterSubmission/', blank=True, null=True)
+    Checklist  = models.FileField(upload_to='ShifterSubmission/', blank=True, null=True)
+    feedback = models.CharField(max_length=100, verbose_name="feedback", null=True)
     
 
     # dateApproved = models.DateTimeField()
@@ -675,6 +677,8 @@ class TransfereeApplicant(models.Model):
     signature2 = models.ImageField(upload_to='TransfereeSign/', null=True, blank=True)
     applicant_num = models.CharField(max_length=10, verbose_name="applicant_num", null=True)
     sex = models.CharField(max_length=100, verbose_name="sex", null=True)
+    feedback = models.CharField(max_length=100, verbose_name="feedback", null=True)
+
     # dateApproved = models.DateTimeField()
 
     class Meta:
@@ -712,15 +716,13 @@ class FacultyApplicant(models.Model):
     accomplishments = models.FileField(upload_to='facultyApplicant/', blank=True, null=True)
     summaryduties = models.FileField(upload_to='facultyApplicant/', blank=True, null=True)
     applicant_num = models.CharField(max_length=10, verbose_name="applicant_num", null=True)
+    feedback = models.CharField(max_length=100, verbose_name="feedback", null=True)
     
     class Meta:
         verbose_name_plural = "Faculty Applicants"
 
     def __str__(self):
         return self.email
-
-
-
 
 
 class studentScheduling(models.Model):
