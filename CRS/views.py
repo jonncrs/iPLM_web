@@ -40,6 +40,7 @@ import datetime
 import MySQLdb
 from django.contrib.auth import get_user_model
 import string
+import mysql.connector
 #global variable
 psw = "a"
 
@@ -694,6 +695,16 @@ def students_bsit1(request):
     section = BlockSection.objects.filter(blockYear="1", blockSection="1", blockCourse='BSIT')
     bsit1 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsit1.count()
     year = '1st Year'; block1 = '1'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 1 and blockSection = 1 and blockCourse like 'BSIT%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsit1 = StudentInfo.objects.filter(
@@ -702,13 +713,23 @@ def students_bsit1(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsit1': bsit1, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsit1': bsit1, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students/students_bsit1.html', context)
 
 def students_bsit1_2(request):
     section = BlockSection.objects.filter(blockYear="1", blockSection="2", blockCourse='BSIT')
     bsit1 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsit1.count()
     year = '1st Year'; block1 = '2'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 1 and blockSection = 2 and blockCourse like 'BSIT%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsit1 = StudentInfo.objects.filter(
@@ -717,13 +738,23 @@ def students_bsit1_2(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsit1': bsit1, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsit1': bsit1, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students/students_bsit1-2.html', context)
 
 def students_bsit1_3(request):
     section = BlockSection.objects.filter(blockYear="1", blockSection="3", blockCourse='BSIT')
     bsit1 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsit1.count()
     year = '1st Year'; block1 = '3'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 1 and blockSection = 3 and blockCourse like 'BSIT%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsit1 = StudentInfo.objects.filter(
@@ -732,13 +763,23 @@ def students_bsit1_3(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsit1': bsit1, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsit1': bsit1, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students/students_bsit1-3.html', context)
 
 def students_bsit1_4(request):
     section = BlockSection.objects.filter(blockYear="1", blockSection="4", blockCourse='BSIT')
     bsit1 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsit1.count()
     year = '1st Year'; block1 = '4'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 1 and blockSection = 4 and blockCourse like 'BSIT%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsit1 = StudentInfo.objects.filter(
@@ -747,13 +788,23 @@ def students_bsit1_4(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsit1': bsit1, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsit1': bsit1, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students/students_bsit1-4.html', context)
 
 def students_bsit1_5(request):
     section = BlockSection.objects.filter(blockYear="1", blockSection="5", blockCourse='BSIT')
     bsit1 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsit1.count()
     year = '1st Year'; block1 = '5'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 1 and blockSection = 5 and blockCourse like 'BSIT%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsit1 = StudentInfo.objects.filter(
@@ -762,13 +813,23 @@ def students_bsit1_5(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsit1': bsit1, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsit1': bsit1, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students/students_bsit1-5.html', context)
 
 def students_bsit1_6(request):
     section = BlockSection.objects.filter(blockYear="1", blockSection="6", blockCourse='BSIT')
     bsit1 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsit1.count()
     year = '1st Year'; block1 = '6'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 1 and blockSection = 6 and blockCourse like 'BSIT%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsit1 = StudentInfo.objects.filter(
@@ -777,7 +838,7 @@ def students_bsit1_6(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsit1': bsit1, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsit1': bsit1, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students/students_bsit1-6.html', context)
 
 """def students_bsit2_1(request):
@@ -792,6 +853,16 @@ def students_bsit2_1(request):
     section = BlockSection.objects.filter(blockYear="2", blockSection="1", blockCourse='BSIT')
     bsit2 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsit2.count()
     year = '2nd Year'; block1 = '1'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 2 and blockSection = 1 and blockCourse like 'BSIT%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsit2 = StudentInfo.objects.filter(
@@ -800,13 +871,23 @@ def students_bsit2_1(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsit2': bsit2, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsit2': bsit2, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students/students_bsit2-1.html', context)
 
 def students_bsit2_2(request):
     section = BlockSection.objects.filter(blockYear="2", blockSection="2", blockCourse='BSIT')
     bsit2 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsit2.count()
     year = '2nd Year'; block1 = '2'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 2 and blockSection = 2 and blockCourse like 'BSIT%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsit2 = StudentInfo.objects.filter(
@@ -815,13 +896,23 @@ def students_bsit2_2(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsit2': bsit2, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsit2': bsit2, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students/students_bsit2-2.html', context)
 
 def students_bsit2_3(request):
     section = BlockSection.objects.filter(blockYear="2", blockSection="3", blockCourse='BSIT')
     bsit2 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsit2.count()
     year = '2nd Year'; block1 = '3'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 2 and blockSection = 3 and blockCourse like 'BSIT%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsit2 = StudentInfo.objects.filter(
@@ -830,13 +921,23 @@ def students_bsit2_3(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsit2': bsit2, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsit2': bsit2, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students/students_bsit2-3.html', context)
 
 def students_bsit2_4(request):
     section = BlockSection.objects.filter(blockYear="2", blockSection="4", blockCourse='BSIT')
     bsit2 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsit2.count()
     year = '2nd Year'; block1 = '4'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 2 and blockSection = 4 and blockCourse like 'BSIT%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsit2 = StudentInfo.objects.filter(
@@ -845,13 +946,23 @@ def students_bsit2_4(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsit2': bsit2, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsit2': bsit2, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students/students_bsit2-4.html', context)
 
 def students_bsit2_5(request):
     section = BlockSection.objects.filter(blockYear="2", blockSection="5", blockCourse='BSIT')
     bsit2 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsit2.count()
     year = '2nd Year'; block1 = '5'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 2 and blockSection = 5 and blockCourse like 'BSIT%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsit2 = StudentInfo.objects.filter(
@@ -860,13 +971,23 @@ def students_bsit2_5(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsit2': bsit2, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsit2': bsit2, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students/students_bsit2-5.html', context)
 
 def students_bsit2_6(request):
     section = BlockSection.objects.filter(blockYear="2", blockSection="6", blockCourse='BSIT')
     bsit2 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsit2.count()
     year = '2nd Year'; block1 = '6'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 2 and blockSection = 6 and blockCourse like 'BSIT%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsit2 = StudentInfo.objects.filter(
@@ -875,7 +996,7 @@ def students_bsit2_6(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsit2': bsit2, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsit2': bsit2, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students/students_bsit2-6.html', context)
 
 """def students_bsit3_1(request):
@@ -890,6 +1011,16 @@ def students_bsit3_1(request):
     section = BlockSection.objects.filter(blockYear="3", blockSection="1", blockCourse='BSIT')
     bsit3 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsit3.count()
     year = '3rd Year'; block1 = '1'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 3 and blockSection = 1 and blockCourse like 'BSIT%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsit3 = StudentInfo.objects.filter(
@@ -898,13 +1029,23 @@ def students_bsit3_1(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsit3': bsit3, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsit3': bsit3, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students/students_bsit3-1.html', context)
 
 def students_bsit3_2(request):
     section = BlockSection.objects.filter(blockYear="3", blockSection="2", blockCourse='BSIT')
     bsit3 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsit3.count()
     year = '3rd Year'; block1 = '2'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 3 and blockSection = 2 and blockCourse like 'BSIT%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsit3 = StudentInfo.objects.filter(
@@ -913,13 +1054,23 @@ def students_bsit3_2(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsit3': bsit3, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsit3': bsit3, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students/students_bsit3-2.html', context)
 
 def students_bsit3_3(request):
     section = BlockSection.objects.filter(blockYear="3", blockSection="3", blockCourse='BSIT')
     bsit3 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsit3.count()
     year = '3rd Year'; block1 = '3'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 3 and blockSection = 3 and blockCourse like 'BSIT%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsit3 = StudentInfo.objects.filter(
@@ -928,13 +1079,23 @@ def students_bsit3_3(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsit3': bsit3, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsit3': bsit3, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students/students_bsit3-3.html', context)
 
 def students_bsit3_4(request):
     section = BlockSection.objects.filter(blockYear="3", blockSection="4", blockCourse='BSIT')
     bsit3 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsit3.count()
     year = '3rd Year'; block1 = '4'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 3 and blockSection = 4 and blockCourse like 'BSIT%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsit3 = StudentInfo.objects.filter(
@@ -943,13 +1104,23 @@ def students_bsit3_4(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsit3': bsit3, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsit3': bsit3, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students/students_bsit3-4.html', context)
 
 def students_bsit3_5(request):
     section = BlockSection.objects.filter(blockYear="3", blockSection="5", blockCourse='BSIT')
     bsit3 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsit3.count()
     year = '3rd Year'; block1 = '5'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 3 and blockSection = 5 and blockCourse like 'BSIT%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsit3 = StudentInfo.objects.filter(
@@ -958,13 +1129,23 @@ def students_bsit3_5(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsit3': bsit3, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsit3': bsit3, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students/students_bsit3-5.html', context)
 
 def students_bsit3_6(request):
     section = BlockSection.objects.filter(blockYear="3", blockSection="6", blockCourse='BSIT')
     bsit3 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsit3.count()
     year = '3rd Year'; block1 = '6'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 3 and blockSection = 6 and blockCourse like 'BSIT%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsit3 = StudentInfo.objects.filter(
@@ -973,7 +1154,7 @@ def students_bsit3_6(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsit3': bsit3, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsit3': bsit3, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students/students_bsit3-5.html', context)
 
 """def students_bsit4_1(request):
@@ -988,6 +1169,16 @@ def students_bsit4_1(request):
     section = BlockSection.objects.filter(blockYear="4", blockSection="1", blockCourse='BSIT')
     bsit4 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsit4.count()
     year = '4th Year'; block1 = '1'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 4 and blockSection = 1 and blockCourse like 'BSIT%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsit4 = StudentInfo.objects.filter(
@@ -996,13 +1187,23 @@ def students_bsit4_1(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsit4': bsit4, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsit4': bsit4, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students/students_bsit4-1.html', context)
 
 def students_bsit4_2(request):
     section = BlockSection.objects.filter(blockYear="4", blockSection="2", blockCourse='BSIT')
     bsit4 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsit4.count()
     year = '4th Year'; block1 = '2'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 4 and blockSection = 2 and blockCourse like 'BSIT%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsit4 = StudentInfo.objects.filter(
@@ -1011,13 +1212,23 @@ def students_bsit4_2(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsit4': bsit4, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsit4': bsit4, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students/students_bsit4-2.html', context)
 
 def students_bsit4_3(request):
     section = BlockSection.objects.filter(blockYear="4", blockSection="3", blockCourse='BSIT')
     bsit4 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsit4.count()
     year = '4th Year'; block1 = '3'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 4 and blockSection = 3 and blockCourse like 'BSIT%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsit4 = StudentInfo.objects.filter(
@@ -1026,13 +1237,23 @@ def students_bsit4_3(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsit4': bsit4, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsit4': bsit4, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students/students_bsit4-3.html', context)
 
 def students_bsit4_4(request):
     section = BlockSection.objects.filter(blockYear="4", blockSection="4", blockCourse='BSIT')
     bsit4 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsit4.count()
     year = '4th Year'; block1 = '4'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 4 and blockSection = 4 and blockCourse like 'BSIT%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsit4 = StudentInfo.objects.filter(
@@ -1041,13 +1262,23 @@ def students_bsit4_4(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsit4': bsit4, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsit4': bsit4, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students/students_bsit4-4.html', context)
 
 def students_bsit4_5(request):
     section = BlockSection.objects.filter(blockYear="4", blockSection="5", blockCourse='BSIT')
     bsit4 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsit4.count()
     year = '4th Year'; block1 = '5'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 4 and blockSection = 5 and blockCourse like 'BSIT%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsit4 = StudentInfo.objects.filter(
@@ -1056,13 +1287,23 @@ def students_bsit4_5(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsit4': bsit4, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsit4': bsit4, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students/students_bsit4-5.html', context)
 
 def students_bsit4_6(request):
     section = BlockSection.objects.filter(blockYear="4", blockSection="6", blockCourse='BSIT')
     bsit4 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsit4.count()
     year = '4th Year'; block1 = '6'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 4 and blockSection = 6 and blockCourse like 'BSIT%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsit4 = StudentInfo.objects.filter(
@@ -1071,7 +1312,7 @@ def students_bsit4_6(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsit4': bsit4, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsit4': bsit4, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students/students_bsit4-6.html', context)
 
 """def students_bsit5_1(request):
@@ -1086,6 +1327,16 @@ def students_bsit5_1(request):
     section = BlockSection.objects.filter(blockYear="5", blockSection="1", blockCourse='BSIT')
     bsit5 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsit5.count()
     year = '5th Year'; block1 = '1'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 5 and blockSection = 1 and blockCourse like 'BSIT%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsit5 = StudentInfo.objects.filter(
@@ -1094,13 +1345,23 @@ def students_bsit5_1(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsit5': bsit5, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsit5': bsit5, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students/students_bsit5-1.html', context)
 
 def students_bsit5_2(request):
     section = BlockSection.objects.filter(blockYear="5", blockSection="2", blockCourse='BSIT')
     bsit5 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsit5.count()
     year = '5th Year'; block1 = '2'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 5 and blockSection = 2 and blockCourse like 'BSIT%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsit5 = StudentInfo.objects.filter(
@@ -1109,13 +1370,23 @@ def students_bsit5_2(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsit5': bsit5, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsit5': bsit5, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students/students_bsit5-2.html', context)
 
 def students_bsit5_3(request):
     section = BlockSection.objects.filter(blockYear="5", blockSection="3", blockCourse='BSIT')
     bsit5 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsit5.count()
     year = '5th Year'; block1 = '3'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 5 and blockSection = 3 and blockCourse like 'BSIT%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsit5 = StudentInfo.objects.filter(
@@ -1124,13 +1395,23 @@ def students_bsit5_3(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsit5': bsit5, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsit5': bsit5, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students/students_bsit5-3.html', context)
 
 def students_bsit5_4(request):
     section = BlockSection.objects.filter(blockYear="5", blockSection="4", blockCourse='BSIT')
     bsit5 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsit5.count()
     year = '5th Year'; block1 = '4'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 5 and blockSection = 4 and blockCourse like 'BSIT%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsit5 = StudentInfo.objects.filter(
@@ -1139,13 +1420,23 @@ def students_bsit5_4(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsit5': bsit5, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsit5': bsit5, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students/students_bsit5-4.html', context)
 
 def students_bsit5_5(request):
     section = BlockSection.objects.filter(blockYear="5", blockSection="5", blockCourse='BSIT')
     bsit5 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsit5.count()
     year = '5th Year'; block1 = '5'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 5 and blockSection = 5 and blockCourse like 'BSIT%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsit5 = StudentInfo.objects.filter(
@@ -1154,13 +1445,23 @@ def students_bsit5_5(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsit5': bsit5, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsit5': bsit5, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students/students_bsit5-5.html', context)
 
 def students_bsit5_6(request):
     section = BlockSection.objects.filter(blockYear="5", blockSection="6", blockCourse='BSIT')
     bsit5 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsit5.count()
     year = '5th Year'; block1 = '6'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 5 and blockSection = 6 and blockCourse like 'BSIT%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsit5 = StudentInfo.objects.filter(
@@ -1169,7 +1470,7 @@ def students_bsit5_6(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsit5': bsit5, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsit5': bsit5, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students/students_bsit5-6.html', context)
 
 """def students_bsit6_1(request):
@@ -1184,6 +1485,16 @@ def students_bsit6_1(request):
     section = BlockSection.objects.filter(blockYear="6", blockSection="1", blockCourse='BSIT')
     bsit6 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsit6.count()
     year = '6th Year'; block1 = '1'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 6 and blockSection = 1 and blockCourse like 'BSIT%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsit6 = StudentInfo.objects.filter(
@@ -1192,13 +1503,23 @@ def students_bsit6_1(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsit6': bsit6, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsit6': bsit6, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students/students_bsit6-1.html', context)
 
 def students_bsit6_2(request):
     section = BlockSection.objects.filter(blockYear="6", blockSection="2", blockCourse='BSIT')
     bsit6 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsit6.count()
     year = '6th Year'; block1 = '2'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 6 and blockSection = 2 and blockCourse like 'BSIT%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsit6 = StudentInfo.objects.filter(
@@ -1207,13 +1528,23 @@ def students_bsit6_2(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsit6': bsit6, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsit6': bsit6, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students/students_bsit6-2.html', context)
 
 def students_bsit6_3(request):
     section = BlockSection.objects.filter(blockYear="6", blockSection="3", blockCourse='BSIT')
     bsit6 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsit6.count()
     year = '6th Year'; block1 = '3'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 6 and blockSection = 3 and blockCourse like 'BSIT%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsit6 = StudentInfo.objects.filter(
@@ -1222,13 +1553,23 @@ def students_bsit6_3(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsit6': bsit6, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsit6': bsit6, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students/students_bsit6-3.html', context)
 
 def students_bsit6_4(request):
     section = BlockSection.objects.filter(blockYear="6", blockSection="4", blockCourse='BSIT')
     bsit6 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsit6.count()
     year = '6th Year'; block1 = '4'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 6 and blockSection = 4 and blockCourse like 'BSIT%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsit6 = StudentInfo.objects.filter(
@@ -1237,13 +1578,23 @@ def students_bsit6_4(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsit6': bsit6, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsit6': bsit6, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students/students_bsit6-4.html', context)
 
 def students_bsit6_5(request):
     section = BlockSection.objects.filter(blockYear="6", blockSection="5", blockCourse='BSIT')
     bsit6 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsit6.count()
     year = '6th Year'; block1 = '5'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 6 and blockSection = 5 and blockCourse like 'BSIT%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsit6 = StudentInfo.objects.filter(
@@ -1252,13 +1603,23 @@ def students_bsit6_5(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsit6': bsit6, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsit6': bsit6, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students/students_bsit6-5.html', context)
 
 def students_bsit6_6(request):
     section = BlockSection.objects.filter(blockYear="6", blockSection="6", blockCourse='BSIT')
     bsit6 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsit6.count()
     year = '6th Year'; block1 = '6'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 6 and blockSection = 6 and blockCourse like 'BSIT%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsit6 = StudentInfo.objects.filter(
@@ -1267,7 +1628,7 @@ def students_bsit6_6(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsit6': bsit6, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsit6': bsit6, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students/students_bsit6-6.html', context)
 
 #BSEE Students
@@ -1283,6 +1644,16 @@ def students_bsee1(request):
     section = BlockSection.objects.filter(blockYear="1", blockSection="1", blockCourse='BSEE')
     bsee1 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsee1.count()
     year = '1st Year'; block1 = '1'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 1 and blockSection = 1 and blockCourse like 'BSEE%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsee1 = StudentInfo.objects.filter(
@@ -1291,13 +1662,23 @@ def students_bsee1(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsee1': bsee1, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsee1': bsee1, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students BSEE/students_bsee1.html', context)
 
 def students_bsee1_2(request):
     section = BlockSection.objects.filter(blockYear="1", blockSection="2", blockCourse='BSEE')
     bsee1 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsee1.count()
     year = '1st Year'; block1 = '2'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 1 and blockSection = 2 and blockCourse like 'BSEE%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsee1 = StudentInfo.objects.filter(
@@ -1306,13 +1687,23 @@ def students_bsee1_2(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsee1': bsee1, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsee1': bsee1, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students BSEE/students_bsee1-2.html', context)
 
 def students_bsee1_3(request):
     section = BlockSection.objects.filter(blockYear="1", blockSection="3", blockCourse='BSEE')
     bsee1 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsee1.count()
     year = '1st Year'; block1 = '3'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 1 and blockSection = 3 and blockCourse like 'BSEE%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsee1 = StudentInfo.objects.filter(
@@ -1321,13 +1712,23 @@ def students_bsee1_3(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsee1': bsee1, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsee1': bsee1, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students BSEE/students_bsee1-3.html', context)
 
 def students_bsee1_4(request):
     section = BlockSection.objects.filter(blockYear="1", blockSection="4", blockCourse='BSEE')
     bsee1 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsee1.count()
     year = '1st Year'; block1 = '4'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 1 and blockSection = 4 and blockCourse like 'BSEE%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsee1 = StudentInfo.objects.filter(
@@ -1336,13 +1737,23 @@ def students_bsee1_4(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsee1': bsee1, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsee1': bsee1, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students BSEE/students_bsee1-4.html', context)
 
 def students_bsee1_5(request):
     section = BlockSection.objects.filter(blockYear="1", blockSection="5", blockCourse='BSEE')
     bsee1 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsee1.count()
     year = '1st Year'; block1 = '5'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 1 and blockSection = 5 and blockCourse like 'BSEE%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsee1 = StudentInfo.objects.filter(
@@ -1351,13 +1762,23 @@ def students_bsee1_5(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsee1': bsee1, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsee1': bsee1, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students BSEE/students_bsee1-5.html', context)
 
 def students_bsee1_6(request):
     section = BlockSection.objects.filter(blockYear="1", blockSection="6", blockCourse='BSEE')
     bsee1 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsee1.count()
     year = '1st Year'; block1 = '6'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 1 and blockSection = 6 and blockCourse like 'BSEE%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsee1 = StudentInfo.objects.filter(
@@ -1366,7 +1787,7 @@ def students_bsee1_6(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsee1': bsee1, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsee1': bsee1, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students BSEE/students_bsee1-6.html', context)
 
 """def students_bsee2_1(request):
@@ -1381,6 +1802,16 @@ def students_bsee2_1(request):
     section = BlockSection.objects.filter(blockYear="2", blockSection="1", blockCourse='BSEE')
     bsee2 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsee2.count()
     year = '2nd Year'; block1 = '1'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 2 and blockSection = 1 and blockCourse like 'BSEE%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsee2 = StudentInfo.objects.filter(
@@ -1389,13 +1820,23 @@ def students_bsee2_1(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsee2': bsee2, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsee2': bsee2, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students BSEE/students_bsee2-1.html', context)
 
 def students_bsee2_2(request):
     section = BlockSection.objects.filter(blockYear="2", blockSection="2", blockCourse='BSEE')
     bsee2 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsee2.count()
     year = '2nd Year'; block1 = '2'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 2 and blockSection = 2 and blockCourse like 'BSEE%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsee2 = StudentInfo.objects.filter(
@@ -1404,13 +1845,23 @@ def students_bsee2_2(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsee2': bsee2, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsee2': bsee2, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students BSEE/students_bsee2-2.html', context)
 
 def students_bsee2_3(request):
     section = BlockSection.objects.filter(blockYear="2", blockSection="3", blockCourse='BSEE')
     bsee2 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsee2.count()
     year = '2nd Year'; block1 = '3'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 2 and blockSection = 3 and blockCourse like 'BSEE%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsee2 = StudentInfo.objects.filter(
@@ -1419,13 +1870,23 @@ def students_bsee2_3(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsee2': bsee2, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsee2': bsee2, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students BSEE/students_bsee2-3.html', context)
 
 def students_bsee2_4(request):
     section = BlockSection.objects.filter(blockYear="2", blockSection="4", blockCourse='BSEE')
     bsee2 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsee2.count()
     year = '2nd Year'; block1 = '4'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 2 and blockSection = 4 and blockCourse like 'BSEE%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsee2 = StudentInfo.objects.filter(
@@ -1434,13 +1895,23 @@ def students_bsee2_4(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsee2': bsee2, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsee2': bsee2, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students BSEE/students_bsee2-4.html', context)
 
 def students_bsee2_5(request):
     section = BlockSection.objects.filter(blockYear="2", blockSection="5", blockCourse='BSEE')
     bsee2 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsee2.count()
     year = '2nd Year'; block1 = '5'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 2 and blockSection = 5 and blockCourse like 'BSEE%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsee2 = StudentInfo.objects.filter(
@@ -1449,13 +1920,23 @@ def students_bsee2_5(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsee2': bsee2, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsee2': bsee2, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students BSEE/students_bsee2-5.html', context)
 
 def students_bsee2_6(request):
     section = BlockSection.objects.filter(blockYear="2", blockSection="6", blockCourse='BSEE')
     bsee2 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsee2.count()
     year = '2nd Year'; block1 = '6'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 2 and blockSection = 6 and blockCourse like 'BSEE%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsee2 = StudentInfo.objects.filter(
@@ -1464,7 +1945,7 @@ def students_bsee2_6(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsee2': bsee2, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsee2': bsee2, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students BSEE/students_bsee2-6.html', context)
 
 """def students_bsee3_1(request):
@@ -1479,6 +1960,16 @@ def students_bsee3_1(request):
     section = BlockSection.objects.filter(blockYear="3", blockSection="1", blockCourse='BSEE')
     bsee3 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsee3.count()
     year = '3rd Year'; block1 = '1'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 3 and blockSection = 1 and blockCourse like 'BSEE%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+    
     if request.GET.get('search'):
         search = request.GET['search']
         bsee3 = StudentInfo.objects.filter(
@@ -1487,13 +1978,23 @@ def students_bsee3_1(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsee3': bsee3, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsee3': bsee3, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students BSEE/students_bsee3-1.html', context)
 
 def students_bsee3_2(request):
     section = BlockSection.objects.filter(blockYear="3", blockSection="2", blockCourse='BSEE')
     bsee3 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsee3.count()
     year = '3rd Year'; block1 = '2'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 3 and blockSection = 2 and blockCourse like 'BSEE%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsee3 = StudentInfo.objects.filter(
@@ -1502,13 +2003,23 @@ def students_bsee3_2(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsee3': bsee3, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsee3': bsee3, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students BSEE/students_bsee3-2.html', context)
 
 def students_bsee3_3(request):
     section = BlockSection.objects.filter(blockYear="3", blockSection="3", blockCourse='BSEE')
     bsee3 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsee3.count()
     year = '3rd Year'; block1 = '3'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 3 and blockSection = 3 and blockCourse like 'BSEE%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsee3 = StudentInfo.objects.filter(
@@ -1517,13 +2028,23 @@ def students_bsee3_3(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsee3': bsee3, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsee3': bsee3, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students BSEE/students_bsee3-3.html', context)
 
 def students_bsee3_4(request):
     section = BlockSection.objects.filter(blockYear="3", blockSection="4", blockCourse='BSEE')
     bsee3 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsee3.count()
     year = '3rd Year'; block1 = '4'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 3 and blockSection = 4 and blockCourse like 'BSEE%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsee3 = StudentInfo.objects.filter(
@@ -1532,13 +2053,23 @@ def students_bsee3_4(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsee3': bsee3, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsee3': bsee3, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students BSEE/students_bsee3-4.html', context)
 
 def students_bsee3_5(request):
     section = BlockSection.objects.filter(blockYear="3", blockSection="5", blockCourse='BSEE')
     bsee3 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsee3.count()
     year = '3rd Year'; block1 = '5'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 3 and blockSection = 5 and blockCourse like 'BSEE%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsee3 = StudentInfo.objects.filter(
@@ -1547,13 +2078,23 @@ def students_bsee3_5(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsee3': bsee3, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsee3': bsee3, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students BSEE/students_bsee3-5.html', context)
 
 def students_bsee3_6(request):
     section = BlockSection.objects.filter(blockYear="3", blockSection="6", blockCourse='BSEE')
     bsee3 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsee3.count()
     year = '3rd Year'; block1 = '6'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 3 and blockSection = 6 and blockCourse like 'BSEE%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsee3 = StudentInfo.objects.filter(
@@ -1562,7 +2103,7 @@ def students_bsee3_6(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsee3': bsee3, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsee3': bsee3, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students BSEE/students_bsee3-6.html', context)
 
 """def students_bsee4_1(request):
@@ -1577,6 +2118,16 @@ def students_bsee4_1(request):
     section = BlockSection.objects.filter(blockYear="4", blockSection="1", blockCourse='BSEE')
     bsee4 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsee4.count()
     year = '4th Year'; block1 = '1'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 4 and blockSection = 1 and blockCourse like 'BSEE%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsee4 = StudentInfo.objects.filter(
@@ -1585,13 +2136,23 @@ def students_bsee4_1(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsee4': bsee4, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsee4': bsee4, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students BSEE/students_bsee4-1.html', context)
 
 def students_bsee4_2(request):
     section = BlockSection.objects.filter(blockYear="4", blockSection="2", blockCourse='BSEE')
     bsee4 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsee4.count()
     year = '4th Year'; block1 = '2'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 4 and blockSection = 2 and blockCourse like 'BSEE%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsee4 = StudentInfo.objects.filter(
@@ -1600,13 +2161,23 @@ def students_bsee4_2(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsee4': bsee4, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsee4': bsee4, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students BSEE/students_bsee4-2.html', context)
 
 def students_bsee4_3(request):
     section = BlockSection.objects.filter(blockYear="4", blockSection="3", blockCourse='BSEE')
     bsee4 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsee4.count()
     year = '4th Year'; block1 = '3'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 4 and blockSection = 3 and blockCourse like 'BSEE%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsee4 = StudentInfo.objects.filter(
@@ -1615,13 +2186,23 @@ def students_bsee4_3(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsee4': bsee4, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsee4': bsee4, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students BSEE/students_bsee4-3.html', context)
 
 def students_bsee4_4(request):
     section = BlockSection.objects.filter(blockYear="4", blockSection="4", blockCourse='BSEE')
     bsee4 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsee4.count()
     year = '4th Year'; block1 = '4'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 4 and blockSection = 4 and blockCourse like 'BSEE%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsee4 = StudentInfo.objects.filter(
@@ -1630,13 +2211,23 @@ def students_bsee4_4(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsee4': bsee4, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsee4': bsee4, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students BSEE/students_bsee4-4.html', context)
 
 def students_bsee4_5(request):
     section = BlockSection.objects.filter(blockYear="4", blockSection="5", blockCourse='BSEE')
     bsee4 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsee4.count()
     year = '4th Year'; block1 = '5'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 4 and blockSection = 5 and blockCourse like 'BSEE%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsee4 = StudentInfo.objects.filter(
@@ -1645,13 +2236,23 @@ def students_bsee4_5(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsee4': bsee4, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsee4': bsee4, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students BSEE/students_bsee4-5.html', context)
     
 def students_bsee4_6(request):
     section = BlockSection.objects.filter(blockYear="4", blockSection="6", blockCourse='BSEE')
     bsee4 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsee4.count()
     year = '4th Year'; block1 = '6'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 4 and blockSection = 6 and blockCourse like 'BSEE%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsee4 = StudentInfo.objects.filter(
@@ -1660,7 +2261,7 @@ def students_bsee4_6(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsee4': bsee4, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsee4': bsee4, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students BSEE/students_bsee4-6.html', context)
 
 """def students_bsee5_1(request):
@@ -1675,6 +2276,16 @@ def students_bsee5_1(request):
     section = BlockSection.objects.filter(blockYear="5", blockSection="1", blockCourse='BSEE')
     bsee5 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsee5.count()
     year = '5th Year'; block1 = '1'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 5 and blockSection = 1 and blockCourse like 'BSEE%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsee5 = StudentInfo.objects.filter(
@@ -1683,13 +2294,23 @@ def students_bsee5_1(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsee5': bsee5, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsee5': bsee5, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students BSEE/students_bsee5-1.html', context)
 
 def students_bsee5_2(request):
     section = BlockSection.objects.filter(blockYear="5", blockSection="2", blockCourse='BSEE')
     bsee5 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsee5.count()
     year = '5th Year'; block1 = '2'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 5 and blockSection = 2 and blockCourse like 'BSEE%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsee5 = StudentInfo.objects.filter(
@@ -1698,13 +2319,23 @@ def students_bsee5_2(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsee5': bsee5, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsee5': bsee5, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students BSEE/students_bsee5-2.html', context)
 
 def students_bsee5_3(request):
     section = BlockSection.objects.filter(blockYear="5", blockSection="3", blockCourse='BSEE')
     bsee5 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsee5.count()
     year = '5th Year'; block1 = '3'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 5 and blockSection = 3 and blockCourse like 'BSEE%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsee5 = StudentInfo.objects.filter(
@@ -1713,13 +2344,23 @@ def students_bsee5_3(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsee5': bsee5, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsee5': bsee5, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students BSEE/students_bsee5-3.html', context)
 
 def students_bsee5_4(request):
     section = BlockSection.objects.filter(blockYear="5", blockSection="4", blockCourse='BSEE')
     bsee5 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsee5.count()
     year = '5th Year'; block1 = '4'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 5 and blockSection = 4 and blockCourse like 'BSEE%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsee5 = StudentInfo.objects.filter(
@@ -1728,13 +2369,23 @@ def students_bsee5_4(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsee5': bsee5, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsee5': bsee5, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students BSEE/students_bsee5-4.html', context)
 
 def students_bsee5_5(request):
     section = BlockSection.objects.filter(blockYear="5", blockSection="5", blockCourse='BSEE')
     bsee5 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsee5.count()
     year = '5th Year'; block1 = '5'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 5 and blockSection = 5 and blockCourse like 'BSEE%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsee5 = StudentInfo.objects.filter(
@@ -1743,13 +2394,23 @@ def students_bsee5_5(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsee5': bsee5, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsee5': bsee5, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students BSEE/students_bsee5-5.html', context)
 
 def students_bsee5_6(request):
     section = BlockSection.objects.filter(blockYear="5", blockSection="6", blockCourse='BSEE')
     bsee5 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsee5.count()
     year = '5th Year'; block1 = '6'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 5 and blockSection = 6 and blockCourse like 'BSEE%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsee5 = StudentInfo.objects.filter(
@@ -1758,7 +2419,7 @@ def students_bsee5_6(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsee5': bsee5, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsee5': bsee5, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students BSEE/students_bsee5-6.html', context)
 
 """def students_bsee6_1(request):
@@ -1773,6 +2434,16 @@ def students_bsee6_1(request):
     section = BlockSection.objects.filter(blockYear="6", blockSection="1", blockCourse='BSEE')
     bsee6 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsee6.count()
     year = '6th Year'; block1 = '1'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 6 and blockSection = 1 and blockCourse like 'BSEE%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsee6 = StudentInfo.objects.filter(
@@ -1781,13 +2452,23 @@ def students_bsee6_1(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsee6': bsee6, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsee6': bsee6, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students BSEE/students_bsee6-1.html', context)
 
 def students_bsee6_2(request):
     section = BlockSection.objects.filter(blockYear="6", blockSection="2", blockCourse='BSEE')
     bsee6 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsee6.count()
     year = '6th Year'; block1 = '2'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 6 and blockSection = 2 and blockCourse like 'BSEE%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsee6 = StudentInfo.objects.filter(
@@ -1796,13 +2477,23 @@ def students_bsee6_2(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsee6': bsee6, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsee6': bsee6, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students BSEE/students_bsee6-2.html', context)
 
 def students_bsee6_3(request):
     section = BlockSection.objects.filter(blockYear="6", blockSection="3", blockCourse='BSEE')
     bsee6 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsee6.count()
     year = '6th Year'; block1 = '3'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 6 and blockSection = 3 and blockCourse like 'BSEE%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsee6 = StudentInfo.objects.filter(
@@ -1811,13 +2502,23 @@ def students_bsee6_3(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsee6': bsee6, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsee6': bsee6, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students BSEE/students_bsee6-3.html', context)
 
 def students_bsee6_4(request):
     section = BlockSection.objects.filter(blockYear="6", blockSection="4", blockCourse='BSEE')
     bsee6 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsee6.count()
     year = '6th Year'; block1 = '4'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 6 and blockSection = 4 and blockCourse like 'BSEE%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsee6 = StudentInfo.objects.filter(
@@ -1826,13 +2527,23 @@ def students_bsee6_4(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsee6': bsee6, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsee6': bsee6, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students BSEE/students_bsee6-4.html', context)
 
 def students_bsee6_5(request):
     section = BlockSection.objects.filter(blockYear="6", blockSection="5", blockCourse='BSEE')
     bsee6 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsee6.count()
     year = '6th Year'; block1 = '5'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 6 and blockSection = 5 and blockCourse like 'BSEE%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsee6 = StudentInfo.objects.filter(
@@ -1841,13 +2552,23 @@ def students_bsee6_5(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsee6': bsee6, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsee6': bsee6, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students BSEE/students_bsee6-5.html', context)
 
 def students_bsee6_6(request):
     section = BlockSection.objects.filter(blockYear="6", blockSection="6", blockCourse='BSEE')
     bsee6 = StudentInfo.objects.filter(studentSection__in=section).order_by('studentUser__lastName'); count = bsee6.count()
     year = '6th Year'; block1 = '6'
+
+    _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
+    Q = _db.cursor()
+    Q.execute("USE iplmdatabase")
+    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 6 and blockSection = 6 and blockCourse like 'BSEE%';")
+    adviserID = Q.fetchone()
+    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q.fetchone()
+    adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
+
     if request.GET.get('search'):
         search = request.GET['search']
         bsee6 = StudentInfo.objects.filter(
@@ -1856,7 +2577,7 @@ def students_bsee6_6(request):
             Q(studentUser__lastName__icontains=search) |
             Q(studentUser__middleName__icontains=search)
         )
-    context = {'bsee6': bsee6, 'count': count, 'year': year, 'block1': block1, 'section': section}
+    context = {'bsee6': bsee6, 'count': count, 'year': year, 'block1': block1, 'adviserFullname': adviserFullname}
     return render(request, './chairperson/students BSEE/students_bsee6-6.html', context)
 
 
