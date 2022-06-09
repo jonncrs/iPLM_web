@@ -6471,10 +6471,9 @@ def applicant_facultyapplicationform(request):
             Tor = request.FILES.get("TOR")
             pds = request.FILES.get("PDS")
             f_num = applicant_num
-            remarks = "Not Complete"
-            facultyApplicantInfo = FacultyApplicant(firstName=firstName,lastName=lastName,middleName=middleName,email=email,phoneNumber=phoneNumber,sex= sex,department= department,time=time,CV= cv1, certificates=certificates, credentials=credentials,TOR=Tor,PDS=pds, applicant_num = f_num, remarks = remarks)
+            facultyApplicantInfo = FacultyApplicant(firstName=firstName,lastName=lastName,middleName=middleName,email=email,phoneNumber=phoneNumber,sex= sex,department= department,time=time,CV= cv1, certificates=certificates, credentials=credentials,TOR=Tor,PDS=pds, applicant_num = f_num)
             facultyApplicantInfo.save()
-            return redirect('applicant_facultyapplicationform_workexpsheet')
+            return redirect('applicant_facultyapplicationform_workexpsheet_submitted')
         except:
             messages.error(request, 'You have already submitted an application')
             return render(request,'./applicant/applicant_facultyapplicationform.html')
