@@ -12,12 +12,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
     <!-- CSS -->
-    <link rel="stylesheet" href="{% static 'CRS/css/sOthers/sLoaStyle.css' %}">
+	<link rel="stylesheet" href="{% static 'CRS/css/sOthers/sLoaStyle.css' %}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">
-    <!--  ICON -->
+	<!--  ICON -->
     <link rel="icon" href="{% static 'CRS/images/sOthers/iPLM.png' %}" type="image/png" sizes="16x16">
 
-    <style>
+	<style>
         
         #subjectMessage {
         margin-top: 10px;
@@ -30,19 +30,63 @@
         border: 2px solid #ff5f02;
         border-radius: 16px;
         box-shadow: 0 0 10px rgb(199, 199, 199);
-		width: 40%;
+		animation: zoom-in-zoom-out 1s ease;
+		width: 20%;
     }
 
-    #button-edit{
+	.closebtn {
+        margin-left: 15px;
+        color: white;
+        font-weight: bold;
         float: right;
-        margin-right: 100px;
-    }
+        font-size: 22px;
+        line-height: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+        }
+
+        .closebtn:hover {
+        color: #b94807;
+        }
+
+		@keyframes zoom-in-zoom-out {
+        0% {
+            transform: scale(1, 1);
+        }
+        50% {
+            transform: scale(1.1, 1.1);
+        }
+        100% {
+            transform: scale(1, 1);
+        }
+        }
+
+				/*SCROLLBAR*/
+				::-webkit-scrollbar {
+			width: 10px;
+		}
+
+		/* Track */
+		::-webkit-scrollbar-track {
+			background: #e4e4e4;
+			border-radius: 12px;
+		}
+		
+		/* Handle */
+		::-webkit-scrollbar-thumb {
+			background: #cbcbcb;
+			border-radius: 12px;
+		}
+
+		/* Handle on hover */
+		::-webkit-scrollbar-thumb:hover {
+			background: #8f8f8f; 
+		}
 	</style>
 </head>
 
 <body>
-
-{% block content %}
+	{% block content %}
     <div class="wrapper">
 
         <!-- Sidebar -->
@@ -61,18 +105,17 @@
             </ul>
         </nav>
         <!--End of Sidebar -->
-        
+
         <!-- Content -->
         <div id="content">
             <div class="container-fluid">
 
                 <!--Study Plan head-->
                 <div class="back row">
-                    <!-- FILE PATH: Students/sOthers/sLoaDP.html-->
-                    <a href="{% url 'sLoaDP' %}" id="back-edit"><img src="{% static 'CRS/images/sClassroom/back.svg' %}" width="50" style="margin-top: 30px;"></a>
-                    
+					<!-- FILE PATH: Students/sOthers/sOthers.html-->
+					<a href="{% url 'scrsShiftingForm' %}" id="back-edit"><img src="{% static 'CRS/images/sClassroom/back.svg' %}" width="50" style="margin-top: 30px;"></a>
                     <p id="head1">
-                        Leave of Absence
+                        Outbound Shifting
                     </p>
                 </div>
                 <!--END Study Plan head-->
@@ -84,11 +127,10 @@
                             <div class="col-lg-12">
                                 <div class="progress-bar "></div>
                                 <div class="progressbar">
-                                    <li class="active progress-text-active">Clearance<br>Form</li>
-                                    <li class="active progress-text-active">Transfer<br>Certificate</li>
-                                    <li class="active progress-text-active">Dropping<br>Form</li>
-                                    <li class="active progress-text-active">Upload<br>Documents</li>
-                                    <li class="progress-text">Confirmation<br>Submission</li>
+                                        <li class="active progress-text-active">Checklist<br>Submission</li>
+                                        <li class="progress-text">Shifting<br>Form</li>
+                                        <li class="progress-text">Upload<br>Documents</li>
+                                        <li class="progress-text">Confirmation<br>Submission</li>
                                 </div>
                             </div>
                         </div>
@@ -104,21 +146,23 @@
                                 <p id="head2"><b>Upload Documents</b><br></p>
                                 <p id="head3">Please upload the following documents.</p>
                                 {% if messages %}
-                                    {% for message in messages %}
-                                    <p id="subjectMessage">{{ message }}</p>
-                                    {% endfor %}
-						        {% endif %}
+                                {% for message in messages %}
+                                <p id="head3"> {{ message }} </p>
+                                {% endfor %}
+                            {% endif %}
+
                             </div>
                         </div>
-                        <form method="POST" enctype="multipart/form-data" onSubmit="alert('Form Submitted, Save a Copy!')">
-                            {%csrf_token%}
+                    <form method="POST" enctype="multipart/form-data">
+                            {%csrf_token%}	                   
                         <div>
-                            <button  id="button2hvr">&nbsp;&nbsp;&nbsp;Clearance Form</button>
-                            <input type="file" name="studentLOAClearanceform" required>
-                            <button  id="button2hvr">&nbsp;&nbsp;&nbsp;Leave of Absence Form</button>
-                            <input type="file" name="studentLOAFORM" required>
-                            <button  id="button2hvr">&nbsp;&nbsp;&nbsp;Letter of Request for LOA</button>
-                            <input type="file" name="studentLOAletter" required>
+                            <button  id="button2hvr">&nbsp;&nbsp;&nbsp;Study Plan</button>
+                            <input type="file" name="studentStudyplan" required>
+                            <button  id="button2hvr">&nbsp;&nbsp;&nbsp;Letter of Intent</button>
+                            <input type="file" name="studentshifterletter" required>
+                            <button  id="button2hvr">&nbsp;&nbsp;&nbsp;Checklist</button>
+                            <input type="file" name="checklist" required>
+                           
                         </div>
                          
                         <!---------ILLUSTRATION------->
@@ -134,21 +178,16 @@
                     
                         <br><br><br><br><br>
                         <div>
-                            <button  id="button2hvr">&nbsp;&nbsp;&nbsp;Checklist</button>
-                                <input type="file" name="studentChecklist" required>
-                                <button  id="button2hvr">&nbsp;&nbsp;&nbsp;Studyplan</button>
-                                <input type="file" name="studentStudyplan" required>
-                                <button  id="button2hvr">&nbsp;&nbsp;&nbsp;Dropping Form</button>
-                                <input type="file" name="studentDroppingForm" required>
+                            <button  id="button2hvr">&nbsp;&nbsp;&nbsp;Shifting Form</button>
+                            <input type="file" name="shiftingForm" required>
                         </div>
-                    <!-- FILE PATH: Students/sOthers/sLoa4.html-->
-                        <br><br><br><br><br><br>
-                        <a href="#" id="button-edit"><button type="submit" class="btn1">Submit</button></a>
                         <br><br>
-                    </form>
+                    <a href="#" id="button-edit"><button type="submit" class="btn1">Submit</button></a> 
+                </form>
                 </div>
+
             </div>
- {% endblock content %}
+    {% endblock content %}
         <!-- Javascript -->
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

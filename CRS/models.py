@@ -464,6 +464,7 @@ class LOAApplicant(models.Model):
     studentLOAletter = models.FileField(upload_to='LOASubmission/', blank=True, null=True)
     studentLOAFORM = models.FileField(upload_to='LOASubmission/', blank=True, null=True)
     studentChecklist = models.FileField(upload_to='LOASubmission/', blank=True, null=True)
+    studentDroppingForm = models.FileField(upload_to='LOASubmission/', blank=True, null=True)
     remarks = models.CharField(max_length=150, default='Submitted', verbose_name='Status')
     comment = models.TextField(null=True, blank=True, verbose_name='Feedback')
     LOA_dateSubmitted = models.DateField(default=now)
@@ -624,6 +625,35 @@ class HD_DroppingForm(models.Model):
 
     class Meta:
             verbose_name_plural = "HD Dropping Form"
+
+# Shifting Form
+class ShiftingForm(models.Model):
+    Admin_Upload = models.FileField(upload_to='Student/Shifting Form')
+
+    class Meta:
+            verbose_name_plural = "Shifting Form"
+
+# OUTSHIFTER APPLICANT
+class OutShifterApplicant(models.Model):
+    studentID = models.ForeignKey(StudentInfo, null=True, verbose_name='Student', on_delete=models.CASCADE, blank=True)
+    studentStudyplan = models.FileField(upload_to='OutShifterSubmission/', blank=True, null=True)
+    studentshifterletter = models.FileField(upload_to='OutShifterSubmission/', blank=True, null=True)
+    checklist = models.FileField(upload_to='OutShifterSubmission/', blank=True, null=True)
+    shiftingForm = models.FileField(upload_to='OutShifterSubmission/', blank=True, null=True) 
+    shifter_dateSubmitted = models.DateField(default=now)
+    signature1 = models.ImageField(upload_to='ShifterSign/', null=True, blank=True)
+    signature2 = models.ImageField(upload_to='ShifterSign/', null=True, blank=True)   
+    remarks = models.CharField(max_length=150, default='Submitted', verbose_name='Status')
+    comment = models.TextField(null=True, blank=True, verbose_name='Feedback')
+    
+
+    # dateApproved = models.DateTimeField()
+
+    class Meta:
+        verbose_name_plural = "Outbound Shifter Applicants"
+
+    def __str__(self):
+        return self.studentID.studentUser.lastName
 
 # SHIFTER APPLICANT
 class ShifterApplicant(models.Model):

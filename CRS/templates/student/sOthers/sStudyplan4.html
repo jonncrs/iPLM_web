@@ -42,7 +42,32 @@
     <div class="wrapper">
 
         <!-- Sidebar -->
-        <nav id="sidebar">
+        <div class="v5_4">	
+            <span class="v5_5"><a href="/sProfile/">Home</a></span>
+            <span class="v5_12"><a href="/sScheduleView/">Schedule</a></span>
+            <span class="v5_21"><a href="/stdplnyr/">Study Plan</a></span>
+            <span class="v5_23"><a href="/sLoa1/">Leave of Absence</a></span>
+            <span class="v5_25"><a href="/sHd1/">Honorable Dismissal</a></span>
+            <span class="v5_27"><a href="/sPracticum1/">Practicum</a></span>
+            <span class="v5_14"><a href="/sChecklist/">Checklist</a></span>
+            <span class="v5_15"><a href="/sGradeSubmission1/">My Grades</a></span>
+            <span class="v5_8">CLASSROOM</span>
+            <span class="v5_18">OTHERS</span>
+            <div class="v5_11"></div><div class="v5_13"></div>
+            <div class="v5_16"></div><div class="v5_20"></div>
+            <div class="v5_22"></div><div class="v5_24"></div>
+            <div class="v5_26"></div><div class="name"></div>
+            <div class="name"></div><div class="v5_7"></div>
+            </div>
+    
+            <div class="v3_2"><div class="v2_5">
+                <div class="iplm-logo"><img src="https://i.postimg.cc/Z5Kc9KQv/iplm-logo.png" class="logo"></div>
+                <span class="v2_7">iPLM</span><span class="v2_8">Integrated PLM</span></div>
+                <div class="v5_6"></div><div class="v9_343"></div>
+                <div class="v9_360"></div>
+                <span class="v9_345"></span></div>
+                <div class="name"></div>
+        <!-- <nav id="sidebar">
             <div class="sidebar-header">
                 <li>
                     <p><br><br><img src="{% static 'CRS/images/fHomeAndProfile/hat.png' %}" width="126px" height="87px"><br><br>
@@ -55,40 +80,43 @@
                 <li><a href="{% url 'sOthers' %}"><img src="{% static 'CRS/images/cIcons/others2.png' %}" width="97px" height="auto"></a></li>
                 <li><a href="{% url 'logout' %}"><img src="{% static 'CRS/images/cIcons/log-out2.png' %}" width="97px" height="auto"></a></li>
             </ul>
-        </nav>
+        </nav> -->
         <!--End of Sidebar -->
 
         <!-- Content -->
         <div id="content">
             <div class="container-fluid">
-
-                <div class="back row">
+                <div class="backrw row"  style="margin-right: 0px; margin-left:150px; margin-top:100px; ">
+                    
                     <!-- <a href="{% url 'stdplnview' %}" id="back-edit"><img src="{% static 'CRS/images/sClassroom/back.svg' %}" width="50" style="margin-top: 30px;"></a> -->
-                   <p id="head1">
+                   <div>
+                    <p id="head1">
                         Study Plan
                     </p>
-
                 </div>
+
+                       
 
                 <!-- Progress Bar -->
             </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="progress row">
-                        <div class="col-lg-12">
+            <div class="backrw row"  style="margin-top: 0px;">
+                <div class="container-fluid"> 
+                     <div class="col-lg-12" style="margin-top: 0px;">
+
+                        <div class="backrw row" style="margin-left:0px; margin-right:0px;">
+                            <div class="container-fluid"> 
+                                 <div class="col-lg-12" style="margin-top: -70px;">
+                        <div class="progress row">
+                            <div class="col-lg-12">
                             <div class="progress-bar "></div>
                             <div class="progressbar">
                                 <div class="progress-bars "></div>
-                                
-                            
-                                    <li class="active progress-text-active">Upcoming<br>Semester</br><img src="{% static 'CRS/images/sOthers/check.png' %}" width="45" height="45" style="margin-top: -60%;"></li>
-                                    <li class="active progress-text-active">Subjects<br>Taken</br><img src="{% static 'CRS/images/sOthers/check.png' %}" width="45" height="45" style="margin-top: -60%"></li>
-                                    <li class="active progress-text-active">Study<br>Plan</br><img src="{% static 'CRS/images/sOthers/check.png' %}" width="45" height="45" style="margin-top: -60%"></li>  
+                                    <li class="active progress-text-active">Upcoming<br>Semester</br><img src="https://i.ibb.co/Kw0K42B/check.png" width="45" height="45" style="margin-top: -65%;"></li>
+                                    <li class="active progress-text-active">Subjects<br>Taken</br><img src="https://i.ibb.co/Kw0K42B/check.png" width="45" height="45" style="margin-top: -65%"></li>
+                                    <li class="active progress-text-active">Study<br>Plan</br><img src="https://i.ibb.co/Kw0K42B/check.png" width="45" height="45" style="margin-top: -65%"></li>  
                                     <li class="active progress-text-active">Upload<br>Documents</li>
                                     <li class="progress-text">Confirm<br>Submission</li></ul>
-
                             </div>
-                            
                         </div>
                     </div>
                 </div>
@@ -110,7 +138,7 @@
                             {% if messages %}
                             {% for message in messages %}
                             <p id="head3">{{ message }}</p>
-                            {% endfor %}
+                            {% endfor %}    
                             {% endif %}
                         
 
@@ -122,16 +150,24 @@
                         </div>    
                         </div>
                         </div>
-                        <!-----------SUBMIT BUTTON------->
-                        <div class="rows">
-                            <br>
-                            <!-- <div class="col-lg-12"><img src="{% static 'CRS/images/sOthers/clip-remote.png' %}" height="210px" width="350px"> -->
-                                
-                            </div>
-                        </div>
-                        <a href="{% url 'stdplnview' %}"><img src="{% static 'CRS/images/sOthers/arrow-left.png' %}" height="50;" width="50;" style="margin-left: 1500px; margin-top: 300px; text-: right;"></a>
-                        <a href="#"><button type="submit"  id="submitbtn">Submit</button></a>
                         
+                       <!-----------SUBMIT BUTTON------->
+                    
+                        
+
+                    <div>
+                        <div class="rows"></div><br><button type="submit"  id="submitbtn">Submit</button></a>
+                       
+                    
+                        
+                    </div>
+
+                        <!-- <div class="col-lg-12"><img src="{% static 'CRS/images/sOthers/clip-remote.png' %}" height="210px" width="350px"> -->
+                            
+                        </div>
+                    </div>
+                        
+                    <a href="{% url 'stdplnview' %}"><img src="https://i.ibb.co/k027N7K/arrow-left.png" height="50;" width="50;" style="position: relative; top: -5%; right:0px;margin-left:1180px; margin-top:-88px; z-index: 1001;"></a>
                         
                         </form>
                 </div>

@@ -272,8 +272,9 @@ urlpatterns = [
     url(r'^sProfileEdit/$', views.sProfileEdit, name='sProfileEdit'),
     #checklist
     url(r'^sChecklist/$', views.sChecklist, name='sChecklist'),
+    url(r'^cf/$', views.sChecklistform, name='cf'),
     path(r'^sChecklistEmptyConfirmation/<currchecklist_id>$', views.sChecklistEmptyConfirmation, name='sChecklistEmptyConfirmation'),
-    url(r'^sChecklistSubmission/$', views.sChecklistSubmission, name='sChecklistSubmission'),
+   
     #classroon
     url(r'^sClassroom/$', views.sClassroom, name='sClassroom'),
     #grade submission
@@ -307,9 +308,19 @@ urlpatterns = [
     url(r'^lscf/$', views.Loa_Clearance, name='lscf'),
     url(r'^sLoa2/$', views.sLoa2, name='sLoa2'),
     url(r'^lf/$', views.Loa_Form, name='lf'),
+    url(r'^sLoaDP/$', views.sLoaDP, name='sLoaDP'),
     url(r'^sLoa3/$', views.sLoa3, name='sLoa3'),
     url(r'^sLoa4/$', views.sLoa4, name='sLoa4'),
     url(r'^doneLoa/$', views.doneLoa, name='doneLoa'),
+
+    #outbounshiftingform
+    url(r'^scrsShiftingForm/$', views.scrsShiftingForm, name='scrsShiftingForm'),
+    url(r'^scrsUploadFile/$', views.scrsUploadFile, name='scrsUploadFile'),
+    url(r'^sChecklistSubmission/$', views.sChecklistSubmission, name='sChecklistSubmission'),
+    url(r'^scrsComplete/$', views.scrsComplete, name='scrsComplete'),
+    url(r'^doneOSF/$', views.doneOSF, name='doneOSF'),
+    url(r'^SF_DownloadDF/(?P<path>.*)$', serve,{'document_root':settings.MEDIA_ROOT}),
+
     #student_ojt
     path(r'^sPracticum2/$', views.sPracticum2, name='sPracticum2'),
     url(r'^sPracticum1/$', views.sPracticum1, name='sPracticum1'),

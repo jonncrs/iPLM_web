@@ -291,6 +291,51 @@
                             </div>
                             <!--END Practicum Button-->
 
+                            <!--OUTBOUND SHIFTING-->
+                            <div class="obuttons col-lg-4 px-3">
+                                <a href="{% url 'doneOSF' %}">
+                                <button class="obtn">
+                                    <div class="oicon row">
+                                        <div class="icon col-lg-11">
+                                        </div>
+                                        <div class="icon col-lg-1">
+                                            
+                                            <img id="notif" src="{% static 'CRS/images/sOthers/info.png' %}" width="30px" height="30px">
+
+                                            <div class="dropdown-menu">
+                                                <p id="notiftitle">Outbound Shifting Requirements<br></p>
+                                                <p id="notifdrops"><b>1. Checklist</b></p>
+                                                <p id="notifdrops"><b>2. Letter of Intent</b></p>
+                                                <p id="notifdrops"><b>3. Study Plan</b></p>
+                                                <p id="notifdrops"><b>4. Shifting Form</b></p>
+                                                <p id="notifdrops"><b>5. Screenshot of CRS grade</b></p>
+                                             
+                                            </div> 
+                                            
+                                        </div>
+                                    </div>
+
+                                    <div class="sub-obuttons row">
+                                            <div class="col">
+                                                <p id="obtntext1">Outbound Shifting</p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="sub-obuttons row">
+                                        <div class="col-lg-2">
+                                            <p id="obtntext2">Status:</p>
+                                        </div>
+                                        <div class=" col-lg-10">
+                                            <div class="field col" style="color:#BADBFF">
+                                                {{ OutShifterApplicant.remarks }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </button></a>
+
+                            </div>
+                            
+
                             <!-- image -->
                             <div class="img col-lg-4">
                             </div>

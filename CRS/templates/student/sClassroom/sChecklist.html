@@ -172,32 +172,82 @@
         <!--End of Sidebar -->
 
         <!-- Content -->
-        <div id="content">
+          <!-- Content -->
+          <div id="content">
 
             <div class=" container-fluid">
 
-                <!-- <div class="backrw row">
-                    <a href="{% url 'sClassroom' %}" id="back-edit"><img src="{% static 'CRS/images/sOthers/arrow-left.png' %}" width="50" style="margin-left: 2800%; margin-top: -518%;"></a> -->
-
+                <div class="backrw row">
+                    <a href="{% url 'sClassroom' %}" id="back-edit"><img src="{% static 'CRS/images/sClassroom/back.svg' %}" width="50" style="margin-top: 30px;"></a>
+                    
                   <p id="head1">Checklist</p>
                 </div>
+                
                 <div class="clist row"> 
                     <div class="col-lg-8">
-                        <div style="background: rgb(8,146,221,0.1); margin-left: 100px; padding: 60px 100px 60px 0px; box-shadow: 0px 7px 4px lightgray; border-radius: 25px;">
+                        <div class="searchbox">
+                            <div class="dropdown">
+                                <form method="POST">
+                                    {% csrf_token %}
+                                    <span class="status-select">
+                                        <select name="semester" id="stat-slct">
+                                            {% if semester == '1' %}
+                                                <option disabled selected hidden value="1">1st Year, 1st Semester</option>
+                                            {% elif semester == '2' %}
+                                                <option disabled selected hidden value="2">1st Year, 2nd Semester</option>
+                                            {% elif semester == '3' %}
+                                                <option disabled selected hidden value="3">2nd Year, 1st Semester</option>
+                                            {% elif semester == '4' %}
+                                                <option disabled selected hidden value="4">2nd Year, 2nd Semester</option>
+                                            {% elif semester == '5' %} 
+                                                <option disabled selected hidden value="5">3rd Year, 1st Semester</option>
+                                            {% elif semester == '6' %}
+                                                <option disabled selected hidden value="6">3rd Year, 2nd Semester</option>
+                                            {% elif semester == '7' %}
+                                                <option disabled selected hidden value="7">4th Year, 1st Semester</option>
+                                            {% elif semester == '8' %}
+                                                <option disabled selected hidden value="8">4th Year, 2nd Semester</option>
+                                            {% elif semester == '9' %}
+                                                <option disabled selected hidden value="9">5th Year, 1st Semester</option>
+                                            {% elif semester == '10' %}
+                                                <option disabled selected hidden value="10">5th Year, 2nd Semester</option>
+                                            {% elif semester == '11' %}
+                                                <option disabled selected hidden value="11">6th Year, 1st Semester</option>
+                                            {% elif semester == '12' %}
+                                                <option disabled selected hidden value="12">6th Year, 2nd Semester</option>
+                                            {% endif %}
+                                            <option value="1">1st Year, 1st Semester</option>
+                                            <option value="2">1st Year, 2nd Semester</option>
+                                            <option value="3">2nd Year, 1st Semester</option>
+                                            <option value="4">2nd Year, 2nd Semester</option>
+                                            <option value="5">3rd Year, 1st Semester</option>
+                                            <option value="6">3rd Year, 2nd Semester</option>
+                                            <option value="7">4th Year, 1st Semester</option>
+                                            <option value="8">4th Year, 2nd Semester</option>
+                                            <option value="9">5th Year, 1st Semester</option>
+                                            <option value="10">5th Year, 2nd Semester</option>
+                                            <option value="11">6th Year, 1st Semester</option>
+                                            <option value="12">6th Year, 2nd Semester</option>
+                                        </select>
+                                    </span>
+                                    <button name="submit" class="saveBtn" alt="submit" value="submit">Go</button>
+                                </form>
+                            </div>
+                        </div>
                     <div class="tablepanel table-responsive-lg">
                         <table class="borderless table">
-                            <tr class="primary-att" style="font-size: 20px; background-color: #06529b;">
-                                <th scope="col"><p id="head3" style="color: white; "><b>Course Code</b></p></th>
+                            <tr class="primary-att" style="font-size: 20px; background-color: #0C66CC;">
+                                <th scope="col" ><p id="head3" style="color: white; "><b>Course Code</b></p></th>
                                 <th scope="col"><p id="head3" style="color: white; "><b>Course Name</b></p></th>
                                 <th scope="col"><p id="head3" style="color: white; "><b>Units</b></p></th>
                                 <th scope="col"><p id="head3" style="color: white; "><b>Grade</b></p></th>
-                                <th scope="col"><p id="head3" style="color: white; text-align: center;"><b>Remarks</b></p></th>
-                                <th scope="col"><p id="head3" style="color: white; ">GWA<b></b></p></th>
+                                <th scope="col" colspan="2"><p id="head3" style="color: white; "><b>Remarks</b></p></th>
                             </tr>
                             <!-----------FROM THIS POINT LAHAT NG <TD> TAG GALING DATABASE-------------------------------------------->
-                            <tr class="tabletext1" style="box-shadow: 0 6px 50px rgb(138, 138, 138);">
-                                <td colspan="5" style="font-size: 20px; background-color: #0892dd; "><b>1st Yr, 1st Sem</b></td>
-                                <td colspan="1" style="background-color: #0892dd; text-align: center;"><p id="head3" style:="text-align: center;"><b></b>{{ ave|floatformat:2 }}</p></td>
+                             {% if semester == '1' %}
+                            <tr class="tabletext1" style="box-shadow: 0 0 10px rgb(138, 138, 138);">
+                                <td colspan="3" style="font-size: 20px; background-color: #cae2ff; "><b>1st Yr, 1st Sem</b></td>
+                                <td colspan="3" style="background-color: #cae2ff;"><p id="head3"><b>GWA: </b>{{ ave|floatformat:2 }}</p></td>
                             </tr>
                             {% for subject in checklist %}
                             <tr class="tabletext2">
@@ -212,13 +262,14 @@
                                         {% else %}
                                             FAILED
                                         {% endif %}</td>
-                                <td><a href="{% url 'sChecklistEmptyConfirmation' subject.id %}"><button id="delete" ><img id="delete" src="{% static 'CRS/images/sClassroom/deleteSubject.png' %}" width="24px" height="auto"></button></a></td>
+                                
                             </tr>
                             {% endfor %}
                             <!---------------------------------------------------------->
-                            <tr class="tabletext1" style="box-shadow: 0px 10px 8px inset #888888;">
-                                <td colspan="5" style="font-size: 20px; background-color: #0892dd; box-shadow: 5px 10px 18px red;"><b>1st Yr, 2nd Sem</b></td>
-                                <td colspan="1" style="background-color: #0892dd; text-align: center;"><p id="head3"><b></b>{{ ave2|floatformat:2 }}</p></td>
+                            {% elif semester == '2' %}
+                            <tr class="tabletext1" style="box-shadow: 0 0 10px rgb(138, 138, 138);">
+                                <td colspan="3" style="font-size: 20px; background-color: #cae2ff;"><b>1st Yr, 2nd Sem</b></td>
+                                <td colspan="3" style="background-color: #cae2ff;"><p id="head3"><b>GWA: </b>{{ ave2|floatformat:2 }}</p></td>
                             </tr>
                             {% for subject in checklist2 %}
                             <tr class="tabletext2">
@@ -231,15 +282,16 @@
                                 <td>    {% if subject.subjectGrades <= 3.00 %}
                                             PASSED
                                         {% else %}
-                                            FAILED
+                                            FAILED///////////
                                         {% endif %}</td>
-                                <td><a href="{% url 'sChecklistEmptyConfirmation' subject.id %}"><button id="delete" ><img id="delete" src="{% static 'CRS/images/sClassroom/deleteSubject.png' %}" width="24px" height="auto"></button></a></td>
+                                
                             </tr>
                             {% endfor %}
                             <!------------------------------------------------------->
-                            <tr class="tabletext1" style="box-shadow: 0 6px 10px rgb(138, 138, 138);">
-                                <td colspan="5" style="font-size: 20px; background-color: #0892dd;"><b>2nd Yr, 1st Sem</b></td>
-                                <td colspan="1" style="background-color: #0892dd; text-align: center;"><p id="head3"><b></b>{{ ave3|floatformat:2 }}</p></td>
+                            {% elif semester == '3' %}
+                            <tr class="tabletext1" style="box-shadow: 0 0 10px rgb(138, 138, 138);">
+                                <td colspan="3" style="font-size: 20px; background-color: #cae2ff;"><b>2nd Yr, 1st Sem</b></td>
+                                <td colspan="3" style="background-color: #cae2ff;"><p id="head3"><b>GWA: </b>{{ ave3|floatformat:2 }}</p></td>
                             </tr>
                             {% for subject in checklist3 %}
                             <tr class="tabletext2">
@@ -254,14 +306,14 @@
                                         {% else %}
                                             FAILED
                                         {% endif %}</td>
-                                <td><a href="{% url 'sChecklistEmptyConfirmation' subject.id %}"><button id="delete" ><img id="delete" src="{% static 'CRS/images/sClassroom/deleteSubject.png' %}" width="24px" height="auto"></button></a></td>
+                                
                             </tr>
                             {% endfor %}
                             <!---------------------------------------------------------->
-
-                            <tr class="tabletext1" style="box-shadow: 0 6px 10px rgb(138, 138, 138); background-color: #0892dd;">
-                                <td colspan="5" style="font-size: 20px; background-color: #0892dd;"><b>2nd Yr, 2nd Sem</b></td>
-                                <td colspan="1" style="text-align: center; background-color: #0892dd;"><p id="head3"><b></b>{{ ave4|floatformat:2 }}</p></td>
+                            {% elif semester == '4' %}
+                            <tr class="tabletext1" style="box-shadow: 0 0 10px rgb(138, 138, 138);">
+                                <td colspan="3" style="font-size: 20px; background-color: #cae2ff;"><b>2nd Yr, 2nd Sem</b></td>
+                                <td colspan="3" style="background-color: #cae2ff;"><p id="head3"><b>GWA: </b>{{ ave4|floatformat:2 }}</p></td>
                             </tr>
                             {% for subject in checklist4 %}
                             <tr class="tabletext2">
@@ -276,14 +328,14 @@
                                         {% else %}
                                             FAILED
                                         {% endif %}</td>
-                                <td><a href="{% url 'sChecklistEmptyConfirmation' subject.id %}"><button id="delete" ><img id="delete" src="{% static 'CRS/images/sClassroom/deleteSubject.png' %}" width="24px" height="auto"></button></a></td>
+                            
                             </tr>
                             {% endfor %}
                             <!---------------------------------------------------------->
-
-                            <tr class="tabletext1" style="box-shadow: 0 6px 10px rgb(138, 138, 138);">
-                                <td colspan="5" style="font-size: 20px; background-color: #0892dd;"><b>3rd Yr, 1st Sem</b></td>
-                                <td colspan="1" style="text-align: center; background-color: #0892dd;"><p id="head3"><b></b>{{ ave5|floatformat:2 }}</p></td>
+                            {% elif semester == '5' %}
+                            <tr class="tabletext1" style="box-shadow: 0 0 10px rgb(138, 138, 138);">
+                                <td colspan="3" style="font-size: 20px; background-color: #cae2ff;"><b>3rd Yr, 1st Sem</b></td>
+                                <td colspan="3" style="background-color: #cae2ff;"><p id="head3"><b>GWA: </b>{{ ave5|floatformat:2 }}</p></td>
                             </tr>
                             {% for subject in checklist5 %}
                             <tr class="tabletext2">
@@ -298,13 +350,14 @@
                                         {% else %}
                                             FAILED
                                         {% endif %}</td>
-                                <td><a href="{% url 'sChecklistEmptyConfirmation' subject.id %}"><button id="delete" ><img id="delete" src="{% static 'CRS/images/sClassroom/deleteSubject.png' %}" width="24px" height="auto"></button></a></td>
+                            
                             </tr>
                             {% endfor %}
                             <!---------------------------------------------------------->
-                            <tr class="tabletext1" style="box-shadow: 0 6px 10px rgb(138, 138, 138);">
-                                <td colspan="5" style="font-size: 20px; background-color: #0892dd;"><b>3rd Yr, 2nd Sem</b></td>
-                                <td colspan="1" style="text-align: center; background-color: #0892dd;"><p id="head3"><b></b>{{ ave6|floatformat:2 }}</p></td>
+                            {% elif semester == '6' %}
+                            <tr class="tabletext1" style="box-shadow: 0 0 10px rgb(138, 138, 138);">
+                                <td colspan="3" style="font-size: 20px; background-color: #cae2ff;"><b>3rd Yr, 2nd Sem</b></td>
+                                <td colspan="3" style="background-color: #cae2ff;"><p id="head3"><b>GWA: </b>{{ ave6|floatformat:2 }}</p></td>
                             </tr>
                             {% for subject in checklist6 %}
                             <tr class="tabletext2">
@@ -319,13 +372,14 @@
                                         {% else %}
                                             FAILED
                                         {% endif %}</td>
-                                <td><a href="{% url 'sChecklistEmptyConfirmation' subject.id %}"><button id="delete" ><img id="delete" src="{% static 'CRS/images/sClassroom/deleteSubject.png' %}" width="24px" height="auto"></button></a></td>
+                            
                             </tr>
                             {% endfor %}
                             <!---------------------------------------------------------->
-                            <tr class="tabletext1" style="box-shadow: 0 6px 10px rgb(138, 138, 138);">
-                                <td colspan="5" style="font-size: 20px; background-color: #0892dd;"><b>4th Yr, 1st Sem</b></td>
-                                <td colspan="1" style="text-align: center; background-color: #0892dd;"><p id="head3"><b></b>{{ ave7|floatformat:2 }}</p></td>
+                            {% elif semester == '7' %}
+                            <tr class="tabletext1" style="box-shadow: 0 0 10px rgb(138, 138, 138);">
+                                <td colspan="3" style="font-size: 20px; background-color: #cae2ff;"><b>4th Yr, 1st Sem</b></td>
+                                <td colspan="3" style="background-color: #cae2ff;"><p id="head3"><b>GWA: </b>{{ ave7|floatformat:2 }}</p></td>
                             </tr>
                             {% for subject in checklist7 %}
                             <tr class="tabletext2">
@@ -340,13 +394,14 @@
                                         {% else %}
                                             FAILED
                                         {% endif %}</td>
-                                <td><a href="{% url 'sChecklistEmptyConfirmation' subject.id %}"><button id="delete" ><img id="delete" src="{% static 'CRS/images/sClassroom/deleteSubject.png' %}" width="24px" height="auto"></button></a></td>
+                            
                             </tr>
                             {% endfor %}
                             <!---------------------------------------------------------->
-                            <tr class="tabletext1" style="box-shadow: 0 6px 10px rgb(138, 138, 138);">
-                                <td colspan="5" style="font-size: 20px; background-color: #0892dd;"><b>4th Yr, 2nd Sem</b></td>
-                                <td colspan="1" style=" text-align: center; background-color: #0892dd;"><p id="head3"><b></b>{{ ave8|floatformat:2 }}</p></td>
+                            {% elif semester == '8' %}
+                            <tr class="tabletext1" style="box-shadow: 0 0 10px rgb(138, 138, 138);">
+                                <td colspan="3" style="font-size: 20px; background-color: #cae2ff;"><b>4th Yr, 2nd Sem</b></td>
+                                <td colspan="3" style="background-color: #cae2ff;"><p id="head3"><b>GWA: </b>{{ ave8|floatformat:2 }}</p></td>
                             </tr>
                             {% for subject in checklist8 %}
                             <tr class="tabletext2">
@@ -361,13 +416,14 @@
                                         {% else %}
                                             FAILED
                                         {% endif %}</td>
-                                <td><a href="{% url 'sChecklistEmptyConfirmation' subject.id %}"><button id="delete" ><img id="delete" src="{% static 'CRS/images/sClassroom/deleteSubject.png' %}" width="24px" height="auto"></button></a></td>
+                            
                             </tr>
                             {% endfor %}
                             <!---------------------------------------------------------->
-                            <tr class="tabletext1" style="box-shadow: 0 6px 10px rgb(138, 138, 138);">
-                                <td colspan="5" style="font-size: 20px; background-color: #0892dd;"><b>5th Yr, 1st Sem</b></td>
-                                <td colspan="1" style="text-align: center; background-color: #0892dd;"><p id="head3"><b></b>{{ ave9|floatformat:2 }}</p></td>
+                            {% elif semester == '9' %}
+                            <tr class="tabletext1" style="box-shadow: 0 0 10px rgb(138, 138, 138);">
+                                <td colspan="3" style="font-size: 20px; background-color: #cae2ff;"><b>5th Yr, 1st Sem</b></td>
+                                <td colspan="3" style="background-color: #cae2ff;"><p id="head3"><b>GWA: </b>{{ ave9|floatformat:2 }}</p></td>
                             </tr>
                             {% for subject in checklist9 %}
                             <tr class="tabletext2">
@@ -382,13 +438,14 @@
                                         {% else %}
                                             FAILED
                                         {% endif %}</td>
-                                <td><a href="{% url 'sChecklistEmptyConfirmation' subject.id %}"><button id="delete" ><img id="delete" src="{% static 'CRS/images/sClassroom/deleteSubject.png' %}" width="24px" height="auto"></button></a></td>
+                            
                             </tr>
                             {% endfor %}
                             <!---------------------------------------------------------->
-                            <tr class="tabletext1" style="box-shadow: 0 6px 10px rgb(138, 138, 138);">
-                                <td colspan="5" style="font-size: 20px; background-color: #0892dd;"><b>5th Yr, 2nd Sem</b></td>
-                                <td colspan="1" style=" text-align: center; background-color: #0892dd;"><p id="head3"><b></b>{{ ave10|floatformat:2 }}</p></td>
+                            {% elif semester == '10' %}
+                            <tr class="tabletext1" style="box-shadow: 0 0 10px rgb(138, 138, 138);">
+                                <td colspan="3" style="font-size: 20px; background-color: #cae2ff;"><b>5th Yr, 2nd Sem</b></td>
+                                <td colspan="3" style="background-color: #cae2ff;"><p id="head3"><b>GWA: </b>{{ ave10|floatformat:2 }}</p></td>
                             </tr>
                             {% for subject in checklist10 %}
                             <tr class="tabletext2">
@@ -403,13 +460,14 @@
                                         {% else %}
                                             FAILED
                                         {% endif %}</td>
-                                <td><a href="{% url 'sChecklistEmptyConfirmation' subject.id %}"><button id="delete" ><img id="delete" src="{% static 'CRS/images/sClassroom/deleteSubject.png' %}" width="24px" height="auto"></button></a></td>
+                            
                             </tr>
                             {% endfor %}
                             <!---------------------------------------------------------->
-                            <tr class="tabletext1" style="box-shadow: 0 6px 10px rgb(138, 138, 138);">
-                                <td colspan="5" style="font-size: 20px; background-color: #0892dd;"><b>6th Yr, 1st Sem</b></td>
-                                <td colspan="1" style="text-align: center; background-color: #0892dd;"><p id="head3"><b></b>{{ ave11|floatformat:2 }}</p></td>
+                            {% elif semester == '11' %}
+                            <tr class="tabletext1" style="box-shadow: 0 0 10px rgb(138, 138, 138);">
+                                <td colspan="3" style="font-size: 20px; background-color: #cae2ff;"><b>6th Yr, 1st Sem</b></td>
+                                <td colspan="3" style="background-color: #cae2ff;"><p id="head3"><b>GWA: </b>{{ ave11|floatformat:2 }}</p></td>
                             </tr>
                             {% for subject in checklist11 %}
                             <tr class="tabletext2">
@@ -424,13 +482,14 @@
                                         {% else %}
                                             FAILED
                                         {% endif %}</td>
-                                <td><a href="{% url 'sChecklistEmptyConfirmation' subject.id %}"><button id="delete" ><img id="delete" src="{% static 'CRS/images/sClassroom/deleteSubject.png' %}" width="24px" height="auto"></button></a></td>
+                            
                             </tr>
                             {% endfor %}
                             <!---------------------------------------------------------->
-                            <tr class="tabletext1" style="box-shadow: 0 6px 10px rgb(138, 138, 138);">
-                                <td colspan="5" style="font-size: 20px; background-color: #0892dd;"><b>6th Yr, 2nd Sem</b></td>
-                                <td colspan="1" style="text-align: center; background-color: #0892dd;"><p id="head3"><b></b>{{ ave11|floatformat:2 }}</p></td>
+                            {% elif semester == '12' %}
+                            <tr class="tabletext1" style="box-shadow: 0 0 10px rgb(138, 138, 138);">
+                                <td colspan="3" style="font-size: 20px; background-color: #cae2ff;"><b>6th Yr, 2nd Sem</b></td>
+                                <td colspan="3" style="background-color: #cae2ff;"><p id="head3"><b>GWA: </b>{{ ave11|floatformat:2 }}</p></td>
                             </tr>
                             {% for subject in checklist12 %}
                             <tr class="tabletext2">
@@ -445,23 +504,24 @@
                                         {% else %}
                                             FAILED
                                         {% endif %}</td>
-                                <td><a href="{% url 'sChecklistEmptyConfirmation' subject.id %}"><button id="delete" ><img id="delete" src="{% static 'CRS/images/sClassroom/deleteSubject.png' %}" width="24px" height="auto"></button></a></td>
+                            
                             </tr>
                             {% endfor %}
 
+                            {% endif %}
 
                         </table>
-                        </div>
+                        
                     </div></div>
                     <!--End of Left Side-->
                     
-                    <!--Right Side | Edit Grades-->
-                    <div class="checklist-img row col-lg-1">
+                       <!--Right Side | Edit Grades-->
+                       <div class="checklist-img row col-lg-1">
                         
-                    </div>
+                    </div> 
                     
                     <div class="row col-lg-3">
-
+                        <a href="{% url 'cf' %}" id="button-edit"><button type="button" class="btn">Save Copy</button></a>
                         {% if messages %}
                         {% for message in messages %}
                         {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
@@ -482,39 +542,8 @@
                         {% endif %}
                        
                        
-                        <div class="col-lg-12" style="padding-left: 5%">
-                            <div class="checklistbox"> <br/><br/> <style>* {
-                                box-sizing: border-box;
-                              }
-                              
-                              </style>
-                            <div class="row">
-                                
-                                <div class="col-lg-12">
-                                    <p id="head2"><b>Checklist</b></p> 
-                                     <div class="checklist-border row">
-                                    <div class="col-12-lg">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-12 pt-3">
-                                        
-                                        <p class="spdet" id="head3" style="color: #06529b; padding-left: 12%;margin-top: -8%;">View and edit your subjects<br>for this degree and grades</p>
-                                    </div>
-                                </div>
-                            </div>      
 
-                            <a href = "sChecklist" download ><!--"{% url 'sptest' %}"-->
-                               <div id="saveacopybtn"><img src="{% static 'CRS/images/sOthers/download2.png' %}" height="30" width="30" style="margin-top:-5%; margin-left:-30%;">
-                                    Save a Copy
-                                </div>
-                            </a>     
-                                          
-                            <div class="backrw row">
-                                <a href="{% url 'sClassroom' %}" id="back-edit"><img src="{% static 'CRS/images/sOthers/arrow-left.png' %}" width="50" style="margin-left: -50%; margin-top:158%;"></a>
-                                
-
-                          </style>        
+                       <img src="{% static 'CRS/images/sClassroom/studclassroom_checklist-img.png' %}" width=456 height=456>            
                        
                     
                     </div> 

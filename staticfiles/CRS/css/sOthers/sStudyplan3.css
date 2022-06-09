@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap');
 
 body {
     overflow: hidden;
@@ -95,47 +95,75 @@ a:focus {
     margin-left: 30px;
     margin-top: 17px;
     font-size: 40px;
-    color: #0C66CC;
-    font-family: 'Nunito';
+    color: #06529B;
+    font-family: 'Lato';
 }
 
 #head2 {
     letter-spacing: 1px;
-    font-size: 30px;
-    color: #0C66CC;
-    font-family: 'Nunito';
+    font-size: 40px;
+    color: #06529B;
+    font-family: 'Lato';
 }
 
 #head3 {
     letter-spacing: 1px;
     font-size: 20px;
-    color: #0C66CC;
-    font-family: 'Nunito';
+    color: #ffffff;
+    font-family: 'Lato';
 }
-
+.studbox {
+    background: #FFFFFF;
+    box-shadow: 5px 10px 18px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    padding-left:5%;
+    margin-left:10%;
+    margin-top:50px;
+    width: 450px;
+    height: 525px;
+  }
+  .stud-border {
+    height: 10%;
+    width:60%;
+    margin: 0px 100px;
+    margin-left: 5%;
+    margin-top:-2%;
+    border-bottom: solid;
+    border-bottom-width: 3px;
+    border-bottom-color: rgba(95, 110, 131, 0.3);
+}
 /***** PROGRESS BAR *****/
 .progress {
     height: 150px;
     margin-left: 90px;
     margin-right: 90px;
     border-radius: 30px 30px 30px 30px;
-    background: #0C66CC;
+    background: #06529B;
     padding-left: 150px;
     padding-right: 150px;
     padding-top: 50px;
 }
 
+.progress-bars {
+    height: 5px;
+    width: 60%;
+
+    position:relative; 
+    bottom: 5px;
+
+    background: #0892DD;
+}
 .progress-bar {
     height: 5px;
     width: 100%;
-    background: #3C84D6;
+    background: #FFFFFF;
 }
 
 .progress-text {
     letter-spacing: 1px;
     font-size: 15px;
-    color: #3C84D6;
-    font-family: 'Nunito';
+    color: rgba(243, 246, 255, 0.6);
+    font-family: 'Lato';
 }
 
 .progressbar li {
@@ -152,26 +180,27 @@ a:focus {
     width: 50px;
     height: 50px;
     line-height: 30px;
-    border: 1px solid #3C84D6;
+    border: 1px solid #F3F6FF;
     display: block;
     text-align: center;
     margin: 0 auto 10px auto;
     border-radius: 50%;
-    background-color: #3C84D6;
+    background-color: #FFFFFF;
 }
 
 .progress-text-active {
     letter-spacing: 1px;
     font-size: 15px;
-    color: #B6D1EF;
-    font-family: 'Nunito';
+    color: #FFFFFF;
+    font-family: 'Lato';
 }
 
 .progressbar li.active:before {
-    font-family: 'Nunito';
-    border-color: #B6D1EF;
-    background-color: #B6D1EF;
+    font-family: 'Lato';
+    border-color: #0892DD;
+    background-color: #0892DD;
 }
+
 
 
 /***** END PROGRESS BAR *****/
@@ -188,20 +217,22 @@ a:focus {
 }
 
 #saveacopybtn {
-    width: 180px;
+    margin-top: 50%;
+    width: 35%;
     height: 60px;
-    background: #0C66CC;
+    background: #06529B;
     color: white;
-    border-radius: 15px;
+    border-radius:   15px;
     text-align: center;
-    padding-top: 13px;
+    padding-left: 10%;
+    padding-top: 2%;
     font-size: 20px;
     letter-spacing: 1px;
-    font-family: 'Nunito';
+    font-family: 'Lato';
     position: absolute;
-    top: 500px;
-    right: 380px;
-    border: 2px solid #0C66CC;
+    top: 30%;
+    right: 45%;
+    border: 2px solid #06529B;
 }
 
 #nextbtn {
@@ -214,7 +245,7 @@ a:focus {
     padding-top: 13px;
     font-size: 20px;
     letter-spacing: 1px;
-    font-family: 'Nunito';
+    font-family: 'Lato';
     position: absolute;
     top: 500px;
     right: 180px;
@@ -223,7 +254,7 @@ a:focus {
 
 #nextbtn:hover, 
 #saveacopybtn:hover {
-    background: #2852a4;
+    background: #0892DD;
     color: #ffff;
 }
 
@@ -236,18 +267,23 @@ a:focus {
     position: sticky;
     top: 0;
     /* Don't forget this, required for the stickiness */
-    background: #f5f5f5;
+    background: #06529b;
+    border-radius: 50px;
 }
 
 .fill-in {
-    border-radius: 20px;
-    background: #f5f5f5;
+    background: linear-gradient(0deg, #FFFFFF, #FFFFFF), linear-gradient(0deg, rgba(8, 146, 221, 0.3), rgba(8, 146, 221, 0.3)), linear-gradient(0deg, #F3F6FF, #F3F6FF), linear-gradient(0deg, #5F6E83, #5F6E83), linear-gradient(0deg, #06529B, #06529B), #08090B;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 30px;
 }
 
 .tablepanel {
     overflow-y: scroll;
-    width: 100%;
+    width:100%;
     height: 560px;
+    margin-top: 2%; 
+    padding-right: 1%;
+    box-shadow:  0px 7px 4px lightgray;
 }
 
 .borderless td,
@@ -256,9 +292,13 @@ a:focus {
 }
 
 .tablepanel::-webkit-scrollbar {
-    width: 10px;
-    background: #ebebeb;
-    border-radius: 0 8px 8px 0;
+    box-sizing: border-box;
+    width: 7px;
+    height: 180px;
+    left: 1054px;
+    top: 337px;
+    background: rgba(95, 110, 131, 0.3);
+    border-radius: 100px;
 
 }
 
@@ -272,16 +312,16 @@ a:focus {
     text-align: left;
     letter-spacing: 1px;
     font-size: 20px;
-    font-family: 'Nunito';
+    font-family: 'Lato';
     color: #0C66CC;
 }
 
 
 .tabletext2 {
-    text-align: left;
+    text-align: center;
     letter-spacing: 1px;
     font-size: 18px;
-    font-family: 'Nunito';
+    font-family: 'Lato';
 }
 
 #remarks {
@@ -289,7 +329,7 @@ a:focus {
     border: none;
     background: #0C66CC;
     font-size: 15px;
-    font-family: Nunito;
+    font-family: Lato;
     cursor: pointer;
     color: white;
     border-radius: 10px;

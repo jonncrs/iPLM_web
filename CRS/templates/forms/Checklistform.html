@@ -1,0 +1,512 @@
+<html>
+<head>
+	<title>Checklist</title>
+	<link href='https://fonts.googleapis.com/css?family=Nunito%20Sans' rel='stylesheet'>
+<style>
+body {
+    font-family: 'Nunito Sans';font-size: 20px;
+}
+@media print {
+  #printPageButton {
+    display: none;
+  }
+}
+.button { 
+height: 50px; 
+width: 100px; 
+}
+
+
+td{
+	padding-top: 10px;
+	margin-left: 10px;
+}
+</style>
+</head>
+
+<a class="button" id="printPageButton" href="javascript:window.print()">CLICK HERE TO OPEN PRINT DIALOGUE (SAVE AS PDF)</a>
+<body>
+	<table align="center">
+		<tr>
+			
+			<td align="center">
+				<br>
+				<b>PAMANTASAN NG LUNGSOD NG MAYNILA</b>
+				<br>
+				{{ info.collegeID.collegeDesc }}
+				<br><br><br>
+				{{ info.departmentID.courseDesc }}
+				<br>
+				Checklist
+			</td>
+		</tr>
+	</table>
+
+<hr color="black">
+	<table align="center" width=100% style="font-size: 14px;">
+		<tr>
+			<td><b>Name:</b></td>
+			<td>
+				{{ info.studentUser.firstName }} {{ info.studentUser.middleName|slice:1 }}. {{ info.studentUser.lastName }}<!--INSERT STUDENT NAME-->
+			</td>
+
+			<td><b>Curriculum Year:</b></td>
+
+			<td>
+				{{ info.studentCurriculum }}<!--INSERT STUDENT ENTRANCE DATE-->
+			</td>
+		</tr>
+
+		<tr>
+			<td><b>Student Number:</b></td>
+			<td>
+				{{ info.studentID }}<!--INSERT STUDENT NUMBER-->
+			</td>
+
+			<td><b>Total Number of Units:</b></td>
+
+			<td>
+				{{ semester.totalUnits }}<!--INSERT UNITS-->
+			</td>
+		</tr>
+	</table>
+	<hr color="black">
+	<br><br>
+
+	<table border="1" align="center" width=100% style="font-size: 14px;">
+		{% if grades %}	
+					
+                    <td colspan="6">{{ 'First Year'}}, {{ 'First Semester' }}</td>
+                        <tr align="left">
+                        <td colspan="1"><b>COURSE CODE</b></td>
+                        <td colspan="2"><b>COURSE NAME</b></td>
+                        <td><b>UNITS</b></td>
+                        <td colspan="2"><b>GRADE</b></td>						
+                    </tr>
+                            {% for y in grades %}
+                                {% if info.studentYearlevel == '1' %}
+                                    {% if y.semTaken == '1' %}
+           
+                                    <tr class="tabletext2">
+                                        <td colspan="1"><p  class="dataStyle">{{y.curriculumCode.subjectCode.subjectCode}} </p></td>
+                                        <td colspan="2">    {{y.curriculumCode.subjectCode.subjectName}}</td>
+                                        <td>    {{y.curriculumCode.subjectUnits}}</td>
+                                        <td colspan="2">    {{y.subjectGrades}}</td>
+                               
+                                    </tr>
+                                    {%endif%}
+                                {%endif%}
+                            {% endfor %}
+                       
+						<tr align="left">
+							<td></td>
+							<td align="right" colspan="2">TOTAL&nbsp;&nbsp;</td>
+							<td>{{ totalnum1|floatformat }}</td>
+							<td align="right">GWA&nbsp;&nbsp;</td>
+							<td></td>						
+						</tr>	
+		{% endif %}
+    </table><br><br>
+        
+    <table border="1" align="center" width=100% style="font-size: 14px;">
+
+        {% if grades %}	
+					
+                    <td colspan="6">{{ 'First Year' }}, {{ 'Second Semester' }}</td>
+                        <tr align="left">
+                        <td colspan="1"><b>COURSE CODE</b></td>
+                        <td colspan="2"><b>COURSE NAME</b></td>
+                        <td><b>UNITS</b></td>
+                        <td colspan="2"><b>GRADE</b></td>						
+                    </tr>
+                            {% for y in grades %}
+                                {% if y.yearTaken == '1' %}
+                                    {% if y.semTaken == '2' %}
+           
+                                    <tr class="tabletext2">
+                                        <td colspan="1"><p  class="dataStyle">{{y.curriculumCode.subjectCode.subjectCode}} </p></td>
+                                        <td colspan="2">    {{y.curriculumCode.subjectCode.subjectName}}</td>
+                                        <td>    {{y.curriculumCode.subjectUnits}}</td>
+                                        <td colspan="2">    {{y.subjectGrades}}</td>
+                               
+                                    </tr>
+                                    {%endif%}
+                                {%endif%}
+                            {% endfor %}
+                       
+						<tr align="left">
+							<td></td>
+							<td align="right" colspan="2">TOTAL&nbsp;&nbsp;</td>
+							<td>{{ totalnum1|floatformat }}</td>
+							<td align="right">GWA&nbsp;&nbsp;</td>
+							<td></td>						
+						</tr>	
+		{% endif %}
+    
+	</table><br><br>
+    <table border="1" align="center" width=100% style="font-size: 14px;">
+
+        {% if grades %}	
+					
+                    <td colspan="6">{{ 'Second Year' }}, {{ 'First Semester' }}</td>
+                        <tr align="left">
+                        <td colspan="1"><b>COURSE CODE</b></td>
+                        <td colspan="2"><b>COURSE NAME</b></td>
+                        <td><b>UNITS</b></td>
+                        <td colspan="2"><b>GRADE</b></td>						
+                    </tr>
+                            {% for y in grades %}
+                                {% if y.yearTaken == '2' %}
+                                    {% if y.semTaken == '1' %}
+           
+                                    <tr class="tabletext2">
+                                        <td colspan="1"><p  class="dataStyle">{{y.curriculumCode.subjectCode.subjectCode}} </p></td>
+                                        <td colspan="2">    {{y.curriculumCode.subjectCode.subjectName}}</td>
+                                        <td>    {{y.curriculumCode.subjectUnits}}</td>
+                                        <td colspan="2">    {{y.subjectGrades}}</td>
+                               
+                                    </tr>
+                                    {%endif%}
+                                {%endif%}
+                            {% endfor %}
+                       
+						<tr align="left">
+							<td></td>
+							<td align="right" colspan="2">TOTAL&nbsp;&nbsp;</td>
+							<td>{{ totalnum1|floatformat }}</td>
+							<td align="right">GWA&nbsp;&nbsp;</td>
+							<td></td>						
+						</tr>	
+		{% endif %}
+                    
+        
+    </table><br><br>
+    <table border="1" align="center" width=100% style="font-size: 14px;">
+
+            {% if grades %}	
+                        
+                        <td colspan="6">{{ 'Second Year' }}, {{ 'Second Semester' }}</td>
+                            <tr align="left">
+                            <td colspan="1"><b>COURSE CODE</b></td>
+                            <td colspan="2"><b>COURSE NAME</b></td>
+                            <td><b>UNITS</b></td>
+                            <td colspan="2"><b>GRADE</b></td>						
+                        </tr>
+                                {% for y in grades %}
+                                    {% if y.yearTaken == '2' %}
+                                        {% if y.semTaken == '2' %}
+               
+                                        <tr class="tabletext2">
+                                            <td colspan="1"><p  class="dataStyle">{{y.curriculumCode.subjectCode.subjectCode}} </p></td>
+                                            <td colspan="2">    {{y.curriculumCode.subjectCode.subjectName}}</td>
+                                            <td>    {{y.curriculumCode.subjectUnits}}</td>
+                                            <td colspan="2">    {{y.subjectGrades}}</td>
+                                   
+                                        </tr>
+                                        {%endif%}
+                                    {%endif%}
+                                {% endfor %}
+                           
+                            <tr align="left">
+                                <td></td>
+                                <td align="right" colspan="2">TOTAL&nbsp;&nbsp;</td>
+                                <td>{{ totalnum1|floatformat }}</td>
+                                <td align="right">GWA&nbsp;&nbsp;</td>
+                                <td></td>						
+                            </tr>	
+            {% endif %}
+    
+	</table><br><br>
+    <table border="1" align="center" width=100% style="font-size: 14px;">
+
+        {% if grades %}	
+                    
+                    <td colspan="6">{{ 'Third Year' }}, {{ 'First Semester' }}</td>
+                        <tr align="left">
+                        <td colspan="1"><b>COURSE CODE</b></td>
+                        <td colspan="2"><b>COURSE NAME</b></td>
+                        <td><b>UNITS</b></td>
+                        <td colspan="2"><b>GRADE</b></td>						
+                    </tr>
+                            {% for y in grades %}
+                                {% if y.yearTaken == '3' %}
+                                    {% if y.semTaken == '1' %}
+           
+                                    <tr class="tabletext2">
+                                        <td colspan="1"><p  class="dataStyle">{{y.curriculumCode.subjectCode.subjectCode}} </p></td>
+                                        <td colspan="2">    {{y.curriculumCode.subjectCode.subjectName}}</td>
+                                        <td>    {{y.curriculumCode.subjectUnits}}</td>
+                                        <td colspan="2">    {{y.subjectGrades}}</td>
+                               
+                                    </tr>
+                                    {%endif%}
+                                {%endif%}
+                            {% endfor %}
+                       
+                        <tr align="left">
+                            <td></td>
+                            <td align="right" colspan="2">TOTAL&nbsp;&nbsp;</td>
+                            <td>{{ totalnum1|floatformat }}</td>
+                            <td align="right">GWA&nbsp;&nbsp;</td>
+                            <td></td>						
+                        </tr>	
+        {% endif %}
+
+    </table><br><br>
+    <table border="1" align="center" width=100% style="font-size: 14px;">
+
+        {% if grades %}	
+                    
+                    <td colspan="6">{{ 'Third Year' }}, {{ 'Second Semester' }}</td>
+                        <tr align="left">
+                        <td colspan="1"><b>COURSE CODE</b></td>
+                        <td colspan="2"><b>COURSE NAME</b></td>
+                        <td><b>UNITS</b></td>
+                        <td colspan="2"><b>GRADE</b></td>						
+                    </tr>
+                            {% for y in grades %}
+                                {% if y.yearTaken == '3' %}
+                                    {% if y.semTaken == '2' %}
+           
+                                    <tr class="tabletext2">
+                                        <td colspan="1"><p  class="dataStyle">{{y.curriculumCode.subjectCode.subjectCode}} </p></td>
+                                        <td colspan="2">    {{y.curriculumCode.subjectCode.subjectName}}</td>
+                                        <td>    {{y.curriculumCode.subjectUnits}}</td>
+                                        <td colspan="2">    {{y.subjectGrades}}</td>
+                               
+                                    </tr>
+                                    {%endif%}
+                                {%endif%}
+                            {% endfor %}
+                       
+                        <tr align="left">
+                            <td></td>
+                            <td align="right" colspan="2">TOTAL&nbsp;&nbsp;</td>
+                            <td>{{ totalnum1|floatformat }}</td>
+                            <td align="right">GWA&nbsp;&nbsp;</td>
+                            <td></td>						
+                        </tr>	
+        {% endif %}
+
+    </table><br><br>
+
+    <table border="1" align="center" width=100% style="font-size: 14px;">
+
+        {% if grades %}	
+                    
+                    <td colspan="6">{{ 'Fourth Year' }}, {{ 'First Semester' }}</td>
+                        <tr align="left">
+                        <td colspan="1"><b>COURSE CODE</b></td>
+                        <td colspan="2"><b>COURSE NAME</b></td>
+                        <td><b>UNITS</b></td>
+                        <td colspan="2"><b>GRADE</b></td>						
+                    </tr>
+                            {% for y in grades %}
+                                {% if y.yearTaken == '4' %}
+                                    {% if y.semTaken == '1' %}
+           
+                                    <tr class="tabletext2">
+                                        <td colspan="1"><p  class="dataStyle">{{y.curriculumCode.subjectCode.subjectCode}} </p></td>
+                                        <td colspan="2">    {{y.curriculumCode.subjectCode.subjectName}}</td>
+                                        <td>    {{y.curriculumCode.subjectUnits}}</td>
+                                        <td colspan="2">    {{y.subjectGrades}}</td>
+                               
+                                    </tr>
+                                    {%endif%}
+                                {%endif%}
+                            {% endfor %}
+                       
+                        <tr align="left">
+                            <td></td>
+                            <td align="right" colspan="2">TOTAL&nbsp;&nbsp;</td>
+                            <td>{{ totalnum1|floatformat }}</td>
+                            <td align="right">GWA&nbsp;&nbsp;</td>
+                            <td></td>						
+                        </tr>	
+        {% endif %}
+
+    </table><br><br>
+    <table border="1" align="center" width=100% style="font-size: 14px;">
+
+        {% if grades %}	
+                    
+                    <td colspan="6">{{ 'Fourth Year' }}, {{ 'Second Semester' }}</td>
+                        <tr align="left">
+                        <td colspan="1"><b>COURSE CODE</b></td>
+                        <td colspan="2"><b>COURSE NAME</b></td>
+                        <td><b>UNITS</b></td>
+                        <td colspan="2"><b>GRADE</b></td>						
+                    </tr>
+                            {% for y in grades %}
+                                {% if y.yearTaken == '4' %}
+                                    {% if y.semTaken == '2' %}
+           
+                                    <tr class="tabletext2">
+                                        <td colspan="1"><p  class="dataStyle">{{y.curriculumCode.subjectCode.subjectCode}} </p></td>
+                                        <td colspan="2">    {{y.curriculumCode.subjectCode.subjectName}}</td>
+                                        <td>    {{y.curriculumCode.subjectUnits}}</td>
+                                        <td colspan="2">    {{y.subjectGrades}}</td>
+                               
+                                    </tr>
+                                    {%endif%}
+                                {%endif%}
+                            {% endfor %}
+                       
+                        <tr align="left">
+                            <td></td>
+                            <td align="right" colspan="2">TOTAL&nbsp;&nbsp;</td>
+                            <td>{{ totalnum1|floatformat }}</td>
+                            <td align="right">GWA&nbsp;&nbsp;</td>
+                            <td></td>						
+                        </tr>	
+        {% endif %}
+
+    </table><br><br>
+    <table border="1" align="center" width=100% style="font-size: 14px;">
+
+        {% if grades %}	
+                    
+                    <td colspan="6">{{ 'Fifth Year' }}, {{ 'First Semester' }}</td>
+                        <tr align="left">
+                        <td colspan="1"><b>COURSE CODE</b></td>
+                        <td colspan="2"><b>COURSE NAME</b></td>
+                        <td><b>UNITS</b></td>
+                        <td colspan="2"><b>GRADE</b></td>						
+                    </tr>
+                            {% for y in grades %}
+                                {% if y.yearTaken == '5' %}
+                                    {% if y.semTaken == '1' %}
+           
+                                    <tr class="tabletext2">
+                                        <td colspan="1"><p  class="dataStyle">{{y.curriculumCode.subjectCode.subjectCode}} </p></td>
+                                        <td colspan="2">    {{y.curriculumCode.subjectCode.subjectName}}</td>
+                                        <td>    {{y.curriculumCode.subjectUnits}}</td>
+                                        <td colspan="2">    {{y.subjectGrades}}</td>
+                               
+                                    </tr>
+                                    {%endif%}
+                                {%endif%}
+                            {% endfor %}
+                       
+                        <tr align="left">
+                            <td></td>
+                            <td align="right" colspan="2">TOTAL&nbsp;&nbsp;</td>
+                            <td>{{ totalnum1|floatformat }}</td>
+                            <td align="right">GWA&nbsp;&nbsp;</td>
+                            <td></td>						
+                        </tr>	
+        {% endif %}
+
+    </table><br><br>
+    <table border="1" align="center" width=100% style="font-size: 14px;">
+
+        {% if grades %}	
+                    
+                    <td colspan="6">{{ 'Fifth Year' }}, {{ 'Second Semester' }}</td>
+                        <tr align="left">
+                        <td colspan="1"><b>COURSE CODE</b></td>
+                        <td colspan="2"><b>COURSE NAME</b></td>
+                        <td><b>UNITS</b></td>
+                        <td colspan="2"><b>GRADE</b></td>						
+                    </tr>
+                            {% for y in grades %}
+                                {% if y.yearTaken == '5' %}
+                                    {% if y.semTaken == '2' %}
+           
+                                    <tr class="tabletext2">
+                                        <td colspan="1"><p  class="dataStyle">{{y.curriculumCode.subjectCode.subjectCode}} </p></td>
+                                        <td colspan="2">    {{y.curriculumCode.subjectCode.subjectName}}</td>
+                                        <td>    {{y.curriculumCode.subjectUnits}}</td>
+                                        <td colspan="2">    {{y.subjectGrades}}</td>
+                               
+                                    </tr>
+                                    {%endif%}
+                                {%endif%}
+                            {% endfor %}
+                       
+                        <tr align="left">
+                            <td></td>
+                            <td align="right" colspan="2">TOTAL&nbsp;&nbsp;</td>
+                            <td>{{ totalnum1|floatformat }}</td>
+                            <td align="right">GWA&nbsp;&nbsp;</td>
+                            <td></td>						
+                        </tr>	
+        {% endif %}
+
+    </table><br><br>
+    <table border="1" align="center" width=100% style="font-size: 14px;">
+
+        {% if grades %}	
+                    
+                    <td colspan="6">{{ 'Sixth Year' }}, {{ 'First Semester' }}</td>
+                        <tr align="left">
+                        <td colspan="1"><b>COURSE CODE</b></td>
+                        <td colspan="2"><b>COURSE NAME</b></td>
+                        <td><b>UNITS</b></td>
+                        <td colspan="2"><b>GRADE</b></td>						
+                    </tr>
+                            {% for y in grades %}
+                                {% if y.yearTaken == '6' %}
+                                    {% if y.semTaken == '1' %}
+           
+                                    <tr class="tabletext2">
+                                        <td colspan="1"><p  class="dataStyle">{{y.curriculumCode.subjectCode.subjectCode}} </p></td>
+                                        <td colspan="2">    {{y.curriculumCode.subjectCode.subjectName}}</td>
+                                        <td>    {{y.curriculumCode.subjectUnits}}</td>
+                                        <td colspan="2">    {{y.subjectGrades}}</td>
+                               
+                                    </tr>
+                                    {%endif%}
+                                {%endif%}
+                            {% endfor %}
+                       
+                        <tr align="left">
+                            <td></td>
+                            <td align="right" colspan="2">TOTAL&nbsp;&nbsp;</td>
+                            <td>{{ totalnum1|floatformat }}</td>
+                            <td align="right">GWA&nbsp;&nbsp;</td>
+                            <td></td>						
+                        </tr>	
+        {% endif %}
+
+    </table><br><br>
+    <table border="1" align="center" width=100% style="font-size: 14px;">
+
+        {% if grades %}	
+                    
+                    <td colspan="6">{{ 'Sixth Year' }}, {{ 'Second Semester' }}</td>
+                        <tr align="left">
+                        <td colspan="1"><b>COURSE CODE</b></td>
+                        <td colspan="2"><b>COURSE NAME</b></td>
+                        <td><b>UNITS</b></td>
+                        <td colspan="2"><b>GRADE</b></td>						
+                    </tr>
+                            {% for y in grades %}
+                                {% if y.yearTaken == '6' %}
+                                    {% if y.semTaken == '2' %}
+           
+                                    <tr class="tabletext2">
+                                        <td colspan="1"><p  class="dataStyle">{{y.curriculumCode.subjectCode.subjectCode}} </p></td>
+                                        <td colspan="2">    {{y.curriculumCode.subjectCode.subjectName}}</td>
+                                        <td>    {{y.curriculumCode.subjectUnits}}</td>
+                                        <td colspan="2">    {{y.subjectGrades}}</td>
+                               
+                                    </tr>
+                                    {%endif%}
+                                {%endif%}
+                            {% endfor %}
+                       
+                        <tr align="left">
+                            <td></td>
+                            <td align="right" colspan="2">TOTAL&nbsp;&nbsp;</td>
+                            <td>{{ totalnum1|floatformat }}</td>
+                            <td align="right">GWA&nbsp;&nbsp;</td>
+                            <td></td>						
+                        </tr>	
+        {% endif %}
+
+    </table><br><br>
+
+</body>
+<a class="button" id="printPageButton" href="javascript:window.print()">CLICK HERE TO OPEN PRINT DIALOGUE (SAVE AS PDF)</a>
+</html>
