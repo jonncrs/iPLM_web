@@ -337,7 +337,6 @@ urlpatterns = [
     url(r'^cOthers-partTime/$',views.pta_request, name='cOthers-partTime'),
     path(r'^cOthers-partTimeView/<pt_id>$',views.pta_view,name='cOthers-partTimeView'),
     url(r'^applicant_facultyapplicationform/$', views.applicant_facultyapplicationform, name='applicant_facultyapplicationform'),
-    url(r'^applicant_facultyapplicationform_workexpsheet/$', views.applicant_facultyapplicationform_workexpsheet, name='applicant_facultyapplicationform_workexpsheet'),
     url(r'^applicant_facultyapplicationform_workexpsheet_submitted/$', views.applicant_facultyapplicationform_workexpsheet_submitted, name='applicant_facultyapplicationform_workexpsheet_submitted'),
     #Student Applicant 
     url(r'^student_applicant/$', views.student_applicant, name='student_applicant'),

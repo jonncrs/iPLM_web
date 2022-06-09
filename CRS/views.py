@@ -6436,15 +6436,29 @@ def applicantrequirements(request):
     
 
 def applicant_facultyapplicationform(request):
-    global f_num
+    global f_num, f_mail
     if (request.method == 'POST'):
         applicant_num = app_num(3)
         firstName = request.POST.get("firstName")
         lastName = request.POST.get("lastName")
         middleName = request.POST.get("middleName")
+        pw = str(applicant_num)
+        first = firstName.lower()
+        middle = middleName.lower()
+        last = lastName.lower()
+        last = last.translate({ord(c): None for c in string.whitespace})
         firstName = firstName.title()
         middleName = middleName.title()
         lastName = lastName.title()
+        f = first[0]
+        m = middle[0]
+        mail = f + m + last +"@plm.edu.ph"
+        f_mail=mail
+        User = get_user_model()
+        log = User.objects.create_user(email = mail, password = pw, firstName = firstName, middleName = middleName, lastName = lastName)
+        log.is_admin = False
+        log.is_applicant = True
+        log.save()
         try:
             email = request.POST.get("email")
             phoneNumber = request.POST.get("phoneNumber")
@@ -6467,54 +6481,6 @@ def applicant_facultyapplicationform(request):
     return render(request, './applicant/applicant_facultyapplicationform.html')
 
 
-#--------------------WORK EXPERIENCE SHEET --------------------------
-
-
-def applicant_facultyapplicationform_workexpsheet(request):
-    global f_num, f_mail
-    if (request.method == 'POST'):
-        facultyApplicantInfo = FacultyApplicant.objects.get(applicant_num = f_num)
-        pw = str(f_num)
-        firstName = facultyApplicantInfo.firstName
-        middleName = facultyApplicantInfo.middleName
-        lastName = facultyApplicantInfo.lastName
-        first = firstName.lower()
-        middle = middleName.lower()
-        last = lastName.lower()
-        last = last.translate({ord(c): None for c in string.whitespace})
-        firstName = firstName.title()
-        middleName = middleName.title()
-        lastName = lastName.title()
-        f = first[0]
-        m = middle[0]
-        mail = f + m + last +"@plm.edu.ph"
-        f_mail=mail
-        User = get_user_model()
-        log = User.objects.create_user(email = mail, password = pw, firstName = firstName, middleName = middleName, lastName = lastName)
-        log.is_admin = False
-        log.is_applicant = True
-        log.save()
-        try:
-            durationwork = request.POST.get("durationwork")
-            positionwork = request.POST.get("position")
-            officeunit = request.POST.get("officeunit")
-            agencyorg = request.POST.get("agencyorg")
-            accomplishments = request.FILES.get("accomplishments")
-            summaryduties = request.FILES.get("summaryduties")
-            facultyApplicantInfo.remarks="Submitted"
-            facultyApplicantInfo.durationwork=durationwork 
-            facultyApplicantInfo.positionwork=positionwork
-            facultyApplicantInfo.officeunit=officeunit
-            facultyApplicantInfo.agencyorg=agencyorg
-            facultyApplicantInfo.accomplishments=accomplishments
-            facultyApplicantInfo.summaryduties=summaryduties
-            facultyApplicantInfo.save()
-            return redirect('applicant_facultyapplicationform_workexpsheet_submitted')
-
-        except:
-            messages.error(request, 'Fill everything on the form!')
-            return render(request, './applicant/applicant_facultyapplicationform_workexpsheet.html')
-    return render(request, './applicant/applicant_facultyapplicationform_workexpsheet.html')
 
 def applicant_facultyapplicationform_workexpsheet_submitted(request):
     global f_num, f_mail

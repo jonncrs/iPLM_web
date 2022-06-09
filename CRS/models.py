@@ -707,14 +707,6 @@ class FacultyApplicant(models.Model):
     TOR = models.FileField(upload_to='facultyApplicant/', blank=True, null=True)
     PDS = models.FileField(upload_to='facultyApplicant/', blank=True, null=True)
     remarks = models.CharField(max_length=150, default='Submitted', verbose_name='Status')
-#----------------------------WORK EXPERIENCE SHEET-------------------------------------------------
-
-    durationwork = models.CharField(max_length=100, verbose_name="Durationwork", null=True)
-    positionwork = models.CharField(max_length=100, verbose_name="positionwork", null=True)
-    officeunit = models.CharField(max_length=100, verbose_name="office unit", null=True)
-    agencyorg = models.CharField(max_length=100, verbose_name="agency", null=True)
-    accomplishments = models.FileField(upload_to='facultyApplicant/', blank=True, null=True)
-    summaryduties = models.FileField(upload_to='facultyApplicant/', blank=True, null=True)
     applicant_num = models.CharField(max_length=10, verbose_name="applicant_num", null=True)
     feedback = models.CharField(max_length=100, verbose_name="feedback", null=True)
     
