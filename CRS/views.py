@@ -6569,7 +6569,8 @@ def ShProfile(request):
             Grade = request.FILES.get("GradeScreenshotFile")
             Studyplan = request.FILES.get("studyPlanFile")
             collegeLetter = request.FILES.get("collegeLetter")
-            if Studyplan != None or Letter != None or Grade != None or collegeLetter != None:    
+            checklist = request.FILES.get("checklist")
+            if Studyplan != None or Letter != None or Grade != None or collegeLetter != None or checklist != None:    
                 if Studyplan != None:
                     info.studentStudyplan = Studyplan
                 if Letter != None:
@@ -6578,6 +6579,8 @@ def ShProfile(request):
                     info.studentGrade = Grade
                 if collegeLetter != None:
                     info.shiftingForm = collegeLetter
+                if checklist != None:
+                    info.Checklist = checklist
                 info.remarks = "Submitted"
                 info.save()
                 messages.success(request, 'Files submitted successfully.')
