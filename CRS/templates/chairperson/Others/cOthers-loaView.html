@@ -349,6 +349,26 @@ transform: scale(1, 1);
                                                     </td> 
                                                 {% endif %}
                                                 </td>
+                                                <td>
+                                                    {% if loaview.studentDroppingForm %}
+                                                        <a href="{{loaview.studentDroppingForm.url}}"  target="_blank" >
+                                                            <div class="fileName">Letter of Request</div>
+                                                        </a>
+                                                    </td>
+                                                    <!--DOWNLOAD BUTTON COLUMN-->
+                                                    <td>
+                                                        <a href="{{loaview.studentDroppingForm.url}}" download><!-- DB LETTER OF REQUEST FILE DOWNLOAD BELOW-->
+                                                            <button class="downloadBtn" type="button"><img src="{% static 'CRS/images/cOthers/download.png' %}" width=auto height="24">&nbsp;&nbsp;Download</button>
+                                                        </a>
+                                                    {% else %}
+                                                        <td>
+                                                            <div class="fileName">Dropping Form</div>
+                                                        </td>
+                                                        <td>  
+                                                            <div class="text-muted"> NO FILE</div>
+                                                        </td> 
+                                                    {% endif %}
+                                                    </td>
                                             </tr>
 
                                         </table>
@@ -391,20 +411,8 @@ transform: scale(1, 1);
                             <a href="{% url 'del_allLOA' loaview.id %}"> <button type="button" class="deleteFileBtn" style="margin-left: 170px;"><img src="{% static 'CRS/images/cOthers/return.png' %}" width=auto height="42"><br>Return File</button></a><!-- DB RETURN FILE BUTTON -->
                                 
 
-                            <a href="{% url 'cOthers-loa-csw' loaview.id %}"><button type="button" class="cswBtn2" style="margin-left: 400px;"><img src="{% static 'CRS/images/cOthers/download2.png' %}" width="auto" height="42"><br>Download CSW</button></a><!-- DB DOWNLOAD CSW BUTTON -->
-                            <form action="{% url 'sendmailwfile' loaview.id %}" method="POST" enctype="multipart/form-data" > {% csrf_token %} 
-                            
-                            <label class="cswBtn3" id="cswDL" for="uploadCSW" style="margin-left: 550px;"><img src="{% static 'CRS/images/cOthers/upload.png' %}" width="auto" height="42"><br>Upload CSW</label><!-- DB UPLOAD CSW BUTTON -->
-                                
-                            <input type="file" id="uploadCSW" name="uploadCSW" style="margin-left: 600px;" required>
+                            <a href="{% url 'cOthers-loa-csw' loaview.id %}"><button type="button" class="cswBtn2" style="margin-left: 340px;"><img src="{% static 'CRS/images/cOthers/download2.png' %}" width="auto" height="42"><br>Download CSW</button></a><!-- DB DOWNLOAD CSW BUTTON -->
 
-                           </div><br><br>
-
-                            <div class="list-feedback1">
-                                <button type="submit" class="button8hvr" name="loa-email" value="loa-email" >Forward to Signatories</button><!-- DB FORWARD TO SIGNATORIES BUTTON -->
-                    
-                            </div>
-                        </form>
 
                         <!-------------END CHAIRPERSON MANAGEMENT----------->
 						</div>

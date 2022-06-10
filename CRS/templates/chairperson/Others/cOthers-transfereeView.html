@@ -377,23 +377,20 @@ transition: 0.3s;
                                 <br>
                                 </div>
                             <div class="fileName">Manage</div><br>
-                            <a href="{% url 'cOthers-transferee-csw' trans.id %}"><button type="button" class="cswBtn2"><img src="{% static 'CRS/images/cOthers/download2.png' %}" width="auto" height="42"><br>Download CSW</button></a><!-- DB DOWNLOAD CSW BUTTON -->
-                            <form action="{% url 'sendmailwfile' trans.id %}" method="POST" enctype="multipart/form-data" > {% csrf_token %}
-                                
-                                <label class="cswBtn3" id="cswDL" for="uploadCSW"><img src="{% static 'CRS/images/cOthers/upload.png' %}" width="auto" height="42"><br>Upload CSW</label><!-- DB UPLOAD CSW BUTTON -->
-                                
-                                <input type="file"  id="uploadCSW" name="uploadCSW" required>
-                                <br><br>
+                             
+                            <a href="{% url 'cOthers-transferee-feedback' trans.id %}"><button type="button"
+                                class="feedbackBtn2" style="margin-left: 10px;"><img
+                                    src="{% static 'CRS/images/cOthers/feedback.png' %}" width=auto
+                                    height="42"><br>Feedback</button></a><!-- DB FEEDBACK BUTTON -->
+                            <a href="{% url 'del_alltransferee' trans.id %}"> <button type="button" class="deleteFileBtn"
+                                    style="margin-left: 170px;"><img src="{% static 'CRS/images/cOthers/return.png' %}"
+                                        width=auto height="42"><br>Return File</button></a><!-- DB RETURN FILE BUTTON -->
 
-                                <div class="list-feedback1">
-                                    <button type ="submit" class="button5hvr" name="transfer-email" value="transfer-email" >Forward to Signatories</button></a><!-- DB FORWARD TO SIGNATORIES BUTTON -->
-                                <!-- DB EMAIL STUDENT BUTTON --></form>
-                                <a href="{% url 'emailTrans' trans.id %}"><button  class="button4hvr">Email Transferee</button></a>
-                                </div>
-                            
-                            
-                        <!-------------END EMAIL APPLICANT----------->
-                        
+
+                            <a href="{% url 'cOthers-transferee-csw' trans.id %}"><button type="button" class="cswBtn2"
+                                    style="margin-left: 340px;"><img src="{% static 'CRS/images/cOthers/download2.png' %}"
+                                        width="auto" height="42"><br>Download CSW</button></a>
+                            <br><br><br><br><br><br><br><br>
 						</div>
                     </div>
                 </div>

@@ -24,9 +24,12 @@ urlpatterns = [
     url(r'^chairperson_profile/$', views.chairperson_profile, name='chairperson_profile'),
     url(r'^chairperson_edit_profile/$', views.chairperson_edit_profile, name='chairperson_edit_profile'),
     url(r'^chairperson_change_password/$', views.chairperson_change_password, name='chairperson_change_password'),
+    # Chairperson - Faculty Applicant
     url(r'^cfaculty_applicant/$', views.cfaculty_applicant, name='cfaculty_applicant'),
     path(r'^cfaculty_applicant-Master/', views.cfacultyapplicant_sortedlist, name='cfaculty_applicant-Master'),
-    path('faculty_view/<faculty_id>', views.faculty_view, name='faculty_view'),
+    path(r'faculty-view/<faculty_id>', views.faculty_view, name='faculty_view'),
+    path(r'faculty_feedback/<faculty_id>', views.faculty_feedback, name='faculty_feedback'),
+    path(r'^del_allFaculty/<faculty_id>$', views.del_allFaculty, name='del_allFaculty'),
     path('emailApplicant/<faculty_id>', views.emailApplicant, name='emailApplicant'),
     path(r'emailTrans/<trans_id>', views.emailTrans, name='emailTrans'),
     path(r'emailShifter/<shifter_id>', views.emailShifter, name='emailShifter'),
@@ -408,6 +411,14 @@ urlpatterns = [
     path(r'cOthers-shifter-csw/<shift_id>', views.shifter_csw, name="cOthers-shifter-csw"),
     path(r'shifter_Pdf/<shift_id>', views.shifter_Pdf, name="shifter_Pdf"),
     path(r'del_allshifter/<shift_id>', views.del_allshifter, name="del_allshifter"),
+    #OUTBOUNDSHIFTERS
+    path(r'cOthers-outshifter', views.outshifter_list, name='cOthers-outshifter'),
+    path(r'cOthers-outshifter-Master/', views.outShifter_masterlist, name='cOthers-outshifter-Master'),
+    path(r'cOthers-outshifterView/<id>', views.outshifter_view, name='cOthers-outshifterView'),
+    path(r'cOthers-outshifter-feedback/<id>', views.outshifter_feedback, name='cOthers-outshifter-feedback'),
+    path(r'cOthers-outshifter-csw/<id>', views.outshifter_csw, name="cOthers-outshifter-csw"),
+    path(r'outshifter_Pdf/<id>', views.outshifter_Pdf, name="outshifter_Pdf"),
+    path(r'del_alloutshifter/<id>', views.del_alloutshifter, name="del_alloutshifter"),
     #TRANSFEREE
     path(r'cOthers-transferee', views.transferee_list, name='cOthers-transferee'),
     path(r'cOthers-transferee-Master/', views.transferee_masterlist, name='cOthers-transferee-Master'),
