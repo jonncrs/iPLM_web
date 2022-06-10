@@ -43,6 +43,9 @@ import string
 #global variable
 psw = "a"
 
+#import link
+from .link import *
+
 def error_404_view(request,exception):
     return render(request, 'error.html')
 
@@ -59,8 +62,8 @@ def get_notifications(user_id):
         return None
 
 def send_notifications(user_id, title, description):
-    Notification(user_id=user_id, title=title, description=description)
-    Notification.save()
+    notif = Notification(user_id_id=user_id, title=title, description=description)
+    notif.save()
     return 'Successfully Send Notification'
     
 def index(request):
@@ -74,7 +77,7 @@ def index(request):
             login(request, user)
             type_obj = request.user
             if user.is_authenticated and type_obj.is_chairperson:
-                return redirect('chairperson')
+                return redirect('choose_one')
             elif user.is_authenticated and type_obj.is_admin:
                 return redirect('admin')
             elif user.is_authenticated and type_obj.is_faculty:
@@ -105,7 +108,7 @@ def index(request):
 # ------------------ CHAIRPERSON VIEWS ------------------------
 def choose_one(request):
     type_obj = request.user
-    if request.user.is_authenticated and type_obj.is_chairperson and type_obj.is_admin and type_obj.is_faculty:
+    if request.user.is_authenticated and type_obj.is_chairperson:
         return render(request, 'choose_one.html')
 
 
@@ -3779,8 +3782,6 @@ def donecrs(request):
     else:
         return redirect('index')
 
-#OUTBOUND SHIFTING
-
 def sChecklistSubmission(request):
     if request.user.is_authenticated and request.user.is_student:
         id= request.user.id
@@ -3875,6 +3876,17 @@ def scrsUploadFile(request):
 
 def scrsComplete(request):
     if request.user.is_authenticated and request.user.is_student:
+        id= request.user.id
+        lastName = Query.lastName(id)
+        honorific = Query.honorific(id)
+        dept_id = Query.deptID_from_students(id)
+        cperson_id = Query.cpersonID_from_department(dept_id)
+
+        send_notifications(
+            user_id = cperson_id, 
+            title = f"{honorific} {lastName} has submitted an outbound shifting application",
+            description = f"Outbound Shifter"
+        )
         return render(request, 'student/sOthers/scrsComplete.html')
     else:
         return redirect('index')
@@ -4169,8 +4181,8 @@ def sHd4(request):
                     messages.error(request,'You have already submitted an application!')
                     return render(request,'student/sOthers/sHd4.html')
             except ObjectDoesNotExist:
-                hd_applicants = hdApplicant(studentID=info,studentDropform=studentDropform,studentClearanceform =studentClearanceform ,studentHdletter=studentHdletter,studentGrades=studentGrades,studentTransfercert=studentTransfercert, stdParentsig=stdParentsig,hd_dateSubmitted=hd_dateSubmitted)
-                hd_applicants.save()
+                hd_shifterApplicants = hdApplicant(studentID=info,studentDropform=studentDropform,studentClearanceform =studentClearanceform ,studentHdletter=studentHdletter,studentGrades=studentGrades,studentTransfercert=studentTransfercert, stdParentsig=stdParentsig,hd_dateSubmitted=hd_dateSubmitted)
+                hd_shifterApplicants.save()
                 return redirect('sHd5')
         return render(request, 'student/sOthers/sHd4.html')
     else:
@@ -4179,6 +4191,17 @@ def sHd4(request):
 
 def sHd5(request):
     if request.user.is_authenticated and request.user.is_student:
+        id= request.user.id
+        lastName = Query.lastName(id)
+        honorific = Query.honorific(id)
+        dept_id = Query.deptID_from_students(id)
+        cperson_id = Query.cpersonID_from_department(dept_id)
+
+        send_notifications(
+            user_id = cperson_id, 
+            title = f"{honorific} {lastName} has requested an honorable dismissal",
+            description = f"Honorable Dismissal"
+        )
         return render(request, 'student/sOthers/sHd5.html')
     else:
         return redirect('index')
@@ -4395,6 +4418,17 @@ def sLoa3(request):
 
 def sLoa4(request):
     if request.user.is_authenticated and request.user.is_student:
+        id= request.user.id
+        lastName = Query.lastName(id)
+        honorific = Query.honorific(id)
+        dept_id = Query.deptID_from_students(id)
+        cperson_id = Query.cpersonID_from_department(dept_id)
+
+        send_notifications(
+            user_id = cperson_id, 
+            title = f"{honorific} {lastName} has requested a leave of absence",
+            description = f"LOA"
+        )
         return render(request, 'student/sOthers/sLoa4.html')
     else:
         return redirect('index')
@@ -4457,6 +4491,17 @@ def sPracticum1(request):
 
 def sPracticum2(request):
     if request.user.is_authenticated and request.user.is_student:
+        id= request.user.id
+        lastName = Query.lastName(id)
+        honorific = Query.honorific(id)
+        dept_id = Query.deptID_from_students(id)
+        cperson_id = Query.cpersonID_from_department(dept_id)
+
+        send_notifications(
+            user_id = cperson_id, 
+            title = f"{honorific} {lastName} has submitted a practicum application",
+            description = f"Practicum"
+        )
         return render(request,'student/sOthers/sPracticum2.html')
     else:
             return redirect('index')
@@ -4727,7 +4772,7 @@ def messagesp(request, sp_id):
     messages.success(request,'Feedback Successfully Sent!')
     return HttpResponseRedirect(reverse('cOthers-studyPlanView', args=(sp_id,)))
 
-#VIEW LIST OF LOA APPLICANTS
+#VIEW LIST OF LOA Applicants
 def loa_list(request):
     if request.user.is_authenticated and request.user.is_chairperson:
         id= request.user.id
@@ -4825,6 +4870,17 @@ def attach(request, attach_id):
             messages.success(request, 'Succesfully Attached!')  
             return HttpResponseRedirect(reverse('cOthers-shifter-csw', args=(attach_id,))) 
 
+        elif request.POST.get("outshifter-attach"):
+            signature = OutShifterApplicant.objects.get(pk=attach_id)
+            request.session['_outshifter_data'] = request.POST
+            sign1 = request.FILES.get('cSignatureFile1')
+            sign2 = request.FILES.get('cSignatureFile2')
+            signature.signature1 = sign1
+            signature.signature2 = sign2
+            signature.save()  
+            messages.success(request, 'Succesfully Attached!')
+            return HttpResponseRedirect(reverse('cOthers-outshifter-csw', args=(attach_id,)))  
+
         elif request.POST.get("transfer-attach"):
                 signature = TransfereeApplicant.objects.get(pk=attach_id)
                 request.session['_transfer_data'] = request.POST
@@ -4834,7 +4890,8 @@ def attach(request, attach_id):
                 signature.signature2 = sign2
                 signature.save()  
                 messages.success(request, 'Succesfully Attached!')  
-                return HttpResponseRedirect(reverse('cOthers-transferee-csw', args=(attach_id,))) 
+                signature.save()  
+                return HttpResponseRedirect(reverse('cOthers-transferee-csw', args=(attach_id,)))
     
 #RENDER HTML LOA CSW TO PDF
 def loa_Pdf(request, loa_id):
@@ -5059,11 +5116,10 @@ def shifter_feedback(request, shift_id):
     elif request.method == 'POST':
         comms = ShifterApplicant.objects.get(pk=shift_id)
         comm = request.POST.get('actionRequired')
-        comms.shifter_comment= comm
+        comms.comment= comm
         comms.save()
         messages.success(request, 'Feedback Succesfully Sent!')
         return HttpResponseRedirect(reverse('cOthers-shifter-feedback', args=(shift_id,)))
-
 
 #SHIFTERS CSW 
 def shifter_csw(request, shift_id):
@@ -5127,9 +5183,143 @@ def del_allshifter(request, shift_id):
     shift_applicant.studentStudyplan.delete()
     shift_applicant.studentshifterletter.delete()
     shift_applicant.studentGrade.delete()
+    shift_applicant.studentshifterletter.delete()
     messages.success(request, 'Files Succesfully Returned!')  
     return HttpResponseRedirect(reverse('cOthers-shifterView', args=(shift_id,)))
 
+    return HttpResponseRedirect(reverse('cOthers-shifterView', args=(shift_id,)))
+
+# FOR VIEWING OUTSHIFTER LIST
+def outshifter_list(request):
+    if request.user.is_authenticated and request.user.is_chairperson:
+        id= request.user.id
+        info = FacultyInfo.objects.get(facultyUser=id)
+        student = StudentInfo.objects.filter(departmentID=info.departmentID)
+        outshifter_list = OutShifterApplicant.objects.filter(studentID__in=student)
+        searchthis_query = request.GET.get('searchthis')
+        if searchthis_query != " " and searchthis_query is not None:
+            outshifter_list = outshifter_list.filter(Q(studentID__studentUser__lastName__icontains=searchthis_query) | Q(studentID__studentID__icontains=searchthis_query)| Q(studentID__studentUser__firstName__icontains=searchthis_query)| Q(studentID__studentUser__middleName__icontains=searchthis_query) | Q(remarks__icontains=searchthis_query)).distinct()
+        context = {
+        'info' : info,
+        'outshifter_list' : outshifter_list,
+        }
+        return render (request, 'chairperson/Others/cOthers-outshifter.html', context)
+
+
+def outShifter_masterlist(request):
+        id= request.user.id
+        info = FacultyInfo.objects.get(facultyUser=id)
+        student = StudentInfo.objects.filter(departmentID=info.departmentID)
+        outshifter_masterlist = OutShifterApplicant.objects.filter(studentID__in=student)
+        outshifter_returned = OutShifterApplicant.objects.filter(studentID__in=student).filter(remarks="Returned")
+        outshifter_submitted = OutShifterApplicant.objects.filter(studentID__in=student).filter(remarks="Submitted")
+        outshifter_forwared = OutShifterApplicant.objects.filter(studentID__in=student).filter(remarks="Forwarded")
+        outshifter_inprogress = OutShifterApplicant.objects.filter(studentID__in=student).filter(remarks="In Progress")
+        outshifter_complete = OutShifterApplicant.objects.filter(studentID__in=student).filter(remarks="Complete")
+       
+        context = {
+        'info' : info,
+        'outshifter_masterlist' : outshifter_masterlist,
+        'outshifter_submitted' : outshifter_submitted,
+        'outshifter_returned' : outshifter_returned,
+        'outshifter_forwared' : outshifter_forwared,
+        'outshifter_inprogress' : outshifter_inprogress,
+        'outshifter_complete' : outshifter_complete,
+        
+        }
+        return render (request, 'chairperson/Others/cOthers-outshifter-Master.html', context)
+
+# VIEW OUTBOND SHIFTING REQUEST OF STUDENT
+def outshifter_view(request, id):
+    if request.method == 'GET':
+        outshifterView = OutShifterApplicant.objects.get(pk=id)
+        return render(request, 'chairperson/Others/cOthers-outshifterView.html', {'outshifterView' : outshifterView})
+    elif request.method == 'POST':
+        outshifterView = OutShifterApplicant.objects.get(pk=id)
+        statform = request.POST.get('slct')
+        outshifterView.remarks = statform
+        outshifterView.save()
+        return redirect ('cOthers-outshifter')
+
+# FOR OUTSHIFTER FEEDBACK        
+def outshifter_feedback(request, id):
+    if request.method == 'GET':
+        outshifter_feedback = OutShifterApplicant.objects.get(pk=id)
+        return render (request, 'chairperson/Others/cOthers-outshifter-feedback.html', {'outshifter_feedback' : outshifter_feedback})
+    elif request.method == 'POST':
+        comms = OutShifterApplicant.objects.get(pk=id)
+        comm = request.POST.get('actionRequired')
+        comms.comment= comm
+        comms.save()
+        messages.success(request, 'Feedback Succesfully Sent!')
+        return HttpResponseRedirect(reverse('cOthers-outshifter-feedback', args=(id,)))
+
+
+#OUTSHIFTERS CSW 
+def outshifter_csw(request, id):
+    outshift_csw = OutShifterApplicant.objects.get(pk=id)
+    if outshift_csw.studentID.departmentID.courseName == 'BSIT':
+        return render (request, 'chairperson/Others/cOthers-outshifter-itcsw.html', {'outshift_csw' : outshift_csw})
+    elif outshift_csw.studentID.departmentID.courseName == 'BSEE':
+        return render (request, 'chairperson/Others/cOthers-outshifter-eecsw.html', {'outshift_csw' : outshift_csw})
+
+#RENDER HTML LOA CSW TO PDF
+def outshifter_Pdf(request, id):
+    try:
+        pdf1 = OutShifterApplicant.objects.get(pk=id)
+        if pdf1.studentID.departmentID.courseName == 'BSIT':
+            data = request.session.get('_outshifter_data')
+
+            template = get_template('chairperson/CSW/it_csw.html')
+
+            context =  {'pdf1':pdf1,'date':data['date'],'from':data['from'],'subject':data['subject'],'action':data['actionRequired'],'reference':data['reference'],'background':data['background'],'analysis':data['analysis'],'recommendation':data['recommendation'], }
+                
+            html = template.render(context)
+            pdf = render_to_pdf('chairperson/CSW/it_csw.html', context)
+
+            if pdf:
+                response = HttpResponse(pdf, content_type='application/pdf')
+                filename = "IT_CSW-%s.pdf" %pdf1.studentID
+                content = "inline; filename=%s" %(filename)
+                download = request.GET.get("download")
+                if download:
+                    content = "attachment; filename='%s'" %(filename)
+                response['Content-Disposition'] = content
+                return response
+            return HttpResponse("Not found")
+
+        elif pdf1.studentID.departmentID.courseName == 'BSEE':
+            data = request.session.get('_outshifter_data')
+
+            template = get_template('chairperson/CSW/ee_csw.html')
+
+            context =  {'pdf1':pdf1,'date':data['date'],'from':data['from'],'subject':data['subject'],'action':data['action'],'reference':data['reference'],'background':data['background'],'analysis':data['analysis'],'recommendation':data['recommendation'], }
+                
+            html = template.render(context)
+            pdf = render_to_pdf('chairperson/CSW/ee_csw.html', context)
+
+            if pdf:
+                response = HttpResponse(pdf, content_type='application/pdf')
+                filename = "EE_CSW-%s.pdf" %pdf1.studentID
+                content = "inline; filename=%s" %(filename)
+                download = request.GET.get("download")
+                if download:
+                    content = "attachment; filename='%s'" %(filename)
+                response['Content-Disposition'] = content
+                return response
+            return HttpResponse("Not found")
+    except:
+        return HttpResponse("Not found please attach first")
+
+# FOR DELETING OUTSHIFTER FILES
+def del_alloutshifter(request, id):
+    outshift_applicant = OutShifterApplicant.objects.get(pk=id)
+    outshift_applicant.studentStudyplan.delete()
+    outshift_applicant.studentshifterletter.delete()
+    outshift_applicant.checklist.delete()
+    outshift_applicant.shiftingForm.delete()
+    messages.success(request, 'Files Succesfully Returned!')  
+    return HttpResponseRedirect(reverse('cOthers-outshifterView', args=(id,)))
 # FOR VIEWING TRANSFEREE LIST
 def transferee_list(request):
     if request.user.is_authenticated and request.user.is_chairperson:
@@ -6289,7 +6479,21 @@ def studyplan4(request):
             return redirect('index')
 
 def studyplan5(request):
-    return render(request, 'student/sOthers/sStudyplan5.html')
+    if request.user.is_authenticated and request.user.is_student:
+        id= request.user.id
+        lastName = Query.lastName(id)
+        honorific = Query.honorific(id)
+        dept_id = Query.deptID_from_students(id)
+        cperson_id = Query.cpersonID_from_department(dept_id)
+
+        send_notifications(
+            user_id = cperson_id, 
+            title = f"{honorific} {lastName} has submitted a study plan",
+            description = f"Study Plan"
+        )
+        return render(request, 'student/sOthers/sStudyplan5.html')
+    else:
+        return redirect('index')
 
 
 #manage faculty applicant
@@ -6314,6 +6518,30 @@ def faculty_view(request, faculty_id):
         facultyapp.save()
         return redirect ('cfaculty_applicant')
 
+        return redirect ('cfaculty_applicant')
+
+def faculty_feedback(request, faculty_id):
+    if request.method == 'GET':
+        faculty_feedbacks = FacultyApplicant.objects.get(pk=faculty_id)
+        return render (request, 'chairperson/faculty_feedback.html', {'faculty_feedbacks' : faculty_feedbacks})
+    elif request.method == 'POST':
+        comms = FacultyApplicant.objects.get(pk=faculty_id)
+        comm = request.POST.get('actionRequired')
+        comms.comment= comm
+        comms.save()
+        messages.success(request, 'Feedback Succesfully Sent!')
+        return HttpResponseRedirect(reverse('faculty_feedback', args=(faculty_id,)))
+
+# FOR DELETING FACULTY APPLICANT FILES
+def del_allFaculty(request, faculty_id):
+    Faculty_applicant = FacultyApplicant.objects.get(pk=faculty_id)
+    Faculty_applicant.CV.delete()
+    Faculty_applicant.certificates.delete()
+    Faculty_applicant.credentials.delete()
+    Faculty_applicant.TOR.delete()
+    Faculty_applicant.PDS.delete()
+    Faculty_applicant.accomplishments.delete()
+    messages.success(request, 'Files Succesfully Returned!')  
 def cfacultyapplicant_sortedlist(request):
     id = request.user.id
     info = FacultyInfo.objects.get(facultyUser=id)
@@ -6526,6 +6754,18 @@ def transferee_9applicationform(request):
 
 
 def transferee_10success(request):
+    id = transfereeApplicants.id()
+    dept = transfereeApplicants.dept(id)
+    dept_id = transfereeApplicants.dept_id(dept)
+    cpersonID_from_department = Query.cpersonID_from_department(dept_id)
+    lastname = transfereeApplicants.lastName(id)
+    honorific = transfereeApplicants.honorific(id)
+    
+    send_notifications(
+        user_id = cpersonID_from_department, 
+        title = f"{honorific} {lastname} has requested a transfer",
+        description = f"Transferee"
+    )
     return render(request, './applicant/transferee_10success.html',{'num':t_num, 'mail':t_mail})
 
 #SHIFTER APPLICANT
@@ -6599,7 +6839,19 @@ def shifter9(request):
 
 
 def shifter10(request):
-        return render(request, './applicant/shifter10.html',{'app':s_num, 'mail':s_mail})
+    id = shifterApplicants.id()
+    dept = shifterApplicants.dept(id)
+    dept_id = shifterApplicants.dept_id(dept)
+    cpersonID_from_department = Query.cpersonID_from_department(dept_id)
+    lastname = shifterApplicants.lastName(id)
+    honorific = shifterApplicants.honorific(id)
+
+    send_notifications(
+        user_id = cpersonID_from_department, 
+        title = f"{honorific} {lastname} has submitted an inbound shifting application",
+        description = f"Inbound Shifter"
+    )
+    return render(request, './applicant/shifter10.html',{'app':s_num, 'mail':s_mail})
 
 
 #------------------- FACULTY APPLICANT -----------------------
@@ -6683,6 +6935,18 @@ def applicant_facultyapplicationform_workexpsheet(request):
 
 def applicant_facultyapplicationform_workexpsheet_submitted(request):
     global f_num, f_mail
+    id = facultyApplicants.id()
+    dept = facultyApplicants.dept(id)
+    dept_id = facultyApplicants.dept_id(dept)
+    cpersonID_from_department = Query.cpersonID_from_department(dept_id)
+    lastname = facultyApplicants.lastName(id)
+    honorific = facultyApplicants.honorific(id)
+    
+    send_notifications(
+        user_id = cpersonID_from_department, 
+        title = f"{honorific} {lastname} has submitted a faculty Application",
+        description = f"Faculty Applicants"
+    )
     return render(request,'./applicant/applicant_facultyapplicationform_workexpsheet_submitted.html',{'app':f_num, 'mail':f_mail})
 
 
