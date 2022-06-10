@@ -108,40 +108,183 @@
                                         <th scope="col" style="margin-top: 2%;"><p id="head3"><b>Course Name</b></p></th>
                                         <th scope="col" style="margin-top: 2%;"><p id="head3"><b>Units</b></p></th>
                                         <th scope="col" style="margin-top: 2%;"><p id="head3"><b>Pre(Co)-Requisites</b></p></th>
-                                        <th scope="col" style="border-radius: 0px 12px 0px 0px;"><p id="head3"><b>Failed</b></p></th>
+                                     
                                     </tr>
                                     <!----------------------DATABASE STUFF---------------------->
-                                    {% if status.curricula %}
-                                        {% if semesters and subjects %}
-                                            {% for semester in semesters %}
-                                                {% if semester.departmentID == info.departmentID %}
-                                                    {% if semester.schoolYr == status.admissionYr %}
-                                                        {% if semester == status.curricula %}
-                                                        {{ "<!--" }}
-                                                        {% else %}
+                                    {% if grades %}
+                                            
+                                       
+                                            {% for l in grades %}  
+                                        
+                                                {% if status.studentinfo == l.owner%} 
+                                                                       
+                                                    {% if info.studentYearlevel == '1' %}
 
-                                                            <tr class="tabletext1">
-                                                                <td colspan="5" style="background-color: #0892dd; box-shadow: 0 0 10px rgb(189, 189, 189);"><b>{{ semester.cYear }}, {{ semester.cSem }}</b></td>
-                                                            </tr>
-                                                            {% for subject in subjects %}
-                                                                {% if semester == subject.curricula %}
+                                                        {% if l.yearTaken == info.studentYearlevel %}
+
+                                                          
+                
+                                                            {% if l.semTaken == '1' %}
+                                                                                   
+                                                                                
+                                                
+                                                                {% if l.subjectGrades >= 5.00 %}
+                                                            
                                                                     <tr class="tabletext2">
-                                                                        <td><p>{{ subject.courseCode }}</p></td>
-                                                                        <td><p class="subjectName">{{ subject.courseName }}</p></td>
-                                                                        <td><p>{{ subject.courseUnit }}</p></td>
-                                                                        <td><p>{{ subject.prerequisite|default_if_none:"" }}</p></td>
-                                                                        <td><input type="checkbox" id="checkmark" name="checkmark" value="{{ subject.id }}"></td>
+                                                                        <td><p>{{ l.curriculumCode.subjectCode.subjectCode }}</p></td>
+                                                                        <td><p class="subjectName">{{ l.curriculumCode.subjectCode.subjectName }}</p></td>
+                                                                        <td><p>{{ l.curriculumCode.subjectUnits }}</p></td>
+                                                                        <td><p>{{ l.curriculumCode.subjectCode.subjectPrerequisite|default_if_none:"" }}</p></td>
+    
                                                                     </tr>
-                                                                {% endif %}
-                                                            {% endfor %}
+                                                                {%endif%}
+                                                                        
+                                                            {%endif%}
+                                                        {%endif%}
+                                                                           
+                                                     
+                                                                
 
-                                                        {% endif %}
-                                                    {% endif %}
-                                                {% endif %}    
-                                            {% endfor %}
-                                            {{ "-->" }}
-                                        {% endif %}
-                                    {% endif %}
+                                                    {% elif info.studentYearlevel >= '2' %}
+                                                                          
+                                                            {% if l.yearTaken != info.studentYearlevel %}
+
+                                                              
+                                                                {% if l.semTaken == '2' %}
+ 
+                                                                    {% if l.subjectGrades >= 5.00 %}
+                                                                        <tr class="tabletext2">
+                                                                            <td><p>{{ l.curriculumCode.subjectCode.subjectCode }}</p></td>
+                                                                            <td><p class="subjectName">{{ l.curriculumCode.subjectCode.subjectName }}</p></td>
+                                                                            <td><p>{{ l.curriculumCode.subjectUnits }}</p></td>
+                                                                            <td><p>{{ l.curriculumCode.subjectCode.subjectPrerequisite|default_if_none:"" }}</p></td>
+                                                                          
+                                                                        </tr>
+                                                                    {%endif%}
+                                                                        
+                                                                {%endif%}
+
+                                                            {%endif%}
+
+                                                    {% elif info.studentYearlevel == '2' %}
+                                                                          
+                                                            {% if l.yearTaken == info.studentYearlevel %}
+
+                                                                
+                                                                {% if l.semTaken == '1' %}
+ 
+                                                                    {% if l.subjectGrades >= 5.00 %}
+                                                                        <tr class="tabletext2">
+                                                                            <td><p>{{ l.curriculumCode.subjectCode.subjectCode }}</p></td>
+                                                                            <td><p class="subjectName">{{ l.curriculumCode.subjectCode.subjectName }}</p></td>
+                                                                            <td><p>{{ l.curriculumCode.subjectUnits }}</p></td>
+                                                                            <td><p>{{ l.curriculumCode.subjectCode.subjectPrerequisite|default_if_none:"" }}</p></td>
+                                                                       
+                                                                        </tr>
+                                                                    {%endif%}
+                                                                            
+                                                                {%endif%}
+
+                                                            {%endif%}
+
+                                                    
+                                                    {% elif info.studentYearlevel == '3' %}
+                                                                          
+                                                            {% if l.yearTaken == info.studentYearlevel %}
+
+                     
+                                                                {% if l.semTaken == '1' %}
+ 
+                                                                    {% if l.subjectGrades >= 5.00 %}
+                                                                        <tr class="tabletext2">
+                                                                            <td><p>{{ l.curriculumCode.subjectCode.subjectCode }}</p></td>
+                                                                            <td><p class="subjectName">{{ l.curriculumCode.subjectCode.subjectName }}</p></td>
+                                                                            <td><p>{{ l.curriculumCode.subjectUnits }}</p></td>
+                                                                            <td><p>{{ l.curriculumCode.subjectCode.subjectPrerequisite|default_if_none:"" }}</p></td>
+                                                                              
+                                                                        </tr>
+                                                                    {%endif%}
+                                                                        
+                                                                {%endif%}
+
+                                                            {%endif%}
+                                                    
+
+                                                    {% elif info.studentYearlevel == '4' %}
+                                                                          
+                                                            {% if l.yearTaken == info.studentYearlevel %}
+
+                                                            
+                                                                {% if l.semTaken == '1' %}
+ 
+                                                                    {% if l.subjectGrades >= 5.00 %}
+                                                                        <tr class="tabletext2">
+                                                                            <td><p>{{ l.curriculumCode.subjectCode.subjectCode }}</p></td>
+                                                                            <td><p class="subjectName">{{ l.curriculumCode.subjectCode.subjectName }}</p></td>
+                                                                            <td><p>{{ l.curriculumCode.subjectUnits }}</p></td>
+                                                                            <td><p>{{ l.curriculumCode.subjectCode.subjectPrerequisite|default_if_none:"" }}</p></td>
+                                                                               
+                                                                        </tr>
+                                                                    {%endif%}
+                                                                        
+                                                                {%endif%}
+
+                                                            {%endif%}
+
+                                                    
+
+                                                    {% elif info.studentYearlevel == '5' %}
+                                                                          
+                                                            {% if l.yearTaken == info.studentYearlevel %}
+
+                  
+                                                                {% if l.semTaken == '1' %}
+ 
+                                                                    {% if l.subjectGrades >= 5.00 %}
+                                                                        <tr class="tabletext2">
+                                                                            <td><p>{{ l.curriculumCode.subjectCode.subjectCode }}</p></td>
+                                                                            <td><p class="subjectName">{{ l.curriculumCode.subjectCode.subjectName }}</p></td>
+                                                                            <td><p>{{ l.curriculumCode.subjectUnits }}</p></td>
+                                                                            <td><p>{{ l.curriculumCode.subjectCode.subjectPrerequisite|default_if_none:"" }}</p></td>
+                                                                               
+                                                                        </tr>
+                                                                    {%endif%}
+                                                                        
+                                                                {%endif%}
+
+                                                            {%endif%}
+                                                    
+
+                                                    {% elif info.studentYearlevel == '6' %}
+                                                                          
+                                                            {% if l.yearTaken == info.studentYearlevel %}
+
+                                                               
+                                                                {% if l.semTaken == '1' %}
+ 
+                                                                    {% if l.subjectGrades >= 5.00 %}
+                                                                        <tr class="tabletext2">
+                                                                            <td><p>{{ l.curriculumCode.subjectCode.subjectCode }}</p></td>
+                                                                            <td><p class="subjectName">{{ l.curriculumCode.subjectCode.subjectName }}</p></td>
+                                                                            <td><p>{{ l.curriculumCode.subjectUnits }}</p></td>
+                                                                            <td><p>{{ l.curriculumCode.subjectCode.subjectPrerequisite|default_if_none:"" }}</p></td>
+                                                                              
+                                                                        </tr>
+                                                                    {%endif%}
+                                                                        
+                                                                {%endif%}
+
+                                                            {%endif%}
+                                              
+                                                    {%endif%}
+                                                    
+
+                                                                  
+
+                                                {%endif%} 
+                                            {%endfor%}          
+                                    {% endif%}
+                                   
                                     <!---------------------------------------------------------->
 
                                    
@@ -193,7 +336,10 @@
                         <div class="row">
                             <div class="col-lg-12 pt-3">
                                 
-                                <p id="head3" style="color: #06529b; padding-left: 8%;margin-top: 4%;">Tick all the subjects taken that has a <br> failed remark.</p>
+                                {% if status.curricula %}
+                                <p id="head3" style="color: #06529b; padding-left: 8%;margin-top: 4%;">List of subjects for which you received a <br> failed remark only before {{ status.curricula.cYear }}, {{ status.curricula.cSem }}.</p>
+                                
+                                {% endif %}
                             </div>
                             <form method="POST" enctype="multipart/form-data">
                                 {%csrf_token%}

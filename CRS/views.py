@@ -3467,9 +3467,12 @@ def sProfileEdit(request):
          return redirect('index')
 
 def sChecklist(request):
+    
     if request.user.is_authenticated and request.user.is_student:
+        semester = '1'
         id = request.user.id
         info = StudentInfo.objects.get(studentUser=id)
+     
         try:
             checklist = currchecklist.objects.filter(owner_id=info).filter(yearTaken='1').filter(semTaken='1')
             checklist2 = currchecklist.objects.filter(owner_id=info).filter(yearTaken='1').filter(semTaken='2')
@@ -3641,10 +3644,47 @@ def sChecklist(request):
             checklist10 = None
             checklist11 = None
             checklist12 = None
-        context = {'id': id, 'info': info, 'checklist': checklist, 'checklist2': checklist2,'checklist3': checklist3,'checklist4': checklist4,'checklist5': checklist5,'checklist6': checklist6,'checklist7': checklist7,'checklist8': checklist8, 'checklist9': checklist9, 'checklist10': checklist10, 'checklist11': checklist11, 'checklist12': checklist12, 'prevunitsum': prevunitsum, 'ave':ave, 'ave2': ave2, 'ave3':ave3, 'ave4':ave4, 'ave5':ave5, 'ave6':ave6, 'ave7':ave7, 'ave8' :ave8, 'ave9':ave9, 'ave10':ave10, 'ave11':ave11, 'ave12':ave12,}
+        if (request.method=='POST'):
+            semester=request.POST.get('semester')
+        if semester == None:
+            semester='1'
+        context = {'id': id, 'info': info, 'checklist': checklist, 'checklist2': checklist2,'checklist3': checklist3,'checklist4': checklist4,'checklist5': checklist5,'checklist6': checklist6,'checklist7': checklist7,'checklist8': checklist8, 'checklist9': checklist9, 'checklist10': checklist10, 'checklist11': checklist11, 'checklist12': checklist12, 'prevunitsum': prevunitsum, 'ave':ave, 'ave2': ave2, 'ave3':ave3, 'ave4':ave4, 'ave5':ave5, 'ave6':ave6, 'ave7':ave7, 'ave8' :ave8, 'ave9':ave9, 'ave10':ave10, 'ave11':ave11, 'ave12':ave12, 'semester':semester}
         return render(request, 'student/sClassroom/sChecklist.html', context)
     else:
         return redirect('index')
+
+def sChecklistform(request):
+    if request.user.is_authenticated and request.user.is_student:
+        id = request.user.id
+        info = StudentInfo.objects.get(studentUser=id)
+        semesters = Curricula.objects.all()
+        grades = currchecklist.objects.all()
+        subjects = curriculumInfo.objects.all()
+ 
+        context = {
+            'info': info,
+            'semesters': semesters,
+            'subjects' : subjects,
+            'grades' : grades
+        
+        }
+
+ 
+        response = HttpResponse(content_type='application/pdf')
+        response['Content-Disposition'] ='filename="Checklist_%s.pdf"' %(info.studentID)
+
+        template = get_template('forms/Checklistform.html')
+        html = template.render(context)
+
+        pisa_status = pisa.CreatePDF(
+        html, dest=response)
+
+        if pisa_status.err:
+            return HttpResponse('We had some errors <pre>' + html + '</pre>')
+        return response
+    else:
+        messages.error(request,'No Copy Yet')
+        return render(request,'student/sChecklist.html')
 
 def sChecklistEmptyConfirmation(request, currchecklist_id):
     if request.user.is_authenticated and request.user.is_student:
@@ -3739,6 +3779,8 @@ def donecrs(request):
     else:
         return redirect('index')
 
+#OUTBOUND SHIFTING
+
 def sChecklistSubmission(request):
     if request.user.is_authenticated and request.user.is_student:
         id= request.user.id
@@ -3776,9 +3818,79 @@ def sChecklistSubmission(request):
             approved_file = None
             flag = 1
         
+        return render(request, 'student/sOthers/scrsChecklistSubmission.html', {'approved_file': approved_file, 'flag':flag})
+    else:
+        return redirect('index')
 
-        
-        return render(request, 'student/sClassroom/scrsChecklistSubmission.html', {'approved_file': approved_file, 'flag':flag})
+def scrsShiftingForm(request):
+    if request.user.is_authenticated and request.user.is_student:
+        context={'file':ShiftingForm.objects.all()}
+        return render(request, 'student/sOthers/scrsShiftingForm.html', context)
+    else:
+        return redirect('index')
+
+def SF_DownloadDF(request,path):
+    file_path=os.path.join(settings.MEDIA_ROOT,path)
+    if os.path.exists(file_path):
+        with open(file_path,'rb')as fh:
+            response=HttpResponse(fh.read(),content_type="application/Admin_Upload")
+            response['Content-Disposition']='inline;filename'+os.path.basename(file_path)
+            return response
+    raise Http404
+
+def scrsUploadFile(request):
+    if request.user.is_authenticated and request.user.is_student:
+        id= request.user.id
+        info = StudentInfo.objects.get(studentUser=id)
+        if (request.method == 'POST'):
+            studentStudyplan = request.FILES.get('studentStudyplan')
+            studentshifterletter = request.FILES.get('studentshifterletter') 
+            shiftingForm = request.FILES.get('shiftingForm')
+            checklist = request.FILES.get('checklist')
+            shifter_dateSubmitted = timezone.now()
+            
+            try:
+                applicant = OutShifterApplicant.objects.get(studentID_id=id)
+                if applicant.remarks == "Returned":
+                    if (request.method == 'POST'):
+                        applicant.studentStudyplan = request.FILES.get('studentStudyplan')
+                        applicant.studentshifterletter = request.FILES.get('studentshifterletter')
+                        applicant.shiftingForm = request.FILES.get('shiftingForm')
+                        applicant.checklist = request.FILES.get('checklist')
+                        applicant.remarks = 'Submitted'
+                        shifter_dateSubmitted = timezone.now()
+                        applicant.save()
+                        return redirect('scrsComplete') 
+                else:
+                    messages.error(request,'You have already submitted an application!')
+                    return render(request,'student/sOthers/scrsUploadFile.html')
+            except ObjectDoesNotExist:
+                outShifterApplicant = OutShifterApplicant(studentID=info,studentStudyplan=studentStudyplan,studentshifterletter =studentshifterletter ,shiftingForm=shiftingForm,checklist=checklist, shifter_dateSubmitted=shifter_dateSubmitted)
+                outShifterApplicant.save()
+                return redirect('scrsComplete')
+
+        return render(request, 'student/sOthers/scrsUploadFile.html')
+    else:
+        return redirect('index')
+
+def scrsComplete(request):
+    if request.user.is_authenticated and request.user.is_student:
+        return render(request, 'student/sOthers/scrsComplete.html')
+    else:
+        return redirect('index')
+
+def doneOSF(request):
+    if request.user.is_authenticated and request.user.is_student:
+        id= request.user.id
+        info = StudentInfo.objects.get(studentUser=id)
+        try:
+            applicant = OutShifterApplicant.objects.get(studentID_id=id)
+            if applicant.remarks == "Returned":
+                return redirect('scrsUploadFile') 
+            else:
+                return redirect('scrsComplete') 
+        except ObjectDoesNotExist:
+            return redirect('sChecklistSubmission')
     else:
         return redirect('index')
 
@@ -3802,7 +3914,11 @@ def sOthers(request):
             sp_applicant = spApplicant.objects.get(studentID=id)
         except spApplicant.DoesNotExist: 
             sp_applicant = None
-        context = {'id': id, 'info':info, 'hd_applicant':hd_applicant, 'ojt_applicant': ojt_applicant, 'loa_applicant' : loa_applicant, 'sp_applicant': sp_applicant}
+        try:
+            outshifterapplicant = OutShifterApplicant.objects.get(studentID=id)
+        except OutShifterApplicant.DoesNotExist: 
+            outshifterapplicant = None
+        context = {'id': id, 'info':info, 'outshifterapplicant':outshifterapplicant, 'hd_applicant':hd_applicant, 'ojt_applicant': ojt_applicant, 'loa_applicant' : loa_applicant, 'sp_applicant': sp_applicant}
         return render(request, 'student/sOthers/sOthers.html', context)
     else:
          return redirect('index')
@@ -4226,6 +4342,19 @@ def Loa_Form(request):
     else:
         return redirect('index')
 
+def sLoaDP(request):
+    if request.user.is_authenticated and request.user.is_student:
+        context={'file':HD_DroppingForm.objects.all()}
+        return render(request, 'student/sOthers/sLoaDP.html', context)
+    else:
+        return redirect('index')
+
+def HD_DownloadDF(request,path):
+    file_path=os.path.join(settings.MEDIA_ROOT,path)
+    if os.path.exists(file_path):
+        with open(file_path,'rb')as fh:
+            response=HttpResponse(fh.read(),content_type="application/Admin_Upload")
+            response['Content-Disposition']='inline;filename'+os.path.basename(file_path)
 
 def sLoa3(request):
     if request.user.is_authenticated and request.user.is_student:
@@ -4237,6 +4366,7 @@ def sLoa3(request):
             studentLOAletter = request.FILES.get('studentLOAletter')
             studentLOAFORM = request.FILES.get('studentLOAFORM')
             studentChecklist = request.FILES.get('studentChecklist')
+            studentDroppingForm = request.FILES.get('studentDroppingForm')
             now = timezone.now()
             try:
                 applicant = LOAApplicant.objects.get(studentID_id=id)
@@ -4247,6 +4377,7 @@ def sLoa3(request):
                         applicant.studentLOAletter = request.FILES.get('studentLOAletter')
                         applicant.studentLOAFORM = request.FILES.get('studentLOAFORM')
                         applicant.studentChecklist = request.FILES.get('studentChecklist')
+                        applicant.studentDroppingForm = request.FILES.get('studentDroppingForm')
                         applicant.remarks = 'Submitted'
                         applicant.LOA_dateSubmitted = timezone.now()
                         applicant.save()
@@ -4255,7 +4386,7 @@ def sLoa3(request):
                     messages.error(request,'You have already submitted an application!')
                     return render(request,'student/sOthers/sLoa3.html')
             except ObjectDoesNotExist:
-                loaApplicant = LOAApplicant(studentID=info,studentLOAClearanceform =studentLOAClearanceform,studentLOAFORM =studentLOAFORM ,studentLOAletter =studentLOAletter,studentChecklist=studentChecklist,studentStudyplan=studentStudyplan,LOA_dateSubmitted=now)
+                loaApplicant = LOAApplicant(studentID=info,studentDroppingForm=studentDroppingForm,studentLOAClearanceform =studentLOAClearanceform,studentLOAFORM =studentLOAFORM ,studentLOAletter =studentLOAletter,studentChecklist=studentChecklist,studentStudyplan=studentStudyplan,LOA_dateSubmitted=now)
                 loaApplicant.save()
                 return redirect('sLoa4')
         return render(request, 'student/sOthers/sLoa3.html')
@@ -4367,14 +4498,26 @@ def donesp(request):
     if request.user.is_authenticated and request.user.is_student:
         id= request.user.id
         info = StudentInfo.objects.get(studentUser=id)
-        try:
-            applicant = spApplicant.objects.get(studentID_id=id)
-            if applicant.remarks == "Returned":
-                return redirect('stdplnyr') 
-            else:
-                return redirect('stdplncs') 
-        except ObjectDoesNotExist:
-            return redirect('stdplnyr')
+        
+        if info.studentRegStatus == "Irregular":
+            try:
+                applicant = spApplicant.objects.get(studentID_id=id)
+                if applicant.remarks == "Returned":
+                    return redirect('stdplnyr') 
+                else:
+                    return redirect('stdplncs') 
+            except ObjectDoesNotExist:
+                return redirect('stdplnyr')
+        else:
+            try: 
+                sp_Applicant = spApplicant.objects.get(studentID=id)
+            except spApplicant.DoesNotExist:
+                sp_Applicant = None
+            context = {'sp_Applicant' : sp_Applicant}
+            messages.error(request,'You are a regular student!')
+            return render (request, 'student/sOthers/sOthers.html', context)
+
+   
     else:
         return redirect('index')
 
@@ -4749,6 +4892,7 @@ def del_allLOA(request, loa_id):
     LOA_applicant.studentLOAletter.delete()
     LOA_applicant.studentLOAFORM.delete()
     LOA_applicant.studentChecklist.delete()
+    LOA_applicant.studentDroppingForm.delete()
     messages.success(request, 'Files Succesfully Returned!')  
     return HttpResponseRedirect(reverse('cOthers-loaView', args=(loa_id,)))
 
@@ -5141,6 +5285,7 @@ def sendmailwfile(request, email_id):
                 email.attach_file(os.path.join(settings.MEDIA_ROOT,sends.studentLOAletter.name))
                 email.attach_file(os.path.join(settings.MEDIA_ROOT,sends.studentLOAFORM.name))
                 email.attach_file(os.path.join(settings.MEDIA_ROOT,sends.studentChecklist.name))
+                email.attach_file(os.path.join(settings.MEDIA_ROOT,sends.studentDroppingForm.name))
                 email.send()
                 messages.success(request, 'Message Sent Succesfully!')
                 return HttpResponseRedirect(reverse('cOthers-loaView', args=(email_id,)))
@@ -5959,13 +6104,17 @@ def studyplan2(request):
     id = request.user.id
     info = StudentInfo.objects.get(studentUser=id)
     semesters = Curricula.objects.all()
-    subjects = courseList.objects.all()
+    #year = curriculumInfo.objects.all()
+    #subjects = courseList.objects.all()
+    grades = currchecklist.objects.all()
     status = studyPlan.objects.get(studentinfo=info)
     context = {
         'info': info,
         'semesters': semesters,
-        'subjects': subjects,
+        #'year' : year,
+        #'subjects': subjects,
         'status': status,
+        'grades': grades
     }
 
     if (request.method == 'POST'):
@@ -5980,27 +6129,31 @@ def studyplan3(request):
     id = request.user.id
     info = StudentInfo.objects.get(studentUser=id)
     semesters = Curricula.objects.all()
-    subjects = courseList.objects.all()
+    grades = currchecklist.objects.all()
+    subject = curriculumInfo.objects.all()
+    #subjects = courseList.objects.all()
     status = studyPlan.objects.get(studentinfo=info)
     
-    failedsubs = courseList.objects.filter(id__in=status.failedsubs)
-    list = failedsubs.filter(curricula__cSem=status.curricula.cSem)
-    fscourseCode = failedsubs.all().values_list('courseCode', flat=True)
+    failedsubs = currchecklist.objects.all()
+    list = failedsubs.all()
+    fscourseCode = failedsubs.all().values_list('subjectGrades', flat=True)
 
-    for semester in semesters:
-        if semester == status.curricula:
-            cCode = subjects.filter(curricula=semester, prerequisite__in=fscourseCode).values_list('courseCode', flat=True)
-            cCode = [item.join("()") for item in cCode]
+    #for semester in semesters:
+        #if semester == status.curricula:
+            #cCode = grades.filter( curriculumCode=fscourseCode).values_list('curriculumCode', flat=True)
+            #cCode = [item.join("()") for item in cCode]
                 #test = subjects.filter(curricula=semester).values_list('courseCode', 'id')
 
     context = {
         'info': info,
         'semesters': semesters,
-        'subjects': subjects,
+        'subject' : subject,
+        #'subjects': subjects,
         'status': status,
+        'grades' : grades,
         'list': list,
         'fscourseCode': fscourseCode,
-        'cCode': cCode,
+        #'cCode': cCode,
         #'test': test,
     }
     return render(request, 'student/sOthers/sStudyplan3.html', context)
@@ -6010,31 +6163,41 @@ def download_stdpln(request):
     info = StudentInfo.objects.get(studentUser=id)
     status = studyPlan.objects.get(studentinfo=info)
     semesters = Curricula.objects.all()
-    subjects = courseList.objects.all()
+    grades = currchecklist.objects.all()
+    subject = curriculumInfo.objects.all()
+    #subjects = courseList.objects.all()
 
-    failedsubs = courseList.objects.filter(id__in=status.failedsubs)
-    list = failedsubs.filter(curricula__cSem=status.curricula.cSem)
-    fscourseCode = failedsubs.all().values_list('courseCode', flat=True)
+    #failedsubs = courseList.objects.filter(id__in=status.failedsubs)
+    #list = failedsubs.filter(curricula__cSem=status.curricula.cSem)
+    #fscourseCode = failedsubs.all().values_list('courseCode', flat=True)
+    failedsubs = currchecklist.objects.all()
+    list = failedsubs.all()
+    fscourseCode = failedsubs.all().values_list('subjectGrades', flat=True)
 
-    for semester in semesters:
-        if semester == status.curricula:
-            cCode = subjects.filter(curricula=semester, prerequisite__in=fscourseCode).values_list('courseCode', flat=True)
-            cCode = [item.join("()") for item in cCode]
+    #for semester in semesters:
+        #if semester == status.curricula:
+            #cCode = grades.filter( curriculumCode=fscourseCode).values_list('curriculumCode', flat=True)
+    #for semester in semesters:
+        #if semester == status.curricula:
+            #cCode = subjects.filter(curricula=semester, prerequisite__in=fscourseCode).values_list('courseCode', flat=True)
+            #cCode = [item.join("()") for item in cCode]
 
-    fsunits = list.filter().aggregate(total=Sum('courseUnit'))['total']
+    #num = list.filter(subjectGrades = 5.0, yearTaken = info.studentYearlevel, semTaken = 1 ).aggregate(total=Sum('curriculumCode__subjectUnits'))['total']
     ogunits = status.curricula.totalUnits
-    #totalnum = fsunits + ogunits
+    #totalnum1 = ogunits
 
     context = {
         'info': info,
         'status': status,
         'semesters': semesters,
-        'subjects': subjects,
+        'subject' : subject,
+        #'subjects': subjects,
+        'grades' : grades,
         'list': list,
         'fscourseCode': fscourseCode,
-        'cCode': cCode,
+        #'cCode': cCode,
         'ogunits': ogunits,
-        #'totalnum': totalnum,
+        #'totalnum1': totalnum1,
     }
     if status.studentinfo_id == info.studentUser_id:
         response = HttpResponse(content_type='application/pdf')
@@ -6058,31 +6221,42 @@ def sptest(request):
     info = StudentInfo.objects.get(studentUser=id)
     status = studyPlan.objects.get(studentinfo=info)
     semesters = Curricula.objects.all()
-    subjects = courseList.objects.all()
+    grades = currchecklist.objects.all()
+    subject = curriculumInfo.objects.all()
+    #subjects = courseList.objects.all()
 
-    failedsubs = courseList.objects.filter(id__in=status.failedsubs)
-    list = failedsubs.filter(curricula__cSem=status.curricula.cSem)
-    fscourseCode = failedsubs.all().values_list('courseCode', flat=True)
+    failedsubs = currchecklist.objects.all()
+    list = failedsubs.all()
+    fscourseCode = failedsubs.all().values_list('subjectGrades', flat=True)
 
-    for semester in semesters:
-        if semester == status.curricula:
-            cCode = subjects.filter(curricula=semester, prerequisite__in=fscourseCode).values_list('courseCode', flat=True)
-            cCode = [item.join("()") for item in cCode]
+    #for semester in semesters:
+        #if semester == status.curricula:
+            #cCode = grades.filter( curriculumCode=fscourseCode).values_list('curriculumCode', flat=True)
+    #failedsubs = courseList.objects.filter(id__in=status.failedsubs)
+    #list = failedsubs.filter(curricula__cSem=status.curricula.cSem)
+    #fscourseCode = failedsubs.all().values_list('courseCode', flat=True)
 
-    fsunits = list.filter().aggregate(total=Sum('courseUnit'))['total']
+    #for semester in semesters:
+        #if semester == status.curricula:
+            #cCode = subjects.filter(curricula=semester, prerequisite__in=fscourseCode).values_list('courseCode', flat=True)
+            #cCode = [item.join("()") for item in cCode]
+
+    #num = list.filter(subjectGrades = 5.0, yearTaken = info.studentYearlevel, semTaken = 1 ).aggregate(total=Sum('curriculumCode__subjectUnits'))['total']
     ogunits = status.curricula.totalUnits
-    #totalnum = fsunits + ogunits
+    #totalnum1 = num + ogunits
 
     context = {
         'info': info,
         'status': status,
         'semesters': semesters,
-        'subjects': subjects,
+        'subject' : subject,
+        'grades' : grades,
+        #'subjects': subjects,
         'list': list,
         'fscourseCode': fscourseCode,
-        'cCode': cCode,
+        #'cCode': cCode,
         'ogunits': ogunits,
-        #'totalnum': totalnum,
+        #'totalnum1': totalnum1,
     }
 
     return render(request, 'forms/download_stdpln.html', context)

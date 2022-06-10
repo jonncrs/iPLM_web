@@ -11,13 +11,82 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
-    <link rel="stylesheet" href="{% static 'CRS/css/sOthers/sLoaStyle.css' %}">
+    <!-- CSS -->
+	<link rel="stylesheet" href="{% static 'CRS/css/sOthers/sLoaStyle.css' %}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">
+	<!--  ICON -->
     <link rel="icon" href="{% static 'CRS/images/sOthers/iPLM.png' %}" type="image/png" sizes="16x16">
+
+	<style>
+        
+        #subjectMessage {
+        margin-top: 10px;
+        padding: 10px;
+        padding-top: 15px;
+        font-size: 18px;
+        color: rgb(248, 248, 248);
+        font-family: 'Nunito';
+        background-color: #ff5f02;
+        border: 2px solid #ff5f02;
+        border-radius: 16px;
+        box-shadow: 0 0 10px rgb(199, 199, 199);
+		animation: zoom-in-zoom-out 1s ease;
+		width: 20%;
+    }
+
+	.closebtn {
+        margin-left: 15px;
+        color: white;
+        font-weight: bold;
+        float: right;
+        font-size: 22px;
+        line-height: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+        }
+
+        .closebtn:hover {
+        color: #b94807;
+        }
+
+		@keyframes zoom-in-zoom-out {
+        0% {
+            transform: scale(1, 1);
+        }
+        50% {
+            transform: scale(1.1, 1.1);
+        }
+        100% {
+            transform: scale(1, 1);
+        }
+        }
+
+				/*SCROLLBAR*/
+				::-webkit-scrollbar {
+			width: 10px;
+		}
+
+		/* Track */
+		::-webkit-scrollbar-track {
+			background: #e4e4e4;
+			border-radius: 12px;
+		}
+		
+		/* Handle */
+		::-webkit-scrollbar-thumb {
+			background: #cbcbcb;
+			border-radius: 12px;
+		}
+
+		/* Handle on hover */
+		::-webkit-scrollbar-thumb:hover {
+			background: #8f8f8f; 
+		}
+	</style>
 </head>
 
 <body>
-{% block content %}
+	{% block content %}
     <div class="wrapper">
 
         <!-- Sidebar -->
@@ -36,16 +105,17 @@
             </ul>
         </nav>
         <!--End of Sidebar -->
-        
+
         <!-- Content -->
         <div id="content">
             <div class="container-fluid">
 
                 <!--Study Plan head-->
                 <div class="back row">
-                    <a href="{% url 'sOthers' %}" id="back-edit"><img src="{% static 'CRS/images/sClassroom/back.svg' %}" width="50" style="margin-top: 30px;"></a>
+					<!-- FILE PATH: Students/sOthers/sOthers.html-->
+					<a href="{% url 'sOthers' %}" id="back-edit"><img src="{% static 'CRS/images/sClassroom/back.svg' %}" width="50" style="margin-top: 30px;"></a>
                     <p id="head1">
-                        Leave of Absence
+                        Outbound Shifting
                     </p>
                 </div>
                 <!--END Study Plan head-->
@@ -53,21 +123,20 @@
                 <!-- Progress Bar -->
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="progress-loa4 row">
+                        <div class="progress row">
                             <div class="col-lg-12">
-                                <div class="progress-bar"></div>
+                                <div class="progress-bar "></div>
                                 <div class="progressbar">
-                                        <li class="active progress-text">Clearance<br>Form</li>
-                                        <li class="active progress-text">LOA<br>Form</li>
-                                        <li class="active progress-text">Upload<br>Documents</li>
-                                        <li class="active progress-text-active">Confirmation<br>Submission</li>
+                                        <li class="active progress-text-active">Checklist<br>Submission</li>
+                                        <li class="progress-text">Shifting<br>Form</li>
+                                        <li class="progress-text">Upload<br>Documents</li>
+                                        <li class="progress-text">Confirmation<br>Submission</li>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <!--END Progress Bar-->
-
                 <!-- MAIN -->
                 <div class="img-row row">
                     <div class="col-lg-12">
@@ -78,26 +147,25 @@
                             </div>
                         </div>
                          <!--END image-->
-                    <form method="POST">
-                        {%csrf_token%}
+
                         <!--message-->
                         <div class="row">
                             <div class="col-lg-12">
                                 <p id="head2">Successfully submitted!</p>
-                                <p id="head3">You have successfully submitted your <br> documents.</p>
+                                <p id="head3">You have successfully submitted your <br> Outbound Shifting Form. </p>
+                                <!-- FILE PATH: Students/sOthers/sOthers.html-->
                                 <p id="button"><a href="{% url 'sOthers' %}" class="button">Done</a></p>
                             </div>
                         </div>
                         <!--END message-->
-                    </form>
                     </div>
                 </div>
             </div>
         </div>
         <!-- END Content -->
     </div>
-
     {% endblock content %}
+
 
     <!-- Javascript -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

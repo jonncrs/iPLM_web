@@ -610,6 +610,40 @@ class spApplicantAdmin(admin.ModelAdmin):
 
 admin.site.register(spApplicant, spApplicantAdmin)
 
+# OUTSHIFTER APPLICANT
+class OutShifterApplicantAdmin(admin.ModelAdmin):
+    search_fields = ['studentID__studentID']
+    model = OutShifterApplicant
+    list_display = ('get_id','course','studentID','FirstName','MiddleName','LastName','status','Applicationstatus')
+
+    def get_id(self, obj):
+        return obj.id
+
+    def course(self, obj):
+        return obj.studentID.studentCourse
+
+    def studentID(self, obj):
+        return obj.studentID
+
+    def FirstName(self, obj):
+        return obj.studentID.studentUser.firstName
+
+    def MiddleName(self, obj):
+        return obj.studentID.studentUser.middleName
+
+    def LastName(self, obj):
+        return obj.studentID.studentUser.lastName
+
+    def status(self, obj):
+        return obj.studentID.studentRegStatus
+
+    def Applicationstatus(self, obj):
+        return obj.remarks
+
+
+    list_filter = [('studentID',RelatedDropdownFilter),('studentID__departmentID__courseName',DropdownFilter),('remarks',DropdownFilter)]
+
+admin.site.register(OutShifterApplicant, OutShifterApplicantAdmin)
 
 # LOA STUDENT APPLICANT
 class LOAApplicantAdmin(admin.ModelAdmin):
@@ -816,6 +850,8 @@ class loaFormAdmin(admin.ModelAdmin):
 admin.site.register(loaForm, loaFormAdmin)
 
 admin.site.register(HD_DroppingForm)
+
+admin.site.register(ShiftingForm)
 
 #Study Plan
 class CurriculaAdmin(admin.ModelAdmin):
