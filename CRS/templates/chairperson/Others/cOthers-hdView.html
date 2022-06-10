@@ -370,13 +370,7 @@ transition: 0.3s;
                                 {% csrf_token %}
                             <button class="deleteFileBtn-4" href="#"><img src="{% static 'CRS/images/cOthers/return.png' %}" width=auto height="42"><br>Return Files</button><!-- DB RETURN FILE BUTTON -->
                         </form>
-                        </div><br><br><br><br><br><br><br>
-                        <form action="{% url 'sendingemailHD' hd_applicant.id %}" method="post" enctype="multipart/form-data">
-                            {% csrf_token %}
-                        <div class="list-feedback1">
-                            <button class="button5hvr" type="submit">Forward to Signatories</button></a><!-- DB FORWARD TO SIGNATORIES BUTTON -->
-                        </div>
-                    </form>
+                        
                     <!-------------END CHAIRPERSON MANAGEMENT----------->
 						</div>
                     </div>

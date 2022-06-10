@@ -699,6 +699,7 @@ class TransfereeApplicant(models.Model):
     studentHD = models.FileField(upload_to='TransfereeSubmission/', blank=True, null=True)
     studentGoodmoral = models.FileField(upload_to='TransfereeSubmission/', blank=True, null=True)
     studentGrade = models.FileField(upload_to='TransfereeSubmission/', blank=True, null=True)
+    transfer_comment = models.TextField(null=True, blank=True, verbose_name='Feedback')
     remarks = models.CharField(max_length=150, default='Submitted', verbose_name='Status')
     transfer_dateSubmitted = models.DateField(default=now)
     signature1 = models.ImageField(upload_to='TransfereeSign/', null=True, blank=True)
@@ -733,6 +734,8 @@ class FacultyApplicant(models.Model):
     TOR = models.FileField(upload_to='facultyApplicant/', blank=True, null=True)
     PDS = models.FileField(upload_to='facultyApplicant/', blank=True, null=True)
     remarks = models.CharField(max_length=150, default='Submitted', verbose_name='Status')
+    comment = models.TextField(null=True, blank=True, verbose_name='Feedback')
+    
 #----------------------------WORK EXPERIENCE SHEET-------------------------------------------------
 
     durationwork = models.CharField(max_length=100, verbose_name="Durationwork", null=True)

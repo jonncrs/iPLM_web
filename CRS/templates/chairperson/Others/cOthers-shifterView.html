@@ -248,10 +248,6 @@ transition: 0.3s;
                                                     </td> 
                                                 {% endif %}
                                                 </td>
-                                            </tr>
-
-
-                                            <tr> 
                                                 <td>
                                                 {% if shift.studentshifterletter %}
                                                         <a href="{{shift.studentshifterletter.url}}"  target="_blank" ><div class="fileName">Letter of Intent</div></a>
@@ -283,6 +279,23 @@ transition: 0.3s;
                                                 {% else %}
                                                     <td>
                                                         <div class="fileName">Grades Screenshot</div>
+                                                    </td>
+                                                    <td>  
+                                                        <div class="text-muted"> NO FILE</div>
+                                                    </td> 
+                                                {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if shift.shiftingForm %}
+                                                        <a href="{{shift.shiftingForm.url}}"  target="_blank" ><div class="fileName">Shifting Form</div></a>
+                                                </td>
+                                                <td>
+                                                    <a href="{{shift.shiftingForm.url}}" download><!-- DB GRADES SCREENSHOT DOWNLOAD BUTTON BELOW -->
+                                                        <button class="downloadBtn" type="button"><img src="{% static 'CRS/images/cOthers/download.png' %}" width=auto height="24">&nbsp;&nbsp;Download</button>
+                                                    </a>
+                                                {% else %}
+                                                    <td>
+                                                        <div class="fileName">Shifting Form</div>
                                                     </td>
                                                     <td>  
                                                         <div class="text-muted"> NO FILE</div>
@@ -326,19 +339,14 @@ transition: 0.3s;
                                 <br>
                                 </div>
                             <div class="fileName">Manage</div><br>
-                            <a href="{% url 'cOthers-shifter-csw' shift.id %}"><button type="button" class="cswBtn2"><img src="{% static 'CRS/images/cOthers/download2.png' %}" width="auto" height="42"><br>Download CSW</button></a><!-- DB DOWNLOAD CSW BUTTON -->
+                            <a href="{% url 'cOthers-shifter-feedback' shift.id %}"><button type="button" class="feedbackBtn2" style="margin-left: 10px;"><img src="{% static 'CRS/images/cOthers/feedback.png' %}" width=auto height="42"><br>Feedback</button></a><!-- DB FEEDBACK BUTTON -->
+                            <a href="{% url 'del_allshifter' shift.id %}"> <button type="button" class="deleteFileBtn" style="margin-left: 170px;"><img src="{% static 'CRS/images/cOthers/return.png' %}" width=auto height="42"><br>Return File</button></a><!-- DB RETURN FILE BUTTON -->
+                             
+                            <a href="{% url 'cOthers-shifter-csw' shift.id %}"><button type="button" class="cswBtn2" style="margin-left: 340px;"><img src="{% static 'CRS/images/cOthers/download2.png' %}" width="auto" height="42"><br>Download CSW</button></a><!-- DB DOWNLOAD CSW BUTTON -->
                             <form action="{% url 'sendmailwfile' shift.id %}" method="POST" enctype="multipart/form-data" > {% csrf_token %}
                                
+                                </div><br><br><br><br><br><br><br><br>
 
-                                <label class="cswBtn3" id="cswDL" for="uploadCSW"><img src="{% static 'CRS/images/cOthers/upload.png' %}" width="auto" height="42"><br>Upload CSW</label><!-- DB UPLOAD CSW BUTTON -->
-                                <input type="file"  id="uploadCSW" name="uploadCSW" required>
-                                </div><br><br>
-
-                                <div class="list-feedback1">
-                                    <button type ="submit" class="button5hvr" name="shifter-email" value="shifter-email" >Forward to Signatories</button></a><!-- DB FORWARD TO SIGNATORIES BUTTON -->
-                            </form>
-                            <a href="{% url 'emailShifter' shift.id %}"><button  class="button4hvr">Email Transferee</button></a>
-                        </div>
                             
                     <!-------------END EMAIL APPLICANT----------->
 						</div>
