@@ -155,7 +155,7 @@ body {
         width: 350px;
         border: 0;
         border-radius: 10px;
-        height:200px;
+        height:300px;
         overflow-x: hidden;
         overflow-y: scroll;
         box-shadow: 0 4px 8px 0 #d3dbe4, 0 6px 20px 0 #d3dbe4;
@@ -191,7 +191,7 @@ body {
       position: fixed;
       width: 320px;
       padding-top: 20px;
-      margin-top: 186px;
+      margin-top: 286px;
       top:40px;
   }
 
