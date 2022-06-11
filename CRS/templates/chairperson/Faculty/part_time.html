@@ -1,28 +1,53 @@
 {% extends 'chairperson/Faculty/full_time.html' %}
-    {% block content %}
-        <h3>Part_time</h3>
-        faculty: {{ count }}
-        <br><br>
-        <table>
-            <thead>
-                <tr>
-                    <th>Faculty No.</th>
-                    <th>Last Name</th>
-                    <th>First Name</th>
-                    <th>Middle Name</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for i in work_status %}
-                <tr>
-                    <td>{{ i.facultyID }}</td>
-                    <td>{{ i.facultyUser.lastName }}</td>
-                    <td>{{ i.facultyUser.middleName }}</td>
-                    <td>{{ i.facultyUser.firstName }}</td>
-                    <td><a href="{% url 'faculty_schedule' i.facultyUser.id  %}">Profile</a></td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+{% block active %}                          
+    <div class="col dropdownyear dropdown-border linktype">                            
+            <a href="{% url 'full_time' %}">
+                <button class="year linktype">Full-time</button>
+            </a>                                                             
+    </div>
+    <div class="col dropdownyear linktype linkactive">  
+        <a href="{% url 'part_time' %}">                          
+            <button class="year linktype linkactive">Part-time</button>
+        </a>                                                           
+    </div>
+{% endblock %}
 
-    {% endblock %}
+    {% block body %}
+                    <div class="container table-border">  
+                        <div class="container table-block content-scrollbar">                                               
+                            <div class="row">
+                                <div class="table-title header-sticky"><span class="spanmarginleft">Part-Time</span></div>                           
+                                <table class="table table-style table-borderless table-sm">
+                                    <tbody>
+                                        <tr class="table-header header-sticky" style="top: 45px">
+                                            <td></td>
+                                            <td class="col-2">Faculty No.</td>
+                                            <td class="col-3">Last Name</td>
+                                            <td class="col-3">First Name</td>
+                                            <td>Middle Name</td>
+                                            <td class="col-1 unselectable">Edit</td>
+                                        </tr>
+                                        {% for i in work_status %}
+                                        <tr>
+                                            <td></td>
+                                            <td>{{ i.facultyID }}<!-- DB FACULTY NO --></td>
+                                            <td>{{ i.facultyUser.lastName }}<!-- DB LAST NAME --></td>
+                                            <td>{{ i.facultyUser.firstName }}<!-- DB FIRST NAME --></td>
+                                            <td>{{ i.facultyUser.middleName }}<!-- DB MIDDLE NAME --></td>
+                                            <td>
+                                                <a href="{% url 'faculty_schedule' i.facultyUser.id  %}">
+                                                    <button class="minibutton unselectable"><!-- DB MANAGE FACULTY BUTTON BELOW -->
+                                                        Edit
+                                                    </button>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            
+                            </div>  
+                
+                        </div>
+                    </div>
+                    {% endblock %}

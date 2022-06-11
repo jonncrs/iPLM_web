@@ -2,153 +2,286 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <title>Chairperson | Student</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
-    <link rel="stylesheet" href="{% static 'CRS/css/cStudents/cStudentStyle.css' %}">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">
-    <!--Icon-->
-    <link rel="icon" href="{% static '/CRS/images/cStudents/iPLM.png' %}" type="image/png" sizes="16x16">
-</head>
+    <head>
+        <title> Chairperson | Student Profile </title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <!-- include -->
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        
+        <!-- CSS -->
+        <link rel="stylesheet" href="{% static '/CRS/css/cHome/cHomeStyleCP.css' %}">
+        <link href="https://fonts.googleapis.com/css?family=Lato:200,300,400,600,700,900&subset=latin-ext" rel="stylesheet">
+        <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900&subset=latin-ext' rel='stylesheet' type='text/css'>
 
-<body>
+        <!--  ICON -->
+        <link rel="icon" href="{% static '/CRS/images/cHome/iPLM.png' %}" type="image/png" sizes="16x16">
 
-    <div class="wrapper">
-        <!-- Sidebar -->
-        <nav id="sidebar">
-            <div class="sidebar-header">
-                <li>
-                    <p><br><br><img src="{% static 'CRS/images/fHomeAndProfile/hat.png' %}" width="126px" height="87px"><br><br>
-                </li>
+        <style>
+            .btn-back {
+                background-color: rgb(6, 82, 155);
+                height: 30px;
+                text-align: center;                
+            }
+
+            .btn-back a{
+                color: #fff;
+                text-decoration: none;
+                font-size: 14px;
+            }
+
+            .btn-back a:hover{                
+                text-decoration: none;                
+            }
+
+            .student-profile {
+                display: inline-block;
+                font-size: 22px;
+            }
+
+            .label {
+                font-family: 'Source Sans Pro', sans-serif;
+                font-size: 16px;
+                font-weight: 500;
+                color: #0892dd;
+                text-decoration: none;
+            }
+
+            .output {
+                font-family: 'Source Sans Pro', sans-serif;
+                font-size: 16px;
+                font-weight: 500;
+                color: #5f6e83;
+                text-decoration: none;
+            }
+
+            .col-style {                
+                border-bottom: 1px solid #d3dbe4;
+            }
+
+            .col-padding {
+                padding: 10px;
+            }
+
+            .row{
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+        </style>
+    </head>
+
+
+    <body class="content-scrollbar" onload="today()">
+        <img src="{% static 'CRS/images/cHome/bglogo.png' %}" id="bglogo" class="unselectable">
+
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-sm navbar-dark flex-sm-nowrap flex-wrap">           
+            <a href="#menu-toggle" id="menu-toggle" class="navbar-brand unselectable d-xl-none" onclick="togglemenu()">
+                <span></span><img class="nav-collapse unselectable" src="{% static 'CRS/images/cIcons/collapse.png' %}" height="13"></span>
+            </a>                 
+            <a id="iplm" href="{% url 'chairperson' %}">
+                <img class="iplmlogo unselectable" src="{% static 'CRS/images/fHomeAndProfile/iplmlogo.png' %}" height="35">
+            </a>            
+                   
+            
+            <!-- navbar user name and title  -->
+            <p class="d-none d-sm-block usertitle unselectable">
+                Chairperson
+            </p>
+            <p href="{% url 'chairperson_profile' %}" class="d-none d-sm-block user unselectable">
+                {{user.firstName}} {{user.middleName}} {{user.lastName}}
+            </p>
+
+            <!-- user profile dropdown -->
+            <div class="unselectable dropdown pficon">
+                <a class="dropdown-toggle profilehover" id="dropdownProfile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img id="profileicon" src="{% static 'CRS/images/fHomeAndProfile/userprofile.png' %}" width="35px" height="35px">
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end dropdownProfileMenu p-3 text-muted" aria-labelledby="dropdownProfile">
+                    <img id="profileicon" src="{% static 'CRS/images/fHomeAndProfile/userprofile.png' %}" width="40px" height="40px">
+                    <p id="profilemenutitle">{{user.firstName}}<br></p>
+                    <p id="profilemenuemail">{{user.email}}<br></p>
+                    <div class="dropdown-divider"></div>
+                    <li><a class="profilelinks" href="{% url 'chairperson_profile' %}">View Profile</a></li>
+                    <li><a class="profilelinks" href="{% url 'logout' %}">Log out</a></li>
+                </ul>
             </div>
-            <ul class="sidebar components">
-                <li class="active"><a href="{% url 'chairperson' %}"><img src="{% static 'CRS/images/cIcons/home2.png' %}" width="97px" height="auto"></a></li>
-                <li><a href="{% url 'is_active' %}"><img src="{% static 'CRS/images/cIcons/department2.png' %}" width="97px" height="auto"></a></li>
-                <li><a href="{% url 'dept_student' %}"><img src="{% static 'CRS/images/cIcons/students2.png' %}" width="97px" height="auto"></a></li>
-                <li><a href="{% url 'full_time' %}"><img src="{% static 'CRS/images/cIcons/faculty2.png' %}" width="97px" height="auto"></a></li>
-                <li><a href="{% url 'cOthers-studyPlan' %}"><img src="{% static 'CRS/images/cIcons/others2.png' %}" width="97px" height="auto"></a></li>
-                <li><a href="{% url 'logout' %}"><img src="{% static 'CRS/images/cIcons/log-out2.png' %}" width="97px" height="auto"></a></li>
-            </ul>
         </nav>
-        <!--End of Sidebar -->
 
-        <!-- Content -->
-        <div id="content">
-
-            <div class=" container-fluid">
-                <br><br><br><br>
-                <div class="col-lg-1"><a class="back" href="{% url 'students_bsit1' %}"><img src="{% static '/CRS/images/cStudents/back.svg' %}"width="50" height="45" id="backlogo"></a>
+        <div id="mainwrapper" class="toggled">
+            <!-- Sidebar -->
+            <div id="sidebar-wrapper" class="custom-scrollbar">
+                <ul class="sidebar-nav">
+                    <li class="active"> <a class="sb-links" href="{% url 'chairperson' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/home.png' %}" height="15"> Home</a> </li>
+                    <li class="sb-section unselectable"><span>CRS</span></li>
+                    <li> <a class="sb-links" href="{% url 'is_active' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/department.png' %}" height="15"> Department</a> </li>
+                    <li> <a class="sb-links" href="{% url 'dept_student' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/students.png' %}" height="15"> Students</a> </li>
+                    <li> <a class="sb-links" href="{% url 'full_time' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/faculty.png' %}" height="15"> Faculty</a> </li>
+                    <li class="sb-section unselectable"><span>Student Application</span></li>
+                    <li> <a class="sb-links" href="{% url 'cOthers-studyPlan' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/studyplan.png' %}" height="15"> Study Plan</a> </li>
+                    <li> <a class="sb-links" href="{% url 'cOthers-loa' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/loa.png' %}" height="15"> Leave of Absence</a> </li>
+                    <li> <a class="sb-links" href="{% url 'cOthers-hd' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/hd.png' %}" height="15"> Honorable Dismissal</a> </li>
+                    <li> <a class="sb-links" href="{% url 'cOthers-ojt' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/practicum.png' %}" height="15"> Practicum</a> </li>
+                    <li> <a class="sb-links" href="{% url 'cOthers-shifter' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/shifter.png' %}" height="15"> Inbound Shifter</a> </li>
+                    <li> <a class="sb-links" href="{% url 'cOthers-shifter' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/shifter.png' %}" height="15"> Outbound Shifter</a> </li>
+                    <li> <a class="sb-links" href="{% url 'cOthers-transferee' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/transferee.png' %}" height="15"> Transferee</a> </li>
+                    <li class="sb-section unselectable"><span>Faculty Application</span></li>
+                    <li> <a class="sb-links" href="{% url 'cfaculty_applicant' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/applicant.png' %}" height="15"> Faculty Application</a> </li>
+                    <li> <a class="sb-links" href="{% url 'cOthers-partTime' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/pta.png' %}" height="15"> Part-time Availability</a> </li>
+                </ul>
+            </div> 
+            <!-- end sidebar -->
+            
+            <!-- quick links-->
+            <div id="mainwrapper" class="toggled">
+                <div id="qlinks" class="custom-scrollbar unselectable qlinks-wrapper">
+                    <li class="ql-section unselectable" style="margin-top: 20px;"><span>Quick Access</span></li>
+                    <a class="qlinks-btn btn" href="{% url 'is_active' %}" role="button">Department Subjects</a>
+                    <a class="qlinks-btn btn" href="{% url 'cOthers-studyPlan' %}" role="button">Study Plan</a>
+                    <a class="qlinks-btn btn" href="{% url 'cfaculty_applicant' %}" role="button">Faculty Application</a>
+                    <a class="qlinks-btn btn" href="{% url 'cStudentSchedOnline' %}" role="button">Block Schedule</a>
                 </div>
-
-                <div class="indvstud row">
-                    <!--Left Side | Student Profile | Blue Box-->
-                    <div class="col-blue blue-box col-lg-4">
-                        <div class="col-lg-12 mt-3">
-                            <div class="stud-profile row">
-                                <img src="{% static '/CRS/images/cStudents/chairpersonstud_student.png' %}" height="32.6857142857" width="39.1428571429">
-                                <p id="sptext">&nbsp;Student Profile</p>
-                            </div>
-                            <div class="stud-det row">
-                                <div class="sdtext col">Last Name:</div>
-                                <div class="field col">
-                                    {{ p11.studentUser.lastName }}
-                                </div>
-                            </div>
-                            <div class="stud-det row">
-                                <div class="sdtext col">First Name:</div>
-                                <div class="field col">
-                                    {{ p11.studentUser.firstName }}
-                                </div>
-                            </div>
-                            <div class="stud-det row">
-                                <div class="sdtext col">Middle Name:</div>
-                                <div class="field col">
-                                    {{ p11.studentUser.middleName }}
-                                </div>
-                            </div>
-                            <div class="stud-det row">
-                                <div class="sdtext col">Gender:</div>
-                                <div class="field col">
-                                    {{ p11.studentGender }}
-                                </div>
-                            </div>
-
-                            <hr class="bluebox">
-
-                            <div class="stud-det row">
-                                <div class="sdtext col">Student Number:</div>
-                                <div class="field col">
-                                    {{ p11.studentID }}
-                                </div>
-                            </div>
-                            <div class="stud-det row">
-                                <div class="sdtext col">Student Type:</div>
-                                <div class="field col">
-                                    {{ p11.studentType }}
-                                </div>
-                            </div>
-
-                            <div class="stud-det row">
-                                <div class="sdtext col">Year Level:</div>
-                                <div class="field col">
-                                    {{ p11.studentYearlevel }}
-                                </div>
-                            </div>
-
-                            <div class="stud-det row">
-                                <div class="sdtext col">Degree Program:</div>
-                                <div class="field col">
-                                    {{ p11.studentCourse }}
-                                </div>
-                            </div>
-
-                            <div class="stud-det row">
-                                <div class="sdtext col">Registration Status:</div>
-                                <div class="field col">
-                                    {{ p11.studentRegStatus }}
-                                </div>
-                            </div>
-
-                            <br>
-                            <hr class="bluebox">
-                            <div class="stud-det row">
-                                <div class="sdtext col">PLM Email:</div>
-                                <div class="field col">
-                                    {{ p11.studentUser.email }}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End of Left Side-->
-
-                    <!--Right Side-->
-                    <div class="col-lg-1"></div>
-                    <div class="col-lg-7">
-                        <div class="rightside row">
-                            <img src="{% static '/CRS/images/cStudents/clip-library.png' %}" width="912" height="608">
-                        </div>
-                    </div>
-                    <!--End of Right Side-->
-
-                </div>
-
             </div>
+            <!-- end quick links-->
 
-        </div>
-    </div>
+            
+            
+            <!-- Page Content -->
+            <div id="page-content-wrapper">
+                <div class="container-fluid">                                    
+                    <!-- content start-->
+                    <a href="{% url 'students_bsit1' %}"><button class="btn btn-back unselectable">Back</button></a>   
 
-    <!-- Javascript -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+                    <div class="container block-style">                        
+                        <div class="row">                                                                         
+                            <div class="col" style="padding: 5px 5px 10px 5px; border-bottom: 1px solid #d3dbe4;">
+                                <img src="{% static '/CRS/images/cIcons/studentsdark.png' %}" height="45" style="margin-right: 8px; margin-top:-10px;" class="unselectable">
+                                <span class="ov-heading-1 student-profile">Student Profile</span>
+                            </div>                            
+                        </div>
+
+                        <div class="row">                           
+                          <div class="col-2 col-style col-padding">
+                            <b class="label">Last Name:</b>
+                          </div>
+                          <div class="col col-style col-padding">
+                            <b class="output">{{ p11.studentUser.lastName }}</b>
+                          </div>
+                          <div class="col-1 col-padding">                            
+                          </div>
+                          <div class="col-3 col-style col-padding">
+                            <b class="label">Student Number:</b>
+                          </div>
+                          <div class="col-4 col-style col-padding">
+                            <b class="output">{{ p11.studentID }}</b>
+                          </div>
+                        </div>
+                        <div class="row">                            
+                           <div class="col-2 col-style col-padding">
+                             <b class="label">First Name:</b>
+                           </div>
+                           <div class="col col-style col-padding">
+                             <b class="output">{{ p11.studentUser.firstName }}</b>
+                           </div>
+                           <div class="col-1 col-padding">                            
+                           </div>
+                           <div class="col-3 col-style col-padding">
+                             <b class="label">Student Type:</b>
+                           </div>
+                           <div class="col-4 col-style col-padding">
+                             <b class="output">{{ p11.studentType }}</b>
+                           </div>
+                         </div>
+                         <div class="row">                            
+                            <div class="col-2 col-style col-padding">
+                              <b class="label">Middle Name:</b>
+                            </div>
+                            <div class="col col-style col-padding">
+                              <b class="output">{{ p11.studentUser.middleName }}</b>
+                            </div>
+                            <div class="col-1 col-padding">                            
+                            </div>
+                            <div class="col-3 col-style col-padding">
+                              <b class="label">Year Level:</b>
+                            </div>
+                            <div class="col-4 col-style col-padding">
+                              <b class="output">{{ p11.studentYearlevel }}</b>
+                            </div>
+                          </div>
+                          <div class="row">                            
+                            <div class="col-2 col-padding">
+                              <b class="label">Gender:</b>
+                            </div>
+                            <div class="col col-padding">
+                              <b class="output">{{ p11.studentGender }}</b>
+                            </div>
+                            <div class="col-1 col-padding">                            
+                            </div>
+                            <div class="col-3 col-style col-padding">
+                              <b class="label">Degree Program:</b>
+                            </div>
+                            <div class="col-4 col-style col-padding">
+                              <b class="output">{{ p11.studentCourse }}</b>
+                            </div>
+                          </div>
+                          <div class="row">                            
+                            <div class="col-2 col-padding">                              
+                            </div>
+                            <div class="col col-padding">                              
+                            </div>
+                            <div class="col-1 col-padding">                            
+                            </div>
+                            <div class="col-3 col-style col-padding">
+                              <b class="label">Registration Status:</b>
+                            </div>
+                            <div class="col-4 col-style col-padding">
+                              <b class="output">{{ p11.studentRegStatus }}</b>
+                            </div>
+                          </div>
+                          <div class="row">                            
+                            <div class="col-2 col-padding">                              
+                            </div>
+                            <div class="col col-padding">                              
+                            </div>
+                            <div class="col-1 col-padding">                            
+                            </div>
+                            <div class="col-3 col-padding">
+                              <b class="label">PLM Email:</b>
+                            </div>
+                            <div class="col-4 col-padding">
+                              <b class="output">{{ p11.studentUser.email }}</b>
+                            </div>
+                          </div>
+
+                      </div>
 
 
-</body>
+                    
+                                     
+                
+            </div> <!-- /#page-content-wrapper -->  
+        </div> <!-- /#wrapper -->
+
+        <img src="{% static 'CRS/images/cIcons/up-arrow.png' %}" id="btn-back-to-top" class="unselectable"> <!-- scroll to top -->
+        
+        <!-- Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        
+        <!-- JS -->
+        <script src="{% static '/CRS/js/cHome/cHomeMain.js' %}"></script>   
+        <script>
+            let mybutton = document.getElementById("btn-back-to-top");
+            window.onscroll = function () {
+              scrollFunction();
+            };
+            mybutton.addEventListener("click", backToTop);
+        </script>     
+    </body>
 
 </html>

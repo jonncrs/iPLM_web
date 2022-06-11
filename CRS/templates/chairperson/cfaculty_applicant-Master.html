@@ -2,391 +2,288 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <title>Chairperson | Others</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">
-    <link rel="stylesheet" href="{% static '/CRS/css/cOthers/chairOthers.css' %}">
-    <!--Icon-->
-    <link rel="icon" href="{% static '/CRS/images/cOthers/iPLM.png' %}" type="image/png" sizes="16x16">
-
-    <style>
-        #buttons-1 .btn-1 {
-            border-radius: 14px 14px 14px 14px;
-            padding-right: 25px;
-            padding-left: 25px;
-            font-size: 18px;
-            text-align: center;
-            width: auto;
-            height: 50px;
-            background-color: #0C66CC;
-            color: white;
-            border: 3px solid #0C66CC;
+    <head>
+        <title> Chairperson | Faculty Application </title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <!-- include -->
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        
+        <!-- CSS -->
+        <link rel="stylesheet" href="{% static '/CRS/css/cHome/cHomeStyleCP.css' %}">
+        <link rel="stylesheet" href="{% static '/CRS/css/cStudents/cStudentsStyle.css' %}">
+        <link href="https://fonts.googleapis.com/css?family=Lato:200,300,400,600,700,900&subset=latin-ext" rel="stylesheet">
+        <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900&subset=latin-ext' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
+        
+        <!--  ICON -->
+        <link rel="icon" href="{% static '/CRS/images/cHome/iPLM.png' %}" type="image/png" sizes="16x16">
+       
+    </head>
 
 
-        }
+    <body class="content-scrollbar" onload="today()"> 
+        <img src="{% static 'CRS/images/cHome/bglogo.png' %}" id="bglogo" class="unselectable">       
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-sm navbar-dark flex-sm-nowrap flex-wrap">           
+            <a href="#menu-toggle" id="menu-toggle" class="navbar-brand unselectable d-xl-none" onclick="togglemenu()">
+                <span></span><img class="nav-collapse unselectable" src="{% static 'CRS/images/cIcons/collapse.png' %}" height="13"></span>
+            </a>                 
+            <a id="iplm" href="{% url 'chairperson' %}">
+                <img class="iplmlogo unselectable" src="{% static 'CRS/images/fHomeAndProfile/iplmlogo.png' %}" height="35">
+            </a>            
+                   
+           
+            <!-- navbar user name and title  -->
+            <p class="d-none d-sm-block usertitle unselectable">
+                Chairperson
+            </p>
+            <p href="{% url 'chairperson_profile' %}" class="d-none d-sm-block user unselectable">
+                {{user.firstName}} {{user.middleName}} {{user.lastName}}
+            </p>
 
-        #buttons-2 .btn-2 {
-            border-radius: 14px 14px 14px 14px;
-            padding-right: 25px;
-            padding-left: 25px;
-            font-size: 18px;
-            text-align: center;
-            width: auto;
-            height: 50px;
-            background-color: white;
-            color: #0C66CC;
-            border: 3px solid #0C66CC;
-            margin-right: 20px;
-        }
-
-
-        #buttons-1 .btn-1:hover {
-            background-color: #0b5bb6;
-            color: white;
-        }
-
-        #buttons-2 .btn-2:hover {
-            background-color: #0b5bb6;
-            border: 3px solid #0b5bb6;
-            color: white;
-        }
-
-        .status {
-            font-family: Nunito;
-            color: #C8C8C8;
-            font-size: 28px;
-            padding-bottom: 5px;
-            padding-top: 10px;
-        }
-
-        #submit {
-            background-color: #0C66CC;
-            color: white;
-            border-radius: 12px;
-            width: 60px;
-            height: 50px;
-            border: transparent;
-            float: right;
-            margin-top: -55px;
-        }
-
-        #submit:hover {
-            background-color: #0850a1;
-        }
-
-
-        .form-control {
-            border-radius: 15px;
-            background: #ECECEC;
-            border: none;
-            height: 50px;
-            width: 30%;
-            font-size: 20px;
-        }
-
-        .searchBox {
-            border-radius: 15px;
-            background: #ECECEC;
-            border: none;
-            height: 50px;
-            width: 30%;
-            font-size: 20px;
-            float: right;
-            margin-top: -55px;
-            margin-right: 70px;
-        }
-
-        .searchbox :focus {
-            outline: none;
-        }
-
-        .app-panel {
-            box-shadow: none;
-            background: none;
-            height: 70px;
-            font-size: 20px;
-            color: #0C66CC;
-            text-align: left;
-            vertical-align: center;
-            padding: 40px 10px 10px 10px;
-            font-family: 'Nunito';
-
-            margin-top: 35px;
-            margin-bottom: 35px;
-            padding-left: 35px;
-        }
-
-        .borderless td,
-        .borderless th {
-            border: none;
-        }
-
-        .primary-att {
-            position: sticky;
-            text-align: left;
-            position: sticky;
-            top: 0;
-            color: white;
-            background-color: #fcfcfc;
-        }
-
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-
-        .tablepanel::-webkit-scrollbar {
-            width: 10px;
-            background: white;
-            border-radius: 20px;
-            height: 200px;
-
-        }
-
-        .tablepanel::-webkit-scrollbar-thumb {
-            background: #c5c5c5;
-            border-radius: 0 8px 8px 0;
-            height: 300px;
-        }
-
-        .tabletext1 {
-            text-align: left;
-            letter-spacing: 1px;
-            font-size: 14px;
-            font-family: 'Nunito';
-            color: #0C66CC;
-
-        }
-
-        .tablepanel {
-            overflow-y: scroll;
-            width: 100%;
-            height: 560px;
-            border-radius: 20px;
-            font-family: 'Nunito';
-            color: #0C66CC;
-            font-size: 20px;
-        }
-    </style>
-
-</head>
-
-<body>
-
-    <div class="wrapper">
-
-        <!-- Sidebar -->
-        <nav id="sidebar">
-            <div class="sidebar-header">
-                <li>
-                    <p><br><br><img src="{% static 'CRS/images/fHomeAndProfile/hat.png' %}" width="126px"
-                            height="87px"><br><br>
-                </li>
+            <!-- user profile dropdown -->
+            <div class="unselectable dropdown pficon">
+                <a class="dropdown-toggle profilehover" id="dropdownProfile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img id="profileicon" src="{% static 'CRS/images/fHomeAndProfile/userprofile.png' %}" width="35px" height="35px">
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end dropdownProfileMenu p-3 text-muted" aria-labelledby="dropdownProfile">
+                    <img id="profileicon" src="{% static 'CRS/images/fHomeAndProfile/userprofile.png' %}" width="40px" height="40px">
+                    <p id="profilemenutitle">{{user.firstName}}<br></p>
+                    <p id="profilemenuemail">{{user.email}}<br></p>
+                    <div class="dropdown-divider"></div>
+                    <li><a class="profilelinks" href="{% url 'chairperson_profile' %}">View Profile</a></li>
+                    <li><a class="profilelinks" href="{% url 'logout' %}">Log out</a></li>
+                </ul>
             </div>
-            <ul class="sidebar components">
-                <li class="active"><a href="{% url 'chairperson' %}"><img
-                            src="{% static 'CRS/images/cIcons/home2.png' %}" width="97px" height="auto"></a></li>
-                <li><a href="{% url 'is_active' %}"><img src="{% static 'CRS/images/cIcons/department2.png' %}"
-                            width="97px" height="auto"></a></li>
-                <li><a href="{% url 'dept_student' %}"><img src="{% static 'CRS/images/cIcons/students2.png' %}"
-                            width="97px" height="auto"></a></li>
-                <li><a href="{% url 'full_time' %}"><img src="{% static 'CRS/images/cIcons/faculty2.png' %}"
-                            width="97px" height="auto"></a></li>
-                <li><a href="{% url 'cOthers-studyPlan' %}"><img src="{% static 'CRS/images/cIcons/others2.png' %}"
-                            width="97px" height="auto"></a></li>
-                <li><a href="{% url 'logout' %}"><img src="{% static 'CRS/images/cIcons/log-out2.png' %}" width="97px"
-                            height="auto"></a></li>
-            </ul>
         </nav>
-        <!--End of Sidebar -->
 
-        <!-- Content -->
+        <div id="mainwrapper" class="toggled">
+            <!-- Sidebar -->
+            <div id="sidebar-wrapper" class="custom-scrollbar">
+                <ul class="sidebar-nav">
+                    <li class="active"> <a class="sb-links" href="{% url 'chairperson' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/home.png' %}" height="15"> Home</a> </li>
+                    <li class="sb-section unselectable"><span>CRS</span></li>
+                    <li> <a class="sb-links" href="{% url 'is_active' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/department.png' %}" height="15"> Department</a> </li>
+                    <li> <a class="sb-links" href="{% url 'dept_student' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/students.png' %}" height="15"> Students</a> </li>
+                    <li> <a class="sb-links" href="{% url 'full_time' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/faculty.png' %}" height="15"> Faculty</a> </li>
+                    <li class="sb-section unselectable"><span>Student Application</span></li>
+                    <li> <a class="sb-links" href="{% url 'cOthers-studyPlan' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/studyplan.png' %}" height="15"> Study Plan</a> </li>
+                    <li> <a class="sb-links" href="{% url 'cOthers-loa' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/loa.png' %}" height="15"> Leave of Absence</a> </li>
+                    <li> <a class="sb-links" href="{% url 'cOthers-hd' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/hd.png' %}" height="15"> Honorable Dismissal</a> </li>
+                    <li> <a class="sb-links" href="{% url 'cOthers-ojt' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/practicum.png' %}" height="15"> Practicum</a> </li>
+                    <li> <a class="sb-links" href="{% url 'cOthers-shifter' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/shifter.png' %}" height="15"> Inbound Shifter</a> </li>
+                    <li> <a class="sb-links" href="{% url 'cOthers-shifter' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/shifter.png' %}" height="15"> Outbound Shifter</a> </li>
+                    <li> <a class="sb-links" href="{% url 'cOthers-transferee' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/transferee.png' %}" height="15"> Transferee</a> </li>
+                    <li class="sb-section unselectable"><span>Faculty Application</span></li>
+                    <li> <a class="sb-links" href="{% url 'cfaculty_applicant' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/applicant.png' %}" height="15"> Faculty Application</a> </li>
+                    <li> <a class="sb-links" href="{% url 'cOthers-partTime' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/pta.png' %}" height="15"> Part-time Availability</a> </li>
+                </ul>
+            </div> 
+            <!-- end sidebar -->     
+            
+             <!-- quick links-->
+            <div id="mainwrapper" class="toggled">
+                <div id="qlinks" class="custom-scrollbar unselectable qlinks-wrapper">
+                    
+                                       
 
-        <div class="container-fluid">
-            <div class="content">
-                <!-- OTHERS SIDEBAR -->
-                <div class="oth">
-                    <p id="others">Others</p>
+                                                      
                 </div>
-
-                <!-- STUDENT REQUESTS-->
-                <div class="row px-5">
-                    <div class="col-lg-4">
-                        <!-- OTHERS | STUDENT REQUESTS -->
-                        <p id="students">Students</p>
-                        <div class="quickmargin col-lg-10 col-md-6 col-sm-12"><a href="{% url 'cOthers-studyPlan' %}"
-                                id="buttons"><button type="button" class="btn btn1">Study Plan</button></a></div>
-                        <div class="quickmargin col-lg-10 col-md-6 col-sm-12"><a href="{% url 'cOthers-loa' %}"
-                                id="buttons"><button type="button" class="btn btn1">Leave of Absence</button></a></div>
-                        <div class="quickmargin col-lg-10 col-md-6 col-sm-12"><a href="{% url 'cOthers-hd'  %}"
-                                id="buttons"><button type="button" class="btn btn1">Honorable Dismissal</button></a>
-                        </div>
-                        <div class="quickmargin col-lg-10 col-md-6 col-sm-12"><a href="{% url 'cOthers-ojt' %}"
-                                id="buttons"><button type="button" class="btn btn1">Practicum</button></a></div>
-                        <div class="quickmargin col-lg-10 col-md-6 col-sm-12"><a href="{% url 'cOthers-shifter' %}"
-                                id="buttons"><button type="button" class="btn btn1">Shifter</button></a></div>
-                        <div class="quickmargin col-lg-10 col-md-6 col-sm-12"><a href="{% url 'cOthers-transferee' %}"
-                                id="buttons"><button type="button" class="btn btn1">Transferee</button></a></div>
-
-                        <!-- OTHERS | FACULTY REQUESTS -->
-                        <p id="faculty">Faculty</p>
-                        <div class="quickmargin col-lg-10 col-md-6 col-sm-12"><a href="{% url 'cfaculty_applicant' %}"
-                                id="buttons"><button type="button" class="btn-btn2">Application</button></a></div>
-                        <div class="quickmargin col-lg-10 col-md-6 col-sm-12"><a href="{% url 'cOthers-partTime' %}"
-                                id="buttons"><button type="button" class="btn btn1">Part-Time Availability</button></a>
-                        </div>
-
-                    </div>
-
-                    <div class="container col-lg-8">
-                        <p id="application"><b>Application</b>
-                            <div class="searchbox">
-                                <a href="{% url 'cfaculty_applicant' %}" id="buttons-2"><button type="button"
-                                        class="btn-2 btn2">General</button></a>
-                                <a href="{% url 'cfaculty_applicant-Master' %}" id="buttons-1"><button type="button"
-                                        class="btn-1 btn2">Master List</button></a>
-
-                            </div>
-                        </p>
-
-                        <!-- REQUEST LIST -->
-
-                        <br>
-                        <hr><br>
-                        {% if applicant %}
-                        <div class="tablepanel table-responsive-lg">
-                            <table class="borderless table">
-                                <tr class="primary-att"
-                                    style="font-size: 20px; background-color: #0C66CC; box-shadow: 0 0 10px rgb(138, 138, 138);">
-                                    <td>ID</td>
-                                    <td colspan="2">Name</td>
-                                    <td>Status</td>
-                                    <td></td>
-                                </tr>
-
-
-                                <!--SUBMITTED-->
-                                {% if facultyapp_submitted %}
-
-                                <tr class="tabletext1" style="box-shadow: 0 0 10px rgb(138, 138, 138);">
-                                    <td colspan="7" style="font-size: 20px; background-color: #cae2ff;"><b>Submitted</b>
-                                    </td>
-                                </tr>
-                                {% for faculty in facultyapp_submitted %}
-                                <tr>
-                                    <td><b>Applicant No. {{ faculty.id }}</b></td>
-                                    <td colspan="2">{{ faculty.lastName }}, {{ faculty.firstName }}</td>
-                                    <td><b>{{ faculty.remarks }}</b></td>
-                                </tr>
-                                {% endfor %}
-                                {% endif %}
-
-                                <!--RETURNED-->
-                                {% if facultyapp_returned %}
-
-                                <tr class="tabletext1" style="box-shadow: 0 0 10px rgb(138, 138, 138);">
-                                    <td colspan="7" style="font-size: 20px; background-color: #cae2ff;"><b>Returned</b>
-                                    </td>
-                                </tr>
-                                {% for faculty in facultyapp_returned %}
-                                <tr>
-                                    <td><b>Applicant No. {{ faculty.id }}</b></td>
-                                    <td colspan="2">{{ faculty.lastName }}, {{ faculty.firstName }}</td>
-                                    <td><b>{{ faculty.remarks }}</b></td>
-                                </tr>
-                                {% endfor %}
-                                {% endif %}
-
-
-                                <!--FORWARDED-->
-                                {% if facultyapp_forwarded %}
-
-                                <tr class="tabletext1" style="box-shadow: 0 0 10px rgb(138, 138, 138);">
-                                    <td colspan="7" style="font-size: 20px; background-color: #cae2ff;"><b>Forwarded</b>
-                                    </td>
-                                </tr>
-                                {% for faculty in facultyapp_forwarded %}
-                                <tr>
-                                    <td><b>Applicant No. {{ faculty.id }}</b></td>
-                                    <td colspan="2">{{ faculty.lastName }}, {{ faculty.firstName }}</td>
-                                    <td><b>{{ faculty.remarks }}</b></td>
-                                </tr>
-                                {% endfor %}
-                                {% endif %}
-
-
-                                <!--IN PROGRESS-->
-                                {% if facultyapp_inprogress %}
-
-                                <tr class="tabletext1" style="box-shadow: 0 0 10px rgb(138, 138, 138);">
-                                    <td colspan="7" style="font-size: 20px; background-color: #cae2ff;"><b>In
-                                            Progress</b></td>
-                                </tr>
-                                {% for faculty in facultyapp_inprogress %}
-                                <tr>
-                                    <td><b>Applicant No. {{ faculty.id }}</b></td>
-                                    <td colspan="2">{{ faculty.lastName }}, {{ faculty.firstName }}</td>
-                                    <td><b>{{ faculty.remarks }}</b></td>
-                                </tr>
-                                {% endfor %}
-                                {% endif %}
-
-                                <!--COMPLETE-->
-                                {% if facultyapp_complete %}
-
-                                <tr class="tabletext1" style="box-shadow: 0 0 10px rgb(138, 138, 138);">
-                                    <td colspan="7" style="font-size: 20px; background-color: #cae2ff;"><b>In
-                                            Progress</b></td>
-                                </tr>
-                                {% for faculty in facultyapp_complete %}
-                                <tr>
-                                    <td><b>Applicant No. {{ faculty.id }}</b></td>
-                                    <td colspan="2">{{ faculty.lastName }}, {{ faculty.firstName }}</td>
-                                    <td><b>{{ faculty.remarks }}</b></td>
-                                </tr>
-                                {% endfor %}
-                                {% endif %}
-                            </table>
-                        </div>
-                        {% else %}
-                        <div align="center">
-                            <img src="{% static 'CRS/images/cOthers/clip-2.png' %}" width="600px" height="auto">
-                            <br>
-                            <span class="fileName"> NO FACULTY APPLICANTS</span>
-                        </div>
-                        {% endif %}
-                    </div>
-                </div>
+                
             </div>
-        </div>
+            <!-- end quick links-->
+            
+            <!-- Page Content -->
+            <div id="page-content-wrapper">
+                <div class="container-fluid">  
+                    
+                    <!--------------------------------------- place content below this ------------------------------------------------------->                  
+                    <div class="title1 unselectable d-none d-md-block">Faculty Application</div>
+
+                    <div class="container yearheader unselectable">                                               
+                        <div class="row"> 
+                            {% block active %}                          
+                                <div class="col dropdownyear dropdown-border linktype">                            
+                                        <a href="{% url 'cfaculty_applicant' %}">
+                                            <button class="year linktype">General</button>
+                                        </a>                                                             
+                                </div>
+                                <div class="col dropdownyear linktype linkactive">  
+                                    <a href="{% url 'cfaculty_applicant-Master' %}">                          
+                                        <button class="year linktype linkactive">Master List</button>
+                                    </a>                                                           
+                                </div>
+                            {% endblock %}
+
+                          <div class="col ">                                                            
+                          </div>
+                          <div class="col ">                                                              
+                          </div>
+                           <div class="col ">                                                                                                            
+                           </div>
+                           <div class="col ">                                                              
+                           </div>
+                           <div class="col ">                                                              
+                            </div>
+                          
+                        </div> 
+                        <div class="row" style="border-bottom: 1px solid #d3dbe4; margin-top: 15px;"> 
+                        </div>
+                    </div>      
+
+                    {% block body %}
+
+                    <!-- REQUEST LIST -->
+                    {% if applicant %}
+                        
+                        <div class="container table-border">  
+                            <div class="container table-block content-scrollbar">                                               
+                                <div class="row">
+                                    <div class="table-title header-sticky"><span class="spanmarginleft">Master List</span></div>                           
+                                    <table class="table table-style table-borderless table-sm">
+                                        <tbody>
+                                            <tr class="table-header header-sticky" style="top: 45px">
+                                                <td></td>
+                                                <td>ID</td>
+                                                <td class="col-6">Name</td>                                                
+                                                <td>Status</td>
+                                            </tr>
+
+                                            <!--SUBMITTED-->
+                                            {% if facultyapp_submitted %}
+                                            <tr style="background-color: #d7dff6;">
+                                                <td></td>
+                                                <td colspan="6" style="background-color: #d7dff6;"><b>Submitted</b></td>
+                                            </tr>
+
+                                            {% for faculty in facultyapp_submitted %}                                        
+                                            <tr>                                                
+                                                <td></td>
+                                                <td style="font-weight: 600;">Applicant No. {{ faculty.id }}</td>
+                                                <td class="col-4">{{ faculty.lastName }}, {{ faculty.firstName }}</td>                             
+                                                <td class="col-2" style="font-weight: 600;">{{ faculty.remarks }}</td>                                               
+                                                
+                                            </tr>
+                                            {% endfor %}
+                                            {% endif %}
 
 
-        <!-- Javascript -->
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
-        </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
-        </script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
-        </script>
+                                            <!--Forwarded-->
+                                            {% if facultyapp_forwarded %}
+                                            <tr style="background-color: #d7dff6;">
+                                                <td></td>
+                                                <td colspan="6" style="background-color: #d7dff6;"><b>Forwarded</b></td>
+                                            </tr>
 
+                                            {% for faculty in facultyapp_forwarded %}                                        
+                                            <tr>                                                
+                                                <td></td>
+                                                <td style="font-weight: 600;">Applicant No. {{ faculty.id }}</td>
+                                                <td class="col-4">{{ faculty.lastName }}, {{ faculty.firstName }}</td>                             
+                                                <td class="col-2" style="font-weight: 600;">{{ faculty.remarks }}</td>                                               
+                                                
+                                            </tr>
+                                            {% endfor %}
+                                            {% endif %}
+
+                                            <!--RETURNED-->
+                                            {% if facultyapp_returned %}
+                                            <tr style="background-color: #d7dff6;">
+                                                <td></td>
+                                                <td colspan="6" style="background-color: #d7dff6;"><b>Returned</b></td>
+                                            </tr>
+
+                                            {% for faculty in facultyapp_returned %}                                        
+                                            <tr>                                                
+                                                <td></td>
+                                                <td style="font-weight: 600;">Applicant No. {{ faculty.id }}</td>
+                                                <td class="col-4">{{ faculty.lastName }}, {{ faculty.firstName }}</td>                             
+                                                <td class="col-2" style="font-weight: 600;">{{ faculty.remarks }}</td>                                               
+                                                
+                                            </tr>
+                                            {% endfor %}
+                                            {% endif %}
+
+                                            <!--IN PROGRESS-->
+                                            {% if facultyapp_inprogress %}
+                                            <tr style="background-color: #d7dff6;">
+                                                <td></td>
+                                                <td colspan="6" style="background-color: #d7dff6;"><b>In Progress</b></td>
+                                            </tr>
+
+                                            {% for faculty in facultyapp_inprogress %}                                        
+                                            <tr>                                                
+                                                <td></td>
+                                                <td style="font-weight: 600;">Applicant No. {{ faculty.id }}</td>
+                                                <td class="col-4">{{ faculty.lastName }}, {{ faculty.firstName }}</td>                             
+                                                <td class="col-2" style="font-weight: 600;">{{ faculty.remarks }}</td>                                               
+                                                
+                                            </tr>
+                                            {% endfor %}
+                                            {% endif %}
+
+
+                                            <!--COMPLETE-->
+                                            {% if facultyapp_complete %}
+                                            <tr style="background-color: #d7dff6;">
+                                                <td></td>
+                                                <td colspan="6" style="background-color: #d7dff6;"><b>Complete</b></td>
+                                            </tr>
+
+                                            {% for faculty in facultyapp_complete %}                                        
+                                            <tr>                                                
+                                                <td></td>
+                                                <td style="font-weight: 600;">Applicant No. {{ faculty.id }}</td>
+                                                <td class="col-4">{{ faculty.lastName }}, {{ faculty.firstName }}</td>                             
+                                                <td class="col-2" style="font-weight: 600;">{{ faculty.remarks }}</td>                                               
+                                                
+                                            </tr>
+                                            {% endfor %}
+                                            {% endif %}
+
+
+
+                                        </tbody>
+                                    </table>
+                                
+                                </div>  
+                    
+                            </div>
+                        </div>
+                    {% else %}
+                    <div align="center" style="margin-top: 50px;">                            
+                        <span class="fileName" style="font-family: Source Sans Pro, sans-serif; color: #06529b;"> 
+                            NO FACULTY APPLICANTS
+                        </span>
+                    </div>
+                    {% endif %}
+                    {% endblock %}
+                    <!--------------------------------------- place content above this ------------------------------------------------------->   
+                </div>            
+            </div> <!-- /#page-content-wrapper -->  
+        </div> <!-- /#wrapper -->
+
+        <img src="{% static 'CRS/images/cIcons/up-arrow.png' %}" id="btn-back-to-top" class="unselectable"> <!-- scroll to top -->
+        
+        <!-- Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        
+        <!-- JS -->
+        <script src="{% static '/CRS/js/cHome/cHomeMain.js' %}"></script>   
         <script>
-            $(document).ready(function () {
-                $('#sidebarCollapse').on('click', function () {
-                    $('#sidebar').toggleClass('active');
-                });
-            });
-        </script>
-
-</body>
+            let mybutton = document.getElementById("btn-back-to-top");
+            window.onscroll = function () {
+              scrollFunction();
+            };
+            mybutton.addEventListener("click", backToTop);
+        </script>     
+    </body>
 
 </html>

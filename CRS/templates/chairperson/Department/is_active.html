@@ -15,6 +15,7 @@
         
         <!-- CSS -->
         <link rel="stylesheet" href="{% static '/CRS/css/cHome/cHomeStyleCP.css' %}">
+        <link rel="stylesheet" href="{% static '/CRS/css/cDepartment/deptstyle.css' %}">
         <link href="https://fonts.googleapis.com/css?family=Lato:200,300,400,600,700,900&subset=latin-ext" rel="stylesheet">
         <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900&subset=latin-ext' rel='stylesheet' type='text/css'>
 
@@ -24,45 +25,17 @@
 
 
     <body class="content-scrollbar" onload="today()">
+        <img src="{% static 'CRS/images/cHome/bglogo.png' %}" id="bglogo" class="unselectable">
         <!-- Navbar -->
         <nav class="navbar navbar-expand-sm navbar-dark flex-sm-nowrap flex-wrap">           
-            <a href="#menu-toggle" id="menu-toggle" class="navbar-brand unselectable" onclick="togglemenu()">
+            <a href="#menu-toggle" id="menu-toggle" class="navbar-brand unselectable d-xl-none" onclick="togglemenu()">
                 <span></span><img class="nav-collapse unselectable" src="{% static 'CRS/images/cIcons/collapse.png' %}" height="13"></span>
             </a>                 
             <a id="iplm" href="{% url 'chairperson' %}">
                 <img class="iplmlogo unselectable" src="{% static 'CRS/images/fHomeAndProfile/iplmlogo.png' %}" height="35">
             </a>            
                    
-            <!-- Notification dropdown -->
-            <div class="unselectable dropdown notificon d-none d-sm-block">
-                <a class="dropdown-toggle profilehover" id="dropdownNotif" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    {% if notifications %} 
-                        <span class="badge"> </span> <!-- red notif badge -->
-                    {% endif %}
-                    <img id="notif" src="{% static 'CRS/images/cIcons/notif.png' %}" height="20">
-                </a>
-                <ul class="dropdown-menu dropdown-menu-end dropdownNotifInfo p-3 text-muted custom-scrollbar" aria-labelledby="dropdownNotif">
-                    <div id="notiftitle"><p>Notifications<br></p></div>
-                    <div class="dropdown-divider-title"></div>
-                    <!-- DB NOTIFICATION DATA BELOW -->
-                    {% if notifications %}                    
-                        {% for notification in notifications %}                        
-                        <a href="{% url 'notifications' notification.id %}">
-                            <p id="notifdrops">
-                                <b class="notiftext">{{notification.title}}</b>
-                                <br>
-                                View details                       
-                            </p>
-                            <br>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        {% endfor %}
-                    {% else %}
-                            <p>No Notifications</p>
-                    {% endif %}
-                    <div id="notifbottom"></div>
-                </ul>
-            </div>
+            
 
             <!-- navbar user name and title  -->
             <p class="d-none d-sm-block usertitle unselectable">
@@ -87,7 +60,7 @@
                     <li><a class="profilelinks" href="{% url 'logout' %}">Log out</a></li>
                 </ul>
             </div>
-        </nav>
+        </nav>       
 
         <div id="mainwrapper" class="toggled">
             <!-- Sidebar -->
@@ -103,125 +76,120 @@
                     <li> <a class="sb-links" href="{% url 'cOthers-loa' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/loa.png' %}" height="15"> Leave of Absence</a> </li>
                     <li> <a class="sb-links" href="{% url 'cOthers-hd' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/hd.png' %}" height="15"> Honorable Dismissal</a> </li>
                     <li> <a class="sb-links" href="{% url 'cOthers-ojt' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/practicum.png' %}" height="15"> Practicum</a> </li>
-                    <li> <a class="sb-links" href="{% url 'cOthers-shifter' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/shifter.png' %}" height="15"> Shifter</a> </li>
+                    <li> <a class="sb-links" href="{% url 'cOthers-shifter' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/shifter.png' %}" height="15"> Inbound Shifter</a> </li>
+                    <li> <a class="sb-links" href="{% url 'cOthers-shifter' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/shifter.png' %}" height="15"> Outbound Shifter</a> </li>
                     <li> <a class="sb-links" href="{% url 'cOthers-transferee' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/transferee.png' %}" height="15"> Transferee</a> </li>
                     <li class="sb-section unselectable"><span>Faculty Application</span></li>
-                    <li> <a class="sb-links" href="{% url 'cfaculty_applicant' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/applicant.png' %}" height="15"> Application</a> </li>
-                    <li> <a class="sb-links" href="{% url 'cOthers-partTime' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/pta.png' %}" height="15">    Part-time Availability</a> </li>
+                    <li> <a class="sb-links" href="{% url 'cfaculty_applicant' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/applicant.png' %}" height="15"> Faculty Application</a> </li>
+                    <li> <a class="sb-links" href="{% url 'cOthers-partTime' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/pta.png' %}" height="15"> Part-time Availability</a> </li>
                 </ul>
             </div> 
-            <!-- end sidebar -->            
+            <!-- end sidebar -->   
+            
+             <!-- quick links-->
+            <div id="mainwrapper" class="toggled">
+                <div id="qlinks" class="custom-scrollbar unselectable qlinks-wrapper">
+                    <li class="ql-section unselectable" style="margin-top: 55px;"><span>Subjects</span></li>
+                    <a class="qlinks-btn qlinks-btn-active btn" href="{% url 'is_active' %}" role="button">College</a>
+                    <a class="qlinks-btn btn" href="{% url 'sc_active' %}" role="button">Servicing College</a>                    
+                </div>
+            </div>
+            <!-- end quick links-->
             
             <!-- Page Content -->
             <div id="page-content-wrapper">
                 <div class="container-fluid">  
                     
                     <!--------------------------------------- place content below this ------------------------------------------------------->                  
+                    <div class="title1 unselectable d-none d-md-block">Department</div>
+                    <h1 class="depttitle">College Schedules</h1>  
 
-                    <!-- dept categs-->
-                    <div id="wrapper" class="toggled">
-                        <div id="qlinks" class="custom-scrollbar unselectable qlinks-wrapper">
-                            <li class="ql-section unselectable"><span>Subjects</span></li>
-                            <div class="quickmargin col-lg-10 col-md-6 col-sm-12"><a href="{% url 'is_active' %}" id="buttons"><button type="button" class="btn-btn2">College</button></a></div>
-                            <div class="quickmargin col-lg-10 col-md-6 col-sm-12"><a href="{% url 'sc_active' %}" id="buttons"><button type="button" class="btn btn1">Servicing College</button></a></div>
-                            <div class="quickmargin col-lg-10 col-md-6 col-sm-12"><img src="{% static 'CRS/images/cDepartment/illu.png' %}" style="width: 100%; height: auto; align: bottom;"></div>
-                        </div>
-                    </div>
-                    <!-- end dept categs-->
-
-
-                    <!-- Others -->
-                    <div class="oth">
-                        <p id="others"></p>
-                    </div>
-
-                    <p id="application"><b>College Schedules</b></p>
-                    <div class="d-flex flex-wrap justify-content-left align-content-center">                        
+                    <div class="d-flex flex-wrap justify-content-start align-content-left">                        
                         <div class="year">1st Year</div><!-- DB YEAR -->
-                        <!-- 1st block -->
-                        <div class="p-2 overview-block full-overview-block">                            
-                            <div class="d-flex flex-wrap ov-block-content-1">                                
-                                <div class="p-2">                                    
-                                    {% for i in subject %}
-                                    {%if i.realsection.blockYear == '1' and i.subjectCode.subjectCode.college.collegeName == 'CET' %}
-                                    <div class="app-panel row">
-                                        <div class="col-sm col-lg-2"><b>{{ i.subjectCode.subjectCode.subjectCode }}</b></div><!-- DB SUBJECT CODE -->
-                                        <div class="col-sm col-lg-3" id="cntr">{{ i.subjectCode.subjectCode.subjectName }}</div><!-- DB SUJBECT NAME -->
-                                        <div class="col-sm col-lg-1" id="cntr">{{ i.section}}</div><!-- DB SECTION -->
-                                        <div class="col-sm col-lg-3" id="cntr"><img src="{% static 'CRS/images/cDepartment/facilitator.png' %}" style="width: auto; height: 24px; padding-right: 10px;">{{ i.instructor.facultyUser.lastName }}, {{ i.instructor.facultyUser.firstName }} </div><!-- DB FACILITATOR -->
-                                        <div class="col-sm col-lg-3"><a href="{% url 'is_subject_view' i.id %}" id="buttons"><button type="button" class="btn btn2">View</button></a></div><!-- DB VIEW -->
-                                    </div>
-                                    {% endif %}
-                                    {% endfor %}
-                                </div>                            
-                            </div> 
-                        </div>                        
+                        <!-- block -->
+                        {% for i in subject %}
+                        {%if i.realsection.blockYear == '1' and i.subjectCode.subjectCode.college.collegeName == 'CET' %}                        
+                        <div class="full-overview-block d-flex flex-wrap justify-content-start align-content-left">                            
+                            <table class="table table-sm table-borderless departmentblock overview-block">
+                                <tbody>                                   
+                                    <tr>
+                                        <td class="p-4" style="width: 15%"><b>{{ i.subjectCode.subjectCode.subjectCode }}</b></td>
+                                        <td class="p-4" style="width: 30%">{{ i.subjectCode.subjectCode.subjectName }}</td>
+                                        <td class="p-4" style="width: 10%">{{ i.section}}</td>
+                                        <td class="p-4" style="width: 30%"><img src="{% static 'CRS/images/cDepartment/facilitator.png' %}" style="width: auto; height: 17px; padding-right: 10px;"  class="unselectable">{{ i.instructor.facultyUser.lastName }}, {{ i.instructor.facultyUser.firstName }}</td>
+                                        <td class="p-3" style="width: 15%"><a class="smallbutton unselectable" href="{% url 'is_subject_view' i.id %}" role="button">View</a></td>
+                                    </tr>                                          
+                                </tbody>
+                            </table>                              
+                        </div> 
+                        {% endif %}
+                        {% endfor %}                      
                     </div> 
 
-                    <div class="d-flex flex-wrap justify-content-left align-content-center">                        
+                    <div class="d-flex flex-wrap justify-content-start align-content-left">                        
                         <div class="year">2nd Year</div><!-- DB YEAR -->
-                        <!-- 1st block -->
-                        <div class="p-2 overview-block full-overview-block">                            
-                            <div class="d-flex flex-wrap ov-block-content-1">                                
-                                <div class="p-2">                                    
-                                    {% for i in subject %}
-                                    {%if i.realsection.blockYear == '2' and i.subjectCode.subjectCode.college.collegeName == 'CET' %}
-                                    <div class="app-panel row">
-                                        <div class="col-sm col-lg-2"><b>{{ i.subjectCode.subjectCode.subjectCode }}</b></div><!-- DB SUBJECT CODE -->
-                                        <div class="col-sm col-lg-3" id="cntr">{{ i.subjectCode.subjectCode.subjectName }}</div><!-- DB SUJBECT NAME -->
-                                        <div class="col-sm col-lg-1" id="cntr">{{ i.section}}</div><!-- DB SECTION -->
-                                        <div class="col-sm col-lg-3" id="cntr"><img src="{% static 'CRS/images/cDepartment/facilitator.png' %}" style="width: auto; height: 24px; padding-right: 10px;">{{ i.instructor.facultyUser.lastName }}, {{ i.instructor.facultyUser.firstName }} </div><!-- DB FACILITATOR -->
-                                        <div class="col-sm col-lg-3"><a href="{% url 'is_subject_view' i.id %}" id="buttons"><button type="button" class="btn btn2">View</button></a></div><!-- DB VIEW -->
-                                    </div>
-                                    {% endif %}
-                                    {% endfor %}
-                                </div>                            
-                            </div> 
-                        </div>                        
+                        <!-- block -->
+                        {% for i in subject %}
+                        {%if i.realsection.blockYear == '2' and i.subjectCode.subjectCode.college.collegeName == 'CET' %}                        
+                        <div class="full-overview-block d-flex flex-wrap justify-content-start align-content-left">                            
+                            <table class="table table-sm table-borderless departmentblock overview-block">
+                                <tbody>                                   
+                                    <tr>
+                                        <td class="p-4" style="width: 15%"><b>{{ i.subjectCode.subjectCode.subjectCode }}</b></td>
+                                        <td class="p-4" style="width: 30%">{{ i.subjectCode.subjectCode.subjectName }}</td>
+                                        <td class="p-4" style="width: 10%">{{ i.section}}</td>
+                                        <td class="p-4" style="width: 30%"><img src="{% static 'CRS/images/cDepartment/facilitator.png' %}" style="width: auto; height: 17px; padding-right: 10px;"  class="unselectable">{{ i.instructor.facultyUser.lastName }}, {{ i.instructor.facultyUser.firstName }}</td>
+                                        <td class="p-3" style="width: 15%"><a class="smallbutton unselectable" href="{% url 'is_subject_view' i.id %}" role="button">View</a></td>
+                                    </tr>                                          
+                                </tbody>
+                            </table>                              
+                        </div> 
+                        {% endif %}
+                        {% endfor %}                       
                     </div> 
 
-                    <div class="d-flex flex-wrap justify-content-left align-content-center">                        
+                    <div class="d-flex flex-wrap justify-content-start align-content-left">                        
                         <div class="year">3rd Year</div><!-- DB YEAR -->
-                        <!-- 1st block -->
-                        <div class="p-2 overview-block full-overview-block">                            
-                            <div class="d-flex flex-wrap ov-block-content-1">                                
-                                <div class="p-2">                                    
-                                    {% for i in subject %}
-                                    {%if i.realsection.blockYear == '3' and i.subjectCode.subjectCode.college.collegeName == 'CET' %}
-                                    <div class="app-panel row">
-                                        <div class="col-sm col-lg-2"><b>{{ i.subjectCode.subjectCode.subjectCode }}</b></div><!-- DB SUBJECT CODE -->
-                                        <div class="col-sm col-lg-3" id="cntr">{{ i.subjectCode.subjectCode.subjectName }}</div><!-- DB SUJBECT NAME -->
-                                        <div class="col-sm col-lg-1" id="cntr">{{ i.section}}</div><!-- DB SECTION -->
-                                        <div class="col-sm col-lg-3" id="cntr"><img src="{% static 'CRS/images/cDepartment/facilitator.png' %}" style="width: auto; height: 24px; padding-right: 10px;">{{ i.instructor.facultyUser.lastName }}, {{ i.instructor.facultyUser.firstName }} </div><!-- DB FACILITATOR -->
-                                        <div class="col-sm col-lg-3"><a href="{% url 'is_subject_view' i.id %}" id="buttons"><button type="button" class="btn btn2">View</button></a></div><!-- DB VIEW -->
-                                    </div>
-                                    {% endif %}
-                                    {% endfor %}
-                                </div>                            
-                            </div> 
-                        </div>                        
+                        <!-- block -->
+                        {% for i in subject %}
+                        {%if i.realsection.blockYear == '3' and i.subjectCode.subjectCode.college.collegeName == 'CET' %}
+                        <div class="full-overview-block d-flex flex-wrap justify-content-start align-content-left">                            
+                            <table class="table table-sm table-borderless departmentblock overview-block">
+                                <tbody>                                   
+                                    <tr>
+                                        <td class="p-4" style="width: 15%"><b>{{ i.subjectCode.subjectCode.subjectCode }}</b></td>
+                                        <td class="p-4" style="width: 30%">{{ i.subjectCode.subjectCode.subjectName }}</td>
+                                        <td class="p-4" style="width: 10%">{{ i.section}}</td>
+                                        <td class="p-4" style="width: 30%"><img src="{% static 'CRS/images/cDepartment/facilitator.png' %}" style="width: auto; height: 17px; padding-right: 10px;"  class="unselectable">{{ i.instructor.facultyUser.lastName }}, {{ i.instructor.facultyUser.firstName }}</td>
+                                        <td class="p-3" style="width: 15%"><a class="smallbutton unselectable" href="{% url 'is_subject_view' i.id %}" role="button">View</a></td>
+                                    </tr>                                          
+                                </tbody>
+                            </table>                              
+                        </div> 
+                        {% endif %}
+                        {% endfor %}                       
                     </div> 
 
-                    <div class="d-flex flex-wrap justify-content-left align-content-center">                        
+                    <div class="d-flex flex-wrap justify-content-start align-content-left">                        
                         <div class="year">4th Year</div><!-- DB YEAR -->
-                        <!-- 1st block -->
-                        <div class="p-2 overview-block full-overview-block">                            
-                            <div class="d-flex flex-wrap ov-block-content-1">                                
-                                <div class="p-2">                                    
-                                    {% for i in subject %}
-                                    {%if i.realsection.blockYear == '4' and i.subjectCode.subjectCode.college.collegeName == 'CET' %}
-                                    <div class="app-panel row">
-                                        <div class="col-sm col-lg-2"><b>{{ i.subjectCode.subjectCode.subjectCode }}</b></div><!-- DB SUBJECT CODE -->
-                                        <div class="col-sm col-lg-3" id="cntr">{{ i.subjectCode.subjectCode.subjectName }}</div><!-- DB SUJBECT NAME -->
-                                        <div class="col-sm col-lg-1" id="cntr">{{ i.section}}</div><!-- DB SECTION -->
-                                        <div class="col-sm col-lg-3" id="cntr"><img src="{% static 'CRS/images/cDepartment/facilitator.png' %}" style="width: auto; height: 24px; padding-right: 10px;">{{ i.instructor.facultyUser.lastName }}, {{ i.instructor.facultyUser.firstName }} </div><!-- DB FACILITATOR -->
-                                        <div class="col-sm col-lg-3"><a href="{% url 'is_subject_view' i.id %}" id="buttons"><button type="button" class="btn btn2">View</button></a></div><!-- DB VIEW -->
-                                    </div>
-                                    {% endif %}
-                                    {% endfor %}
-                                </div>                            
-                            </div> 
-                        </div>                        
+                        <!-- block -->
+                        {% for i in subject %}
+                        {%if i.realsection.blockYear == '4' and i.subjectCode.subjectCode.college.collegeName == 'CET' %}
+                        <div class="full-overview-block d-flex flex-wrap justify-content-start align-content-left">                            
+                            <table class="table table-sm table-borderless departmentblock overview-block">
+                                <tbody>                                   
+                                    <tr>
+                                        <td class="p-4" style="width: 15%"><b>{{ i.subjectCode.subjectCode.subjectCode }}</b></td>
+                                        <td class="p-4" style="width: 30%">{{ i.subjectCode.subjectCode.subjectName }}</td>
+                                        <td class="p-4" style="width: 10%">{{ i.section}}</td>
+                                        <td class="p-4" style="width: 30%"><img src="{% static 'CRS/images/cDepartment/facilitator.png' %}" style="width: auto; height: 17px; padding-right: 10px;" class="unselectable">{{ i.instructor.facultyUser.lastName }}, {{ i.instructor.facultyUser.firstName }}</td>
+                                        <td class="p-3" style="width: 15%"><a class="smallbutton unselectable" href="{% url 'is_subject_view' i.id %}" role="button">View</a></td>
+                                    </tr>                                          
+                                </tbody>
+                            </table>                              
+                        </div>     
+                        {% endif %}
+                        {% endfor %}               
                     </div> 
                     
                     <!--------------------------------------- place content above this ------------------------------------------------------->   

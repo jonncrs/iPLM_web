@@ -1,0 +1,267 @@
+.year {
+    background-color: #f3f6ff;
+    color: #06529b;                
+    font-size: 17px;
+    border: none;                
+    border-radius: 5px;
+    padding: 5px 0px 5px 0px;
+}     
+
+.dropdownyear:hover {
+    background-color: #d7dff6;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;  
+}
+
+.dropdownyear {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    font-family: 'Source Sans Pro', sans-serif; 
+    border-radius: 5px;  
+    font-size: 14px;             
+}
+
+.dropdown-content {
+    font-family: 'Source Sans Pro', sans-serif;
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    margin-left: -15px;
+    min-width: 130px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 5px;
+}
+
+.dropdown-content a {
+    background-color: #fff;
+    color: #5f6e83;
+    padding: 5px;
+    text-decoration: none;
+    display: block;
+    border-radius: 5px;
+}
+
+.dropdown-content a:hover {
+    background-color: #f3f6ff;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;  
+}
+
+.dropdownyear:hover .dropdown-content {
+    display: block;
+    transition: all 0.3s ease-in-out;  
+}
+
+.dropdownyear:hover .year {
+    background-color: #d7dff6;
+    transition: all 0.3s ease-in-out;  
+}
+
+.yearheader {
+    margin-top: 15px;
+}    
+
+.dropdown-border {
+    border-right: 1px solid #d7dff6;                               
+}
+
+.table-style {                
+    border-radius: 10px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 15px;     
+    color: #06529b;                           
+}
+
+.table-title {
+    background-color: #06529b;
+    color: #fff;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 18px;
+    padding: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    margin-top: -4px;                
+}
+
+.spanmarginleft {
+    margin-left: 10px;
+}
+
+.table-block {                
+    background-color: #fff;
+    border-radius: 10px;                                            
+    height: 400px;
+    overflow-y: scroll;
+}
+
+.table-border {
+    background-color: #fff;
+    border-radius: 10px;    
+    box-shadow: 0 4px 8px 0 #d3dbe4, 0 6px 20px 0 #d3dbe4; 
+    height: 430px;
+    margin-top: 20px; 
+    padding: 15px;
+}
+
+.minibutton {
+    background-color: #06529b;
+    color: #fff;
+    font-size: 13px;
+    border-radius: 5px;
+    border-style: none;
+}
+
+.minibutton:hover {
+    background-color: #0892dd;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+tr:nth-child(odd) {
+    background-color: #f3f6ff;
+}
+
+tr:nth-child(even) {
+    background-color: #fff;
+}
+
+tr:first-child {
+    background-color: #0892dd;
+    color: #fff;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 15px;
+    text-decoration: none;
+}                   
+
+.header-sticky {
+    position: sticky;
+    top:0;
+}
+
+.searchbox {
+    margin-top: 68px;
+    margin-bottom: 42px;
+}
+
+.searchstyle {
+    height: 28px;
+    border: 1px solid #d7dff6;
+    width: 150px;
+    padding:10px;
+    font-size: 13px;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.searchbtn {
+    background-color: #06529b;
+    color: #fff;
+    font-size: 13px;
+    border-radius: 5px;
+    border-style: none;
+    padding: 4px 15px 4px 15px;
+}
+
+.searchbtn:hover {
+    background-color: #0892dd;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.sideheader {
+    color: #06529b;
+    font-family: 'Lato', sans-serif;
+    font-weight: 900;
+    font-size: 15px;    
+}
+
+.blockinfo {
+    background-color: #fff;
+    border-radius: 10px;    
+    box-shadow: 0 4px 8px 0 #d3dbe4, 0 6px 20px 0 #d3dbe4; 
+    width: 230px;
+    margin-top: 15px;
+    padding-top: 1px;    
+    padding-bottom: 20px;     
+}
+
+.blockinforow {
+    margin-top: 20px;                    
+}           
+
+.blockinfobutton {                               
+    font-size: 12px;
+    width: 145px;
+    text-align: left;
+    height: 50px;
+    margin-left: -10px;
+    font-weight: 300;     
+}
+
+.blockinfobutton b{                              
+    font-weight: 600;  
+    font-size: 13px;            
+}
+
+.blockcol {
+    text-align: center;
+}
+
+.adviser b{                
+    padding-top: -20px;
+    margin-left: -10px;                                             
+}
+
+.advisertitle {
+    font-size: 12px;
+    color: #5f6e83;
+    font-weight: 400;
+}
+
+.advisername {
+    font-size: 15px;
+    color: #06529b;
+    font-weight: 700;    
+}
+
+.adviser {                
+    line-height: 17px;
+    font-family: 'Source Sans Pro', sans-serif;                   
+}
+
+.studentcounter {
+    background-color: #fff;
+    border-radius: 5px;                    
+    width: 230px;
+    margin-top: 20px;      
+    margin-left: 0px;    
+    font-family: 'Source Sans Pro', sans-serif;   
+    font-size: 15px;
+    color: #06529b;
+    font-weight: 700;          
+    box-shadow: 0 4px 8px 0 #d3dbe4, 0 6px 20px 0 #d3dbe4; 
+}
+
+.studentstitle {
+    margin-left: -15px;
+}
+
+.studentsnumber {
+    margin-left: -15px;
+    font-weight: 500;  
+}
+
+
+hr {   
+    border-width: 1px;
+    background-color: #d3dbe4;
+}
+
+.linktype {
+    background-color: #fff;
+}
+
+.linkactive {
+    background-color: #d7dff6;
+}
