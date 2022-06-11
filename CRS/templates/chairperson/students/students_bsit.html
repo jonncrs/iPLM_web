@@ -1,196 +1,284 @@
-{% load static  %}
-
+{% load static %}
 <!DOCTYPE html>
 <html>
 
-<head>
-    <title>Chairperson | Students</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
-
-    <script src="cHomeMain.js"> </script>
-
-    <!-- static > CRS > css > cStudents -->
-    <link rel="stylesheet" type="text/css" href="{% static 'CRS/css/cStudents/viewBlockStyle.css' %}">
-
-
-    <!--Font-->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">
-    <!--Icon-->
-    <link rel="icon" href="{% static 'CRS/images/cStudents/iPLM.png'%}" type="image/png" sizes="16x16">
-
-    <style>
-    tr:nth-child(even) {background-color: #f2f2f2;}
-    </style>
-</head>
-
-<body>
-
-    <div class="wrapper">
-
-      <!-- Sidebar -->
-      <nav id="sidebar">
-        <div class="sidebar-header">
-            <li>
-                <p><br><br><img src="{% static 'CRS/images/fHomeAndProfile/hat.png' %}" width="126px" height="87px"><br><br>
-            </li>
-        </div>
-        <ul class="sidebar components">
-            <li class="active"><a href="{% url 'chairperson' %}"><img src="{% static 'CRS/images/cIcons/home2.png' %}" width="97px" height="auto"></a></li>
-            <li><a href="{% url 'is_active' %}"><img src="{% static 'CRS/images/cIcons/department2.png' %}" width="97px" height="auto"></a></li>
-            <li><a href="{% url 'dept_student' %}"><img src="{% static 'CRS/images/cIcons/students2.png' %}" width="97px" height="auto"></a></li>
-            <li><a href="{% url 'full_time' %}"><img src="{% static 'CRS/images/cIcons/faculty2.png' %}" width="97px" height="auto"></a></li>
-            <li><a href="{% url 'cOthers-studyPlan' %}"><img src="{% static 'CRS/images/cIcons/others2.png' %}" width="97px" height="auto"></a></li>
-            <li><a href="{% url 'logout' %}"><img src="{% static 'CRS/images/cIcons/log-out2.png' %}" width="97px" height="auto"></a></li>
-        </ul>
-      </nav>
-    <!--End of Sidebar -->
-
-        <!-- Content -->
-        <div id="content">
-            <div class=" container-fluid">
-                <div class="row" id="head">
-                        <p>Student</p>
-                    </div>
-                <!-- NAVIGATIO BAR -->
-                <div class="main row">
-                    <div class="firstdropdown">
-                        <a href="{% url 'students_bsit' %}"><p class="firstyear">1st Year</p></a>
-                        <div class="firstdropdown-content">
-                            <a class="one" href="{% url 'students_bsit1' %}">Block 1</a>
-                            <a href="{% url 'students_bsit1-2' %}">Block 2</a>
-                            <a href="{% url 'students_bsit1-3' %}">Block 3</a>
-                            <a href="{% url 'students_bsit1-4' %}">Block 4</a>
-                            <a href="{% url 'students_bsit1-5' %}">Block 5</a>
-                            <a href="{% url 'students_bsit1-6' %}">Block 6</a>
-                            <a href="{% url 'students_bsit1I' %}">Irregular</a>
-                        </div>
-                    </div>
-
-                    <div class="firstdropdown">
-                        <a href="{% url 'students_bsit2' %}"><p class="firstyear">2nd Year</p></a>
-                        <div class="firstdropdown-content">
-                            <a href="{% url 'students_bsit2-1' %}">Block 1</a>
-                            <a href="{% url 'students_bsit2-2' %}">Block 2</a>
-                            <a href="{% url 'students_bsit2-3' %}">Block 3</a>
-                            <a href="{% url 'students_bsit2-4' %}">Block 4</a>
-                            <a href="{% url 'students_bsit2-5' %}">Block 5</a>
-                            <a href="{% url 'students_bsit2-6' %}">Block 6</a>
-                          <a href="{% url 'students_bsit2I' %}">Irregular</a>
-                        </div>
-                    </div>
-
-                    <div class="firstdropdown">
-                        <a href="{% url 'students_bsit3' %}"><p class="firstyear">3rd Year</p></a>
-                        <div class="firstdropdown-content">
-                          <a href="{% url 'students_bsit3-1' %}">Block 1</a>
-                            <a href="{% url 'students_bsit3-2' %}">Block 2</a>
-                            <a href="{% url 'students_bsit3-3' %}">Block 3</a>
-                            <a href="{% url 'students_bsit3-4' %}">Block 4</a>
-                            <a href="{% url 'students_bsit3-5' %}">Block 5</a>
-                            <a href="{% url 'students_bsit3-6' %}">Block 6</a>
-                          <a href="{% url 'students_bsit3I' %}">Irregular</a>
-                        </div>
-                    </div>
-
-                    <div class="firstdropdown">
-                        <a href="{% url 'students_bsit4' %}"><p class="firstyear">4th Year</p></a>
-                        <div class="firstdropdown-content">
-                          <a href="{% url 'students_bsit4-1' %}">Block 1</a>
-                            <a href="{% url 'students_bsit4-2' %}">Block 2</a>
-                            <a href="{% url 'students_bsit4-3' %}">Block 3</a>
-                            <a href="{% url 'students_bsit4-4' %}">Block 4</a>
-                            <a href="{% url 'students_bsit4-5' %}">Block 5</a>
-                            <a href="{% url 'students_bsit4-6' %}">Block 6</a>
-                          <a href="{% url 'students_bsit4I' %}">Irregular</a>
-                        </div>
-                    </div>
-
-                    <div class="firstdropdown">
-                        <a href="{% url 'students_bsit5' %}"><p class="firstyear">5th Year</p></a>
-                        
-                    </div>
-
-                    <div class="firstdropdown">
-                        <a href="{% url 'students_bsit6' %}"><p class="firstyear">6th Year</p></a>
-                        
-                    </div>
-                </div>
-                <!--End of NAVIGATION BAR-->
-                {% block body %}
-                <div class="sub-year row">
-                    <p id="fulltime">{{year}}</p><!-- DB YEAR -->
-                    <div class="row" id="studentCount" style="margin-left: -50px;">Student: {{count}}</div><!-- STUDENT COUNT -->
-                    
-                </div>
-                <hr class="new">
-
-                <!-- TABLE HEADER -->
-                <div class="list row">
-                    <div class="col-15">
-                        <table>
-                            <tr>
-                                <td id="list"><b><p>Student No.</p></b></td><!-- Faculty Number Label -->
-                                <td id="list"><b><p>Last Name</p></b></td><!-- Last Name of Faculty -->
-                                <td id="listname"><b><p>First Name</p></b></td><!-- Firs Name of Faculty -->
-                                <td id="listname"><b><p>Middle Name</p></b></td><!-- Middle Name of Faculty -->
-                                <td id="listname"><b><p>View</p></b></td><!-- Middle Name of Faculty -->
-                            </tr>
-                        </table>
-                    </div>
-                </div>
+    <head>
+        <title> Chairperson | Students </title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <!-- include -->
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        
+        <!-- CSS -->
+        <link rel="stylesheet" href="{% static '/CRS/css/cHome/cHomeStyleCP.css' %}">
+        <link rel="stylesheet" href="{% static '/CRS/css/cStudents/cStudentsStyle.css' %}">
+        <link href="https://fonts.googleapis.com/css?family=Lato:200,300,400,600,700,900&subset=latin-ext" rel="stylesheet">
+        <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900&subset=latin-ext' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
+        
+        <!--  ICON -->
+        <link rel="icon" href="{% static '/CRS/images/cHome/iPLM.png' %}" type="image/png" sizes="16x16">
+        
+        
+    </head>
 
 
+    <body class="content-scrollbar" onload="today()">  
+        {% block bglogo %}
+        <img src="{% static 'CRS/images/cHome/bglogo.png' %}" id="bglogo" class="unselectable">
+        {% endblock %}      
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-sm navbar-dark flex-sm-nowrap flex-wrap">           
+            <a href="#menu-toggle" id="menu-toggle" class="navbar-brand unselectable d-xl-none" onclick="togglemenu()">
+                <span></span><img class="nav-collapse unselectable" src="{% static 'CRS/images/cIcons/collapse.png' %}" height="13"></span>
+            </a>                 
+            <a id="iplm" href="{% url 'chairperson' %}">
+                <img class="iplmlogo unselectable" src="{% static 'CRS/images/fHomeAndProfile/iplmlogo.png' %}" height="35">
+            </a>            
+                   
+     
+            <!-- navbar user name and title  -->
+            <p class="d-none d-sm-block usertitle unselectable">
+                Chairperson
+            </p>
+            <p href="{% url 'chairperson_profile' %}" class="d-none d-sm-block user unselectable">
+                {{user.firstName}} {{user.middleName}} {{user.lastName}}
+            </p>
 
-                <!-- DATA OF TABLE -->
-                <div class="list row">
-                        <div class="table-wrapper-scroll-y scroll">
-                            <table>
-                                <!--ROW 1-->
-                                {% for i in bsit1 %}
-                                <tr>
-                                    <td id="list"><p>{{ i.studentID }}</p><!-- DB FACULTY NO --></td>
-                                    <td id="listname"><p>{{ i.studentUser.lastName }}</p><!-- DB LAST NAME --></td>
-                                    <td id="listname"><p>{{ i.studentUser.firstName }}</p><!-- DB FIRST NAME --></td>
-                                    <td id="listname"><p>{{ i.studentUser.middleName }}</p><!-- DB MIDDLE NAME --></td>
-                                    <td id="list row">
-                                        <td id="listname"><a href="{% url 'profile1_1' i.pk %}"><button class="manage row"><!-- DB MANAGE FACULTY BUTTON BELOW -->View</button></a>
-                                    </td>
-                                </tr>
-                                {% endfor %}
-                        {% endblock %}
-                            </table>
-                        </div>
-                    </div>
-
-
-
-
-                <!-- Search box -->
-                <div class="searchbox">
-                    <form method ="get">
-                        <input type="text" name="search">
-                        <button type="submit" id="submit" value="Search"> Search </button>
-                    </form>
-                </div>
-                <!--End of Search box-->
-
-
-                <!--Gray Line-->
-                <div class="col-searchline">
-                    <div class="grayline">
-                    </div>
-                </div>
-                <!--End of gray line-->
-
+            <!-- user profile dropdown -->
+            <div class="unselectable dropdown pficon">
+                <a class="dropdown-toggle profilehover" id="dropdownProfile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img id="profileicon" src="{% static 'CRS/images/fHomeAndProfile/userprofile.png' %}" width="35px" height="35px">
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end dropdownProfileMenu p-3 text-muted" aria-labelledby="dropdownProfile">
+                    <img id="profileicon" src="{% static 'CRS/images/fHomeAndProfile/userprofile.png' %}" width="40px" height="40px">
+                    <p id="profilemenutitle">{{user.firstName}}<br></p>
+                    <p id="profilemenuemail">{{user.email}}<br></p>
+                    <div class="dropdown-divider"></div>
+                    <li><a class="profilelinks" href="{% url 'chairperson_profile' %}">View Profile</a></li>
+                    <li><a class="profilelinks" href="{% url 'fHome' %}">Log in as Faculty</a></li>
+                    <li><a class="profilelinks" href="{% url 'logout' %}">Log out</a></li>
+                </ul>
             </div>
-        </div>
+        </nav>
 
-</div>
-</body>
+        <div id="mainwrapper" class="toggled">
+            <!-- Sidebar -->
+            <div id="sidebar-wrapper" class="custom-scrollbar">
+                <ul class="sidebar-nav">
+                    <li class="active"> <a class="sb-links" href="{% url 'chairperson' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/home.png' %}" height="15"> Home</a> </li>
+                    <li class="sb-section unselectable"><span>CRS</span></li>
+                    <li> <a class="sb-links" href="{% url 'is_active' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/department.png' %}" height="15"> Department</a> </li>
+                    <li> <a class="sb-links" href="{% url 'dept_student' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/students.png' %}" height="15"> Students</a> </li>
+                    <li> <a class="sb-links" href="{% url 'full_time' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/faculty.png' %}" height="15"> Faculty</a> </li>
+                    <li class="sb-section unselectable"><span>Student Application</span></li>
+                    <li> <a class="sb-links" href="{% url 'cOthers-studyPlan' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/studyplan.png' %}" height="15"> Study Plan</a> </li>
+                    <li> <a class="sb-links" href="{% url 'cOthers-loa' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/loa.png' %}" height="15"> Leave of Absence</a> </li>
+                    <li> <a class="sb-links" href="{% url 'cOthers-hd' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/hd.png' %}" height="15"> Honorable Dismissal</a> </li>
+                    <li> <a class="sb-links" href="{% url 'cOthers-ojt' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/practicum.png' %}" height="15"> Practicum</a> </li>
+                    <li> <a class="sb-links" href="{% url 'cOthers-shifter' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/shifter.png' %}" height="15"> Inbound Shifter</a> </li>
+                    <li> <a class="sb-links" href="{% url 'cOthers-outshifter' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/shifter.png' %}" height="15"> Outbound Shifter</a> </li>
+                    <li> <a class="sb-links" href="{% url 'cOthers-transferee' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/transferee.png' %}" height="15"> Transferee</a> </li>
+                    <li class="sb-section unselectable"><span>Faculty Application</span></li>
+                    <li> <a class="sb-links" href="{% url 'cfaculty_applicant' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/applicant.png' %}" height="15"> Faculty Application</a> </li>
+                    <li> <a class="sb-links" href="{% url 'cOthers-partTime' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/pta.png' %}" height="15"> Part-time Availability</a> </li>
+                </ul>
+            </div> 
+            <!-- end sidebar -->     
+            
+             <!-- quick links-->
+            <div id="mainwrapper" class="toggled">
+                <div id="qlinks" class="custom-scrollbar unselectable qlinks-wrapper">              
+                    
+                    <!-- Search box -->
+                    <div class="searchbox">
+                        <form method ="get">
+                            <input type="text" name="search" class="searchstyle">
+                            <button type="submit" id="submit" value="Search" class="searchbtn"> Search </button>
+                        </form>
+                    </div>
+                    <!--End of Search box-->     
+
+                    {% block info %}
+                    
+                    {% endblock %}
+
+                    
+                    <!-- STUDENT COUNTER -->
+                    <div>
+                        <div class="container studentcounter">
+                            <div class="row p-2">
+                              <div class="col col-3 blockcol" style="margin-left: -10px">
+                                <img src="{% static '/CRS/images/cIcons/booksdark.png' %}" height="15" class="unselectable">
+                              </div>
+                              <div class="col studentstitle">
+                                Students:
+                              </div>
+                              <div class="col studentsnumber">
+                                {{count}}
+                              </div>
+                            </div>
+                          </div>
+                    </div>                                        
+                </div>
+                
+            </div>
+            <!-- end quick links-->
+            
+            <!-- Page Content -->
+            <div id="page-content-wrapper">
+                <div class="container-fluid">  
+                    
+                    <!--------------------------------------- place content below this ------------------------------------------------------->                  
+                    <div class="title1 unselectable d-none d-md-block">Students</div>
+
+                    <div class="container yearheader unselectable">                                               
+                        <div class="row">                           
+                          <div class="col dropdownyear dropdown-border">                            
+                                <a href="{% url 'students_bsit' %}">
+                                    <button class="year">1st Year &nbsp;&nbsp;<i class="fas fa-solid fa-angle-down fa-xs"></i></button>
+                                </a>
+                                <div class="dropdown-content">
+                                    <a href="{% url 'students_bsit1' %}">Block 1</a>
+                                    <a href="{% url 'students_bsit1-2' %}">Block 2</a>
+                                    <a href="{% url 'students_bsit1-3' %}">Block 3</a>
+                                    <a href="{% url 'students_bsit1-4' %}">Block 4</a>
+                                    <a href="{% url 'students_bsit1-5' %}">Block 5</a>
+                                    <a href="{% url 'students_bsit1-6' %}">Block 6</a>
+                                    <a href="{% url 'students_bsit1I' %}">Irregular</a>
+                                </div>                              
+                          </div>
+                          <div class="col dropdownyear dropdown-border">  
+                            <a href="{% url 'students_bsit2' %}">                          
+                                <button class="year">2nd Year &nbsp;&nbsp;<i class="fas fa-solid fa-angle-down fa-xs"></i></button>
+                            </a>
+                                <div class="dropdown-content">
+                                    <a href="{% url 'students_bsit2-1' %}">Block 1</a>
+                                    <a href="{% url 'students_bsit2-2' %}">Block 2</a>
+                                    <a href="{% url 'students_bsit2-3' %}">Block 3</a>
+                                    <a href="{% url 'students_bsit2-4' %}">Block 4</a>
+                                    <a href="{% url 'students_bsit2-5' %}">Block 5</a>
+                                    <a href="{% url 'students_bsit2-6' %}">Block 6</a>
+                                    <a href="{% url 'students_bsit2I' %}">Irregular</a>
+                                </div>                              
+                          </div>
+                          <div class="col dropdownyear dropdown-border">   
+                            <a href="{% url 'students_bsit3' %}">                         
+                                <button class="year">3rd Year &nbsp;&nbsp;<i class="fas fa-solid fa-angle-down fa-xs"></i></button>
+                            </a>
+                            <div class="dropdown-content">
+                                <a href="{% url 'students_bsit3-1' %}">Block 1</a>
+                                <a href="{% url 'students_bsit3-2' %}">Block 2</a>
+                                <a href="{% url 'students_bsit3-3' %}">Block 3</a>
+                                <a href="{% url 'students_bsit3-4' %}">Block 4</a>
+                                <a href="{% url 'students_bsit3-5' %}">Block 5</a>
+                                <a href="{% url 'students_bsit3-6' %}">Block 6</a>
+                                <a href="{% url 'students_bsit3I' %}">Irregular</a>
+                            </div>                              
+                          </div>
+                          <div class="col dropdownyear dropdown-border">     
+                            <a href="{% url 'students_bsit4' %}">                          
+                                <button class="year">4th Year &nbsp;&nbsp;<i class="fas fa-solid fa-angle-down fa-xs"></i></button>
+                            </a>
+                            <div class="dropdown-content">
+                                <a href="{% url 'students_bsit4-1' %}">Block 1</a>
+                                <a href="{% url 'students_bsit4-2' %}">Block 2</a>
+                                <a href="{% url 'students_bsit4-3' %}">Block 3</a>
+                                <a href="{% url 'students_bsit4-4' %}">Block 4</a>
+                                <a href="{% url 'students_bsit4-5' %}">Block 5</a>
+                                <a href="{% url 'students_bsit4-6' %}">Block 6</a>
+                                <a href="{% url 'students_bsit4I' %}">Irregular</a>
+                            </div>                              
+                           </div>
+                           <div class="col dropdownyear dropdown-border">                            
+                            <a href="{% url 'students_bsit5' %}">
+                                <button class="year">5th Year &nbsp;&nbsp;</button>
+                            </a>                                                       
+                           </div>
+                           <div class="col dropdownyear">               
+                            <a href="{% url 'students_bsit6' %}">             
+                                <button class="year">6th Year &nbsp;&nbsp;</button>
+                            </a>
+                                                       
+                           </div>
+                          
+                        </div> 
+                        <div class="row" style="border-bottom: 1px solid #d3dbe4; margin-top: 15px;"> 
+                        </div>
+                    </div>      
+
+                    {% block body %}
+                    <div class="container table-border">  
+                        <div class="container table-block content-scrollbar">                                               
+                            <div class="row">
+                                <div class="table-title header-sticky"><span class="spanmarginleft">{{year}}</span></div>                           
+                                <table class="table table-style table-borderless table-sm">
+                                    <tbody>
+                                        <tr class="table-header header-sticky" style="top: 45px">
+                                            <td></td>
+                                            <td>Student No.</td>
+                                            <td class="col-3">Last Name</td>
+                                            <td class="col-3">First Name</td>
+                                            <td>Middle Name</td>
+                                            <td class="col-1 unselectable">View</td>
+                                            <td class="col-1 unselectable">Edit</td>
+                                        </tr>
+                                        {% for i in bsit1 %}
+                                        <tr>
+                                            <td></td>
+                                            <td>{{ i.studentID }}<!-- DB FACULTY NO --></td>
+                                            <td>{{ i.studentUser.lastName }}<!-- DB LAST NAME --></td>
+                                            <td>{{ i.studentUser.firstName }}<!-- DB FIRST NAME --></td>
+                                            <td>{{ i.studentUser.middleName }}<!-- DB MIDDLE NAME --></td>
+                                            <td>
+                                                <a href="{% url 'profile1_1' i.pk %}">
+                                                    <button class="minibutton unselectable"><!-- DB MANAGE FACULTY BUTTON BELOW -->
+                                                        View
+                                                    </button>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a href="{% url 'edit_students' i.pk %}">
+                                                    <button class="minibutton unselectable"><!-- DB MANAGE FACULTY BUTTON BELOW -->
+                                                        Edit
+                                                    </button>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            
+                            </div>  
+                
+                        </div>
+                    </div>
+                    {% endblock %}
+                    <!--------------------------------------- place content above this ------------------------------------------------------->   
+                </div>            
+            </div> <!-- /#page-content-wrapper -->  
+        </div> <!-- /#wrapper -->
+
+        <img src="{% static 'CRS/images/cIcons/up-arrow.png' %}" id="btn-back-to-top" class="unselectable"> <!-- scroll to top -->
+        
+        <!-- Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        
+        <!-- JS -->
+        <script src="{% static '/CRS/js/cHome/cHomeMain.js' %}"></script>   
+        <script>
+            let mybutton = document.getElementById("btn-back-to-top");
+            window.onscroll = function () {
+              scrollFunction();
+            };
+            mybutton.addEventListener("click", backToTop);
+        </script>     
+    </body>
+
 </html>

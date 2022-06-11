@@ -21,6 +21,7 @@
                                 <td id="listname"><b><p>First Name</p></b></td><!-- Firs Name of Faculty -->
                                 <td id="listname"><b><p>Middle Name</p></b></td><!-- Middle Name of Faculty -->
                                 <td id="listname"><b><p>View</p></b></td><!-- Middle Name of Faculty -->
+                                <td id="listname"><b><p>Edit</p></b></td><!-- Middle Name of Faculty -->
                             </tr>
                         </table>
                     </div>
@@ -40,9 +41,21 @@
                                         <td id="list">{{ item.studentUser.lastName }}</td>
                                         <td id="listname">{{ item.studentUser.firstName }}</td>
                                         <td id="listname">{{ item.studentUser.middleName }}</td>
-                                        <td id="listname"><a href="{% url 'profile1_1' item.pk %}"><button class="manage row"><!-- DB MANAGE FACULTY BUTTON BELOW -->View</button></a>
-                                    </td>
-                                </tr>
+                                        <td id="listname">
+                                            <a href="{% url 'profile1_1' item.pk %}">
+                                                <button class="manage row"><!-- DB MANAGE FACULTY BUTTON BELOW -->
+                                                    View
+                                                </button>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="{% url 'edit_students' item.pk %}">
+                                                <button class="minibutton unselectable"><!-- DB MANAGE FACULTY BUTTON BELOW -->
+                                                    Edit
+                                                </button>
+                                            </a>
+                                        </td>
+                                    </tr>
                                 {% endfor %}
 
 
