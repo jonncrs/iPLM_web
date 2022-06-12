@@ -3,190 +3,38 @@
 <html>
 
 <head>
-    <title>Faculty | Student Grade</title>
+    <title> Faculty | Checklist </title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- include -->
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
-    <link rel="stylesheet" href="{% static 'CRS/css/fStudents/fViewStudGrade.css' %}">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">
-    <!--Icon-->
-    <link rel="icon" href="{% static 'CRS/images/fStudents/iPLM.png' %}" type="image/png" sizes="16x16">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
+    <!-- CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:200,300,400,600,700,900&subset=latin-ext" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900&subset=latin-ext' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{% static '/CRS/css/fHomeAndProfile/fHomeStyle.css' %}">
+
+    <!--  ICON -->
+    <link rel="icon" href="{% static '/CRS/images/cHome/iPLM.png' %}" type="image/png" sizes="16x16">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
-
-        body{
-            overflow: scroll;
-            overflow-x: hidden;
-        }
-
-                /*SCROLLBAR*/
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-
-        /* Track */
-        ::-webkit-scrollbar-track {
-            background: #e4e4e4;
-            border-radius: 12px;
-        }
-        
-        /* Handle */
-        ::-webkit-scrollbar-thumb {
-            background: #cbcbcb;
-            border-radius: 12px;
-        }
-
-        /* Handle on hover */
-        ::-webkit-scrollbar-thumb:hover {
-            background: #8f8f8f; 
-        }
-
-
-
-        #head3 {
-            letter-spacing: 1px;
-            font-size: 18px;
-            color: #0C66CC;
-            font-family: 'Nunito';
-        }
-        #head3-1 {
-            letter-spacing: 1px;
-            font-size: 18px;
-            color: #0C66CC;
-            font-family: 'Nunito';
-            width: 20%;
-        }
-
-        .primary-att {
-            position: sticky;
-            text-align: left;
-            position: sticky;
-            top: 0;
-            /* Don't forget this, required for the stickiness */
-            background-color: #fcfcfc;
-        }
-        .empty{
-            color:#fcfcfc;
-        }
-        .fill-in {
-            border-radius: 20px;
-            margin-left: 100px;
-        }
-
-        .tablepanel {
-            overflow-y: scroll;
-            width: 100%;
-            height: 660px;
-            margin-left: 50px;
-            border-radius: 25px;
-        }
-
-        .borderless td,
-        .borderless th {
-            border: none;
-        }
-
-        tr:nth-child(even) {background-color: #f2f2f2;}
-
-        .tablepanel::-webkit-scrollbar {
-            width: 10px;
-            background: white;
-            border-radius: 0 8px 8px 0;
-            height: 200px;
-            
-        }
-
-        .tablepanel::-webkit-scrollbar-thumb {
-            background:#c5c5c5;
-            border-radius: 0 8px 8px 0;
-            height: 300px;
-        }
-
-        .tabletext1 {
-            text-align: left;
-            letter-spacing: 1px;
-            font-size: 14px;
-            font-family: 'Nunito';
-            color: #0C66CC;
-            
+        .container{
+            width: 755px;
+            height: 500px;
         }
 
         .gradeScreenshot {
             text-align: left;
-            letter-spacing: 1px;
             font-size: 20px;
             font-family: 'Nunito';
             color: #0C66CC;
             font-weight: bold;
         }
 
-
-
-        .tabletext2 {
-            text-align: left;
-            letter-spacing: 1px;
-            font-size: 18px;
-            font-family: 'Nunito';
-            color: #252525;
-        }
-
-        .dataStyle {
-            width: 300px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            color: #252525;
-        }
-
-        #remarks {
-            padding-left: 5px;
-            border: none;
-            background: #0C66CC;
-            font-size: 15px;
-            font-family: Nunito;
-            cursor: pointer;
-            color: white;
-            border-radius: 10px;
-            height: 33px;
-            width: 88px;
-
-        }
-
-        #grade {
-            padding-left: 5px;
-            border: none;
-            background: #0C66CC;
-            font-size: 15px;
-            font-family: Nunito;
-            cursor: pointer;
-            color: white;
-            border-radius: 10px;
-            height: 33px;
-            width: 88px;
-
-        }
-
-        .imgSubmit{
-            margin-left: 20px;
-            margin-top: 150px;
-        }
-
-        #delete{
-            border:none;
-            background-color: transparent;
-            cursor: pointer;
-        }
-        /***** END OF CHECKLIST *****/
-
-
-        .clist{
-            margin-left: 50px;
-            margin-right: 100px;    
-        }
 
         .downloadBtn {
             background-color: #0C66CC;
@@ -201,21 +49,6 @@
         }
 
         .downloadBtn:hover{
-            background-color: #2852A4;
-        }
-
-        .feedbackBtn {
-        background-color: #0C66CC;
-        border: none;
-        color: white;
-        padding: 30px 30px 30px 30px;
-        margin-left: 190px;
-        cursor: pointer;
-        font-size: 20px;
-        border-radius: 20px;
-    }
-
-        .feedbackBtn:hover{
             background-color: #2852A4;
         }
 
@@ -237,37 +70,39 @@
         background-color: #2852A4;
     }
 
-        #stat {
+    #stat {
         margin-left: 10px;
         margin-top: 30px;
         font-size: 20px;
-        font-weight: bold;
-        color: #0C66CC;
-        font-family: 'Nunito';
+        color: #06529b;
+        font-family: 'Nunito', sans-serif;
+        margin-bottom: 0px;;
     }
 
     #stat-slct {
+        width:200px;
         background-color: white;
-        color: #0C66CC;
+        color: #06529b;
         border-width: 2px;
         border-radius: 8px;
-        border-color: #0C66CC;
+        border-color: #06529b;
         padding: 2px;
-        font-family: 'Nunito';
-        font-size: 18px;
+        font-family: 'Lato', sans-serif;
+        font-size: 14px;
         margin-right: -50px;
-        margin-top: 28px;
+        margin-top: 0px;
+        margin-left: 10px;
         padding-left: 20px;
         padding-right: 10px;
     }
                 
     #stat-slct option {
-        font-family: 'Nunito';
-        font-size: 15px;
-        color: #0C66CC;
+        font-family: 'Lato', sans-serif;
+        font-size: 14px;
+        color: #06529b;
         background-color: white;
         border-radius: 10px;
-        border-color: #0C66CC;
+        border-color: #06529b;
         border-width: 2px;
     }
 
@@ -284,19 +119,24 @@
     }
 
     .btn-primary{
-        background-color: #0C66CC;
+        width:100px;
+        margin:auto;
+        margin-left: 602px;
+        font-family: 'Lato', sans-serif;
+        font-size: 14px;
+        background-color: #06529b;
         border-radius: 10px;
-        border-color: #0C66CC;
-        border-width: 2px;
-        float: right;
-        margin-top: 10px;
+        border-color:transparent;
     }
 
     .form-control{
+        width: 680px;
+        font-family: 'Lato', sans-serif;
         border-radius: 10px;
         border-color: #0C66CC;
         border-width: 2px;
         text-align: left;
+        margin-left: 10px;
     }
 
     #subjectMessage {
@@ -319,9 +159,13 @@
         }
 
         .alertSuccess{
-        padding: 20px;
+        font-family: 'Lato', sans-serif;
+        font-size: 12px;
+        padding: 10px;
+        width: 250px;
         background-color: #3fb328;
         border-radius: 15px;
+        margin-left: 10px;
         color: white;
         box-shadow: 0 0 10px rgb(216, 216, 216);
         animation: zoom-in-zoom-out 1s ease;
@@ -356,8 +200,88 @@
         .closebtnSuccess:hover {
             color: #1c6b0c;
         }
+        .cswBtn1{
+            background-color: #06529b;
+            width:80px;
+            height:80px;
+            font-family: 'Lato', sans-serif;
+            font-size: 10px;
+            color: white;
+            border-radius: 5px;
+            border-width: 0px;
+        }
+        .downloads {
+            display: inline;
+        }
 
+        #button2hvr {
+            margin-top: 20px;
+            width:300px;
+            height:45px;
+            background-color: #06529b;
+            color:white;
+            font-family: 'Lato', sans-serif;
+            font-size: 15px;
+            border-radius: 15px;
+            border-width: 0px;
+            box-shadow: 0 3px 2px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.19); 
+        }
 
+        #submitbtn {
+        float:right;
+        width: 100px;
+        height: 40px;
+        background: #06529b;
+        color: #ffff;
+        border-width:0px;
+        border-radius: 15px;
+        text-align: center;
+        letter-spacing: 1px;
+        padding-bottom: 3px;
+        font-size: 15px;
+        font-family: 'Lato', sans-serif;
+        box-shadow: 0 3px 2px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.19); 
+        }
+
+        #submitbtn:hover {
+            background: #2852a4;
+            color: #ffff;
+        }
+
+        .success{
+            text-align: center;
+            padding-top: 150px;
+            padding-bottom: 30px;
+            padding-left:30px;
+            margin:auto;
+            font-family: 'Lato', sans-serif;
+            font-size: 40px;
+            color: #06529b;
+        }
+        ::-webkit-file-upload-button
+        {
+            color: #0C66CC;
+            background: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            color: #0360AD;
+            margin-bottom: 20px;
+            text-align: center;
+            margin-left: 10px;
+            margin-top: 1px;
+            width: 100px;
+            height: auto;
+            font-size: 15px;
+            font-family: 'Lato', sans-serif;
+            box-shadow: 0 3px 2px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.19); 
+            border-radius: 15px;
+        }
+
+        ::-webkit-file-upload-button:hover
+        {
+            background: #f7f7f7;
+        }
 
         @keyframes zoom-in-zoom-out {
         0% {
@@ -374,158 +298,199 @@
     </style>
 </head>
 
-<body>
-    <div class="wrapper">
+<body class="content-scrollbar" onload="today()">
+    <img src="{% static 'CRS/images/cHome/bglogo.png' %}" id="bglogo">
 
-        <!-- Sidebar -->
-        <nav id="sidebar">
-            <div class="sidebar-header">
-                <li>
-                    <p><br><br><img src="{% static 'CRS/images/fHomeAndProfile/hat.png' %}" width="126px" height="87px"><br><br>
-                </li>
-            </div>
-            <ul class="sidebar components">
-                <!-- FILE PATH: Faculty/fHomeAndProfile/fHome.html-->
-                <li class="active"><a href="{% url 'fHome' %}"><img src="{% static 'CRS/images/cIcons/home2.png' %}" width="97px" height="auto"></a></li>
-                <!-- FILE PATH: Faculty/fHomeAndProfile/fProfile.html-->
-                <li><a href="{% url 'fProfile' %}"><img src="{% static 'CRS/images/cIcons/profile2.png' %}" width="97px" height="auto"></a></li>
-                <!-- FILE PATH: Faculty/fStudents/fStudents.html-->
-                <li><a href="{% url 'fStudents_advisory' %}"><img src="{% static 'CRS/images/cIcons/students2.png' %}" width="97px" height="auto"></a></li>
-                <!-- FILE PATH: Faculty/fClassroom/fViewSched.html-->
-                <li><a href="{% url 'fViewSched' %}"><img src="{% static 'CRS/images/cIcons/classroom2.png' %}" width="97px" height="auto"></a></li>
-                <!-- FILE PATH: LOG-OUT -->
-                <li><a href="{% url 'logout' %}"><img src="{% static 'CRS/images/cIcons/log-out2.png' %}" width="97px" height="auto"></a></li>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-sm navbar-dark flex-sm-nowrap flex-wrap">                          
+        <a id="iplm" href="{% url 'chairperson' %}">
+            <img class="iplmlogo unselectable" src="{% static 'CRS/images/fHomeAndProfile/iplmlogo.png' %}" height="35">
+        </a>            
+
+        <!-- navbar user name and title  -->
+        <p class="d-none d-sm-block usertitle unselectable">
+            Faculty
+        </p>
+        <p href="{% url 'fProfile' %}" class="d-none d-sm-block user unselectable">
+            {{user.firstName}} {{user.middleName}} {{user.lastName}}
+        </p>
+
+        <!-- user profile dropdown -->
+        <div class="unselectable dropdown pficon">
+            <a class="dropdown-toggle profilehover" id="dropdownProfile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <img id="profileicon" src="{% static 'CRS/images/fHomeAndProfile/userprofile.png' %}" width="35px" height="35px">
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end dropdownProfileMenu p-3 text-muted" aria-labelledby="dropdownProfile">
+                <img id="profileicon" src="{% static 'CRS/images/fHomeAndProfile/userprofile.png' %}" width="40px" height="40px">
+                <p id="profilemenutitle">{{user.firstName}}<br></p>
+                <p id="profilemenuemail">{{user.email}}<br></p>
+                <div class="dropdown-divider"></div>
+                <li><a class="profilelinks" href="{% url 'fProfile' %}">View Profile</a></li>
+                <li><a class="profilelinks" href="{% url 'logout' %}">Log out</a></li>
             </ul>
-        </nav>
-        <!--End of Sidebar -->
+        </div>
+    </nav>
 
-        <!-- Content -->
-        <div id="content">
-
-            <div class=" container-fluid">
-                <div class="back row">
-                    <a href="{% url 'fStudents_advisory' %}" id="back-edit"><img src="{% static 'CRS/images/cHome/back.svg' %}" width="50" style="margin-top: 35px;"></a>
-                    <p id="schedtitle">Student Grade</p>
-                </div>
-                <br>
-                </div>
-                {% if stud_checklist.remarks == "Approved"%}
-                    {% if stud_checklist.crsApprovedChecklist == null or stud_checklist.crsApprovedChecklist == none%}
-                    <form method="POST" enctype="multipart/form-data">
-                        {%csrf_token%}	   
-                        <div>
-                            <button  id="button2hvr">&nbsp;&nbsp;&nbsp;Upload Approved Checklist</button>
-                            <input type="file" name="checkListApproved" required>
-                        </div>
-                        <input type="submit" id="submitbtn" value="Submit">
-                    </form>
-                    {% else %}
-                    <p>you have succesfully submitted an approved checklist!</p>
-                    {% endif %}
-                {% else %}
-                    <form method="POST">
-                        <div class="gradeScreenshot">
-                            {% if stud_checklist != null %}              
-                                <!--DROPDOWN-->
-                                    <div class= "stat-drop row">
-                                        <p id="stat">Status:&nbsp;&nbsp;</p>
-                                        <div class="dropdown">
-                                            <form method="POST">
-                                                {% csrf_token %}
-                                                <span class="status-select">
-                                                    <select name="slct" id="stat-slct">
-                                                        {% if stud_checklist.remarks == "Submitted" %}
-                                                        <option value="{{grade_file.remarks}}"> &nbsp; {{stud_checklist.remarks}} </option> 
-                                                        <option value="Returned"> &nbsp; Returned </option>
-                                                        <option value="Approved"> &nbsp; Approved </option>
-                                                        {% elif stud_checklist.remarks == "Returned" %}
-                                                        <option value="{{stud_checklist.remarks}}"> &nbsp; {{stud_checklist.remarks}} </option> 
-                                                        <option value="Submitted"> &nbsp; Submitted </option>
-                                                        <option value="Approved"> &nbsp; Approved </option>
-                                                        {% elif stud_checklist.remarks == "Approved" %}
-                                                        <option value="{{stud_checklist.remarks}}"> &nbsp; {{stud_checklist.remarks}} </option> 
-                                                        <option value="Submitted"> &nbsp; Submitted </option>
-                                                        <option value="Returned"> &nbsp; Returned</option>
-                                                        {%endif%}
-                                                    </select>
-                                                </span>
-                                            </form>
-                                        </div>
-                                    </div>
-                                   
-                                    <!--END DROPDOWN-->
-                                   
-                                <br><hr><br>
-                                
-                                <!--FEEDBACK BUTTON-->
-                                <div class="back row">    
-                                    {% csrf_token %}
-                                    <label for="Commenthere" class="sr-only">Comment</label>
-                                    <br>
-                                    <textarea class="form-control" id="message" name="message" cols="10" rows="5" placeholder="Write something here...">
-                                    </textarea>
-                                </div>
-
-                                
-                                <button type="submit" class="btn btn-primary mb-2" name="feedback">Submit</button>
-                            {% endif %}
-                        </div>
-                                              
-                    </form>
-                
-                    <div>
-                        {% if stud_checklist.checkList != null %}       
-                        <a href="{{stud_checklist.crsChecklist.url}}"  target="_blank" download><button type="button" class="cswBtn1"><img src="{% static 'CRS/images/cOthers/download2.png' %}" width="auto" height="42"><br>Download CRS Grade</button></a>
-                        {% endif %}
-                    </div>
-
-                    <div>
-                        {% if stud_checklist.crsChecklist != null %}
-                        <a href="{{stud_checklist.checkList.url}}"  target="_blank" download><button type="button" class="cswBtn1"><img src="{% static 'CRS/images/cOthers/download2.png' %}" width="auto" height="42"><br>Download Checklist</button></a><!-- DB DOWNLOAD CSW BUTTON -->
-                        {% endif %}
-                    </div>
-                    <!--End of Left Side-->
-                {% endif %}   
-                    <!--Right Side | Edit Grades-->
-                    <div class="checklist-img row col-lg-1"></div> 
+        <div id="mainwrapper" class="toggled">
+            <!-- Sidebar -->
+            <div id="sidebar-wrapper" class="custom-scrollbar">
+                <ul class="sidebar-nav">
+                    <li class="active"> <a class="sb-links" href="{% url 'fHome' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/home.png' %}" height="15"> Home</a> </li>
+                    <li class="sb-section unselectable"><span>Students</span></li>
+                    <li> <a class="sb-links" href="{% url 'fStudents_advisory' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/department.png' %}" height="15"> Advisory</a> </li>
                     
-                    <div class="checklist-img row col-lg-3">
-                        {% if messages %}
-                        {% for message in messages %}
-                        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
-                        <div class="alertError">
-                            <span class="closebtnError" onclick="this.parentElement.style.display='none';">&times;</span> 
-                            {{ message }}
-                        </div>
-                        {% endif %}
-                        
+                    <li class="sb-section unselectable"><span>Classroom</span></li>
+                    <li> <a class="sb-links" href="{% url 'fViewSched' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/studyplan.png' %}" height="15"> Schedule</a> </li>
+                    {% if facultyInfo.facultyWorkstatus == 'Part-Time' %} 
+                    <li> <a class="sb-links" href="{% url 'parttime_sched' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/parttime_avail.png' %}" height="17"> Part-Time Availability</a> </li>
+                    {% endif %}
+                    <!-- FILE PATH: Faculty/fStudents_advisoryChecklist-->
+                    <li><a class="sb-links" href="{% url 'fStudents_advisoryChecklist' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/loa.png' %}" height="15"> Checklist Submissions</a> </li>
 
-                        {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
-                        <div class="alertSuccess">
-                            <span class="closebtnSuccess" onclick="this.parentElement.style.display='none';">&times;</span> 
-                            {{ message }}
-                        </div>
-                        {% endif %}
-                        {% endfor %}
-                        {% endif %}
+                </ul>
+            </div> 
+            <!-- end sidebar -->
+            
+        <!-- Page Content -->
+        <!--ito yung part ng Students-->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <!-- navbar page title blue -->
+                <div class="headertitle unselectable d-none d-md-block">Checklist Verification</div>
+                <!-- content start-->
+                <!-- overview blocks row 1 -->
+                    <!-- 1st block -->
+                    <div class="container overview-block">
+                        <div class=" container-fluid">
+                            {% if stud_checklist.remarks == "Approved"%}
+                                {% if stud_checklist.crsApprovedChecklist.url != null %}
+                                    <p class="success">You have already succesfully submitted an approved checklist!</p>
+                                    <img id="Checkicon" src="{% static 'CRS/images/fHomeAndProfile/check_icon.png' %}" width="80px" height="80px" style="margin-left:300px;">
+                                {% else %}
+                                <form method="POST" enctype="multipart/form-data" >
+                                    <p id="stat" style="padding-top:20px; margin-bottom:10px;">Upload Approved Checklist &nbsp;&nbsp;</p> 
+                                    <hr>
+                                    {%csrf_token%}	   
+                                    <div>
+                                        <button  id="button2hvr" disabled>&nbsp;&nbsp;&nbsp;Upload Approved Checklist</button>
+                                        <input type="file" name="checkListApproved" required>
+                                    </div>
+                                    <input type="submit" id="submitbtn" value="Submit">
+                                </form>
+                                {% endif %}
+                            {% else %}
+                                <form method="POST">
+                                    <div class="gradeScreenshot">
+                                        {% if stud_checklist != null %}              
+                                            <!--DROPDOWN-->
+                                                <div class= "stat-drop row">
+                                                    <p id="stat">Status:&nbsp;&nbsp;</p>
+                                                    <div class="dropdown">
+                                                        <form method="POST">
+                                                            {% csrf_token %}
+                                                            <span class="status-select">
+                                                                <select name="slct" id="stat-slct">
+                                                                    {% if stud_checklist.remarks == "Submitted" %}
+                                                                        <option value="{{stud_checklist.remarks}}"> &nbsp; {{stud_checklist.remarks}} </option>
+                                                                        <option disabled style="font-style:italic">&nbsp;&nbsp;&nbsp;(Status is set to submitted if the student submitted the required file)</option>
+                                                                        <option value="Returned">  Returned  </option>
+                                                                        <option disabled style="font-style:italic">&nbsp;&nbsp;&nbsp;(Set the status to returned if there are any errors in the checklist)</option>
+                                                                        <option value="Approved"> &nbsp; Approved  </option>
+                                                                        <option disabled style="font-style:italic">&nbsp;&nbsp;&nbsp;(Set status to approved if checklist is valid)</option>
 
-                        
-                        <br><br><br><img src="{% static 'CRS/images/fStudents/studclassroom_checklist-img.png' %}" width=456 height=456>            
-                    </div> 
-                    <!--End of Right Side-->
+
+                                                                        {% elif stud_checklist.remarks == "Returned" %}
+                                                                        <option value="{{stud_checklist.remarks}}"> &nbsp; {{stud_checklist.remarks}} </option>
+                                                                        <option disabled style="font-style:italic">&nbsp;&nbsp;&nbsp;(Set the status to returned if there are any errors in the checklist)</option>
+                                                                        <option disabled value="Submitted"> &nbsp; Submitted  </option>
+                                                                        <option disabled style="font-style:italic">&nbsp;&nbsp;&nbsp;(Status is set to submitted if the student submitted the required file)</option>
+                                                                        <option disabled value="Approved"> &nbsp; Approved </option>
+                                                                        <option disabled style="font-style:italic">&nbsp;&nbsp;&nbsp;(Set status to approved if checklist is valid)</option>
+
+
+                                                                        {% elif grade_file.remarks == "Approved" %}
+                                                                        <option value="{{stud_checklist.remarks}}"> &nbsp; {{stud_checklist.remarks}} </option>
+                                                                        <option disabled style="font-style:italic">&nbsp;&nbsp;&nbsp;(Set status to approved if checklist is valid)</option>
+                                                                        <option disabled value="Submitted"> &nbsp; Submitted </option>
+                                                                        <option disabled style="font-style:italic">&nbsp;&nbsp;&nbsp;(Status is set to submitted if the student submitted the required file)</option>
+                                                                        <option disabled value="Returned"> &nbsp; Returned </option>
+                                                                        <option disabled style="font-style:italic">&nbsp;&nbsp;&nbsp;(Set the status to returned if there are any errors in the checklist)</option>
+                                                                    {%endif%}
+                                                                </select>
+                                                            </span>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                               
+                                                <!--END DROPDOWN-->
+                                               
+                                            <hr>
+                                              {% if messages %}
+                                                {% for message in messages %}
+                                                    {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                                                    <div class="alertSuccess">
+                                                        <span class="closebtnSuccess" onclick="this.parentElement.style.display='none';">&times;</span> 
+                                                        {{ message }}
+                                                    </div>
+                                                    {% endif %}
+                                                {% endfor %}
+                                              {% endif %}    
+                                            <!--FEEDBACK BUTTON-->
+                                            <div class="back row">
+                                                <div class="downloads"  style="display:inline; margin-left: 10px; margin-top:0px" >
+                                                    <div class="checklist" style="display:inline">
+                                                        {% if stud_checklist.checkList != null %}       
+                                                        <a href="{{stud_checklist.crsChecklist.url}}"  target="_blank" download><button type="button" class="cswBtn1"><img src="{% static 'CRS/images/cOthers/download2.png' %}" width="auto" height="30"><br>Download CRS Grade</button></a>
+                                                        {% endif %}
+                                                    </div>
+                                
+                                                    <div class="crsChecklist" style="display:inline;">
+                                                        {% if stud_checklist.crsChecklist != null %}
+                                                        <a href="{{stud_checklist.checkList.url}}"  target="_blank" download><button type="button" class="cswBtn1"><img src="{% static 'CRS/images/cOthers/download2.png' %}" width="auto" height="30"><br>Download Checklist</button></a><!-- DB DOWNLOAD CSW BUTTON -->
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                                <p id="stat" style="margin-top:10px; margin-bottom:10px;">Feedback:&nbsp;&nbsp;</p>    
+                                                {% csrf_token %}
+                                                <div style="padding-bottom:20px;">
+                                                <label for="Commenthere" class="sr-only">Comment</label>
+                                                <textarea class="form-control" id="message"  name="message" cols="8" rows="5" placeholder="Write something here..." required></textarea></div>
+                                                <button type="submit" class="btn btn-primary mb-2" name="feedback">Submit</button>
+                                            </div>
+                                        {% endif %}
+
+                                    </div>
+                                                          
+                                </form>
+                            
+ 
+                                <!--End of Left Side-->
+                            {% endif %}   
+                               
+                                    
+                               
+                        </div>
+                    </div>
                 </div>
-                
-            </div><br><br><br>
-
-
+            </div>
         </div>
     </div>
-    <!-- Javascript -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <img src="{% static 'CRS/images/cIcons/up-arrow.png' %}" id="btn-back-to-top" class="unselectable"> <!-- scroll to top -->
+            
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-
+    <!-- JS -->
+    <script src="{% static '/CRS/js/fHome/fHomeMain.js' %}"></script>   
+    <script>
+        let mybutton = document.getElementById("btn-back-to-top");
+        window.onscroll = function () {
+        scrollFunction();
+        };
+        mybutton.addEventListener("click", backToTop);
+    </script> 
 </body>
 
 </html>

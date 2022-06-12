@@ -2588,12 +2588,12 @@ def fHome(request):
         collegeid=facultyInfo.collegeID_id
         college=College.objects.get(id=collegeid)
         department=Department.objects.get(id = departmentid)
-
         f_user = FacultyInfo.objects.get(pk = id_adv)
         advisory = BlockSection.objects.filter(adviser = f_user)
         stud_advisory = StudentInfo.objects.filter(studentSection__in = advisory)
         count_block = advisory.count()
         count_stud = stud_advisory.count()
+        events_list=eventsComponent(request)
         
         #FOR NOTIF SUBJS
         curric = curriculumInfo.objects.all
@@ -2606,7 +2606,7 @@ def fHome(request):
         except crsGrade.DoesNotExist:
             grade_file = None
 
-        return render(request,'./faculty/fHome.html',{'user':user,'facultyInfo':facultyInfo,'department':department,'college':college,'acad':acad, 'count_block':count_block, 'count_stud':count_stud, 'grade_file':grade_file, 'stud_advisory':stud_advisory, 'curric':curric, 'info':info, 'schedule':schedule})
+        return render(request,'./faculty/fHome.html',{'user':user,'facultyInfo':facultyInfo,'department':department,'college':college,'acad':acad, 'count_block':count_block, 'count_stud':count_stud, 'grade_file':grade_file, 'stud_advisory':stud_advisory, 'curric':curric, 'info':info, 'schedule':schedule, 'events_list': events_list})
     else:
         return redirect('index')
 
@@ -2625,8 +2625,10 @@ def fProfile(request):
 def fHomeNotification(request):
      if request.user.is_authenticated and request.user.is_faculty:
         id= request.user.id
+        user = request.user
+        facultyInfo = request.user.facultyinfo
         acad = AcademicYearInfo.objects.all
-        context = {'id': id,'acad':acad}
+        context = {'id': id,'acad':acad, 'user':user, 'facultyInfo':facultyInfo}
         return render(request, './faculty/fHomeNotifcations.html', context) 
      else:
          return redirect('index')
@@ -2646,11 +2648,15 @@ def fProfileEdit(request):
             facultyInfo.save()
             messages.success(request, 'Profile Updated!')
             return redirect('fProfile')
+
         return render(request,'./faculty/fProfileEdit.html',{'user':user,'facultyInfo':facultyInfo,'department':department,'college':college})
     else:
         return redirect('index')
 
 def fProfileChangePass(request):
+    user = request.user
+    facultyInfo = request.user.facultyinfo
+
     if request.user.is_authenticated and request.user.is_faculty:
         if (request.method=='POST'):
             form = PasswordChangeForm(request.user,request.POST)
@@ -2658,22 +2664,22 @@ def fProfileChangePass(request):
                 user=form.save()
                 update_session_auth_hash(request, user)
                 messages.success(request,'Password Updated')
-                return redirect('fProfile')
+                return redirect('logout')
             else:
-                messages.error(request, 'Your password must contain at least 1 uppercase letter, A-Z.')
-                messages.error(request, 'Your password must contain at least 1 lowercase letter, a-z.')
-                messages.error(request, 'Your password contain atleast 1 symbol character')
-                messages.error(request, 'Your password must have 8 minimum Characters')
-                messages.error(request, '"Re-typed password must match to the new password"')
+                messages.error(request, 'Your password must have 8 minimum Characters and must contain at least 1 uppercase letter (A-Z), lowercase letter (a-z), symbol character')
+                #messages.error(request, 'Re-typed password must match to the new password')
         else:
             form = PasswordChangeForm(request.user)
-        return render(request,'./faculty/fProfileChangePass.html',{'form':form})
+        return render(request,'./faculty/fProfileChangePass.html',{'form':form,'user':user, 'facultyInfo':facultyInfo})
     else:
          return redirect('index')
 
 def parttime_sched(request):
     if request.user.is_authenticated and request.user.is_faculty:
         user = request.user.id
+        facultyUser = request.user
+        facultyInfo = request.user.facultyinfo
+
         f_user = FacultyInfo.objects.get(facultyUser = user)
 
         if f_user.facultyWorkstatus == 'Part-Time':
@@ -2822,12 +2828,15 @@ def parttime_sched(request):
                         messages.error (request,'Time is above minimum hours!')
         else:
             messages.error (request,'You are not eligible to interact with this page.') 
-        return render(request,'./faculty/parttime_sched.html',{'user':user})
+        return render(request,'./faculty/parttime_sched.html',{'user':user, 'facultyInfo':facultyInfo, 'facultyUser':facultyUser})
     else:
         return redirect('index')
 
 def fStudents_advisory(request):
-    if request.user.is_authenticated and request.user.is_faculty:
+    user = request.user
+    facultyInfo = request.user.facultyinfo
+
+    if user.is_authenticated and user.is_faculty:
         id= request.user.id
         f_user = FacultyInfo.objects.get(pk = id)
         advisory = BlockSection.objects.filter(adviser = f_user)
@@ -2863,13 +2872,15 @@ def fStudents_advisory(request):
             context = {'advisory': advisory}
             return render (request, './faculty/fStudents_advisory.html', context)   
 
-        context = {'advisory': advisory, 'count': count, 'stud_advisory': stud_advisory, 'block': block}
+        context = {'advisory': advisory, 'count': count, 'stud_advisory': stud_advisory, 'block': block, 'user':user, 'facultyInfo':facultyInfo}
         return render(request, 'faculty/fStudents_advisory.html', context)
     else:
         return redirect('index')
 
 def fStudents_advisoryChecklist(request):
-    if request.user.is_authenticated and request.user.is_faculty:
+    user = request.user
+    facultyInfo = request.user.facultyinfo
+    if user.is_authenticated and user.is_faculty:
         id= request.user.id
         f_user = FacultyInfo.objects.get(pk = id)
         advisory = BlockSection.objects.filter(adviser = f_user)
@@ -2879,7 +2890,7 @@ def fStudents_advisoryChecklist(request):
         except crsChecklist.DoesNotExist:
             stud_checklist = None
 
-        context = {'advisory': advisory, 'stud_advisory': stud_advisory, 'stud_checklist':stud_checklist}
+        context = {'advisory': advisory, 'stud_advisory': stud_advisory, 'stud_checklist':stud_checklist,'user':user, 'facultyInfo':facultyInfo}
         return render(request, 'faculty/fStudents_advisoryChecklist.html', context)
     else:
         return redirect('index')
@@ -2887,7 +2898,10 @@ def fStudents_advisoryChecklist(request):
 def fStudents_viewStudentChecklist(request, stud_id):
     if request.user.is_authenticated and request.user.is_faculty:
         fcount=0
-        stud_checklist = crsChecklist.objects.get(studentID_id=stud_id)#
+        stud_checklist = crsChecklist.objects.get(studentID_id=stud_id)
+        user = request.user
+        facultyInfo = request.user.facultyinfo
+
         if (request.method == 'POST'):
                 stud_checklist.crsApprovedChecklist = request.FILES.get('checkListApproved')
                 if ('feedback' in request.POST):
@@ -2904,7 +2918,7 @@ def fStudents_viewStudentChecklist(request, stud_id):
                     stud_checklist.checkList.delete()
                     stud_checklist.checkList = None
                     stud_checklist.save()
-                    messages.success(request,'File is Returned, No file.')
+                    messages.success(request,'File is Returned! No file.')
                 elif status=='Approved':
                     stud_checklist.remarks = "Approved"
                     messages.success(request,'File is Approved.')
@@ -2917,12 +2931,17 @@ def fStudents_viewStudentChecklist(request, stud_id):
         stud_advisory = StudentInfo.objects.filter(studentSection__in = advisory) 
         count = stud_advisory.count()"""
 
-        context = {'stud_checklist':stud_checklist, 'fcount':fcount}
+        context = {'stud_checklist':stud_checklist, 'fcount':fcount, 'user':user, 'facultyInfo':facultyInfo}
         return render(request, 'faculty/fStudents_viewStudentChecklist.html', context)
     else:
         return redirect('index')
 
 def fStudents_viewStudentGrade (request,stud_id):
+    user = request.user
+    facultyInfo = request.user.facultyinfo
+    studInfo = StudentInfo.objects.get(studentUser_id = stud_id)
+
+
     semester = '1'
     fcount = 0
     flag = 0
@@ -3164,7 +3183,7 @@ def fStudents_viewStudentGrade (request,stud_id):
             
             #grade_file.save()
             #messages.success(request,'Feedback is successfully sent!')
-        context = {'checklist': checklist,'checklist2': checklist2,'checklist3': checklist3,'checklist4': checklist4,'checklist5': checklist5,'checklist6': checklist6, 'checklist7': checklist7,'checklist8': checklist8,'checklist9': checklist9, 'checklist10': checklist10, 'checklist11': checklist11, 'checklist12': checklist12, 'ave':ave, 'ave2': ave2, 'ave3':ave3, 'ave4':ave4, 'ave5':ave5, 'ave6':ave6, 'ave7':ave7, 'ave8' :ave8, 'ave9':ave9, 'ave10':ave10, 'ave11':ave11, 'ave12':ave12, 'stud_id': stud_id, 'grade_file':grade_file, 'fcount':fcount, 'flag':flag, 'flag2':flag2, 'flag3':flag3, 'flag4':flag4, 'flag5':flag5, 'flag6':flag6, 'flag7':flag7, 'flag8':flag8, 'flag9':flag9, 'flag10':flag10, 'flag11':flag11, 'flag12':flag12, 'semester':semester}
+        context = {'checklist': checklist,'checklist2': checklist2,'checklist3': checklist3,'checklist4': checklist4,'checklist5': checklist5,'checklist6': checklist6, 'checklist7': checklist7,'checklist8': checklist8,'checklist9': checklist9, 'checklist10': checklist10, 'checklist11': checklist11, 'checklist12': checklist12, 'ave':ave, 'ave2': ave2, 'ave3':ave3, 'ave4':ave4, 'ave5':ave5, 'ave6':ave6, 'ave7':ave7, 'ave8' :ave8, 'ave9':ave9, 'ave10':ave10, 'ave11':ave11, 'ave12':ave12, 'stud_id': stud_id, 'grade_file':grade_file, 'fcount':fcount, 'flag':flag, 'flag2':flag2, 'flag3':flag3, 'flag4':flag4, 'flag5':flag5, 'flag6':flag6, 'flag7':flag7, 'flag8':flag8, 'flag9':flag9, 'flag10':flag10, 'flag11':flag11, 'flag12':flag12, 'semester':semester,'user':user, 'facultyInfo':facultyInfo, 'studInfo':studInfo}
         return render(request, 'faculty/fStudents_viewStudentGrade.html', context)
     else:
         return redirect('index')
@@ -3172,6 +3191,9 @@ def fStudents_viewStudentGrade (request,stud_id):
 
 def fviewstudent(request, sched_id):
     if request.user.is_authenticated and request.user.is_faculty:
+        user = request.user
+        facultyInfo = request.user.facultyinfo
+
         acad = AcademicYearInfo.objects.all
         id= request.user.id
         info = FacultyInfo.objects.get(facultyUser=id)
@@ -3195,13 +3217,14 @@ def fviewstudent(request, sched_id):
             context = {'student': student, 'schedule':schedule}
             return render (request, './faculty/viewstudent.html', context)   
 
-        context = {'id': id, 'info':info, 'acad': acad, 'schedule' : schedule, 'student' : student, 'students':students,  'count':count}
+        context = {'id': id, 'info':info, 'acad': acad, 'schedule' : schedule, 'student' : student, 'students':students,  'count':count,'user':user, 'facultyInfo':facultyInfo}
         return render(request, 'faculty/viewstudent.html', context)
     else:
         return redirect('index')
 
 def fViewSched(request):
     if request.user.is_authenticated and request.user.is_faculty:
+        user = request.user
         acad = AcademicYearInfo.objects.get(pk=1)
         curric = curriculumInfo.objects.all
         id= request.user.id
@@ -3209,7 +3232,7 @@ def fViewSched(request):
         info = FacultyInfo.objects.get(facultyUser=id)
         schedule = studentScheduling.objects.filter(instructor=info)
         subjects = schedule.count()
-        context = {'id': id, 'info':info, 'acad': acad, 'schedule' : schedule, 'subjects' : subjects, 'facultyInfo':facultyInfo, 'curric':curric}
+        context = {'id': id, 'info':info, 'acad': acad, 'schedule' : schedule, 'subjects' : subjects, 'facultyInfo':facultyInfo, 'curric':curric,'user':user}
         return render(request, 'faculty/fViewSched.html', context)
     else:
         return redirect('index')
