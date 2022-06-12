@@ -3,7 +3,7 @@
 <html>
 
 <head>
-    <title>Faculty | Password </title>
+    <title>Faculty | Change Password </title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -11,302 +11,536 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">
+    <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
     <!-- CSS -->
     <link rel="stylesheet" href="{% static 'CRS/css/fHomeAndProfile/fHomeStyle.css' %}">
-    <script src="{% static 'CRS/js/fHome/fHomeMain.js' %}"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">
+    <link href="https://fonts.googleapis.com/css?family=Lato:200,300,400,600,700,900&subset=latin-ext" rel="stylesheet">
+        <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900&subset=latin-ext' rel='stylesheet' type='text/css'>
     <!--  ICON -->
     <link rel="icon" href="{% static 'CRS/images/cHome/iPLM.png' %}" type="image/png" sizes="16x16">
 
+    
+
     <style>
-        #subjectMessage {
-        padding-top: 25px;
-        padding-bottom: 10px;
-        padding-left: 20px;
-        padding-right: 30px;
-        margin-left: 130px;
-        margin-top: 40px;
-        font-size: 18px;
-        color: #ffffff;
-        font-family: 'Nunito';
-        background-color: #ff5f02;
-        border: 2px solid #ff5f02;
-        border-radius: 16px;
-        box-shadow: 0 0 10px rgb(199, 199, 199);
-        height: 150px;
-        width: 55%;
-        font-size: 16px;
-        animation: zoom-in-zoom-out 1s ease;
-        }
-        #pbuttons .pbtn {
-        margin-top: 50px;
-        margin-bottom: 30px;
-        margin-left: 400px;
-        border-radius: 15px 15px 15px 15px;
-        font-size: 20px;
-        font-family: 'Nunito';
-        color: #ffff;
-        width: 250px;
-        height: 60px;
-        background-image: linear-gradient(to right, #0C66CC, #2852A4) !important;
-        border: none;
-        }
+    
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;1,300&display=swap');
+ 
+/*set a style for the error input password*/
 
-        #pbuttons .pbtn:hover {
-            background-color: #2852A4;
-            color: #ECC429;
+
+            .closebtn {
+            margin-left: 15px;
+            color: #000000;
+            font-weight: bold;
+            float: right;
+            font-size: 22px;
+            line-height: 20px;
             cursor: pointer;
+            transition: 0.3s;
+        }s
+
+            .closebtn:hover {
+                color: #b94807;
+            }
+
+        #subjectMessage {
+            padding-top: 12px;
+            padding-bottom: 10px;
+            padding-left: 20px;
+            padding-right: 30px;
+            margin-left: 45px;
+            margin-top: -90px;
+            font-size: large;
+            color: #ffffff;
+            font-family: 'Nunito';
+            background-color: #ff5f02;
+            border: 2px solid #ff5f02;
+            border-radius: 16px;
+            box-shadow: 0 0 10px rgb(199, 199, 199);
+            height: auto;
+            width: 80%;
+            font-size: 11px;
+            animation: zoom-in-zoom-out 1s ease;
+            position: relative;
         }
 
-        .closebtn {
-        margin-left: 15px;
-        color: #ffffff;
-        font-weight: bold;
-        float: right;
-        font-size: 22px;
-        line-height: 20px;
-        cursor: pointer;
-        transition: 0.3s;
+            .closebtn {
+            margin-left: 15px;
+            color: #000000;
+            font-weight: bold;
+            float: right;
+            font-size: 22px;
+            line-height: 20px;
+            cursor: pointer;
+            transition: 0.3s;
         }
 
-        .closebtn:hover {
-        color: #b94807;
+            .closebtn:hover {
+                color: #b94807;
+            }
+
+body {
+    background: #F3F6FF;
+    width: 1440px;
+    height: 675px;
+}
+
+/*-- Container --*/
+.container {
+    position: absolute;
+    width: 1006px;
+    height: 600px;
+    left: calc(50% - 1006px/2 + 138px);
+    top: calc(50% - 449px/2 + 18px);
+    background: #FFFFFF;
+    box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.07);
+    border-radius: 20px;
+}
+
+.page-title {
+    position: absolute;
+    width: 244px;
+    height: 30px;
+    left: 68px;
+    top:50px;
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 28px;
+    color: #06529B;
+}
+
+.vl {
+    position: absolute;
+    width: 449px;
+    height: 0px;
+    left: 640px;
+    top: 355px;
+    border: 0.1px solid #5F6E83;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    opacity: 0.3;
+    transform: rotate(-90deg);
+}
+
+/*-- Forms --*/
+
+label {
+    position: absolute;
+    height: 20px;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
+    color: #5F6E83;
+}
+
+input {
+    box-sizing: border-box;
+    position: absolute;
+    height: 29px;
+    background: #F3F6FF;
+    border: 0.5px solid #0892DD;
+    border-radius: 5px;
+}
+
+::placeholder {
+    padding-left: 6px;
+    height: 17px;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: rgba(95, 110, 131, 0.5);
+    opacity: 1; 
+}
+
+/*-- Buttons in Edit Profile --*/
+#changepw {
+    box-sizing: border-box;
+    position: absolute;
+    width: 42px;
+    height: 37px;
+    left: 1091px;
+    top: 472px;
+    background: #F3F6FF;
+    border: 0.5px solid #0892DD;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#changepw:hover {
+    background: #0892DD;
+}
+
+.editpwimg { 
+    position: relative; 
+    width: 28px;
+    height: 24px;
+    left: 8px;
+    top: 4px;
+}
+
+.editpwimg:hover {filter: grayscale(100%) brightness(200%) saturate(0%) contrast(1000%);}
+
+#savec2 {
+    box-sizing: border-box;
+    position: absolute;
+    width: 138px;
+    height: 37px;
+    background: #06529B;
+    border: 1px solid #06529B;
+    border-radius: 5px;
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 17px;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+    /*-- Change Password Modal --*/
+    .bg-modal {
+        position: fixed;
+        left: 550px;
+        top: 170px;
+        width: 500px;
+        height: 440px;
+        background: #FFFFFF;
+        box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.25);
+        border-radius: 20px;
+    }
+
+    #changepwtitle {width: 216px;left: 52px;top: 35px;}
+
+    #savec2 {left: 322px;top: 380px;}
+    #savec2:hover {background: #0892DD;border: 1px solid #0892DD;}
+
+        #currentpw {width: 164px;left: 52px;top: 99px;}
+        #currentpwinput {width: 400px;height: 40px;left: 52px;top: 122px;}
+
+        #eye1{
+            position: absolute;
+            width: 25px;
+            height: 23px;
+            left: 420px;
+            top: 128px;
         }
 
-        
-        @keyframes zoom-in-zoom-out {
-        0% {
-            transform: scale(1, 1);
-        }
-        50% {
-            transform: scale(1.1, 1.1);
-        }
-        100% {
-            transform: scale(1, 1);
-        }
-        }
+        #newpw {width: 131px;left: 53px;top: 170px;}
+        #newpwinput {width: 400px; height: 40px; left: 53px;top: 190px;}
 
-    </style>
+        #eye2 {
+            position: absolute;
+            width: 25px;
+            height: 23px;
+            left: 420px;
+            top: 195px;
+        }
+        #retypenew {width: 98px;left: 54px;top: 225px;}
+        #retypepwinput {width: 400px; height: 40px; left: 53px;top: 184px;}
+
+        #eye3 {
+            position: absolute;
+            width: 25px;
+            height: 23px;
+            left: 420px;
+            top: 318px;
+        }
+       
+
+        #eye1, #eye2,#eye3 {color: #0892dd;cursor: pointer;} 
+
+       
+
+        #retypepw {width: 200px;left: 52px;top: 290px;}
+        #retypepwinput {width: 400px; height: 40px; left: 52px;top: 310px;}
+
+
+
+</style>
 
 </head>
 
-<body>
+<body class="content-scrollbar" onload="today()">
+    <img src="{% static 'CRS/images/cHome/bglogo.png' %}" id="bglogo">
 
-    <div class="wrapper">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-sm navbar-dark flex-sm-nowrap flex-wrap">   
+        <a id="iplm" href="{% url 'fHome' %}">
+            <img class="iplmlogo unselectable" src="{% static 'CRS/images/fHomeAndProfile/iplmlogo.png' %}" height="35">
+        </a>                        
+        <a id="iplm" href="{% url 'fHome' %}">
+            <img class="iplmlogo unselectable" src="{% static 'CRS/images/fHomeAndProfile/iplmlogo.png' %}" height="35">
+        </a>    
+        
+        <p class="d-none d-sm-block usertitle unselectable">
+            Faculty
+        </p>
+        <p href="{% url 'fProfile' %}" class="d-none d-sm-block user unselectable">
+            {{user.firstName}} {{user.middleName}} {{user.lastName}}
+        </p>
 
-        <!-- Sidebar -->
-        <nav id="sidebar">
-            <div class="sidebar-header">
-                <li>
-                    <p><br><br><img src="{% static 'CRS/images/fHomeAndProfile/hat.png' %}" width="126px" height="87px"><br><br>
-                </li>
-            </div>
-            <ul class="sidebar components">
-                <!-- FILE PATH: Faculty/fHomeAndProfile/fHome.html-->
-                <li class="active"><a href="{% url 'fHome' %}"><img src="{% static 'CRS/images/cIcons/home2.png' %}" width="97px" height="auto"></a></li>
-                <!-- FILE PATH: Faculty/fHomeAndProfile/fProfile.html-->
-                <li><a href="{% url 'fProfile' %}"><img src="{% static 'CRS/images/cIcons/profile2.png' %}" width="97px" height="auto"></a></li>
-                <!-- FILE PATH: Faculty/fStudents/fStudents.html-->
-                <li><a href="{% url 'fStudents_advisory' %}"><img src="{% static 'CRS/images/cIcons/students2.png' %}" width="97px" height="auto"></a></li>
-                <!-- FILE PATH: Faculty/fClassroom/fViewSched.html-->
-                <li><a href="{% url 'fViewSched' %}"><img src="{% static 'CRS/images/cIcons/classroom2.png' %}" width="97px" height="auto"></a></li>
-                <!-- FILE PATH: LOG-OUT -->
-                <li><a href="{% url 'logout' %}"><img src="{% static 'CRS/images/cIcons/log-out2.png' %}" width="97px" height="auto"></a></li>
+        <!-- user profile dropdown -->
+        <div class="unselectable dropdown pficon">
+            <a class="dropdown-toggle profilehover" id="dropdownProfile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <img id="profileicon" src="{% static 'CRS/images/fHomeAndProfile/userprofile.png' %}" width="35px" height="35px">
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end dropdownProfileMenu p-3 text-muted" aria-labelledby="dropdownProfile">
+                <img id="profileicon" src="{% static 'CRS/images/fHomeAndProfile/userprofile.png' %}" width="40px" height="40px">
+                <p id="profilemenutitle">{{user.firstName}}<br></p>
+                <p id="profilemenuemail">{{user.email}}<br></p>
+                <div class="dropdown-divider"></div>
+                <li><a class="profilelinks" href="{% url 'fProfile' %}">View Profile</a></li>
+                <li><a class="profilelinks" href="{% url 'logout' %}">Log out</a></li>
             </ul>
-        </nav>
-        <!--End of Sidebar -->
+        </div>
+    </nav>
 
+        <div id="mainwrapper" class="toggled">
+            <!-- Sidebar -->
+            <div id="sidebar-wrapper" class="custom-scrollbar">
+                <ul class="sidebar-nav">
+                    <li class="active"> <a class="sb-links" href="{% url 'fHome' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/home.png' %}" height="15"> Home</a> </li>
+                    <li class="sb-section unselectable"><span>Students</span></li>
+                    <li> <a class="sb-links" href="{% url 'fStudents_advisory' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/department.png' %}" height="15"> Advisory</a> </li>
+                    
+                    <li class="sb-section unselectable"><span>Classroom</span></li>
+                    <li> <a class="sb-links" href="{% url 'fViewSched' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/studyplan.png' %}" height="15"> Schedule</a> </li>
+                    {% if facultyInfo.facultyWorkstatus == 'Part-Time' %} 
+                    <li> <a class="sb-links" href="{% url 'parttime_sched' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/parttime_avail.png' %}" height="17"> Part-Time Availability</a> </li>
+                    {% endif %}
+                    <!-- FILE PATH: Faculty/fStudents_advisoryChecklist-->
+                    <li><a class="sb-links" href="{% url 'fStudents_advisoryChecklist' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/loa.png' %}" height="15"> Checklist Submissions</a> </li>
+                </ul>
+            </div> 
+            </div> 
+            <!-- end sidebar -->
+        
+                 
 
-        <!-- Content -->
-        <div id="content">
-            <div class=" container-fluid">
+       <div class="bg-modal">
+            <div class="modal-contents">
+             {% if messages %}
+                  {% for message in messages %}
+                     {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                        <div id="subjectMessage">
+                           <span class="closebtnError" onclick="this.parentElement.style.display='none';">&times;</span> 
+                           {{ message }}
+                        </div>
+                     {% endif %}
 
-                <!-- Password -->
-                <div class="pword row">
-                    <!-- FILE PATH: Faculty/cHome/fProfile.html-->
-                    <div class="col-lg-1"><a class="back" href="{% url 'fProfile' %}"><img src="{% static 'CRS/images/cHome/back.svg' %}" width="50" height="45" id="backlogo"></a>
+                     {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                         <div class="subjectMessageSuccess">
+                            <span class="closebtnSuccess" onclick="this.parentElement.style.display='none';">&times;</span> 
+                            {{ message }}
+                         </div>
+                     {% endif %}                        
+                  {% endfor %}
+                {% endif %}
+                <form method="POST" id="pwform">
+		        {%csrf_token%}
+                    <div class="page-title" id="changepwtitle">Change Password</div>
+              
+                    <!-- Change Password Fields -->
+                        <label class id="currentpw">CURRENT PASSWORD</label>
+                            <div class="field">
+                            {{old_password}}<input type="password" id="currentpwinput" name="old_password" required>
+                            <div id="eye1">
+                                <span class="iconify" data-icon="bi:eye-fill" style="color: #0892dd; font-size: 24px;"></span>
+                            </div>
+                            </div>
+
+                        <label class id="newpw">NEW PASSWORD</label>
+                            <div class="field">
+                            {{new_password1}}<input type="password" name="new_password1" id="newpwinput"  required>
+                            <div id="eye2">
+                                <span class="iconify" data-icon="bi:eye-fill" style="color: #0892dd; font-size: 24px;"></span>
+                            </div>
+                            </div>
+                           
+                                <p style="padding-top:15px;position: absolute;
+                                width: 380px;
+                                height: 26px;
+                                left: 53px;
+                                top: 228px;
+                                font-family: 'Lato';
+                                font-style: normal;
+                                font-weight: 400;
+                                font-size: 14px;
+                                line-height: 13px;
+                                color: #5F6E83;"> Use a combination of at least eight (8) numbers, special characters, lowercase and uppercase letters.</p>
+
+                        
+                        <label class id="retypepw">RE-TYPE PASSWORD</label>
+                        <div class="field">
+                        {{new_password2}}<input type="password" name="new_password2" id="retypepwinput" required>
+                        <div id="eye3">
+                            <span class="iconify" data-icon="bi:eye-fill" style="color: #0892dd; font-size: 24px;"></span>
+                        </div>
                     </div>
-                    <div class="col-lg-11">
-                        <p id="phead">Password</p>
-                    </div>
+                            <button type=submit class="button" id="savec2" >Save Changes</button>
+
                 </div>
-                <!-- End Password -->
-
-                <!-- Input New Password -->
-                <div class="change-pword row">
-
-                    <div class="col-lg-8">
-
-                        <!-- Form Password -->
-                        <form id="pwform" method="POST">
-                            {%csrf_token%}
-
-                            <!-- Cuurent Password -->
-                            <div class="psub row">
-                                <div class="ptext col-lg-5">
-                                    <label for="pcur">Current Password</label>
-                                </div>
-                                <div class="pfield col-lg-5">
-
-                                    {{form.old_password}}<span id="eye-span"><i class="fa fa-eye" aria-hidden="true" id="eye2" onclick="toggle()"></i></span>
-
-                                </div>
-                            </div>
-
-                            <!-- New Password -->
-                            <div class="psub row">
-                                <div class="ptext col-lg-5">
-                                    <label for="pnew">New Password</label>
-                                </div>
-                                <div class="pfield col-lg-5">
-                                    {{form.new_password1}}<span id="eye-span"><i class="fa fa-eye" aria-hidden="true" id="eye2" onclick="toggle()"></i></span>
-                                    
-                                </div>
-                            </div>
-
-                            <!-- Confirm Password -->
-                            <div class="psub row">
-                                <div class="ptext col-lg-5">
-                                    <label for="pcon">Re-type New Password</label>
-                                </div>
-                                <div class="pfield col-lg-5">
-                                    {{form.new_password2}}<span id="eye-span"><i class="fa fa-eye" aria-hidden="true" id="eye2" onclick="toggle()"></i></span>
-                                </div>
-                            </div>
-
-
-                            {% if messages %}
-                            <div id="subjectMessage" role="alert">
-                                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-                                {% for message in messages %}
-                                    <b>{{ message }}</b>
-                                {% endfor %}
-                            </div>
-                            {% endif %}
-                            
-                            <div class="row">
-
-                                <div class="col-lg-6" id="pbuttons">
-                                    <button type="submit" class="pbtn">Change Password</button>
-                                </div>
-                            </div>
-                        </form>
-                       
-                        <!-- END Form Password -->
-
-                    </div>
-
-                    <!-- image -->
-                    <div class="col-lg-4">
-                        <img id="pimg" src="{% static 'CRS/images/cHome/clip-data-protection.png' %}" width="100%" height="430px">
-                    </div>
-                    <!--End image -->
-                </div>
-                <!-- END Input New Password -->
-
-
-            </div>
+                    
+                </form>
+                
+                <!-- END FORM-->
         </div>
     </div>
+
+
     <!-- END Content -->
 
 
-    <!-- Javascript -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/1c2c2462bf.js" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
-
+        <!-- Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        
+        <!-- JS -->
+        <script src="{% static '/CRS/js/fHome/fHomeMain.js' %}"></script>   
+        <script>
+            let mybutton = document.getElementById("btn-back-to-top");
+            window.onscroll = function () {
+              scrollFunction();
+            };
+            mybutton.addEventListener("click", backToTop);
+        </script>
+      
+</body>
     <script>
-        var state = false;
 
-        function toggle() {
-            if (state) {
-                document.getElementById("password1").setAttribute("type", "password");
-                document.getElementById("eye1").style.color = '#7a797e';
-                document.getElementById("password2").setAttribute("type", "password");
-                document.getElementById("eye2").style.color = '#7a797e';
-                document.getElementById("password3").setAttribute("type", "password");
-                document.getElementById("eye3").style.color = '#7a797e';
-                state = false;
-            } else {
-                document.getElementById("password1").setAttribute("type", "text");
-                document.getElementById("eye1").style.color = '#5887ef';
-                document.getElementById("password2").setAttribute("type", "text");
-                document.getElementById("eye2").style.color = '#5887ef';
-                document.getElementById("password3").setAttribute("type", "text");
-                document.getElementById("eye3").style.color = '#5887ef';
-                state = true;
-            }
+        //Show/Hide Password
+        
+        const eye1 = document.getElementById('eye1');
+        const currentpwinput = document.getElementById('currentpwinput');
+        
+        eye1.addEventListener ('click', function (e) {
+        const type = currentpwinput.getAttribute('type') === 'password' ? 'text' : 'password';
+        const icon = eye1.lastElementChild.getAttribute("data-icon") === 'bi:eye-fill' ? 'bi:eye-slash-fill' : 'bi:eye-fill';
+        currentpwinput.setAttribute('type', type);
 
-        }
-
-
-        _id("password2").addEventListener("focus", function() {
-            _class("password-policies")[0].classList.add("active");
-        });
-        _id("password2").addEventListener("blur", function() {
-            _class("password-policies")[0].classList.remove("active");
+        eye1.innerHTML = ""
+        const newIcon = document.createElement("span")
+        newIcon.setAttribute("class", "iconify")
+        newIcon.setAttribute("data-icon", icon)
+        newIcon.setAttribute("style", "color: #0892dd; font-size: 24px;")
+        eye1.appendChild(newIcon)
         });
 
+        const eye2 = document.getElementById('eye2');
+        const newpwinput = document.getElementById('newpwinput');
+        
+        eye2.addEventListener ('click', function (e) {
+        const type = newpwinput.getAttribute('type') === 'password' ? 'text' : 'password';
+        const icon = eye2.lastElementChild.getAttribute("data-icon") === 'bi:eye-fill' ? 'bi:eye-slash-fill' : 'bi:eye-fill';
+        newpwinput.setAttribute('type', type);
 
-        _id("password2").addEventListener("keyup", function() {
-            let password = _id("password2").value;
+        eye2.innerHTML = ""
+        const newIcon = document.createElement("span")
+        newIcon.setAttribute("class", "iconify")
+        newIcon.setAttribute("data-icon", icon)
+        newIcon.setAttribute("style", "color: #0892dd; font-size: 24px;")
+        eye2.appendChild(newIcon)
+        });
+        const eye3 = document.getElementById('eye3');
+        const retypepwinput = document.getElementById('retypepwinput');
+        
+        eye3.addEventListener ('click', function (e) {
+        const type = retypepwinput.getAttribute('type') === 'password' ? 'text' : 'password';
+        const icon = eye3.lastElementChild.getAttribute("data-icon") === 'bi:eye-fill' ? 'bi:eye-slash-fill' : 'bi:eye-fill';
+        retypepwinput.setAttribute('type', type);
 
-            if (/[A-Z]/.test(password)) {
-                _class("policy-uppercase")[0].classList.add("active");
-            } else {
-                _class("policy-uppercase")[0].classList.remove("active");
-            }
-
-            if (/[0-9]/.test(password)) {
-                _class("policy-number")[0].classList.add("active");
-            } else {
-                _class("policy-number")[0].classList.remove("active");
-            }
-
-            if (/[^A-Za-z0-9]/.test(password)) {
-                _class("policy-special")[0].classList.add("active");
-            } else {
-                _class("policy-special")[0].classList.remove("active");
-            }
-
-            if (password.length > 7) {
-                _class("policy-length")[0].classList.add("active");
-            } else {
-                _class("policy-length")[0].classList.remove("active");
-            }
+        eye3.innerHTML = ""
+        const newIcon = document.createElement("span")
+        newIcon.setAttribute("class", "iconify")
+        newIcon.setAttribute("data-icon", icon)
+        newIcon.setAttribute("style", "color: #0892dd; font-size: 24px;")
+        eye3.appendChild(newIcon)
+        
         });
 
+        _id("password2").addEventListener("focus", function () {
+                            _class("password-policies")[0].classList.add("active");
+                        });
+                        _id("password2").addEventListener("blur", function () {
+                            _class("password-policies")[0].classList.remove("active");
+                        });
 
-        const form = document.getElementById('pwform');
-        const password = document.getElementById('password2');
-        const password2 = document.getElementById('password3');
 
-        pwform.addEventListener('submit', e => {
-            e.preventDefault();
+                        _id("password2").addEventListener("focus", function () {
+                            _class("password-policies")[0].classList.add("active");
+                        });
+                        _id("password2").addEventListener("blur", function () {
+                            _class("password-policies")[0].classList.remove("active");
+                        });
 
-            checkInputs();
-        });
 
-        function checkInputs() {
-            // trim to remove the whitespaces
-            const passwordValue = password.value.trim();
-            const password2Value = password2.value.trim();
+                        _id("password2").addEventListener("keyup", function () {
+                            let password = _id("password2").value;
 
-            if (password2Value === '') {
-                alert("Password field must not be empty! Try Again");
-                return false;
-            } else if (passwordValue !== password2Value) {
-                alert("Password mismatched!");
-                return false;
-            } else {
-                alert("Password succesfully changed!");
-                return true;
-            }
-        }
-    </script>
+                            if (/[A-Z]/.test(password)) {
+                                _class("policy-uppercase")[0].classList.add("active");
+                            } else {
+                                _class("policy-uppercase")[0].classList.remove("active");
+                            }
+
+                            if (/[0-9]/.test(password)) {
+                                _class("policy-number")[0].classList.add("active");
+                            } else {
+                                _class("policy-number")[0].classList.remove("active");
+                            }
+
+                            if (/[^A-Za-z0-9]/.test(password)) {
+                                _class("policy-special")[0].classList.add("active");
+                            } else {
+                                _class("policy-special")[0].classList.remove("active");
+                            }
+
+                            if (password.length > 7) {
+                                _class("policy-length")[0].classList.add("active");
+                            } else {
+                                _class("policy-length")[0].classList.remove("active");
+                            }
+                        });
+
+
+                        const form = document.getElementById('pwform');
+                        const password = document.getElementById('password2');
+                        const password2 = document.getElementById('password3');
+
+                        pwform.addEventListener('save', e => {
+                            e.preventDefault();
+
+                            checkInputs();
+                        });
+
+                        function checkInputs() {
+                            // trim to remove the whitespaces
+                            const passwordValue = password.value.trim();
+                            const password2Value = password2.value.trim();
+
+                            if (password2Value === '') {
+                                alert("Password field must not be empty! Try Again");
+                                return false;
+                            } else if (passwordValue !== password2Value) {
+                                alert("Password mismatched!");
+                                return false;
+                            } else {
+                                alert("Password succesfully changed!");
+                                return true;
+                            }
+                        }
+                </script>     
+
 
 </body>
 

@@ -4,182 +4,95 @@
 
 <head>
     <title>Part Time | Schedule</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
-    <!-- CSS -->
-    <link rel="stylesheet" href="{% static 'CRS/css/fClassroom/fClassroomStyle.css' %}">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">
-    <link rel="icon" href="{% static 'CRS/images/fClassroom/iPLM.png' %}" type="image/png" sizes="16x16">
-
-    <style>
-      
-      body{
-        overflow-y: scroll;
-      }
-      #error{
-        font-size: 18px;
-        color: #f86f14;
-        font-family: 'Nunito';
-        margin-bottom: 20px;
-        margin-top: 10px;
-        margin-right: 70px;
-        font-weight: bold;
-      }
-
-      #buttonSubmitSched .btn {
-        border-radius: 15px 15px 15px 15px;
-        font-size: 20px;
-        font-family: 'Nunito';
-        color: #ffff;
-        width: 210px;
-        height: 55px;
-        float: left;
-        background-color: #0C66CC;
-        margin-top: 100px;
-        margin-left: 10px;
-      }
-
-    #buttonSubmitSched .btn:hover {
-        background-color: #2852A4;
-        cursor: pointer;
-    }
-
-    .alertSuccess{
-        padding: 20px;
-        background-color: #3fb328;
-        border-radius: 15px;
-        color: white;
-        box-shadow: 0 0 10px rgb(216, 216, 216);
-        animation: zoom-in-zoom-out 1s ease;
-        font-size: 18px;
-        width: 400px;
-        }
-
-        .alertError{
-        padding: 20px;
-        background-color: #ff5f02;
-        border-radius: 15px;
-        color: white;
-        box-shadow: 0 0 10px rgb(216, 216, 216);
-        animation: zoom-in-zoom-out 1s ease;
-        font-size: 18px;
-        width: 400px;
-        }
-
-        .closebtnError {
-        margin-left: 15px;
-        color: white;
-        font-weight: bold;
-        float: right;
-        font-size: 22px;
-        line-height: 20px;
-        cursor: pointer;
-        transition: 0.3s;
-        }
-
-        .closebtnError:hover {
-            color: #a33908;
-        }
-
-        .closebtnSuccess {
-        margin-left: 15px;
-        color: white;
-        font-weight: bold;
-        float: right;
-        font-size: 22px;
-        line-height: 20px;
-        cursor: pointer;
-        transition: 0.3s;
-        }
-
-        .closebtnSuccess:hover {
-            color: #1c6b0c;
-        }
-
-        /*SCROLLBAR*/
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-
-        /* Track */
-        ::-webkit-scrollbar-track {
-            background: #e4e4e4;
-            border-radius: 12px;
-        }
-        
-        /* Handle */
-        ::-webkit-scrollbar-thumb {
-            background: #cbcbcb;
-            border-radius: 12px;
-        }
-
-        /* Handle on hover */
-        ::-webkit-scrollbar-thumb:hover {
-            background: #8f8f8f; 
-        }
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 
-        @keyframes zoom-in-zoom-out {
-        0% {
-            transform: scale(1, 1);
-        }
-        50% {
-            transform: scale(1.1, 1.1);
-        }
-        100% {
-            transform: scale(1, 1);
-        }
-        }
-    </style>
+<!-- include -->
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+<!-- CSS -->
+<link href="https://fonts.googleapis.com/css?family=Lato:200,300,400,600,700,900&subset=latin-ext" rel="stylesheet">
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900&subset=latin-ext' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{% static '/CRS/css/fClassroom/fClassroomStyle.css' %}">
+
+<!--  ICON -->
+<link rel="icon" href="{% static '/CRS/images/cHome/iPLM.png' %}" type="image/png" sizes="16x16">
 </head>
 
-<body>
-
-    <div class="wrapper">
-
-        <!-- Sidebar -->
-       <nav id="sidebar">
-        <div class="sidebar-header">
-            <li>
-              <p><br><br><img src="{% static 'CRS/images/fHomeAndProfile/hat.png' %}" width="126px" height="87px"><br><br>
-            </li>
-        </div>
-        <ul class="sidebar components">
-          <!-- FILE PATH: Faculty/fHomeAndProfile/fHome.html-->
-          <li class="active"><a href="{% url 'fHome' %}"><img src="{% static 'CRS/images/cIcons/home2.png' %}" width="97px" height="auto"></a></li>
-          <!-- FILE PATH: Faculty/fHomeAndProfile/fProfile.html-->
-          <li><a href="{% url 'fProfile' %}"><img src="{% static 'CRS/images/cIcons/profile2.png' %}" width="97px" height="auto"></a></li>
-          <!-- FILE PATH: Faculty/fStudents/fStudents.html-->
-          <li><a href="{% url 'fStudents_advisory' %}"><img src="{% static 'CRS/images/cIcons/students2.png' %}" width="97px" height="auto"></a></li>
-          <!-- FILE PATH: Faculty/fClassroom/fViewSched.html-->
-          <li><a href="{% url 'fViewSched' %}"><img src="{% static 'CRS/images/cIcons/classroom2.png' %}" width="97px" height="auto"></a></li>
-          <!-- FILE PATH: LOG-OUT -->
-          <li><a href="{% url 'logout' %}"><img src="{% static 'CRS/images/cIcons/log-out2.png' %}" width="97px" height="auto"></a></li>
-      </ul>
-    </nav>
-    <!--End of Sidebar -->
-
-        <!-- Content -->
-        <div id="content">
-
+        <!--Start na to nung layput natin tapos based dun sa code ng chairperson-->
+        <body class="content-scrollbar" onload="today()">
+          <img src="{% static 'CRS/images/cHome/bglogo.png' %}" id="bglogo">
+      
+          <!-- Navbar -->
+          <nav class="navbar navbar-expand-sm navbar-dark flex-sm-nowrap flex-wrap">                          
+              <a id="iplm" href="{% url 'chairperson' %}">
+                  <img class="iplmlogo unselectable" src="{% static 'CRS/images/fHomeAndProfile/iplmlogo.png' %}" height="35">
+              </a>            
+                     
+           
+            
+      
+              <!-- navbar user name and title  -->
+              <p class="d-none d-sm-block usertitle unselectable">
+                  Faculty
+              </p>
+              <p href="{% url 'fProfile' %}" class="d-none d-sm-block user unselectable">
+                {{facultyUser.firstName}} {{facultyUser.middleName}} {{facultyUser.lastName}}
+              </p>
+      
+              <!-- user profile dropdown -->
+              <div class="unselectable dropdown pficon">
+                  <a class="dropdown-toggle profilehover" id="dropdownProfile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      <img id="profileicon" src="{% static 'CRS/images/fHomeAndProfile/userprofile.png' %}" width="35px" height="35px">
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-end dropdownProfileMenu p-3 text-muted" aria-labelledby="dropdownProfile">
+                      <img id="profileicon" src="{% static 'CRS/images/fHomeAndProfile/userprofile.png' %}" width="40px" height="40px">
+                      <p id="profilemenutitle">{{facultyUser.firstName}}<br></p>
+                      <p id="profilemenuemail">{{facultyUser.email}}<br></p>
+                      <div class="dropdown-divider"></div>
+                      <li><a class="profilelinks" href="{% url 'fProfile' %}">View Profile</a></li>
+                      <li><a class="profilelinks" href="{% url 'logout' %}">Log out</a></li>
+                  </ul>
+              </div>
+          </nav>
+      
+              <div id="mainwrapper" class="toggled">
+                  <!-- Sidebar -->
+                  <div id="sidebar-wrapper" class="custom-scrollbar">
+                      <ul class="sidebar-nav">
+                          <li class="active"> <a class="sb-links" href="{% url 'fHome' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/home.png' %}" height="15"> Home</a> </li>
+                          <li class="sb-section unselectable"><span>Students</span></li>
+                          <li> <a class="sb-links" href="{% url 'fStudents_advisory' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/department.png' %}" height="15"> Advisory</a> </li>
+                          
+                          <li class="sb-section unselectable"><span>Classroom</span></li>
+                          <li> <a class="sb-links" href="{% url 'parttime_sched' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/studyplan.png' %}" height="15"> Schedule</a> </li>
+                          {% if facultyInfo.facultyWorkstatus == 'Part-Time' %} 
+                          <li> <a class="sb-links" href="{% url 'parttime_sched' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/parttime_avail.png' %}" height="17"> Part-Time Availability</a> </li>
+                          {% endif %}
+                          <!-- FILE PATH: Faculty/fStudents_advisoryChecklist-->
+                          <li><a class="sb-links" href="{% url 'fStudents_advisoryChecklist' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/loa.png' %}" height="15"> Checklist Submissions</a> </li>
+      
+                      </ul>
+                  </div> 
+          <!-- Content -->
+          <div id="content">
             <div class=" container-fluid">
+              <div class="headertitle unselectable d-none d-md-block">Classroom</div>
                 <div class="back row">
                     <object type="image/svg+xml" data="studclassroom_back.svg" id="backimg"></object>
-                    <p id="schedtitle">Classroom</p>
+  
                 </div>
                     <form method ="POST" id="sched">
                         {%csrf_token%}
                         <div class="schedule row">                   
-                        <div class="col-lg-8">
-                          <div class="col-lg-5"><div id="dayLabel">Part Time: Time In and Out</div></div>
-                          <div class="col-lg-8"><div id="description">Select Time in and out for your PLM Faculty Schedule.</div></div>
-                          
-                          <div class="col-lg-8">
+                          <div id="dayLabel">Part Time: Time In and Out</div>
+                          <div id="description">Select Time in and out for your PLM Faculty Schedule.</div>
+
                             <div id="error">
                               {% if messages %}
                             {% for message in messages %}
@@ -202,12 +115,11 @@
                             </div>
                           </div>
 
-                        <hr class="main"><br>
-                        <div class="col-lg-5"><div id="dayLabel">From Monday to Saturday</div></div>
-                        <hr class="dayLine">
-                        <div class="col-lg-6">
-                            <div class="custom-select">
+                        <div id="dayLabel_date">From Monday to Saturday</div></div>
+
+                            <div class="custom-select dropdown-primary force-scroll" >
                                 <select name="in" id="in" form="sched">
+                                  <option selected>Time In</option>
                                     <option value="7:00 AM">7:00 AM</option>
                                     <option value="7:30 AM">7:30 AM</option>
                                     <option value="8:00 AM">8:00 AM</option>
@@ -232,8 +144,9 @@
                                 </select>
                               </div>
 
-                              <div class="custom-select">
+                              <div class="custom-select dropdown-primary force-scroll">
                                 <select name="out" id="out" form="sched">
+                                  <option selected>Time Out </option>
                                     <option value="12:00 PM">12:00 PM</option>
                                     <option value="12:30 PM">12:30 PM</option>
                                     <option value="1:00 PM">1:00 PM</option>
@@ -257,22 +170,26 @@
                                     <option value="10:00 PM">10:00 PM</option>
                                 </select>
                               </div>
-                        </div>
+                              <a href="#" id="buttonSubmitSched"><button type="submit" class="btn" style="margin-top:200px;margin-left:655px;width:100px;height:35px;font-size: 16px;border-radius:10px 10px 10px 10px">Submit</button></a></div>
 
                         </div>
+
 
                     <!--DB SUBMIT BUTTON-->
-                    <br><br>
-                    <div class="col-lg-5"><a href="#" id="buttonSubmitSched"><button type="submit" class="btn">Submit</button></a></div>
                 
                 </div></form>
                 <br><br><br><br><br>
         </div>
 
     <!-- Javascript -->
+    <img src="{% static 'CRS/images/cIcons/up-arrow.png' %}" id="btn-back-to-top" class="unselectable"> <!-- scroll to top -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="{% static '/CRS/js/fHome/fHomeMain.js' %}"></script> 
     <script>
         var x, i, j, l, ll, selElmnt, a, b, c;
         /*look for any elements with the class "custom-select":*/
@@ -352,6 +269,7 @@
         /*if the user clicks anywhere outside the select box,
         then close all select boxes:*/
         document.addEventListener("click", closeAllSelect);
+
         </script>
 </body>
 
