@@ -293,6 +293,7 @@ urlpatterns = [
     url(r'^SPNotifdetails/$', views.SPNotif, name='SPNotifdetails'),
     url(r'^OJTNotifdetails/$', views.OJTNotif, name='OJTNotifdetails'),
     url(r'^GradesNotifdetails/$', views.GradesNotif, name='GradesNotifdetails'),
+    url(r'^OutboundNotifdetails/$', views.OutboundNotif, name='OutboundNotifdetails'),
 
     #student others
     url(r'^sOthers/$', views.sOthers, name='sOthers'),

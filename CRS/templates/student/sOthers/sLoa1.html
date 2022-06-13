@@ -3,17 +3,21 @@
 <html>
 
 <head>
-    <title>Students | Leave of Absence</title>
+	<title>Students | Honorable Dismissal</title>
+	<link rel="icon" href="https://i.postimg.cc/Z5Kc9KQv/iplm-logo.png%22%3E">
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
     <!-- CSS -->
 	<link rel="stylesheet" href="{% static 'CRS/css/sOthers/sLoaStyle.css' %}">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source Sans Pro">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter&display=swap">
 	<!--  ICON -->
     <link rel="icon" href="{% static 'CRS/images/sOthers/iPLM.png' %}" type="image/png" sizes="16x16">
 
@@ -82,68 +86,263 @@
 		::-webkit-scrollbar-thumb:hover {
 			background: #8f8f8f; 
 		}
+
+		
 	</style>
 </head>
-
-<body>
 	{% block content %}
     <div class="wrapper">
+<body>
+<!-- top bar -->
+<div class="container-fluid">
+<div class="topbar">
+	<a href="{% url 'sHome' %}" class="iplm-logo">
+	  <img src="https://i.postimg.cc/Z5Kc9KQv/iplm-logo.png" class="logo" />
+	  <div class="logo-text">
+		<div class="logo-main">iPLM</div>
+		<div class="logo-sub">Integrated PLM</div>
+	  </div>
+	</a>
+	<div class="center-region">
+	  <div class="empty"></div>
+	  <div id="notif-button" class="notif">
+		<img
+		  class="notif-icon"
+		  src="https://i.ibb.co/0XVd3kP/notification.png"
+		  alt="notification"
+		/>
+		<div id="notif-window" class="notif-content">
+		  <div class="notif-triangle"></div>
+		  <div class="notif-header">Notifications</div>
+		  <div class="notif-items">
+			<a href="{% url 'LOANotifdetails' %}" class="notif-item">
+			  <img
+				class="notif-item-icon"
+				src="https://i.postimg.cc/Gp0457xb/LOA.png"
+				alt="img"
+			  />
+			  <div class="notif-item-text">
+				<div class="notif-item-title">Leave of Absence Feedback</div>
+				<div class="notif-item-detail">View details</div>
+			  </div>
+			</a>
+  
+			<a href="{% url 'HDNotifdetails' %}" class="notif-item">
+			  <img
+				class="notif-item-icon"
+				src="https://i.postimg.cc/mkhZDCyd/honorabledismissal.png"
+				alt="img"
+			  />
+			  <div class="notif-item-text">
+				<div class="notif-item-title">
+				  Honorable Dismissal Feedback
+				</div>
+				<div class="notif-item-detail">View details</div>
+			  </div>
+			</a>
+  
+			<a href="{% url 'SPNotifdetails' %}" class="notif-item">
+			  <img
+				class="notif-item-icon"
+				src="https://i.postimg.cc/PJfpMCzZ/studyplan.png"
+				alt="img"
+			  />
+			  <div class="notif-item-text">
+				<div class="notif-item-title">Study Plan Feedback</div>
+				<div class="notif-item-detail">View details</div>
+			  </div>
+			</a>
+  
+			<a href="{% url 'GradesNotifdetails' %}" class="notif-item">
+			  <img
+				class="notif-item-icon"
+				src="https://i.postimg.cc/NMm7n2Hz/mygrades.png"
+				alt="img"
+			  />
+			  <div class="notif-item-text">
+				<div class="notif-item-title">My Grades Feedback</div>
+				<div class="notif-item-detail">View details</div>
+			  </div>
+			</a>
+  
+			<a href="{% url 'OJTNotifdetails' %}" class="notif-item">
+			  <img
+				class="notif-item-icon"
+				src="https://i.postimg.cc/SK7xtyKG/practicum.png"
+				alt="img"
+			  />
+			  <div class="notif-item-text">
+				<div class="notif-item-title">Practicum Feedback</div>
+				<div class="notif-item-detail">View details</div>
+			  </div>
+			</a>
+  
+			<a href="{% url 'OJTNotifdetails' %}" class="notif-item">
+			  <img
+				class="notif-item-icon"
+				src="https://i.postimg.cc/Kzf01wnM/shifting-form.png"
+				alt="img"
+			  />
+			  <div class="notif-item-text">
+				<div class="notif-item-title">Outbound Shifting Feedback</div>
+				<div class="notif-item-detail">View details</div>
+			  </div>
+			</a>
+		  </div>
+		</div>
+	  </div>
+	</div>
+	<div class="personal-info" id="dropdown-button">
+	  <div class="user-details">
+		<div class="client-classification">Student</div>
+		<div class="client-name">
+		  {{user.firstName}} {{user.middleName}} {{user.lastName}}
+		</div>
+	  </div>
+	  <div class="dropdown">
+		<img
+		  src="{% static 'CRS/images/fHomeAndProfile/userprofile.png' %}"
+		  class="profile-dropdown"
+		/>
+		<div class="dropdown-content" id="dropdown-window">
+		  <div class="dropdown-header">
+			<img
+			  src="{% static 'CRS/images/fHomeAndProfile/userprofile.png' %}"
+			  class="dropdown-icon"
+			/>
+			<div class="dropdown-details">
+			  <div class="dropdown-name">{{info.studentUser.firstName}}</div>
+			  <div class="dropdown-email">{{user.email}}</div>
+			</div>
+		  </div>
+		  <div class="dropdown-items">
+			<a href="{% url 'sProfile' %}" class="dropdown-item"
+			  >View Profile</a
+			>
+			<a href="{% url 'logout' %}" class="dropdown-item">Logout</a>
+		  </div>
+		</div>
+	  </div>
+	</div>
+  </div>
 
-        <!-- Sidebar -->
-        <nav id="sidebar">
-            <div class="sidebar-header">
-                <li>
-                    <p><br><br><img src="{% static 'CRS/images/fHomeAndProfile/hat.png' %}" width="126px" height="87px"><br><br>
-                </li>
-            </div>
-            <ul class="sidebar components">
-                <li class="active"><a href="{% url 'sHome' %}"><img src="{% static 'CRS/images/cIcons/home2.png' %}"width="97px" height="auto"></a></li>
-                <li><a href="{% url 'sProfile' %}"><img src="{% static 'CRS/images/cIcons/profile2.png' %}" width="97px" height="auto"></a></li>
-                <li><a href="{% url 'sClassroom' %}"><img src="{% static 'CRS/images/cIcons/classroom2.png' %}" width="97px" height="auto"></a></li>
-                <li><a href="{% url 'sOthers' %}"><img src="{% static 'CRS/images/cIcons/others2.png' %}" width="97px" height="auto"></a></li>
-                <li><a href="{% url 'logout' %}"><img src="{% static 'CRS/images/cIcons/log-out2.png' %}" width="97px" height="auto"></a></li>
-            </ul>
-        </nav>
+  <!-- side bar  -->
+  <div class="content">
+	<!-- side bar  -->
+	<!-- side bar  -->
+	<div class="sidebar">
+        <a href="{% url 'sHome' %}" class="sidebar-item">
+          <img
+            class="sidebar-icon"
+            src="https://i.postimg.cc/DZS58F2h/home-button-iplm.png"
+          />
+          <span class="sidebar-item-text">Home</span>
+        </a>
+        <div class="sidebar-divider">CLASSROOM</div>
+        <a href="{% url 'sScheduleView' %}" class="sidebar-item">
+          <img
+            class="sidebar-icon"
+            src="https://i.postimg.cc/3R4bxwDX/schedule.png"
+          />
+          <span class="sidebar-item-text">Schedule</span>
+        </a>
+        <a href="{% url 'sChecklist' %}" class="sidebar-item">
+          <img
+            class="sidebar-icon"
+            src="https://i.postimg.cc/J7jP6v3z/checklist.png"
+          />
+          <span class="sidebar-item-text">Checklist</span>
+        </a>
+        <a href="{% url 'sGradeSubmission1' %}" class="sidebar-item">
+          <img
+            class="sidebar-icon"
+            src="https://i.postimg.cc/NMm7n2Hz/mygrades.png"
+          />
+          <span class="sidebar-item-text">My Grades</span>
+        </a>
+        <div class="sidebar-divider">OTHERS</div>
+        <a href="{% url 'donesp' %}" class="sidebar-item">
+          <img
+            class="sidebar-icon"
+            src="https://i.postimg.cc/PJfpMCzZ/studyplan.png"
+          />
+          <span class="sidebar-item-text">Study Plan</span>
+        </a>
+        <a href="{% url 'doneLoa' %}" class="sidebar-item">
+          <img
+            class="sidebar-icon"
+            src="https://i.postimg.cc/Gp0457xb/LOA.png"
+          />
+          <span class="sidebar-item-text">Leave of Absence</span>
+        </a>
+        <a href="{% url 'doneHd' %}" class="sidebar-item">
+          <img
+            class="sidebar-icon"
+            src="https://i.postimg.cc/mkhZDCyd/honorabledismissal.pngg"
+          />
+          <span class="sidebar-item-text">Honorable Dismissal</span>
+        </a>
+        <a href="{% url 'donepracticum' %}" class="sidebar-item">
+          <img
+            class="sidebar-icon"
+            src="https://i.postimg.cc/SK7xtyKG/practicum.png"
+          />
+          <span class="sidebar-item-text">Practicum</span>
+        </a>
+        <a href="{% url 'doneOSF' %}" class="sidebar-item">
+          <img
+            class="sidebar-icon"
+            src="https://i.postimg.cc/Kzf01wnM/shifting-form.png"
+          />
+          <span class="sidebar-item-text">Outbound Shifting</span>
+        </a>
+      </div>
+
         <!--End of Sidebar -->
+<!-- Content -->
 
-        <!-- Content -->
-        <div id="content">
-            <div class="container-fluid">
-
-                <!--Study Plan head-->
-                <div class="back row">
-					<!-- FILE PATH: Students/sOthers/sOthers.html-->
-					<a href="{% url 'sOthers' %}" id="back-edit"><img src="{% static 'CRS/images/sClassroom/back.svg' %}" width="50" style="margin-top: 30px;"></a>
-                    <p id="head1">
-                        Leave of Absence
-                    </p>
-                </div>
-                <!--END Study Plan head-->
+<div class="main-content"> 
+	<div class="backrw row"></div>
+	<div class="container-fluid">
+		<div class="backrw row" style="margin-top: 0px;">
+			<p id="head1">
+				Leave of Absence
+			 </p> 
+		</div>
 
                 <!-- Progress Bar -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="progress row">
-                            <div class="col-lg-12">
-                                <div class="progress-bar "></div>
-                                <div class="progressbar">
-                                        <li class="active progress-text-active">Clearance<br>Form</li>
-                                        <li class="progress-text">LOA<br>Form</li>
-										<li class="progress-text">Dropping<br>Form</li>
-                                        <li class="progress-text">Upload<br>Documents</li>
-                                        <li class="progress-text">Confirmation<br>Submission</li>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+				
+				<div class="row">
+					<div class="container-fluid"> 
+							<div class="progress row">
+								<div class="col-lg-12">
+									<div class="progress-bar"></div>
+									<div class="progressbar">
+										<div class="progress-bars"></div>
+										<li class="active progress-text-active">Clearance<br>Form</br></li>
+											<li class="progress-text">LOA<br>Form</li>
+											<li class="progress-text">Dropping<br>Form</li>
+											<li class="progress-text">Upload<br>Documents</li>
+											<li class="progress-text">Confirmation<br>Submission</li>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
                 <!--END Progress Bar-->
 
+
+				
+				
                 <!-- Clearance Form -->
 				<div class="clearanceForm container-fluid">
 					<div class="clearanceHeader">
 						<h1><b>Clearance Form</b></h1>
+						<div class="linebreak1 "></div>
+					<div class = "instructions">
 						<p>Please complete the form below.</p>
+					</div>
 						
 						{% if messages %}
 							{% for message in messages %}
@@ -159,14 +358,14 @@
 					
 						<div class="form-group col-lg-12 row">
 							<label class="form-label">Student Number</label>
-							<input type="text" class="form-control" placeholder="{{info.studentID}}" disabled> <!-- DB STUDENT Number -->
+							<input type="text" class="form-control" placeholder="{{info.studentID}}" > <!-- DB STUDENT Number -->
 						</div>
 						
 						<div class="form-group col-lg-12 row">
 							<label class="form-label">Name</label>
-							<input type="text" class="form-control" placeholder="{{info.studentUser.lastName}}" id="clearanceForm-input" disabled> <!-- DB LAST NAME -->
-							<input type="text" class="form-control" placeholder="{{info.studentUser.firstName}}" id="clearanceForm-input" disabled> <!-- DB FIRST NAME -->
-							<input type="text" class="form-control" placeholder="{{info.studentUser.middleName}}" id="clearanceForm-input" disabled> <!-- DB MIDDLE NAME -->
+							<input type="text" class="form-control" placeholder="{{info.studentUser.lastName}}" id="clearanceForm-input"> <!-- DB LAST NAME -->
+							<input type="text" class="form-control" placeholder="{{info.studentUser.firstName}}" id="clearanceForm-input"> <!-- DB FIRST NAME -->
+							<input type="text" class="form-control" placeholder="{{info.studentUser.middleName}}" id="clearanceForm-input"> <!-- DB MIDDLE NAME -->
 						</div>
 						
 						<div class="form-group col-lg-12 row">
@@ -229,43 +428,85 @@
 							<hr id="line">
 							
 							<div class="form-group col-lg-12 row">
+							
+
+						
 								<label class="form-label">Purpose of <span style="color:#ff5f02"><b>*</b></span><br>Clearance</label>
-								<div class="form-check form-check-inline">
+								<div class="radio1">
 								  <input class="form-check-input" type="radio" name="studentPurpose2" value="Graduation" required>
-								  <label class="form-check-label" name="studentPurpose2">Graduation</label>
+								  <label class="text1" name="studentPurpose2">Graduation</label>
 								</div>
-								<div class="form-check form-check-inline">
+								<div class="radio2">
 								  <input class="form-check-input" type="radio" name="studentPurpose2" value="Transfer" required>
-								  <label class="form-check-label" name="studentPurpose2">Transfer</label>
+								  <label class="text2" name="studentPurpose2">Transfer</label>
 								</div>
-								<div class="form-check form-check-inline">
-								 <input type="radio" name="studentPurpose2" value="Others" required>
+								<div class="radio3">
+								<input class="form-check-input" type="radio" name="studentPurpose2" value="Others" required>
+							
 								 <input type="text" name="studentOthers2" placeholder="Others" id="purposeOthers"> <!-- DB PURPOSE OF CLEARANCE>OTHERS -->
 								</div>
 							</div>
-							
+						
 							<br><br>
 							
 							<hr id="line">
 							
 							<div class="form-group col-lg-12 row">
-								<label class="form-label">Date of<br>Application<span style="color:#ff5f02"><b>*</b></span></label>
+								<label class="form-label">Date of Application<span style="color:#ff5f02"><b>*</b></span></label>
+
 								<input type="date" class="form-control" name="studentCurrentdate2" id="application-date" required> <!-- DB DATE OF APPLICATION -->
-								<div class="clearance-done">
-
-									
-
-									<a href="#" id="button-edit"><button type="submit" class="btn1">Submit</button></a> <!-- SUBMIT -->
-									<a href="{% url 'lscf' %}" id="button-edit" target="_blank"><button type="button" class="btn">Save Copy</button></a> <!-- SAVE COPY -->
-									<a href="{% url 'sLoa2' %}" id="button-edit"><button type="button" class="btn"> Next</button></a> <!-- NEXT -->
-								</div>
+		
 							</div>
+
+
+							<div class="clearance-done">
+
+								<div>
+
+								<a href="{% url 'lscf' %}" id="button-edit" target="_blank"><button type="button" class="btn">Save Copy</button></a> <!-- SAVE COPY -->
+								
+								<input type="submit" id="submitbtn" value="Submit">
+
+								</div>
+
+							</div>
+
+				   
+							<div>
+								
+									<div style=" margin-left: 89%; margin-top: -3.4%; margin-right: -60px;">   
+										
+										
+	
+										<a href="{% url 'sHome' %}" id="back-edit" style="background: none; border: none;"><img src="https://i.ibb.co/yWY15ff/arrow-left.png
+											" height="50" width="50" style = "margin-right:3px;"></a>
+										
+										<a href="{% url 'sLoa2' %}" id="back-edit" style="background: none; border: none;"><img src="https://i.ibb.co/mvNr5Xt/arrow-right.png
+											" height="50" width="50"></a>
+									</div>	
+								</div>
+							   
+							</div>
+
+
+
+
+
+
+
+
+
+
+
+
+							
 							<br><br>
 						</form>
 					</div>
 				</div>
 			</div>
 		</div>
+		<br><br>
     <!-- END Content -->
 
 	{% endblock content %}
@@ -275,6 +516,23 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script>
+
+var notifWindow = document.getElementById("notif-window");
+
+document
+  .getElementById("notif-button")
+  .addEventListener("click", function () {
+    var display = notifWindow.style.display === "flex" ? "none" : "flex";
+    notifWindow.style.display = display;
+  });
+var profileDropdown = document.getElementById("dropdown-window");
+document
+  .getElementById("dropdown-button")
+  .addEventListener("click", function () {
+    var display =
+      profileDropdown.style.display === "flex" ? "none" : "flex";
+    profileDropdown.style.display = display;
+  });
         const selected = document.querySelector(".selected");
         const optionsContainer = document.querySelector(".options-container");
 
@@ -290,6 +548,10 @@
                 optionsContainer.classList.remove("active");
             });
         });
+
+
+
+		
     </script>
 
 </body>

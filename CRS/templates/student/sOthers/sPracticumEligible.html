@@ -1,0 +1,781 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Student | PracticumNotEligible</title>
+    <link
+      rel="icon"
+      href="https://i.postimg.cc/Z5Kc9KQv/iplm-logo.png"
+      type="image/x-icon"
+    />
+    <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Inter&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <style>
+    /* * Extra small devices (portrait phones, Less than 576px) /  */
+    @media (max-width: 575.98px) {
+      body {
+        overflow: auto;
+      }
+      .wrapper {
+        zoom: 100%;
+      }
+    }
+    /* / Small devices (Landscape phones, 576px and up)/  */
+    @media (min-width: 576px) and (max-width: 767.98px) {
+      body {
+        overflow: auto;
+      }
+      .wrapper {
+        zoom: 100%;
+      }
+    }
+    /* / Medium devices (tablets, 768px and up) /  */
+    @media (min-width: 768px) and (max-width: 991.98px) {
+      body {
+        overflow: auto;
+      }
+      .wrapper {
+        zoom: 100%;
+      }
+    }
+
+    /* / Large devices (desktops, 992px and up) / */
+    @media (min-width: 992px) and (max-width: 1199.98px) {
+      #content {
+        zoom: 67%;
+      }
+      #sidebar {
+        zoom: 75%;
+      }
+      .wrapper {
+        zoom: 100%;
+      }
+    }
+    /* / For screens na 1920x1080 / */
+    /* For screens na 1920x1080 */
+    @media (max-width: 1920px) {
+      .topbar {
+        /* zoom: 110%; */
+      }
+      .main-content {
+        zoom: 110%;
+      }
+    }
+
+    @media (max-width: 516px) {
+      .wrapper {
+        zoom: 58%;
+      }
+    }
+
+    /* / For screens na 1600 / */
+    @media (min-width: 1600px) {
+      .wrapper {
+        zoom: 85%;
+      }
+      .body {
+        zoom: 67%;
+      }
+    }
+
+    @media (max-width: 1366px) {
+      .main-content {
+        zoom: 110%;
+      }
+      .wrapper {
+        zoom: 110%;
+      }
+    }
+
+    a:link {
+      text-decoration: none;
+      color: #5f6e83;
+    }
+    a:hover {
+      text-decoration: none;
+      color: #0892dd;
+    }
+
+    a:visited {
+      text-decoration: none;
+      color: #5f6e83;
+    }
+
+    a:hover {
+      text-decoration: none;
+      color: #0892dd;
+    }
+
+    a:active {
+      text-decoration: none;
+      color: #0892dd;
+    }
+
+    ::-webkit-scrollbar {
+      width: 9px;
+      height: 9px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: #d3dbe4;
+      border-radius: 20px;
+      border: transparent;
+    }
+
+    body {
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      background-color: #f3f6ff;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+      position: absolute;
+    }
+
+    .topbar {
+      box-sizing: border-box;
+      height: 65px;
+      border-bottom: 1px solid #d7dff6;
+      display: flex;
+      padding: 0.5rem 1rem;
+    }
+
+    .iplm-logo {
+      display: flex;
+      flex-direction: row;
+      text-decoration: none;
+      margin-left: 0.5rem;
+    }
+
+    .iplm-logo:hover {
+      opacity: 0.8;
+      -webkit-transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .logo {
+      height: 3rem;
+    }
+
+    .logo-text {
+      margin-left: 5px;
+      margin-top: 5px;
+    }
+
+    .logo-main {
+      color: rgba(6, 82, 155, 1);
+      font-family: Lato;
+      font-weight: bold;
+      font-size: 1.25rem;
+    }
+
+    .logo-sub {
+      color: #0892dd;
+      font-family: Inter;
+      font-size: 0.875rem;
+    }
+
+    .center-region {
+      display: flex;
+      flex: 1 0 auto;
+    }
+
+    .empty {
+      flex: 1 0 auto;
+    }
+
+    .notif {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 4rem;
+      color: #06529b;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .notif-icon {
+      width: 20px;
+      height: 20px;
+    }
+
+    .notif-icon:hover {
+      opacity: 0.7;
+      -webkit-transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .notif-content {
+      position: absolute;
+      top: 40px;
+      right: 0;
+      display: none;
+      flex-direction: column;
+      background-color: #fff;
+      min-width: 21.875rem;
+      border-radius: 10px;
+      box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+      font-family: Lato;
+      padding: 1rem;
+      z-index: 100;
+    }
+
+    .notif-header {
+      display: flex;
+      flex-direction: row;
+      border-bottom: 1px solid #d3dbe4;
+      color: #6c757d;
+      font-weight: 900;
+      font-size: 1rem;
+      padding-bottom: 1rem;
+    }
+
+    .notif-items {
+      max-height: 20.625rem;
+      overflow-y: auto;
+      scrollbar-width: thin;
+    }
+
+    .notif-item {
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: row;
+      padding: 1.25rem;
+      border-bottom: 1px solid #eee;
+      border-top: 1px solid #fff;
+      text-decoration: none;
+    }
+
+    .notif-item:hover {
+      background-color: #eee;
+    }
+
+    .notif-item-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+
+    .notif-item-text {
+      display: flex;
+      flex-direction: column;
+      margin-left: 0.5rem;
+      font-size: 0.875rem;
+      gap: 0.25rem;
+      font-family: "Source Sans Pro", sans-serif;
+    }
+
+    .notif-item-title {
+      font-weight: bolder;
+      color: #06529b;
+    }
+
+    .notif-item-detail {
+      color: #5f6e83;
+    }
+
+    .personal-info {
+      display: flex;
+      flex-direction: row;
+      cursor: pointer;
+    }
+
+    .personal-info:hover .profile-dropdown {
+      opacity: 0.5;
+      -webkit-transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .user-details {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-right: 1rem;
+    }
+
+    .client-classification {
+      font-size: 0.625rem;
+      font-family: Lato;
+      color: #5f6e83;
+      text-align: right;
+    }
+
+    .client-name {
+      font-size: 13px;
+      font-family: Lato;
+      font-weight: bold;
+      color: #06529b;
+    }
+
+    .dropdown {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .profile-dropdown {
+      height: 35px;
+      cursor: pointer;
+    }
+
+    .dropdown-content {
+      position: absolute;
+      top: 45px;
+      right: 0px;
+      display: none;
+      flex-direction: column;
+      background-color: #fff;
+      min-width: 13.125rem;
+      border-radius: 10px;
+      box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+      padding: 1rem;
+      box-sizing: border-box;
+      z-index: 100;
+    }
+
+    .dropdown-header {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      border-bottom: 1px solid #d3dbe4;
+      padding-bottom: 1rem;
+    }
+
+    .dropdown-details {
+      display: flex;
+      flex-direction: column;
+      margin-left: 0.5rem;
+    }
+
+    .dropdown-icon {
+      width: 40px;
+      height: 40px;
+    }
+
+    .dropdown-name {
+      color: #06529b;
+      font-family: Lato;
+      font-weight: 700;
+      font-size: 0.875rem;
+    }
+
+    .dropdown-email {
+      color: #5f6e83;
+      font-family: source sans pro;
+      font-size: 0.625rem;
+    }
+
+    .dropdown-items {
+      display: flex;
+      flex-direction: column;
+      margin-top: 0.5rem;
+    }
+
+    .dropdown-item {
+      color: #5f6e83;
+      font-family: source sans pro;
+      font-size: 0.875rem;
+      font-weight: 500;
+      padding: 0.5rem;
+      cursor: pointer;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+
+    .dropdown-item:hover {
+      background-color: #f3f6ff;
+      color: #06529b;
+      transition: all 0.3s ease;
+    }
+
+    .profile-dropdown:hover .dropdown-content {
+      display: flex;
+    }
+
+    .content {
+      display: flex;
+      flex: 1 1 auto;
+      flex-direction: row;
+    }
+
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      flex: 0 0 15.625rem;
+      min-width: 0px;
+      gap: 0.75em;
+      padding: 15px 10px 10px 10px;
+    }
+
+    .sidebar-icon {
+      width: 15px;
+      height: 15px;
+      margin-left: 20px;
+      margin-right: 7px;
+    }
+
+    .sidebar-item {
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      color: rgba(95, 110, 131, 1);
+      cursor: pointer;
+      text-decoration: none;
+      max-width: 12.5rem;
+      line-height: 27px;
+    }
+
+    .sidebar-item:hover {
+      color: #0892dd;
+      background-color: #d3dbe4;
+      border-radius: 5px;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .sidebar-item-text {
+      font-family: Lato;
+      font-size: 0.875rem;
+      font-weight: 900;
+    }
+
+    .sidebar-divider {
+      color: #a8b4c2;
+      font-family: Lato;
+      font-weight: 900;
+      font-size: 0.625rem;
+      overflow: hidden;
+      margin-left: 1.25rem;
+      max-width: 180px;
+      line-height: 27px;
+    }
+
+    .sidebar-divider:after {
+      color: #a8b4c2;
+      content: "\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0";
+      text-decoration: line-through;
+      margin: auto 0.5em;
+    }
+
+    .main-content {
+      background-image: url("https://i.postimg.cc/523r4DT9/leaf-logo.png");
+      background-position: right -270px top -10px;
+      background-repeat: no-repeat;
+      background-size: 700px;
+      display: flex;
+      flex-direction: column;
+      flex: 1 1 0px;
+      min-width: 0;
+      overflow: hidden;
+    }
+
+    .container-fluid {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 3rem;
+      margin-right: 5rem;
+      gap: 1rem;
+    }
+
+    .unavailableImg {
+      width: 40%;
+    }
+
+    .unavailable {
+      font-family: Lato;
+      font-size: 25px;
+      font-weight: bold;
+      color: #06529b;
+    }
+
+    .unavailablesub {
+      font-family: Inter;
+      font-size: 16px;
+      color: #06529b;
+    }
+
+    .submitbtn {
+      font-family: Inter;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: #fff;
+      background-color: #06529b;
+      border: 1px solid #06529b;
+      border-radius: 5px;
+      padding: 0.75rem 1.2rem;
+      cursor: pointer;
+    }
+
+    .submitbtn:hover{
+      background: #0892dd;
+      border: 1px solid #0892dd;
+    }
+
+  </style>
+
+  <body>
+    {% block content %}
+    <!-- Content -->
+    <!-- top bar -->
+    <div class="topbar">
+      <a href="{% url 'sHome' %}" class="iplm-logo">
+        <img src="https://i.postimg.cc/Z5Kc9KQv/iplm-logo.png" class="logo" />
+        <div class="logo-text">
+          <div class="logo-main">iPLM</div>
+          <div class="logo-sub">Integrated PLM</div>
+        </div>
+      </a>
+      <div class="center-region">
+        <div class="empty"></div>
+        <div id="notif-button" class="notif">
+          <img
+            class="notif-icon"
+            src="https://i.ibb.co/0XVd3kP/notification.png"
+            alt="notification"
+          />
+          <div id="notif-window" class="notif-content">
+            <div class="notif-triangle"></div>
+            <div class="notif-header">Notifications</div>
+            <div class="notif-items">
+              <a href="{% url 'LOANotifdetails' %}" class="notif-item">
+                <img
+                  class="notif-item-icon"
+                  src="https://i.postimg.cc/Gp0457xb/LOA.png"
+                  alt="img"
+                />
+                <div class="notif-item-text">
+                  <div class="notif-item-title">Leave of Absence Feedback</div>
+                  <div class="notif-item-detail">View details</div>
+                </div>
+              </a>
+
+              <a href="{% url 'HDNotifdetails' %}" class="notif-item">
+                <img
+                  class="notif-item-icon"
+                  src="https://i.postimg.cc/mkhZDCyd/honorabledismissal.png"
+                  alt="img"
+                />
+                <div class="notif-item-text">
+                  <div class="notif-item-title">
+                    Honorable Dismissal Feedback
+                  </div>
+                  <div class="notif-item-detail">View details</div>
+                </div>
+              </a>
+
+              <a href="{% url 'SPNotifdetails' %}" class="notif-item">
+                <img
+                  class="notif-item-icon"
+                  src="https://i.postimg.cc/PJfpMCzZ/studyplan.png"
+                  alt="img"
+                />
+                <div class="notif-item-text">
+                  <div class="notif-item-title">Study Plan Feedback</div>
+                  <div class="notif-item-detail">View details</div>
+                </div>
+              </a>
+
+              <a href="{% url 'GradesNotifdetails' %}" class="notif-item">
+                <img
+                  class="notif-item-icon"
+                  src="https://i.postimg.cc/NMm7n2Hz/mygrades.png"
+                  alt="img"
+                />
+                <div class="notif-item-text">
+                  <div class="notif-item-title">My Grades Feedback</div>
+                  <div class="notif-item-detail">View details</div>
+                </div>
+              </a>
+
+              <a href="{% url 'OJTNotifdetails' %}" class="notif-item">
+                <img
+                  class="notif-item-icon"
+                  src="https://i.postimg.cc/SK7xtyKG/practicum.png"
+                  alt="img"
+                />
+                <div class="notif-item-text">
+                  <div class="notif-item-title">Practicum Feedback</div>
+                  <div class="notif-item-detail">View details</div>
+                </div>
+              </a>
+
+              <a href="{% url 'OutboundNotifdetails' %}" class="notif-item">
+                <img
+                  class="notif-item-icon"
+                  src="https://i.postimg.cc/Kzf01wnM/shifting-form.png"
+                  alt="img"
+                />
+                <div class="notif-item-text">
+                  <div class="notif-item-title">Outbound Shifting Feedback</div>
+                  <div class="notif-item-detail">View details</div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="personal-info" id="dropdown-button">
+        <div class="user-details">
+          <div class="client-classification">Student</div>
+          <div class="client-name">
+            {{user.firstName}} {{user.middleName}} {{user.lastName}}
+          </div>
+        </div>
+        <div class="dropdown">
+          <img
+            src="{% static 'CRS/images/fHomeAndProfile/userprofile.png' %}"
+            class="profile-dropdown"
+          />
+          <div class="dropdown-content" id="dropdown-window">
+            <div class="dropdown-header">
+              <img
+                src="{% static 'CRS/images/fHomeAndProfile/userprofile.png' %}"
+                class="dropdown-icon"
+              />
+              <div class="dropdown-details">
+                <div class="dropdown-name">{{info.studentUser.firstName}}</div>
+                <div class="dropdown-email">{{user.email}}</div>
+              </div>
+            </div>
+            <div class="dropdown-items">
+              <a href="{% url 'sProfile' %}" class="dropdown-item"
+                >View Profile</a
+              >
+              <a href="{% url 'logout' %}" class="dropdown-item">Logout</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- content -->
+    <div class="content">
+      <!-- side bar  -->
+      <div class="sidebar">
+        <a href="{% url 'sHome' %}" class="sidebar-item">
+          <img
+            class="sidebar-icon"
+            src="https://i.postimg.cc/DZS58F2h/home-button-iplm.png"
+          />
+          <span class="sidebar-item-text">Home</span>
+        </a>
+        <div class="sidebar-divider">CLASSROOM</div>
+        <a href="{% url 'sScheduleView' %}" class="sidebar-item">
+          <img
+            class="sidebar-icon"
+            src="https://i.postimg.cc/3R4bxwDX/schedule.png"
+          />
+          <span class="sidebar-item-text">Schedule</span>
+        </a>
+        <a href="{% url 'sChecklist' %}" class="sidebar-item">
+          <img
+            class="sidebar-icon"
+            src="https://i.postimg.cc/J7jP6v3z/checklist.png"
+          />
+          <span class="sidebar-item-text">Checklist</span>
+        </a>
+        <a href="{% url 'sGradeSubmission1' %}" class="sidebar-item">
+          <img
+            class="sidebar-icon"
+            src="https://i.postimg.cc/NMm7n2Hz/mygrades.png"
+          />
+          <span class="sidebar-item-text">My Grades</span>
+        </a>
+        <div class="sidebar-divider">OTHERS</div>
+        <a href="{% url 'donesp' %}" class="sidebar-item">
+          <img
+            class="sidebar-icon"
+            src="https://i.postimg.cc/PJfpMCzZ/studyplan.png"
+          />
+          <span class="sidebar-item-text">Study Plan</span>
+        </a>
+        <a href="{% url 'doneLoa' %}" class="sidebar-item">
+          <img
+            class="sidebar-icon"
+            src="https://i.postimg.cc/Gp0457xb/LOA.png"
+          />
+          <span class="sidebar-item-text">Leave of Absence</span>
+        </a>
+        <a href="{% url 'doneHd' %}" class="sidebar-item">
+          <img
+            class="sidebar-icon"
+            src="https://i.postimg.cc/mkhZDCyd/honorabledismissal.pngg"
+          />
+          <span class="sidebar-item-text">Honorable Dismissal</span>
+        </a>
+        <a href="{% url 'donepracticum' %}" class="sidebar-item">
+          <img
+            class="sidebar-icon"
+            src="https://i.postimg.cc/SK7xtyKG/practicum.png"
+          />
+          <span class="sidebar-item-text">Practicum</span>
+        </a>
+        <a href="{% url 'doneOSF' %}" class="sidebar-item">
+          <img
+            class="sidebar-icon"
+            src="https://i.postimg.cc/Kzf01wnM/shifting-form.png"
+          />
+          <span class="sidebar-item-text">Outbound Shifting</span>
+        </a>
+      </div>
+
+      <!-- main content -->
+      <div class="main-content">
+        <!--Image-->
+        <div class="container-fluid">
+        <img
+          class="unavailableImg"
+          src="{% static 'CRS/images/sClassroom/clip-979.png' %}"
+        />
+        <div class="unavailable">
+          Practicum not eligible. 
+        </div>
+        <div class="unavailablesub">
+          Make sure you are a 4th year student!
+        </div>
+        <a href="{% url 'sHome' %}">
+          <input type="button" class="submitbtn" value="Go Back to Home" />
+        </a>
+        </div>
+      </div>
+    </div>
+    {% endblock content %}
+    <!-- Javascript -->
+    <script>
+      var notifWindow = document.getElementById("notif-window");
+
+      document
+      .getElementById("notif-button")
+      .addEventListener("click", function () {
+          var display = notifWindow.style.display === "flex" ? "none" : "flex";
+          notifWindow.style.display = display;
+      });
+      var profileDropdown = document.getElementById("dropdown-window");
+      document
+      .getElementById("dropdown-button")
+      .addEventListener("click", function () {
+          var display =
+          profileDropdown.style.display === "flex" ? "none" : "flex";
+          profileDropdown.style.display = display;
+      });
+    </script>
+  </body>
+</html>

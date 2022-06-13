@@ -3350,7 +3350,8 @@ def sHome(request):
         id= request.user.id
         acad = AcademicYearInfo.objects.all
         info = StudentInfo.objects.get(studentUser=id)
-        context = {'id': id, 'info':info, 'acad': acad}
+        events_list=eventsComponent(request)
+        context = {'id': id, 'info':info, 'acad': acad, 'events_list':events_list}
         return render(request, 'student/sHome/sHome.html', context) 
     else:
          return redirect('index')
@@ -3438,6 +3439,24 @@ def OJTNotif(request):
             description = "Application Submission Feedback"
         except OjtApplicant.DoesNotExist:
             notif_type = "PRACTICUM"
+            description = "No Submitted Application"
+            feedback = None
+        context = {'id': id,'acad':acad, 'info':info, 'feedback' : feedback, 'notif_type' : notif_type, 'description' : description }
+        return render(request, 'student/sHome/sHomeNotifdetails.html', context) 
+    else:
+         return redirect('index')
+
+def OutboundNotif(request):
+    if request.user.is_authenticated and request.user.is_student:
+        id= request.user.id
+        acad = AcademicYearInfo.objects.all
+        info = StudentInfo.objects.get(studentUser=id)
+        try:
+            notif_type = "OUTBOUND SHIFTING"
+            feedback = OutShifterApplicant.objects.get(studentID=id)
+            description = "Application Submission Feedback"
+        except OutShifterApplicant.DoesNotExist:
+            notif_type = "OUTBOUND SHIFTING"
             description = "No Submitted Application"
             feedback = None
         context = {'id': id,'acad':acad, 'info':info, 'feedback' : feedback, 'notif_type' : notif_type, 'description' : description }
@@ -4069,25 +4088,7 @@ def Student_Clearance(request):
     else:
             return redirect('index')
 
-
-
 def sHd2(request):
-    if request.user.is_authenticated and request.user.is_student:
-        context={'file':HD_DroppingForm.objects.all()}
-        return render(request, 'student/sOthers/sHd2.html', context)
-    else:
-        return redirect('index')
-
-def HD_DownloadDF(request,path):
-    file_path=os.path.join(settings.MEDIA_ROOT,path)
-    if os.path.exists(file_path):
-        with open(file_path,'rb')as fh:
-            response=HttpResponse(fh.read(),content_type="application/Admin_Upload")
-            response['Content-Disposition']='inline;filename'+os.path.basename(file_path)
-            return response
-    raise Http404
-
-def sHd3(request):
     if request.user.is_authenticated and request.user.is_student:
         id= request.user.id
         info = StudentInfo.objects.get(studentUser=id)
@@ -4122,13 +4123,29 @@ def sHd3(request):
                     applicant.studentYear = request.POST.get('studentYear')
                     applicant.studentCurrentdate = request.POST.get('studentCurrentdate')
                     applicant.save()
-                    return redirect('sHd3') 
+                    return redirect('sHd2') 
             except ObjectDoesNotExist:
                 transfer = hdTransferCert(studentID=info,studentSchool=studentSchool,studentSchooladdress=studentSchooladdress ,studentHomeaddress=studentHomeaddress,studentCollege=studentCollege,studentCredentials=studentCredentials,studentFirstSY=studentFirstSY,studentLastPSY=studentLastPSY,studentNoOfSem=studentNoOfSem,studentDegree=studentDegree,studentMonth=studentMonth,studentDay=studentDay,studentYear=studentYear,studentCurrentdate=studentCurrentdate)
                 transfer.save()
-        return render(request, 'student/sOthers/sHd3.html', {'info':info})
+        return render(request, 'student/sOthers/sHd2.html', {'info':info})
     else:
         return redirect('index')
+
+def sHd3(request):
+    if request.user.is_authenticated and request.user.is_student:
+        context={'file':HD_DroppingForm.objects.all()}
+        return render(request, 'student/sOthers/sHd3.html', context)
+    else:
+        return redirect('index')
+
+def HD_DownloadDF(request,path):
+    file_path=os.path.join(settings.MEDIA_ROOT,path)
+    if os.path.exists(file_path):
+        with open(file_path,'rb')as fh:
+            response=HttpResponse(fh.read(),content_type="application/Admin_Upload")
+            response['Content-Disposition']='inline;filename'+os.path.basename(file_path)
+            return response
+    raise Http404
 
 #HD Transfer Cert Fill-Up
 def Student_Transfer(request):
@@ -4536,7 +4553,7 @@ def donepracticum(request):
         info = StudentInfo.objects.get(studentUser=id)
         if info.studentYearlevel == "4":
             try:
-                applicant = LOAApplicant.objects.get(studentID_id=id)
+                applicant = OjtApplicant.objects.get(studentID_id=id)
                 if applicant.remarks == "Returned":
                     return redirect('sPracticum1') 
                 else:
@@ -4545,20 +4562,11 @@ def donepracticum(request):
                 return redirect('sPracticum1')
         else:
             try:
-                hd_applicant = hdApplicant.objects.get(studentID=id)
-            except hdApplicant.DoesNotExist:
-                hd_applicant = None
-            try:
                 ojt_applicant = OjtApplicant.objects.get(studentID=id)
             except OjtApplicant.DoesNotExist: 
                 ojt_applicant = None
-            try:
-                loa_applicant = LOAApplicant.objects.get(studentID=id)
-            except LOAApplicant.DoesNotExist: 
-                loa_applicant = None
-            context = {'hd_applicant' : hd_applicant , 'ojt_applicant' : ojt_applicant , 'loa_applicant' :loa_applicant}
-            messages.error(request,'Not Eligible!')
-            return render(request,'student/sOthers/sOthers.html', context)
+            context = {'ojt_applicant' : ojt_applicant}
+            return render(request,'student/sOthers/sPracticumEligible.html', context)
     else:
         return redirect('index')
 
@@ -4582,8 +4590,7 @@ def donesp(request):
             except spApplicant.DoesNotExist:
                 sp_Applicant = None
             context = {'sp_Applicant' : sp_Applicant}
-            messages.error(request,'You are a regular student!')
-            return render (request, 'student/sOthers/sOthers.html', context)
+            return render (request, 'student/sOthers/sStudyPlanRegular.html', context)
 
    
     else:
@@ -6655,7 +6662,7 @@ def app_num(b):
     cursor = connec.cursor()
     a = 1
     if b == 1:
-        a = cursor.execute("SELECT LAST_INSERT_ID() from crs_transfereeapplicant;")
+        #a = cursor.execute("SELECT LAST_INSERT_ID() from crs_transfereeapplicant;")
         num = int(a) + 1
         num =str(num)
         test = len(num)
@@ -6668,7 +6675,7 @@ def app_num(b):
         applicant_num = num2
         return applicant_num
     elif b == 2:
-        a = cursor.execute("SELECT LAST_INSERT_ID() from crs_shifterapplicant;")
+        #a = cursor.execute("SELECT LAST_INSERT_ID() from crs_shifterapplicant;")
         num = int(a) + 1
         num =str(num)
         test = len(num)
@@ -6681,7 +6688,7 @@ def app_num(b):
         applicant_num = num2
         return applicant_num
     elif b == 3:
-        a = cursor.execute("SELECT LAST_INSERT_ID() from crs_facultyapplicant;")
+        #a = cursor.execute("SELECT LAST_INSERT_ID() from crs_facultyapplicant;")
         num = int(a) + 1
         num =str(num)
         test = len(num)
