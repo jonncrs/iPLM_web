@@ -52,3 +52,6 @@ whitenoise==6.1.0
 xhtml2pdf==0.2.7
 xlrd==2.0.1
 xlwt==1.3.0
+pip install mysql-connector-python
+pip install django-session-timeout
+pip install django-auto-logout

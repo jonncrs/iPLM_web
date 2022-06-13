@@ -34,6 +34,7 @@ ALLOWED_HOSTS = ['*','iplm-site.herokuapp.com','.herokuapp.com']
 # Application definition
 
 INSTALLED_APPS = [
+    'admin_confirm',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -130,7 +131,7 @@ TIME_ZONE = 'Asia/Manila'
 
 USE_I18N = True
 
-USE_L10N = True
+USE_L10N = False
 
 USE_TZ = True
 
@@ -154,7 +155,7 @@ AUTH_USER_MODEL = 'CRS.User'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'iplm.haribon@gmail.com'
-EMAIL_HOST_PASSWORD = 'iplmharibon2022'
+EMAIL_HOST_PASSWORD = 'zcsedqhoedkiwtic'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 

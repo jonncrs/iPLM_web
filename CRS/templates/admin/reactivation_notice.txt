@@ -1,0 +1,10 @@
+{% autoescape off %}
+Dear Haribon:
+
+This email is to inform you that your account has been reactivated.
+Click on the link {{ protocol }}://{{ domain }} to be redirected to the iPLM Website.
+
+
+
+Thank you.
+{% endautoescape %}

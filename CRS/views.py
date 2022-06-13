@@ -6662,7 +6662,7 @@ def app_num(b):
     cursor = connec.cursor()
     a = 1
     if b == 1:
-        a = cursor.execute("SELECT LAST_INSERT_ID() from crs_transfereeapplicant;")
+        #a = cursor.execute("SELECT LAST_INSERT_ID() from crs_transfereeapplicant;")
         num = int(a) + 1
         num =str(num)
         test = len(num)
@@ -6675,7 +6675,7 @@ def app_num(b):
         applicant_num = num2
         return applicant_num
     elif b == 2:
-        a = cursor.execute("SELECT LAST_INSERT_ID() from crs_shifterapplicant;")
+        #a = cursor.execute("SELECT LAST_INSERT_ID() from crs_shifterapplicant;")
         num = int(a) + 1
         num =str(num)
         test = len(num)
@@ -6688,7 +6688,7 @@ def app_num(b):
         applicant_num = num2
         return applicant_num
     elif b == 3:
-        a = cursor.execute("SELECT LAST_INSERT_ID() from crs_facultyapplicant;")
+        #a = cursor.execute("SELECT LAST_INSERT_ID() from crs_facultyapplicant;")
         num = int(a) + 1
         num =str(num)
         test = len(num)
