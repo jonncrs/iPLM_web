@@ -1,3 +1,5 @@
+<!--FACULTY APPLICANT FORM 10PM JUNE 7, 2022-->
+<!-- ICON NALANG KULANG-->
 {% load static %}
 
 <!DOCTYPE html>
@@ -7,10 +9,16 @@
 <head>
 
 	<title>Applicant</title>
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">
+	<link href="https://fonts.googleapis.com/css?family=Lato:200,300,400,600,700,900&subset=latin-ext" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900&subset=latin-ext' rel='stylesheet' type='text/css'>
 	 <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!--FONTS-->
+	<link href="https://fonts.googleapis.com/css?family=Lato:200,300,400,600,700,900&subset=latin-ext" rel="stylesheet">
+
+	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900&subset=latin-ext' rel='stylesheet' type='text/css'>
 
     <!-- Bootstrap CSS --> 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -24,38 +32,36 @@
 
 <style>
 
-	body {
-		overflow-x: hidden;
-	}
 	/*SCROLLBAR*/
 	::-webkit-scrollbar {
-		width: 10px;
-	}
+			width: 10px;
+		}
 
-	/* Track */
-	::-webkit-scrollbar-track {
-		background: #e4e4e4;
-		border-radius: 12px;
-	}
-	
-	/* Handle */
-	::-webkit-scrollbar-thumb {
-		background: #cbcbcb;
-		border-radius: 12px;
-	}
+		/* Track */
+		::-webkit-scrollbar-track {
+			background: #e4e4e4;
+			border-radius: 12px;
+		}
+		
+		/* Handle */
+		::-webkit-scrollbar-thumb {
+			background: #cbcbcb;
+			border-radius: 12px;
+		}
 
-	/* Handle on hover */
-	::-webkit-scrollbar-thumb:hover {
-		background: #8f8f8f; 
-	}
+		/* Handle on hover */
+		::-webkit-scrollbar-thumb:hover {
+			background: #0892DD; 
+		}
 
 	/* para maging kulay blue yung font */
 	#FullNametext, #ContactInformationText, #DepartmentInformationText, #AvailabilityTimeText
 	{
-		font-size: 18px;
-		font-family: Nunito;
-		color: #0C66CC;
+		font-size: 20px;
+		font-family: Source Sans Pro;
+		color: #06529B;
 		position:absolute;
+		position: absolute;
 	}
 	
 	#FullNametext
@@ -76,6 +82,7 @@
 		left: 80px;
 	}
 
+	
 	/* para kalinya ng header */
 	#AvailabilityTimeText
 	{
@@ -87,23 +94,109 @@
 	#LastName, #FirstName, #MiddleName, #EmailAddress, #Phone, #department, #Time, #Sex
 	{
 		width: 240px;
-		height:25px;
+		height: 30px;
 		box-sizing: border-box;
-		border: 2px solid #ECECEC;
-		border-radius: 7px;
-		background-color: #ECECEC;
-		color: black;
-		text-indent:10px;
-		font-family: Nunito;
+		position: absolute;
+		border: 1px solid #1698DF;
+		border-radius: 4px;
+		background-color: #D7DFF6;
+		font-family: 'Source Sans Pro';
+        width: 190px;
         
 	}
-   
+
+	 /* Full Name  */
+	 #LastName
+	{
+		position:absolute;
+        top: 150px;
+        left: 295px;
+	}
+	
+	#FirstName
+	{
+		
+		position:absolute;
+        top: 150px;
+        left: 48%;
+        
+	}
+	
+	#MiddleName
+	{
+		position:absolute;
+        top: 150px;
+        left:70.5%;
+	}
+
+		/* Contact Info  */
+		#EmailAddress
+	{
+		position:absolute;
+		top: 32%;
+		left: 295px;
+	}
+	
+	#Phone
+	{
+		position:absolute;
+		top: 32%;
+		left: 49%;
+	}
+
+	#Sex
+	{
+		position:absolute;
+        top: 32%;
+        left:70.5%;
+	}
+
+	/* Availability Time */
+	#Time
+	{
+        position:absolute;
+		top: 360px;
+		left: 295px;
+	}
+
+
+
+	body
+	{
+		background-color: #F3F6FF;;
+		overflow-y: auto;
+		height: 1200px;
+		overflow-x:hidden;
+	
+	}
+	
+	#backbutton
+	{
+		top:        80px;
+		left:       144px;
+        position:   relative;
+		color: #06529B;
+	}
+
+	#roundbg
+	{
+		border-radius: 25px;
+		background: white;
+		box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+		width: 1100px;
+		height: 1000px;
+		position:relative;
+		top: 100px;
+		left: 120px;
+	}
+	
+	
 	/* Contact Info  */
 	#EmailAddress
 	{
 		position:absolute;
 		top: 220px;
-		left: 280px;
+		left: 295px;
 	}
 
 	#Phone
@@ -124,7 +217,7 @@
 	{
 		position:absolute;
 		top: 290px;
-		left: 280px;
+		left: 295px;
 	}
 
 	/* para kahanay ng mga paglalagyan ng input */
@@ -132,60 +225,78 @@
 	{
 		position:absolute;
 		top: 360px;
-		left: 280px;
+		left: 295px;
 	}
 
+	#FacultyApplicationFormTitle, #UploadDocumentsTitle
+	{
+		font-size:26px;
+		font-family:Lato;
+		font-weight:bold;
+		color: #06529B;
+		position:absolute;
+		
+	}
+
+	
 	#subDepartment
 	{
 		font-size: 12px;
-		font-family: Nunito;
-		color: #0C66CC;
+		font-family: 'Lato Heavy';
+		color: #06529B;
 		position:absolute;
-		top: 320px;
+		top: 325px;
 		left: 27%;
 	}
 	
 	#subEmailAddress
 	{
-		top: 250px;
+		top: 255px;
 		left: 27%;
 	}
 	
 	#subPhone
 	{
-		top: 250px;
-		left: 49%;
+		top: 255px;
+		left: 48%;
 	}
 
 	#subSex
 	{
 		font-size: 12px;
-		font-family: Nunito;
-		color: #0C66CC;
+		font-family: 'Source Sans Pro';
+		color: #06529B;
 		position:absolute;
-		top: 250px;
-		left: 72%;
+		top: 255px;
+		left: 71%;
 	}
 
 	/* para nasa ibaba ng lalagyan ng input */
 	#subTime
 	{
 		font-size: 12px;
-		font-family: Nunito;
-		color: #0C66CC;
+		font-family: 'Lato Heavy';
+		color: #06529B;
 		position:absolute;
-		top: 390px;
+		top: 395px;
 		left: 27%;
 	}
-	#line2{
-		top: 400px;
+		#line2
+	{
+		position: absolute;
+		width: 950px;
+		height: 0px;
+		border: 0.5px solid #06529B;
+		transform: rotate(180deg);
+		top: 430px;
+		left: 80px;
 	}
+
 	#UploadDocumentsTitle{
-		top: 420px;
-	}
-	#UDSub{
 		top: 450px;
 	}
+	
+
 	.donate-now {
 		list-style-type: none;
 		margin: 0 0 0 0;
@@ -222,100 +333,261 @@
 
 		.donate-now input[type="radio"]:checked+label,
 		.Checked+label {
-		background: #0C66CC ;
+		background: #0892DD; ;
 		color: white;
 		
 		}
 
+		/* gender circle */
 		.donate-now label {
 		padding: 5px;
-		border: 1px solid #CCC;
+		border: 1px solid #0892DD;
+		background: #FFFFFF;
 		border-radius: 20px;
 		cursor: pointer;
 		z-index: 90;
 		}
 
 		.donate-now label:hover {
-		background: #DDD;
+		background: #0892DD;
+		color:white;
 		}
 
 		#gender{
 		font-size:18px;
-		font-family:Nunito;
-		color: #0C66CC;
+		font-family:Source Sans Pro;
+		color: #08529b;
 		position:absolute;
-		position:absolute;
-		top: 216px;
-		left: 71%;
+		top: 220px;
+		left: 775px;
 		text-align: center;
+		line-height: 20px;
+
 		}
-		#PDSShape{
-		border: 1px solid #0C66CC;
-		background: #0C66CC;
-		font-size: 14px;
-		font-family: Nunito;
+
+
+		/* Title Sub */
+		#FAFSub, #UDSub
+	{
+
+		font-family: Source Sans Pro;
+		position:absolute;
+		width: 781px;
+		height: 32px;
+		left: 43px;
+		top: 482px;
+		font-weight: 400;
+		font-size: 20px;
+		line-height: 28px;
+		color: #06529B;
+	}
+
+	#FAFSub
+	{
+		top: 90px;
+		left: 80px;
+	}
+
+	#UDSub
+	{
+		top: 493px;
+		left: 80px;
+	}
+	
+	#subLastname, #subFirstname, #subMiddlename, #subEmailAddress, #subPhone, #subDegree, #subSex, #subDepartment, #subTime
+	{
+		position:absolute;
+		font-family: 'Lato';
+		font-style: normal;
+		font-weight: 400;
+		font-size: 13px;
+		line-height: 18px;
+		color: #06529B;
+
+
+	}
+
+ /* Full Name sub  */
+ #subLastname
+	{
+        
+		top: 185px;
+        left: 27%;
+	}
+
+	#subFirstname
+	{
+		top: 185px;
+		left: 48%;
+	}
+	
+	#subMiddlename
+	{
+		top: 185px;
+		left: 71%;
+	}
+
+
+
+	/* UPLOADING OF DOCUMENTS */
+
+
+	#CVShape, #CertificateShape, #CredentialsShape, #TORShape, #PDSShape
+	{
+		font-family: Source Sans Pro;
+		font-style: normal;
+		font-weight: 400;
+		font-size: 15px;
+		line-height: 19px;
+		display: flex;
+		align-items: center;
+		letter-spacing: 0.05em;
+		color: #FFFFFF;
 		margin-right: 10px;
-		color: white;
-		border-radius: 10px;
 		height: 40px;
 		width: 210px;
 		display: flex;
 		align-items: center;
 		justify-content: left;
-		position:absolute;
-		filter:drop-shadow(1px 1px 3px gray);
-		top: 768px;
-		left: 80px;
-		}
-		#PDSFile{
-			font-family: Nunito;
+		box-sizing: border-box;
+		background: #06529B;
+		border-radius: 5px;
+	}
+	
+	#CVFile, #CertificateFile, #CredentialsFile, #TORFile, #PDSFile
+	{
+		font-family: Source Sans Pro;
 		font-size:14px;
-		background: white;
-		filter:drop-shadow(0px 0px 10px rgb(211,211,211));
-		border-radius:10px;
-		height: 40px;
-		width: 210px;
+		border-radius: 10px;
+		filter:drop-shadow(0px 0px 10px rgb(211,211));
+		position:absolute;
+	}
+
+	#CVFile, #CertificateFile, #CredentialsFile, #TORFile, #PDSFile
+	{	/* No file chosen and choose file shape*/
+		font-family: Source Sans Pro;
+		font-size:  12px;
+		background: none;
+		border-radius: 10px;
+		filter:drop-shadow(0px 3px 3px rgb(211, 211, 211));
+		height: 60px;
+		width: 300px;	
 		outline: none;
 		position:absolute;
-		margin-left: 20px;
-		top: 768px;
-		left: 320px;
-		}
+	}
+
+	/*Choose file box */
+	::-webkit-file-upload-button
+	{
+		color: #06529B;
+		border: none;
+		cursor: pointer;
+		width: 113px;
+		height: 45px;
+		background: #F3F6FF;
+		
+	}
+	
+	::-webkit-file-upload-button:hover
+	{
+		background: #0892DD;
+		color: white;
+	}
+	
+
+
+/* SUBMIT BUTTON */
+#submitbutton
+{
+	border: 1px solid #06529b;
+	background: #06529b;
+	font-size: 17px;
+	font-family: Lato;
+	cursor: pointer;
+	margin: 10px;
+	color: #ffffff;
+	transition: 0.8;
+	border-radius: 10px;
+	height: 40px;
+	width: 130px;
+	transition-duration: 0.4s;
+	top: 900px;
+	left: 900px;
+	text-align: center;
+	position:absolute;
+	line-height: 30px;
+	
+}
+
+#submitbutton:hover
+	{
+		color: white;
+		background: #0892DD;
+	}
+	
+	#backbutton
+	{
+		font-weight: bold;
+    	font-size: 16px;
+		text-align: center;
+    	font-family: Source Sans Pro;
+    	cursor: pointer;
+   	 	margin: 10px;
+    	margin-left: -50px;
+    	color: white;
+    	transition: 0.8;
+    	width: 100px;
+    	height: 36.85px;
+    	background: #06529B;
+    	mix-blend-mode: darken;
+   	 	border: 0.5px solid #0892DD;
+    	border-radius: 5px;
+		position: absolute;
+    	left: 200px;
+    	top: 50px;
+		line-height: 35px;
+	}
+	#backbutton:hover
+	{
+		color:white;
+		background: #0892DD;
+
+	}
 </style>
 
 
 </head>
 
 <body>
-	<div id="backbutton"><a href="{% url 'applicantrequirements' %}"> <!--templates/Applicants/Faculty--><img src="{% static 'CRS/images/Applicants/Faculty/back.png' %}" alt="iplm" width="35px" height="35px"></a></div>
+	<p><a href="{% url 'applicantrequirements' %}"><button type="text" value="Back" id="backbutton">Back </button></a></p>
     
 	<div id="roundbg">
-	<p id="FacultyApplicationFormTitle">Faculty Application Form</p>
+	<p id="FacultyApplicationFormTitle" style="font-family:Lato;">Faculty Application Form</p>
 	
-	<p id="FAFSub">Please complete the form below to be admitted in our department.</p> 
+	<p id="FAFSub" style="font-family: Source Sans Pro;">Please complete the form below to be admitted in our department.</p>
 
-	<p id="FullNametext">Full Name<span style="color:#ff0000"><b>*</b></span></p>
+	<p id="FullNametext" style="font-family:Lato;">Full Name<span style="color:#ff0000"><b>*</b></span></p>
 		<form method ="POST" enctype="multipart/form-data" onsubmit ="return checkforblank()">
 			{%csrf_token%}
             <!--last name-->
-			<input type="text" id="LastName" name="lastName" placeholder="Dela Cruz">
-			<p id="subLastname">Last Name</p>
+			<input type="text"  id="LastName" name="lastName" placeholder="Dela Cruz">
+			<p id="subLastname" style="font-family:Source Sans Pro;">Last Name</p>
             
             <!--first name-->
 			<input type="text" id="FirstName" name="firstName" placeholder="Juan">
-			<p id="subFirstname">First Name</p>
+			<p id="subFirstname" style="font-family:Source Sans Pro;">First Name</p>
             
             <!--middle name-->
 			<input type="text" id="MiddleName" name="middleName" placeholder="Cortez">
-			<p id="subMiddlename">Middle Name</p>
+			<p id="subMiddlename" style="font-family:Source Sans Pro;">Middle Name</p>
 		
-	<p id="ContactInformationText">Additional Information<span style="color:#ff0000"><b>*</b></span></p>            <!--email address-->
+	<p id="ContactInformationText" style="font-family:Lato;">Additional Information<span style="color:#ff0000"><b>*</b></span></p>            <!--email address-->
 			<input type="email" id="EmailAddress" name="email" placeholder="name@email.com">
-			<p id="subEmailAddress">Email Address</p>
+			<p id="subEmailAddress" style="font-family:Source Sans Pro;">Email Address</p>
             
             <!--phone number-->
 			<input type="tel" id="Phone" name="phoneNumber" pattern="[0-9]{11}" placeholder="09123456789">
-			<p id="subPhone">Phone Number</p>
+			<p id="subPhone" style="font-family:Source Sans Pro;">Phone Number</p>
 
 			<div id="gender">
 				<ul class="donate-now">
@@ -329,57 +601,56 @@
 					</li>
 				  </ul>
 			</div>
-			<p id="subSex">Sex</p>
+			<p id="subSex" style="font-family:Source Sans Pro;">Sex</p>
 
-
-	<p id="DepartmentInformationText">Department to Apply <span style="color:#ff0000"><b>*</b></span></p>            <!--email address-->
-			<select id="department" name="department">
+	<p id="DepartmentInformationText" style="font-family:Lato;">Department to Apply <span style="color:#ff0000"><b>*</b></span></p>            <!--email address-->
+				<select id="department" name="department">
 				<option value="BSIT">BSIT</option>
 				<option value="BSEE">BSEE</option>
 			</select>
-			<p id="subDepartment">Department</p>
+			<p id="subDepartment" style="font-family:Lato;">Department</p>
 
-	<p id="AvailabilityTimeText">Availability Time <span style="color:#ff0000"><b>*</b></span></p>
+	<p id="AvailabilityTimeText" style="font-family:Lato;">Availability Time <span style="color:#ff0000"><b>*</b></span></p>
 			<input type="text" id="Time" name="Time" placeholder="12:00AM-12:00PM">
-			<p id="subTime">Time</p>
+			<p id="subTime" style="font-family:Lato">Time</p>
 
 
 
-	<hr id="line2" color="#d3d3d3" width="980px">
+	<hr id="line2">
 	
-	<p id="UploadDocumentsTitle">Upload Documents</p>
-	<p id="UDSub">Please upload the following documents.</p>
+	<p id="UploadDocumentsTitle" style="font-family:Lato;">Upload Documents</p>
+	<p id="UDSub" style="font-family:Source Sans Pro;">Please upload the following documents.</p>
             
 	<!--left side-->
-	<p id="CVShape">&nbsp;&nbsp;&nbsp;&nbsp;CV</p>
+	<p id="CVShape" style="font-family:Source Sans Pro;">&nbsp;&nbsp;&nbsp;&nbsp;CV</p>
+      
+	<p id="CertificateShape" style="font-family:Source Sans Pro;"> &nbsp;&nbsp;&nbsp;&nbsp; Certificate/s (Max:10)</p>
             
-	<p id="CertificateShape"> &nbsp;&nbsp;&nbsp;&nbsp; Certificate/s (Max:10)</p>
+	<p id="CredentialsShape" style="font-family:Source Sans Pro;"> &nbsp;&nbsp;&nbsp;&nbsp; Credentials</p>
             
-	<p id="CredentialsShape"> &nbsp;&nbsp;&nbsp;&nbsp; Credentials</p>
-            
-	<p id="TORShape">&nbsp;&nbsp;&nbsp;&nbsp;TOR</p>
+	<p id="TORShape" style="font-family:Source Sans Pro;">&nbsp;&nbsp;&nbsp;&nbsp;TOR</p>
 
-	<p id="PDSShape">&nbsp;&nbsp;&nbsp;&nbsp;PDS</p>
+	<p id="PDSShape" style="font-family:Source Sans Pro;">&nbsp;&nbsp;&nbsp;&nbsp;PDS</p>
 
 
 
      <!--Choose file-->       
-	<input type="file" id="CVFile" name="CV" mr-4 accept=".pdf">
+	<input type="file" id="CVFile" name="CV" mr-4 accept=".pdf" style="font-family:Source Sans Pro;">
             
-	<input type="file" id="CertificateFile" name="certificates" multiple accept=".pdf">
+	<input type="file" id="CertificateFile" name="certificates" multiple accept=".pdf" style="font-family:Source Sans Pro;">
             
-	<input type="file" id="CredentialsFile" name="credentials" accept=".pdf">
+	<input type="file" id="CredentialsFile" name="credentials" accept=".pdf" style="font-family:Source Sans Pro;">
             
-	<input type="file" id="TORFile" name="TOR" accept=".pdf">
+	<input type="file" id="TORFile" name="TOR" accept=".pdf" style="font-family:Source Sans Pro;">
 
-	<input type="file" id="PDSFile" name="PDS" accept=".pdf">
+	<input type="file" id="PDSFile" name="PDS" accept=".pdf" style="font-family:Source Sans Pro;">
 
-	<picture><a><p id="imageForm"><img src="{% static 'CRS/images/Applicants/Faculty/clip-1712.png' %}" alt="iplm" width="290px" height="230px"></a></p></picture>
+	<picture><a><p id="imageForm"><img src="{% static 'CRS/images/Applicants/Faculty/form.png' %}" alt="iplm" width="200px" height="210px"></a></p></picture>
 
 
 <script>
 	const types = ["CVFile", "CertificateFile", "CredentialsFile", "TORFile", "PDSFile"];
-	for(let x=0; x<5; x++){
+	for(let x=0; x<6; x++){
 	var file = document.getElementById(types[x]);
 	file.onchange = function(e) {
 	var ext = this.value.match(/\.([^\.]+)$/)[1];
@@ -394,7 +665,7 @@
 	};
 }
 </script>
-	<a href="{% url 'applicant_facultyapplicationform_workexpsheet' %}"> <button id="submitbutton"> <!--templates/Applicants/Faculty--> Next </button></a>
+<a href="{% url 'applicant_facultyapplicationform_workexpsheet_submitted' %}"><button type="submit" value="Submit" id="submitbutton">Submit </button></a>
 </form> </div>
 
 

@@ -673,8 +673,9 @@ class ShifterApplicant(models.Model):
     signature2 = models.ImageField(upload_to='ShifterSign/', null=True, blank=True)
     applicant_num = models.CharField(max_length=10, verbose_name="applicant_num", null=True)
     sex = models.CharField(max_length=100, verbose_name="sex", null=True)
+    Checklist  = models.FileField(upload_to='ShifterSubmission/', blank=True, null=True)
     shiftingForm = models.FileField(upload_to='ShifterSubmission/', blank=True, null=True)
-    
+    comment = models.TextField(null=True, blank=True, verbose_name='Feedback')
 
     # dateApproved = models.DateTimeField()
 
@@ -699,7 +700,7 @@ class TransfereeApplicant(models.Model):
     studentHD = models.FileField(upload_to='TransfereeSubmission/', blank=True, null=True)
     studentGoodmoral = models.FileField(upload_to='TransfereeSubmission/', blank=True, null=True)
     studentGrade = models.FileField(upload_to='TransfereeSubmission/', blank=True, null=True)
-    transfer_comment = models.TextField(null=True, blank=True, verbose_name='Feedback')
+    comment = models.TextField(null=True, blank=True, verbose_name='Feedback')
     remarks = models.CharField(max_length=150, default='Submitted', verbose_name='Status')
     transfer_dateSubmitted = models.DateField(default=now)
     signature1 = models.ImageField(upload_to='TransfereeSign/', null=True, blank=True)
@@ -734,17 +735,8 @@ class FacultyApplicant(models.Model):
     TOR = models.FileField(upload_to='facultyApplicant/', blank=True, null=True)
     PDS = models.FileField(upload_to='facultyApplicant/', blank=True, null=True)
     remarks = models.CharField(max_length=150, default='Submitted', verbose_name='Status')
-    comment = models.TextField(null=True, blank=True, verbose_name='Feedback')
-    
-#----------------------------WORK EXPERIENCE SHEET-------------------------------------------------
-
-    durationwork = models.CharField(max_length=100, verbose_name="Durationwork", null=True)
-    positionwork = models.CharField(max_length=100, verbose_name="positionwork", null=True)
-    officeunit = models.CharField(max_length=100, verbose_name="office unit", null=True)
-    agencyorg = models.CharField(max_length=100, verbose_name="agency", null=True)
-    accomplishments = models.FileField(upload_to='facultyApplicant/', blank=True, null=True)
-    summaryduties = models.FileField(upload_to='facultyApplicant/', blank=True, null=True)
     applicant_num = models.CharField(max_length=10, verbose_name="applicant_num", null=True)
+    comment = models.TextField(null=True, blank=True, verbose_name='Feedback')
     
     class Meta:
         verbose_name_plural = "Faculty Applicants"

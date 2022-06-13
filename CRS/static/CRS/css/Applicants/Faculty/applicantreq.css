@@ -1,6 +1,11 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:200,300,400,600,700,900&subset=latin-ext" rel="stylesheet">);
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900&subset=latin-ext' rel='stylesheet' type='text/css'>);
+
 body
 {
-    background-color: #0C66CC;
+    background-color: #f3f6ff;
+    overflow: scroll;
+    zoom: 100%;
     
 }
 
@@ -10,115 +15,231 @@ body
     padding:0;
 }
 
-#gridplm
-{
-    position: fixed;
-    top: 0px;
-    right: 0px;
-    z-index: -1;
+#container-fluid{
+    border-radius: 25px;
+	background: white;
+	width: 1140px;
+	height: 473px;
+	position: relative;
+	top: 67px;
+	left: 120px;
+	border-radius: 5px;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    display: inline-table;
+
+}
+.content{
+    margin: 20px auto 0 auto;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: #06529B 1px solid;
+    width: 60%;
+    border-radius: 5px;
+    width: 413px;
+    height: 381px;
+    position: relative;
+    top: 25px;
+}
+.line{
+    border-right: #06529B 1px solid;
+    width: 60%;
+    width: 413px;
+    height: 380px;
+    position: absolute;
+    right: 10px;
+}
+#backbutton{
+	top:        60px;
+	left:       144px;
+    position:   relative;
+	color: #06529B;
 }
 
-#backbutton
+.bckbtn{
+    font-weight: bold;
+		border: 0px;
+		background: #06529B;
+		padding: 10px 24px;
+		font-size: 15px;
+		font-family: Source Sans Pro;
+		cursor: pointer;
+		margin: 0px;
+		margin-left: -66px;
+		color: white;
+		transition: 0.8;
+		border-radius: 10px;
+		height: 40px;
+		width: 100px;
+	}
+
+.bckbtn:hover
 {
-    position: fixed;
-    top: 160px;
-    left: 170px;
+    background-color: #0892DD;
+    color: white;
 }
 
+.applicantreqtxt{
+    border-bottom: #06529B 3px solid;
+    text-align: center;
+    width: 70%;
+    margin: 10px auto 0px auto;
+    padding-top: 20px;
+}
+.facultytxt{
+    width: 23%;
+    height: 35px;
+    margin: 0 auto;
+    padding: 0;
+    top: 0;
+}
+#Facultytext{
+    text-align: center;
+    color:  #06529B;
+    font-size:20px;
+    padding: 0;
+}
 #ApplicantRequirementtext
 {
-    font-size:22px;
-    font-family:Nunito;
+    font-family:Lato;
     font-weight:bold;
-    color: #BADBFF;
-    position: fixed;
-    top: 220px;
-    left: 170px;
+    color:  #06529B;
+    margin: 0;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 26px;
+}
+.subdesc{
+    width: 90%;
+    height: 35px;
+    margin: 10px auto;
+    padding: 0;
+    top: 0;
+}
+.subdesc1{
+    width: 54%;
+    height: 150px;
+    margin: 30px auto 25px auto;
+    padding: 0;
+    top: 0;
+    text-align: justify;
 }
 
 #SubDescription1
 {
-    font-size: 12px;
-    font-family: Nunito;
-    color: white;
-    position: fixed;
-    top: 250px;
-    left: 170px;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: Source Sans Pro;
+    color:  #000000;
 }
 
 #ListOfRequirements
 {
     font-size: 16px;
-    font-family: Nunito;
-    color: white;
-    position: fixed;
-    top: 310px;
-    left: 170px;
+    font-family: Source Sans Pro;
+    color:  rgba(0, 0, 0, 0.7);
+    top: 160px;
+    left: 70px;
+    position: absolute;
 }
+.proceeddiv{
+    width: 20%;
+    margin: 30px 5px 10px auto;
 
-#image1
-{
-    position: fixed;
-    top: 200px;
-    left: 700px;
 }
 
 #proceedbutton
 {
     border: 1px solid white;
-    background: white;
-    font-size: 14px;
-    font-family: Nunito;
+    background: #06529B;
+    font-size: 17px;
+    font-family: Source Sans Pro;
+    font-weight:700px;
     cursor: pointer;
-    margin: 10px;
-    color: #0C66CC;
+    color: #ffffff;
     transition: 0.8;
     border-radius: 10px;
-    height: 43px;
-    width: 128px;
+    height: 40px;
+	width: 130px;   
     transition-duration: 0.4s;
-    position: fixed;
-    top: 450px;
-    left: 150px;
+    margin-left: 70px;
 }
 
 #proceedbutton:hover
 {
-    background-color: #d3d3d3;
-    border: 1px solid #d3d3d3;
+    background-color: #0892DD;
+    border: 1px solid #0892DD;
 }
+
+/* for medyo small screens HAHAHAHAHAHAAH*/
+@media (max-width:1300px) {
+
+    #backbutton
+{
+    left: 100px;
+    top: 80px;
+}
+
+
+    .bckbtn{
+        font-size: 16px;
+        height: 40px;
+        width: 120px;
+    }
+
+    #container-fluid{
+        width: 20%;
+        height: 40px;
+    } 
+    .content{
+        margin: 50px auto;
+    }
+
+    #ApplicantRequirementtext
+    {
+    font-size:22px;
+    }
+    #Facultytext{
+        font-size:18px;
+    }
+    #ApplicantRequirementtext
+    {
+    font-size:22px;
+    }
+  
+    .subdesc1{
+        width: 30%;
+    }
+    #proceedbutton
+{
+    margin-bottom: 30px;
+}
+}
+
  /* for large screens*/
 @media (min-width:1600px) {
-   html
-{
-    
-}
 
 body
 {
-    background-color: #0C66CC;
-    overflow-y: auto;
-    height: 1000px;
+    background-color: #f3f6ff;
+    overflow-y: hidden;
+    height: 1000px auto;
     overflow-x:hidden;
-    zoom:120%;
+    zoom:100%;
 
 }
 }
 /* for extra large screens*/
 @media (min-width:1920px) {
 
-    html
-{
-    
-}
-
 body
 {
-    background-color: #0C66CC;
-    overflow-y: auto;
-    height: 1000px;
+    background-color: #f3f6ff;
+    width: auto;
+    overflow-y: hidden;
+    height: 1000px auto;
     overflow-x:hidden;
-    zoom:133%;
+    zoom:100%;
 
 }
-}
+}ssss

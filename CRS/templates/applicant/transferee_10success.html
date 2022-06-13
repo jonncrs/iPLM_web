@@ -5,7 +5,8 @@
 
 <head> 
 	<title>Transferee</title>
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">
+	<link href="https://fonts.googleapis.com/css?family=Lato:200,300,400,600,700,900&subset=latin-ext" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900&subset=latin-ext' rel='stylesheet' type='text/css'>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -19,6 +20,10 @@
   <link rel="icon" href="{% static '/CRS/images/cHome/iPLM.png' %}" type="image/png" sizes="16x16">
 
   <style>
+
+	body {
+		overflow-x: hidden;
+	}
 	/*SCROLLBAR*/
 	::-webkit-scrollbar {
 		width: 10px;
@@ -40,36 +45,188 @@
 	::-webkit-scrollbar-thumb:hover {
 		background: #8f8f8f; 
 	}
-</style>
+	body
+{
+    background-color: #f3f6ff;
+    overflow-y: scroll;
+    
+}
 
+#backbutton
+{
+	font-weight: bold;
+	border: 0px;
+	background: #06529B;
+	padding: 10px 33px;
+	font-size: 16px;
+	font-family: Source Sans Pro;
+	cursor: pointer;
+	margin: 50px;
+	margin-left: -55px;
+	color: white;
+	transition: 0.8;
+	border-radius: 10px;
+	height: 20px;
+	width: 100px;
+	top: 70px;
+	transition-duration: 0.4s;
+	position:relative;
+}
+    
+	
+}
+#backbutton:hover
+{
+    color: white; 
+    background: #06529b;
+}
+
+#roundbg
+{
+	border-radius: 25px;
+	background: white;
+	width: 1130px;
+	height: 550px;
+	position: relative;
+	top: 60px;
+	left: 120px;
+	border-radius: 5px;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+#imageSubmit
+{
+	
+    position:absolute;
+	top:     20px;
+	left:    445px;
+	width:   240px;
+	height:  220px;
+   
+    }
+
+#SuccessfullySubmitted
+{
+	font-size:30px;
+	font-family:Lato;
+	font-weight:bold;
+	color: #06529b;
+	position:absolute;
+	top: 240px;
+	left: 410px;
+	text-align: center;
+}
+
+#SubSS
+{
+    font-size: 17px;
+	font-family: Source Sans Pro;
+	color: #0C66CC;
+	position:absolute;
+	top: 270px;
+	left: 190px;
+	text-align: center;
+}
+
+#homebutton
+{
+	border: 1px solid #06529B;
+	background: #06529B;
+	font-weight:700px;
+	font-size: 20px;
+	font-family: Source Sans Pro;
+	cursor: pointer;
+	margin: 10px;
+	color: #fcfcfc;
+	transition: 0.8;
+	border-radius: 10px;
+	height: 45px;
+	width: 130px;
+	transition-duration: 0.4s;
+	top: 450px;
+	left: 493px;
+	text-align: center;
+	position:absolute;
+	line-height: 25px;
+	
+    
+}
+
+#homebutton:hover{
+ background: #0892DD;
+ COLOR: WHITE;
+}
+
+#SubSS
+{
+    font-size: 15px;
+	font-family: Source Sans Pro;
+	color: #06529B;
+	position:absolute;
+	top: 240px;
+	left: 265px;
+	text-align: center;
+}
+/* for large screens*/
+@media (min-width:1600px) {
+   html
+{
+    
+}
+
+body
+{
+    background-color: #f3f6ff;
+    overflow-y: auto;
+    height: 1000px;
+    overflow-x:hidden;
+    zoom:120%;
+
+}
+}
+/* for extra large screens*/
+@media (min-width:1920px) {
+
+    html
+{
+    
+}
+
+body
+{
+    background-color: #f3f6ff;
+    overflow-y: auto;
+    height: 1000px;
+    overflow-x:hidden;
+    zoom:133%;
+		
+	}
+</style>
 </head>
     <body>
-      <a href="{% url 'transferee_9applicationform' %}"><!--templates/Applicants/Students/Transferee--> <img src="{% static 'CRS/images/Applicants/Students/Transferee/back.png' %}" alt="iplm" id="backbutton" width="35px" height="35px" class=""></a>
+		
 <div id="roundbg">
     
-	   <img src="{% static 'CRS/images/Applicants/Students/Transferee/clip-1044.png' %}" alt="clip-1044" id="imageSubmit" width="230px" height="230px" class="rounded mx-auto d-block align-middle">
+	   <img src="{% static 'CRS/images/Applicants/Students/Transferee/submitted.png' %}" alt="clip-1044" id="imageSubmit" width="230px" height="230px" class="rounded mx-auto d-block align-middle">
 
 	       <div id="SuccessfullySubmitted">Successfully Submitted!</div>
 	
-	           <div id="SubSS">
-		          You have sucessfully submitted your shifting documents.
-		          <br>
-		          Your application number is {{app}} and please screeenshot or copy paste your email
-				  <br>
-				  and password for updates regarding your application.
-				  <br>
-				  <br>
-				  Email: {{mail}}
-				  <br>
-				  Password: {{num}}
-
-				  <br>
-				  PLEASE DON'T REFRESH PAGE
+		   <div id="SubSS">
+				<br>
+				<br>
+				You have sucessfully submitted your shifting documents.	Your application number is {{num}}. 
+				<br>
+				Please screenshot or copy paste your email and password for updates regarding your application.
+				<br>
+				<br>
+				Email: {{mail}}
+				<br>
+				Password: {{num}}
+				<br>
+				<br>
+				PLEASE DON'T REFRESH THE PAGE!
 	               </div>
-				<div class="col-lg-2">
-				</div>
-				<div class="col-lg-2">
-				</div>	   
+				
 		  <a href="{% url 'index' %}"> <!--templates/Landing Page-->       <button type="submit" id="homebutton" class="rounded mx-auto d-block mt-3"> <p class="mt-2">Done </p></button> </a>
 </div>
 

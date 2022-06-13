@@ -59,24 +59,24 @@
 	
 	#homebutton
 	{
-		border: 1px solid #ECC429;
-		background: #ECC429;
-		font-size: 14px;
-		font-family: Nunito;
-		cursor: pointer;
-		margin: 10px;
-		color: #0C66CC;
-		transition: 0.8;
-		border-radius: 10px;
-		height: 43px;
-		width: 128px;
-		transition-duration: 0.4s;
-		top: 365px;
-		left: 480px;
-		text-align: center;
-		position:absolute;
-		
-	}
+	border: 1px solid #06529b;
+	background: #06529b;
+	font-weight:bold;
+	font-size: 20px;
+	font-family: Source Sans Pro;
+	cursor: pointer;
+	margin: 10px;
+	color: #fcfcfc;
+	transition: 0.8;
+	border-radius: 20px;
+	height: 45px;
+	width: 130px;
+	transition-duration: 0.4s;
+	top: 380px;
+	left: 493px;
+	text-align: center;
+	position:absolute;
+}
 	
 	/* for large screens*/
 @media (min-width:1600px) {
