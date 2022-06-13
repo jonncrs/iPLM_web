@@ -10,7 +10,6 @@
 		overflow-y: auto;
 		height: 1000px;
 		overflow-x:hidden;
-	
 	}
 	
 	#backbutton
@@ -70,11 +69,11 @@
 	
 	#UDSub
 	{
-		top: 430px;
+		top: 440px;
 		left: 80px;
 	}
 	
-	#FullNametext, #ContactInformationText
+	#FullNametext, #ContactInformationText, #AvailabilityTimeText
 	{
 		font-size: 18px;
 		font-family: Nunito;
@@ -93,8 +92,14 @@
 		top: 32%;
 		left: 80px;
 	}
+
+	#AvailabilityTimeText
+	{
+	    top: 360px;
+	    left: 80px;
+	}
 	
-	#LastName, #FirstName, #MiddleName, #EmailAddress, #Phone
+	#LastName, #FirstName, #MiddleName, #EmailAddress, #Phone, #Time
 	{
 		width: 240px;
 		height:25px;
@@ -145,8 +150,23 @@
 		top: 32%;
 		left: 48%;
 	}
-	
-	#subLastname, #subFirstname, #subMiddlename, #subEmailAddress, #subPhone
+
+	#Sex
+	{
+		position:absolute;
+        top: 32%;
+        left:70.5%;
+	}
+
+	/* Availability Time */
+	#Time
+	{
+        position:absolute;
+		top: 360px;
+		left: 280px;
+	}
+
+	#subLastname, #subFirstname, #subMiddlename, #subEmailAddress, #subPhone, #subTime
 	{
 		font-size: 12px;
 		font-family: Nunito;
@@ -186,6 +206,13 @@
 		top: 305px;
 		left: 49%;
 	}
+
+	/* Availability Time */
+	#subTime
+	{
+        top: 440px;
+		left: 27%;
+	}
 	
 	#line2
 	{
@@ -194,7 +221,7 @@
 		left: 80px;
 	}
 
-	#CVShape, #CertificateShape, #CredentialsShape, #TORShape
+	#CVShape, #CertificateShape, #CredentialsShape, #TORShape, #PDSShape
 	{
 		border: 1px solid #0C66CC;
 		background: #0C66CC;
@@ -211,32 +238,38 @@
 		position:absolute;
 		filter:drop-shadow(1px 1px 3px gray);
 	}
-	
+
 	#CVShape
 	{
-		top: 488px;
+		top: 550px;
 		left: 80px;
 	}
 
 	#CertificateShape
 	{
-		top: 558px;
+		top: 620px;
 		left: 80px;
 	}
 	
 	#CredentialsShape
 	{
-		top: 628px;
+		top: 690px;
 		left: 80px;
 	}
 	
 	#TORShape
 	{
-		top: 698px;
+		top: 760px;
+		left: 80px;
+	}
+
+	#PDSShape
+	{
+	    top: 830px;
 		left: 80px;
 	}
 	
-	#CVFile, #CertificateFile, #CredentialsFile, #TORFile
+	#CVFile, #CertificateFile, #CredentialsFile, #TORFile, #PDSFile
 	{
 		font-family: Nunito;
 		font-size:14px;
@@ -268,26 +301,32 @@
 	
 	#CVFile
 	{
-		top: 488px;
+		top: 550px;
 		left: 320px;
 	}
 	
 	#CertificateFile
 	{
-		top: 558px;
+		top: 620px;
 		left: 320px;
 	}
 	
 	#CredentialsFile
 	{
-		top: 628px;
+		top: 690px;
 		left: 320px;
 	}
 	
 	#TORFile
 	{
-		top: 698px;
+		top: 760px;
 		left: 320px;
+	}
+
+	#PDSFile
+	{
+	    top: 830px;
+	    left: 320px;
 	}
 	
 	#submitbutton
@@ -318,8 +357,8 @@
 	
 	#imageForm
 	{
-		position:absolute;
-		top: 518px;
+		position: absolute;
+		top: 600px;
 		left: 740px;
 	}
 	
@@ -358,3 +397,5 @@
 	
 	}
 }
+
+

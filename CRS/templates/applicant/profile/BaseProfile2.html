@@ -11,8 +11,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
-    <link rel="stylesheet" href="{% static 'CRS/css/sHome/sHomeStyle.css' %}">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">
+    <link rel="stylesheet" href="{% static 'CRS/css/Applicants/sHomeStyle.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Lato:200,300,400,600,700,900&subset=latin-ext" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900&subset=latin-ext' rel='stylesheet' type='text/css'>
     <link rel="icon" href="{% static 'CRS/images/sClassroom/iPLM.png' %}" type="image/png" sizes="16x16">
     <!--NEW-->
     
@@ -24,7 +25,7 @@
         padding-top: 20px;
         font-size: 18px;
         color: #ffffff;
-        font-family: 'Nunito';
+        font-family: 'Source Sans Pro';
         background-color: #0C66CC;
         border: 2px solid #0C66CC;
         border-radius: 16px;
@@ -106,7 +107,7 @@
 		border: 1px solid #0C66CC;
 		background: #0C66CC;
 		font-size: 14px;
-		font-family: Nunito;
+		font-family: Source Sans Pro;
 		margin-right: 10px;
 		color: white;
 		border-radius: 10px;
@@ -183,7 +184,7 @@
 	}
 	#File1, #File2, #File3, #File4, #File5
 	{
-		font-family: Nunito;
+		font-family: Source Sans Pro;
 		font-size:  14px;
 		background: white;
 		border-radius: 10px;
@@ -209,13 +210,30 @@
 		background: #ECC429;
 	}
 	
-	
+    .feedback-box {
+    margin: 47px 81px;
+    margin-left: 1000px;
+    margin-bottom:400px ;
+    border-radius: 5px 5px 5px 5px;
+    border: #0892DD 3px solid;
+    background: none;
+    color: rgb(0, 0, 0);
+    font-size: 16px;
+    font: Lato;
+    padding:20px; 
+    position: absolute;
+    width: 1000px;
+    height: 500px;
+    left: -580px; 
+    top: 550px;
+    }
+
 	#submitbutton
 	{
 		border: 1px solid #0C66CC;
 		background: #0C66CC;
 		font-size: 14px;
-		font-family: Nunito;
+		font-family: Source Sans Pro;
 		cursor: pointer;
 		margin: 10px;
 		color: white;
@@ -235,32 +253,31 @@
 		background-color: #2852A4;
 		border: 1px solid #2852A4;
 	}
-	
+
 	#imageForm
 	{
-		position:absolute;
-		top: 518px;
-		left: 740px;
+		position: absolute;
+		top: 650px;
+		left: 1500px;
 	}
-    
     </style>
 </head>
 
 <body>
 {% block content %}
-    <div class="wrapper">
+<div class="wrapper">
 
-        <!-- Sidebar -->
-        <nav id="sidebar">
-            <div class="sidebar-header">
-                <li>
-                    <p><br><br><img src="{% static 'CRS/images/fHomeAndProfile/hat.png' %}" width="126px" height="87px"><br><br>
-                </li>
-            </div>
-            <ul class="sidebar components">
-                <li><a href="{% url 'logout' %}"><img src="{% static 'CRS/images/cIcons/log-out2.png' %}" width="97px" height="auto"></a></li>
-            </ul>
-        </nav>
+    <!-- Sidebar -->
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <li>
+                <p><br><br><img src="{% static 'CRS/images/Applicants/Faculty/logotransparent.png' %}" width="300px" height="75px"><br><br>
+            </li>
+        </div>
+        <ul class="sidebar ul li a">
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+        </ul>
+    </nav>
         <!--End of Sidebar -->
 
 
@@ -301,22 +318,18 @@
                     </div>
                 </div>
 
-                <!--Edit Account-->
-                <div class="edit-box row">
+               <!--Feedback-->
+               <div class="sub-box row" >
+               <p class="text-profile">Feedback</p>
+               
+               </div>
+               <div class="feedback-box"> 
 
-
-                    
-                        
-
-
-                    <div class="col-lg-5 img">
-                    
-                        <!-- style="background-color: purple"-->
-                        <img src="{% static 'CRS/images/sHome/view_profile_img.png' %}" width="100%" height="400">
-                    </div>
-                    
-                </div>
-                <!--END of Edit Account-->
+                   {{info.comment}}   
+                           
+               </div>
+               <!--END of Feedback-->
+               <picture><a><p id="imageForm"><img src="{% static 'CRS/images/Applicants/Faculty/form.png' %}" alt="iplm" width="350px" height="360px"></a></p></picture>
 
 
 
@@ -327,7 +340,7 @@
     {% endblock content %}   
     <script type= "text/Javascript">
         const types = ["File1", "File2", "File3", "File4", "File5"];
-        for(let x=0; x<5; x++){
+        for(let x=0; x<6; x++){
         var file = document.getElementById(types[x]);
         file.onchange = function(e) {
         var ext = this.value.match(/\.([^\.]+)$/)[1];

@@ -5407,7 +5407,7 @@ def transferee_feedback(request, transf_id):
     elif request.method == 'POST':
         comms = TransfereeApplicant.objects.get(pk=transf_id)
         comm = request.POST.get('actionRequired')
-        comms.transfer_comment= comm
+        comms.comment= comm
         comms.save()
         messages.success(request, 'Feedback Succesfully Sent!')
         return HttpResponseRedirect(reverse('cOthers-transferee-feedback', args=(transf_id,)))
@@ -6744,27 +6744,27 @@ def transferee_2GWA(request):
 def transferee_9applicationform(request):
     global t_mail, t_dept
     if (request.method == 'POST'):
-        studentID = request.POST.get("StudentNumber")
-        applicant_num = app_num(1)
-        pw = str(applicant_num)
-        department = t_dept
-        lname = request.POST.get("LastName")
-        fname = request.POST.get("FirstName")
-        mname = request.POST.get("MiddleName")
-        first = fname.lower()
-        middle = mname.lower()
-        last = lname.lower()
-        last = last.translate({ord(c): None for c in string.whitespace})
-        f = first[0]
-        m = middle[0]
-        email = f + m + last +"@plm.edu.ph"
-        t_mail = email
-        User = get_user_model()
-        log = User.objects.create_user(email = email, password = pw, firstName = fname, middleName = mname, lastName = lname)
-        log.is_admin = False
-        log.is_applicant = True
-        log.save()
         try:
+            studentID = request.POST.get("StudentNumber")
+            applicant_num = app_num(1)
+            pw = str(applicant_num)
+            department = t_dept
+            lname = request.POST.get("LastName")
+            fname = request.POST.get("FirstName")
+            mname = request.POST.get("MiddleName")
+            first = fname.lower()
+            middle = mname.lower()
+            last = lname.lower()
+            last = last.translate({ord(c): None for c in string.whitespace})
+            f = first[0]
+            m = middle[0]
+            email = f + m + last +"@plm.edu.ph"
+            t_mail = email
+            User = get_user_model()
+            log = User.objects.create_user(email = email, password = pw, firstName = fname, middleName = mname, lastName = lname)
+            log.is_admin = False
+            log.is_applicant = True
+            log.save()
             eadd = request.POST.get("EmailAddress")
             sex = request.POST.get("sex")
             cnum = request.POST.get("Phone")
@@ -6826,28 +6826,29 @@ def shifter2(request):
 def shifter9(request):
     global s_mail, s_dept
     if (request.method == 'POST'):
-        applicant_num = app_num(2)
-        pw = str(applicant_num)
-        lname = request.POST.get("lname")
-        fname = request.POST.get("fname")
-        mname = request.POST.get("mname")
-        first = fname.lower()
-        middle = mname.lower()
-        last = lname.lower()
-        last = last.translate({ord(c): None for c in string.whitespace})
-        fname = fname.title()
-        mname = mname.title()
-        lname = lname.title()
-        f = first[0]
-        m = middle[0]
-        email = f + m + last +"@plm.edu.ph"
-        s_mail=email
-        User = get_user_model()
-        log = User.objects.create_user(email = email, password = pw, firstName = fname, middleName = mname, lastName = lname)
-        log.is_admin = False
-        log.is_applicant = True
-        log.save()
+        
         try:
+            applicant_num = app_num(2)
+            pw = str(applicant_num)
+            lname = request.POST.get("lname")
+            fname = request.POST.get("fname")
+            mname = request.POST.get("mname")
+            first = fname.lower()
+            middle = mname.lower()
+            last = lname.lower()
+            last = last.translate({ord(c): None for c in string.whitespace})
+            fname = fname.title()
+            mname = mname.title()
+            lname = lname.title()
+            f = first[0]
+            m = middle[0]
+            email = f + m + last +"@plm.edu.ph"
+            s_mail=email
+            User = get_user_model()
+            log = User.objects.create_user(email = email, password = pw, firstName = fname, middleName = mname, lastName = lname)
+            log.is_admin = False
+            log.is_applicant = True
+            log.save()
             studentID = request.POST.get("StudID")
             sex = request.POST.get("sex")
             department = s_dept
@@ -6856,9 +6857,10 @@ def shifter9(request):
             studentshifterletter = request.FILES.get("LetterofIntentFile")
             studentGrade = request.FILES.get("GradeScreenshotFile")
             studentStudyplan = request.FILES.get("studyPlanFile")
-            collegeLetter = request.FILES.get("letterOfApproval")
+            collegeLetter = request.FILES.get("studyPlanFile2")
+            Checklist = request.FILES.get("shiftingchecklistfile")
             shifter_dateSubmitted = timezone.now()
-            shiftee = ShifterApplicant(studentID=studentID, department=department, lname=lname, fname=fname, mname=mname, eadd=eadd, cnum=cnum, studentshifterletter=studentshifterletter, studentGrade=studentGrade, studentStudyplan=studentStudyplan,shifter_dateSubmitted=shifter_dateSubmitted, applicant_num=applicant_num, sex=sex,shiftingForm = collegeLetter)
+            shiftee = ShifterApplicant(studentID=studentID, department=department, lname=lname, fname=fname, mname=mname, eadd=eadd, cnum=cnum, studentshifterletter=studentshifterletter, studentGrade=studentGrade, studentStudyplan=studentStudyplan,shifter_dateSubmitted=shifter_dateSubmitted, applicant_num=applicant_num, sex=sex,shiftingForm = collegeLetter, Checklist = Checklist)
             shiftee.save()
             return redirect('shifter10')
         except:          
@@ -6890,31 +6892,32 @@ def applicantrequirements(request):
     return render(request, './applicant/applicantrequirements.html')
     
 
+
 def applicant_facultyapplicationform(request):
-    global f_mail, f_num
+    global f_num, f_mail
     if (request.method == 'POST'):
-        applicant_num = app_num(3)
-        pw = str(applicant_num)
-        firstName = request.POST.get("firstName")
-        lastName = request.POST.get("lastName")
-        middleName = request.POST.get("middleName")
-        first = firstName.lower()
-        middle = middleName.lower()
-        last = lastName.lower()
-        last = last.translate({ord(c): None for c in string.whitespace})
-        firstName = firstName.title()
-        middleName = middleName.title()
-        lastName = lastName.title()
-        f = first[0]
-        m = middle[0]
-        mail = f + m + last +"@plm.edu.ph"
-        f_mail=mail
-        User = get_user_model()
-        log = User.objects.create_user(email = mail, password = pw, firstName = firstName, middleName = middleName, lastName = lastName)
-        log.is_admin = False
-        log.is_applicant = True
-        log.save()
         try:
+            applicant_num = app_num(3)
+            firstName = request.POST.get("firstName")
+            lastName = request.POST.get("lastName")
+            middleName = request.POST.get("middleName")
+            pw = str(applicant_num)
+            first = firstName.lower()
+            middle = middleName.lower()
+            last = lastName.lower()
+            last = last.translate({ord(c): None for c in string.whitespace})
+            firstName = firstName.title()
+            middleName = middleName.title()
+            lastName = lastName.title()
+            f = first[0]
+            m = middle[0]
+            mail = f + m + last +"@plm.edu.ph"
+            f_mail=mail
+            User = get_user_model()
+            log = User.objects.create_user(email = mail, password = pw, firstName = firstName, middleName = middleName, lastName = lastName)
+            log.is_admin = False
+            log.is_applicant = True
+            log.save()
             email = request.POST.get("email")
             phoneNumber = request.POST.get("phoneNumber")
             sex = request.POST.get("sex")
@@ -6926,42 +6929,14 @@ def applicant_facultyapplicationform(request):
             Tor = request.FILES.get("TOR")
             pds = request.FILES.get("PDS")
             f_num = applicant_num
-            facultyApplicantInfo = FacultyApplicant(firstName=firstName,lastName=lastName,middleName=middleName,email=email,phoneNumber=phoneNumber,sex= sex,department= department,time=time,CV= cv1, certificates=certificates, credentials=credentials,TOR=Tor,PDS=pds, applicant_num = f_num)
+            facultyApplicantInfo = FacultyApplicant(firstName=firstName,lastName=lastName,middleName=middleName,email=email,phoneNumber=phoneNumber,sex=sex,department= department,time=time,CV= cv1, certificates=certificates, credentials=credentials,TOR=Tor,PDS=pds, applicant_num = f_num)
             facultyApplicantInfo.save()
-            return redirect('applicant_facultyapplicationform_workexpsheet')
+            return redirect('applicant_facultyapplicationform_workexpsheet_submitted')
         except:
             messages.error(request, 'You have already submitted an application')
             return render(request,'./applicant/applicant_facultyapplicationform.html')
     return render(request, './applicant/applicant_facultyapplicationform.html')
 
-
-#--------------------WORK EXPERIENCE SHEET --------------------------
-
-
-def applicant_facultyapplicationform_workexpsheet(request):
-    global f_num
-    if (request.method == 'POST'):
-        try:
-            durationwork = request.POST.get("durationwork")
-            positionwork = request.POST.get("position")
-            officeunit = request.POST.get("officeunit")
-            agencyorg = request.POST.get("agencyorg")
-            accomplishments = request.FILES.get("accomplishments")
-            summaryduties = request.FILES.get("summaryduties")
-            facultyApplicantInfo = FacultyApplicant.objects.get(applicant_num = f_num)
-            facultyApplicantInfo.durationwork=durationwork 
-            facultyApplicantInfo.positionwork=positionwork
-            facultyApplicantInfo.officeunit=officeunit
-            facultyApplicantInfo.agencyorg=agencyorg
-            facultyApplicantInfo.accomplishments=accomplishments
-            facultyApplicantInfo.summaryduties=summaryduties
-            facultyApplicantInfo.save()
-            return redirect('applicant_facultyapplicationform_workexpsheet_submitted')
-
-        except:
-            messages.error(request, 'Fill everything on the form!')
-            return render(request, './applicant/applicant_facultyapplicationform_workexpsheet.html')
-    return render(request, './applicant/applicant_facultyapplicationform_workexpsheet.html')
 
 def applicant_facultyapplicationform_workexpsheet_submitted(request):
     global f_num, f_mail
@@ -6981,71 +6956,77 @@ def applicant_facultyapplicationform_workexpsheet_submitted(request):
 
 
 
-
 #--------------------- APPLICANT PROFILE ----------------------------
 
 def TProfile(request):
-    global psw 
     if request.user.is_authenticated and request.user.is_applicant:
-        info = TransfereeApplicant.objects.get(applicant_num = psw)
-        context = {'info':info}
+        fname = request.user.firstName
+        lname = request.user.lastName
+        info = TransfereeApplicant.objects.get(fname = fname, lname = lname)
+        mail = request.user.email
+        context = {'info':info,'mail':mail}
         if (request.method == 'POST'):
             HD = request.FILES.get("HD")
             GM = request.FILES.get("GM")
             NU = request.FILES.get("NU")
             Grade = request.FILES.get("Grade")
             Studyplan = request.FILES.get("studyPlan")
-            if HD != None:
-                info.studentHD = HD
+            if HD != None or GM != None or Studyplan != None or NU != None or Grade != None:
+                if HD != None: 
+                    info.studentHD = HD
+                if GM != None:
+                    info.studentGoodmoral = GM
+                if Studyplan != None:
+                    info.studentStudyplan = Studyplan
+                if NU != None:
+                    info.studentNote = NU
+                if Grade != None:
+                    info.studentGrade = Grade
+                info.remarks = "Submitted"
                 info.save()
-            if GM != None:
-                info.studentGoodmoral = GM
-                info.save()
-            if Studyplan != None:
-                info.studentStudyplan = Studyplan
-                info.save()
-            if NU != None:
-                info.studentNote = NU
-                info.save()
-            if Grade != None:
-                info.studentGrade = Grade
-                info.save()
-            
-            messages.success(request, 'Files submitted successfully.')
+                messages.success(request, 'Files submitted successfully.')
+            else:
+                messages.error(request, "Please upload the respective file being requested.")
         return render(request, 'applicant/profile/TProfile.html', context)
     else:
          return redirect('index')
 def ShProfile(request):
-    global psw 
     if request.user.is_authenticated and request.user.is_applicant:
         mail = request.user.email
-        info = ShifterApplicant.objects.get(applicant_num = psw)
+        fname = request.user.firstName
+        lname = request.user.lastName
+        info = ShifterApplicant.objects.get(fname = fname, lname=lname)
         context = {'info':info,'mail':mail}
         if (request.method == 'POST'):
             Letter = request.FILES.get("LetterofIntentFile")
             Grade = request.FILES.get("GradeScreenshotFile")
             Studyplan = request.FILES.get("studyPlanFile")
             collegeLetter = request.FILES.get("collegeLetter")
-            if Studyplan != None:
-                info.studentStudyplan = Studyplan
+            checklist = request.FILES.get("checklist")
+            if Studyplan != None or Letter != None or Grade != None or collegeLetter != None or checklist != None:    
+                if Studyplan != None:
+                    info.studentStudyplan = Studyplan
+                if Letter != None:
+                    info.studentshifterletter = Letter
+                if Grade != None:
+                    info.studentGrade = Grade
+                if collegeLetter != None:
+                    info.shiftingForm = collegeLetter
+                if checklist != None:
+                    info.Checklist = checklist
+                info.remarks = "Submitted"
                 info.save()
-            if Letter != None:
-                info.studentshifterletter = Letter
-                info.save()
-            if Grade != None:
-                info.studentGrade = Grade
-                info.save()
-            if collegeLetter != None:
-                info.shiftingForm = collegeLetter
-                info.save()
-            messages.success(request, 'Files submitted successfully.')
+                messages.success(request, 'Files submitted successfully.')
+            else:
+                messages.error(request, "Please upload the respective file being requested.")
         return render(request, 'applicant/profile/SProfile.html', context)
     else:
          return redirect('index')
 def FProfile(request):
-    global psw 
     if request.user.is_authenticated and request.user.is_applicant:
-        info = FacultyApplicant.objects.get(applicant_num = psw)
+        fname = request.user.firstName
+        lname = request.user.lastName
+        info = FacultyApplicant.objects.get(firstName = fname, lastName = lname)
         mail = request.user.email
         context = {'info':info, 'mail':mail}
         return render(request, 'applicant/profile/FProfile.html', context)

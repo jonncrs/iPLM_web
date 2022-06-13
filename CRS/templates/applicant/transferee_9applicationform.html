@@ -1,15 +1,22 @@
+<!--TRANSFEREE APPLICANT FORM 10PM JUNE 7, 2022-->
+<!-- ICON NALANG KULANG-->
 {% load static %}
 <!DOCTYPE html>
 
 <html lang="en">
 
-<head>
 
+		
 	<title>Transferee</title>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">
 	 <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!--FONTS-->
+	<link href="https://fonts.googleapis.com/css?family=Lato:200,300,400,600,700,900&subset=latin-ext" rel="stylesheet">
+
+	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900&subset=latin-ext' rel='stylesheet' type='text/css'>
 
     <!-- Bootstrap CSS --> 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -22,27 +29,27 @@
   <style>
 	/*SCROLLBAR*/
 	::-webkit-scrollbar {
-		width: 10px;
-	}
+			width: 10px;
+		}
 
-	/* Track */
-	::-webkit-scrollbar-track {
-		background: #e4e4e4;
-		border-radius: 12px;
-	}
-	
-	/* Handle */
-	::-webkit-scrollbar-thumb {
-		background: #cbcbcb;
-		border-radius: 12px;
-	}
+		/* Track */
+		::-webkit-scrollbar-track {
+			background: #e4e4e4;
+			border-radius: 12px;
+		}
+		
+		/* Handle */
+		::-webkit-scrollbar-thumb {
+			background: #cbcbcb;
+			border-radius: 12px;
+		}
 
-	/* Handle on hover */
-	::-webkit-scrollbar-thumb:hover {
-		background: #8f8f8f; 
-	}
-
-	.donate-now {
+		/* Handle on hover */
+		::-webkit-scrollbar-thumb:hover {
+			background: #0892DD; 
+		}
+		
+		.donate-now {
 		list-style-type: none;
 		margin: 0 0 0 0;
 		padding: 0;
@@ -78,32 +85,492 @@
 
 		.donate-now input[type="radio"]:checked+label,
 		.Checked+label {
-		background: #0C66CC ;
+		background: #0892DD; ;
 		color: white;
 		
 		}
 
+		/* gender circle */
 		.donate-now label {
 		padding: 5px;
-		border: 1px solid #CCC;
+		border: 1px solid #0892DD;
+		background: #FFFFFF;
 		border-radius: 20px;
 		cursor: pointer;
 		z-index: 90;
 		}
 
 		.donate-now label:hover {
-		background: #DDD;
+		background: #0892DD;
+		color:white;
 		}
 
 		#gender{
 		font-size:18px;
-		font-family:Nunito;
-		color: #0C66CC;
+		font-family:Source Sans Pro;
+		color: #08529b;
 		position:absolute;
-		top: 135px;
+		top: 140px;
 		left: 531px;
 		text-align: center;
+		line-height: 20px;
+
 		}
+
+	
+/* HONORABLE DISMISSAL INTENT BLUE BOX */
+#HonDisShape, #GoodMoralShape, #GradesShape, #studyPlanShape, #NOUShape
+{
+	font-family: 'Source Sans Pro';
+		font-style: normal;
+		font-weight: 400;
+		font-size: 15px;
+		line-height: 19px;
+		display: flex;
+		align-items: center;
+		letter-spacing: 0.05em;
+		color: #FFFFFF;
+		margin-right: 10px;
+		height: 40px;
+		width: 210px;
+		display: flex;
+		align-items: center;
+		justify-content: left;
+		box-sizing: border-box;
+		background: #06529B;
+		border-radius: 5px;
+	}
+
+
+
+
+
+/* APPLICATION FORM */
+
+body
+	{
+		background-color: #F3F6FF;
+		overflow-y: auto;
+		height: 1100px;
+		overflow-x:hidden;
+		zoom:100%;
+	
+	}
+	
+	#backbutton
+	{
+		top:        80px;
+		left:       144px;
+        position:   relative;
+		color: #06529B;
+		
+
+
+	}
+	
+	#roundbg
+	{
+		border-radius: 25px;
+		background: white;
+		box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+		width: 1100px;
+		height: 900px;
+		position:relative;
+		top: 100px;
+		left: 120px;
+	}
+	
+	#TransApplicationFormTitle, #UploadDocumentsTitle
+	{
+		font-size:26px;
+		font-family:Lato;
+		font-weight:bold;
+		color: #06529B;
+		position:absolute;
+		
+	}
+	
+	
+	#TransApplicationFormTitle
+	{
+		top: 50px;
+		left: 80px;
+	}
+	
+	#UploadDocumentsTitle
+	{
+		top: 46%;
+		left: 80px;
+		font-size:26px;
+		font-family:Lato;
+		font-weight:bold;
+		color: #06529B;
+		position:absolute;
+
+	}
+
+	
+	#TransSub, #UDSub
+	{
+
+		font-family: Source Sans Pro;
+		position:absolute;
+		width: 781px;
+		height: 32px;
+		left: 43px;
+		top: 482px;
+		font-weight: 400;
+		font-size: 20px;
+		line-height: 28px;
+		color: #06529B;
+	}
+	
+	#TransSub
+	{
+		top: 90px;
+		left: 80px;
+	}
+	
+	#UDSub
+	{
+		top: 450px;
+		left: 80px;
+	}
+	
+	#FullNametext, #ContactInformationText, #StudentNumber, #degreePorgram
+	{
+		font-size: 20px;
+		font-family: Source Sans Pro;
+		color: #06529B;
+		position:absolute;
+		position: absolute;
+	}
+		
+
+	
+	#FullNametext
+	{
+		top: 208px;
+		left: 80px;
+	}
+	
+	#ContactInformationText
+	{
+		top: 270px;
+		left: 80px;
+	}
+	
+	#StudentNumber
+	{
+		top: 145px;
+		left: 80px;
+	}
+
+	#degreeProgram
+	{
+		top: 145px;
+		left: 100px;
+	}
+
+	/* Form Information box */
+	#LastName, #FirstName, #MiddleName, #EmailAddress, #Phone, #StudNum, #degree
+	{
+box-sizing: border-box;
+position: absolute;
+width: 190px;
+height: 30px;
+left: 540px;
+top: 116px;
+background: #D7DFF6;
+border: 1px solid #1698DF;
+border-radius: 4px;
+        
+	}
+
+	#StudNum
+	{
+		position:absolute;
+        top: 140px;
+        left: 280px;
+
+	}
+
+	#degree
+	{
+		position:absolute;
+        top: 140px;
+        left: 530px;
+
+	}
+   
+    /* Full Name  */
+	#LastName
+	{
+		position:absolute;
+        top: 200px;
+        left: 280px;
+	}
+	
+	#FirstName
+	{
+		
+		position:absolute;
+        top: 200px;
+        left:48%;
+        
+	}
+	
+	#MiddleName
+	{
+		position:absolute;
+        top: 200px;
+        left:70.5%;
+	}
+	/* Contact Info  */
+	#EmailAddress
+	{
+		position:absolute;
+		top: 270px;
+		left: 280px;
+	}
+	
+	#Phone
+	{
+		position:absolute;
+		top: 270px;
+		left: 48%;
+	}
+	
+	#subLastname, #subFirstname, #subMiddlename, #subEmailAddress, #subPhone, #subDegree, #subStudNum
+	{
+		position:absolute;
+		font-family: 'Lato';
+		font-style: normal;
+		font-weight: 400;
+		font-size: 13px;
+		line-height: 18px;
+		color: #06529B;
+
+	}
+	
+    /* Full Name sub  */
+	#subLastname
+	{
+        
+		top: 235px;
+        left: 26%;
+	}
+
+	#subFirstname
+	{
+		top: 235px;
+		left: 48.5%;
+	}
+	
+	#subMiddlename
+	{
+		top: 235px;
+		left: 71%;
+	}
+
+	#subStudNum{
+		top: 175px;
+		left: 283.5px;
+	}
+
+	#subDegree{
+		top: 175px;
+		left: 539px;
+	}
+	
+    /* Contact Info sub  */
+	#subEmailAddress
+	{
+		top: 308px;
+		left: 26%;
+	}
+	
+	#subPhone
+	{
+		top: 308px;
+		left: 48.5%;
+	}
+	
+	#line2
+	{
+		position:absolute;
+		top: 40%;
+		left: 80px;
+	}
+
+
+	/* UPLOADING OF DOCUMENTS */
+
+
+
+	
+	#HonDisShape
+	{
+		top: 505px;
+		left: 80px;
+	}
+
+	#GoodMoralShape
+	{
+		top: 575px;
+		left: 80px;
+	}
+	
+	#NOUShape
+	{
+		top: 645px;
+		left: 80px;
+	}
+	
+	#GradesShape
+	{
+		top: 715px;
+		left: 80px;
+	}
+
+	#studyPlanShape
+	{
+		top: 785px;
+		left: 80px;
+	}
+	
+	#HonDis, #GoodMoral, #NOU, #Grades, #studyPLan
+	{
+			/* choose file text */
+		font-family: Source Sans Pro;
+		font-size:14px;
+		border-radius: 10px;
+		filter:drop-shadow(0px 0px 10px rgb(211,211));
+		position:absolute;
+	}
+
+	#HonDis, #GoodMoral, #NOU, #Grades, #studyPLan
+	{
+		/* No file chosen and choose file shape*/
+		font-family: Source Sans Pro;
+		font-size:  12px;
+		background: none;
+		border-radius: 10px;
+		filter:drop-shadow(0px 3px 3px rgb(211, 211, 211));
+		height: 60px;
+		width: 300px;	
+		outline: none;
+		position:absolute;
+	}
+	
+	::-webkit-file-upload-button
+	{
+		color: #06529B;
+		border: none;
+		cursor: pointer;
+		width: 113px;
+		height: 45px;
+		background: #F3F6FF;
+		
+	}
+	
+	::-webkit-file-upload-button:hover
+	{
+		background: #0892DD;
+		color: white;
+	}
+	
+	#HonDis
+	{
+		top: 505px;
+		left: 320px;
+	}
+	
+	#GoodMoral
+	{
+		top: 575px;
+		left: 320px;
+	}
+	
+	#NOU
+	{
+		top: 645px;
+		left: 320px;
+	}
+	
+	#Grades
+	{
+		top: 715px;
+		left: 320px;
+	}
+
+	#studyPLan
+	{
+		top: 785px;
+		left: 320px;
+	}
+
+
+/* SUBMIT BUTTON */
+#submitbutton
+{
+	border: 1px solid #06529b;
+	background: #06529b;
+	font-size: 17px;
+	font-family: Lato;
+	cursor: pointer;
+	margin: 10px;
+	color: #ffffff;
+	transition: 0.8;
+	border-radius: 10px;
+	height: 40px;
+	width: 130px;
+	transition-duration: 0.4s;
+	top: 820px;
+	left: 900px;
+	text-align: center;
+	position:absolute;
+	line-height: 30px;
+	
+}
+
+#submitbutton:hover
+	{
+		color: white;
+		background: #0892DD;
+	}
+
+	
+	#backbutton
+	{
+		font-weight: bold;
+    	font-size: 16px;
+		text-align: center;
+    	font-family: Source Sans Pro;
+    	cursor: pointer;
+   	 	margin: 10px;
+    	margin-left: -50px;
+    	color: white;
+    	transition: 0.8;
+    	width: 100px;
+    	height: 36.85px;
+    	background: #06529B;
+    	mix-blend-mode: darken;
+   	 	border: 0.5px solid #0892DD;
+    	border-radius: 5px;
+		position: absolute;
+    	left: 200px;
+    	top: 50px;
+		line-height: 35px;
+	}
+	#backbutton:hover
+	{
+		color:white;
+		background: #0892DD;
+
+	}
+
+
 </style>
 <script>
 		function checkforblank()
@@ -152,7 +619,7 @@
 </head>
 
 <body>
-	<div id="backbutton"><a href="{% url 'transferee_2GWA' %}"><img src="{% static 'CRS/images/Applicants/Students/Transferee/back.png' %}" alt="iplm" width="35px" height="35px"></a></div>
+	<p><a href="/transferee_2GWA/"><button type="text" value="Back" id="backbutton">Back </button></a></p></div>
     
 	<div id="roundbg">
 	<p id="TransApplicationFormTitle">Student Application Form</p>
@@ -193,7 +660,7 @@
             <!--middle name-->
 			<input type="text" id="MiddleName" name="MiddleName" placeholder="Cortez" required>
 			<p id="subMiddlename">Middle Name</p>
-		
+
 	<p id="ContactInformationText">Contact Information <span style="color:#ff0000"><b>*</b></span></p>            <!--email address-->
 			<input type="email" id="EmailAddress" name="EmailAddress" placeholder="name@email.com" required>
 			<p id="subEmailAddress">Email Address</p>
@@ -203,21 +670,21 @@
 			<p id="subPhone">Phone Number</p>
 		
 		
-	<hr id="line2" color="#d3d3d3" width="980px">
+	<hr id="line2" color="#06529B" width="980px">
 	
 	<p id="UploadDocumentsTitle">Upload Documents</p>
 	<p id="UDSub">Please upload the following documents.</p>
             
 	<!--left side-->
 	<p id="HonDisShape">&nbsp;&nbsp;&nbsp;&nbsp; Honorable Dismissal</p>
-            
+
 	<p id="GoodMoralShape"> &nbsp;&nbsp;&nbsp;&nbsp; Good Moral</p>
             
 	<p id="NOUShape"> &nbsp;&nbsp;&nbsp;&nbsp; Note of Undertaking</p>
             
 	<p id="GradesShape">&nbsp;&nbsp;&nbsp;&nbsp;Grades</p>
 
-	<p id="studyPlanShape">&nbsp;&nbsp;&nbsp;&nbsp;Studyplan</p>
+	<p id="studyPlanShape">&nbsp;&nbsp;&nbsp;&nbsp;Study Plan</p>
 	
      <!--Choose file-->       
 	<input type="file" id="HonDis" name="HonorableDis" mr-4 accept=".pdf">
@@ -245,11 +712,9 @@
 		};
 	}
 	</script>
-	
-	<picture><a><p id="imageForm"><img src="{% static 'CRS/images/Applicants/Students/Transferee/clip-1712.png' %}" alt="iplm" width="290px" height="230px"></a></p></picture>
-    
-	<a><button type="submit" value="Submit" id="submitbutton">Submit</a> 
-	{%csrf_token%}
+	<picture><p id="imageForm"><img src="{% static 'CRS/images/Applicants/Students/Transferee/form.png'%}" alt="iplm" width="200px" height="212px"></a></p></picture>
+	<a> <button type="submit" value="Submit" id="submitbutton"> Submit </button></a>
+	{%csrf_token%}	
 	</form>
 	</div>
 

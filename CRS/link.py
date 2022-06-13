@@ -62,7 +62,7 @@ class shifterApplicants():
         global _db
         Q = _db.cursor()
         Q.execute("USE iplmdatabase")
-        Q.execute("SELECT id from crs_department WHERE courseName = " +  str(dept))
+        Q.execute("SELECT id from crs_department WHERE courseName like '%" +  str(dept) +"'")
         dept_id = Q.fetchone()
         return dept_id[0]
     
@@ -70,7 +70,7 @@ class shifterApplicants():
         global _db
         Q = _db.cursor()
         Q.execute("USE iplmdatabase")
-        Q.execute("SELECT lastName from crs_shifterapplicant WHERE id = " + str(id))
+        Q.execute("SELECT lname from crs_shifterapplicant WHERE id = " + str(id))
         lastName = Q.fetchone()
         return lastName[0]
 
@@ -116,7 +116,7 @@ class transfereeApplicants():
         global _db
         Q = _db.cursor()
         Q.execute("USE iplmdatabase")
-        Q.execute("SELECT lastName from crs_transfereeapplicant WHERE id = " + str(id))
+        Q.execute("SELECT lname from crs_transfereeapplicant WHERE id = " + str(id))
         lastName = Q.fetchone()
         return lastName[0]
 

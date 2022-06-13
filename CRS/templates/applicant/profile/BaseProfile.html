@@ -11,12 +11,14 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
-    <link rel="stylesheet" href="{% static 'CRS/css/sHome/sHomeStyle.css' %}">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">
+    <link rel="stylesheet" href="{% static 'CRS/css/Applicants/sHomeStyle.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Lato:200,300,400,600,700,900&subset=latin-ext" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900&subset=latin-ext' rel='stylesheet' type='text/css'>
     <link rel="icon" href="{% static 'CRS/images/sClassroom/iPLM.png' %}" type="image/png" sizes="16x16">
     <!--NEW-->
     
     <style>
+
         #subjectMessage {
         margin-top: 50px;
         margin-left: 1100px;
@@ -24,7 +26,7 @@
         padding-top: 20px;
         font-size: 18px;
         color: #ffffff;
-        font-family: 'Nunito';
+        font-family: 'Source Sans Pro';
         background-color: #0C66CC;
         border: 2px solid #0C66CC;
         border-radius: 16px;
@@ -40,10 +42,10 @@
     border-radius: 15px;
     color: white;
     box-shadow: 0 0 10px rgb(216, 216, 216);
-    margin-top: 50px;
-    margin-left: 1100px;
-    margin-bottom: 10px;
+    bottom: 100px;
     animation: zoom-in-zoom-out 1s ease;
+    margin-left: 500px;
+    margin-top: -860px;
     }
 
     .alertSuccess{
@@ -54,6 +56,9 @@
     box-shadow: 0 0 10px rgb(216, 216, 216);
     bottom: 100px;
     animation: zoom-in-zoom-out 1s ease;
+    margin-left: 500px;
+    margin-top: -860px;
+   
     }
 
     .closebtnError {
@@ -103,15 +108,16 @@
     
 	#Shape1, #Shape2, #Shape3, #Shape4 ,#Shape5
 	{
-		border: 1px solid #0C66CC;
-		background: #0C66CC;
-		font-size: 14px;
-		font-family: Nunito;
+		border: 1px solid 	#06529b;
+		background: 	#06529b;
+		font-size: 22px;
+		font-family: Source Sans Pro;
+        font-weight: normal;
 		margin-right: 10px;
 		color: white;
 		border-radius: 10px;
-		height: 40px;
-		width: 210px;
+		height: 60px;
+		width: 300px;
 		display: flex;
 		align-items: center;
 		justify-content: left;
@@ -121,83 +127,85 @@
 	
 	#Shape1
 	{
-		top: 150px;
+		top: -492px;
+        left: 60px;
 		
 	}
 
 	#Shape2
 	{
-		top: 220px;
-		
+        top: -401px;
+        left: 60px;
 	}
 
 	#Shape3
 	{
-		top: 290px;
+		top: -308px;
+        left: 60px;
 		
 	}
 
     #Shape4
 	{
-		top: 360px;
-		
+		top: -212px;
+		left: 60px;
 	}
 
     #Shape5
 	{
-		top: 430px;
-		
+		top: -110px;
+		left: 60px;
+        
 	}
 	#File1
 	{
-		top: 150px;
-		left: 250px;
+		top: -491px;
+		left: 390px;
 	}
 	
 	#File2
 	{
-		top: 220px;
-        left: 250px;
-
+		top: -399px;
+        left: 390px;
 	}
 
 	#File3
 	{
-		top: 290px;
-        left: 250px;
+		top: -308px;
+        left: 390px;
 
 	}
 
     #File4
 	{
-		top: 360px;
-        left: 250px;
+		top: -212px;
+		left: 390px;
 
 	}
     
     #File5
 	{
-		top: 430px;
-        left: 250px;
+        top: -110px;
+        left: 390px;
 
 	}
 	#File1, #File2, #File3, #File4, #File5
 	{
-		font-family: Nunito;
-		font-size:  14px;
-		background: white;
+		font-family: Source Sans Pro;
+		font-size:  22px;
+		background: none;
 		border-radius: 10px;
-		filter:drop-shadow(0px 0px 10px rgb(211,211,211));
-		height: 40px;
-		width: 210px;
+		filter:drop-shadow(0px 5px 5px rgb(211, 211, 211));
+		height: 60px;
+		width: 300px;
 		outline: none;
 		position:absolute;
 	}
 	
 	::-webkit-file-upload-button
 	{
-		color: #0C66CC;
-		background: white;
+		color: #06529B;
+		background: #f3f6ff;
 		padding: 13px;
 		border: none;
 		border-radius: 10px;
@@ -206,34 +214,37 @@
 	
 	::-webkit-file-upload-button:hover
 	{
-		background: #ECC429;
+		background: #0892DD;
+        color: #FFFF
 	}
 	
 	
 	#submitbutton
 	{
-		border: 1px solid #0C66CC;
-		background: #0C66CC;
-		font-size: 14px;
-		font-family: Nunito;
+		border: 1px solid #06529b;
+        background: 	#06529b;
+		font-size: 22px;
+		font-family: Source Sans Pro;
+        font-weight: 700px;
 		cursor: pointer;
 		margin: 10px;
 		color: white;
 		transition: 0.8;
 		border-radius: 10px;
-		height: 43px;
-		width: 128px;
+		height: 60px;
+		width: 200px;
 		transition-duration: 0.4s;
 		position:absolute;
-		top: 500px;
-		left: 5px;
+        margin: 100px;
+		top: -80px;
+		left: 450px;
 	}
 	
 	#submitbutton:hover
 	{
 		
-		background-color: #2852A4;
-		border: 1px solid #2852A4;
+		background-color: #0892DD;
+		border: 1px solid #0892DD;
 	}
 	
 	#imageForm
@@ -247,6 +258,8 @@
 </head>
 
 <body>
+
+
 {% block content %}
     <div class="wrapper">
 
@@ -254,11 +267,11 @@
         <nav id="sidebar">
             <div class="sidebar-header">
                 <li>
-                    <p><br><br><img src="{% static 'CRS/images/fHomeAndProfile/hat.png' %}" width="126px" height="87px"><br><br>
+                    <p><br><br><img src="{% static 'CRS/images/Applicants/Students/Shifter/logotransparent.png' %}" width="300px" height="75px"><br><br>
                 </li>
             </div>
-            <ul class="sidebar components">
-                <li><a href="{% url 'logout' %}"><img src="{% static 'CRS/images/cIcons/log-out2.png' %}" width="97px" height="auto"></a></li>
+            <ul class="sidebar ul li a">
+                <li><a href="{% url 'logout' %}">Logout</a></li>
             </ul>
         </nav>
         <!--End of Sidebar -->
@@ -268,12 +281,9 @@
         <!-- Content -->
         <div id="content">
             <div class="container-fluid">
-
-
                 <!--Profile-->
                 <div class="sub-box row">
-                    <p class="text-profile">Profile</p>
-                    
+                    <p class="text-profile">Student Applicant Profile</p>
                 </div>
                 <div class="profile-box row">
                     
@@ -282,53 +292,62 @@
                     {%endblock%}
                     
                 </div>
-                <!--END of Profile-->
-                <br><br>
-                <div class="profile-border row">
-                    
-                    <div class="col-12-lg">
-                        {% if messages %}
-                    {% for message in messages %}
-                    {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
-                    <div class="alertSuccess">
-                        <span class="closebtnSuccess" onclick="this.parentElement.style.display='none';">&times;</span> 
-                        {{ message }}
-                    </div>
-                    {% endif %}
-                        
-                    {% endfor %}
-                    {% endif %}
-                    </div>
-                </div>
+                <!--END of Profile-->}
+
+              
 
                 <!--Edit Account-->
-                <div class="edit-box row">
-
-                    <div class="col-lg-5">
-
-                        <p class="text-profile" id="edit">Re-Upload Files</p>
-                        <form method ="POST" action="" enctype="multipart/form-data">
-                        {% csrf_token %}
-                        {%block submission%}
-                        {%endblock%}
-                        <a> <button type="submit" value="Submit" id="submitbutton"> Submit </button></a>
-                        </form>
+                <p class="text-profile" id="edit">Re-Upload Files:</p>
+                    <div class="edit-box row">
+                        <div class="col-lg-5">
+                                <form method ="POST" action="" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    {%block submission%}
+                                    {%endblock%}
+                                    {%if info.remarks == "Returned"%}
+                                     <a> <button type="submit" value="Submit" id="submitbutton"> Submit </button></a>
+                                    {%elif info.remarks == "Submitted"%}
+                                     <a> <button type="button" value="Submit" id="submitbutton"> Submit </button></a>
+                                     {% endif %}
+                                   
+                                </form>
+                            </div> 
+                        </div>               
                     </div>
+                    <!--END of Edit Account-->
 
-                    
-                        
+                   
 
+                <!--Feedback-->
+                <p class="text-feedback" id="recieve-feedback">Feedback</p>
+                    <div class="recieve-feedback-box row" font="Lato">
 
-                    <div class="col-lg-5 img">
-                    
-                        <!-- style="background-color: purple"-->
-                        <img src="{% static 'CRS/images/sHome/view_profile_img.png' %}" width="100%" height="400">
+                        {{info.comment}}   
+                                
                     </div>
+                    <!--END of Feedback-->
+
+                    <div class="profile-border row">
                     
-                </div>
-                <!--END of Edit Account-->
-
-
+                        <div class="col-12-lg">
+                            {% if messages %}
+                        {% for message in messages %}
+                        {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                        <div class="alertSuccess">
+                            <span class="closebtnSuccess" onclick="this.parentElement.style.display='none';">&times;</span> 
+                            {{ message }}
+                        </div>
+                        {% endif %}
+                        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                        <div class="alertError">
+                            <span class="closebtnSuccess" onclick="this.parentElement.style.display='none';">&times;</span> 
+                            {{ message }}
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                        {% endif %}
+                        </div>
+                    </div>
 
             </div>
         </div>

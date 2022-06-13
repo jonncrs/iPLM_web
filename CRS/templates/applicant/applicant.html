@@ -1,9 +1,11 @@
+
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <title>iPLM</title>
 <head>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">
+	<link href="https://fonts.googleapis.com/css?family=Lato:200,300,400,600,700,900&subset=latin-ext" rel="stylesheet">
+	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900&subset=latin-ext' rel='stylesheet' type='text/css'>
 <!-- Required meta tags -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -12,19 +14,92 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 
-<link rel="stylesheet" href="{% static 'CRS/css/landingPage/styles.css' %}">
+<!--<link rel="stylesheet" href="{% static 'CRS/css/landingPage/styles.css' %}"> -->
 <!--  ICON -->
 <link rel="icon" href="{% static '/CRS/images/cHome/iPLM.png' %}" type="image/png" sizes="16x16">
 
 <style>
 	body{
-    overflow-y: hidden;
-  	}
-
+		background: #f3f6ff;
+    	overflow: hidden;
+	}
+	
 	.container{
 		animation: MoveInFromBottom 1s ease;
+		top: 50px;
+	}
+	.text-center{
+		background-color:  #ffff;
+		left: 0;
+		border-radius: 5px;
+		box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+		
+	}
+	.apptitle{
+		font-family: Lato;
+		font-style: bold;
+		color:  #06529B;
+		font-size: 25px;
+		font-weight: bold;
+		padding-top: 20px;
+	}
+	.bckbtn{
+		font-weight: bold;
+		border: 0px;
+		background: #06529B;
+		padding: 10px 20px; 
+		font-size: 15px;
+		font-family: Source Sans Pro;
+		cursor: pointer;
+		margin: 10px;
+		margin-left: -50px;
+		color: white;
+		transition: 0.8;
+		border-radius: 10px;
+		height: 40px;
+		width: 100px;
+		transition-duration: 0.4s;
 	}
 
+	.bckbtn:hover{
+		background: #0892DD;
+		color: white;
+	}
+
+	.btn{
+	font-weight: bold;
+	border: 0px;
+	background: #06529B;
+	padding: 10px 20px;
+	font-size: 16px;
+	font-family: Source Sans Pro;
+	cursor: pointer;
+	margin: 10px;
+	color: white;
+	transition: 0.8;
+	border-radius: 30px;
+	height: 40px;
+	width: 185px;
+	transition-duration: 0.4s;
+	}
+
+	.btn:hover{
+		background: #0892DD;
+		color: white;
+	}
+
+	.space{
+		height: 25px;
+	}
+	.student1{
+		border-right: 2px solid  #06529B;
+	}
+	.student2{
+		border-left: 2px solid  #06529B;
+	}
+	#backbutton{
+		top: 40px;
+	}
 	@keyframes MoveInFromBottom {
         0% {
             opacity: 0;
@@ -41,38 +116,57 @@
 </head>
 <body>
 
-<div class="container pads">
-
-<div class="row d-flex col-lg-12 col-md-6 col-sm-5">
-	<p id="backbutton"><a href="{% url 'index' %}"><img src="{% static 'CRS/images/landingPage/back3.png' %}" alt="iplm" width="35px" height="35px"></a></p>
-
-<br>
+<div class="container">
+	<p id="backbutton"><a href="{% url 'index' %}"><button class="bckbtn">Back</button></Back></button></a></p>
+<div class="row">
  <!--medium, large, small screen -  then ilang columns, max columns is 12 so divide it -->
+		<div class="col-lg-8 text-center" >
+			<p class="apptitle"> Student <br> Applicant </p><br>
+		<div class="row">
+			<div class="col-6 student1">
+				<picture> <img src="{% static 'CRS/images/Applicants/ApplicantHomePage/Shifter.png' %}" width="150px" height="150px"> </picture> <br>		
+				<!--FILE PATH: ../../Applicants/Shifter/Shifters_FINAL/shifter1.html-->
+				<br><br>
+				<a href="{% url 'shifter2' %}"><button class="btn">Shifter</button></a> <br>
+				<div class="description">
+					<p class="desc">Student of PLM from other courses who are applying for BSIT/BSEE</p>
+				</div>
+			</div>
+			<div class="col-6 student2">
+				<picture> <img src="{% static 'CRS/images/Applicants/ApplicantHomePage/Transferee.png' %}" width="150px" height="150px"> </picture> 	
+				<!--FILE PATH: ../../Applicants/Transferee/Transferee_FINAL/transferee_1requirements.html-->
+				<br><br><br>
+				<a href="{% url 'transferee_2GWA' %}"><button class="btn">Transferee</button></a>
+				<div class="description">
 
-<div class="col-lg-4 text-center">
-	<picture> <img src="{% static 'CRS/images/landingPage/clip-education.png' %}" width="260px" height="200px"> </picture> <br>		
-	<p class="apptitle"> Student Applicant </p> <br>
-	<!--FILE PATH: ../../Applicants/Shifter/Shifters_FINAL/shifter1.html-->
-	<a href="{% url 'shifter2' %}"><button class="btn">shifter	</button></a> <br>
-
-	<!--FILE PATH: ../../Applicants/Transferee/Transferee_FINAL/transferee_1requirements.html-->
-	<a href="{% url 'transferee_2GWA' %}"><button class="btn">transferee</button></a>
-</div>
-
-<div><hr class="verticalL"> </div>
-
-<div class="col-lg-4 col-md-4 sm-3 ml-1 pl-1 text-center">
-	<picture> <img src="{% static 'CRS/images/landingPage/clip-pupil.png' %}" width="255px" height="200px"> </picture> <br>
-	<p class="apptitle"> Faculty Applicant </p>	<br>
-	<!--FILE PATH: ../../Faculty/Faculty FINAL/applicantrequirements.html-->
-	<a href="{% url 'applicantrequirements' %}">	<button class="btn">faculty	</button></a>
+					<p class="desc">Student of PLM from other schools who are applying for BSIT/BSEE in PLM</p>
+				</div>
+			</div>
+			
+			<div class="col-12 space">
+			</div>
+		</div>
+		
 	</div>
-</div>
 
+
+	<div class="row col-lg-4 col-md-6 sm-3 ml-2 pl-3 text-center">
+			<div class="col-12">
+				<p class="apptitle"> Faculty<br> Applicant </p><br>
+			</div>
+			<div class="col-12 faculty">
+				<picture> <img src="{% static 'CRS/images/Applicants/ApplicantHomePage/Faculty.png' %}" width="150px" height="150px"> </picture> <br>
+		<!--FILE PATH: ../../Faculty/Faculty FINAL/applicantrequirements.html-->
+		<br><br>
+				<a href="{% url 'applicantrequirements' %}">	<button class="btn">Faculty	</button></a>
+			</div>
+			<div class="description">
+				<p class="desc">Teaching/academic staff applicants who are applying for PLM IT/EE Faculty.</p>
+			</div>
+			<div class="col-12 space"></div>
+			
+	</div>
 </div> 
- <picture>
-<p id="gridplm"><img src="{% static 'CRS/images/landingPage/grid.png' %}" alt="grid" width="300px" height="300px"></p> </picture>
-
 
 
 <!-- tether, jQuery first, then Tether, then Bootstrap JS. -->
@@ -84,5 +178,8 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

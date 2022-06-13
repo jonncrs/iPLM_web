@@ -232,54 +232,112 @@
 		left: 80px;
 	}
 
-	#LetterofIntentShape, #GradeSSShape, #studPlanShape
-	{
-		border: 1px solid #0C66CC;
-		background: #0C66CC;
-		font-size: 14px;
-		font-family: Nunito;
-		margin-right: 10px;
-		color: white;
-		border-radius: 10px;
-		height: 40px;
-		width: 210px;
-		display: flex;
-		align-items: center;
-		justify-content: left;
-		position:absolute;
-		filter:drop-shadow(1px 1px 3px gray);
-	}
-	
-	#LetterofIntentShape
-	{
-		top: 488px;
-		left: 80px;
-	}
+/* LETTER OF INTENT BLUE BOX */
+#LetterofIntentShape, #GradeSSShape, #studPlanShape, #studPlanShape2, #shiftingchecklistshape
+{
+	font-family: 'Source Sans Pro';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 15px;
+	line-height: 19px;
+	display: flex;
+	align-items: center;
+	letter-spacing: 0.05em;
+	color: #FFFFFF;
+	margin-right: 10px;
+	height: 40px;
+	width: 210px;
+	display: flex;
+	margin-left: 10px;
+	justify-content: left;
+	box-sizing: border-box;
+	background: #06529B;
+	border-radius: 5px;
+}
 
-	#GradeSSShape
-	{
-		top: 558px;
-		left: 80px;
-	}
+#LetterofIntentShape
+{
+	top: 488px;
+	left: 80px;
+}
 
-	#studPlanShape
-	{
-		top: 628px;
-		left: 80px;
-	}
-	
-	#LetterofIntentFile, #GradeScreenshotFile, #studyPlanFile
-	{
-		font-family: Nunito;
-		font-size:14px;
-		background: white;
-		border-radius: 10px;
-		filter:drop-shadow(0px 0px 10px rgb(211,211,211));
-		height: 40px;
-		width: 210px;
-		outline: none;
-		position:absolute;
-	}
+#GradeSSShape
+{
+	top: 558px;
+	left: 80px;
+}
+
+#studPlanShape
+{
+	top: 628px;
+	left: 80px;
+}
+
+#shiftingchecklistshape
+{
+	top: 698;
+	left:80px;
+}
+
+#LetterofIntentFile, #GradeScreenshotFile, #studyPlanFile, #studyPlanFile2, #shiftingchecklistshape
+{
+/* choose file text */
+	font-family: Source Sans Pro;
+	font-size:14px;
+	border-radius: 10px;
+	filter:drop-shadow(0px 0px 10px rgb(211,211));
+	position:absolute;
+}
+
+
+#LetterofIntentFile
+{
+	top: 488px;
+	left: 350px;
+}
+
+#GradeScreenshotFile
+{
+	top: 558px;
+	left: 350px;
+}
+
+#studyPlanFile
+{
+	top: 628px;
+	left: 350px;
+
+}
+
+#studyPlanFile2
+{
+	top: 695px;
+	left: 350px;
+
+}
+
+#shiftingchecklistfile
+{
+	top:765px;
+	left: 350px;
+}
+
+
+/* ITO NADAGDAG */
+#LetterofIntentFile, #GradeScreenshotFile, #studyPlanFile, #studyPlanFile2, #shiftingchecklistfile
+{
+	/* No file chosen and choose file shape*/
+	font-family: Source Sans Pro;
+	font-size:  12px;
+	background: none;
+	border-radius: 10px;
+	filter:drop-shadow(0px 3px 3px rgb(211, 211, 211));
+	height: 60px;
+	width: 300px;	
+	outline: none;
+	position:absolute;
+}
+
 	
 	::-webkit-file-upload-button
 	{
