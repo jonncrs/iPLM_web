@@ -1,0 +1,11 @@
+{% autoescape off %}
+
+Dear Haribon:
+
+Your application for Leave of Absence has been successfully processed and approved.
+
+For security purposes, please note that your account is suspended until further notice.
+
+For inquries and concerns, please contact ICT Office and/or Admission Office.
+
+{% endautoescape %}

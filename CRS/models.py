@@ -1,3 +1,5 @@
+from tkinter import Entry
+from django import forms
 import datetime
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.db import models
@@ -12,9 +14,41 @@ from django.forms import ValidationError
 from django.utils.dateparse import parse_datetime
 from datetime import timedelta
 from pytz import utc
+from django.forms import ValidationError
+from django.utils import timezone
+from django.contrib import messages
+from datetime import date
+from django.core.validators import validate_email
+from dis import findlabels
+
+from .validators import validate_file_extension
+
+import datetime
+import os
 
 now = timezone.now()
 
+SemesterDropdown = [
+    ('1', 'First Semester'),
+    ('2', 'Second Semester')
+]
+
+SchoolYearDropdown = []
+for y in range((datetime.datetime.now().year) - 5, (datetime.datetime.now().year) + 1):
+    SchoolYearDropdown.append((y, y))
+
+CollegeDropdown = [
+    ('1', 'CET'),
+    ('2', 'CEE')
+]
+
+PurposeDropdown = [
+    ('1', 'Health Problems'),
+    ('2', 'Financial Problems'),
+    ('3', 'Employment Obligations'),
+    ('4', 'Depression'),
+    ('5', 'Academic Endeavors')
+]
 
 class College(models.Model):
     collegeName = models.CharField(max_length=150, null=True, verbose_name='College Name')
@@ -26,14 +60,18 @@ class College(models.Model):
 
 # Base User Database
 class UserManager(BaseUserManager):
-    def create_user(self, email, firstName, middleName, lastName, password=None):
+    def create_user(self, email1, email, firstName, middleName, lastName, password=None):
         """
-        Creates and saves a User with the given email, name and password.
+        Creates and saves a User with the given email, name, and password.
         """
         if not email:
             raise ValueError('Users must have an email address')
 
+        if not email1:
+            raise ValueError('Users must have an email address')
+
         user = self.model(
+            email1=self.normalize_email(email1),
             email=self.normalize_email(email),
             firstName=firstName,
             middleName=middleName,
@@ -44,12 +82,12 @@ class UserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, email, firstName, middleName, lastName, password=None):
+    def create_superuser(self, email1, email, firstName, middleName, lastName, password=None):
         """
         Creates and saves a superuser with the given email, name and password.
         """
         user = self.create_user(
-            email,
+            email1, email,
             password=password,
             firstName=firstName,
             middleName=middleName,
@@ -70,17 +108,24 @@ class User(AbstractBaseUser):
     )
 
     email = models.EmailField(
-        verbose_name='email address',validators=[email_regex],
+        verbose_name='PLM Email Address', validators=[email_regex],
         max_length=255,
         unique=True,
     )
     
-    firstName = models.CharField(max_length=100)
-    middleName = models.CharField(max_length=100, blank=True, default=" ")
-    lastName = models.CharField(max_length=100)
+    email1 = models.EmailField(
+    verbose_name='Personal Email Address',
+    max_length=255,
+    unique=True,
+    default='example@gmail.com',
+    )
 
+    firstName = models.CharField(max_length=100, verbose_name='First Name')
+    middleName = models.CharField(max_length=100, blank=True, default="", verbose_name='Middle Name')
+    lastName = models.CharField(max_length=100, verbose_name='Last Name')
+    
     is_active = models.BooleanField(default=True)
-    is_admin = models.BooleanField(default=True)
+    is_admin = models.BooleanField(default=False)
 
     is_chairperson = models.BooleanField(default=False)
     is_faculty = models.BooleanField(default=False)
@@ -90,10 +135,10 @@ class User(AbstractBaseUser):
     objects = UserManager()
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['firstName', 'middleName', 'lastName']
+    REQUIRED_FIELDS = ['email1','firstName', 'middleName', 'lastName']
 
     def full_name(self):
-        return self.email, self.lastName, self.firstName, self.middleName
+        return self.email1, self.email, self.lastName, self.firstName, self.middleName
 
     def has_perm(self, perm, obj=None):
         """Does the user have a specific permission?"""
@@ -113,6 +158,9 @@ class User(AbstractBaseUser):
 
     def __str__(self):
         return self.email
+    
+    class Meta:
+        verbose_name = "User"
 
 
 # Do not remove or modify the above users ^^
@@ -138,7 +186,7 @@ class AcademicYearInfo(models.Model):
 
 # ------------------ Chairperson Database----------------------------------------------------
 class ChairpersonInfo (models.Model):
-    cpersonUser = OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+    cpersonUser = OneToOneField(User, on_delete=models.CASCADE, primary_key=True, verbose_name="Chairperson User")
 
     class Meta:
         verbose_name_plural = "Chairperson Information"
@@ -150,8 +198,8 @@ class ChairpersonInfo (models.Model):
 class Department(models.Model):
     collegeId = ForeignKey(College, null=True, verbose_name='College', on_delete=models.CASCADE)
     courseName = models.CharField(max_length=150, null=True, verbose_name='Course')
-    courseDesc = models.CharField(max_length=200, null=True, blank=True, verbose_name='Course Description')
-    chairperson = ForeignKey(ChairpersonInfo, on_delete=models.PROTECT, null=True, blank=True)
+    courseDesc = models.CharField(max_length=200, null=True, blank=False, verbose_name='Course Description')
+    chairperson = ForeignKey(ChairpersonInfo, on_delete=models.PROTECT, null=True, blank=False)
 
     def __str__(self):
         return self.courseName
@@ -200,11 +248,51 @@ class FacultyInfo(models.Model):
         message=phone_error_message
     )
 
-    facultyUser = OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+    def fid_default():
+        year = date.today().year
+        check = FacultyInfo.objects.all()
+        if check.exists():
+            id = FacultyInfo.objects.latest('facultyUser_id')
+        else:
+            id = 1
+        fetch = str(id)
+        final = fetch.split()[0].strip()
+        f_id = int(final)
+        overOneThousand = 0
+        lengthFacultyId = 0
+        stringFacultyID = str(f_id)
+        stringOverOneThousand = str(overOneThousand)
+        finalFacultyID = ''
+        lengthFacultyId = len(stringFacultyID)
+
+        def lengthOfRawFacultyId(lengthOfID ,rawFacultyId):
+            fiveDigitFacultyId = ''
+            if lengthOfID == 1:
+                fiveDigitFacultyId = '000' + rawFacultyId
+            elif lengthOfID == 2:
+                fiveDigitFacultyId = '00' + rawFacultyId
+            elif lengthOfID == 3:
+                fiveDigitFacultyId = '0' + rawFacultyId
+            return fiveDigitFacultyId
+
+        if f_id > 1000:
+            while f_id >= 1000:
+                f_id += 1
+                f_id -= 1000
+            stringOverOneThousand = str(overOneThousand)
+            stringFacultyID = str(f_id)
+            lengthFacultyId = len(stringFacultyID)
+            finalFacultyID = str(year) + stringOverOneThousand + lengthOfRawFacultyId(lengthFacultyId, stringFacultyID)
+        else:
+            finalFacultyID = str(year) + stringOverOneThousand + lengthOfRawFacultyId(lengthFacultyId, stringFacultyID)
+        
+        return finalFacultyID
+
+    facultyUser = OneToOneField(User, on_delete=models.CASCADE, primary_key=True, verbose_name='Faculty User')
     facultyID = models.CharField(validators=[facultyID_regex], max_length=50,
-                                 unique=True, verbose_name='Faculty ID', null=True)
-    collegeID = ForeignKey(College, null=True, verbose_name='College', on_delete=models.SET_NULL, blank=True)
-    departmentID = ForeignKey(Department, null=True, verbose_name='Department', on_delete=models.SET_NULL, blank=True)
+                                 unique=True, verbose_name='Faculty ID', null=True, default=fid_default)
+    collegeID = ForeignKey(College, null=True, verbose_name='College', on_delete=models.SET_NULL, blank=False, default=1)
+    departmentID = ForeignKey(Department, null=True, verbose_name='Department', on_delete=models.SET_NULL, blank=False, default=1)
     facultyWorkstatus = models.CharField(max_length=100, choices=WorkStatus_CHOICES,
                                          null=True, verbose_name='Work Status')
     facultyGender = models.CharField(max_length=50, null=True, choices=Gender_CHOICES, verbose_name='Gender')
@@ -213,14 +301,14 @@ class FacultyInfo(models.Model):
     facultyCitizenship = models.CharField(max_length=50, null=True, default='Filipino',verbose_name='Citizenship')
     facultyContact = models.CharField(validators=[phone_regex], max_length=50,
                                       null=True, verbose_name='Contact Number')
-    facultyIn = models.CharField(max_length=100, null=True, blank=True, verbose_name='Time In', default = "7 :00")
-    facultyOut = models.CharField(max_length=100, null=True, blank=True, verbose_name='Time Out', default = "22:00")
+    facultyIn = models.CharField(max_length=100, null=True, blank=False, verbose_name='Time In', default = "7:00")
+    facultyOut = models.CharField(max_length=100, null=True, blank=False, verbose_name='Time Out', default = "22:00")
 
     class Meta:
         verbose_name_plural = "Faculty Information"
 
     def __str__(self):
-       return '%s, %s - (%s) '%(self.facultyUser.lastName, self.facultyUser.firstName,self.facultyWorkstatus)
+       return '%s - %s, %s - (%s) '%(self.facultyUser.id, self.facultyUser.lastName, self.facultyUser.firstName,self.facultyWorkstatus)
 
 class BlockSection(models.Model):
     Year_CHOICES = (
@@ -229,19 +317,23 @@ class BlockSection(models.Model):
         ('3', '3'),
         ('4', '4'),
     )
+    Block_CHOICES = (
+    ('BS IT', 'BS IT'),
+    ('BS EE', 'BS EE'),
+    )
     blockYear = models.CharField(max_length=150, null=True, choices= Year_CHOICES, verbose_name='Block Year Level')
     blockSection = models.CharField(max_length=50,null=True, verbose_name='Block Section')
     college = models.ForeignKey(College, null=True, verbose_name='College', on_delete=models.PROTECT)
-    blockCourse = models.CharField(max_length=50, null=True, verbose_name='Block Course')
+    blockCourse = models.CharField(max_length=50, null=True, choices= Block_CHOICES, verbose_name='Block Course')
     curryear = models.CharField(max_length=50, null=True, verbose_name='Curriculum Year')
     adviser = models.ForeignKey(FacultyInfo, on_delete=models.SET_NULL, null=True, blank=True)
 
     class Meta:
-        verbose_name_plural = "Block Sections"
+        verbose_name = "Block Section"
         constraints =[models.UniqueConstraint(fields=['blockYear', 'blockSection','blockCourse'], name='block section')]
 
     def __str__(self):
-        return '%s %s - %s' %(self.blockCourse,self.blockYear, self.blockSection)
+        return '%s %s - %s' %(self.blockCourse, self.blockYear, self.blockSection)
 
 
 # ------------------ Curriculum and Subjects----------------------------------------------------
@@ -253,7 +345,7 @@ class RoomSchedule(models.Model):
     classDay = models.CharField(max_length=200, choices=Day, null=True)
 
     class Meta:
-        verbose_name_plural = "Room Schedules"
+        verbose_name = "Room Schedule"
 
     def __str__(self):
         return self.classDay
@@ -302,7 +394,7 @@ class SubjectSchedule(models.Model):
     yearStanding = models.CharField(max_length=200, choices=YearStand, null=True)
 
     class Meta:
-        verbose_name_plural = "Subject Schedules"
+        verbose_name = "Subject Schedule"
 
     def __str__(self):
         return self.status
@@ -328,9 +420,9 @@ class curriculumInfo(models.Model):
     schoolYear = models.CharField(max_length=100,choices=SchoolYear, verbose_name="School Year", null=True)
     schoolSem = models.CharField(max_length=100,choices=SchoolSem, verbose_name="School Sem", null=True)
     departmentID = models.ForeignKey(Department, null=True, verbose_name='Department', on_delete=models.SET_NULL,
-                                     blank=True)
+                                     blank=False)
     subjectCode = models.ForeignKey(subjectInfo, null=True, verbose_name='Subject', on_delete=models.SET_NULL,
-                                    blank=True)
+                                    blank=False)
     blockCourse = models.CharField(max_length=100, verbose_name="Course", null=True)
     counted_in_GWA = models.BooleanField(default=True)
 
@@ -354,7 +446,7 @@ class StudentInfo(models.Model):
     Year_CHOICES = (('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5'), ('6', '6'),)
 
     # ID number code. Can be copy pasted to suit ID code for certain user.
-    studentID_error_message = 'Faculty ID must be entered in format: 20XXXXXXX'
+    studentID_error_message = 'Student ID must be entered in format: 20XXXXXXX'
     studentID_regex = RegexValidator(
         regex=r'^20\d{7}$',
         message=studentID_error_message
@@ -365,118 +457,158 @@ class StudentInfo(models.Model):
         regex=r'^09\d{9}$',
         message=phone_error_message
     )
-    # Contact Number format code
-    curr_error_message = 'Contact number must be entered in format: 20XX'
+    # Curriculum Year format code
+    curr_error_message = 'Curriculum Year must be entered in format: 20XX'
     curr_regex = RegexValidator(
         regex=r'^20\d{2}$',
         message=curr_error_message
     )
 
-    studentUser = OneToOneField(User, on_delete=CASCADE, primary_key=True)
+    def sid_default():
+        year = date.today().year
+        check = StudentInfo.objects.all()
+        if check.exists():
+            id = StudentInfo.objects.latest('studentUser_id')
+        else:
+            id = 1
+        fetch = str(id)
+        final = fetch.split()[0].strip()
+        s_id = int(final)
+        overOneThousand = 0
+        lengthStudentId = 0
+        stringStudentID = str(s_id)
+        stringOverOneThousand = str(overOneThousand)
+        finalStudentID = ''
+        lengthStudentId = len(stringStudentID)
+
+        def lengthOfRawStudentId(lengthOfID ,rawStudentId):
+            fiveDigitStudentId = ''
+            if lengthOfID == 1:
+                fiveDigitStudentId = '000' + rawStudentId
+            elif lengthOfID == 2:
+                fiveDigitStudentId = '00' + rawStudentId
+            elif lengthOfID == 3:
+                fiveDigitStudentId = '0' + rawStudentId
+            return fiveDigitStudentId
+
+        if s_id > 1000:
+            while s_id >= 1000:
+                s_id += 1
+                s_id -= 1000
+            stringOverOneThousand = str(overOneThousand)
+            stringStudentID = str(s_id)
+            lengthStudentId = len(stringStudentID)
+            finalStudentID = str(year) + stringOverOneThousand + lengthOfRawStudentId(lengthStudentId, stringStudentID)
+        else:
+            finalStudentID = str(year) + stringOverOneThousand + lengthOfRawStudentId(lengthStudentId, stringStudentID)
+            
+        return finalStudentID
+
+    studentUser = OneToOneField(User, on_delete=CASCADE, primary_key=True, verbose_name='Student Email')
     studentID = models.CharField(validators=[studentID_regex], max_length=50, unique=True, verbose_name='Student ID',
-                                 null=True)
-    collegeID = ForeignKey(College, null=True, verbose_name='College', on_delete=models.SET_NULL, blank=True)
-    departmentID = ForeignKey(Department, null=True, verbose_name='Department', on_delete=models.SET_NULL, blank=True)
+                                 null=True, default = sid_default)
+    collegeID = ForeignKey(College, null=True, verbose_name='College', on_delete=models.SET_NULL, blank=False, default=1)
+    departmentID = ForeignKey(Department, null=True, verbose_name='Department', on_delete=models.SET_NULL, blank=False, default=1)
     studentGender = models.CharField(max_length=50, null=True, choices=Gender_CHOICES, verbose_name='Gender')
     studentCitizenship = models.CharField(max_length=50, null=True,default='Filipino', verbose_name='Citizenship')
     studentCivilstatus = models.CharField(max_length=150, null=True, choices=CivilStatus_CHOICES,
-                                          verbose_name='Civil Status')
+                                          verbose_name='Civil Status', default=1)
     studentContact = models.CharField(validators=[phone_regex], max_length=50, null=True, verbose_name='Contact Number')
     studentRegStatus = models.CharField(max_length=100, choices=Status_CHOICES, null=True,
                                         verbose_name='Student Status')
     studentType = models.CharField(max_length=150, null=True, choices=Type_CHOICES, verbose_name='Student Type')
-    studentCourse = models.CharField(max_length=50, null=True, verbose_name='Course')
+    studentCourse = models.CharField(max_length=50, null=True, verbose_name='Course', default='BSIT')
     studentYearlevel = models.CharField(max_length=150, null=True, choices=Year_CHOICES, verbose_name='Year Level')
     studentSection = models.ForeignKey(BlockSection, null=True, verbose_name='Section', on_delete=models.SET_NULL,
-                                       blank=True)
+                                       blank=False)
     studentCurriculum = models.CharField(validators=[curr_regex], max_length=50, verbose_name='Curriculum Year',
-                                         null=True)
+                                         null=True, default= date.today().year)
 
     # advisoryClasscode = ForeignKey(advisoryClass, null=True, verbose_name='Class Advisory', on_delete=DO_NOTHING)
 
     class Meta:
         verbose_name_plural = "Student Information"
-
+    
     def __str__(self):
-        return self.studentID
+        return '%s' %(self.studentID)
 
 
 # HD Application
 class hdApplicant(models.Model):
-    studentID = models.ForeignKey(StudentInfo, null=True, verbose_name='Student', on_delete=models.CASCADE, blank=True)
-    studentDropform = models.FileField(upload_to='hdSubmission/', blank=True, null=True)
-    studentClearanceform = models.FileField(upload_to='hdSubmission/', blank=True, null=True)
-    studentTransfercert = models.FileField(upload_to='hdSubmission/', blank=True, null=True)
-    studentHdletter = models.FileField(upload_to='hdSubmission/', blank=True, null=True)
-    studentGrades = models.FileField(upload_to='hdSubmission/', blank=True, null=True)
-    stdParentsig = models.FileField(upload_to='hdSubmission/', blank=True, null=True)
+    studentID = models.ForeignKey(StudentInfo, null=True, verbose_name='Student', on_delete=models.CASCADE, blank=False)
+    studentDropform = models.FileField(upload_to='hdSubmission/', blank=False, null=True, validators=[validate_file_extension], verbose_name="Student Drop Form")
+    studentClearanceform = models.FileField(upload_to='hdSubmission/', blank=False, null=True, validators=[validate_file_extension], verbose_name="Student Clearance Form")
+    studentTransfercert = models.FileField(upload_to='hdSubmission/', blank=False, null=True, validators=[validate_file_extension], verbose_name="Student Transfer Certificate")
+    studentHdletter = models.FileField(upload_to='hdSubmission/', blank=False, null=True, validators=[validate_file_extension], verbose_name="Student HD Letter")
+    studentGrades = models.FileField(upload_to='hdSubmission/', blank=False, null=True, validators=[validate_file_extension], verbose_name="Student Grades")
+    stdParentsig = models.FileField(upload_to='hdSubmission/', blank=False, null=True, validators=[validate_file_extension], verbose_name="Student\'s Parent Signature")
     remarks = models.CharField(default="Submitted", max_length=25)
-    comment = models.TextField(max_length=150, null=True, blank=True, verbose_name='Feedback')
-    hd_dateSubmitted = models.DateField(default=now)
+    comment = models.TextField(max_length=150, null=True, blank=False, verbose_name="Feedback")
+    hd_dateSubmitted = models.DateField(default=now, verbose_name="HD Date Submitted")
 
     # dateApproved = models.DateTimeField()
     class Meta:
-        verbose_name_plural = "HD Applicants"
+        verbose_name = "HD Applicant"
 
     def __str__(self):
-        return self.studentID.studentUser.lastName
+        return '%s - %s, %s '%(self.studentID, self.studentID.studentUser.lastName, self.studentID.studentUser.firstName)
 
 
 # OJT Application
 class OjtApplicant(models.Model):
     studentID = models.ForeignKey(StudentInfo, null=True, verbose_name='Student', on_delete=models.CASCADE, blank=True)
-    ojtResume = models.FileField(upload_to='ojtSubmission/', blank=True, null=True)
-    ojtRecLetter = models.FileField(upload_to='ojtSubmission/', blank=True, null=True)
-    ojtWaiver = models.FileField(upload_to='ojtSubmission/', blank=True, null=True)
-    ojtAcceptForm = models.FileField(upload_to='ojtSubmission/', blank=True, null=True)
-    ojtCompanyProfile = models.FileField(upload_to='ojtSubmission/', blank=True, null=True)
-    ojtCompanyId = models.FileField(upload_to='ojtSubmission/', blank=True, null=True)
-    ojtMedcert = models.FileField(upload_to='ojtSubmission/', blank=True, null=True)
+    ojtResume = models.FileField(upload_to='ojtSubmission/', blank=True, null=True, validators=[validate_file_extension], verbose_name='OJT Resume')
+    ojtRecLetter = models.FileField(upload_to='ojtSubmission/', blank=True, null=True, validators=[validate_file_extension], verbose_name='OJT Recommended Letter')
+    ojtWaiver = models.FileField(upload_to='ojtSubmission/', blank=True, null=True, validators=[validate_file_extension], verbose_name=' OJT Waiver')
+    ojtAcceptForm = models.FileField(upload_to='ojtSubmission/', blank=True, null=True, validators=[validate_file_extension], verbose_name='OJT Accept Form')
+    ojtCompanyProfile = models.FileField(upload_to='ojtSubmission/', blank=True, null=True, validators=[validate_file_extension], verbose_name='OJT Company Profile')
+    ojtCompanyId = models.FileField(upload_to='ojtSubmission/', blank=True, null=True, validators=[validate_file_extension], verbose_name='OJT Company ID')
+    ojtMedcert = models.FileField(upload_to='ojtSubmission/', blank=True, null=True, validators=[validate_file_extension], verbose_name='OJT Medical Certificate')
     remarks = models.CharField(max_length=150, default='Submitted', verbose_name='Status')
     comment = models.TextField(max_length=150, null=True, blank=True, verbose_name='Feedback')
-    ojt_dateSubmitted = models.DateField(default=now)
+    ojt_dateSubmitted = models.DateField(default=now, verbose_name='OJT Date Submitted')
 
     class Meta:
-        verbose_name_plural = "OJT Applicants"
+        verbose_name = "OJT Applicant"
 
     def __str__(self):
-        return self.studentID.studentUser.lastName
+        return '%s - %s, %s '%(self.studentID, self.studentID.studentUser.lastName, self.studentID.studentUser.firstName)
 
 
 class spApplicant(models.Model):
     studentID = models.ForeignKey(StudentInfo, null=True, verbose_name='Student', on_delete=models.CASCADE, blank=True)
     remarks = models.CharField(default="Submitted", max_length=25)
     date = models.DateField(default=now)
-    sdplan = models.FileField(upload_to='spSubmission/', null=True, blank=True)
+    sdplan = models.FileField(upload_to='spSubmission/', null=True, blank=True, verbose_name='Study Plan')
     comment = models.TextField(max_length=150, null=True, blank=True, verbose_name='Feedback')
 
     class Meta:
-        verbose_name_plural = "Studyplan Applicants"
+        verbose_name = "Study Plan Applicant"
 
     def __str__(self):
-        return self.studentID.studentUser.lastName
+        return '%s - %s, %s '%(self.studentID, self.studentID.studentUser.lastName, self.studentID.studentUser.firstName)
 
 
 class LOAApplicant(models.Model):
     studentID = models.ForeignKey(StudentInfo, null=True, verbose_name='Student', on_delete=models.CASCADE, blank=True)
-    studentLOAClearanceform = models.FileField(upload_to='LOASubmission/', blank=True, null=True)
-    studentStudyplan = models.FileField(upload_to='LOASubmission/', blank=True, null=True)
-    studentLOAletter = models.FileField(upload_to='LOASubmission/', blank=True, null=True)
-    studentLOAFORM = models.FileField(upload_to='LOASubmission/', blank=True, null=True)
-    studentChecklist = models.FileField(upload_to='LOASubmission/', blank=True, null=True)
-    studentDroppingForm = models.FileField(upload_to='LOASubmission/', blank=True, null=True)
-    remarks = models.CharField(max_length=150, default='Submitted', verbose_name='Status')
+    studentLOAClearanceform = models.FileField(upload_to='LOASubmission/', blank=True, null=True, validators=[validate_file_extension], verbose_name='Student LOA Clearance Form')
+    studentStudyplan = models.FileField(upload_to='LOASubmission/', blank=True, null=True, validators=[validate_file_extension], verbose_name='Student Study Plan')
+    studentLOAletter = models.FileField(upload_to='LOASubmission/', blank=True, null=True, validators=[validate_file_extension], verbose_name='Student LOA Letter')
+    studentLOAFORM = models.FileField(upload_to='LOASubmission/', blank=True, null=True, validators=[validate_file_extension], verbose_name='Student LOA Form')
+    studentChecklist = models.FileField(upload_to='LOASubmission/', blank=True, null=True, validators=[validate_file_extension], verbose_name='Student Checklist')
+    remarks = models.CharField(max_length=150, default='Submitted')
+    status = models.CharField(max_length=150, default='Pending')
     comment = models.TextField(null=True, blank=True, verbose_name='Feedback')
-    LOA_dateSubmitted = models.DateField(default=now)
-    signature1 = models.ImageField(upload_to='LOASign/', null=True, blank=True)
-    signature2 = models.ImageField(upload_to='LOASign/', null=True, blank=True)
+    LOA_dateSubmitted = models.DateField(default=now, verbose_name='LOA Date Submitted')
+    signature1 = models.ImageField(upload_to='LOASign/', null=True, blank=True, verbose_name='First Signature')
+    signature2 = models.ImageField(upload_to='LOASign/', null=True, blank=True, verbose_name='Second Signature')
 
     # dateApproved = models.DateTimeField()
     class Meta:
-        verbose_name_plural = "LOA Applicants"
+        verbose_name= "LOA Applicant"
 
     def __str__(self):
-        return self.studentID.studentUser.lastName
+        return '%s - %s, %s '%(self.studentID, self.studentID.studentUser.lastName, self.studentID.studentUser.firstName)
 
 
 class currchecklist(models.Model):
@@ -508,14 +640,14 @@ class currchecklist(models.Model):
     ('6', '6th Year'),
     )
     
-    owner = models.ForeignKey(StudentInfo, null=True, verbose_name='Student', on_delete=models.CASCADE,blank=True)
+    owner = models.ForeignKey(StudentInfo, null=True, verbose_name='Student Number', on_delete=models.CASCADE,blank=True)
     curriculumCode = models.ForeignKey(curriculumInfo, null=True, verbose_name='Subjects', on_delete=models.CASCADE)
     subjectGrades = models.DecimalField(decimal_places=2, max_digits=3,choices=GRADES, verbose_name="Subject Grades", null=True)
     yearTaken = models.CharField(max_length=50, choices=YEARLEVEL, verbose_name='Year Taken', null=True)
     semTaken = models.CharField(max_length=50, choices=SEMESTER, verbose_name="School Sem", null=True)
 
     class Meta:
-            verbose_name_plural = "Checklists"
+            verbose_name = "Checklist"
 
     def __str__(self):
         return self.owner.studentUser.lastName
@@ -523,15 +655,15 @@ class currchecklist(models.Model):
 
 class crsGrade(models.Model):
     studentID =  models.ForeignKey(StudentInfo, null=True, verbose_name='Student', on_delete=models.CASCADE,blank=True)
-    crsFile = models.FileField(upload_to='crsSubmission/', blank=True, null=True)
+    crsFile = models.FileField(upload_to='crsSubmission/', blank=True, null=True, validators=[validate_file_extension], verbose_name='CRS File')
     comment = models.TextField(null=True, blank=True, verbose_name='Feedback')
     remarks = models.CharField(max_length=150, default='Submitted', verbose_name='Status')
 
     class Meta:
-            verbose_name_plural = "CRS Grades"
+            verbose_name = "CRS Grade"
 
     def __str__(self):
-        return self.studentID.studentUser.lastName
+        return '%s - %s, %s '%(self.studentID, self.studentID.studentUser.lastName, self.studentID.studentUser.firstName)
 
 class crsChecklist(models.Model):
     studentID =  models.ForeignKey(StudentInfo, null=True, verbose_name='Student', on_delete=models.CASCADE,blank=True)
@@ -550,22 +682,25 @@ class crsChecklist(models.Model):
 # FORMS TO FILL-UP
 class hdClearanceForm(models.Model):
     studentID = models.ForeignKey(StudentInfo, null=True, verbose_name='Student', on_delete=models.CASCADE, blank=True)
-    firstEnrollment = models.CharField(max_length=100, verbose_name="Semester (First enrollment in PLM)", null=True)
+    firstEnrollment = models.CharField(max_length=100, verbose_name="Semester (First Enrollment in PLM)", null=True)
     studentFirstSY = models.CharField(max_length=100, verbose_name="School Year (First Enrollment in PLM)", null=True)
     studentFirstCollege = models.CharField(max_length=100, verbose_name="College (First Enrollment in PLM)", null=True)
-    lastEnrollment = models.CharField(max_length=100, verbose_name="Semester (Last/Present enrollment in PLM)",
+    lastEnrollment = models.CharField(max_length=100, verbose_name="Semester (Last/Present Enrollment in PLM)",
                                       null=True)
     studentLastPCollege = models.CharField(max_length=100, verbose_name="College (Last/Present Enrollment in PLM)",
                                            null=True)
-    studentLastPSY = models.CharField(max_length=100, verbose_name="School year (Last/Present Enrollment in PLM)",
+    studentLastPSY = models.CharField(max_length=100, verbose_name="School Year (Last/Present Enrollment in PLM)",
                                       null=True)
     studentPurpose = models.CharField(max_length=100, verbose_name="Purpose of Clearance", null=True)
     studentOthers = models.CharField(max_length=100, verbose_name="If you picked others please specify:", blank=True,
                                      null=True)
     studentCurrentdate = models.DateField(max_length=100, verbose_name="Current Date", null=True)
 
+    def __str__(self):
+        return '%s - %s, %s '%(self.studentID, self.studentID.studentUser.lastName, self.studentID.studentUser.firstName)
+    
     class Meta:
-        verbose_name_plural = "HD Clearance Forms"
+        verbose_name = "HD Clearance Form"
 
 
 class hdTransferCert(models.Model):
@@ -587,44 +722,67 @@ class hdTransferCert(models.Model):
     studentYear = models.CharField(max_length=100, verbose_name="Year", null=True)
     studentCurrentdate = models.DateField(max_length=100, verbose_name="Current Date", null=True)
 
+    def __str__(self):
+        return '%s - %s, %s '%(self.studentID, self.studentID.studentUser.lastName, self.studentID.studentUser.firstName)
+
     class Meta:
-        verbose_name_plural = "HD Transfer Certificate"
+        verbose_name = "HD Transfer Certificate"
 
 
 class loaClearanceForm(models.Model):
     studentID = models.ForeignKey(StudentInfo, null=True, verbose_name='Student', on_delete=models.CASCADE)
-    firstEnrollment2 = models.CharField(max_length=100, verbose_name="Semester (First enrollment in PLM)", null=True)
-    studentFirstSY2 = models.CharField(max_length=100, verbose_name="School Year (First Enrollment in PLM)", null=True)
-    studentFirstCollege2 = models.CharField(max_length=100, verbose_name="College (First Enrollment in PLM)", null=True)
-    lastEnrollment2 = models.CharField(max_length=100, verbose_name="Semester (Last/Present enrollment in PLM)",
+    firstEnrollment2 = models.CharField(max_length=100, choices=SemesterDropdown, verbose_name="Semester (First Enrollment in PLM)", null=True)
+    studentFirstSY2 = models.IntegerField(max_length=4, choices=SchoolYearDropdown, default=datetime.datetime.now().year, verbose_name="School Year (First Enrollment in PLM)", null=True)
+    studentFirstCollege2 = models.CharField(max_length=100, choices=CollegeDropdown, verbose_name="College (First Enrollment in PLM)", null=True)
+    lastEnrollment2 = models.CharField(max_length=100, choices=SemesterDropdown, verbose_name="Semester (Last/Present Enrollment in PLM)",
                                        null=True)
-    studentLastPCollege2 = models.CharField(max_length=100, verbose_name="College (Last/Present Enrollment in PLM)",
+    studentLastPCollege2 = models.CharField(max_length=100, choices=CollegeDropdown, verbose_name="College (Last/Present Enrollment in PLM)",
                                             null=True)
-    studentLastPSY2 = models.CharField(max_length=100, verbose_name="School year (Last/Present Enrollment in PLM)",
+    studentLastPSY2 = models.IntegerField(max_length=4, choices=SchoolYearDropdown, default=datetime.datetime.now().year, verbose_name="School Year (Last/Present Enrollment in PLM)",
                                        null=True)
-    studentPurpose2 = models.CharField(max_length=100, verbose_name="Purpose of Clearance", null=True)
-    studentOthers2 = models.CharField(max_length=100, blank=True, null=True)
+    studentPurpose2 = models.CharField(max_length=100, choices=PurposeDropdown, verbose_name="Purpose of Clearance", null=True)
+    studentOthers2 = models.CharField(max_length=100, verbose_name="Student Others 2", blank=True, null=True)
     studentCurrentdate2 = models.DateField(max_length=100, verbose_name="Current Date", null=True)
 
+    def __str__(self):
+        return '%s - %s, %s '%(self.studentID, self.studentID.studentUser.lastName, self.studentID.studentUser.firstName)
+
+    class Meta:
+        verbose_name = "LOA Clearance Form"
 
 # LOA FORM
 class loaForm(models.Model):
+    SchoolYearDropdown = []
+    for y in range((datetime.datetime.now().year) - 2, (datetime.datetime.now().year) + 7):
+        SchoolYearDropdown.append((y, y))
     studentID = models.ForeignKey(StudentInfo, null=True, verbose_name='Student', on_delete=models.CASCADE)
     genave = models.DecimalField(decimal_places=2, max_digits=3, verbose_name="GWA", null=True)
-    sem = models.CharField(max_length=100, verbose_name="Effective From Sem", null=True)
-    sy = models.CharField(max_length=100, verbose_name="Effective From Sy", null=True)
-    sem2 = models.CharField(max_length=100, verbose_name="Effective Until Sem", null=True)
-    sy2 = models.CharField(max_length=100, verbose_name="Effective Until Sy", null=True)
-    reason = models.CharField(max_length=100, verbose_name="Reason", blank=True, null=True)
+    sem = models.CharField(max_length=100, choices=SemesterDropdown, verbose_name="Effective From Sem", null=True)
+    sy = models.IntegerField(max_length=4, choices=SchoolYearDropdown, default=datetime.datetime.now().year, verbose_name="Effective From S.Y.:", null=True)
+    sem2 = models.CharField(max_length=100, choices=SemesterDropdown, verbose_name="Effective Until Sem", null=True)
+    sy2 = models.IntegerField(max_length=4, choices=SchoolYearDropdown, default=datetime.datetime.now().year, verbose_name="Effective Until S.Y.:", null=True)
+    reason = models.CharField(max_length=100, choices=PurposeDropdown, verbose_name="Reason", blank=True, null=True)
     dof = models.DateField(max_length=100, verbose_name="Date of Filing", null=True)
 
+    def __str__(self):
+        return '%s - %s, %s '%(self.studentID, self.studentID.studentUser.lastName, self.studentID.studentUser.firstName)
+
+    class Meta:
+        verbose_name = "LOA Form"
 
 # HD Dropping Form
 class HD_DroppingForm(models.Model):
-    Admin_Upload = models.FileField(upload_to='Student/Dropping Form')
+    Admin_Upload = models.FileField(upload_to='Student/Dropping Form', validators=[validate_file_extension])
+
+    @property
+    def filename(self):
+        return os.path.basename(self.Admin_Upload.name)
+
+    def __str__(self):
+        return '%s - %s '%(self.id, os.path.basename(self.Admin_Upload.name))
 
     class Meta:
-            verbose_name_plural = "HD Dropping Form"
+            verbose_name = "HD Dropping Form"
 
 # Shifting Form
 class ShiftingForm(models.Model):
@@ -657,20 +815,20 @@ class OutShifterApplicant(models.Model):
 
 # SHIFTER APPLICANT
 class ShifterApplicant(models.Model):
-    studentID = models.CharField(max_length=100, verbose_name="StudentNumber", null=True)
+    studentID = models.CharField(max_length=100, verbose_name="Student Number", null=True)
     department = models.CharField(max_length=100, verbose_name="Department", null=True)
-    lname = models.CharField(max_length=100, verbose_name="LastName", null=True)
-    fname = models.CharField(max_length=100, verbose_name="FirstName", null=True)
-    mname = models.CharField(max_length=100, verbose_name="MiddleName", null=True)
-    eadd = models.CharField(max_length=100, verbose_name="EmailAddress", null=True)
-    cnum = models.CharField(max_length=100, verbose_name="ContactNumber", null=True)
-    studentStudyplan = models.FileField(upload_to='ShifterSubmission/', blank=True, null=True)
-    studentshifterletter = models.FileField(upload_to='ShifterSubmission/', blank=True, null=True)
-    studentGrade = models.FileField(upload_to='ShifterSubmission/', blank=True, null=True)
+    lname = models.CharField(max_length=100, verbose_name="Last Name", null=True)
+    fname = models.CharField(max_length=100, verbose_name="First Name", null=True)
+    mname = models.CharField(max_length=100, verbose_name="Middle Name", null=True)
+    eadd = models.CharField(max_length=100, verbose_name="Email Address", null=True)
+    cnum = models.CharField(max_length=100, verbose_name="Contact Number", null=True)
+    studentStudyplan = models.FileField(upload_to='ShifterSubmission/', blank=True, null=True, validators=[validate_file_extension], verbose_name='Student Study Plan')
+    studentshifterletter = models.FileField(upload_to='ShifterSubmission/', blank=True, null=True, validators=[validate_file_extension], verbose_name='Student Shifter Letter')
+    studentGrade = models.FileField(upload_to='ShifterSubmission/', blank=True, null=True, validators=[validate_file_extension], verbose_name='Student Grades')
     remarks = models.CharField(max_length=150, default='Submitted', verbose_name='Status')
-    shifter_dateSubmitted = models.DateField(default=now)
-    signature1 = models.ImageField(upload_to='ShifterSign/', null=True, blank=True)
-    signature2 = models.ImageField(upload_to='ShifterSign/', null=True, blank=True)
+    shifter_dateSubmitted = models.DateField(default=now, verbose_name='Shifter Date Submitted')
+    signature1 = models.ImageField(upload_to='ShifterSign/', null=True, blank=True, verbose_name='First Signature')
+    signature2 = models.ImageField(upload_to='ShifterSign/', null=True, blank=True, verbose_name='Second Signature')
     applicant_num = models.CharField(max_length=10, verbose_name="applicant_num", null=True)
     sex = models.CharField(max_length=100, verbose_name="sex", null=True)
     Checklist  = models.FileField(upload_to='ShifterSubmission/', blank=True, null=True)
@@ -680,37 +838,36 @@ class ShifterApplicant(models.Model):
     # dateApproved = models.DateTimeField()
 
     class Meta:
-        verbose_name_plural = "Shifter Applicants"
-
-    def str(self):
-        return '| %s  %s ' % (self.studentID, self.lname)
-
+        verbose_name = "Shifter Applicant"
+        
+    def __str__(self):
+        return '%s - %s, %s '%(self.studentID, self.lname, self.fname)
 
 # TRANSFEREE APPLICANT
 class TransfereeApplicant(models.Model):
-    studentID = models.CharField(max_length=100, verbose_name="StudentNumber", null=True)
+    studentID = models.CharField(max_length=100, verbose_name="Student Number", null=True)
     department = models.CharField(max_length=100, verbose_name="Department", null=True)
-    lname = models.CharField(max_length=100, verbose_name="LastName", null=True)
-    fname = models.CharField(max_length=100, verbose_name="FirstName", null=True)
-    mname = models.CharField(max_length=100, verbose_name="MiddleName", null=True)
-    eadd = models.CharField(max_length=100, verbose_name="EmailAddress", null=True)
-    cnum = models.CharField(max_length=100, verbose_name="ContactNumber", null=True)
-    studentStudyplan = models.FileField(upload_to='TransfereeSubmission/', blank=True, null=True)
-    studentNote = models.FileField(upload_to='TransfereeSubmission/', blank=True, null=True)
-    studentHD = models.FileField(upload_to='TransfereeSubmission/', blank=True, null=True)
-    studentGoodmoral = models.FileField(upload_to='TransfereeSubmission/', blank=True, null=True)
-    studentGrade = models.FileField(upload_to='TransfereeSubmission/', blank=True, null=True)
+    lname = models.CharField(max_length=100, verbose_name="Last Name", null=True)
+    fname = models.CharField(max_length=100, verbose_name="First Name", null=True)
+    mname = models.CharField(max_length=100, verbose_name="Middle Name", null=True)
+    eadd = models.CharField(max_length=100, verbose_name="Email Address", null=True)
+    cnum = models.CharField(max_length=100, verbose_name="Contact Number", null=True)
+    studentStudyplan = models.FileField(upload_to='TransfereeSubmission/', blank=True, null=True, validators=[validate_file_extension], verbose_name='Student Study Plan')
+    studentNote = models.FileField(upload_to='TransfereeSubmission/', blank=True, null=True, validators=[validate_file_extension], verbose_name='Student Note')
+    studentHD = models.FileField(upload_to='TransfereeSubmission/', blank=True, null=True, validators=[validate_file_extension], verbose_name='Student HD')
+    studentGoodmoral = models.FileField(upload_to='TransfereeSubmission/', blank=True, null=True, validators=[validate_file_extension], verbose_name='Student Good Moral')
+    studentGrade = models.FileField(upload_to='TransfereeSubmission/', blank=True, null=True, validators=[validate_file_extension], verbose_name='Student Grade')
     comment = models.TextField(null=True, blank=True, verbose_name='Feedback')
     remarks = models.CharField(max_length=150, default='Submitted', verbose_name='Status')
-    transfer_dateSubmitted = models.DateField(default=now)
-    signature1 = models.ImageField(upload_to='TransfereeSign/', null=True, blank=True)
-    signature2 = models.ImageField(upload_to='TransfereeSign/', null=True, blank=True)
+    transfer_dateSubmitted = models.DateField(default=now, verbose_name='Tranfer Date Submitted')
+    signature1 = models.ImageField(upload_to='TransfereeSign/', null=True, blank=True, verbose_name='First Signature')
+    signature2 = models.ImageField(upload_to='TransfereeSign/', null=True, blank=True, verbose_name='Second Signature')
     applicant_num = models.CharField(max_length=10, verbose_name="applicant_num", null=True)
     sex = models.CharField(max_length=100, verbose_name="sex", null=True)
     # dateApproved = models.DateTimeField()
 
     class Meta:
-        verbose_name_plural = "Transferee Applicants"
+        verbose_name = "Transferee Applicant"
 
     def str(self):
         return '| %s  %s ' % (self.studentID, self.lname)
@@ -721,25 +878,28 @@ class TransfereeApplicant(models.Model):
 
 # --------------------------- Faculty Applicant Database ---------------------------------------
 class FacultyApplicant(models.Model):
-    lastName = models.CharField(max_length=100, verbose_name="Last Name", null=True)
-    firstName = models.CharField(max_length=100, verbose_name="First Name", null=True)
-    middleName = models.CharField(max_length=100, verbose_name="Middle Name", null=True)
-    email = models.CharField(max_length=100, verbose_name="email", null=True)
-    phoneNumber = models.CharField(max_length=100, verbose_name="phoneNumber", null=True)
-    sex = models.CharField(max_length=100, verbose_name="sex", null=True)
+    phone_error_message = 'Contact number must be entered in format: 09XXXXXXXXX'
+    phone_regex = RegexValidator(
+        regex=r'^09\d{9}$',
+        message=phone_error_message
+    )
+    
+    lastName = models.CharField(max_length=150, verbose_name='Last Name')
+    firstName = models.CharField(max_length=150, verbose_name='First Name')
+    middleName = models.CharField(max_length=150, verbose_name='Middle Name')
+    email = models.EmailField()
+    phoneNumber = models.CharField(validators=[phone_regex], max_length=150, verbose_name='Phone Number')
     department = models.CharField(max_length=100, verbose_name="Department", null=True)
-    time = models.CharField(max_length=100, verbose_name="Available Time", null=True)
-    CV = models.FileField(upload_to='facultyApplicant/', blank=True, null=True)
-    certificates = models.FileField(upload_to='facultyApplicant/', blank=True, null=True)
-    credentials = models.FileField(upload_to='facultyApplicant/', blank=True, null=True)
-    TOR = models.FileField(upload_to='facultyApplicant/', blank=True, null=True)
-    PDS = models.FileField(upload_to='facultyApplicant/', blank=True, null=True)
+    CV = models.FileField(upload_to='facultyApplicant/', blank=True, null=True, validators=[validate_file_extension], verbose_name='Curriculum Vitae')
+    certificates = models.FileField(upload_to='facultyApplicant/', blank=True, null=True, validators=[validate_file_extension])
+    credentials = models.FileField(upload_to='facultyApplicant/', blank=True, null=True, validators=[validate_file_extension])
+    TOR = models.FileField(upload_to='facultyApplicant/', blank=True, null=True, validators=[validate_file_extension], verbose_name='Transcripts of Records')
     remarks = models.CharField(max_length=150, default='Submitted', verbose_name='Status')
     applicant_num = models.CharField(max_length=10, verbose_name="applicant_num", null=True)
     comment = models.TextField(null=True, blank=True, verbose_name='Feedback')
     
     class Meta:
-        verbose_name_plural = "Faculty Applicants"
+        verbose_name = "Faculty Applicant"
 
     def __str__(self):
         return self.email
@@ -761,12 +921,19 @@ class studentScheduling(models.Model):
     ('Asynchronous','Asynchronous'),
     ('Synchronous','Synchronous'),
 )
+    
+    def svalidate(value):
+        if value <= 0:
+            raise ValidationError(
+                ('Section cannot be <= 0')
+            )
+
     instructor = ForeignKey(FacultyInfo,  null=True, verbose_name='Instructor', on_delete=models.SET_NULL,blank=True)
     subjectCode = models.ForeignKey(curriculumInfo, null=True, verbose_name='Subjects', on_delete=models.CASCADE)
-    section = models.IntegerField(null=True,verbose_name='Subject Section' )
+    section = models.IntegerField(null=True, blank=False, verbose_name='Subject Section', validators=[svalidate])
     day = models.CharField(max_length=100, null=True, choices=MONTH, verbose_name='Day')
-    timeStart = models.TimeField()
-    timeEnd = models.TimeField()
+    timeStart = models.TimeField(verbose_name='Time Start')
+    timeEnd = models.TimeField(verbose_name='Time End')
     room = models.ForeignKey(RoomInfo, null=True, verbose_name='Room', on_delete=models.CASCADE)
     type= models.CharField(max_length=100, verbose_name="type",choices=TYPE, null=True)
     realsection= models.ForeignKey(BlockSection, null=True, verbose_name='Block Section', on_delete=models.SET_NULL,blank=True)
@@ -814,6 +981,7 @@ class Curricula(models.Model):
     schoolYr = models.CharField(max_length=50, verbose_name="School Year", null=True, blank=True)
 
     class Meta:
+        verbose_name_plural = "Curricula"
         constraints = [
             models.UniqueConstraint(fields=['departmentID', 'cYear', 'cSem', 'schoolYr'], name='unique_curriculum')
         ]
@@ -830,6 +998,7 @@ class courseList(models.Model):
     counted_in_GWA = models.BooleanField(default=True)
 
     class Meta:
+        verbose_name_plural = "Course List"
         constraints = [
             models.UniqueConstraint(fields=['curricula', 'courseCode'], name='course_outline')
         ]
@@ -840,11 +1009,14 @@ class courseList(models.Model):
 class studyPlan(models.Model):
     studentinfo = models.ForeignKey(StudentInfo, unique=True, verbose_name='Student', null=True, on_delete=models.CASCADE)
     admissionYr = models.CharField(max_length=50, verbose_name="Admission Year", null=True, blank=True)
-    curricula = models.ForeignKey(Curricula, verbose_name='', null=True, blank=True, on_delete=models.SET_NULL)
-    failedsubs = models.JSONField(default='')
+    curricula = models.ForeignKey(Curricula, verbose_name='Curricula', null=True, blank=True, on_delete=models.SET_NULL)
+    failedsubs = models.JSONField(default='', verbose_name='Failed Subjects')
 
     def __str__(self):
         return self.studentinfo.studentID
+
+    class Meta:
+        verbose_name = "Study Plan"
 
 class Notification(models.Model): 
     STATUS_CHOICES = (
@@ -852,7 +1024,7 @@ class Notification(models.Model):
         ('Unread', 'Unread')
     )
 
-    user_id = models.ForeignKey(User, verbose_name='user_id', on_delete=models.CASCADE)
+    user_id = models.ForeignKey(User, verbose_name='User Email', on_delete=models.CASCADE)
     title = models.CharField(verbose_name="title", max_length=255)
     description = models.CharField(verbose_name="description", max_length=255)
     status = models.CharField(verbose_name="status", choices=STATUS_CHOICES, max_length=255, default="Unread")
