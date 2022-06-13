@@ -3,7 +3,8 @@
 <html>
 
 <head>
-    <title> Study Plan </title>
+  <title>Student | Study Plan </title>
+    <link rel="icon" href="https://i.postimg.cc/Z5Kc9KQv/iplm-logo.png">
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,22 +12,24 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source Sans Pro">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter&display=swap">
     <link rel="stylesheet" href="{% static 'CRS/css/sOthers/sStudyplan2.css' %}">
     <!--  ICON -->
     <link rel="icon" href="{% static 'CRS/images/sOthers/iPLM.png' %}" type="image/png" sizes="16x16">
 
     <style>
-        #checkmark{
+        /* #checkmark{
             height: 32px;
             width: 32px;
             border: 5px solid rgb(255, 255, 255);
             border-radius: 45px;
-            background-color: #0b5bb6;
+            background-color: ##06529B;
             margin-left: 15px;
-        }
+        } */
 
-        tr:nth-child(even) {background-color: #ffffff;}
+        tr:nth-child(even) {background-color: #F3F6FF;}
 
         #submitbtn{
             border: none;
@@ -35,64 +38,241 @@
         }
     </style>
 </head>
-
-<body>
-
-    <div class="wrapper">
-
-        <!-- Sidebar -->
-        <nav id="sidebar">
-            <div class="sidebar-header">
-                <li>
-                    <p><br><br><img src="{% static 'CRS/images/fHomeAndProfile/hat.png' %}" width="126px" height="87px"><br><br>
-                </li>
+<div class="wrapper">        
+    <body>
+            <!-- Sidebar -->
+ <!-- top bar -->
+ <div class="topbar">
+  <a href="{% url 'sHome' %}" class="iplm-logo">
+    <img src="https://i.postimg.cc/Z5Kc9KQv/iplm-logo.png" class="logo" />
+    <div class="logo-text">
+      <div class="logo-main">iPLM</div>
+      <div class="logo-sub">Integrated PLM</div>
+    </div>
+  </a>
+  <div class="center-region">
+    <div class="empty"></div>
+    <div id="notif-button" class="notif">
+      <img
+        class="notif-icon"
+        src="https://i.ibb.co/0XVd3kP/notification.png"
+        alt="notification"
+      />
+      <div id="notif-window" class="notif-content">
+        <div class="notif-triangle"></div>
+        <div class="notif-header">Notifications</div>
+        <div class="notif-items">
+          <a href="{% url 'LOANotifdetails' %}" class="notif-item">
+            <img
+              class="notif-item-icon"
+              src="https://i.postimg.cc/Gp0457xb/LOA.png"
+              alt="img"
+            />
+            <div class="notif-item-text">
+              <div class="notif-item-title">Leave of Absence Feedback</div>
+              <div class="notif-item-detail">View details</div>
             </div>
-            <ul class="sidebar components">
-                <li class="active"><a href="{% url 'sHome' %}"><img src="{% static 'CRS/images/cIcons/home2.png' %}"width="97px" height="auto"></a></li>
-                <li><a href="{% url 'sProfile' %}"><img src="{% static 'CRS/images/cIcons/profile2.png' %}" width="97px" height="auto"></a></li>
-                <li><a href="{% url 'sClassroom' %}"><img src="{% static 'CRS/images/cIcons/classroom2.png' %}" width="97px" height="auto"></a></li>
-                <li><a href="{% url 'sOthers' %}"><img src="{% static 'CRS/images/cIcons/others2.png' %}" width="97px" height="auto"></a></li>
-                <li><a href="{% url 'logout' %}"><img src="{% static 'CRS/images/cIcons/log-out2.png' %}" width="97px" height="auto"></a></li>
-            </ul>
-        </nav>
-        <!--End of Sidebar -->
+          </a>
 
-        <!-- Content -->
-        <div id="content">
-            
-            <div class="container-fluid">
+          <a href="{% url 'HDNotifdetails' %}" class="notif-item">
+            <img
+              class="notif-item-icon"
+              src="https://i.postimg.cc/mkhZDCyd/honorabledismissal.png"
+              alt="img"
+            />
+            <div class="notif-item-text">
+              <div class="notif-item-title">
+                Honorable Dismissal Feedback
+              </div>
+              <div class="notif-item-detail">View details</div>
+            </div>
+          </a>
 
-                <div class="backrw row">
+          <a href="{% url 'SPNotifdetails' %}" class="notif-item">
+            <img
+              class="notif-item-icon"
+              src="https://i.postimg.cc/PJfpMCzZ/studyplan.png"
+              alt="img"
+            />
+            <div class="notif-item-text">
+              <div class="notif-item-title">Study Plan Feedback</div>
+              <div class="notif-item-detail">View details</div>
+            </div>
+          </a>
 
-                    <!-- <a href="{% url 'stdplnyr' %}" id="back-edit"><img src="{% static 'CRS/images/sClassroom/back.svg' %}" width="50" style="margin-top: 30px;"></a> -->
-                   
-                   
+          <a href="{% url 'GradesNotifdetails' %}" class="notif-item">
+            <img
+              class="notif-item-icon"
+              src="https://i.postimg.cc/NMm7n2Hz/mygrades.png"
+              alt="img"
+            />
+            <div class="notif-item-text">
+              <div class="notif-item-title">My Grades Feedback</div>
+              <div class="notif-item-detail">View details</div>
+            </div>
+          </a>
 
-                   <p id="head1">
-                        Study Plan
-                    </p>
+          <a href="{% url 'OJTNotifdetails' %}" class="notif-item">
+            <img
+              class="notif-item-icon"
+              src="https://i.postimg.cc/SK7xtyKG/practicum.png"
+              alt="img"
+            />
+            <div class="notif-item-text">
+              <div class="notif-item-title">Practicum Feedback</div>
+              <div class="notif-item-detail">View details</div>
+            </div>
+          </a>
 
-                </div>
-
-                <!-- Progress Bar -->
-                <div class="row">
-                    <div class="col-lg-12">
+          <a href="{% url 'OutboundNotifdetails' %}" class="notif-item">
+            <img
+              class="notif-item-icon"
+              src="https://i.postimg.cc/Kzf01wnM/shifting-form.png"
+              alt="img"
+            />
+            <div class="notif-item-text">
+              <div class="notif-item-title">Outbound Shifting Feedback</div>
+              <div class="notif-item-detail">View details</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="personal-info" id="dropdown-button">
+    <div class="user-details">
+      <div class="client-classification">Student</div>
+      <div class="client-name">
+        {{user.firstName}} {{user.middleName}} {{user.lastName}}
+      </div>
+    </div>
+    <div class="dropdown">
+      <img
+        src="{% static 'CRS/images/fHomeAndProfile/userprofile.png' %}"
+        class="profile-dropdown"
+      />
+      <div class="dropdown-content" id="dropdown-window">
+        <div class="dropdown-header">
+          <img
+            src="{% static 'CRS/images/fHomeAndProfile/userprofile.png' %}"
+            class="dropdown-icon"
+          />
+          <div class="dropdown-details">
+            <div class="dropdown-name">{{info.studentUser.firstName}}</div>
+            <div class="dropdown-email">{{user.email}}</div>
+          </div>
+        </div>
+        <div class="dropdown-items">
+          <a href="{% url 'sProfile' %}" class="dropdown-item"
+            >View Profile</a
+          >
+          <a href="{% url 'logout' %}" class="dropdown-item">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          <!-- content -->
+          <div class="content">
+            <!-- side bar  -->
+                  <!-- side bar  -->
+      <div class="sidebar">
+        <a href="{% url 'sHome' %}" class="sidebar-item">
+          <img
+            class="sidebar-icon"
+            src="https://i.postimg.cc/DZS58F2h/home-button-iplm.png"
+          />
+          <span class="sidebar-item-text">Home</span>
+        </a>
+        <div class="sidebar-divider">CLASSROOM</div>
+        <a href="{% url 'sScheduleView' %}" class="sidebar-item">
+          <img
+            class="sidebar-icon"
+            src="https://i.postimg.cc/3R4bxwDX/schedule.png"
+          />
+          <span class="sidebar-item-text">Schedule</span>
+        </a>
+        <a href="{% url 'sChecklist' %}" class="sidebar-item">
+          <img
+            class="sidebar-icon"
+            src="https://i.postimg.cc/J7jP6v3z/checklist.png"
+          />
+          <span class="sidebar-item-text">Checklist</span>
+        </a>
+        <a href="{% url 'sGradeSubmission1' %}" class="sidebar-item">
+          <img
+            class="sidebar-icon"
+            src="https://i.postimg.cc/NMm7n2Hz/mygrades.png"
+          />
+          <span class="sidebar-item-text">My Grades</span>
+        </a>
+        <div class="sidebar-divider">OTHERS</div>
+        <a href="{% url 'donesp' %}" class="sidebar-item">
+          <img
+            class="sidebar-icon"
+            src="https://i.postimg.cc/PJfpMCzZ/studyplan.png"
+          />
+          <span class="sidebar-item-text">Study Plan</span>
+        </a>
+        <a href="{% url 'doneLoa' %}" class="sidebar-item">
+          <img
+            class="sidebar-icon"
+            src="https://i.postimg.cc/Gp0457xb/LOA.png"
+          />
+          <span class="sidebar-item-text">Leave of Absence</span>
+        </a>
+        <a href="{% url 'doneHd' %}" class="sidebar-item">
+          <img
+            class="sidebar-icon"
+            src="https://i.postimg.cc/mkhZDCyd/honorabledismissal.pngg"
+          />
+          <span class="sidebar-item-text">Honorable Dismissal</span>
+        </a>
+        <a href="{% url 'donepracticum' %}" class="sidebar-item">
+          <img
+            class="sidebar-icon"
+            src="https://i.postimg.cc/SK7xtyKG/practicum.png"
+          />
+          <span class="sidebar-item-text">Practicum</span>
+        </a>
+        <a href="{% url 'doneOSF' %}" class="sidebar-item">
+          <img
+            class="sidebar-icon"
+            src="https://i.postimg.cc/Kzf01wnM/shifting-form.png"
+          />
+          <span class="sidebar-item-text">Outbound Shifting</span>
+        </a>
+      </div>
+            <!-- End of Sidebar -->
+                
+            <!-- Content -->
+            <div class="main-content"> 
+              <div class="container-fluid">
+                  <div class="backrw row" style="margin-top: 0px;">
+                      <p id="head1">
+                           Study Plan
+                       </p>    
+                       </div>
+    
+               <!-- Progress Bar -->
+               <div class="row">
+                <div class="container-fluid"> 
                         <div class="progress row">
                             <div class="col-lg-12">
                                 <div class="progress-bar "></div>
                                 <div class="progressbar">
                                     <div class="progress-bars "></div>
-                                    <li class="active progress-text-active">Upcoming<br>Semester</br><img src="{% static 'CRS/images/sOthers/check.png' %}" width="45" height="45" style="margin-top: -60%"></li>
-                                    <li class="active progress-text-active">Subjects<br>Taken</br></li>
-                                        <li class="progress-text">Study<br>Plan</li>
-                                        <li class="progress-text">Upload<br>Documents</li>
-                                        <li class="progress-text">Confirmation<br>Submission</li>
+                                        <li class="active progress-text-active">Upcoming<br>Semester</br><img src="https://i.ibb.co/Kw0K42B/check.png" width="45" height="45" style="margin-top: -180px"></li>
+                                            <li class="active progress-text-active">Subjects<br>Taken</li>
+                                            <li class="progress-text">Study<br>Plan</li>
+                                            <li class="progress-text">Upload<br>Documents</li>
+                                            <li class="progress-text">Confirmation<br>Submission</li>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!--END Progress Bar-->
+
 
                 <div class="subtaken row pt-5" style="width:90%;"> 
 
@@ -107,187 +287,185 @@
                                         <th scope="col" style="border-radius: 12px 0px 0px 0px;"><p id="head3"><b>Code</b></p></th>
                                         <th scope="col" style="margin-top: 2%;"><p id="head3"><b>Course Name</b></p></th>
                                         <th scope="col" style="margin-top: 2%;"><p id="head3"><b>Units</b></p></th>
-                                        <th scope="col" style="margin-top: 2%;"><p id="head3"><b>Pre(Co)-Requisites</b></p></th>
-                                     
+                                        <th scope="col" style="margin-top: 2%; border-radius:0px 12px 0px 0px; "><p id="head3"><b>Pre(Co)-Requisites</b></p></th>
+                                        
                                     </tr>
+                                    
                                     <!----------------------DATABASE STUFF---------------------->
                                     {% if grades %}
                                             
                                        
-                                            {% for l in grades %}  
-                                        
-                                                {% if status.studentinfo == l.owner%} 
-                                                                       
-                                                    {% if info.studentYearlevel == '1' %}
+                                    {% for l in grades %}  
+                                
+                                        {% if status.studentinfo == l.owner%} 
+                                                               
+                                            {% if info.studentYearlevel == '1' %}
 
-                                                        {% if l.yearTaken == info.studentYearlevel %}
+                                                {% if l.yearTaken == info.studentYearlevel %}
+
+                                                  
+        
+                                                    {% if l.semTaken == '1' %}
+                                                                           
+                                                                        
+                                        
+                                                        {% if l.subjectGrades >= 5.00 %}
+                                                    
+                                                            <tr class="tabletext2">
+                                                                <td><p>{{ l.curriculumCode.subjectCode.subjectCode }}</p></td>
+                                                                <td><p class="subjectName">{{ l.curriculumCode.subjectCode.subjectName }}</p></td>
+                                                                <td><p>{{ l.curriculumCode.subjectUnits }}</p></td>
+                                                                <td><p>{{ l.curriculumCode.subjectCode.subjectPrerequisite|default_if_none:"" }}</p></td>
+
+                                                            </tr>
+                                                        {%endif%}
+                                                                
+                                                    {%endif%}
+                                                {%endif%}
+                                                                   
+                                             
+                                                        
+
+                                            {% elif info.studentYearlevel >= '2' %}
+                                                                  
+                                                    {% if l.yearTaken != info.studentYearlevel %}
+
+                                                      
+                                                        {% if l.semTaken == '2' %}
+
+                                                            {% if l.subjectGrades >= 5.00 %}
+                                                                <tr class="tabletext2">
+                                                                    <td><p>{{ l.curriculumCode.subjectCode.subjectCode }}</p></td>
+                                                                    <td><p class="subjectName">{{ l.curriculumCode.subjectCode.subjectName }}</p></td>
+                                                                    <td><p>{{ l.curriculumCode.subjectUnits }}</p></td>
+                                                                    <td><p>{{ l.curriculumCode.subjectCode.subjectPrerequisite|default_if_none:"" }}</p></td>
+                                                                  
+                                                                </tr>
+                                                            {%endif%}
+                                                                
+                                                        {%endif%}
+
+                                                    {%endif%}
+
+                                            {% elif info.studentYearlevel == '2' %}
+                                                                  
+                                                    {% if l.yearTaken == info.studentYearlevel %}
+
+                                                        
+                                                        {% if l.semTaken == '1' %}
+
+                                                            {% if l.subjectGrades >= 5.00 %}
+                                                                <tr class="tabletext2">
+                                                                    <td><p>{{ l.curriculumCode.subjectCode.subjectCode }}</p></td>
+                                                                    <td><p class="subjectName">{{ l.curriculumCode.subjectCode.subjectName }}</p></td>
+                                                                    <td><p>{{ l.curriculumCode.subjectUnits }}</p></td>
+                                                                    <td><p>{{ l.curriculumCode.subjectCode.subjectPrerequisite|default_if_none:"" }}</p></td>
+                                                               
+                                                                </tr>
+                                                            {%endif%}
+                                                                    
+                                                        {%endif%}
+
+                                                    {%endif%}
+
+                                            
+                                            {% elif info.studentYearlevel == '3' %}
+                                                                  
+                                                    {% if l.yearTaken == info.studentYearlevel %}
+
+             
+                                                        {% if l.semTaken == '1' %}
+
+                                                            {% if l.subjectGrades >= 5.00 %}
+                                                                <tr class="tabletext2">
+                                                                    <td><p>{{ l.curriculumCode.subjectCode.subjectCode }}</p></td>
+                                                                    <td><p class="subjectName">{{ l.curriculumCode.subjectCode.subjectName }}</p></td>
+                                                                    <td><p>{{ l.curriculumCode.subjectUnits }}</p></td>
+                                                                    <td><p>{{ l.curriculumCode.subjectCode.subjectPrerequisite|default_if_none:"" }}</p></td>
+                                                                      
+                                                                </tr>
+                                                            {%endif%}
+                                                                
+                                                        {%endif%}
+
+                                                    {%endif%}
+                                            
+
+                                            {% elif info.studentYearlevel == '4' %}
+                                                                  
+                                                    {% if l.yearTaken == info.studentYearlevel %}
+
+                                                    
+                                                        {% if l.semTaken == '1' %}
+
+                                                            {% if l.subjectGrades >= 5.00 %}
+                                                                <tr class="tabletext2">
+                                                                    <td><p>{{ l.curriculumCode.subjectCode.subjectCode }}</p></td>
+                                                                    <td><p class="subjectName">{{ l.curriculumCode.subjectCode.subjectName }}</p></td>
+                                                                    <td><p>{{ l.curriculumCode.subjectUnits }}</p></td>
+                                                                    <td><p>{{ l.curriculumCode.subjectCode.subjectPrerequisite|default_if_none:"" }}</p></td>
+                                                                       
+                                                                </tr>
+                                                            {%endif%}
+                                                                
+                                                        {%endif%}
+
+                                                    {%endif%}
+
+                                            
+
+                                            {% elif info.studentYearlevel == '5' %}
+                                                                  
+                                                    {% if l.yearTaken == info.studentYearlevel %}
+
+          
+                                                        {% if l.semTaken == '1' %}
+
+                                                            {% if l.subjectGrades >= 5.00 %}
+                                                                <tr class="tabletext2">
+                                                                    <td><p>{{ l.curriculumCode.subjectCode.subjectCode }}</p></td>
+                                                                    <td><p class="subjectName">{{ l.curriculumCode.subjectCode.subjectName }}</p></td>
+                                                                    <td><p>{{ l.curriculumCode.subjectUnits }}</p></td>
+                                                                    <td><p>{{ l.curriculumCode.subjectCode.subjectPrerequisite|default_if_none:"" }}</p></td>
+                                                                       
+                                                                </tr>
+                                                            {%endif%}
+                                                                
+                                                        {%endif%}
+
+                                                    {%endif%}
+                                            
+
+                                            {% elif info.studentYearlevel == '6' %}
+                                                                  
+                                                    {% if l.yearTaken == info.studentYearlevel %}
+
+                                                       
+                                                        {% if l.semTaken == '1' %}
+
+                                                            {% if l.subjectGrades >= 5.00 %}
+                                                                <tr class="tabletext2">
+                                                                    <td><p>{{ l.curriculumCode.subjectCode.subjectCode }}</p></td>
+                                                                    <td><p class="subjectName">{{ l.curriculumCode.subjectCode.subjectName }}</p></td>
+                                                                    <td><p>{{ l.curriculumCode.subjectUnits }}</p></td>
+                                                                    <td><p>{{ l.curriculumCode.subjectCode.subjectPrerequisite|default_if_none:"" }}</p></td>
+                                                                      
+                                                                </tr>
+                                                            {%endif%}
+                                                                
+                                                        {%endif%}
+
+                                                    {%endif%}
+                                      
+                                            {%endif%}
+                                            
 
                                                           
-                
-                                                            {% if l.semTaken == '1' %}
-                                                                                   
-                                                                                
-                                                
-                                                                {% if l.subjectGrades >= 5.00 %}
-                                                            
-                                                                    <tr class="tabletext2">
-                                                                        <td><p>{{ l.curriculumCode.subjectCode.subjectCode }}</p></td>
-                                                                        <td><p class="subjectName">{{ l.curriculumCode.subjectCode.subjectName }}</p></td>
-                                                                        <td><p>{{ l.curriculumCode.subjectUnits }}</p></td>
-                                                                        <td><p>{{ l.curriculumCode.subjectCode.subjectPrerequisite|default_if_none:"" }}</p></td>
-    
-                                                                    </tr>
-                                                                {%endif%}
-                                                                        
-                                                            {%endif%}
-                                                        {%endif%}
-                                                                           
-                                                     
-                                                                
 
-                                                    {% elif info.studentYearlevel >= '2' %}
-                                                                          
-                                                            {% if l.yearTaken != info.studentYearlevel %}
-
-                                                              
-                                                                {% if l.semTaken == '2' %}
- 
-                                                                    {% if l.subjectGrades >= 5.00 %}
-                                                                        <tr class="tabletext2">
-                                                                            <td><p>{{ l.curriculumCode.subjectCode.subjectCode }}</p></td>
-                                                                            <td><p class="subjectName">{{ l.curriculumCode.subjectCode.subjectName }}</p></td>
-                                                                            <td><p>{{ l.curriculumCode.subjectUnits }}</p></td>
-                                                                            <td><p>{{ l.curriculumCode.subjectCode.subjectPrerequisite|default_if_none:"" }}</p></td>
-                                                                          
-                                                                        </tr>
-                                                                    {%endif%}
-                                                                        
-                                                                {%endif%}
-
-                                                            {%endif%}
-
-                                                    {% elif info.studentYearlevel == '2' %}
-                                                                          
-                                                            {% if l.yearTaken == info.studentYearlevel %}
-
-                                                                
-                                                                {% if l.semTaken == '1' %}
- 
-                                                                    {% if l.subjectGrades >= 5.00 %}
-                                                                        <tr class="tabletext2">
-                                                                            <td><p>{{ l.curriculumCode.subjectCode.subjectCode }}</p></td>
-                                                                            <td><p class="subjectName">{{ l.curriculumCode.subjectCode.subjectName }}</p></td>
-                                                                            <td><p>{{ l.curriculumCode.subjectUnits }}</p></td>
-                                                                            <td><p>{{ l.curriculumCode.subjectCode.subjectPrerequisite|default_if_none:"" }}</p></td>
-                                                                       
-                                                                        </tr>
-                                                                    {%endif%}
-                                                                            
-                                                                {%endif%}
-
-                                                            {%endif%}
-
-                                                    
-                                                    {% elif info.studentYearlevel == '3' %}
-                                                                          
-                                                            {% if l.yearTaken == info.studentYearlevel %}
-
-                     
-                                                                {% if l.semTaken == '1' %}
- 
-                                                                    {% if l.subjectGrades >= 5.00 %}
-                                                                        <tr class="tabletext2">
-                                                                            <td><p>{{ l.curriculumCode.subjectCode.subjectCode }}</p></td>
-                                                                            <td><p class="subjectName">{{ l.curriculumCode.subjectCode.subjectName }}</p></td>
-                                                                            <td><p>{{ l.curriculumCode.subjectUnits }}</p></td>
-                                                                            <td><p>{{ l.curriculumCode.subjectCode.subjectPrerequisite|default_if_none:"" }}</p></td>
-                                                                              
-                                                                        </tr>
-                                                                    {%endif%}
-                                                                        
-                                                                {%endif%}
-
-                                                            {%endif%}
-                                                    
-
-                                                    {% elif info.studentYearlevel == '4' %}
-                                                                          
-                                                            {% if l.yearTaken == info.studentYearlevel %}
-
-                                                            
-                                                                {% if l.semTaken == '1' %}
- 
-                                                                    {% if l.subjectGrades >= 5.00 %}
-                                                                        <tr class="tabletext2">
-                                                                            <td><p>{{ l.curriculumCode.subjectCode.subjectCode }}</p></td>
-                                                                            <td><p class="subjectName">{{ l.curriculumCode.subjectCode.subjectName }}</p></td>
-                                                                            <td><p>{{ l.curriculumCode.subjectUnits }}</p></td>
-                                                                            <td><p>{{ l.curriculumCode.subjectCode.subjectPrerequisite|default_if_none:"" }}</p></td>
-                                                                               
-                                                                        </tr>
-                                                                    {%endif%}
-                                                                        
-                                                                {%endif%}
-
-                                                            {%endif%}
-
-                                                    
-
-                                                    {% elif info.studentYearlevel == '5' %}
-                                                                          
-                                                            {% if l.yearTaken == info.studentYearlevel %}
-
-                  
-                                                                {% if l.semTaken == '1' %}
- 
-                                                                    {% if l.subjectGrades >= 5.00 %}
-                                                                        <tr class="tabletext2">
-                                                                            <td><p>{{ l.curriculumCode.subjectCode.subjectCode }}</p></td>
-                                                                            <td><p class="subjectName">{{ l.curriculumCode.subjectCode.subjectName }}</p></td>
-                                                                            <td><p>{{ l.curriculumCode.subjectUnits }}</p></td>
-                                                                            <td><p>{{ l.curriculumCode.subjectCode.subjectPrerequisite|default_if_none:"" }}</p></td>
-                                                                               
-                                                                        </tr>
-                                                                    {%endif%}
-                                                                        
-                                                                {%endif%}
-
-                                                            {%endif%}
-                                                    
-
-                                                    {% elif info.studentYearlevel == '6' %}
-                                                                          
-                                                            {% if l.yearTaken == info.studentYearlevel %}
-
-                                                               
-                                                                {% if l.semTaken == '1' %}
- 
-                                                                    {% if l.subjectGrades >= 5.00 %}
-                                                                        <tr class="tabletext2">
-                                                                            <td><p>{{ l.curriculumCode.subjectCode.subjectCode }}</p></td>
-                                                                            <td><p class="subjectName">{{ l.curriculumCode.subjectCode.subjectName }}</p></td>
-                                                                            <td><p>{{ l.curriculumCode.subjectUnits }}</p></td>
-                                                                            <td><p>{{ l.curriculumCode.subjectCode.subjectPrerequisite|default_if_none:"" }}</p></td>
-                                                                              
-                                                                        </tr>
-                                                                    {%endif%}
-                                                                        
-                                                                {%endif%}
-
-                                                            {%endif%}
-                                              
-                                                    {%endif%}
-                                                    
-
-                                                                  
-
-                                                {%endif%} 
-                                            {%endfor%}          
-                                    {% endif%}
-                                   
+                                        {%endif%} 
+                                    {%endfor%}          
+                                {% endif%}
                                     <!---------------------------------------------------------->
-
-                                   
 
                                 </table>
                             </div>
@@ -335,17 +513,19 @@
 
                         <div class="row">
                             <div class="col-lg-12 pt-3">
+
+                             {% if status.curricula %}
+                                    <p id="head3" style="color: #06529b; padding-left: 8%;margin-top: 1%;">List of subjects for which you received<br> a failed remark only before<br><br><b> {{ status.curricula.cYear }}, {{ status.curricula.cSem }}</p></b>
+                                    
+                                    {% endif %}
                                 
-                                {% if status.curricula %}
-                                <p id="head3" style="color: #06529b; padding-left: 8%;margin-top: 4%;">List of subjects for which you received a <br> failed remark only before {{ status.curricula.cYear }}, {{ status.curricula.cSem }}.</p>
-                                
-                                {% endif %}
                             </div>
                             <form method="POST" enctype="multipart/form-data">
                                 {%csrf_token%}
                                 <div>
-                                    <a href="{% url 'stdplnyr' %}"><img src="{% static 'CRS/images/sOthers/arrow-left.png' %}" height="50;" width="50;" style="margin-left: 350%; margin-top: 218%; text-: right;"></a>                                    
-                                    <input type="submit" id="submitbtn" value="Submit">
+                                    <a href="{% url 'stdplnyr' %}"><img src="https://i.ibb.co/yWY15ff/arrow-left.png" height="50;" width="50;" style="margin-left: 150%; margin-top: 80%; text-align: right;"></a>
+                                    <input type="submit" id="submitbtn" value="Submit">                                   
+                                    
                                 </div>
                         </div>
 </div>
@@ -365,7 +545,24 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script>
+          var notifWindow = document.getElementById("notif-window");
 
+document
+  .getElementById("notif-button")
+  .addEventListener("click", function () {
+    var display = notifWindow.style.display === "flex" ? "none" : "flex";
+    notifWindow.style.display = display;
+  });
+var profileDropdown = document.getElementById("dropdown-window");
+document
+  .getElementById("dropdown-button")
+  .addEventListener("click", function () {
+    var display =
+      profileDropdown.style.display === "flex" ? "none" : "flex";
+    profileDropdown.style.display = display;
+  });
+    </script>
 
 </body>
 

@@ -1,191 +1,1188 @@
-{%load static %}
+<!--{% load static %}!-->
+
 <!DOCTYPE html>
 <html>
 
 <head>
-    <title>Student | Home </title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
-    <!-- CSS -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">
-    <!-- JS -->
-    <link rel="stylesheet" href="{% static 'CRS/css/sHome/sHomeStyle.css' %}">
-    <script src="{% static 'CRS/js/cHome/cHomeMain.js' %}"></script>
-    <!--  ICON -->
-    <link rel="icon" href="{% static 'CRS/images/sClassroom/iPLM.png' %}" type="image/png" sizes="16x16">
+  <title> iPLM | Home </title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="utf-8"> 
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
+	    <link
+      rel="icon"
+      href="https://i.postimg.cc/Z5Kc9KQv/iplm-logo.png"
+      type="image/x-icon"
+    />
+    <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap"
+      rel="stylesheet"
+      />
+      <link
+      href="https://fonts.googleapis.com/css?family=Lato&display=swap"
+      rel="stylesheet"
+      />
+      <link
+      href="https://fonts.googleapis.com/css?family=Inter&display=swap"
+      rel="stylesheet"
+      />
 
-    <style>
-    #notifdrops {
-    color: #0C66CC;
-    font-family: 'Nunito';
-    width: 470px;
-    height: 90px;
+<style>
+  /*home-style*/
+
+    .child a:link {
+    text-decoration: none;
+    color: black ;
+  }
+
+    .child a:hover {
+    text-decoration: none;
+    color: #06529b !important;
+  }
+
+
+   
+  .container {
+          display: flex;
+          margin: 2rem 5rem 1rem 3.3rem;
+          background-color: #fff;
+          border-radius: 20px;
+          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+          font-family: Lato;
+          min-width: 0;
+        }
+
+  .container-2 {
+          float: left;
+          display: flex;
+          margin: 1rem 5rem 1rem 3.3rem;
+          background-color: #fff;
+          border-radius: 20px;
+          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+          max-width: 50.5%;
+          max-height: 13rem;}
+
+  .container-2-headings {
+          font-family: Source sans pro;
+          font-weight: 700;
+          font-size: 1.5rem;
+          color: black;
+          margin-bottom: 1.5rem;
+          margin-left: 1rem;
+          max-width: 250px;
+                }
+
+        .left-side {
+          display: flex;
+          flex-direction: column;
+          padding: 2rem 2rem 2rem 2rem;
+          max-width: 18rem;
+          margin-left: 5rem;
+        }
+
+        .right-side {
+          display: flex;
+          flex-direction: column;
+         padding: 2rem 2rem 2rem 0rem;
+          max-width: 18rem;
+          margin-left: 2rem;
+
+        }
+
+        .semester_icon{
+         width:  3rem;
+         height: 3rem;
+         display:flex;
+         flex-direction: column;
+         align-content:left;
+         margin-left: -40px;   
+         padding: 2.5rem 2rem 2rem 2rem; 
+         margin-top: -30px;
+         margin-left: -80px;
+         float:left;
+       }
+
+       .AcadSem {
+        font-size: 1.1rem;
+        width: 14rem;
+        font-weight: 100;
+        color: #5F6E83;
+        font-family: Source Sans Pro;
+        float:left;
+        display: inline-block;
+        margin-top: 12px;
+       }
+
+       .dept_icon {
+        width: 30px;
+      height: 30px;
+      display:flex;
+      flex-direction:column;
+      padding: 1rem;
+      margin-left: -40px;
+
+       }
+
+       .department_info {
+        font-size: 1.1rem;
+        width: 13rem;
+        font-weight: 100;
+        color: #5F6E83;
+        font-family: Source Sans Pro;
+        display: relative;
+        margin-top: -7.5rem;
+        margin-left: 1.5rem;
+        padding: 5px;
+            }
+
+        .adviser_name{
+          padding-top: 15px;
+        }
+
+
+  /*Welcome tO iPLM section*/
+
+        .main-content {
+          background-image: url("https://i.postimg.cc/523r4DT9/leaf-logo.png");
+          background-position: right -270px top -10px;
+          background-repeat: no-repeat;
+          background-size: 730px;
+          display: flex;
+          flex: 1 1 0px;
+          min-width: 0;
+          overflow: hidden;
+          flex-direction: column;
+
+        }
+
+  /*Welcome to iPLM text*/
+  .container-headings {
+          font-family: Lato;
+          font-weight: 700;
+          font-size: 3rem;
+          color: #06529b;
+          margin-bottom: 1.5rem;
+          margin-top: 3rem;
+          margin-left: 4rem;
+        }
+  .container-sub-headings {
+      color: #2fa2e3;
+      font-family: source sans Pro;
+      font-weight: 400;
+      font-size: 1.2rem;
+      margin-top: 0.5rem;
+  }
+
+  /*PLM picture*/
+  .PLM_picture{
+    width: 27rem;
+    height: 12rem;
+    background: url("https://i.postimg.cc/DydN5j9p/PLM-Facade.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    display:flex;
+    flex-direction: row;
+  }
+
+  .container-3{
+          display: flex;
+          margin:  1rem 5rem 1rem 3.3rem;
+          background-color: #fff;
+          border-radius: 20px;
+          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+          font-family: Lato;
+          min-width: 0;
+          overflow-y : scroll;
+      }
+
+  /*select category*/
+  .form-select-mb-3{
+    margin-top: -80px;
+      margin-left: 950px;
+      display: flex;
+      min-width:0;
+      
+  }
+
+  .btn-btn-light-w-25{
+    color: #06529b;
+     margin-top: -30px;
+      margin-left: 1300px;
+      display:flex;}
+    
+  .p-2-overview-block-sm-overview-block {
+    width:760px;height:270px;}
+
+  div.events {
+    position: relative;
+    color: #06529b;
+    font-family: Source sans pro;
+          font-weight: 700;
+          font-size: 1.5rem;
+          margin-bottom: 1.5rem;
+          margin-left: 4rem;
+          margin-top: 2rem;
+  }
+
+  .events_container {
+     display: relative;
+          margin: 7rem 5rem 1rem 3.3rem;
+          background-color: #fff;
+          border-radius: 20px;
+          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+          font-family: Lato;
+          min-width: 0;}
+
+
+  .flex-container {
+      display: flex;
+      margin-top: 30px;
+      margin-left: 80px;
+  }
+
+  .flex-child {
+      flex: 1;
+  }  
+
+  .flex-child:first-child {
+      margin-right: 10px;
+  }  
+
+  .events_calendar {
+    width: 45px;
+    width: 45px;
+    height: 49px;
+    left: -200px;
+    display:flex;
+    display:inline-block;
+    position: relative;}
+
+  h1 {
+    text-align:center;
+    margin-top: 5px; 
+    font-size: 18px;
+    float:left;
+    padding: 5px;
+  }
+
+  div.flex-child-events {
+    margin-left: 3rem;
+    margin-right: 3rem;
+  }
+
+      div.parent{
+         box-sizing: border-box;
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr 1fr;
+          column-gap: 12px;
+          margin-top: -190px;
+          margin-left: 320px;
+      }
+
+      div.child{
+      box-sizing: border-box;
+            width: 190px;
+            height: 208px;
+            background: white;
+            text-align: center;
+            border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+      border-bottom-left-radius: 15px;
+      border-bottom-right-radius: 15px;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);  
+       margin: auto !important;
+      }
+      
+  .child p {
+     font-family: Source Sans Pro;
+    font-weight: bold;
+    font-size: 24px;
+   }
+   .child:hover {
+    background-color: #eee;
+    cursor: pointer
+}
+
+
+  .features_description {
+      font-family: Source Sans Pro;
+    font-weight:100 ;
+    font-size: 16px;
+    opacity: 1;
+    text-align: center;
+     color: rgba(95,110,131,1);
+  }
+
+  #features_icons {
+     width: 60px;
+    height: 60px;
+    display:flex;
+    flex-direction: row;
+    margin-top: 20px;
+    margin-left: 70px;
+  }
+
+ /*navbarheader*/
+
+      /* * Extra small devices (portrait phones, Less than 576px) /  */
+      @media (max-width: 575.98px) {
+        body {
+          overflow: auto;
+        }
+        .wrapper {
+          zoom: 100%;
+        }
+      }
+      /* / Small devices (Landscape phones, 576px and up)/  */
+      @media (min-width: 576px) and (max-width: 767.98px) {
+        body {
+          overflow: auto;
+        }
+        .wrapper {
+          zoom: 100%;
+        }
+      }
+      /* / Medium devices (tablets, 768px and up) /  */
+      @media (min-width: 768px) and (max-width: 991.98px) {
+        body {
+          overflow: auto;
+        }
+        .wrapper {
+          zoom: 100%;
+        }
+      }
+
+      /* / Large devices (desktops, 992px and up) / */
+      @media (min-width: 992px) and (max-width: 1199.98px) {
+        #content {
+          zoom: 67%;
+        }
+        #sidebar {
+          zoom: 75%;
+        }
+        .wrapper {
+          zoom: 100%;
+        }
+      }
+      /* / For screens na 1920x1080 / */
+      /* For screens na 1920x1080 */
+      @media (max-width: 1920px) {
+        .main-content {
+          zoom: 110%;
+        }
+      }
+
+      @media (max-width: 516px) {
+        .wrapper {
+          zoom: 58%;
+        }
+      }
+
+      /* / For screens na 1600 / */
+      @media (min-width: 1600px) {
+        .wrapper {
+          zoom: 85%;
+        }
+        .body {
+          zoom: 67%;
+        }
+      }
+
+      @media (max-width: 1366px) {
+        .main-content {
+          zoom: 90%;
+        }
+        .wrapper {
+          zoom: 90%;
+        }
+      }
+
+      a:link {
+        text-decoration: none;
+        color: #5f6e83;
+      }
+      a:hover {
+        text-decoration: none;
+        color: #0892dd;
+      }
+
+      a:visited {
+        text-decoration: none;
+        color: #5f6e83;
+      }
+
+      a:hover {
+        text-decoration: none;
+        color: #0892dd;
+      }
+
+      a:active {
+        text-decoration: none;
+        color: #0892dd;
+      }
+
+      ::-webkit-scrollbar {
+        width: 9px;
+        height: 9px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      ::-webkit-scrollbar-thumb {
+        background-color: #d3dbe4;
+        border-radius: 20px;
+        border: transparent;
+      }
+
+      body {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        background-color: #f3f6ff;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+        position: absolute;
+      }
+
+      .topbar {
+        box-sizing: border-box;
+        height: 65px;
+        border-bottom: 1px solid #d7dff6;
+        display: flex;
+        padding: 0.5rem 1rem;
+      }
+
+      .iplm-logo {
+        display: flex;
+        flex-direction: row;
+        text-decoration: none;
+        margin-left: 0.5rem;
+      }
+
+      .iplm-logo:hover {
+        opacity: 0.7;
+        -webkit-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+      }
+
+      .logo {
+        height: 3rem;
+      }
+
+      .logo-text {
+        margin-left: 5px;
+        margin-top: 5px;
+      }
+
+      .logo-main {
+        color: rgba(6, 82, 155, 1);
+        font-family: Lato;
+        font-weight: bold;
+        font-size: 1.25rem;
+      }
+
+      .logo-sub {
+        color: #0892dd;
+        font-family: Inter;
+        font-size: 0.875rem;
+      }
+
+      .center-region {
+        display: flex;
+        flex: 1 0 auto;
+      }
+
+      .empty {
+        flex: 1 0 auto;
+      }
+
+      .notif {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 4rem;
+        color: #06529b;
+        cursor: pointer;
+        position: relative;
+      }
+
+      .notif-icon {
+        width: 20px;
+        height: 20px;
+      }
+
+      .notif-icon:hover {
+        opacity: 0.7;
+        -webkit-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+      }
+
+      .notif-content {
+        position: absolute;
+        top: 40px;
+        right: 0;
+        display: none;
+        flex-direction: column;
+        background-color: #fff;
+        min-width: 21.875rem;
+        border-radius: 10px;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        font-family: Lato;
+        padding: 1rem;
+        z-index: 100;
+      }
+
+      .notif-header {
+        display: flex;
+        flex-direction: row;
+        border-bottom: 1px solid #d3dbe4;
+        color: #6c757d;
+        font-weight: 900;
+        font-size: 1rem;
+        padding-bottom: 1rem;
+      }
+
+      .notif-items {
+        max-height: 20.625rem;
+        overflow-y: auto;
+        scrollbar-width: thin;
+      }
+
+      .notif-item {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: row;
+        padding: 1.25rem;
+        border-bottom: 1px solid #eee;
+        border-top: 1px solid #fff;
+        text-decoration: none;
+      }
+
+      .notif-item:hover {
+        background-color: #eee;
+      }
+
+      .notif-item-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+      }
+
+      .notif-item-text {
+        display: flex;
+        flex-direction: column;
+        margin-left: 0.5rem;
+        font-size: 0.875rem;
+        gap: 0.25rem;
+        font-family: "Source Sans Pro", sans-serif;
+      }
+
+      .notif-item-title {
+        font-weight: bolder;
+        color: #06529b;
+      }
+
+      .notif-item-detail {
+        color: #5f6e83;
+      }
+
+      .personal-info {
+        display: flex;
+        flex-direction: row;
+        cursor: pointer;
+      }
+
+      .personal-info:hover .profile-dropdown {
+        opacity: 0.5;
+        -webkit-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+      }
+
+      .user-details {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-right: 1rem;
+      }
+
+      .client-classification {
+        font-size: 0.625rem;
+        font-family: Lato;
+        color: #5f6e83;
+        text-align: right;
+      }
+
+      .client-name {
+        font-size: 13px;
+        font-family: Lato;
+        font-weight: bold;
+        color: #06529b;
+      }
+
+      .dropdown {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .profile-dropdown {
+        height: 35px;
+        cursor: pointer;
+      }
+
+      .dropdown-content {
+        position: absolute;
+        top: 45px;
+        right: 0px;
+        display: none;
+        flex-direction: column;
+        background-color: #fff;
+        min-width: 13.125rem;
+        border-radius: 10px;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        padding: 1rem;
+        box-sizing: border-box;
+        z-index: 100;
+      }
+
+      .dropdown-header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        border-bottom: 1px solid #d3dbe4;
+        padding-bottom: 1rem;
+      }
+
+      .dropdown-details {
+        display: flex;
+        flex-direction: column;
+        margin-left: 0.5rem;
+      }
+
+      .dropdown-icon {
+        width: 40px;
+        height: 40px;
+      }
+
+      .dropdown-name {
+        color: #06529b;
+        font-family: Lato;
+        font-weight: 700;
+        font-size: 0.875rem;
+      }
+
+      .dropdown-email {
+        color: #5f6e83;
+        font-family: source sans pro;
+        font-size: 0.625rem;
+      }
+
+      .dropdown-items {
+        display: flex;
+        flex-direction: column;
+        margin-top: 0.5rem;
+      }
+
+      .dropdown-item {
+        color: #5f6e83;
+        font-family: source sans pro;
+        font-size: 0.875rem;
+        font-weight: 500;
+        padding: 0.5rem;
+        cursor: pointer;
+        text-decoration: none;
+        border-radius: 5px;
+      }
+
+      .dropdown-item:hover {
+        background-color: #f3f6ff;
+        color: #06529b;
+        transition: all 0.3s ease;
+      }
+
+      .profile-dropdown:hover .dropdown-content {
+        display: flex;
+      }
+
+      .content {
+        display: flex;
+        flex: 1 1 auto;
+        flex-direction: row;
+      }
+
+      .sidebar {
+        display: flex;
+        flex-direction: column;
+        flex: 0 0 15.625rem;
+        min-width: 0px;
+        gap: 0.75em;
+        padding: 15px 10px 10px 10px;
+      }
+
+      .sidebar-icon {
+        width: 15px;
+        height: 15px;
+        margin-left: 20px;
+        margin-right: 7px;
+      }
+
+      .sidebar-item {
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        color: rgba(95, 110, 131, 1);
+        cursor: pointer;
+        text-decoration: none;
+        max-width: 12.5rem;
+        line-height: 27px;
+      }
+
+      .sidebar-item:hover {
+        color: #0892dd;
+        background-color: #d3dbe4;
+        border-radius: 5px;
+        transition: all 0.3s ease-in-out;
+      }
+
+      .sidebar-item-text {
+        font-family: Lato;
+        font-size: 0.875rem;
+        font-weight: 900;
+      }
+
+      .sidebar-divider {
+        color: #a8b4c2;
+        font-family: Lato;
+        font-weight: 900;
+        font-size: 0.625rem;
+        overflow: hidden;
+        margin-left: 1.25rem;
+        max-width: 180px;
+        line-height: 27px;
+      }
+
+      .sidebar-divider:after {
+        color: #a8b4c2;
+        content: "\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0";
+        text-decoration: line-through;
+        margin: auto 0.5em;
+      }
+
+  /*select category*/
+        select {
+     background-border: black 1px solid;
+    width: 300px;
+    padding: 12px;
+    border-radius: 10px;
     background-color: white;
-    border-radius: 20px 20px 20px 20px;
-    margin: -2px 50px -2px 40px;
-    box-shadow: 1px 5px 30px -10px #888888;
-    padding-left: 25px;
-    padding-top: 20px;
-    }
-    </style>
+    font-family:source sans pro;
+    /* needed */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    /* SVG background image */
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20viewBox%3D%220%200%2012%2012%22%3E%3Ctitle%3Edown-arrow%3C%2Ftitle%3E%3Cg%20fill%3D%22%23000000%22%3E%3Cpath%20d%3D%22M10.293%2C3.293%2C6%2C7.586%2C1.707%2C3.293A1%2C1%2C0%2C0%2C0%2C.293%2C4.707l5%2C5a1%2C1%2C0%2C0%2C0%2C1.414%2C0l5-5a1%2C1%2C0%2C1%2C0-1.414-1.414Z%22%20fill%3D%22%23000000%22%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+      background-size: .6em;
+      background-position: calc(100% - 1.3em) center;
+      background-repeat: no-repeat;
+
+  }
+  select::-ms-expand {
+      display: none;
+  }
+  .categ {
+    top: 25px;
+    left: 1100px;
+    position: relative;
+  }
+
+  /*END OF CSS*/
+  </style>
 
 </head>
 
-<body>
-    {%block content %}
-    <div class="wrapper">
-
-        <!-- Sidebar -->
-        <nav id="sidebar">
-            <div class="sidebar-header">
-                <li>
-                    <p><br><br><img src="{% static 'CRS/images/fHomeAndProfile/hat.png' %}" width="126px" height="87px"><br><br>
-                </li>
-            </div>
-            <ul class="sidebar components">
-                <li class="active"><a href="{% url 'sHome' %}"><img src="{% static 'CRS/images/cIcons/home2.png' %}"width="97px" height="auto"></a></li>
-                <li><a href="{% url 'sProfile' %}"><img src="{% static 'CRS/images/cIcons/profile2.png' %}" width="97px" height="auto"></a></li>
-                <li><a href="{% url 'sClassroom' %}"><img src="{% static 'CRS/images/cIcons/classroom2.png' %}" width="97px" height="auto"></a></li>
-                <li><a href="{% url 'sOthers' %}"><img src="{% static 'CRS/images/cIcons/others2.png' %}" width="97px" height="auto"></a></li>
-                <li><a href="{% url 'logout' %}"><img src="{% static 'CRS/images/cIcons/log-out2.png' %}" width="97px" height="auto"></a></li>
-            </ul>
-        </nav>
-        <!--End of Sidebar -->
-
-
-        <!-- Content -->
-        <div id="content">
-
-            <div class=" container-fluid">
-
-                <!-- Welcome Panel -->
-                <div class="main row">
-
-                    <div class="col-lg-9">
-                        <div class="row" id="head">
-                            <p>Welcome</p>
-                            <p>&nbsp;Student!</p>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-9 pt-3">
-                                <table>
-                                    <tr>
-                                        <td class="notification"><a href="{% url 'sHomeNotifications' %}"><img id="notif" src="{% static 'CRS/images/sHome/notification.svg' %}" width="40px" height="30px"></a>
-                                            <div class="dropdown-menu">
-                                                <p id="notiftitle">Notifications<br></p><!-- DB NOTIFICATION DATA BELOW -->
-                                                <a  href="{% url 'HDNotifdetails' %}"><p id="notifdrops"><b>Honorable Dismissal Feedback</b><br>See more details...</p><br></a>
-                                                <a  href="{% url 'LOANotifdetails' %}"><p id="notifdrops"><b>Leave of Absence Feedback</b><br>See more details...</p><br></a>
-                                                <a  href="{% url 'OJTNotifdetails' %}"><p id="notifdrops"><b>Practicum Feedback</b><br>See more details...</p><br></a>
-                                                <a  href="{% url 'SPNotifdetails' %}"><p id="notifdrops"><b>Studyplan Feedback</b><br>See more details...</p><br></a>
-                                                <a  href="{% url 'GradesNotifdetails' %}"><p id="notifdrops"><b>Grade Submission Feedback</b><br>See more details...</p><br></a>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <p id="pipe">|</p>
-                                        </td>
-                                        <td><img id="user" src="{% static 'CRS/images/sHome/user.svg' %}" width="35px" height="35px"></td>
-                                        <td id="uname">{{info.studentUser.firstName}} {{info.studentUser.middleName}} {{info.studentUser.lastName}}</td><!-- Yung Fullname daw dito galing DB -->
-                                        
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3">
-                        <table>
-                            {% for acads in acad %}
-                            <tr>
-                                <td class="academicYearHeader">Academic Year:</td>
-                                <td class = "academicYearDetail">{{acads.yearstarted}}-{{acads.yearended}}</td><!-- DB ACADEMIC YEAR  -->
-                            </tr>
-
-                            <tr>
-                                <td class="semesterHeader">Semester:</td>
-                                <td class = "semesterDetails">{{acads.semester}}</td><!-- DB SEMESTER  -->
-                            </tr>
-                            {% endfor %}
-                        </table>
-                    </div>
-
-                </div>
-
-                <!-- Quick Access -->
-                <div class="sub-quick row">
-                    <p id="quick">Quick Access</p>
-                </div>
-
-                <div class="sub-buttons row">
-                    <div class="quickmargin col-lg-3 col-md-6 col-sm-12"><a href="{% url 'sScheduleView' %}" id="buttons"><button type="button" class=" btn">Schedule</button></a></div>
-                    <div class="quickmargin col-lg-3 col-md-6 col-sm-12"><a href="{% url 'sChecklist' %}" id="buttons"><button type="button" class="btn">Checklist</button></a></div>
-                    <div class="quickmargin col-lg-3 col-md-6 col-sm-12"><a href="{% url 'sGradeSubmission1' %}" id="buttons"><button type="button" class="btn ">Grade Submission</button></a></div>
-                    <div class="quickmargin col-lg-3 col-md-6 col-sm-12"><a href="{% url 'sProfileChangePass' %}" id="buttons"><button type="button" class=" btn">Change Password</button></a></div>
-                </div>
-                <!-- END of Quick Access -->
-                <div class="line row">
-                    <hr>
-                </div>
-                <!-- Overview  -->
-                <div class="sub-overview row">
-                    <p id="over">Brief User Profile</p>
-                </div>
-
-                <div class="sub-over row">
-
-                    <div class="col-yellow yellow-box col-lg-8">
-                        <div class="col-lg-12 mt-1">
-                            <table>
-                                <tr>
-                                    <td class="briefProfileHeader"><b>Student Number:</b></td>
-                                    <td class = "briefProfileInfo">{{info.studentID}}</td><!-- DB STUDENT NUMBER  -->
-                                </tr>
-
-                                <tr>
-                                    <td class="briefProfileHeader"><b>Registration Status:</b></td>
-                                    <td class = "briefProfileInfo">{{info.studentRegStatus}}</td><!-- DB STATUS -->
-                                </tr>
-
-                                <tr>
-                                    <td class="briefProfileHeader"><b>Year Level:</b></td>
-                                    <td class = "briefProfileInfo">{{info.studentYearlevel}}</td><!-- DB YEAR LEVEL  -->
-                                </tr>
-
-                                <tr>
-                                    <td class="briefProfileHeader"><b>Degree Program:</b></td>
-                                    <td class = "briefProfileInfo">{{info.studentCourse}}</td><!-- DB DEGREE PROGRAM  -->
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4">
-                        <div class="row">
-                            <img src="{% static 'CRS/images/sHome/clip-1377.png' %}" width="auto" height="350px">
-                        </div>
-                    </div>
-                    
-                </div>
-
-            </div>
-
+ <body>
+    <!-- top bar -->
+    <div class="topbar">
+      <div class="iplm-logo">
+        <img src="https://i.postimg.cc/Z5Kc9KQv/iplm-logo.png" class="logo" />
+        <div class="logo-text">
+          <div class="logo-main">iPLM</div>
+          <div class="logo-sub">Integrated PLM</div>
         </div>
+      </div>
+      <div class="center-region">
+        <div class="empty"></div>
+        <div id="notif-button" class="notif">
+          <img
+            class="notif-icon"
+            src="https://i.ibb.co/0XVd3kP/notification.png"
+            alt="notification"
+          />
+          <div id="notif-window" class="notif-content">
+            <div class="notif-triangle"></div>
+            <div class="notif-header">
+              Notifications -
+              <div class="notif-n">5</div>
+            </div>
+            <div class="notif-items">
+              <a href="{% url 'LOANotifdetails' %}" class="notif-item">
+                <img
+                  class="notif-item-icon"
+                  src="https://i.postimg.cc/Gp0457xb/LOA.png"
+                  alt="img"
+                />
+                <div class="notif-item-text">
+                  <div class="notif-item-title">Leave of Absence Feedback</div>
+                  <div class="notif-item-detail">see more details.</div>
+                </div>
+              </a>
+              <a href="{% url 'HDNotifdetails' %}" class="notif-item">
+                <img
+                  class="notif-item-icon"
+                  src="https://i.postimg.cc/mkhZDCyd/honorabledismissal.png"
+                  alt="img"
+                />
+                <div class="notif-item-text">
+                  <div class="notif-item-title">
+                    Honorable Dismissal Feedback
+                  </div>
+                  <div class="notif-item-detail">see more details.</div>
+                </div>
+              </a>
+              <a href="{% url 'SPNotifdetails' %}" class="notif-item">
+                <img
+                  class="notif-item-icon"
+                  src="https://i.postimg.cc/PJfpMCzZ/studyplan.png"
+                  alt="img"
+                />
+                <div class="notif-item-text">
+                  <div class="notif-item-title">Study Plan Feedback</div>
+                  <div class="notif-item-detail">see more details.</div>
+                </div>
+              </a>
+              <a href="{% url 'GradesNotifdetails' %}" class="notif-item">
+                <img
+                  class="notif-item-icon"
+                  src="https://i.postimg.cc/NMm7n2Hz/mygrades.png"
+                  alt="img"
+                />
+                <div class="notif-item-text">
+                  <div class="notif-item-title">My Grades Feedback</div>
+                  <div class="notif-item-detail">see more details.</div>
+                </div>
+              </a>
+              <a href="{% url 'OJTNotifdetails' %}" class="notif-item">
+                <img
+                  class="notif-item-icon"
+                  src="https://i.postimg.cc/SK7xtyKG/practicum.png"
+                  alt="img"
+                />
+                <div class="notif-item-text">
+                  <div class="notif-item-title">Practicum Feedback</div>
+                  <div class="notif-item-detail">see more details.</div>
+                </div>
+              </a>
+              <a href="{% url 'OutboundNotifdetails' %}" class="notif-item">
+                <img
+                  class="notif-item-icon"
+                  src="https://i.postimg.cc/Kzf01wnM/shifting-form.png"
+                  alt="img"
+                />
+                <div class="notif-item-text">
+                  <div class="notif-item-title">Outbound Shifting Feedback</div>
+                  <div class="notif-item-detail">see more details.</div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+     <div class="personal-info" id="dropdown-button">
+        <div class="user-details">
+          <div class="client-classification">Student</div>
+          <div class="client-name">
+            {{user.firstName}} {{user.middleName}} {{user.lastName}}
+          </div>
+        </div>
+        <div class="dropdown">
+          <img
+            src="{% static 'CRS/images/fHomeAndProfile/userprofile.png' %}"
+            class="profile-dropdown"
+          />
+          <div class="dropdown-content" id="dropdown-window">
+            <div class="dropdown-header">
+              <img
+                src="{% static 'CRS/images/fHomeAndProfile/userprofile.png' %}"
+                class="dropdown-icon"
+              />
+              <div class="dropdown-details">
+                <div class="dropdown-name">{{info.studentUser.firstName}}</div>
+                <div class="dropdown-email">{{user.email}}</div>
+              </div>
+            </div>
+            <div class="dropdown-items">
+              <a href="{% url 'sProfile' %}" class="dropdown-item"
+                >View Profile</a
+              >
+              <a href="{% url 'logout' %}" class="dropdown-item">Logout</a>
+          </div>
+        </div>
+      </div>
     </div>
-    {% endblock content %}
-    <!-- Javascript -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script type="text/javascript">
-        function changeText(obj, text) {
-            obj.innerText = text;
-        }
-    </script>
-    
-</body>
+  </div>
 
+    <!-- content -->
+    <div class="content">
+      <!-- side bar  -->
+      <div class="sidebar">
+        <a href="{% url 'sHome' %}" class="sidebar-item">
+          <img
+            class="sidebar-icon"
+            src="https://i.postimg.cc/DZS58F2h/home-button-iplm.png"
+          />
+          <span class="sidebar-item-text">Home</span>
+        </a>
+        <div class="sidebar-divider">CLASSROOM</div>
+        <a href="{% url 'sScheduleView' %}" class="sidebar-item">
+          <img
+            class="sidebar-icon"
+            src="https://i.postimg.cc/3R4bxwDX/schedule.png"
+          />
+          <span class="sidebar-item-text">Schedule</span>
+        </a>
+        <a href="{% url 'sChecklist' %}" class="sidebar-item">
+          <img
+            class="sidebar-icon"
+            src="https://i.postimg.cc/J7jP6v3z/checklist.png"
+          />
+          <span class="sidebar-item-text">Checklist</span>
+        </a>
+        <a href="{% url 'sGradeSubmission1' %}" class="sidebar-item">
+          <img
+            class="sidebar-icon"
+            src="https://i.postimg.cc/NMm7n2Hz/mygrades.png"
+          />
+          <span class="sidebar-item-text">My Grades</span>
+        </a>
+        <div class="sidebar-divider">OTHERS</div>
+        <a href="{% url 'donesp' %}" class="sidebar-item">
+          <img
+            class="sidebar-icon"
+            src="https://i.postimg.cc/PJfpMCzZ/studyplan.png"
+          />
+          <span class="sidebar-item-text">Study Plan</span>
+        </a>
+        <a href="{% url 'doneLoa' %}" class="sidebar-item">
+          <img
+            class="sidebar-icon"
+            src="https://i.postimg.cc/Gp0457xb/LOA.png"
+          />
+          <span class="sidebar-item-text">Leave of Absence</span>
+        </a>
+        <a href="{% url 'doneHd' %}" class="sidebar-item">
+          <img
+            class="sidebar-icon"
+            src="https://i.postimg.cc/mkhZDCyd/honorabledismissal.pngg"
+          />
+          <span class="sidebar-item-text">Honorable Dismissal</span>
+        </a>
+        <a href="{% url 'donepracticum' %}" class="sidebar-item">
+          <img
+            class="sidebar-icon"
+            src="https://i.postimg.cc/SK7xtyKG/practicum.png"
+          />
+          <span class="sidebar-item-text">Practicum</span>
+        </a>
+        <a href="{% url 'doneOSF' %}" class="sidebar-item">
+          <img
+            class="sidebar-icon"
+            src="https://i.postimg.cc/Kzf01wnM/shifting-form.png"
+          />
+          <span class="sidebar-item-text">Outbound Shifting</span>
+        </a>
+      </div>
+
+ <!-- main content -->
+<div class="main-content">
+        <!--END OF FEATURES-->
+        <div class="container">
+        	              <div class="PLM_picture"></div>
+        	              	  <div class="container-headings">Welcome to <font color="#ecc429">iPLM</font>
+        	              	  	<div class="container-sub-headings">iPLM allows students to input and access their academic
+								information and various student processes.</div></div></div>
+                <!--semester details, department information!-->
+
+		<div class="container-2">
+			<div class="left-side"> 
+				<div class="container-2-headings"> Semester Details </div>
+         <div class="sem_icon"><img src="https://i.postimg.cc/gr9XRgJS/semester-icon.png" class="semester_icon">
+          <div class ="AcadSem">
+                              <table class="table table-sm table-borderless" id="ov-sem-details">
+                                    <tbody>  
+                                        <tr>
+                                        {% for acads in acad%}
+                                            <td>Academic Year: <br> Semester:</td>
+                                            <td> {{acads.yearstarted}} - {{acads.yearended}} <br> {{acads.semester}}</td>
+                                        {%endfor%}
+                                        </tr>                                          
+                                       
+                                    </tbody>
+                                </table>
+          </div></div></div>
+          <div class="right-side"> 
+            <div class="container-2-headings"> Student Information   
+              <div> <img src="https://i.postimg.cc/QCbQ08gR/department-details.png" class="dept_icon">
+                <div><img src="https://i.postimg.cc/QCbQ08gR/department-details.png" class="dept_icon">
+                <div class ="department_info">
+                                     <table class="table table-sm table-borderless" id="ov-sem-details">
+                                    <tbody>  
+                                        <tr>
+                                            <td>{{info.studentSection}}<br> Course & Section</td>
+                                        </tr>   
+                                          <tr>
+                                            <td class="adviser_name">{{info.studentRegStatus}}<br> Status</td>
+                                        </tr>                                          
+                                       
+                                    </tbody>
+                                </table>
+                                            </div>
+<!--features!-->
+                                            <div class="features_container"> 
+
+  <div class="parent">
+
+        <div class="child">
+            <a href="{% url 'sScheduleView' %}" id="features_hover"><img id="features_icons" src="https://i.postimg.cc/13VmHTch/schedule-feature.png">
+          <p id="features_non_hover">Schedule <br>
+            <span class="features_description">View current semester's schedule. </a></div> 
+
+        <div class="child">
+            <a href="{% url 'sChecklist' %}"><img id="features_icons" src="https://i.postimg.cc/cCsFhnS7/features-checklist.png">
+          <p id="features_non_hover"Checklist> Checklist <br>
+            <span class="features_description">View your subjects <br>and grades. </div></a>
+
+        <div class="child">
+            <a href="{% url 'sGradeSubmission1' %}"><img id="features_icons" src="https://i.postimg.cc/13VmHTch/schedule-feature.png">
+          <p id="features_non_hover">My Grades <br>
+            <span class="features_description">Submit your grades. </div></a>
+                                            </div></div>
+
+
+
+</div></div></div></div></div>
+
+
+<div class="container-3">
+        <!--Event View-->
+        <div class="p-2-overview-block-sm-overview-block">
+            <div class="d-flex flex-wrap justify-content-center ov-block-content-2">                                
+
+                    <div class="events">Events</div>
+                    <form method="get" style="margin-top:50px;margin-left:-100px; width:500px">
+                    <select name="sortCategory" class="form-select-mb-3" >
+                        <option disabled selected>Select Category</option>
+                        <option value="Academics">Academics</option>
+                        <option value="Sports">Sports</option>
+                        <option value="Social">Social</option>
+                        <option value="Arts & Culture">Arts & Culture</option>
+                        <option value="Featured">Featured</option>
+                        <input type="submit" value="Apply Changes" class="btn-btn-light-w-25">
+
+                    </form>
+
+
+ 
+          <div class="flex-container">
+            {% for event in events_list %}  
+                {% if event.eventCategory == 'Academics'%}  
+                <div class="flex-child-events">
+                            <h1 style="text-align:center;color: #06529b; font-family: 'Lato', sans-serif;font-weight: 900;font-size: 20px;">{{ event.eventTitle }}</h1>
+                            <h1>{{event.eventDescription}}</h1>
+                            <h1>{{event.eventStartDate}}</h1>
+                            <h1>{{event.eventEndDate}}</h1>
+
+                              </div>
+                {% elif event.eventCategory == 'Sports'%} 
+                  <div class="flex-child-events">
+
+                       <h1 style="text-align:center;color: #06529b; font-family: 'Lato', sans-serif;font-weight: 900;font-size: 20px;">{{ event.eventTitle }}</h1>
+                            <h1>{{event.eventDescription}}</h1>
+                            <h1>{{event.eventStartDate}}</h1>
+                            <h1>{{event.eventEndDate}}</h1>
+                              </div>
+                
+                {% elif event.eventCategory == 'Social'%} 
+                  <div class="flex-child-events">
+
+                       <h1 style="text-align:center;color: #06529b; font-family: 'Lato', sans-serif;font-weight: 900;font-size: 20px;">{{ event.eventTitle }}</h1>
+                            <h1>{{event.eventDescription}}</h1>
+                            <h1>{{event.eventStartDate}}</h1>
+                            <h1>{{event.eventEndDate}}</h1>
+                              </div>
+
+                {% elif event.eventCategory == 'Arts & Culture'%} 
+                  <div class="flex-child-events">
+
+                       <h1 style="text-align:center;color: #06529b; font-family: 'Lato', sans-serif;font-weight: 900;font-size: 20px;">{{ event.eventTitle }}</h1>
+                            <h1>{{event.eventDescription}}</h1>
+                            <h1>{{event.eventStartDate}}</h1>
+                            <h1>{{event.eventEndDate}}</h1>
+                              </div>
+                
+                {% elif event.eventCategory == 'Featured'%} 
+                    <div class="flex-child-events">
+            
+                        <h1 style="text-align:center;color: #06529b; font-family: 'Lato', sans-serif;font-weight: 900;font-size: 20px;">{{ event.eventTitle }}</h1>
+                            <h1>{{event.eventDescription}}</h1>
+                            <h1>{{event.eventStartDate}}</h1>
+                            <h1>{{event.eventEndDate}}</h1>
+                                </div>
+                {%endif%}
+            {%endfor%}
+            
+
+</div>
+<div id="scroll" style=" height: 140px;overflow: auto;overflow-x: visible;margin: 0 auto;white-space: normal;margin-left:140px;" >
+</body>
+ <script>
+    var notifWindow = document.getElementById("notif-window");
+
+    document
+      .getElementById("notif-button")
+      .addEventListener("click", function () {
+        var display = notifWindow.style.display === "flex" ? "none" : "flex";
+        notifWindow.style.display = display;
+      });
+    var profileDropdown = document.getElementById("dropdown-window");
+    document
+      .getElementById("dropdown-button")
+      .addEventListener("click", function () {
+        var display =
+          profileDropdown.style.display === "flex" ? "none" : "flex";
+        profileDropdown.style.display = display;
+      });
+  </script>
+
+
+<!-- JS -->
+        <script src="{% static '/CRS/js/fHome/fHomeMain.js' %}"></script>   
+        <script>
+            let mybutton = document.getElementById("btn-back-to-top");
+            window.onscroll = function () {
+              scrollFunction();
+            };
+            mybutton.addEventListener("click", backToTop);
+        </script>     
 </html>

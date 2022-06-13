@@ -1,9 +1,11 @@
+
 {% load static %}
 <!DOCTYPE html>
 <html>
 
 <head>
-    <title> Student Others </title>
+  <title>Student | Study Plan </title>
+    <link rel="icon" href="https://i.postimg.cc/Z5Kc9KQv/iplm-logo.png">
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,7 +14,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
     <link rel="stylesheet" href="{% static 'CRS/css/sOthers/sStudyplan4.css' %}">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source Sans Pro">
+
 
     <style>
             #saveacopybtn {
@@ -36,84 +41,234 @@
             }
     </style>
 </head>
-
-<body>
-
-    <div class="wrapper">
-
-        <!-- Sidebar -->
-        <div class="v5_4">	
-            <span class="v5_5"><a href="/sProfile/">Home</a></span>
-            <span class="v5_12"><a href="/sScheduleView/">Schedule</a></span>
-            <span class="v5_21"><a href="/stdplnyr/">Study Plan</a></span>
-            <span class="v5_23"><a href="/sLoa1/">Leave of Absence</a></span>
-            <span class="v5_25"><a href="/sHd1/">Honorable Dismissal</a></span>
-            <span class="v5_27"><a href="/sPracticum1/">Practicum</a></span>
-            <span class="v5_14"><a href="/sChecklist/">Checklist</a></span>
-            <span class="v5_15"><a href="/sGradeSubmission1/">My Grades</a></span>
-            <span class="v5_8">CLASSROOM</span>
-            <span class="v5_18">OTHERS</span>
-            <div class="v5_11"></div><div class="v5_13"></div>
-            <div class="v5_16"></div><div class="v5_20"></div>
-            <div class="v5_22"></div><div class="v5_24"></div>
-            <div class="v5_26"></div><div class="name"></div>
-            <div class="name"></div><div class="v5_7"></div>
+<div class="wrapper">        
+    <body>
+            <!-- Sidebar -->
+        <!-- top bar -->
+ <div class="topbar">
+  <a href="{% url 'sHome' %}" class="iplm-logo">
+    <img src="https://i.postimg.cc/Z5Kc9KQv/iplm-logo.png" class="logo" />
+    <div class="logo-text">
+      <div class="logo-main">iPLM</div>
+      <div class="logo-sub">Integrated PLM</div>
+    </div>
+  </a>
+  <div class="center-region">
+    <div class="empty"></div>
+    <div id="notif-button" class="notif">
+      <img
+        class="notif-icon"
+        src="https://i.ibb.co/0XVd3kP/notification.png"
+        alt="notification"
+      />
+      <div id="notif-window" class="notif-content">
+        <div class="notif-triangle"></div>
+        <div class="notif-header">Notifications</div>
+        <div class="notif-items">
+          <a href="{% url 'LOANotifdetails' %}" class="notif-item">
+            <img
+              class="notif-item-icon"
+              src="https://i.postimg.cc/Gp0457xb/LOA.png"
+              alt="img"
+            />
+            <div class="notif-item-text">
+              <div class="notif-item-title">Leave of Absence Feedback</div>
+              <div class="notif-item-detail">View details</div>
             </div>
+          </a>
+
+          <a href="{% url 'HDNotifdetails' %}" class="notif-item">
+            <img
+              class="notif-item-icon"
+              src="https://i.postimg.cc/mkhZDCyd/honorabledismissal.png"
+              alt="img"
+            />
+            <div class="notif-item-text">
+              <div class="notif-item-title">
+                Honorable Dismissal Feedback
+              </div>
+              <div class="notif-item-detail">View details</div>
+            </div>
+          </a>
+
+          <a href="{% url 'SPNotifdetails' %}" class="notif-item">
+            <img
+              class="notif-item-icon"
+              src="https://i.postimg.cc/PJfpMCzZ/studyplan.png"
+              alt="img"
+            />
+            <div class="notif-item-text">
+              <div class="notif-item-title">Study Plan Feedback</div>
+              <div class="notif-item-detail">View details</div>
+            </div>
+          </a>
+
+          <a href="{% url 'GradesNotifdetails' %}" class="notif-item">
+            <img
+              class="notif-item-icon"
+              src="https://i.postimg.cc/NMm7n2Hz/mygrades.png"
+              alt="img"
+            />
+            <div class="notif-item-text">
+              <div class="notif-item-title">My Grades Feedback</div>
+              <div class="notif-item-detail">View details</div>
+            </div>
+          </a>
+
+          <a href="{% url 'OJTNotifdetails' %}" class="notif-item">
+            <img
+              class="notif-item-icon"
+              src="https://i.postimg.cc/SK7xtyKG/practicum.png"
+              alt="img"
+            />
+            <div class="notif-item-text">
+              <div class="notif-item-title">Practicum Feedback</div>
+              <div class="notif-item-detail">View details</div>
+            </div>
+          </a>
+
+          <a href="{% url 'OutboundNotifdetails' %}" class="notif-item">
+            <img
+              class="notif-item-icon"
+              src="https://i.postimg.cc/Kzf01wnM/shifting-form.png"
+              alt="img"
+            />
+            <div class="notif-item-text">
+              <div class="notif-item-title">Outbound Shifting Feedback</div>
+              <div class="notif-item-detail">View details</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="personal-info" id="dropdown-button">
+    <div class="user-details">
+      <div class="client-classification">Student</div>
+      <div class="client-name">
+        {{user.firstName}} {{user.middleName}} {{user.lastName}}
+      </div>
+    </div>
+    <div class="dropdown">
+      <img
+        src="{% static 'CRS/images/fHomeAndProfile/userprofile.png' %}"
+        class="profile-dropdown"
+      />
+      <div class="dropdown-content" id="dropdown-window">
+        <div class="dropdown-header">
+          <img
+            src="{% static 'CRS/images/fHomeAndProfile/userprofile.png' %}"
+            class="dropdown-icon"
+          />
+          <div class="dropdown-details">
+            <div class="dropdown-name">{{user.firstName}}</div>
+            <div class="dropdown-email">{{user.email}}</div>
+          </div>
+        </div>
+        <div class="dropdown-items">
+          <a href="{% url 'sProfile' %}" class="dropdown-item"
+            >View Profile</a
+          >
+          <a href="{% url 'logout' %}" class="dropdown-item">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          <!-- content -->
+          <div class="content">
+           <!-- side bar  -->
+                 <!-- side bar  -->
+      <div class="sidebar">
+        <a href="{% url 'sHome' %}" class="sidebar-item">
+          <img
+            class="sidebar-icon"
+            src="https://i.postimg.cc/DZS58F2h/home-button-iplm.png"
+          />
+          <span class="sidebar-item-text">Home</span>
+        </a>
+        <div class="sidebar-divider">CLASSROOM</div>
+        <a href="{% url 'sScheduleView' %}" class="sidebar-item">
+          <img
+            class="sidebar-icon"
+            src="https://i.postimg.cc/3R4bxwDX/schedule.png"
+          />
+          <span class="sidebar-item-text">Schedule</span>
+        </a>
+        <a href="{% url 'sChecklist' %}" class="sidebar-item">
+          <img
+            class="sidebar-icon"
+            src="https://i.postimg.cc/J7jP6v3z/checklist.png"
+          />
+          <span class="sidebar-item-text">Checklist</span>
+        </a>
+        <a href="{% url 'sGradeSubmission1' %}" class="sidebar-item">
+          <img
+            class="sidebar-icon"
+            src="https://i.postimg.cc/NMm7n2Hz/mygrades.png"
+          />
+          <span class="sidebar-item-text">My Grades</span>
+        </a>
+        <div class="sidebar-divider">OTHERS</div>
+        <a href="{% url 'donesp' %}" class="sidebar-item">
+          <img
+            class="sidebar-icon"
+            src="https://i.postimg.cc/PJfpMCzZ/studyplan.png"
+          />
+          <span class="sidebar-item-text">Study Plan</span>
+        </a>
+        <a href="{% url 'doneLoa' %}" class="sidebar-item">
+          <img
+            class="sidebar-icon"
+            src="https://i.postimg.cc/Gp0457xb/LOA.png"
+          />
+          <span class="sidebar-item-text">Leave of Absence</span>
+        </a>
+        <a href="{% url 'doneHd' %}" class="sidebar-item">
+          <img
+            class="sidebar-icon"
+            src="https://i.postimg.cc/mkhZDCyd/honorabledismissal.pngg"
+          />
+          <span class="sidebar-item-text">Honorable Dismissal</span>
+        </a>
+        <a href="{% url 'donepracticum' %}" class="sidebar-item">
+          <img
+            class="sidebar-icon"
+            src="https://i.postimg.cc/SK7xtyKG/practicum.png"
+          />
+          <span class="sidebar-item-text">Practicum</span>
+        </a>
+        <a href="{% url 'doneOSF' %}" class="sidebar-item">
+          <img
+            class="sidebar-icon"
+            src="https://i.postimg.cc/Kzf01wnM/shifting-form.png"
+          />
+          <span class="sidebar-item-text">Outbound Shifting</span>
+        </a>
+      </div>
+            <!-- End of Sidebar -->
+            <!-- main content DITO NYO LAGAY MGA PUCHU PUCHU NYO -->
+                
+            <!-- Content -->
+            <div class="main-content"> 
+                <div class="container-fluid">
+                    <div class="backrw row" style="margin-top: 0px;">
+                        <p id="head1">
+                             Study Plan
+                         </p> 
+                    </div>
     
-            <div class="v3_2"><div class="v2_5">
-                <div class="iplm-logo"><img src="https://i.postimg.cc/Z5Kc9KQv/iplm-logo.png" class="logo"></div>
-                <span class="v2_7">iPLM</span><span class="v2_8">Integrated PLM</span></div>
-                <div class="v5_6"></div><div class="v9_343"></div>
-                <div class="v9_360"></div>
-                <span class="v9_345"></span></div>
-                <div class="name"></div>
-        <!-- <nav id="sidebar">
-            <div class="sidebar-header">
-                <li>
-                    <p><br><br><img src="{% static 'CRS/images/fHomeAndProfile/hat.png' %}" width="126px" height="87px"><br><br>
-                </li>
-            </div>
-            <ul class="sidebar components">
-                <li class="active"><a href="{% url 'sHome' %}"><img src="{% static 'CRS/images/cIcons/home2.png' %}"width="97px" height="auto"></a></li>
-                <li><a href="{% url 'sProfile' %}"><img src="{% static 'CRS/images/cIcons/profile2.png' %}" width="97px" height="auto"></a></li>
-                <li><a href="{% url 'sClassroom' %}"><img src="{% static 'CRS/images/cIcons/classroom2.png' %}" width="97px" height="auto"></a></li>
-                <li><a href="{% url 'sOthers' %}"><img src="{% static 'CRS/images/cIcons/others2.png' %}" width="97px" height="auto"></a></li>
-                <li><a href="{% url 'logout' %}"><img src="{% static 'CRS/images/cIcons/log-out2.png' %}" width="97px" height="auto"></a></li>
-            </ul>
-        </nav> -->
-        <!--End of Sidebar -->
-
-        <!-- Content -->
-        <div id="content">
-            <div class="container-fluid">
-                <div class="backrw row"  style="margin-right: 0px; margin-left:150px; margin-top:100px; ">
-                    
-                    <!-- <a href="{% url 'stdplnview' %}" id="back-edit"><img src="{% static 'CRS/images/sClassroom/back.svg' %}" width="50" style="margin-top: 30px;"></a> -->
-                   <div>
-                    <p id="head1">
-                        Study Plan
-                    </p>
-                </div>
-
-                       
-
-                <!-- Progress Bar -->
-            </div>
-            <div class="backrw row"  style="margin-top: 0px;">
+               <!-- Progress Bar -->
+               <div class="row">
                 <div class="container-fluid"> 
-                     <div class="col-lg-12" style="margin-top: 0px;">
-
-                        <div class="backrw row" style="margin-left:0px; margin-right:0px;">
-                            <div class="container-fluid"> 
-                                 <div class="col-lg-12" style="margin-top: -70px;">
                         <div class="progress row">
                             <div class="col-lg-12">
-                            <div class="progress-bar "></div>
-                            <div class="progressbar">
-                                <div class="progress-bars "></div>
-                                    <li class="active progress-text-active">Upcoming<br>Semester</br><img src="https://i.ibb.co/Kw0K42B/check.png" width="45" height="45" style="margin-top: -65%;"></li>
-                                    <li class="active progress-text-active">Subjects<br>Taken</br><img src="https://i.ibb.co/Kw0K42B/check.png" width="45" height="45" style="margin-top: -65%"></li>
-                                    <li class="active progress-text-active">Study<br>Plan</br><img src="https://i.ibb.co/Kw0K42B/check.png" width="45" height="45" style="margin-top: -65%"></li>  
+                                <div class="progress-bar "></div>
+                                <div class="progressbar">
+                                    <div class="progress-bars "></div>
+                                    <li class="active progress-text-active">Upcoming<br>Semester</br><img src="https://i.ibb.co/Kw0K42B/check.png" width="45" height="45" style="margin-top: -180px;"></li>
+                                    <li class="active progress-text-active">Subjects<br>Taken</br><img src="https://i.ibb.co/Kw0K42B/check.png" width="45" height="45" style="margin-top: -180px;"></li>
+                                    <li class="active progress-text-active">Study<br>Plan</br><img src="https://i.ibb.co/Kw0K42B/check.png" width="45" height="45" style="margin-top: -180px;"></li>  
                                     <li class="active progress-text-active">Upload<br>Documents</li>
                                     <li class="progress-text">Confirm<br>Submission</li></ul>
                             </div>
@@ -146,28 +301,28 @@
                             {%csrf_token%}   
                         <div>
                             <button style="padding-left: 20px;" id="button2hvr">Study Plan</button>
-                            <input type="file" name="studyPlanUp" required>
+                            <input type="file" id="studyPlanUp" name="studyPlanUp" accept= ".pdf">
                         </div>    
                         </div>
                         </div>
                         
                        <!-----------SUBMIT BUTTON------->
-                    
-                        
-
-                    <div>
-                        <div class="rows"></div><br><button type="submit"  id="submitbtn">Submit</button></a>
-                       
-                    
+                       <div>
+                       <div class="rows">
+                        <br><button type="submit"  id="submitbtn">Submit</button></a>
                         
                     </div>
 
+                    <div>
+                        <a href="{% url 'stdplnview' %}"><img src="https://i.ibb.co/k027N7K/arrow-left.png" height="50;" width="50;" style="margin-left:1350px; margin-top:-91px;"></a>
+                    </div>
                         <!-- <div class="col-lg-12"><img src="{% static 'CRS/images/sOthers/clip-remote.png' %}" height="210px" width="350px"> -->
                             
                         </div>
+                        </div>
                     </div>
                         
-                    <a href="{% url 'stdplnview' %}"><img src="https://i.ibb.co/k027N7K/arrow-left.png" height="50;" width="50;" style="position: relative; top: -5%; right:0px;margin-left:1180px; margin-top:-88px; z-index: 1001;"></a>
+                        
                         
                         </form>
                 </div>
@@ -185,23 +340,47 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script>
-        const selected = document.querySelector(".selected");
-        const optionsContainer = document.querySelector(".options-container");
+          var notifWindow = document.getElementById("notif-window");
 
-        const optionsList = document.querySelectorAll(".option");
-
-        selected.addEventListener("click", () => {
-            optionsContainer.classList.toggle("active");
-        });
-
+document
+  .getElementById("notif-button")
+  .addEventListener("click", function () {
+    var display = notifWindow.style.display === "flex" ? "none" : "flex";
+    notifWindow.style.display = display;
+  });
+var profileDropdown = document.getElementById("dropdown-window");
+document
+  .getElementById("dropdown-button")
+  .addEventListener("click", function () {
+    var display =
+      profileDropdown.style.display === "flex" ? "none" : "flex";
+    profileDropdown.style.display = display;
+  });
         optionsList.forEach(o => {
             o.addEventListener("click", () => {
                 selected.innerHTML = o.querySelector("label").innerHTML;
                 optionsContainer.classList.remove("active");
             });
         });
+       
     </script>
-
+<script>
+ const types = ["studyPlanUp"];
+ for(let x=0; x<5; x++){
+ var file = document.getElementById(types[x]);
+ file.onchange = function(e) {
+ var ext = this.value.match(/.([^.]+)$/)[1];
+ switch (ext) {
+     case 'pdf':
+     case 'PDF':
+     break;
+     default:
+     alert('File type you are uploading is incorrect. \nAccepted file is only PDF');
+     this.value = '';
+ }
+ };
+}
+</script>
 </body>
 
 </html>

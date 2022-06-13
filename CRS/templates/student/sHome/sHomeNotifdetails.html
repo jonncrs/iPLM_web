@@ -3,219 +3,908 @@
 <html>
 
 <head>
-    <title> Student | Notification </title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
-    <link rel="stylesheet" href="{% static 'CRS/css/sHome/sHomeStyle.css' %}">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">
-    <script src="{% static 'CRS/js/cHome/cHomeMain.js' %}"></script>
-
-    <link rel="icon" href="{% static 'CRS/images/sOthers/iPLM.png' %}" type="image/png" sizes="16x16">
-
+    <meta charset="utf-8" />
+    <title>Student | NotifDetails</title>
+    <link rel="icon" href="https://i.postimg.cc/Z5Kc9KQv/iplm-logo.png" type="image/x-icon" />
+    <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
+    <link rel="icon" href="https://i.postimg.cc/Z5Kc9KQv/iplm-logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
+        /* * Extra small devices (portrait phones, Less than 576px) /  */
+        @media (max-width: 575.98px) {
+            body {
+                overflow: auto;
+            }
 
-    body{
-        font-family: Nunito;
-    }
+            .wrapper {
+                zoom: 100%;
+            }
+        }
 
-    .notifpanels{
-    color: #0C66CC;
-    font-family: 'Nunito';
-    width: 85%;
-    height: 90px;
-    background-color: white;
-    border-radius: 20px 20px 20px 20px;
-    box-shadow: 1px 5px 30px -10px #888888;
-    padding-left: 25px;
-    padding-top: 20px;
-    }
-    
-    
-    .notifpanels:hover{
-        background-color: #f7f7f7;
-    }
+        /* / Small devices (Landscape phones, 576px and up)/  */
+        @media (min-width: 576px) and (max-width: 767.98px) {
+            body {
+                overflow: auto;
+            }
 
-    #notifdrops:hover {
-        background-color: #f7f7f7;
-    }
+            .wrapper {
+                zoom: 100%;
+            }
+        }
 
-    #notifdrops {
-    color: #0C66CC;
-    font-family: 'Nunito';
-    width: 470px;
-    height: 90px;
-    background-color: white;
-    border-radius: 20px 20px 20px 20px;
-    margin: -2px 50px -2px 40px;
-    box-shadow: 1px 5px 30px -10px #888888;
-    padding-left: 25px;
-    padding-top: 20px;
-    }
+        /* / Medium devices (tablets, 768px and up) /  */
+        @media (min-width: 768px) and (max-width: 991.98px) {
+            body {
+                overflow: auto;
+            }
+
+            .wrapper {
+                zoom: 100%;
+            }
+        }
+
+        /* / Large devices (desktops, 992px and up) / */
+        @media (min-width: 992px) and (max-width: 1199.98px) {
+            #content {
+                zoom: 67%;
+            }
+
+            #sidebar {
+                zoom: 75%;
+            }
+
+            .wrapper {
+                zoom: 100%;
+            }
+        }
+
+        /* / For screens na 1920x1080 / */
+        /* For screens na 1920x1080 */
+        @media (max-width: 1920px) {
+            .main-content {
+                zoom: 110%;
+            }
+        }
+
+        @media (max-width: 516px) {
+            .wrapper {
+                zoom: 58%;
+            }
+        }
+
+        /* / For screens na 1600 / */
+        @media (min-width: 1600px) {
+            .wrapper {
+                zoom: 85%;
+            }
+
+            .body {
+                zoom: 67%;
+            }
+        }
+
+        @media (max-width: 1366px) {
+            .main-content {
+                zoom: 90%;
+            }
+
+            .wrapper {
+                zoom: 90%;
+            }
+        }
+
+        a:link {
+            text-decoration: none;
+            color: #5f6e83;
+        }
+
+        a:hover {
+            text-decoration: none;
+            color: #0892dd;
+        }
+
+        a:visited {
+            text-decoration: none;
+            color: #5f6e83;
+        }
+
+        a:hover {
+            text-decoration: none;
+            color: #0892dd;
+        }
+
+        a:active {
+            text-decoration: none;
+            color: #0892dd;
+        }
+
+        ::-webkit-scrollbar {
+            width: 9px;
+            height: 9px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #d3dbe4;
+            border-radius: 20px;
+            border: transparent;
+        }
+
+        body {
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            background-color: #f3f6ff;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+            position: absolute;
+        }
+
+        .topbar {
+            box-sizing: border-box;
+            height: 65px;
+            border-bottom: 1px solid #d7dff6;
+            display: flex;
+            padding: 0.5rem 1rem;
+        }
+
+        .iplm-logo {
+            display: flex;
+            flex-direction: row;
+            text-decoration: none;
+            margin-left: 0.5rem;
+        }
+
+        .iplm-logo:hover {
+            opacity: 0.7;
+            -webkit-transition: all 0.3s ease-in-out;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .logo {
+            height: 3rem;
+        }
+
+        .logo-text {
+            margin-left: 5px;
+            margin-top: 5px;
+        }
+
+        .logo-main {
+            color: rgba(6, 82, 155, 1);
+            font-family: Lato;
+            font-weight: bold;
+            font-size: 1.25rem;
+        }
+
+        .logo-sub {
+            color: #0892dd;
+            font-family: Inter;
+            font-size: 0.875rem;
+        }
+
+        .center-region {
+            display: flex;
+            flex: 1 0 auto;
+        }
+
+        .empty {
+            flex: 1 0 auto;
+        }
+
+        .notif {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 4rem;
+            color: #06529b;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .notif-icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        .notif-icon:hover {
+            opacity: 0.7;
+            -webkit-transition: all 0.3s ease-in-out;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .notif-content {
+            position: absolute;
+            top: 40px;
+            right: 0;
+            display: none;
+            flex-direction: column;
+            background-color: #fff;
+            min-width: 21.875rem;
+            border-radius: 10px;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            font-family: Lato;
+            padding: 1rem;
+            z-index: 100;
+        }
+
+        .notif-header {
+            display: flex;
+            flex-direction: row;
+            border-bottom: 1px solid #d3dbe4;
+            color: #6c757d;
+            font-weight: 900;
+            font-size: 1rem;
+            padding-bottom: 1rem;
+        }
+
+        .notif-items {
+            max-height: 20.625rem;
+            overflow-y: auto;
+            scrollbar-width: thin;
+        }
+
+        .notif-item {
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: row;
+            padding: 1.25rem;
+            border-bottom: 1px solid #eee;
+            border-top: 1px solid #fff;
+            text-decoration: none;
+        }
+
+        .notif-item:hover {
+            background-color: #eee;
+        }
+
+        .notif-item-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        .notif-item-text {
+            display: flex;
+            flex-direction: column;
+            margin-left: 0.5rem;
+            font-size: 0.875rem;
+            gap: 0.25rem;
+            font-family: "Source Sans Pro", sans-serif;
+        }
+
+        .notif-item-title {
+            font-weight: bolder;
+            color: #06529b;
+        }
+
+        .notif-item-detail {
+            color: #5f6e83;
+        }
+
+        .personal-info {
+            display: flex;
+            flex-direction: row;
+            cursor: pointer;
+        }
+
+        .personal-info:hover .profile-dropdown {
+            opacity: 0.5;
+            -webkit-transition: all 0.3s ease-in-out;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .user-details {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-right: 1rem;
+        }
+
+        .client-classification {
+            font-size: 0.625rem;
+            font-family: Lato;
+            color: #5f6e83;
+            text-align: right;
+        }
+
+        .client-name {
+            font-size: 13px;
+            font-family: Lato;
+            font-weight: bold;
+            color: #06529b;
+        }
+
+        .dropdown {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profile-dropdown {
+            height: 35px;
+            cursor: pointer;
+        }
+
+        .dropdown-content {
+            position: absolute;
+            top: 45px;
+            right: 0px;
+            display: none;
+            flex-direction: column;
+            background-color: #fff;
+            min-width: 13.125rem;
+            border-radius: 10px;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            padding: 1rem;
+            box-sizing: border-box;
+            z-index: 100;
+        }
+
+        .dropdown-header {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            border-bottom: 1px solid #d3dbe4;
+            padding-bottom: 1rem;
+        }
+
+        .dropdown-details {
+            display: flex;
+            flex-direction: column;
+            margin-left: 0.5rem;
+        }
+
+        .dropdown-icon {
+            width: 40px;
+            height: 40px;
+        }
+
+        .dropdown-name {
+            color: #06529b;
+            font-family: Lato;
+            font-weight: 700;
+            font-size: 0.875rem;
+        }
+
+        .dropdown-email {
+            color: #5f6e83;
+            font-family: source sans pro;
+            font-size: 0.625rem;
+        }
+
+        .dropdown-items {
+            display: flex;
+            flex-direction: column;
+            margin-top: 0.5rem;
+        }
+
+        .dropdown-item {
+            color: #5f6e83;
+            font-family: source sans pro;
+            font-size: 0.875rem;
+            font-weight: 500;
+            padding: 0.5rem;
+            cursor: pointer;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .dropdown-item:hover {
+            background-color: #f3f6ff;
+            color: #06529b;
+            transition: all 0.3s ease;
+        }
+
+        .profile-dropdown:hover .dropdown-content {
+            display: flex;
+        }
+
+        .content {
+            display: flex;
+            flex: 1 1 auto;
+            flex-direction: row;
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            flex: 0 0 15.625rem;
+            min-width: 0px;
+            gap: 0.75em;
+            padding: 15px 10px 10px 10px;
+        }
+
+        .sidebar-icon {
+            width: 15px;
+            height: 15px;
+            margin-left: 20px;
+            margin-right: 7px;
+        }
+
+        .sidebar-item {
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            color: rgba(95, 110, 131, 1);
+            cursor: pointer;
+            text-decoration: none;
+            max-width: 12.5rem;
+            line-height: 27px;
+        }
+
+        .sidebar-item:hover {
+            color: #0892dd;
+            background-color: #d3dbe4;
+            border-radius: 5px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .sidebar-item-text {
+            font-family: Lato;
+            font-size: 0.875rem;
+            font-weight: 900;
+        }
+
+        .sidebar-divider {
+            color: #a8b4c2;
+            font-family: Lato;
+            font-weight: 900;
+            font-size: 0.625rem;
+            overflow: hidden;
+            margin-left: 1.25rem;
+            max-width: 180px;
+            line-height: 27px;
+        }
+
+        .sidebar-divider:after {
+            color: #a8b4c2;
+            content: "\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0";
+            text-decoration: line-through;
+            margin: auto 0.5em;
+        }
+
+        /*************************************************************************************************************************************************/
+        .main-content {
+            background-image: url("https://i.postimg.cc/523r4DT9/leaf-logo.png");
+            background-position: right -270px top -10px;
+            background-repeat: no-repeat;
+            background-size: 730px;
+            display: flex;
+            flex-direction: column;
+            flex: 1 1 0px;
+            min-width: 0;
+        }
+        
+        .notification {
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+
+        .container1 {
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0px 4px 25px #00000012;
+            display: flex;
+            margin-top: 3rem;
+            margin-bottom: 5rem;
+            margin-left: 5rem;
+            margin-right: 5rem;
+        }
+
+        .notification-items {
+            box-sizing: border-box;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 1rem;
+            margin-left: 1rem;
+            margin-top: 1rem;
+            padding: 0.75rem;
+            border-bottom: 1px solid #c3c9d1;
+            text-decoration: none;
+
+        }
+
+        .notification-items:hover {
+            background-color: #eee;
+        }
+
+        .profile1 {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            padding: 2.5rem;
+            min-width: 0;
+            overflow: hidden;
+            height: auto;
+        }
+
+        .profile2 {
+            display: flex;
+            background-color: #ffffff;
+            /*background-image: url("https://i.postimg.cc/0ySV2188/leaf-logo-25opacity.png");*/
+            background-position: right -347px top -53.5px;
+            background-repeat: no-repeat;
+            background-size: 725px;
+            /*opacity: 0.75;*/
+            flex-direction: column;
+            width: 200%;
+            padding: 2.5rem;
+            min-width: 0;
+            overflow: hidden;
+            border-top-right-radius: 15px;
+            border-bottom-right-radius: 15px;
+        }
+
+        .pheader {
+            color: #06529b;
+            padding: 1rem;
+            border-radius: 5px;
+            font-family: 'Lato';
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            overflow: hidden;
+        }
+
+        .container {
+            background-color: rgba(195, 201, 209, .25);
+            border-radius: 8px;
+            display: flex;
+            margin-right: 3rem;
+            margin-left: 3rem;
+            height: auto;
+        }
+
+        .infotext1 {
+            color: #06529b;
+            font-family: 'Source Sans Pro';
+            font-size: 25px;
+            font-weight: bold;
+            text-align: left;
+        }
+
+        .infotext2 {
+            color: #5f6e83;
+            font-family: 'Source Sans Pro';
+            font-size: 15px;
+            font-weight: normal;
+            text-align: left;
+        }
+
+        .vl {
+            height: auto;
+            margin-bottom: 35px;
+            margin-top: 40px;
+            border-left: 0.3px solid #c3c9d1;
+            display: flex;
+            right: 61.5%;
+        }
     </style>
 </head>
 
 <body>
-    {% block content %}
-    <div class="wrapper">
-
-        <!-- Sidebar -->
-        <nav id="sidebar">
-            <div class="sidebar-header">
-                <li>
-                    <p><br><br><img src="{% static 'CRS/images/fHomeAndProfile/hat.png' %}" width="126px" height="87px"><br><br>
-                </li>
+    <!-- top bar -->
+    <div class="topbar">
+        <a href="{% url 'sHome' %}" class="iplm-logo">
+            <img src="https://i.postimg.cc/Z5Kc9KQv/iplm-logo.png" class="logo" />
+            <div class="logo-text">
+                <div class="logo-main">iPLM</div>
+                <div class="logo-sub">Integrated PLM</div>
             </div>
-            <ul class="sidebar components">
-                <li class="active"><a href="{% url 'sHome' %}"><img src="{% static 'CRS/images/cIcons/home2.png' %}"width="97px" height="auto"></a></li>
-                <li><a href="{% url 'sProfile' %}"><img src="{% static 'CRS/images/cIcons/profile2.png' %}" width="97px" height="auto"></a></li>
-                <li><a href="{% url 'sClassroom' %}"><img src="{% static 'CRS/images/cIcons/classroom2.png' %}" width="97px" height="auto"></a></li>
-                <li><a href="{% url 'sOthers' %}"><img src="{% static 'CRS/images/cIcons/others2.png' %}" width="97px" height="auto"></a></li>
-                <li><a href="{% url 'logout' %}"><img src="{% static 'CRS/images/cIcons/log-out2.png' %}" width="97px" height="auto"></a></li>
-            </ul>
-        </nav>
-        <!--End of Sidebar -->
-
-        <!-- Content -->
-        <div id="content">
-
-            <div class=" container-fluid">
-
-                <!-- Welcome Panel -->
-                <div class="main row">
-
-                    <div class="col-lg-9">
-                        <div class="row" id="head">
-                            <p>Welcome</p>
-                            <p>&nbsp;Student!</p>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-9 pt-3">
-                                <table>
-                                    <tr>
-                                        <td class="notification"><a href="{% url 'sHomeNotifications' %}"><img id="notif" src="{% static 'CRS/images/sHome/notification.svg' %}" width="40px" height="30px"></a>
-                                            <div class="dropdown-menu">
-                                                <p id="notiftitle">Notifications<br></p><!-- DB NOTIFICATION DATA BELOW -->
-                                                <a  href="{% url 'HDNotifdetails' %}"><p id="notifdrops"><b>Honorable Dismissal Feedback</b><br>See more details...</p><br></a>
-                                                <a  href="{% url 'LOANotifdetails' %}"><p id="notifdrops"><b>Leave of Absence Feedback</b><br>See more details...</p><br></a>
-                                                <a  href="{% url 'OJTNotifdetails' %}"><p id="notifdrops"><b>Practicum Feedback</b><br>See more details...</p><br></a>
-                                                <a  href="{% url 'SPNotifdetails' %}"><p id="notifdrops"><b>Studyplan Feedback</b><br>See more details...</p><br></a>
-                                                <a  href="{% url 'GradesNotifdetails' %}"><p id="notifdrops"><b>Grade Submission Feedback</b><br>See more details...</p><br></a>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <p id="pipe">|</p>
-                                        </td>
-                                        <td><img id="user" src="{% static 'CRS/images/sHome/user.svg' %}" width="35px" height="35px"></td>
-                                        <td id="uname">{{info.studentUser.firstName}} {{info.studentUser.middleName}} {{info.studentUser.lastName}}</td><!-- Yung Fullname daw dito galing DB -->
-                                        
-                                    </tr>
-                                </table>
+        </a>
+        <div class="center-region">
+            <div class="empty"></div>
+            <div id="notif-button" class="notif">
+                <img class="notif-icon" src="https://i.ibb.co/0XVd3kP/notification.png" alt="notification" />
+                <div id="notif-window" class="notif-content">
+                    <div class="notif-triangle"></div>
+                    <div class="notif-header">Notifications</div>
+                    <div class="notif-items">
+                        <a href="{% url 'LOANotifdetails' %}" class="notif-item">
+                            <img class="notif-item-icon" src="https://i.postimg.cc/Gp0457xb/LOA.png" alt="img" />
+                            <div class="notif-item-text">
+                                <div class="notif-item-title">Leave of Absence Feedback</div>
+                                <div class="notif-item-detail">View details</div>
                             </div>
-                        </div>
-                    </div>
+                        </a>
 
-                    <div class="col-lg-3">
-                        {% for acads in acad %}
-                        <table>
-                            <tr>
-                                <td class="academicYearHeader">Academic Year:</td>
-                                <td class = "academicYearDetail">{{acads.yearstarted}} - {{acads.yearended}} </td><!-- DB ACADEMIC YEAR  -->
-                            </tr>
-
-                            <tr>
-                                <td class="semesterHeader">Semester:</td>
-                                <td class = "semesterDetails">{{acads.semester}}</td><!-- DB SEMESTER  -->
-                            </tr>
-                        </table>
-                        {% endfor %}
-                    </div>
-
-                </div>
-
-                <!--NOTIFICATION-->
-                <div id="notifrow" class="row pt-5">
-                    <div id="notifcol" class="col-lg-5">
-                        <p id="notifhead" style="font-size: 30px;"><img id="bluebell" src="{% static 'CRS/images/sHome/bluebell.svg' %}">&nbsp;&nbsp;Notification</p>
-                        
-                        <!-- DB NOTIFICATION LIST BELOW -->
-                        <a href="{% url 'HDNotifdetails' %}"><p class="notifpanels"><b>Honorable Dismissal Feedback</b><br>See more details...</p></a>
-                        <a href="{% url 'LOANotifdetails' %}"><p class="notifpanels"><b>Leave of Absence Feedback</b><br>See more details...</p></a>
-                        <a href="{% url 'OJTNotifdetails' %}"><p class="notifpanels"><b>Practicum Feedback</b><br>See more details...</p></a>
-                        <a href="{% url 'SPNotifdetails' %}"><p class="notifpanels"><b>Studyplan Feedback</b><br>See more details...</p></a>    
-                        <a href="{% url 'GradesNotifdetails' %}"><p class="notifpanels"><b>Grade Submission Feedback</b><br>See more details...</p></a> 
-                    </div>
-
-                    
-                    <div class="col-lg-7">
-                        <div class="row">
-                            <div class="col-lg-12 pl-5">
-                                <p id="notifhead2"><b>{{ notif_type }}</b><br></p><!-- DB NOTIFICATION TITLE BELOW -->
-                                <p id="notifhead3">&nbsp;&nbsp;Status: 
-
-                                        {% if feedback.remarks == "Submitted" %}
-                                        <span style="color: #0C66CC;"><b>{{ feedback.remarks }}</b></span>
-                                        {% endif %}
-
-                                        {% if feedback.remarks == "Returned" %}
-                                        <span style="color: #E43C21;"><b>{{ feedback.remarks }}</b></span>
-                                        {% endif %}
-
-                                        {% if feedback.remarks == "In Progress" %}
-                                        <span style="color: #0C66CC;"><b>{{ feedback.remarks }}</b></span>
-                                        {% endif %}
-
-                                        {% if feedback.remarks == "Forwarded" %}
-                                        <span style="color: #0C66CC;"><b>{{ feedback.remarks }}</b></span>
-                                        {% endif %}
-
-                                        {% if feedback.remarks == "Complete" %}
-                                        <span style="color: #3FB328;"><b>{{ feedback.remarks }}</b></span>
-                                        {% endif %}
-
-                                        {% if feedback.remarks == "Approved" %}
-                                        <span style="color: #3FB328;"><b>{{ feedback.remarks }}</b></span>
-                                        {% endif %}
-
-                                        
-                                    </p>
+                        <a href="{% url 'HDNotifdetails' %}" class="notif-item">
+                            <img class="notif-item-icon" src="https://i.postimg.cc/mkhZDCyd/honorabledismissal.png"
+                                alt="img" />
+                            <div class="notif-item-text">
+                                <div class="notif-item-title">
+                                    Honorable Dismissal Feedback
+                                </div>
+                                <div class="notif-item-detail">View details</div>
                             </div>
-                        </div>
-                        <hr id="notifline">
-                        <div class="row">
-                            <div class="col-lg-12 pt-3 pl-5"><!-- DB NOTIFICATION CONTENT / MESSAGE BELOW -->
-                                <p id="notiftext" style="font-size: 20px; color: #2b2b2b;">{{ feedback.comment}}</p>
-                                <p id="notiftext" style="font-size: 20px; color: #2b2b2b;">{{ feedbacknone}}</p>
+                        </a>
+
+                        <a href="{% url 'SPNotifdetails' %}" class="notif-item">
+                            <img class="notif-item-icon" src="https://i.postimg.cc/PJfpMCzZ/studyplan.png" alt="img" />
+                            <div class="notif-item-text">
+                                <div class="notif-item-title">Study Plan Feedback</div>
+                                <div class="notif-item-detail">View details</div>
                             </div>
-                        </div>
+                        </a>
+
+                        <a href="{% url 'GradesNotifdetails' %}" class="notif-item">
+                            <img class="notif-item-icon" src="https://i.postimg.cc/NMm7n2Hz/mygrades.png" alt="img" />
+                            <div class="notif-item-text">
+                                <div class="notif-item-title">My Grades Feedback</div>
+                                <div class="notif-item-detail">View details</div>
+                            </div>
+                        </a>
+
+                        <a href="{% url 'OJTNotifdetails' %}" class="notif-item">
+                            <img class="notif-item-icon" src="https://i.postimg.cc/SK7xtyKG/practicum.png" alt="img" />
+                            <div class="notif-item-text">
+                                <div class="notif-item-title">Practicum Feedback</div>
+                                <div class="notif-item-detail">View details</div>
+                            </div>
+                        </a>
+
+                        <a href="{% url 'OutboundNotifdetails' %}" class="notif-item">
+                            <img class="notif-item-icon" src="https://i.postimg.cc/Kzf01wnM/shifting-form.png"
+                                alt="img" />
+                            <div class="notif-item-text">
+                                <div class="notif-item-title">Outbound Shifting Feedback</div>
+                                <div class="notif-item-detail">View details</div>
+                            </div>
+                        </a>
                     </div>
                 </div>
-
-
-
-                <!--END NOTIFICATION-->
-
-
-
             </div>
-
+        </div>
+        <div class="personal-info" id="dropdown-button">
+            <div class="user-details">
+                <div class="client-classification">Student</div>
+                <div class="client-name">
+                    {{user.firstName}} {{user.middleName}} {{user.lastName}}
+                </div>
+            </div>
+            <div class="dropdown">
+                <img src="{% static 'CRS/images/fHomeAndProfile/userprofile.png' %}" class="profile-dropdown" />
+                <div class="dropdown-content" id="dropdown-window">
+                    <div class="dropdown-header">
+                        <img src="{% static 'CRS/images/fHomeAndProfile/userprofile.png' %}" class="dropdown-icon" />
+                        <div class="dropdown-details">
+                            <div class="dropdown-name">{{info.studentUser.firstName}}</div>
+                            <div class="dropdown-email">{{user.email}}</div>
+                        </div>
+                    </div>
+                    <div class="dropdown-items">
+                        <a href="{% url 'sProfile' %}" class="dropdown-item">View Profile</a>
+                        <a href="{% url 'logout' %}" class="dropdown-item">Logout</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    {% endblock content %}
+
+    <!-- content -->
+    <div class="content">
+        <!-- side bar  -->
+        <div class="sidebar">
+            <a href="{% url 'sHome' %}" class="sidebar-item">
+                <img class="sidebar-icon" src="https://i.postimg.cc/DZS58F2h/home-button-iplm.png" />
+                <span class="sidebar-item-text">Home</span>
+            </a>
+            <div class="sidebar-divider">CLASSROOM</div>
+            <a href="{% url 'sScheduleView' %}" class="sidebar-item">
+                <img class="sidebar-icon" src="https://i.postimg.cc/3R4bxwDX/schedule.png" />
+                <span class="sidebar-item-text">Schedule</span>
+            </a>
+            <a href="{% url 'sChecklist' %}" class="sidebar-item">
+                <img class="sidebar-icon" src="https://i.postimg.cc/J7jP6v3z/checklist.png" />
+                <span class="sidebar-item-text">Checklist</span>
+            </a>
+            <a href="{% url 'sGradeSubmission1' %}" class="sidebar-item">
+                <img class="sidebar-icon" src="https://i.postimg.cc/NMm7n2Hz/mygrades.png" />
+                <span class="sidebar-item-text">My Grades</span>
+            </a>
+            <div class="sidebar-divider">OTHERS</div>
+            <a href="{% url 'donesp' %}" class="sidebar-item">
+                <img class="sidebar-icon" src="https://i.postimg.cc/PJfpMCzZ/studyplan.png" />
+                <span class="sidebar-item-text">Study Plan</span>
+            </a>
+            <a href="{% url 'doneLoa' %}" class="sidebar-item">
+                <img class="sidebar-icon" src="https://i.postimg.cc/Gp0457xb/LOA.png" />
+                <span class="sidebar-item-text">Leave of Absence</span>
+            </a>
+            <a href="{% url 'doneHd' %}" class="sidebar-item">
+                <img class="sidebar-icon" src="https://i.postimg.cc/mkhZDCyd/honorabledismissal.pngg" />
+                <span class="sidebar-item-text">Honorable Dismissal</span>
+            </a>
+            <a href="{% url 'donepracticum' %}" class="sidebar-item">
+                <img class="sidebar-icon" src="https://i.postimg.cc/SK7xtyKG/practicum.png" />
+                <span class="sidebar-item-text">Practicum</span>
+            </a>
+            <a href="{% url 'doneOSF' %}" class="sidebar-item">
+                <img class="sidebar-icon" src="https://i.postimg.cc/Kzf01wnM/shifting-form.png" />
+                <span class="sidebar-item-text">Outbound Shifting</span>
+            </a>
+        </div>
+
+        <!--NOTIFICATION-->
+        <div class="main-content">
+            <div class="container1">
+                <div class="profile1">
+                    <div class="notification">
+                        <a href="{% url 'LOANotifdetails' %}" class="notification-items">
+                            <img class="notif-item-icon" src="https://i.postimg.cc/Gp0457xb/LOA.png" alt="img" />
+                            <div class="notif-item-text">
+                                <div class="notif-item-title">Leave of Absence Feedback</div>
+                                <div class="notif-item-detail">View details</div>
+                            </div>
+                        </a>
+
+                        <a href="{% url 'HDNotifdetails' %}" class="notification-items">
+                            <img class="notif-item-icon" src="https://i.postimg.cc/mkhZDCyd/honorabledismissal.png"
+                                alt="img" />
+                            <div class="notif-item-text">
+                                <div class="notif-item-title">
+                                    Honorable Dismissal Feedback
+                                </div>
+                                <div class="notif-item-detail">View details</div>
+                            </div>
+                        </a>
+
+                        <a href="{% url 'SPNotifdetails' %}" class="notification-items">
+                            <img class="notif-item-icon" src="https://i.postimg.cc/PJfpMCzZ/studyplan.png" alt="img" />
+                            <div class="notif-item-text">
+                                <div class="notif-item-title">Study Plan Feedback</div>
+                                <div class="notif-item-detail">View details</div>
+                            </div>
+                        </a>
+
+                        <a href="{% url 'GradesNotifdetails' %}" class="notification-items">
+                            <img class="notif-item-icon" src="https://i.postimg.cc/NMm7n2Hz/mygrades.png" alt="img" />
+                            <div class="notif-item-text">
+                                <div class="notif-item-title">My Grades Feedback</div>
+                                <div class="notif-item-detail">View details</div>
+                            </div>
+                        </a>
+
+                        <a href="{% url 'OJTNotifdetails' %}" class="notification-items">
+                            <img class="notif-item-icon" src="https://i.postimg.cc/SK7xtyKG/practicum.png" alt="img" />
+                            <div class="notif-item-text">
+                                <div class="notif-item-title">Practicum Feedback</div>
+                                <div class="notif-item-detail">View details</div>
+                            </div>
+                        </a>
+
+                        <a href="{% url 'OutboundNotifdetails' %}" class="notification-items">
+                            <img class="notif-item-icon" src="https://i.postimg.cc/Kzf01wnM/shifting-form.png"
+                                alt="img" />
+                            <div class="notif-item-text">
+                                <div class="notif-item-title">Outbound Shifting Feedback</div>
+                                <div class="notif-item-detail">View details</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- VERTICAL LINE / DIVIDER -->
+                <div class="vl"></div>
+
+                <div class="profile2">
+
+
+
+                    <div class="pheader">
+                        <label id="pheader"><b>{{ notif_type }}</b><br></label>
+                        <!-- DB NOTIFICATION TITLE BELOW -->
+                    </div>
+                    <div class="infotext1">
+                        <p id="infotext2">Status: </p>
+                    </div>
+
+                    <div class="container">
+                        <p>
+                            {% if feedback.remarks == "Submitted" %}
+                            <span style="color: #0C66CC; font-size: 25px;margin-left: 10.5rem;"><b>{{feedback.remarks}}</b></span>
+                            {% endif %}
+
+                            {% if feedback.remarks == "Returned" %}
+                            <span style="color: #E43C21; font-size: 25px;margin-left: 10.5rem;"><b>{{feedback.remarks}}</b></span>
+                            {% endif %}
+
+                            {% if feedback.remarks == "In Progress" %}
+                            <span style="color: #0C66CC; font-size: 25px;margin-left: 10.5rem;"><b>{{feedback.remarks}}</b></span>
+                            {% endif %}
+
+                            {% if feedback.remarks == "Forwarded" %}
+                            <span style="color: #0C66CC; font-size: 25px;margin-left: 10.5rem;"><b>{{feedback.remarks}}</b></span>
+                            {% endif %}
+
+                            {% if feedback.remarks == "Complete" %}
+                            <span style="color: #3FB328; font-size: 25px;margin-left: 10.5rem;"><b>{{feedback.remarks}}</b></span>
+                            {% endif %}
+
+                            {% if feedback.remarks == "Approved" %}
+                            <span style="color: #3FB328; font-size: 25px;margin-left: 10.5rem;"><b>{{feedback.remarks}}</b></span>
+                            {% endif %}
+
+
+                        </p>
+                    </div>
+
+
+                    <!-- DB NOTIFICATION CONTENT / MESSAGE BELOW -->
+                    <div class="infotext1">
+                        <p id="infotext2">
+                            <!--&nbsp;&nbsp;-->Feedback:
+                        </p>
+                    </div>
+
+  
+                        <span id="notiftext"
+                            style="font-size: 20px; margin-top: -10px; margin-left: 80px; font-family: 'Source Sans Pro';background-color: rgba(195, 201, 209, .25);border-radius: 8px;display: flex;margin-right: 3rem;margin-left: 3rem;">&nbsp;&nbsp;&nbsp;&nbsp;{{feedback.comment}}</span>
+                        <p id="notiftext"
+                            style="font-size: 20px; margin-top: -10px; margin-left: 80px; font-family: 'Source Sans Pro';background-color: rgba(195, 201, 209, .25);">
+                            {{feedbacknone}}</p>
+                   
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!--END NOTIFICATION-->
+
+
+
     <!-- Javascript -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
     <script type="text/javascript">
         function changeText(obj, text) {
             obj.innerText = text;
         }
     </script>
-  
+    <script>
+        var notifWindow = document.getElementById("notif-window");
+
+        document
+            .getElementById("notif-button")
+            .addEventListener("click", function () {
+                var display = notifWindow.style.display === "flex" ? "none" : "flex";
+                notifWindow.style.display = display;
+            });
+        var profileDropdown = document.getElementById("dropdown-window");
+        document
+            .getElementById("dropdown-button")
+            .addEventListener("click", function () {
+                var display =
+                    profileDropdown.style.display === "flex" ? "none" : "flex";
+                profileDropdown.style.display = display;
+            });
+    </script>
+
 </body>
 
 </html>

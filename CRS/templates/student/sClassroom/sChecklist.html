@@ -6,19 +6,22 @@
     <title>Student | Checklist</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
+    <link rel="icon" href="https://i.postimg.cc/Z5Kc9KQv/iplm-logo.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
     <link rel="stylesheet" href="{% static 'CRS/css/sClassroom/sChecklistStyle.css' %}">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source Sans Pro">
     <link rel="icon" href="{% static 'CRS/images/sClassroom/iPLM.png' %}" type="image/png" sizes="16x16">
 
     <style>
-            .primary-att {
+               .primary-att {
             position: sticky;
-            text-align: center;
+            text-align: left;
             position: sticky;
             top: 0;
             /* Don't forget this, required for the stickiness */
@@ -43,8 +46,6 @@
         .borderless td,
         .borderless th {
             border: none;
-            
-
         }
 
         tr:nth-child(even) {background-color: #fff;}
@@ -68,9 +69,7 @@
             letter-spacing: 1px;
             font-size: 14px;
             font-family: 'Nunito';
-            color: #fff;
-
-
+            color: #0C66CC;
             
         }
 
@@ -150,148 +149,346 @@
 
 </head>
 
-<body>
-    {% block content %}
-    <div class="wrapper">
-
-        <!-- Sidebar -->
-        <nav id="sidebar">
-            <div class="sidebar-header">
-                <li>
-                    <p><br><br><img src="{% static 'CRS/images/fHomeAndProfile/hat.png' %}" width="126px" height="87px"><br><br>
-                </li>
-            </div>
-            <ul class="sidebar components">
-                <li class="active"><a href="{% url 'sHome' %}"><img src="{% static 'CRS/images/cIcons/home2.png' %}"width="97px" height="auto"></a></li>
-                <li><a href="{% url 'sProfile' %}"><img src="{% static 'CRS/images/cIcons/profile2.png' %}" width="97px" height="auto"></a></li>
-                <li><a href="{% url 'sClassroom' %}"><img src="{% static 'CRS/images/cIcons/classroom2.png' %}" width="97px" height="auto"></a></li>
-                <li><a href="{% url 'sOthers' %}"><img src="{% static 'CRS/images/cIcons/others2.png' %}" width="97px" height="auto"></a></li>
-                <li><a href="{% url 'logout' %}"><img src="{% static 'CRS/images/cIcons/log-out2.png' %}" width="97px" height="auto"></a></li>
-            </ul>
-        </nav>
-        <!--End of Sidebar -->
-
-        <!-- Content -->
-          <!-- Content -->
-          <div id="content">
-
-            <div class=" container-fluid">
-
-                <div class="backrw row">
-                    <a href="{% url 'sClassroom' %}" id="back-edit"><img src="{% static 'CRS/images/sClassroom/back.svg' %}" width="50" style="margin-top: 30px;"></a>
-                    
-                  <p id="head1">Checklist</p>
+<div class="wrapper">        
+    <body>
+        {% block content %}
+            <!-- Sidebar -->
+            <!-- top bar -->
+    <div class="topbar">
+      <a href="{% url 'sHome' %}" class="iplm-logo">
+        <img src="https://i.postimg.cc/Z5Kc9KQv/iplm-logo.png" class="logo" />
+        <div class="logo-text">
+          <div class="logo-main">iPLM</div>
+          <div class="logo-sub">Integrated PLM</div>
+        </div>
+      </a>
+      <div class="center-region">
+        <div class="empty"></div>
+        <div id="notif-button" class="notif">
+          <img
+            class="notif-icon"
+            src="https://i.ibb.co/0XVd3kP/notification.png"
+            alt="notification"
+          />
+          <div id="notif-window" class="notif-content">
+            <div class="notif-triangle"></div>
+            <div class="notif-header">Notifications</div>
+            <div class="notif-items">
+              <a href="{% url 'LOANotifdetails' %}" class="notif-item">
+                <img
+                  class="notif-item-icon"
+                  src="https://i.postimg.cc/Gp0457xb/LOA.png"
+                  alt="img"
+                />
+                <div class="notif-item-text">
+                  <div class="notif-item-title">Leave of Absence Feedback</div>
+                  <div class="notif-item-detail">View details</div>
                 </div>
+              </a>
+
+              <a href="{% url 'HDNotifdetails' %}" class="notif-item">
+                <img
+                  class="notif-item-icon"
+                  src="https://i.postimg.cc/mkhZDCyd/honorabledismissal.png"
+                  alt="img"
+                />
+                <div class="notif-item-text">
+                  <div class="notif-item-title">
+                    Honorable Dismissal Feedback
+                  </div>
+                  <div class="notif-item-detail">View details</div>
+                </div>
+              </a>
+
+              <a href="{% url 'SPNotifdetails' %}" class="notif-item">
+                <img
+                  class="notif-item-icon"
+                  src="https://i.postimg.cc/PJfpMCzZ/studyplan.png"
+                  alt="img"
+                />
+                <div class="notif-item-text">
+                  <div class="notif-item-title">Study Plan Feedback</div>
+                  <div class="notif-item-detail">View details</div>
+                </div>
+              </a>
+
+              <a href="{% url 'GradesNotifdetails' %}" class="notif-item">
+                <img
+                  class="notif-item-icon"
+                  src="https://i.postimg.cc/NMm7n2Hz/mygrades.png"
+                  alt="img"
+                />
+                <div class="notif-item-text">
+                  <div class="notif-item-title">My Grades Feedback</div>
+                  <div class="notif-item-detail">View details</div>
+                </div>
+              </a>
+
+              <a href="{% url 'OJTNotifdetails' %}" class="notif-item">
+                <img
+                  class="notif-item-icon"
+                  src="https://i.postimg.cc/SK7xtyKG/practicum.png"
+                  alt="img"
+                />
+                <div class="notif-item-text">
+                  <div class="notif-item-title">Practicum Feedback</div>
+                  <div class="notif-item-detail">View details</div>
+                </div>
+              </a>
+
+              <a href="{% url 'OutboundNotifdetails' %}" class="notif-item">
+                <img
+                  class="notif-item-icon"
+                  src="https://i.postimg.cc/Kzf01wnM/shifting-form.png"
+                  alt="img"
+                />
+                <div class="notif-item-text">
+                  <div class="notif-item-title">Outbound Shifting Feedback</div>
+                  <div class="notif-item-detail">View details</div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="personal-info" id="dropdown-button">
+        <div class="user-details">
+          <div class="client-classification">Student</div>
+          <div class="client-name">
+            {{user.firstName}} {{user.middleName}} {{user.lastName}}
+          </div>
+        </div>
+        <div class="dropdown">
+          <img
+            src="{% static 'CRS/images/fHomeAndProfile/userprofile.png' %}"
+            class="profile-dropdown"
+          />
+          <div class="dropdown-content" id="dropdown-window">
+            <div class="dropdown-header">
+              <img
+                src="{% static 'CRS/images/fHomeAndProfile/userprofile.png' %}"
+                class="dropdown-icon"
+              />
+              <div class="dropdown-details">
+                <div class="dropdown-name">{{info.studentUser.firstName}}</div>
+                <div class="dropdown-email">{{user.email}}</div>
+              </div>
+            </div>
+            <div class="dropdown-items">
+              <a href="{% url 'sProfile' %}" class="dropdown-item"
+                >View Profile</a
+              >
+              <a href="{% url 'logout' %}" class="dropdown-item">Logout</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- content -->
+    <div class="content">
+      <!-- side bar  -->
+            <!-- side bar  -->
+            <div class="sidebar">
+              <a href="{% url 'sHome' %}" class="sidebar-item">
+                <img
+                  class="sidebar-icon"
+                  src="https://i.postimg.cc/DZS58F2h/home-button-iplm.png"
+                />
+                <span class="sidebar-item-text">Home</span>
+              </a>
+              <div class="sidebar-divider">CLASSROOM</div>
+              <a href="{% url 'sScheduleView' %}" class="sidebar-item">
+                <img
+                  class="sidebar-icon"
+                  src="https://i.postimg.cc/3R4bxwDX/schedule.png"
+                />
+                <span class="sidebar-item-text">Schedule</span>
+              </a>
+              <a href="{% url 'sChecklist' %}" class="sidebar-item">
+                <img
+                  class="sidebar-icon"
+                  src="https://i.postimg.cc/J7jP6v3z/checklist.png"
+                />
+                <span class="sidebar-item-text">Checklist</span>
+              </a>
+              <a href="{% url 'sGradeSubmission1' %}" class="sidebar-item">
+                <img
+                  class="sidebar-icon"
+                  src="https://i.postimg.cc/NMm7n2Hz/mygrades.png"
+                />
+                <span class="sidebar-item-text">My Grades</span>
+              </a>
+              <div class="sidebar-divider">OTHERS</div>
+              <a href="{% url 'donesp' %}" class="sidebar-item">
+                <img
+                  class="sidebar-icon"
+                  src="https://i.postimg.cc/PJfpMCzZ/studyplan.png"
+                />
+                <span class="sidebar-item-text">Study Plan</span>
+              </a>
+              <a href="{% url 'doneLoa' %}" class="sidebar-item">
+                <img
+                  class="sidebar-icon"
+                  src="https://i.postimg.cc/Gp0457xb/LOA.png"
+                />
+                <span class="sidebar-item-text">Leave of Absence</span>
+              </a>
+              <a href="{% url 'doneHd' %}" class="sidebar-item">
+                <img
+                  class="sidebar-icon"
+                  src="https://i.postimg.cc/mkhZDCyd/honorabledismissal.pngg"
+                />
+                <span class="sidebar-item-text">Honorable Dismissal</span>
+              </a>
+              <a href="{% url 'donepracticum' %}" class="sidebar-item">
+                <img
+                  class="sidebar-icon"
+                  src="https://i.postimg.cc/SK7xtyKG/practicum.png"
+                />
+                <span class="sidebar-item-text">Practicum</span>
+              </a>
+              <a href="{% url 'doneOSF' %}" class="sidebar-item">
+                <img
+                  class="sidebar-icon"
+                  src="https://i.postimg.cc/Kzf01wnM/shifting-form.png"
+                />
+                <span class="sidebar-item-text">Outbound Shifting</span>
+              </a>
+            </div>
+
+      <!-- main content -->
+      <div class="main-content">
+                <div class="container-fluid">
+                    <div class="backrw row" style="margin-top: 0px;">
+                     
+                    </div>
                 
                 <div class="clist row"> 
                     <div class="col-lg-8">
-                        <div class="searchbox">
-                            <div class="dropdown">
-                                <form method="POST">
-                                    {% csrf_token %}
-                                    <span class="status-select">
-                                        <select name="semester" id="stat-slct">
-                                            {% if semester == '1' %}
-                                                <option disabled selected hidden value="1">1st Year, 1st Semester</option>
-                                            {% elif semester == '2' %}
-                                                <option disabled selected hidden value="2">1st Year, 2nd Semester</option>
-                                            {% elif semester == '3' %}
-                                                <option disabled selected hidden value="3">2nd Year, 1st Semester</option>
-                                            {% elif semester == '4' %}
-                                                <option disabled selected hidden value="4">2nd Year, 2nd Semester</option>
-                                            {% elif semester == '5' %} 
-                                                <option disabled selected hidden value="5">3rd Year, 1st Semester</option>
-                                            {% elif semester == '6' %}
-                                                <option disabled selected hidden value="6">3rd Year, 2nd Semester</option>
-                                            {% elif semester == '7' %}
-                                                <option disabled selected hidden value="7">4th Year, 1st Semester</option>
-                                            {% elif semester == '8' %}
-                                                <option disabled selected hidden value="8">4th Year, 2nd Semester</option>
-                                            {% elif semester == '9' %}
-                                                <option disabled selected hidden value="9">5th Year, 1st Semester</option>
-                                            {% elif semester == '10' %}
-                                                <option disabled selected hidden value="10">5th Year, 2nd Semester</option>
-                                            {% elif semester == '11' %}
-                                                <option disabled selected hidden value="11">6th Year, 1st Semester</option>
-                                            {% elif semester == '12' %}
-                                                <option disabled selected hidden value="12">6th Year, 2nd Semester</option>
-                                            {% endif %}
-                                            <option value="1">1st Year, 1st Semester</option>
-                                            <option value="2">1st Year, 2nd Semester</option>
-                                            <option value="3">2nd Year, 1st Semester</option>
-                                            <option value="4">2nd Year, 2nd Semester</option>
-                                            <option value="5">3rd Year, 1st Semester</option>
-                                            <option value="6">3rd Year, 2nd Semester</option>
-                                            <option value="7">4th Year, 1st Semester</option>
-                                            <option value="8">4th Year, 2nd Semester</option>
-                                            <option value="9">5th Year, 1st Semester</option>
-                                            <option value="10">5th Year, 2nd Semester</option>
-                                            <option value="11">6th Year, 1st Semester</option>
-                                            <option value="12">6th Year, 2nd Semester</option>
-                                        </select>
-                                    </span>
-                                    <button name="submit" class="saveBtn" alt="submit" value="submit">Go</button>
-                                </form>
-                            </div>
-                        </div>
+                            
+                           
+                        <div style="background: #FFF; margin-left: 100px; padding: 60px 100px 60px 0px; box-shadow: 0px 7px 4px lightgray; border-radius: 25px;">
                     <div class="tablepanel table-responsive-lg">
                         <table class="borderless table">
-                            <tr class="primary-att" style="font-size: 20px; background-color: #0C66CC;">
-                                <th scope="col" ><p id="head3" style="color: white; "><b>Course Code</b></p></th>
+                            <div>
+                            <tr class="primary-att" style="font-size: 20px; background-color: #06529b;"> 
+                                <th scope="col"><p id="head3" style="color: white; "><b>Course Code</b></p></th>
                                 <th scope="col"><p id="head3" style="color: white; "><b>Course Name</b></p></th>
                                 <th scope="col"><p id="head3" style="color: white; "><b>Units</b></p></th>
                                 <th scope="col"><p id="head3" style="color: white; "><b>Grade</b></p></th>
-                                <th scope="col" colspan="2"><p id="head3" style="color: white; "><b>Remarks</b></p></th>
+                                <th scope="col"><p id="head3" style="color: white; "><b>Remarks</b></p></th>
+                                <th scope="col"><p id="head3" style="color: white; "><b>GWA</b></p></th>
                             </tr>
+                            <tr>
+                                <td class="header" colspan="6";>
+                                    
+                                    <div class="dropdown">
+                                        <form method="POST">
+                                            {% csrf_token %}
+                                            <label for="dpyear" class="dpyears" style ="font-family: Lato; "><br />Select Semester</label>
+                                            <span class="status-select">
+                                                <select name="semester" id="stat-slct">
+                                                    {% if semester == '1' %}
+                                                        <option disabled selected hidden value="1">1st Year, 1st Semester</option>
+                                                    {% elif semester == '2' %}
+                                                        <option disabled selected hidden value="2">1st Year, 2nd Semester</option>
+                                                    {% elif semester == '3' %}
+                                                        <option disabled selected hidden value="3">2nd Year, 1st Semester</option>
+                                                    {% elif semester == '4' %}
+                                                        <option disabled selected hidden value="4">2nd Year, 2nd Semester</option>
+                                                    {% elif semester == '5' %} 
+                                                        <option disabled selected hidden value="5">3rd Year, 1st Semester</option>
+                                                    {% elif semester == '6' %}
+                                                        <option disabled selected hidden value="6">3rd Year, 2nd Semester</option>
+                                                    {% elif semester == '7' %}
+                                                        <option disabled selected hidden value="7">4th Year, 1st Semester</option>
+                                                    {% elif semester == '8' %}
+                                                        <option disabled selected hidden value="8">4th Year, 2nd Semester</option>
+                                                    {% elif semester == '9' %}
+                                                        <option disabled selected hidden value="9">5th Year, 1st Semester</option>
+                                                    {% elif semester == '10' %}
+                                                        <option disabled selected hidden value="10">5th Year, 2nd Semester</option>
+                                                    {% elif semester == '11' %}
+                                                        <option disabled selected hidden value="11">6th Year, 1st Semester</option>
+                                                    {% elif semester == '12' %}
+                                                        <option disabled selected hidden value="12">6th Year, 2nd Semester</option>
+                                                    {% endif %}
+                                                    <option value="1">1st Year, 1st Semester</option>
+                                                    <option value="2">1st Year, 2nd Semester</option>
+                                                    <option value="3">2nd Year, 1st Semester</option>
+                                                    <option value="4">2nd Year, 2nd Semester</option>
+                                                    <option value="5">3rd Year, 1st Semester</option>
+                                                    <option value="6">3rd Year, 2nd Semester</option>
+                                                    <option value="7">4th Year, 1st Semester</option>
+                                                    <option value="8">4th Year, 2nd Semester</option>
+                                                    <option value="9">5th Year, 1st Semester</option>
+                                                    <option value="10">5th Year, 2nd Semester</option>
+                                                    <option value="11">6th Year, 1st Semester</option>
+                                                    <option value="12">6th Year, 2nd Semester</option>
+                                                </select>
+                                            </span>
+                                            <button name="submit" class="go-button" alt="submit" value="submit">Go</button>
+                                        </form>
+                                        </div>
+                                        </div>
                             <!-----------FROM THIS POINT LAHAT NG <TD> TAG GALING DATABASE-------------------------------------------->
-                             {% if semester == '1' %}
+                            {% if semester == '1' %}
                             <tr class="tabletext1" style="box-shadow: 0 0 10px rgb(138, 138, 138);">
-                                <td colspan="3" style="font-size: 20px; background-color: #cae2ff; "><b>1st Yr, 1st Sem</b></td>
-                                <td colspan="3" style="background-color: #cae2ff;"><p id="head3"><b>GWA: </b>{{ ave|floatformat:2 }}</p></td>
-                            </tr>
-                            {% for subject in checklist %}
-                            <tr class="tabletext2">
-                                <td><p  class="dataStyle">
-                                        {{subject.curriculumCode.subjectCode.subjectCode}}
-                                </p></td>
-                                <td>    {{subject.curriculumCode.subjectCode.subjectName}}</td>
-                                <td>    {{subject.curriculumCode.subjectUnits}}</td>
-                                <td>    {{subject.subjectGrades}}</td>
-                                <td>    {% if subject.subjectGrades <= 3.00 %}
-                                            PASSED
-                                        {% else %}
-                                            FAILED
-                                        {% endif %}</td>
+                              <td style="font-size: 20px; background-color: #0892DD; text-align: center; color:#FFFFFF; font-family:Lato;"><b>1st Year, 1st Semester</b></td>
+                              <td colspan="4"  style="background-color: #0892DD;"></td>
+                              <td style="background-color: #0892DD;">
+                              <p id="head3"><b>GWA: </b>{{ ave|floatformat:2 }}</p></td>
+                          </tr>
+                          {% for subject in checklist3 %}
+                          <tr class="tabletext2">
+                              <td><p  class="dataStyle">
+                                      {{subject.curriculumCode.subjectCode.subjectCode}}
+                              </p></td>
+                              <td>    {{subject.curriculumCode.subjectCode.subjectName}}</td>
+                              <td>    {{subject.curriculumCode.subjectUnits}}</td>
+                              <td>    {{subject.subjectGrades}}</td>
+                              <td colspan ="2">{% if subject.subjectGrades <= 3.00 %}
+                                          PASSED
+                                      {% else %}
+                                          FAILED
+                                      {% endif %}</td>
                                 
+
+                                </td>
                             </tr>
                             {% endfor %}
                             <!---------------------------------------------------------->
                             {% elif semester == '2' %}
                             <tr class="tabletext1" style="box-shadow: 0 0 10px rgb(138, 138, 138);">
-                                <td colspan="3" style="font-size: 20px; background-color: #cae2ff;"><b>1st Yr, 2nd Sem</b></td>
-                                <td colspan="3" style="background-color: #cae2ff;"><p id="head3"><b>GWA: </b>{{ ave2|floatformat:2 }}</p></td>
-                            </tr>
-                            {% for subject in checklist2 %}
-                            <tr class="tabletext2">
-                                <td><p  class="dataStyle">
-                                        {{subject.curriculumCode.subjectCode.subjectCode}}
-                                </p></td>
-                                <td>    {{subject.curriculumCode.subjectCode.subjectName}}</td>
-                                <td>    {{subject.curriculumCode.subjectUnits}}</td>
-                                <td>    {{subject.subjectGrades}}</td>
-                                <td>    {% if subject.subjectGrades <= 3.00 %}
-                                            PASSED
-                                        {% else %}
-                                            FAILED///////////
-                                        {% endif %}</td>
+                              <td style="font-size: 20px; background-color: #0892DD; text-align: center; color:#FFFFFF; font-family:Lato;"><b>1st Year, 2nd Semester</b></td>
+                              <td colspan="4"  style="background-color: #0892DD;"></td>
+                              <td style="background-color: #0892DD;">
+                              <p id="head3"><b>GWA: </b>{{ ave|floatformat:2 }}</p></td>
+                          </tr>
+                          {% for subject in checklist3 %}
+                          <tr class="tabletext2">
+                              <td><p  class="dataStyle">
+                                      {{subject.curriculumCode.subjectCode.subjectCode}}
+                              </p></td>
+                              <td>    {{subject.curriculumCode.subjectCode.subjectName}}</td>
+                              <td>    {{subject.curriculumCode.subjectUnits}}</td>
+                              <td>    {{subject.subjectGrades}}</td>
+                              <td colspan ="2">{% if subject.subjectGrades <= 3.00 %}
+                                          PASSED
+                                      {% else %}
+                                          FAILED
+                                      {% endif %}</td>
                                 
                             </tr>
                             {% endfor %}
                             <!------------------------------------------------------->
                             {% elif semester == '3' %}
                             <tr class="tabletext1" style="box-shadow: 0 0 10px rgb(138, 138, 138);">
-                                <td colspan="3" style="font-size: 20px; background-color: #cae2ff;"><b>2nd Yr, 1st Sem</b></td>
-                                <td colspan="3" style="background-color: #cae2ff;"><p id="head3"><b>GWA: </b>{{ ave3|floatformat:2 }}</p></td>
+                                <td style="font-size: 20px; background-color: #0892DD; text-align: center; color:#FFFFFF; font-family:Lato;"><b>2nd Year, 2nd Semester</b></td>
+                                <td colspan="4"  style="background-color: #0892DD;"></td>
+                                <td style="background-color: #0892DD;">
+                                <p id="head3"><b>GWA: </b>{{ ave|floatformat:2 }}</p></td>
                             </tr>
                             {% for subject in checklist3 %}
                             <tr class="tabletext2">
@@ -301,7 +498,7 @@
                                 <td>    {{subject.curriculumCode.subjectCode.subjectName}}</td>
                                 <td>    {{subject.curriculumCode.subjectUnits}}</td>
                                 <td>    {{subject.subjectGrades}}</td>
-                                <td>    {% if subject.subjectGrades <= 3.00 %}
+                                <td colspan ="2">{% if subject.subjectGrades <= 3.00 %}
                                             PASSED
                                         {% else %}
                                             FAILED
@@ -312,8 +509,10 @@
                             <!---------------------------------------------------------->
                             {% elif semester == '4' %}
                             <tr class="tabletext1" style="box-shadow: 0 0 10px rgb(138, 138, 138);">
-                                <td colspan="3" style="font-size: 20px; background-color: #cae2ff;"><b>2nd Yr, 2nd Sem</b></td>
-                                <td colspan="3" style="background-color: #cae2ff;"><p id="head3"><b>GWA: </b>{{ ave4|floatformat:2 }}</p></td>
+                                <td style="font-size: 20px; background-color: #0892DD; text-align: center; color:#FFFFFF;  font-family:Lato;"><b>3rd Year, 1st Semester</b></td>
+                                <td colspan="4"  style="background-color: #0892DD;"></td>
+                                <td style="background-color: #0892DD;">
+                                <p id="head3"><b>GWA: </b>{{ ave|floatformat:2 }}</p></td>
                             </tr>
                             {% for subject in checklist4 %}
                             <tr class="tabletext2">
@@ -323,7 +522,7 @@
                                 <td>    {{subject.curriculumCode.subjectCode.subjectName}}</td>
                                 <td>    {{subject.curriculumCode.subjectUnits}}</td>
                                 <td>    {{subject.subjectGrades}}</td>
-                                <td>    {% if subject.subjectGrades <= 3.00 %}
+                                <td colspan ="2">    {% if subject.subjectGrades <= 3.00 %}
                                             PASSED
                                         {% else %}
                                             FAILED
@@ -334,8 +533,10 @@
                             <!---------------------------------------------------------->
                             {% elif semester == '5' %}
                             <tr class="tabletext1" style="box-shadow: 0 0 10px rgb(138, 138, 138);">
-                                <td colspan="3" style="font-size: 20px; background-color: #cae2ff;"><b>3rd Yr, 1st Sem</b></td>
-                                <td colspan="3" style="background-color: #cae2ff;"><p id="head3"><b>GWA: </b>{{ ave5|floatformat:2 }}</p></td>
+                                <td style="font-size: 20px; background-color: #0892DD; text-align: center; color:#FFFFFF; font-family:Lato;"><b>3rd Year, 2nd Semester</b></td>
+                                <td colspan="4"  style="background-color: #0892DD;"></td>
+                                <td style="background-color: #0892DD;">
+                                <p id="head3"><b>GWA: </b>{{ ave|floatformat:2 }}</p></td>
                             </tr>
                             {% for subject in checklist5 %}
                             <tr class="tabletext2">
@@ -345,7 +546,7 @@
                                 <td>    {{subject.curriculumCode.subjectCode.subjectName}}</td>
                                 <td>    {{subject.curriculumCode.subjectUnits}}</td>
                                 <td>    {{subject.subjectGrades}}</td>
-                                <td>    {% if subject.subjectGrades <= 3.00 %}
+                                <td colspan ="2">    {% if subject.subjectGrades <= 3.00 %}
                                             PASSED
                                         {% else %}
                                             FAILED
@@ -356,8 +557,10 @@
                             <!---------------------------------------------------------->
                             {% elif semester == '6' %}
                             <tr class="tabletext1" style="box-shadow: 0 0 10px rgb(138, 138, 138);">
-                                <td colspan="3" style="font-size: 20px; background-color: #cae2ff;"><b>3rd Yr, 2nd Sem</b></td>
-                                <td colspan="3" style="background-color: #cae2ff;"><p id="head3"><b>GWA: </b>{{ ave6|floatformat:2 }}</p></td>
+                                <td style="font-size: 20px; background-color: #0892DD; text-align: center; color:#FFFFFF;  font-family:Lato;"><b>4th Year, 1st Semester</b></td>
+                                <td colspan="4"  style="background-color: #0892DD;"></td>
+                                <td style="background-color: #0892DD;">
+                                <p id="head3"><b>GWA: </b>{{ ave|floatformat:2 }}</p></td>
                             </tr>
                             {% for subject in checklist6 %}
                             <tr class="tabletext2">
@@ -367,7 +570,7 @@
                                 <td>    {{subject.curriculumCode.subjectCode.subjectName}}</td>
                                 <td>    {{subject.curriculumCode.subjectUnits}}</td>
                                 <td>    {{subject.subjectGrades}}</td>
-                                <td>    {% if subject.subjectGrades <= 3.00 %}
+                                <td colspan ="2">    {% if subject.subjectGrades <= 3.00 %}
                                             PASSED
                                         {% else %}
                                             FAILED
@@ -378,8 +581,10 @@
                             <!---------------------------------------------------------->
                             {% elif semester == '7' %}
                             <tr class="tabletext1" style="box-shadow: 0 0 10px rgb(138, 138, 138);">
-                                <td colspan="3" style="font-size: 20px; background-color: #cae2ff;"><b>4th Yr, 1st Sem</b></td>
-                                <td colspan="3" style="background-color: #cae2ff;"><p id="head3"><b>GWA: </b>{{ ave7|floatformat:2 }}</p></td>
+                                <td style="font-size: 20px; background-color: #0892DD; text-align: center; color:#FFFFFF; font-family:Lato;"><b>4th Year, 2nd Semester</b></td>
+                                <td colspan="4"  style="background-color: #0892DD;"></td>
+                                <td style="background-color: #0892DD;">
+                                <p id="head3"><b>GWA: </b>{{ ave|floatformat:2 }}</p></td>
                             </tr>
                             {% for subject in checklist7 %}
                             <tr class="tabletext2">
@@ -389,7 +594,7 @@
                                 <td>    {{subject.curriculumCode.subjectCode.subjectName}}</td>
                                 <td>    {{subject.curriculumCode.subjectUnits}}</td>
                                 <td>    {{subject.subjectGrades}}</td>
-                                <td>    {% if subject.subjectGrades <= 3.00 %}
+                                <td colspan ="2">    {% if subject.subjectGrades <= 3.00 %}
                                             PASSED
                                         {% else %}
                                             FAILED
@@ -400,8 +605,10 @@
                             <!---------------------------------------------------------->
                             {% elif semester == '8' %}
                             <tr class="tabletext1" style="box-shadow: 0 0 10px rgb(138, 138, 138);">
-                                <td colspan="3" style="font-size: 20px; background-color: #cae2ff;"><b>4th Yr, 2nd Sem</b></td>
-                                <td colspan="3" style="background-color: #cae2ff;"><p id="head3"><b>GWA: </b>{{ ave8|floatformat:2 }}</p></td>
+                                <td style="font-size: 20px; background-color: #0892DD; text-align: center; color:#FFFFFF; font-family:Lato;"><b>5th Year, 1st Semester</b></td>
+                                <td colspan="4"  style="background-color: #0892DD;"></td>
+                                <td style="background-color: #0892DD;">
+                                <p id="head3"><b>GWA: </b>{{ ave|floatformat:2 }}</p></td>
                             </tr>
                             {% for subject in checklist8 %}
                             <tr class="tabletext2">
@@ -411,7 +618,7 @@
                                 <td>    {{subject.curriculumCode.subjectCode.subjectName}}</td>
                                 <td>    {{subject.curriculumCode.subjectUnits}}</td>
                                 <td>    {{subject.subjectGrades}}</td>
-                                <td>    {% if subject.subjectGrades <= 3.00 %}
+                                <td colspan ="2">    {% if subject.subjectGrades <= 3.00 %}
                                             PASSED
                                         {% else %}
                                             FAILED
@@ -422,8 +629,10 @@
                             <!---------------------------------------------------------->
                             {% elif semester == '9' %}
                             <tr class="tabletext1" style="box-shadow: 0 0 10px rgb(138, 138, 138);">
-                                <td colspan="3" style="font-size: 20px; background-color: #cae2ff;"><b>5th Yr, 1st Sem</b></td>
-                                <td colspan="3" style="background-color: #cae2ff;"><p id="head3"><b>GWA: </b>{{ ave9|floatformat:2 }}</p></td>
+                                <td style="font-size: 20px; background-color: #0892DD; text-align: center; color:#FFFFFF; font-family:Lato;"><b>5th Year, 2nd Semester</b></td>
+                                <td colspan="4"  style="background-color: #0892DD;"></td>
+                                <td style="background-color: #0892DD;">
+                                <p id="head3"><b>GWA: </b>{{ ave|floatformat:2 }}</p></td>
                             </tr>
                             {% for subject in checklist9 %}
                             <tr class="tabletext2">
@@ -433,7 +642,7 @@
                                 <td>    {{subject.curriculumCode.subjectCode.subjectName}}</td>
                                 <td>    {{subject.curriculumCode.subjectUnits}}</td>
                                 <td>    {{subject.subjectGrades}}</td>
-                                <td>    {% if subject.subjectGrades <= 3.00 %}
+                                <td colspan ="2">    {% if subject.subjectGrades <= 3.00 %}
                                             PASSED
                                         {% else %}
                                             FAILED
@@ -444,8 +653,10 @@
                             <!---------------------------------------------------------->
                             {% elif semester == '10' %}
                             <tr class="tabletext1" style="box-shadow: 0 0 10px rgb(138, 138, 138);">
-                                <td colspan="3" style="font-size: 20px; background-color: #cae2ff;"><b>5th Yr, 2nd Sem</b></td>
-                                <td colspan="3" style="background-color: #cae2ff;"><p id="head3"><b>GWA: </b>{{ ave10|floatformat:2 }}</p></td>
+                                <td style="font-size: 20px; background-color: #0892DD; text-align: center; color:#FFFFFF; font-family:Lato;"><b>6th Year, 1st Semester</b></td>
+                                <td colspan="4"  style="background-color: #0892DD;"></td>
+                                <td style="background-color: #0892DD;">
+                                <p id="head3"><b>GWA: </b>{{ ave|floatformat:2 }}</p></td>
                             </tr>
                             {% for subject in checklist10 %}
                             <tr class="tabletext2">
@@ -455,7 +666,7 @@
                                 <td>    {{subject.curriculumCode.subjectCode.subjectName}}</td>
                                 <td>    {{subject.curriculumCode.subjectUnits}}</td>
                                 <td>    {{subject.subjectGrades}}</td>
-                                <td>    {% if subject.subjectGrades <= 3.00 %}
+                                <td colspan ="2">    {% if subject.subjectGrades <= 3.00 %}
                                             PASSED
                                         {% else %}
                                             FAILED
@@ -466,8 +677,10 @@
                             <!---------------------------------------------------------->
                             {% elif semester == '11' %}
                             <tr class="tabletext1" style="box-shadow: 0 0 10px rgb(138, 138, 138);">
-                                <td colspan="3" style="font-size: 20px; background-color: #cae2ff;"><b>6th Yr, 1st Sem</b></td>
-                                <td colspan="3" style="background-color: #cae2ff;"><p id="head3"><b>GWA: </b>{{ ave11|floatformat:2 }}</p></td>
+                                <td style="font-size: 20px; background-color: #0892DD; text-align: center; color:#FFFFFF; font-family:Lato;"><b>6th Year, 2nd Semester</b></td>
+                                <td colspan="4"  style="background-color: #0892DD;"></td>
+                                <td style="background-color: #0892DD;">
+                                <p id="head3"><b>GWA: </b>{{ ave|floatformat:2 }}</p></td>
                             </tr>
                             {% for subject in checklist11 %}
                             <tr class="tabletext2">
@@ -477,7 +690,7 @@
                                 <td>    {{subject.curriculumCode.subjectCode.subjectName}}</td>
                                 <td>    {{subject.curriculumCode.subjectUnits}}</td>
                                 <td>    {{subject.subjectGrades}}</td>
-                                <td>    {% if subject.subjectGrades <= 3.00 %}
+                                <td colspan ="2">    {% if subject.subjectGrades <= 3.00 %}
                                             PASSED
                                         {% else %}
                                             FAILED
@@ -488,8 +701,10 @@
                             <!---------------------------------------------------------->
                             {% elif semester == '12' %}
                             <tr class="tabletext1" style="box-shadow: 0 0 10px rgb(138, 138, 138);">
-                                <td colspan="3" style="font-size: 20px; background-color: #cae2ff;"><b>6th Yr, 2nd Sem</b></td>
-                                <td colspan="3" style="background-color: #cae2ff;"><p id="head3"><b>GWA: </b>{{ ave11|floatformat:2 }}</p></td>
+                                <td style="font-size: 20px; background-color: #0892DD; text-align: center; color:#FFFFFF; font-family:Lato;"><b>1st Yr, 1st Sem</b></td>
+                                <td colspan="4"  style="background-color: #0892DD;"></td>
+                                <td style="background-color: #0892DD;">
+                                <p id="head3"><b>GWA: </b>{{ ave|floatformat:2 }}</p></td>
                             </tr>
                             {% for subject in checklist12 %}
                             <tr class="tabletext2">
@@ -499,7 +714,7 @@
                                 <td>    {{subject.curriculumCode.subjectCode.subjectName}}</td>
                                 <td>    {{subject.curriculumCode.subjectUnits}}</td>
                                 <td>    {{subject.subjectGrades}}</td>
-                                <td>    {% if subject.subjectGrades <= 3.00 %}
+                                <td colspan ="2">    {% if subject.subjectGrades <= 3.00 %}
                                             PASSED
                                         {% else %}
                                             FAILED
@@ -510,18 +725,72 @@
 
                             {% endif %}
 
+
                         </table>
-                        
-                    </div></div>
+                    </div></div></div>
+                    
+                    
+                          
+                          </style>
+                        <!-- <div class="row">
+                            
+                            <div class="col-lg-12">
+                                <p id="head2"><b>Checklist</b></p> 
+                                 <div class="checklist-border row">
+                                <div class="col-12-lg">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12 pt-3">
+                                    <p class="spdet" id="head3" style="color: #06529b; padding-left: 12%;margin-top: -8%;">View and edit your subjects<br>for this degree and grades</p>
+                                </div>
+                            </div>
+                        </div>       -->
+
+                        <div class="col-lg-4">
+                            <div class="studbox"> <br/><br/> <style>* {
+                                box-sizing: border-box;
+                              }
+                              
+                              </style>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <p id="head2" style="margin-top:10px; padding-left: 5%"><b>Checklist</b></p>
+                                    <div class="stud-border row"></div>
+                                </div>
+                            </div>
+    
+    
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    
+                                    <p class="spdet" id="head3" style= "color: #06529b; padding-left:5%;">Kindly save a copy of the generated<br>study plan for future use.</p>
+                                </div>
+                            </div>
+
+                            <div style="margin-top: -55px; margin-left: 250px; position:relative;">
+                            <a href = "{% url 'cf' %}" download ><!--"{% url 'sptest' %}"-->
+                            <div id="saveacopybtn" style="margin-top: 200px; margin-left: -60px;"><img src="https://i.ibb.co/Bn7gDtW/download2.png" height="30" width="30">
+                                Save a Copy
+                            </div>
+                        </a>     
+                                    
+        
+                            </div>
+
+                        </style>        
+                     
+                  
+                  </div> 
                     <!--End of Left Side-->
                     
-                       <!--Right Side | Edit Grades-->
-                       <div class="checklist-img row col-lg-1">
+                    <!--Right Side | Edit Grades-->
+                    <div class="checklist-img row col-lg-1">
                         
                     </div> 
                     
                     <div class="row col-lg-3">
-                        <a href="{% url 'cf' %}" id="button-edit"><button type="button" class="btn">Save Copy</button></a>
+                        
                         {% if messages %}
                         {% for message in messages %}
                         {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
@@ -542,8 +811,7 @@
                         {% endif %}
                        
                        
-
-                       <img src="{% static 'CRS/images/sClassroom/studclassroom_checklist-img.png' %}" width=456 height=456>            
+      
                        
                     
                     </div> 
@@ -563,6 +831,25 @@
     <script>
         $(document).ready(function(){
           $('[data-toggle="tooltip"]').tooltip();   
+        });
+        </script>
+    <script>
+    
+    var notifWindow = document.getElementById("notif-window");
+
+      document
+        .getElementById("notif-button")
+        .addEventListener("click", function () {
+          var display = notifWindow.style.display === "flex" ? "none" : "flex";
+          notifWindow.style.display = display;
+        });
+      var profileDropdown = document.getElementById("dropdown-window");
+      document
+        .getElementById("dropdown-button")
+        .addEventListener("click", function () {
+          var display =
+            profileDropdown.style.display === "flex" ? "none" : "flex";
+          profileDropdown.style.display = display;
         });
         </script>
 </body>
