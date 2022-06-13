@@ -1,0 +1,303 @@
+{% extends "admin/base_site.html" %}
+{% load i18n admin_urls static admin_modify %}
+
+{% block extrahead %}{{ block.super }}
+<script src="{% url 'admin:jsi18n' %}"></script>
+{{ media }}
+{% endblock %}
+
+{% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% static "admin/css/forms.css" %}">{% endblock %}
+
+{% block coltype %}colM{% endblock %}
+
+{% block bodyclass %}{{ block.super }} app-{{ opts.app_label }} model-{{ opts.model_name }} change-form{% endblock %}
+
+{% if not is_popup %}
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+<a href="{% url 'admin:index' %}">{% translate 'Home' %}</a>
+&rsaquo; <a href="{% url 'admin:app_list' app_label=opts.app_label %}">{{ opts.app_config.verbose_name }}</a>
+&rsaquo; {% if has_view_permission %}<a href="{% url opts|admin_urlname:'changelist' %}">{{ opts.verbose_name_plural|capfirst }}</a>{% else %}{{ opts.verbose_name_plural|capfirst }}{% endif %}
+&rsaquo; {% if add %}{% blocktranslate with name=opts.verbose_name %}Add {{ name }}{% endblocktranslate %}{% else %}{{ original|truncatewords:"18" }}{% endif %}
+</div>
+{% endblock %}
+{% endif %}
+
+{% block content %}<div id="content-main">
+{% block object-tools %}
+{% if change %}{% if not is_popup %}
+  <ul class="object-tools">
+    {% block object-tools-items %}
+      {% change_form_object_tools %}
+    {% endblock %}
+  </ul>
+{% endif %}{% endif %}
+{% endblock %}
+<form {% if has_file_field %}enctype="multipart/form-data" {% endif %}{% if form_url %}action="{{ form_url }}" {% endif %}method="post" id="{{ opts.model_name }}_form">{% csrf_token %}{% block form_top %}{% endblock %}
+<div>
+{% if is_popup %}<input type="hidden" name="{{ is_popup_var }}" value="1">{% endif %}
+{% if request.path == '/admin/CRS/user/add/' %}
+<div class="alert" id="perm">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+  Permission Error: You cannot apply both faculty and student permission to a user.
+</div>
+<div class="alert" id="fill">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+  Error: Please fill the field first to generate; First Name, Middle Name, Last Name and Permissions.
+</div>
+{% endif %}
+{% if to_field %}<input type="hidden" name="{{ to_field_var }}" value="{{ to_field }}">
+{% endif %}
+{% if save_on_top %}{% block submit_buttons_top %}{% submit_row %}{% endblock %}{% endif %}
+{% if errors %}
+    <p class="errornote">
+    {% if errors|length == 1 %}{% translate "Please correct the error below." %}{% else %}{% translate "Please correct the errors below." %}{% endif %}
+    </p>
+    {{ adminform.form.non_field_errors }}
+{% endif %}
+
+{% block field_sets %}
+{% for fieldset in adminform %}
+  {% include "admin/includes/fieldset.html" %}
+  <script>
+    const replaceSpecialChars = (str) => {
+      return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '') // Remove accents
+        .replace(/([^\w]+|\s+)/g, '-') // Replace space and other characters by hyphen
+        .replace(/\-\-+/g, '-')	// Replaces multiple hyphens by one hyphen
+        .replace(/(^-+|-+$)/g, ''); // Remove extra hyphens from beginning or end of the string
+    }
+    function generatePassword() {
+      var length = 12,
+          charset = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+          password = "";
+      for (var i = 0, n = charset.length; i < length; ++i) {
+          password += charset.charAt(Math.floor(Math.random() * n));
+      }
+      return password;
+    }
+
+    function generateEmail(check){
+      var fn = document.getElementById('id_firstName').value.trim(),
+          mn = document.getElementById('id_middleName').value.trim(),
+          ln = document.getElementById('id_lastName').value.trim();
+          firstletter = fn.match(/\b(\w)/g);
+          fn = firstletter.join('');
+          ln = ln.replace(' ', '');
+          fn = replaceSpecialChars(fn);
+          mn = replaceSpecialChars(mn);
+          ln = replaceSpecialChars(ln);
+          if(mn == ""){
+            if(check == 'faculty'){
+              email = fn.toLowerCase() + ln.toLowerCase() + '@plm.edu.ph';
+            }
+            
+            if(check == 'student'){
+              email = fn.toLowerCase() + ln.toLowerCase() + new Date().getFullYear() + '@plm.edu.ph';
+            }
+          }
+          else{
+            if(check == 'faculty'){
+                email = fn.toLowerCase() + mn[0].toLowerCase() + ln.toLowerCase() + '@plm.edu.ph';
+              }
+              
+            if(check == 'student'){
+              email = fn.toLowerCase() + mn[0].toLowerCase() + ln.toLowerCase() + new Date().getFullYear() + '@plm.edu.ph';
+            }
+          }
+      return email;
+    }
+
+    function fieldc(){
+      var fn = document.getElementById('id_firstName').value.trim(),
+          ln = document.getElementById('id_lastName').value.trim();
+      if (fn == "" || ln == ""){
+            fc = 'none';
+          }
+      else{
+        fc = 'done';
+      }
+      return fc;
+    }
+  </script>
+  {% if 'change' in request.path %}
+  <script>
+      var a = document.getElementById('id_is_admin');
+      var b = document.getElementById('id_is_chairperson');
+      var c = document.getElementById('id_is_faculty');
+      var d = document.getElementById('id_is_student');
+
+      if(d.checked){
+        document.getElementById('id_is_admin').disabled = true;
+        document.getElementById('id_is_faculty').disabled = true;
+        document.getElementById('id_is_chairperson').disabled = true;
+      }
+      if(a.checked || b.checked || c.checked){
+        document.getElementById('id_is_student').disabled = true;
+      }
+  </script>
+  {% endif %}
+  {% if request.path == '/admin/CRS/user/add/' %}
+  <style>
+    .alert {
+      padding: 20px;
+      background-color: #f44336;
+      color: white;
+      display: none;
+    }
+
+    .reminder {
+      padding: 10px;
+      background-color: #258b00;
+      color: white;
+      text-align: center;
+    }
+
+    .closebtn {
+      margin-left: 15px;
+      color: white;
+      font-weight: bold;
+      float: right;
+      font-size: 22px;
+      line-height: 20px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .closebtn:hover {
+      color: black;
+    }
+    </style>
+  <div class="show">
+    <fieldset class="module aligned wide">
+      <div class="form-row field-automate">
+        <input type="button" value="Generate PLM Email and Password" ng-if="showButton" onclick="
+        var perm = check()
+        if(perm == 'faculty'){
+          if(fieldc() == 'none'){
+            document.getElementById('fill').style.display = 'block'
+          }
+          else{
+            var genPass = generatePassword()
+            var genEmail = generateEmail(perm)
+            document.getElementById('fill').style.display = 'none'
+            document.getElementById('id_email').value = genEmail
+            document.getElementById('id_password1').value = genPass
+            document.getElementById('id_password2').value = genPass
+          }
+        }
+        
+        if(perm == 'student'){
+          if(fieldc() == 'none'){
+            document.getElementById('fill').style.display = 'block'
+          }
+          else{
+            var genPass = generatePassword()
+            var genEmail = generateEmail(perm)
+            document.getElementById('fill').style.display = 'none'
+            document.getElementById('id_email').value = genEmail
+            document.getElementById('id_password1').value = genPass
+            document.getElementById('id_password2').value = genPass
+          }
+        }
+
+        if(perm == 'none'){
+          document.getElementById('fill').style.display = 'block'
+        }
+        ">
+      </div>
+      <div class="reminder">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        <b>To generate Email and Password, please fill the first name, middle name, and last name first.</b>
+      </div>
+    </fieldset>
+  </div>
+  {% endif %}
+  <script type="text/javascript">
+    window.onload = function(){
+      document.getElementById('facultyinfo-group').style.display = "none";
+      document.getElementById('studentinfo-group').style.display = "none";
+      document.getElementById('fill').style.display = 'none'
+      document.getElementById('perm').style.display = 'none'
+
+      var a = document.getElementById('id_is_admin');
+      var b = document.getElementById('id_is_chairperson');
+      var c = document.getElementById('id_is_faculty');
+      var d = document.getElementById('id_is_student');
+      if((a.checked == true && d.checked == true) || (b.checked == true && d.checked == true) || (c.checked == true && d.checked == true)){
+        document.getElementById('facultyinfo-group').style.display = "none";
+        document.getElementById('studentinfo-group').style.display = "none";
+      }
+      else{
+        if (a.checked == true || b.checked == true || c.checked == true){
+          document.getElementById('facultyinfo-group').style.display = "block";
+        };
+        if(d.checked == true){
+            document.getElementById('studentinfo-group').style.display = "block";
+        };
+      }
+    };
+    function check(){
+        var a = document.getElementById('id_is_admin');
+        var b = document.getElementById('id_is_chairperson');
+        var c = document.getElementById('id_is_faculty');
+        var d = document.getElementById('id_is_student');
+        var forms = document.getElementById('facultyinfo-0');
+        var forms2 = document.getElementById('studentinfo-0');
+
+        if ((a.checked == true && d.checked == true) || (b.checked == true && d.checked == true) || (c.checked == true && d.checked == true)){
+          document.getElementById('facultyinfo-group').style.display = "none";
+          document.getElementById('studentinfo-group').style.display = "none";
+          document.getElementById('perm').style.display = 'block'
+        }
+        else if (a.checked == true || b.checked == true || c.checked == true){
+            document.getElementById('facultyinfo-group').style.display = "block";
+            document.getElementById('perm').style.display = 'none'
+            return 'faculty';
+        }
+        else if(d.checked == true){
+            document.getElementById('studentinfo-group').style.display = "block";
+            document.getElementById('perm').style.display = 'none'
+            return 'student';
+        }
+        else{
+          document.getElementById('facultyinfo-group').style.display = "none";
+          document.getElementById('studentinfo-group').style.display = "none";
+          return 'none';
+      }
+  };
+  document.getElementById('id_is_admin').addEventListener('change', check);
+  document.getElementById('id_is_chairperson').addEventListener('change', check);
+  document.getElementById('id_is_faculty').addEventListener('change', check);
+  document.getElementById('id_is_student').addEventListener('change', check);
+  </script>
+{% endfor %}
+{% endblock %}
+
+{% block after_field_sets %}{% endblock %}
+
+{% block inline_field_sets %}
+{% for inline_admin_formset in inline_admin_formsets %}
+    {% include inline_admin_formset.opts.template %}
+{% endfor %}
+{% endblock %}
+
+{% block after_related_objects %}{% endblock %}
+
+{% block submit_buttons_bottom %}{% submit_row %}{% endblock %}
+
+{% block admin_change_form_document_ready %}
+    <script id="django-admin-form-add-constants"
+            src="{% static 'admin/js/change_form.js' %}"
+            {% if adminform and add %}
+                data-model-name="{{ opts.model_name }}"
+            {% endif %}
+            async>
+    </script>
+{% endblock %}
+
+{# JavaScript for prepopulated fields #}
+{% prepopulated_fields_js %}
+
+</div>
+</form></div>
+{% endblock %}
