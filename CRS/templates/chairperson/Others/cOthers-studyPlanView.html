@@ -105,6 +105,10 @@
                 text-decoration: none;
             }
 
+            .label a:hover {
+                text-decoration: none;
+            }
+
             .output {
                 font-family: 'Source Sans Pro', sans-serif;
                 font-size: 16px;
@@ -414,18 +418,23 @@
                         </div>
                         <!-- ROW 1 -->
                         <div class="row row-style" style="margin-top: 5px;">                           
-                            <div class="col col-padding border-top">
-                              <b class="label">Study Plan</b>
-                            </div>
-                            <div class="col-2 col-padding border-top">
+                            
+                            <div class="col col-style col-padding border-top">
                                 {% if sp_applicant.sdplan.url != NULL %}
-                                <a href="{{sp_applicant.sdplan.url}} " download>
+                              <b class="label"><a href="{{sp_applicant.sdplan.url}}">Study Plan</a></b>
+                            </div>
+                            <div class="col-2 col-style col-padding border-top">                                
+                                <a href="{{sp_applicant.sdplan.url}}" download>
                                     <button class="downloadBtn unselectable"><img src="{% static 'CRS/images/cOthers/download3.png' %}" height="18">&nbsp;&nbsp;Download</button>
                                 </a>
                                 {% else %}
+                                <b class="label">Study Plan</b>
+                                </div>
+                                <div class="col-2 col-style col-padding border-top">         
                                 <b class="output unselectable">No file</b>
                                 {% endif %}
                             </div>
+
                             <div class="col-1 col-padding border-top"></div>
                             <div class="col  col-padding border-top">                              
                             </div>

@@ -30,7 +30,7 @@ tr:nth-child(even) {
     margin-bottom: 30px;
 }
 
-input[type=submit] {
+input[type=submit]{
     color: white;
     padding: 10px 30px;
     text-align: bottom;
@@ -93,3 +93,7 @@ button:hover{
     transition: 0.3s;
  }
 
+input, input:focus, textarea, textarea:focus {
+    border: none;
+    outline: none;
+}
