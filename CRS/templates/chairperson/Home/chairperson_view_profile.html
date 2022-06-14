@@ -2,150 +2,398 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <title> Chairperson | Profile </title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
-    <link rel="stylesheet" href="{% static 'CRS/css/cHome/cHomeStyle.css'%}">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">
-    <link rel="icon" href="{% static 'CRS/images/cHome/iPLM.png'%}" type="image/png" sizes="16x16">
-
-    <style>
-        #text-pbox {
-            margin-bottom: 0px;
-            font-size: 20px;
-            color: #ffffff;
-            font-family: 'Nunito';
-        }
-
-        #subjectMessageError {
-        margin-top: 50px;
-        margin-left: 1100px;
-        padding: 10px;
-        padding-top: 20px;
-        font-size: 18px;
-        color: #ffffff;
-        font-family: 'Nunito';
-        background-color: #f34e01;
-        border: 2px solid #f34e01;
-        border-radius: 16px;
-        box-shadow: 0 0 10px rgb(199, 199, 199);
-        height: 70px;
-        padding-right: 50px;
-        padding-left: 50px;
-    }
-
-
-
-        .alertError{
-        padding: 20px;
-        background-color: #f34e01;
-        border-radius: 15px;
-        color: white;
-        box-shadow: 0 0 10px rgb(216, 216, 216);
-        margin-top: 80px;
-        margin-bottom: 10px;
-        margin-left: 1100px;
-        animation: zoom-in-zoom-out 1s ease;
-        }
-
-        .alertSuccess{
-        padding: 20px;
-        background-color: #3fb328;
-        border-radius: 15px;
-        color: white;
-        box-shadow: 0 0 10px rgb(216, 216, 216);
-        margin-top: 80px;
-        margin-bottom: 10px;
-        margin-left: 1100px;
-        animation: zoom-in-zoom-out 1s ease;
+    <head>
+        <title> Chairperson | Profile </title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         
-        }
+        <!-- include -->
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        
+        <!-- CSS -->
+        <link rel="stylesheet" href="{% static '/CRS/css/cHome/cHomeStyleCP.css' %}">
+        <link href="https://fonts.googleapis.com/css?family=Lato:200,300,400,600,700,900&subset=latin-ext" rel="stylesheet">
+        <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900&subset=latin-ext' rel='stylesheet' type='text/css'>
+        <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
 
-        .closebtnError {
-        margin-left: 15px;
-        color: white;
-        font-weight: bold;
-        float: right;
-        font-size: 22px;
-        line-height: 20px;
-        cursor: pointer;
-        transition: 0.3s;
-        }
+        <!--  ICON -->
+        <link rel="icon" href="https://i.postimg.cc/Z5Kc9KQv/iplm-logo.png" type="image/x-icon"/>
 
-        .closebtnError:hover {
-            color: #a33908;
-        }
+        <style>
 
-        .closebtnSuccess {
-        margin-left: 15px;
-        color: white;
-        font-weight: bold;
-        float: right;
-        font-size: 22px;
-        line-height: 20px;
-        cursor: pointer;
-        transition: 0.3s;
-        }
+            .body {
+                font-size: 16px;
+                font-family: 'Lato', sans-serif;
+            }        
+           
+            #subjectMessageError {
+            margin-top: 50px;
+            margin-left: 110px;
+            padding: 10px;
+            padding-top: 20px;
+            font-size: 18px;
+            color: #ffffff;
+            font-family: 'Lato';
+            background-color: #f34e01;
+            border: 2px solid #f34e01;
+            border-radius: 16px;
+            box-shadow: 0 0 10px rgb(199, 199, 199);
+            height: 70px;
+            padding-right: 50px;
+            padding-left: 50px;
+            }
 
-        .closebtnSuccess:hover {
-            color: #1c6b0c;
-        }
+            .alertError {
+            padding: 20px;
+            background-color: #f34e01;
+            border-radius: 15px;
+            color: white;
+            box-shadow: 0 0 10px rgb(216, 216, 216);
+            margin-top: 0px;
+            margin-bottom: 10px;
+            margin-left: 110px;
+            animation: zoom-in-zoom-out 1s ease;
+            }
+
+            .alertSuccess {
+            padding: 20px;
+            background-color: #06529B;
+            border-radius: 15px;
+            color: white;
+            box-shadow: 0 0 10px rgb(216, 216, 216);
+            margin-top: 0px;
+            margin-bottom: 10px;
+            margin-left: 110px;
+            animation: zoom-in-zoom-out 1s ease;
+            
+            }
+
+            .closebtnError {
+            margin-left: 15px;
+            color: white;
+            font-weight: bold;
+            float: right;
+            font-size: 22px;
+            line-height: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+            }
+
+            .closebtnError:hover {
+                color: #a33908;
+            }
+
+            .closebtnSuccess {
+            margin-left: 15px;
+            color: white;
+            font-weight: bold;
+            float: right;
+            font-size: 22px;
+            line-height: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+            }
+
+            .closebtnSuccess:hover {
+                color: #f3f6ff;
+            }
+
+            @keyframes zoom-in-zoom-out {
+                0% {
+                    transform: scale(1, 1);
+                }
+                50% {
+                    transform: scale(1.1, 1.1);
+                }
+                100% {
+                    transform: scale(1, 1);
+                }
+            }
+
+            .profile-title,
+            .edit-account-title {
+                color: #06529B;
+                font-size: 1.7rem;
+                display: inline-block;
+                margin-bottom: 1rem;
+                font-weight: bold;
+
+            }
+            .flex {
+                display: flex;
+                justify-content: space-between;
+            }
+            .col {
+                flex-direction: column;
+            }
+            .profile-card {
+                width: calc(100% + 10rem);
+                max-width: 920px;
+                background-color: white;
+                padding: 3em;
+                border-radius: 10px;
+                box-shadow: 0px 4px 16px -9px rgba(0,0,0,0.41);
+                -webkit-box-shadow: 0px 4px 16px -9px rgba(0,0,0,0.41);
+                -moz-box-shadow: 0px 4px 16px -9px rgba(0,0,0,0.41);
+                overflow: hidden;
+            }
+
+            .profile-left,
+            .profile-right {
+                width: 50%;
+            }
+
+            .profile-right {
+                display: flex;
+                
+                flex-direction: column;
+                justify-content: space-between;
+                padding-top: 4.48rem;
+                margin-left: 2em;
+            }
+
+            .profile-left {
+                padding-right: 2em;
+                
+                position: relative;                                                                                                                                                                                             
+            }
+
+            .profile-left::after {
+                content: "";
+                height: 95%;
+                width: .5px;
+
+                position: absolute;
+                right: 0;
+                top: calc(10% + -1.125rem);
+
+                border-right: .5px solid rgb(94, 109, 130, .2);
+            }
+
+            .profile-hello {
+                color: #06529B;
+                font-size: clamp(1.5rem, 5vw, 2rem);
+                font-weight: 800;
+                margin-bottom: 1.5rem;
+                font-family: 'Lato';
+            }
+
+            .profile-item-label {
+                text-transform: uppercase;
+                color: #0892DD;
+                font-size: 0.9375rem;
+                padding: 0;
+                margin: 0;
+                font-family: 'Source Sans Pro'; 
+            }
+
+            .profile-item, .edit-profile {
+                font-family: 'Source Sans Pro'; 
+            }
+
+            .chairperson-number,
+            .college {
+                width: 100%;
+            }
 
 
+            .profile-item,
+            .chairperson-number,
+            .college {
+                border-bottom: .5px solid rgb(94, 109, 130, .2);
+                margin-bottom: 1em;
+                
+            }
 
-        @keyframes zoom-in-zoom-out {
-        0% {
-            transform: scale(1, 1);
-        }
-        50% {
-            transform: scale(1.1, 1.1);
-        }
-        100% {
-            transform: scale(1, 1);
-        }
-        }
-    </style>
-</head>
+            .profile-item p,
+            .chairperson-number p,
+            .college p {
+                margin-bottom: .8em;
+            }
 
-<body>
+            .profile-item:nth-child(1),
+            .profile-item :nth-child(2),
+            .profile-item-label,
+            .chairperson-number-value {
+                width: 50%;
+            }
+            
+            [class$="value"] {
+                color: #5F6E83;
+                font-size: 0.9375rem;
+                font-weight: 400;
+            }
 
-    <div class="wrapper">
-
-        <!-- Sidebar -->
-       <nav id="sidebar">
-        <div class="sidebar-header">
-            <li>
-                <p><br><br><img src="{% static 'CRS/images/fHomeAndProfile/hat.png' %}" width="126px" height="87px"><br><br>
-            </li>
-        </div>
-        <ul class="sidebar components">
-            <li class="active"><a href="{% url 'chairperson' %}"><img src="{% static 'CRS/images/cIcons/home2.png' %}" width="97px" height="auto"></a></li>
-            <li><a href="{% url 'is_active' %}"><img src="{% static 'CRS/images/cIcons/department2.png' %}" width="97px" height="auto"></a></li>
-            <li><a href="{% url 'dept_student' %}"><img src="{% static 'CRS/images/cIcons/students2.png' %}" width="97px" height="auto"></a></li>
-            <li><a href="{% url 'full_time' %}"><img src="{% static 'CRS/images/cIcons/faculty2.png' %}" width="97px" height="auto"></a></li>
-            <li><a href="{% url 'cOthers-studyPlan' %}"><img src="{% static 'CRS/images/cIcons/others2.png' %}" width="97px" height="auto"></a></li>
-            <li><a href="{% url 'logout' %}"><img src="{% static 'CRS/images/cIcons/log-out2.png' %}" width="97px" height="auto"></a></li>
-        </ul>
-      </nav>
-    <!--End of Sidebar -->
+            .btn-flex {
+                display: flex;
+                justify-content: flex-end;
+            }
 
 
+            .button .edit-profile {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 5px;
+                background-color: #06529B;
+                color: white;
+                padding: .5em 1.125em .5em 1.125em;
+            }
+
+            .button .edit-profile img {
+                margin-right: .8rem;
+            }
+
+            .button .edit-profile:hover,
+            .button .edit-profile:focus {
+                background-color: #0892DD;
+                transition: all 0.3s;
+                text-decoration: none;
+            }
+
+            /* EDIT ACCOUNT */
+            /* .edit-account {
+                width: calc(100% + 10rem);
+                max-width: 920px;
+                overflow: hidden;
+                margin-top: 2rem;
+            }
+            .edit-account-title {
+                width: 30%;
+                margin: 0;
+            }
+            .edit-title {
+                margin-bottom: 1rem;
+            }
+            .edit-account-line {
+                width: 100%;
+                position: relative;
+            }
+
+            .edit-account-line::after {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                height: 0.6em;
+                top: 50%;
+                border-top: 1px solid #d3dbe4;
+                z-index: -1;
+            }
+            
+            .edit-profile, 
+            .change-password {
+                width: 40%;
+                background-color: white;
+                padding: 1.125em 1em 1.125em 1.5em;
+                border-radius: 10px;
+                box-shadow: 0px 4px 16px -9px rgba(0,0,0,0.41);
+                -webkit-box-shadow: 0px 4px 16px -9px rgba(0,0,0,0.41);
+                -moz-box-shadow: 0px 4px 16px -9px rgba(0,0,0,0.41);
+                overflow: hidden;
+            }
+            .edit-profile-title, 
+            .change-password-title {
+                color: #5f6e83;    
+                font-size: 1rem; 
+                font-weight: bold;
+                margin-left: .5rem;
+            }
 
 
-        <!-- Content -->
-        <div id="content">
-            <div class="container-fluid">
+            .edit-profile-right a,
+            .change-password-right a {
+                color: white;
+                padding: .6em 1.5em;
+                background-color: #06529B;
+                border-radius: 5px;
+            }
+
+            .edit-profile-right a:hover,
+            .edit-profile-right a:focus,
+            .change-password-right a:hover,
+            .change-password-right a:focus {
+                background-color: #0892DD;
+                transition: all 0.3s;
+            } */
+
+        </style>
+    </head>
 
 
-                <!--Profile-->
-                <div class="sub-box row">
-                    <p class="text-profile">Profile</p>
+    <body class="content-scrollbar" onload="today()">
+        <img src="{% static 'CRS/images/cHome/bglogo.png' %}" id="bglogo" class="unselectable">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-sm navbar-dark flex-sm-nowrap flex-wrap">           
+            <a href="#menu-toggle" id="menu-toggle" class="navbar-brand unselectable d-xl-none" onclick="togglemenu()">
+                <span></span><img class="nav-collapse unselectable" src="{% static 'CRS/images/cIcons/collapse.png' %}" height="13"></span>
+            </a>                 
+            <a href="{% url 'chairperson' %}" class="iplm-logo unselectable">
+                <img src="https://i.postimg.cc/Z5Kc9KQv/iplm-logo.png" class="logo" />
+                <div class="logo-text">
+                  <div class="logo-main">iPLM</div>
+                  <div class="logo-sub">Integrated PLM</div>
+                </div>
+            </a>  
+
+            <!-- navbar user name and title  -->
+            <p class="d-none d-sm-block usertitle unselectable">
+                Chairperson
+            </p>
+            <p href="{% url 'chairperson_profile' %}" class="d-none d-sm-block user unselectable">
+                {{user.firstName}} {{user.middleName}} {{user.lastName}}
+            </p>
+
+            <!-- user profile dropdown -->
+            <div class="unselectable dropdown pficon">
+                <a class="dropdown-toggle profilehover" id="dropdownProfile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img id="profileicon" src="{% static 'CRS/images/fHomeAndProfile/userprofile.png' %}" width="35px" height="35px">
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end dropdownProfileMenu p-3 text-muted" aria-labelledby="dropdownProfile">
+                    <img id="profileicon" src="{% static 'CRS/images/fHomeAndProfile/userprofile.png' %}" width="40px" height="40px">
+                    <p id="profilemenutitle">{{user.firstName}}<br></p>
+                    <p id="profilemenuemail">{{user.email}}<br></p>
+                    <div class="dropdown-divider"></div>
+                    <li><a class="profilelinks" href="{% url 'chairperson_profile' %}">View Profile</a></li>
+                    <li><a class="profilelinks" href="{% url 'fHome' %}">Log in as Faculty</a></li>
+                    <li><a class="profilelinks" href="{% url 'logout' %}">Log out</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <div id="mainwrapper" class="toggled">
+            <!-- Sidebar -->
+            <div id="sidebar-wrapper" class="custom-scrollbar d-xl-block">
+                <ul class="sidebar-nav">
+                    <li class="active"> <a class="sb-links" href="{% url 'chairperson' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/home.png' %}" height="15"> Home</a> </li>
+                    <li class="sb-section unselectable"><span>CRS</span></li>
+                    <li> <a class="sb-links" href="{% url 'is_active' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/department.png' %}" height="15"> Department</a> </li>
+                    <li> <a class="sb-links" href="{% url 'dept_student' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/students.png' %}" height="15"> Students</a> </li>
+                    <li> <a class="sb-links" href="{% url 'full_time' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/faculty.png' %}" height="15"> Faculty</a> </li>
+                    <li class="sb-section unselectable"><span>Student Application</span></li>
+                    <li> <a class="sb-links" href="{% url 'cOthers-studyPlan' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/studyplan.png' %}" height="15"> Study Plan</a> </li>
+                    <li> <a class="sb-links" href="{% url 'cOthers-loa' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/loa.png' %}" height="15"> Leave of Absence</a> </li>
+                    <li> <a class="sb-links" href="{% url 'cOthers-hd' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/hd.png' %}" height="15"> Honorable Dismissal</a> </li>
+                    <li> <a class="sb-links" href="{% url 'cOthers-ojt' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/practicum.png' %}" height="15"> Practicum</a> </li>
+                    <li> <a class="sb-links" href="{% url 'cOthers-shifter' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/shifter.png' %}" height="15"> Inbound Shifter</a> </li>
+                    <li> <a class="sb-links" href="{% url 'cOthers-outshifter' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/shifter.png' %}" height="15"> Outbound Shifter</a> </li>
+                    <li> <a class="sb-links" href="{% url 'cOthers-transferee' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/transferee.png' %}" height="15"> Transferee</a> </li>
+                    <li class="sb-section unselectable"><span>Faculty Application</span></li>
+                    <li> <a class="sb-links" href="{% url 'cfaculty_applicant' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/applicant.png' %}" height="15"> Faculty Application</a> </li>
+                    <li> <a class="sb-links" href="{% url 'cOthers-partTime' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/pta.png' %}" height="15"> Part-time Availability</a> </li>
+                </ul>
+            </div> 
+            <!-- end sidebar -->            
+            
+            <!-- Page Content -->
+            <div id="page-content-wrapper">
+                <div class="container-fluid">  
+                    
+                    <!--------------------------------------- place content below this -------------------------------------------------------> 
                     {% if messages %}
                     {% for message in messages %}
                     {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
@@ -163,159 +411,146 @@
                     {% endif %}
                         
                     {% endfor %}
-                    {% endif %}
-                </div>
+                    {% endif %}                
 
-                <div class="profile-box row">
-                    
-                    <div class="col-lg-11 py-2">
-                        <div class="phor row">
-                            <div class="col-lg-3">
-                                <p id="text-pbox">Last Name:</p>
-                            </div>
-                            <div class="col-lg-3" id="text-pbox">
-                                {{info.facultyUser.lastName}}
-                            </div>
-                            <div class="col-lg-3">
-                                <p id="text-pbox">Chairperson Number:</p>
-                            </div>
-                            <div class="col-lg-3" id="text-pbox">
-                                {{info.facultyID}}
-                            </div>
-                        </div>
-                        
-                        <div class="phor row">
-                            <div class="col-lg-3">
-                                <p id="text-pbox">First Name:</p>
-                            </div>
-                            <div class="col-lg-3" id="text-pbox">
-                                {{info.facultyUser.firstName}}
-                            </div>
-                            <div class="col-lg-3">
-                                <p id="text-pbox">College:</p>
-                            </div>
-                            <div class="col-lg-3" id="text-pbox">
-                                {{info.collegeID}}
-                            </div>
-                        </div>
-                        
-                        <div class="phor row">
-                            <div class="col-lg-3">
-                                <p id="text-pbox">Middle Name:</p>
-                            </div>
-                            <div class="col-lg-3" id="text-pbox">
-                                {{info.facultyUser.middleName}}
-                            </div>
-                            <div class="col-lg-3">
-                                <p id="text-pbox">Department:</p>
-                            </div>
-                            <div class="col-lg-3" id="text-pbox">
-                                {{info.departmentID}}
-                            </div>
-                        </div>
-                        
-                        <div class="phor row">
-                            <div class="col-lg-3">
-                                <p id="text-pbox">Pedigree:</p>
-                            </div>
-                            <div class="col-lg-3" id="text-pbox">
-                                None
-                            </div>
-                            <div class="col-lg-3">
-                                <p id="text-pbox">PLM Email:</p>
-                            </div>
-                            <div class="col-lg-3" id="text-pbox">
-                                {{info.facultyUser.email}}
-                            </div>
-                        </div>
-                        
-                        <div class="phor row">
-                            <div class="col-lg-3">
-                                <p id="text-pbox">Gender:</p>
-                            </div>
-                            <div class="col-lg-3" id="text-pbox">
-                                {{info.facultyGender}}
-                            </div>
-                        </div>
-                        
-                        <div class="phor row">
-                            <div class="col-lg-3">
-                                <p id="text-pbox">Civil Status:</p>
-                            </div>
-                            <div class="col-lg-3" id="text-pbox">
-                                {{info.facultyCivilstatus}}
-                            </div>
+                    <div class="profile-card flex">
+                        <div class="profile-left">
                             
-                            <div class="col-lg-3">
-                                
+                            <h2 class="profile-hello">Profile</h2>
+                            <div class="profile-item given-name flex">
+                                <p class="profile-item-label">given name</p>
+                                <p class="given-name-value">{{info.facultyUser.firstName}}</p>
+                            </div> 
+                            <div class="profile-item last-name flex">
+                                <p class="profile-item-label">last name</p>
+                                <p class="last-name-value">{{info.facultyUser.lastName}}</p>
+                            </div> 
+                            <div class="profile-item middle-initial flex">
+                                <p class="profile-item-label">middle name</p>
+                                <p class="middle-initial-value">{{info.facultyUser.middleName}}</p>
+                            </div> 
+                            <div class="profile-item pedigree flex">
+                                <p class="profile-item-label">Pedigree</p>
+                                <p class="gender-value">None</p>
+                            </div> 
+                            <div class="profile-item gender flex">
+                                <p class="profile-item-label">gender</p>
+                                <p class="gender-value">{{info.facultyGender}}</p>
+                            </div> 
+                            <div class="profile-item civil-status flex">
+                                <p class="profile-item-label">civil status</p>
+                                <p class="civil-status-value">{{info.facultyCivilstatus}}</p>
+                            </div> 
+                            <div class="profile-item citizenship flex">
+                                <p class="profile-item-label">citizenship</p>
+                                <p class="citizenship-value">{{info.facultyCitizenship}}</p>
                             </div>
                         </div>
-                        
-                        <div class="phor row">
-                            <div class="col-lg-3">
-                                <p id="text-pbox"> Citizenship:</p>
-                            </div>
-                            <div class="col-lg-3" id="text-pbox">
-                                {{info.facultyCitizenship}}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-1"><a href="{% url 'chairperson_edit_profile'%}" id="pichover"><img id="picpic" src="{% static '/CRS/images/cHome/view_profile_edit_img.png' %}" height="30px" width="30px" ></a></div>
-                    <!--Chairperson/Home/chairperson_edit_profile.html-->
-                </div>
-                <!--END of Profile-->
+                        <div class="profile-right">
 
-                <div class="profile-border row">
-                    <div class="col-12-lg"></div>
-                </div>
-
-                <!--Edit Account-->
-                <div class="edit-box row">
-
-                    <div class="col-lg-5">
-
-                        <p class="text-profile" id="edit">Edit Account</p>
-
-                        <div class="small-pbox ">
-                            <div class="row">
-                                <div class="text-details col">
-                                    <p id="password-text">Password</p>
-                                    <p>Change Password</p>
+                            <div class="profile-right-labels">
+                                <div class="chairperson-number flex">
+                                    <p class="profile-item-label">chairperson number</p>
+                                    <p class="chairperson-number-value">{{info.facultyID}}</p>
+                                </div> 
+                                <div class="profile-item college flex">
+                                    <p class="profile-item-label">college</p>
+                                    <p class="college-value">{{info.collegeID}}</p>
+                                </div> 
+                                <div class="profile-item deparment flex">
+                                    <p class="profile-item-label">department</p>
+                                    <p class="department-value">{{info.departmentID}}</p>
+                                </div>                                 
+                                <div class="profile-item plm-email flex">
+                                    <p class="profile-item-label">plm email</p>
+                                    <p class="plm-email-value">{{info.facultyUser.email}}</p>
+                                </div> 
+                                <div class="profile-item deparment flex">
+                                    <p class="profile-item-label">contact number</p>
+                                    <p class="department-value">{{info.facultyContact}}</p>
                                 </div>
-                                <div class="change-spacing col">
-                                    <a href="{% url 'chairperson_change_password'%}" id="change"><div class="change-box" >
-                                    <!--Chairperson/Home/chairperson_change_password-->
-                                        Change
-                                    </div></a>
-                                </div>
+                            </div>
+
+                            <div class="button btn-flex">
+
+                                <a href="{% url 'chairperson_edit_profile'%}" class="edit-profile unselectable">
+                                    <img src="{% static 'CRS/images/cIcons/edit-profile-icon.svg' %}" alt="edit profile" title="Edit Profile" height="17">
+                                    <span>Edit Profile</span>
+                                </a>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-lg-2">
-                    </div>
+                    <!-- <div class="edit-account">
+                        <div class="edit-title flex">
+                            <h2 class="edit-account-title"><span>Edit Account</span></h2>
+                            <div class="edit-account-line"></div>
+                        </div>
 
-                    <div class="col-lg-5 img">
-                        <!-- style="background-color: purple"-->
-                        <img src="{% static 'CRS/images/cHome/view_profile_img.png'%}" width="100%" height="400">
-                    </div>
-                </div>
-                <!--END of Edit Account-->
+                        <div class="edit-account-container flex">
+
+                            <div class="edit-profile flex">
+                                <div class="edit-profile-left">
+                                    <img src="{% static 'CRS/images/cIcons/edit-profile-icon.png' %}" alt="edit profile" class="edit-account-icon">
+                                    <span class="edit-profile-title">Edit Profile</span>
+                                </div>
+
+                                <div class="edit-profile-right">
+                                    <a href="{% url 'chairperson_edit_profile'%}" class="edit-profile-btn">
+                                        <span class="edit-btn-text">
+                                            Edit
+                                        </span>
+                                    </a>
+                                </div>
+
+                            </div>
+
+                            <div class="change-password flex">
+                                <div class="change-password-left">
+                                    <img src="{% static 'CRS/images/cIcons/change-password-icon.png' %}" alt="change password" class="edit-account-icon">
+                                    <span class="change-password-title">Change Password</span>
+                                </div>
+
+                                <div class="change-password-right">
+                                    <a href="{% url 'chairperson_change_password'%}" class="change-password-btn">
+                                        <span class="change-btn-text">
+                                            Change
+                                        </span>
+                                    </a>
+                                </div>
+
+                            </div>
 
 
+                        </div>
 
-            </div>
-        </div>
+                    </div> -->
+                    
+                    
+                    <!--------------------------------------- place content above this ------------------------------------------------------->   
+                </div>            
+            </div> <!-- /#page-content-wrapper -->  
+        </div> <!-- /#wrapper -->
 
-    </div>
-
-
-    <!-- Javascript -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
-    
-</body>
+        <img src="{% static 'CRS/images/cIcons/up-arrow.png' %}" id="btn-back-to-top" class="unselectable"> <!-- scroll to top -->
+        
+        <!-- Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        
+        <!-- JS -->
+        <script src="{% static '/CRS/js/cHome/cHomeMain.js' %}"></script>   
+        <script>
+            let mybutton = document.getElementById("btn-back-to-top");
+            window.onscroll = function () {
+              scrollFunction();
+            };
+            mybutton.addEventListener("click", backToTop);
+        </script>  
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>   
+    </body>
 
 </html>

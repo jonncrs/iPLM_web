@@ -1,392 +1,270 @@
-{% load static  %}
-
+{% load static %}
 <!DOCTYPE html>
 <html>
 
-<head>
-    <title>Chairperson | Schedule</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
-    
-    <script src="cHomeMain.js"> </script>
-    
-    <!-- static > CRS > css > cStudents -->
-    <link rel="stylesheet" type="text/css" href="{% static 'CRS/css/cStudents/cStudentSchedStyle.css' %}">
-
-    <!--Font-->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">
-    <!--Icon-->
-    <link rel="icon" href="{% static 'CRS/images/cStudents/iPLM.png'%}" type="image/png" sizes="16x16">
-
-    <style>
-
-        body{
-            overflow-y: auto;
-        }
+    <head>
+        <title> Chairperson | Schedule </title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         
-        #subjectMessage {
-        margin-top: 10px;
-        margin-right: -440px;
-        padding: 10px;
-        padding-top: 15px;
-        padding-left: 20px;
-        padding-right: 20px;
-        font-size: 18px;
-        color: #0C66CC;
-        font-family: 'Nunito';
-        background-color: #ffffff;
-        border: 2px solid #ffffff;
-        border-radius: 16px;
-        box-shadow: 0 0 10px rgb(216, 216, 216);
-    }
-
-    .subjectName{
-            font-size: 18px;
-            color: #3c3d3d;
-            text-align: left;
-        }
-
-
-    #head3 {
-            letter-spacing: 1px;
-            font-size: 18px;
-            color: #ffffff;
-            font-family: 'Nunito';
-            padding-top: 10px;
-        }
-
-        #head31 {
-            letter-spacing: 1px;
-            font-size: 14;
-            color: #ffffff;
-            font-family: 'Nunito';
-            padding-top: 10px;
-        }
-
-
-        .greyBG{
-            background-color: #0C66CC;
-            border: 2px solid #0C66CC;
-            border-radius: 16px;
-        }
-
-        #addbtn:hover{
-            background-color: #359e20;
-        }
-
+        <!-- include -->
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         
-        #addbtn {
-            background-color: #3fb328;
-            color: #ffffff;
-            font-size: 20px;
-            border: #0C66CC;
-            border-radius: 10px;
-            padding-left: 24px;
-            padding-right: 24px;
-            height: 40px;
-        }
+        <!-- CSS -->
+        <link rel="stylesheet" href="{% static '/CRS/css/cHome/cHomeStyleCP.css' %}">
+        <link rel="stylesheet" href="{% static '/CRS/css/cStudents/cStudentsStyle.css' %}">
+        <link href="https://fonts.googleapis.com/css?family=Lato:200,300,400,600,700,900&subset=latin-ext" rel="stylesheet">
+        <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900&subset=latin-ext' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
 
-        #deletebtn {
-            background-color: #f34e01;
-            color: #ffffff;
-            font-size: 20px;
-            border: #0C66CC;
-            border-radius: 10px;
-            padding-left: 24px;
-            padding-right: 24px;
-            height: 40px;
-        }
+        <!--  ICON -->
+        <link rel="icon" href="https://i.postimg.cc/Z5Kc9KQv/iplm-logo.png" type="image/x-icon"/>
 
-        #deletebtn:hover {
-            background-color: #d44d0e;
-        }
+        <script src="cHomeMain.js"> </script>
 
-        tr:nth-child(even) {background-color: #f2f2f2;}
+        <style>
+            #addbtn {
+                background-color: #3fb328;
+                color: #ffffff;
+                font-size: 14px;
+                border-radius: 5px;
+                height: 22px;
+                width: 22px;
+                border: none;
+                margin-top: 8px;
+            }
 
-        .tablepanel{
-            border-radius: 20px;
-            margin-top: 20px;
-        }
-
-        .borderless{
-            border-radius: 20px;
-        }
-
-
-
-        .alertError{
-        padding: 20px;
-        background-color: #f34e01;
-        border-radius: 15px;
-        color: white;
-        font-size: 18px;
-        width: auto;
-        box-shadow: 0 0 10px rgb(216, 216, 216);
-        float: right;
-        margin-top: -80px;
-        animation: zoom-in-zoom-out 1s ease;
-        }
-
-        .alertSuccess{
-        padding: 20px;
-        background-color: #3fb328;
-        border-radius: 15px;
-        color:white;
-        font-size: 18px;
-        width: auto;
-        box-shadow: 0 0 10px rgb(216, 216, 216);
-        float: right;
-        margin-top: -80px;
-        animation: zoom-in-zoom-out 1s ease;
-        
-        }
-
-        .closebtnError {
-        margin-left: 15px;
-        color: white;
-        font-weight: bold;
-        float: right;
-        font-size: 22px;
-        line-height: 20px;
-        cursor: pointer;
-        transition: 0.3s;
-        }
-
-        .closebtnError:hover {
-            color: #a33908;
-        }
-
-        .closebtnSuccess {
-        margin-left: 15px;
-        color: white;
-        font-weight: bold;
-        float: right;
-        font-size: 22px;
-        line-height: 20px;
-        cursor: pointer;
-        transition: 0.3s;
-        }
-
-        .closebtnSuccess:hover {
-            color: #1c6b0c;
-        }
-
-                /*SCROLLBAR*/
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-
-        /* Track */
-        ::-webkit-scrollbar-track {
-            background: #e4e4e4;
-            border-radius: 12px;
-        }
-        
-        /* Handle */
-        ::-webkit-scrollbar-thumb {
-            background: #cbcbcb;
-            border-radius: 12px;
-        }
-
-        /* Handle on hover */
-        ::-webkit-scrollbar-thumb:hover {
-            background: #8f8f8f; 
-        }
+            #deletebtn {
+                background-color: #f34e01;
+                color: #ffffff;
+                font-size: 14px;
+                border-radius: 5px;
+                height: 22px;
+                width: 22px;
+                border: none;
+            }        
+           
+        </style>
+    </head>
 
 
-
-
-        @keyframes zoom-in-zoom-out {
-        0% {
-            transform: scale(1, 1);
-        }
-        50% {
-            transform: scale(1.1, 1.1);
-        }
-        100% {
-            transform: scale(1, 1);
-        }
-        }
-    </style>
-
-</head>
-
-<body>
-
-    <div class="wrapper">
-        
-        <!-- Sidebar -->
-        <nav id="sidebar">
-            <div class="sidebar-header">
-                <li>
-                    <p><br><br><img src="{% static 'CRS/images/fHomeAndProfile/hat.png' %}" width="126px" height="87px"><br><br>
-                </li>
-            </div>
-            <ul class="sidebar components">
-                <li class="active"><a href="{% url 'chairperson' %}"><img src="{% static 'CRS/images/cIcons/home2.png' %}" width="97px" height="auto"></a></li>
-                <li><a href="{% url 'is_active' %}"><img src="{% static 'CRS/images/cIcons/department2.png' %}" width="97px" height="auto"></a></li>
-                <li><a href="{% url 'dept_student' %}"><img src="{% static 'CRS/images/cIcons/students2.png' %}" width="97px" height="auto"></a></li>
-                <li><a href="{% url 'full_time' %}"><img src="{% static 'CRS/images/cIcons/faculty2.png' %}" width="97px" height="auto"></a></li>
-                <li><a href="{% url 'cOthers-studyPlan' %}"><img src="{% static 'CRS/images/cIcons/others2.png' %}" width="97px" height="auto"></a></li>
-                <li><a href="{% url 'logout' %}"><img src="{% static 'CRS/images/cIcons/log-out2.png' %}" width="97px" height="auto"></a></li>
-            </ul>
-          </nav>
-        <!--End of Sidebar -->
-
-        <!-- Content -->
-        <div id="content">
-            <!-- Container -->
-            <div class=" container-fluid">
-                <!-- Main Row -->
-                <div class="main row">
-                    <!-- Schedule -->
-                    <div class="col-lg-12">
-                        <div class="sched row">
-                            <!-- Templates > Chairperson > Student -->
-                            <a class="back" href="{% url 'cStudentSchedOnline' %}"><img src="{% static 'CRS/images/cStudents/back.svg'%}" width="50" height="45" id="backlogo"></a>
-                            <p id="schedhead">&nbsp;&nbsp;Schedule</p>
-                            <!--PUT BLOCK HERE-->
-                        </div>
-                    </div>
-                    <!-- End Schedule -->
-
-                    <!-- DB REGULAR AND ONLINE BUTTONS-->
-                    <div class="col-lg-12">
-                         
-                            <p id="subject"><b>Subjects</b></p>
-                            <!-- Templates > Chairperson > Student -->
-
-
-                            {% if messages %}
-                            {% for message in messages %}
-                            {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
-                            <div class="alertError">
-                                <span class="closebtnError" onclick="this.parentElement.style.display='none';">&times;</span> 
-                                {{ message }}
-                            </div>
-                            {% endif %}
-        
-                            {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
-                            <div class="alertSuccess">
-                                <span class="closebtnSuccess" onclick="this.parentElement.style.display='none';">&times;</span> 
-                                {{ message }}
-                            </div>
-                            {% endif %}
-                                
-                            {% endfor %}
-                            {% endif %}
-                    </div>
-
-                   
-                   
-                        
-                    
-
-                    
-                    <!-- Main Content -->
-                    <br><br>
-                        <div class="tablepanel table-responsive-lg">
-                            <table class="borderless table">
-                                <tr class="greyBG">
-                                    <th scope="col"><p id="head3"><b>Subject</b><span style="color:#ff9090"><b>*</b></span></p></th>
-                                    <th scope="col"><p id="head3"><b>Section</b><span style="color:#ff9090"><b>*</b></span></p></th>
-                                    <th scope="col"><p id="head3"><b>Instructor</b></p></th>
-                                    <th scope="col"><p id="head3"><b>Day</b><span style="color:#ff9090"><b>*</b></span></p></th>
-                                    <th scope="col"><p id="head3"><b>Time Start</b><span style="color: #ff9090"><b>*</b></span></p></th>
-                                    <th scope="col"><p id="head3"><b>Time End</b><span style="color:#ff9090"><b>*</b></span></p></th>
-                                    <th scope="col"><p id="head3"><b>Room</b><span style="color:#ff9090"><b>*</b></span></p></th>
-                                    <th scope="col"><p id="head3"><b>Type</b><span style="color:#ff9090"><b>*</b></span></p></th>
-                                    <th scope="col"><p id="head3"><b>Add</b></p></th>
-                                </tr>
-
-
-                                <!-----------DB FROM THIS POINT LAHAT NG <TD> TAG GALING DB-------------------------------------------->
-                                <!-- ROW -->
-                            <form action="" method="POST">
-                                {% csrf_token %}
-                                {{ formset.management_form }}
-                                {% for form  in formset %}
-                                <tr class="tabletext2">
-                                    <td>{{form.subjectCode}}</td><!-- DB SUBJECT CODE -->
-                                    <td>{{form.section}}</td><!-- DB SECTION -->
-                                    <td>{{form.instructor}}</td><!-- DB INSTRUCTOR -->
-                                    <td>{{form.day}}</td>
-                                    <td>{{form.timeStart}}</td><!-- DB TIME IN -->
-                                    <td>{{form.timeEnd}}</input></td><!-- DB TIME OUT -->
-                                    <td>{{form.room}}</td><!-- DB ROOM -->
-                                    <td>{{form.type}}</td><!-- DB ADD BUTTON -->
-                                    {% endfor %}
-                                    <td><button type=submit id="addbtn">+</button></td><!-- DB ADD BUTTON -->
-                                </tr>
-                            </form>        <!---------------------------------------------------------->
-                            </table>
-
-                            <div class="col-lg-6">
-                                <div class="sub row"> 
-                                    <div class="col-lg"><p id="subject"><b>Schedule</b></p></div>
-                                    <!-- Templates > Chairperson > Student -->
-                                </div>
-                            </div>
-                            <table class="borderless table">
-                                <tr class="greyBG">
-                                    <th scope="col"><p id="head3"><b>Code</b></p></th>
-                                    <th scope="col"><p id="head3"><b>Subject Name</b></p></th>
-                                    <th scope="col"><p id="head3"><b>Units</b></p></th>
-                                    <th scope="col"><p id="head3"><b>Section</b></p></th>
-                                    <th scope="col"><p id="head3"><b>Instructor</b></p></th>
-                                    <th scope="col"><p id="head3"><b>Day</b></p></th>
-                                    <th scope="col"><p id="head31"><b>Time Start</b></p></th>
-                                    <th scope="col"><p id="head31"><b>Time End</b></p></th>
-                                    <th scope="col"><p id="head3"><b>Room</b></p></th>
-                                    <th scope="col"><p id="head3"><b>Type</b></p></th>
-                                    <th scope="col"><p id="head3"><b>Remove</b></p></th>
-                                </tr>
-                                {% for sched  in schedule %}
-                                <tr class="tabletext2">
-                                    <td><div class="subjectName">{{sched.subjectCode.subjectCode.subjectCode}}</div></td>
-                                    <td><div class="subjectName">{{sched.subjectCode.subjectCode.subjectName}}</div></td>
-                                    <td><div class="subjectName">{{sched.subjectCode.subjectUnits}}</div></td>
-                                    <td><div class="subjectName">{{sched.section}}</div></td>
-                                    <td><div class="subjectName">{{sched.instructor}}</div></td>
-                                    <td><div class="subjectName">{{sched.day}}</div></td>
-                                    <td><div class="subjectName">{{sched.timeStart}}</div></td>
-                                    <td><div class="subjectName">{{sched.timeEnd}}</div></td>
-                                    <td><div class="subjectName">{{sched.room}}</div></td>
-                                    <td><div class="subjectName">{{sched.type}}</div></td>
-                                    <td><a href="{% url 'cStudentDeleteSched' sched.id sched.realsection.id %}"><button type=submit id="deletebtn">-</button></a></td><!-- DB ADD BUTTON -->
-                                </tr>
-                                {% endfor %}
-                                <!---------------------------------------------------------->
-                            </table>
-                        </div>
-
-                        <!-- DB CONFIRM SCHEDULE -->
-                    <!-- End of Main Content -->
+    <body class="content-scrollbar" onload="today()">
+        <img src="{% static 'CRS/images/cHome/bglogo.png' %}" id="bglogo" class="unselectable">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-sm navbar-dark flex-sm-nowrap flex-wrap">           
+            <a href="#menu-toggle" id="menu-toggle" class="navbar-brand unselectable d-xl-none" onclick="togglemenu()">
+                <span></span><img class="nav-collapse unselectable" src="{% static 'CRS/images/cIcons/collapse.png' %}" height="13"></span>
+            </a>                 
+            <a href="{% url 'chairperson' %}" class="iplm-logo unselectable">
+                <img src="https://i.postimg.cc/Z5Kc9KQv/iplm-logo.png" class="logo" />
+                <div class="logo-text">
+                  <div class="logo-main">iPLM</div>
+                  <div class="logo-sub">Integrated PLM</div>
                 </div>
-                <!-- End of Main Row -->
+            </a>            
+                   
+            <!-- navbar user name and title  -->
+            <p class="d-none d-sm-block usertitle unselectable">
+                Chairperson
+            </p>
+            <p href="{% url 'chairperson_profile' %}" class="d-none d-sm-block user unselectable">
+                {{user.firstName}} {{user.middleName}} {{user.lastName}}
+            </p>
+
+            <!-- user profile dropdown -->
+            <div class="unselectable dropdown pficon">
+                <a class="dropdown-toggle profilehover" id="dropdownProfile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img id="profileicon" src="{% static 'CRS/images/fHomeAndProfile/userprofile.png' %}" width="35px" height="35px">
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end dropdownProfileMenu p-3 text-muted" aria-labelledby="dropdownProfile">
+                    <img id="profileicon" src="{% static 'CRS/images/fHomeAndProfile/userprofile.png' %}" width="40px" height="40px">
+                    <p id="profilemenutitle">{{user.firstName}}<br></p>
+                    <p id="profilemenuemail">{{user.email}}<br></p>
+                    <div class="dropdown-divider"></div>
+                    <li><a class="profilelinks" href="{% url 'chairperson_profile' %}">View Profile</a></li>
+                    <li><a class="profilelinks" href="{% url 'fHome' %}">Log in as Faculty</a></li>
+                    <li><a class="profilelinks" href="{% url 'logout' %}">Log out</a></li>
+                </ul>
             </div>
-            <!-- End of Container -->
-        </div>
-        <!-- End of Content -->
-    </div>
+        </nav>
 
-    <!-- Javascript -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <div id="mainwrapper" class="toggled">
+            <!-- Sidebar -->
+            <div id="sidebar-wrapper" class="custom-scrollbar d-xl-block">
+                <ul class="sidebar-nav">
+                    <li class="active"> <a class="sb-links" href="{% url 'chairperson' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/home.png' %}" height="15"> Home</a> </li>
+                    <li class="sb-section unselectable"><span>CRS</span></li>
+                    <li> <a class="sb-links" href="{% url 'is_active' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/department.png' %}" height="15"> Department</a> </li>
+                    <li> <a class="sb-links" href="{% url 'dept_student' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/students.png' %}" height="15"> Students</a> </li>
+                    <li> <a class="sb-links" href="{% url 'full_time' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/faculty.png' %}" height="15"> Faculty</a> </li>
+                    <li class="sb-section unselectable"><span>Student Application</span></li>
+                    <li> <a class="sb-links" href="{% url 'cOthers-studyPlan' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/studyplan.png' %}" height="15"> Study Plan</a> </li>
+                    <li> <a class="sb-links" href="{% url 'cOthers-loa' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/loa.png' %}" height="15"> Leave of Absence</a> </li>
+                    <li> <a class="sb-links" href="{% url 'cOthers-hd' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/hd.png' %}" height="15"> Honorable Dismissal</a> </li>
+                    <li> <a class="sb-links" href="{% url 'cOthers-ojt' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/practicum.png' %}" height="15"> Practicum</a> </li>
+                    <li> <a class="sb-links" href="{% url 'cOthers-shifter' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/shifter.png' %}" height="15"> Shifter</a> </li>
+                    <li> <a class="sb-links" href="{% url 'cOthers-outshifter' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/shifter.png' %}" height="15"> Outbound Shifter</a> </li>
+                    <li> <a class="sb-links" href="{% url 'cOthers-transferee' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/transferee.png' %}" height="15"> Transferee</a> </li>
+                    <li class="sb-section unselectable"><span>Faculty Application</span></li>
+                    <li> <a class="sb-links" href="{% url 'cfaculty_applicant' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/applicant.png' %}" height="15"> Application</a> </li>
+                    <li> <a class="sb-links" href="{% url 'cOthers-partTime' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/pta.png' %}" height="15">    Part-time Availability</a> </li>
+                </ul>
+            </div> 
+            <!-- end sidebar -->            
+            
+            <!-- Page Content -->
+            <div id="page-content-wrapper">
+                <div class="container-fluid">  
+                    
+                    <!--------------------------------------- place content below this ------------------------------------------------------->                  
+                                        
+                    <!-- DB REGULAR AND ONLINE BUTTONS-->                                           
+                        
 
-    <script>
-        $(document).ready(function() {
-            $('#sidebarCollapse').on('click', function() {
-                $('#sidebar').toggleClass('active');
-            });
-        });
-    </script>
+                    <a href="{% url 'cStudentSchedOnline' %}"><button class="btn btn-back unselectable">Back</button></a>
 
-</body>
+                    {% if messages %}
+                        {% for message in messages %}
+                        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                        <div class="alertError" style="width: 1020px;">
+                            <span class="closebtnError unselectable" onclick="this.parentElement.style.display='none';">&times;</span> 
+                            {{ message }}
+                        </div>
+                        {% endif %}
+    
+                        {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                        <div class="alertSuccess" style="width: 1020px;">
+                            <span class="closebtnSuccess" onclick="this.parentElement.style.display='none';">&times;</span> 
+                            {{ message }}
+                        </div>
+                        {% endif %}
+                            
+                        {% endfor %}
+                        {% endif %}
+
+                    <div class="container content-scrollbar schedborder" style="width:1020px; background-color: #fff;">  
+                        <div class="container schedblock content-scrollbar" style="height: 120px; overflow:hidden;">                                               
+                            <div class="row">
+                                <div class="table-title header-sticky" ><span class="spanmarginleft">Add Subjects</span></div>                           
+                                <table class="table table-style table-borderless table-sm">
+                                    <tbody>                                        
+                                        <tr class="table-header header-sticky" style="top: 45px;">
+                                            <td></td>
+                                            <td>Subject</td>
+                                            <td>Section</td>
+                                            <td>Instructor</td>
+                                            <td>Day</td>
+                                            <td>Time Start</td>
+                                            <td>Time End</td>
+                                            <td>Room</td>
+                                            <td>Type</td>
+                                            <td></td>
+                                        </tr>
+
+                                        <form action="" method="POST">
+                                            {% csrf_token %}
+                                            {{ formset.management_form }}
+                                            {% for form  in formset %}
+                                            <tr class="tabletext2">
+                                                <td></td>
+                                                <td>{{form.subjectCode}}</td><!-- DB SUBJECT CODE -->
+                                                <td>{{form.section}}</td><!-- DB SECTION -->
+                                                <td>{{form.instructor}}</td><!-- DB INSTRUCTOR -->
+                                                <td>{{form.day}}</td>
+                                                <td>{{form.timeStart}}</td><!-- DB TIME IN -->
+                                                <td>{{form.timeEnd}}</input></td><!-- DB TIME OUT -->
+                                                <td>{{form.room}}</td><!-- DB ROOM -->
+                                                <td>{{form.type}}</td><!-- DB ADD BUTTON -->
+                                                {% endfor %}
+                                                <td><button type=submit id="addbtn" class="unselectable">+</button></td><!-- DB ADD BUTTON -->
+                                            </tr>
+                                        </form>                                          
+                                    </tbody>
+                                </table>
+                            
+                            </div>  
+                
+                        </div>
+                    </div>            
+
+                    {% block body %}
+                    <div class="container content-scrollbar schedborder" style="width:1020px; background-color: #fff;">  
+                        <div class="container schedblock content-scrollbar" style="height: 275px;">                                               
+                            <div class="row">
+                                <div class="table-title header-sticky" ><span class="spanmarginleft">Schedule</span></div>                           
+                                <table class="table table-style table-borderless table-sm">
+                                    <tbody>                                        
+                                        <tr class="table-header header-sticky" style="top: 45px">
+                                            <td></td>
+                                            <td>Code</td>
+                                            <td>Subject Name</td>
+                                            <td>Units</td>
+                                            <td>Section</td>
+                                            <td>Instructor</td>
+                                            <td>Day</td>
+                                            <td>Time Start</td>
+                                            <td>Time End</td>
+                                            <td>Room</td>
+                                            <td>Type</td>
+                                            <td></td>
+                                        </tr>
+                                        {% for sched  in schedule %}
+                                        <tr>
+                                            <td></td>
+                                            <td>{{sched.subjectCode.subjectCode.subjectCode}}</td>
+                                            <td>{{sched.subjectCode.subjectCode.subjectName}}</td>
+                                            <td>{{sched.subjectCode.subjectUnits}}</td>
+                                            <td>{{sched.section}}</td>
+                                            <td>{{sched.instructor}}</td>
+                                            <td>{{sched.day}}</td>
+                                            <td>{{sched.timeStart}}</td>
+                                            <td>{{sched.timeEnd}}</td>
+                                            <td>{{sched.room}}</td>
+                                            <td>{{sched.type}}</td>
+                                            <td>
+                                                <a href="{% url 'cStudentDeleteSched' sched.id sched.realsection.id %}">
+                                                    <button class="minibutton unselectable" type=submit id="deletebtn">
+                                                        -
+                                                    </button>
+                                                </a>
+                                            </td>                                           
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            
+                            </div>  
+                
+                        </div>
+                    </div>
+                    {% endblock %}
+                    
+                    <!--------------------------------------- place content above this ------------------------------------------------------->   
+                </div>            
+            </div> <!-- /#page-content-wrapper -->  
+        </div> <!-- /#wrapper -->
+
+        <img src="{% static 'CRS/images/cIcons/up-arrow.png' %}" id="btn-back-to-top" class="unselectable"> <!-- scroll to top -->
+        
+        <!-- Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        
+        <!-- JS -->
+        <script src="{% static '/CRS/js/cHome/cHomeMain.js' %}"></script>   
+        <script>
+            let mybutton = document.getElementById("btn-back-to-top");
+            window.onscroll = function () {
+              scrollFunction();
+            };
+            mybutton.addEventListener("click", backToTop);
+        </script>     
+    </body>
+
 </html>

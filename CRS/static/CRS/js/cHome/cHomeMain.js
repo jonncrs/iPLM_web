@@ -115,4 +115,8 @@ function today() {
             "daytoday").innerHTML =        
             days[d.getDay()];
 
+            document.getElementById(
+                "yeartoday").innerHTML =        
+                d.getFullYear();
+
 }

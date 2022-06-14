@@ -17,12 +17,11 @@
     <!-- CSS -->
     <link rel="stylesheet" href="{% static '/CRS/css/cHome/cHomeStyleCP.css' %}">
     <link href="https://fonts.googleapis.com/css?family=Lato:200,300,400,600,700,900&subset=latin-ext" rel="stylesheet">
-    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900&subset=latin-ext'
-        rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900&subset=latin-ext' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />    
 
     <!--  ICON -->
-    <link rel="icon" href="{% static '/CRS/images/cHome/iPLM.png' %}" type="image/png" sizes="16x16">
-
+    <link rel="icon" href="https://i.postimg.cc/Z5Kc9KQv/iplm-logo.png" type="image/x-icon"/>
 </head>
 
 
@@ -35,9 +34,13 @@
             <span></span><img class="nav-collapse unselectable" src="{% static 'CRS/images/cIcons/collapse.png' %}"
                 height="13"></span>
         </a>
-        <a id="iplm" href="{% url 'chairperson' %}">
-            <img class="iplmlogo unselectable" src="{% static 'CRS/images/fHomeAndProfile/iplmlogo.png' %}" height="35">
-        </a>
+        <a href="{% url 'chairperson' %}" class="iplm-logo unselectable">
+            <img src="https://i.postimg.cc/Z5Kc9KQv/iplm-logo.png" class="logo" />
+            <div class="logo-text">
+              <div class="logo-main">iPLM</div>
+              <div class="logo-sub">Integrated PLM</div>
+            </div>
+        </a> 
 
         <!-- Notification dropdown -->
         <div class="unselectable dropdown notificon d-none d-sm-block">
@@ -187,7 +190,7 @@
 
     <div id="mainwrapper" class="toggled">
         <!-- Sidebar -->
-        <div id="sidebar-wrapper" class="custom-scrollbar">
+        <div id="sidebar-wrapper" class="custom-scrollbar d-xl-block">
             <ul class="sidebar-nav">
                 <li class="active"> <a class="sb-links" href="{% url 'chairperson' %}"><img class="sb-icons"
                             src="{% static 'CRS/images/cIcons/home.png' %}" height="15"> Home</a> </li>
@@ -225,7 +228,7 @@
 
         <!-- quick links-->
         <div id="mainwrapper" class="toggled">
-            <div id="qlinks" class="custom-scrollbar unselectable qlinks-wrapper">
+            <div id="qlinks" class="custom-scrollbar unselectable qlinks-wrapper d-xl-block">
                 <li class="ql-section unselectable"><span>Quick Access</span></li>
                 <a class="qlinks-btn btn" href="{% url 'is_active' %}" role="button">Department Subjects</a>
                 <a class="qlinks-btn btn" href="{% url 'cOthers-studyPlan' %}" role="button">Study Plan</a>

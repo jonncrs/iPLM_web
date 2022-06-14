@@ -2,198 +2,266 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <title>Chairperson | Faculty</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
-    <link rel="stylesheet" href="{% static 'CRS/css/cFaculty/cFacultyStyle.css' %}">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">
-     <!--Icon-->
-     <link rel="icon" href="{% static 'CRS/images/cDepartment/iPLM.png' %}" type="image/png" sizes="16x16">
-
-    <style>
-        .tablepanel{
-            border-radius: 20px;
-            border: none;
-        }
+    <head>
+        <title> Chairperson | Faculty </title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         
-        tr:nth-child(even) {background-color: #f2f2f2;}
+        <!-- include -->
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         
-        #head3{
-            font-size: 18px;
-        }
-    </style>
+        <!-- CSS -->
+        <link rel="stylesheet" href="{% static '/CRS/css/cHome/cHomeStyleCP.css' %}">
+        <link rel="stylesheet" href="{% static '/CRS/css/cStudents/cStudentsStyle.css' %}">
+        <link href="https://fonts.googleapis.com/css?family=Lato:200,300,400,600,700,900&subset=latin-ext" rel="stylesheet">
+        <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900&subset=latin-ext' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
+        
+        <!--  ICON -->
+        <link rel="icon" href="https://i.postimg.cc/Z5Kc9KQv/iplm-logo.png" type="image/x-icon"/>
+        
+        <style>
+            .blockinfo {
+                color: #5F6E83;
+                font-family: 'Source Sans Pro', sans-serif;
+                font-weight: 300;
+                font-size: 12px;
+                padding:20px 0px;
+                width: 280px;
+            }
 
-</head>
+            .label {
+                color: #0892dd;
+            }
 
-<body>
+            .fname {
+                color: #06529b;
+                font-size: 15px;
+                font-family: 'Source Sans Pro', sans-serif;
+                font-weight: 700;
 
-    <div class="wrapper">
+            }
 
-        <!-- Sidebar -->
-       <nav id="sidebar">
-        <div class="sidebar-header">
-            <li>
-                <p><br><br><img src="{% static 'CRS/images/fHomeAndProfile/hat.png' %}" width="126px" height="87px"><br><br>
-            </li>
-        </div>
-        <ul class="sidebar components">
-            <li class="active"><a href="{% url 'chairperson' %}"><img src="{% static 'CRS/images/cIcons/home2.png' %}" width="97px" height="auto"></a></li>
-            <li><a href="{% url 'is_active' %}"><img src="{% static 'CRS/images/cIcons/department2.png' %}" width="97px" height="auto"></a></li>
-            <li><a href="{% url 'dept_student' %}"><img src="{% static 'CRS/images/cIcons/students2.png' %}" width="97px" height="auto"></a></li>
-            <li><a href="{% url 'full_time' %}"><img src="{% static 'CRS/images/cIcons/faculty2.png' %}" width="97px" height="auto"></a></li>
-            <li><a href="{% url 'cOthers-studyPlan' %}"><img src="{% static 'CRS/images/cIcons/others2.png' %}" width="97px" height="auto"></a></li>
-            <li><a href="{% url 'logout' %}"><img src="{% static 'CRS/images/cIcons/log-out2.png' %}" width="97px" height="auto"></a></li>
-        </ul>
-      </nav>
-    <!--End of Sidebar -->
+            .blockicon {
+                margin-top: 7px;
+            }
 
-        <!-- Content -->
-        <div id="content">
+            .rstyle {
+                margin-left:5px;  
+                margin-right:3px; 
+                margin-bottom:10px;             
+            }
 
-            <div class=" container-fluid">
-                <br><br><br><br>
-                <div class="col-lg-1"><a class="back" href="{% url 'full_time' %}"><img src="{% static 'CRS/images/cFaculty/back.svg' %}" width="50" height="45" id="backlogo"></a>
+            .button-edit:hover {
+                text-decoration: none;
+            }
+
+        </style>
+    </head>
+
+
+    <body class="content-scrollbar" onload="today()">  
+        {% block bglogo %}
+        <img src="{% static 'CRS/images/cHome/bglogo.png' %}" id="bglogo" class="unselectable">
+        {% endblock %}      
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-sm navbar-dark flex-sm-nowrap flex-wrap">           
+            <a href="#menu-toggle" id="menu-toggle" class="navbar-brand unselectable d-xl-none" onclick="togglemenu()">
+                <span></span><img class="nav-collapse unselectable" src="{% static 'CRS/images/cIcons/collapse.png' %}" height="13"></span>
+            </a>                 
+            <a href="{% url 'chairperson' %}" class="iplm-logo unselectable">
+                <img src="https://i.postimg.cc/Z5Kc9KQv/iplm-logo.png" class="logo" />
+                <div class="logo-text">
+                  <div class="logo-main">iPLM</div>
+                  <div class="logo-sub">Integrated PLM</div>
                 </div>
+            </a>           
+                   
+     
+            <!-- navbar user name and title  -->
+            <p class="d-none d-sm-block usertitle unselectable">
+                Chairperson
+            </p>
+            <p href="{% url 'chairperson_profile' %}" class="d-none d-sm-block user unselectable">
+                {{user.firstName}} {{user.middleName}} {{user.lastName}}
+            </p>
 
-                <div class="indvstud row">
-                    <!--Left Side | Faculty Profile | Blue Box-->
-                    <div class="col-blue blue-box col-lg-4">
-                        <div class="col-lg-12 mt-3">
-                            <div class="stud-profile row">
-                                <img src="{% static 'CRS/images/cFaculty/faculty.png' %}" height="32.6857142857" width="39.1428571429">
-                                <p id="sptext">&nbsp;&nbsp;Faculty Profile</p>
-                            </div>
-                            <div class="stud-det row">
-                                <div class="sdtext col">Last Name:</div>
-                                <div class="field col"><!-- DB LAST NAME -->
-                                    {{ info.facultyUser.lastName }}
-                                </div>
-                            </div>
-                            <div class="stud-det row">
-                                <div class="sdtext col">First Name:</div>
-                                <div class="field col"><!-- DB FIRST NAME -->
-                                    {{ info.facultyUser.firstName }}
-                                </div>
-                            </div>
-                            <div class="stud-det row">
-                                <div class="sdtext col">Middle Name:</div>
-                                <div class="field col"><!-- DB MIDDLE NAME -->
-                                    {{ info.facultyUser.middleName }}
-                                </div>
-                            </div>
-                            <div class="stud-det row">
-                                <div class="sdtext col">Gender:</div>
-                                <div class="field col"><!--  DB GENDER -->
-                                    {{ info.facultyGender }}
-                                </div>
-                            </div>
-
-                            <div class="stud-det row">
-                                <div class="sdtext col">Civil Status:</div>
-                                <div class="field col"><!-- DB CIVIL STATUS -->
-                                    {{ info.facultyCivilstatus }}
-                                </div>
-                            </div>
-                            <div class="stud-det row">
-                                <div class="sdtext col">Citizenship:</div>
-                                <div class="field col"><!-- DB CITIZENSHIP -->
-                                    {{ info.facultyCitizenship }}
-                                </div>
-                            </div>
-
-                            <hr class="bluebox">
-                            <div class="stud-det row">
-                                <div class="sdtext col">Faculty ID:</div>
-                                <div class="field col"><!-- DB FACULTY ID -->
-                                    {{ info.facultyID }}
-                                </div>
-                            </div>
-
-                            <div class="stud-det row">
-                                <div class="sdtext col">Department:</div>
-                                <div class="field col"><!-- DB DEPARTMENT -->
-                                    {{ info.departmentID }}
-                                </div>
-                            </div>
-
-                            <hr class="bluebox">
-                            <div class="stud-det row">
-                                <div class="sdtext col">Contact Number</div>
-                                <div class="field col"><!-- DB CONTACT NUMBER -->
-                                    {{info.facultyContact}}
-                                </div>
-                            </div>
-
-                            <div class="stud-det row">
-                                <div class="sdtext col">PLM Email:</div>
-                                <div class="field col"><!-- DB EMAIL -->
-                                    {{ info.facultyUser.email }}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End of Left Side-->
-
-
-
-                    <!--Right Side / SCHEDULE-->
-
-                        <div class="fill-in col-lg-8 pr-0">
-                            <form>
-                                <div class="tablepanel table-responsive-lg">
-                                    <table class="borderless table">
-
-                                        <tr class="primary-att"><!-- TABLE HEADER -->
-                                            <th scope="col"><p id="head3"><b>Code</b></p></th>
-                                            <th scope="col"><p id="head3"><b>Subject Name</b></p></th>
-                                            <th scope="col"><p id="head3"><b>Section</b></p></th>
-                                            <th scope="col"><p id="head3"><b>Day</b></p></th>
-                                            <th scope="col"><p id="head3"><b>Time Start</b></p></th>
-                                            <th scope="col"><p id="head3"><b>Time End</b></p></th>
-                                            <th scope="col"><p id="head3"><b>Session Type</b></p> </th>
-
-                                             
-                                              {% for i in schedule %}
-                                        <tr class="tabletext2"><!-- FIRST ROW / SUBJECT -->
-                                            <td><p> {{i.subjectCode.subjectCode.subjectCode}}</p></td> <!-- DB SUBJECT CODE -->
-                                            <td><p> {{i.subjectCode.subjectCode.subjectName}} </p></td><!-- DB SUBJECT NAME -->
-                                            <td><p> {{i.subjectCode.blockCourse}}{{ i.realsection}} </p></td><!-- DB SECTION -->
-                                            <td><p> {{ i.day}} </p></td><!-- DB DAY -->
-                                            <td><p> {{ i.timeStart}} </p></td><!-- DB TIME IN -->
-                                            <td><p> {{ i.timeEnd}} </p></td><!-- DB TIME OUT -->
-                                            <td><p> {{i.type}} </p></td><!-- DB SESSION TYPE -->
-                                        </tr>
-                                        {%endfor%}
-                                    </table>
-                                </div>
-                            </form>
-
-                            <div id="list-feedback1">
-                                <br><!-- DB EDIT SCHEDULE BUTTON BELOW-->
-                                <a href="{% url 'faculty_edit' info.facultyUser.id %}"><button class="editSched"><img src="{% static 'CRS/images/cFaculty/edit2-white.png' %}" width="36" height="auto">Edit Schedule</button></a><!-- DB FEEDBACK BUTTON -->
-                            </div>
-                        </div>
-                    <!--End of Right Side-->
-
-                </div>
-
+            <!-- user profile dropdown -->
+            <div class="unselectable dropdown pficon">
+                <a class="dropdown-toggle profilehover" id="dropdownProfile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img id="profileicon" src="{% static 'CRS/images/fHomeAndProfile/userprofile.png' %}" width="35px" height="35px">
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end dropdownProfileMenu p-3 text-muted" aria-labelledby="dropdownProfile">
+                    <img id="profileicon" src="{% static 'CRS/images/fHomeAndProfile/userprofile.png' %}" width="40px" height="40px">
+                    <p id="profilemenutitle">{{user.firstName}}<br></p>
+                    <p id="profilemenuemail">{{user.email}}<br></p>
+                    <div class="dropdown-divider"></div>
+                    <li><a class="profilelinks" href="{% url 'chairperson_profile' %}">View Profile</a></li>
+                    <li><a class="profilelinks" href="{% url 'fHome' %}">Log in as Faculty</a></li>
+                    <li><a class="profilelinks" href="{% url 'logout' %}">Log out</a></li>
+                </ul>
             </div>
+        </nav>
 
-        </div>
-    </div>
+        <div id="mainwrapper" class="toggled">
+            <!-- Sidebar -->
+            <div id="sidebar-wrapper" class="custom-scrollbar d-xl-block">
+                <ul class="sidebar-nav">
+                    <li class="active"> <a class="sb-links" href="{% url 'chairperson' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/home.png' %}" height="15"> Home</a> </li>
+                    <li class="sb-section unselectable"><span>CRS</span></li>
+                    <li> <a class="sb-links" href="{% url 'is_active' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/department.png' %}" height="15"> Department</a> </li>
+                    <li> <a class="sb-links" href="{% url 'dept_student' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/students.png' %}" height="15"> Students</a> </li>
+                    <li> <a class="sb-links" href="{% url 'full_time' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/faculty.png' %}" height="15"> Faculty</a> </li>
+                    <li class="sb-section unselectable"><span>Student Application</span></li>
+                    <li> <a class="sb-links" href="{% url 'cOthers-studyPlan' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/studyplan.png' %}" height="15"> Study Plan</a> </li>
+                    <li> <a class="sb-links" href="{% url 'cOthers-loa' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/loa.png' %}" height="15"> Leave of Absence</a> </li>
+                    <li> <a class="sb-links" href="{% url 'cOthers-hd' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/hd.png' %}" height="15"> Honorable Dismissal</a> </li>
+                    <li> <a class="sb-links" href="{% url 'cOthers-ojt' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/practicum.png' %}" height="15"> Practicum</a> </li>
+                    <li> <a class="sb-links" href="{% url 'cOthers-shifter' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/shifter.png' %}" height="15"> Inbound Shifter</a> </li>
+                    <li> <a class="sb-links" href="{% url 'cOthers-outshifter' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/shifter.png' %}" height="15"> Outbound Shifter</a> </li>
+                    <li> <a class="sb-links" href="{% url 'cOthers-transferee' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/transferee.png' %}" height="15"> Transferee</a> </li>
+                    <li class="sb-section unselectable"><span>Faculty Application</span></li>
+                    <li> <a class="sb-links" href="{% url 'cfaculty_applicant' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/applicant.png' %}" height="15"> Faculty Application</a> </li>
+                    <li> <a class="sb-links" href="{% url 'cOthers-partTime' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/pta.png' %}" height="15"> Part-time Availability</a> </li>
+                </ul>
+            </div> 
+            <!-- end sidebar -->     
+            
+             <!-- quick links-->
+            <div id="mainwrapper" class="toggled">
+                <div id="qlinks" class="custom-scrollbar qlinks-wrapper d-xl-block"  style="width:320px; margin-left:0px;">              
+                    <!-- BLOCK INFO -->
+                        
+                        <div class="blockinfo" style="margin-top: 70px;">
+                            <div class="container">                                
+                                <div class="row" style="margin-bottom:10px; margin-right:3px;">  
+                                    <div class="col-2 col" style="margin-left:20px;">
+                                        <img src="{% static '/CRS/images/cIcons/person.png' %}" height="30" class="unselectable blockicon">
+                                    </div>                   
+                                    <div class="col" colspan="2" style="color:#5F6E83; font-weight: 500; overflow: hidden;"><b class="fname">
+                                        {{ info.facultyUser.lastName }}, {{ info.facultyUser.firstName }} {{ info.facultyUser.middleName }}
+                                       </b> <br>
+                                       {{ info.facultyUser.email }}
+                                    </b></div>
+                                </div>      
+                                 <hr>                          
+                                <div class="row rstyle">                                                           
+                                    <div class="col"><b class="label">Gender:</b></div>
+                                    <div class="col"><b class="output">{{ info.facultyGender }}</b></div>
+                                </div>
+                                <div class="row rstyle">  
+                                    <div class="col"><b class="label">Civil Status:</b></div>
+                                    <div class="col"><b class="output">{{ info.facultyCivilstatus }}</b></div>
+                                </div>
+                                <div class="row rstyle">   
+                                    <div class="col"><b class="label">Citizenship:</b></div>
+                                    <div class="col"><b class="output">{{ info.facultyCitizenship }}</b></div>
+                                </div>
+                                
+                                <div class="row rstyle">  
+                                    <div class="col"><b class="label">Faculty ID:</b></div>
+                                    <div class="col"><b class="output">{{ info.facultyID }}</b></div>
+                                </div>
+                                <div class="row rstyle">  
+                                    <div class="col"><b class="label">Department:</b></div>
+                                    <div class="col"><b class="output">{{ info.departmentID }}</b></div>
+                                </div>
 
-    <!-- Javascript -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+                                <div class="row rstyle">  
+                                    <div class="col"><b class="label">Contact Number:</b></div>
+                                    <div class="col"><b class="output">{{info.facultyContact}}</b></div>
+                                </div>    
+                            </div>
+                        </div>
+                    
+                                                           
+                </div>
+                
+            </div>
+            <!-- end quick links-->
+            
+            <!-- Page Content -->
+            <div id="page-content-wrapper">
+                <div class="container-fluid">  
+                    
+                    <!--------------------------------------- place content below this ------------------------------------------------------->                  
+                    <div class="title1 unselectable d-none d-md-block">Faculty Profile</div>
 
+                        
 
-</body>
+                    {% block body %}
+                    <div class="container table-border" style="width:720px; margin-left:0px;">  
+                        <div class="container table-block content-scrollbar">                                               
+                            <div class="row">
+                                <div class="table-title header-sticky"><span class="spanmarginleft">Schedule</span></div>                           
+                                <table class="table table-style table-borderless table-sm">
+                                    <tbody>
+                                        <tr class="table-header header-sticky" style="top: 45px">
+                                            <td></td>
+                                            <td>Code</td>
+                                            <td>Subject Name</td>
+                                            <td>Section</td>
+                                            <td>Day</td>
+                                            <td>Time Start</td>
+                                            <td>Time End</td> 
+                                            <td>Session Type</td>                                           
+                                        </tr>
+                                        {% for i in schedule %}
+                                        <tr>
+                                            <td></td>
+                                            <td>{{i.subjectCode.subjectCode.subjectCode}}</td>
+                                            <td>{{i.subjectCode.subjectCode.subjectName}}</td>
+                                            <td>{{ i.realsection}}</td>
+                                            <td>{{ i.day}}</td>
+                                            <td>{{ i.timeStart}}</td>
+                                            <td>{{ i.timeEnd}}</td> 
+                                            <td>{{i.type}}</td> 
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            
+                            </div>  
+                
+                        </div> 
+                    </div>
+                    <a href="{% url 'full_time' %}" class="button-edit" class="unselectable" style="margin-left:0">
+                        <button class="btn" style="margin-top: 15px; margin-left: 0px; padding: 7px 25px;">
+                            Back
+                        </button>
+                    </a>
+                    
+                    <a href="{% url 'faculty_edit' info.facultyUser.id %}" class="button-edit unselectable" style="margin-left:0;">
+                        <button class="btn" style="margin-top: 15px; margin-left: 505px; padding: 7px 25px;">
+                            Edit Schedule
+                        </button>
+                    </a> 
+                    {% endblock %}
+                    <!--------------------------------------- place content above this ------------------------------------------------------->   
+                </div>            
+            </div> <!-- /#page-content-wrapper -->  
+        </div> <!-- /#wrapper -->
+
+        <img src="{% static 'CRS/images/cIcons/up-arrow.png' %}" id="btn-back-to-top" class="unselectable"> <!-- scroll to top -->
+        
+        <!-- Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        
+        <!-- JS -->
+        <script src="{% static '/CRS/js/cHome/cHomeMain.js' %}"></script>   
+        <script>
+            let mybutton = document.getElementById("btn-back-to-top");
+            window.onscroll = function () {
+              scrollFunction();
+            };
+            mybutton.addEventListener("click", backToTop);
+        </script>     
+    </body>
 
 </html>

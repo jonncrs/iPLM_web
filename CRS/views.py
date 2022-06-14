@@ -7483,7 +7483,7 @@ def transferee_9applicationform(request):
             email = f + m + last +"@plm.edu.ph"
             t_mail = email
             User = get_user_model()
-            log = User.objects.create_user(email = email, password = pw, firstName = fname, middleName = mname, lastName = lname)
+            log = User.objects.create_user(email = email, password = pw, firstName = fname, middleName = mname, lastName = lname, email1 = eadd)
             log.is_admin = False
             log.is_applicant = True
             log.save()
@@ -7567,7 +7567,7 @@ def shifter9(request):
             email = f + m + last +"@plm.edu.ph"
             s_mail=email
             User = get_user_model()
-            log = User.objects.create_user(email = email, password = pw, firstName = fname, middleName = mname, lastName = lname)
+            log = User.objects.create_user(email = email, password = pw, firstName = fname, middleName = mname, lastName = lname, email1 = eadd)            
             log.is_admin = False
             log.is_applicant = True
             log.save()
@@ -7636,7 +7636,7 @@ def applicant_facultyapplicationform(request):
             mail = f + m + last +"@plm.edu.ph"
             f_mail=mail
             User = get_user_model()
-            log = User.objects.create_user(email = mail, password = pw, firstName = firstName, middleName = middleName, lastName = lastName)
+            log = User.objects.create_user(email = mail, password = pw, firstName = firstName, middleName = middleName, lastName = lastName, email1 = email)
             log.is_admin = False
             log.is_applicant = True
             log.save()

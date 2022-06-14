@@ -19,9 +19,10 @@
         <link href="https://fonts.googleapis.com/css?family=Lato:200,300,400,600,700,900&subset=latin-ext" rel="stylesheet">
         <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900&subset=latin-ext' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
         
         <!--  ICON -->
-        <link rel="icon" href="{% static '/CRS/images/cHome/iPLM.png' %}" type="image/png" sizes="16x16">
+        <link rel="icon" href="https://i.postimg.cc/Z5Kc9KQv/iplm-logo.png" type="image/x-icon"/>
        
     </head>
 
@@ -33,9 +34,13 @@
             <a href="#menu-toggle" id="menu-toggle" class="navbar-brand unselectable d-xl-none" onclick="togglemenu()">
                 <span></span><img class="nav-collapse unselectable" src="{% static 'CRS/images/cIcons/collapse.png' %}" height="13"></span>
             </a>                 
-            <a id="iplm" href="{% url 'chairperson' %}">
-                <img class="iplmlogo unselectable" src="{% static 'CRS/images/fHomeAndProfile/iplmlogo.png' %}" height="35">
-            </a>            
+            <a href="{% url 'chairperson' %}" class="iplm-logo unselectable">
+                <img src="https://i.postimg.cc/Z5Kc9KQv/iplm-logo.png" class="logo" />
+                <div class="logo-text">
+                  <div class="logo-main">iPLM</div>
+                  <div class="logo-sub">Integrated PLM</div>
+                </div>
+            </a>         
                    
            
             <!-- navbar user name and title  -->
@@ -65,7 +70,7 @@
 
         <div id="mainwrapper" class="toggled">
             <!-- Sidebar -->
-            <div id="sidebar-wrapper" class="custom-scrollbar">
+            <div id="sidebar-wrapper" class="custom-scrollbar d-xl-block">
                 <ul class="sidebar-nav">
                     <li class="active"> <a class="sb-links" href="{% url 'chairperson' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/home.png' %}" height="15"> Home</a> </li>
                     <li class="sb-section unselectable"><span>CRS</span></li>

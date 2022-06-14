@@ -1,0 +1,293 @@
+
+           /* .col, .col-1, .col-2, .col-3 {*/
+           /*     border: 1px solid red;
+            }*/
+
+            .col-head {
+                padding-left: 0px;
+            }
+
+            .mainheading {
+                color: #06529b;
+                font-family: 'Lato';
+                font-weight: 900;
+                font-size: 18px;
+                margin-left: -5px;
+            }
+
+            .subheading {
+                color: #5F6E83;
+                font-family: 'Lato';
+                font-weight: 700;
+                font-size: 17px;
+                position: absolute;
+                left: 0px;
+            }
+
+            .blockicon {
+                margin-top: 7px;
+                margin-left: -10px;
+            }
+
+            .blockinfo {
+                color: #5F6E83;
+                font-family: 'Source Sans Pro', sans-serif;
+                font-weight: 300;
+                font-size: 12px;                
+                padding-bottom: 20px;
+                width: 220px;
+                background-color: #fff;
+                border-radius: 10px;
+                box-shadow: 0 4px 8px 0 #d3dbe4, 0 6px 20px 0 #d3dbe4;
+            }            
+
+            .fname {
+                color: #06529b;
+                font-size: 15px;
+                font-family: 'Source Sans Pro', sans-serif;
+                font-weight: 700;
+            }
+
+            .btn-back {
+                background-color: rgb(6, 82, 155);
+                height: 30px;
+                text-align: center;  
+                margin-top: 20px;  
+                margin-left: 10px;             
+            }
+
+            .btn-back a{
+                color: #fff;
+                text-decoration: none;
+                font-size: 14px;
+            }
+
+            .btn-back a:hover{                
+                text-decoration: none;                
+            }
+
+            .student-profile {
+                display: inline-block;
+                font-size: 22px;
+            }
+
+            .label {
+                font-family: 'Source Sans Pro', sans-serif;
+                font-size: 16px;
+                font-weight: 600;
+                color: #0892dd;
+                text-decoration: none;
+            }
+
+            .label a {
+                font-family: 'Source Sans Pro', sans-serif;
+                font-size: 16px;
+                font-weight: 600;
+                color: #0892dd;
+                text-decoration: none;
+            }
+
+            .label a:hover {
+                color: #06529b;
+                text-decoration: none;
+                transition: .25s all ease;
+            }
+
+            .output {
+                font-family: 'Source Sans Pro', sans-serif;
+                font-size: 16px;
+                font-weight: 500;
+                color: #5f6e83;
+                text-decoration: none;
+                display: flex;
+                justify-content: center;
+            }
+
+            .col-style {                
+                border-bottom: 1px solid #d3dbe4;
+            }
+
+            .border-top {
+                border-top: 1px solid #d3dbe4;
+            }
+
+            .col-padding {
+                padding-top: 28px;
+                padding-bottom: 28px;
+            }
+
+            .row{
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .downloadBtn {
+                background-color: #06529b;
+                color: #fff;
+                border-radius: 5px;
+                border: none;
+                font-family: 'Source Sans Pro';
+                font-size: 14px;
+                padding-top: 5px;
+                padding-bottom: 5px;
+                width: 105px;
+            }
+
+            .saveBtn {
+                display: inline-block;
+            }
+
+
+            /***** SUBMITTED FILES *****/
+            #submitted {
+                margin-left: -45px;
+                margin-top: 30px;
+                font-size: 30px;
+                color: #06529b;
+                font-family: 'Source Sans Pro';
+            }
+
+            .fileName {
+                font-size: 23px;
+                color: #06529b;
+                margin-left: 10px;
+                font-family: 'Source Sans Pro';
+            }
+
+            #submittedFiles td{
+                padding-bottom: 30px;
+                padding-right: 40px;
+                font-weight:500px;
+            }
+
+            #stat {
+                margin-left: 10px;
+                margin-top: 30px;
+                font-size: 20px;
+                font-weight: bold;
+                color: #06529b;
+                font-family: 'Source Sans Pro';
+            }
+
+            #stat-slct {
+                background-color: #f3f6ff;
+                color: #06529b;
+                border-width: 1px;
+                border-radius: 5px;
+                border-color: #06529b;
+                padding: 2px;
+                font-family: 'Source Sans Pro';
+                font-size: 15px;
+                margin-right: -50px;
+                margin-left: -10px;
+                margin-top: 28px;
+                padding-left: 35px;
+                padding-right: 25px;
+            }
+                        
+            #stat-slct option {
+                font-family: 'Source Sans Pro';
+                font-size: 15px;
+                color: #06529b;
+                background-color: #f3f6ff;
+                border-radius: 10px;
+                border-color: #06529b;
+                border-width: 2px;
+            }
+
+
+            .status-select:hover::after {
+                color: #06529b;
+            }
+                        
+
+            .status-select::after {
+                -webkit-transition: .25s all ease;
+                -o-transition: .25s all ease;
+                transition: .25s all ease;
+            }
+
+            .stat-drop{
+                margin-top: 5px;
+                padding-left: 35px;
+                padding-top: 10px;
+                margin-left: -45px;
+            }
+
+            .saveBtn:hover {
+                opacity: 0.6;
+                transition: .25s all ease;
+            }
+
+            /***** END OF SUBMITTED FILES *****/
+
+            .alertError{
+                padding: 20px;
+                background-color: #f34e01;
+                border-radius: 15px;
+                color: white;
+                font-size: 18px;
+                width: 50%;
+                box-shadow: 0 0 10px rgb(216, 216, 216);
+                animation: zoom-in-zoom-out 1s ease;
+                }
+
+                .alertSuccess{
+                padding: 20px;
+                background-color: #3fb328;
+                border-radius: 15px;
+                color:white;
+                font-size: 18px;
+                width: 50%;
+                box-shadow: 0 0 10px rgb(216, 216, 216);
+                animation: zoom-in-zoom-out 1s ease;
+
+                }
+
+                .closebtnError {
+                margin-left: 15px;
+                color: white;
+                font-weight: bold;
+                float: right;
+                font-size: 22px;
+                line-height: 20px;
+                cursor: pointer;
+                transition: 0.3s;
+                }
+
+                .closebtnError:hover {
+                color: #a33908;
+                }
+
+                .closebtnSuccess {
+                margin-left: 15px;
+                color: white;
+                font-weight: bold;
+                float: right;
+                font-size: 22px;
+                line-height: 20px;
+                cursor: pointer;
+                transition: 0.3s;
+                }
+
+                .closebtnSuccess:hover {
+                color: #1c6b0c;
+                }
+
+                @keyframes zoom-in-zoom-out {
+                0% {
+                transform: scale(1, 1);
+                }
+                50% {
+                transform: scale(1.1, 1.1);
+                }
+                100% {
+                transform: scale(1, 1);
+                }
+                }
+                ::-webkit-file-upload-button
+                    {
+                    background-color: #ffffff;
+                    border: none;
+                    color: white;
+                    }
