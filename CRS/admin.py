@@ -66,11 +66,13 @@ class UserCreationForm(forms.ModelForm):
         iplm = self.cleaned_data.get('email')
         email1 = self.cleaned_data.get('email1')
         password = self.cleaned_data.get('password1')
+        lastname = self.cleaned_data.get('lastName')
         subject = 'iPLM Offical Account'
         email_template_name = "admin\initial_password_notice.txt"
         parameters = {
             'iplmemail': iplm,
             'password': password,
+            'lastname': lastname,
             'domain': '127.0.0.1:8000',
             'site_name': 'iPLM',
             'protocol': 'http'
@@ -79,7 +81,7 @@ class UserCreationForm(forms.ModelForm):
         try:
             send_mail(subject, email, EMAIL_HOST_USER, [email1], fail_silently=False)
         except:
-            raise ValidationError("Auto-sending of E-mail Failed")
+            raise ValidationError("Sending of E-mail Failed.")
         # Save the provided password in hashed format
         user = super().save(commit=False)
         user.set_password(self.cleaned_data["password1"])
@@ -97,7 +99,7 @@ class UserChangeForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ('email', 'email1', 'password', 'firstName', 'middleName',
-                  'lastName', 'is_active', 'is_admin', 'is_chairperson', 'is_faculty', 'is_student')
+                  'lastName', 'is_active', 'is_admin', 'is_chairperson', 'is_faculty', 'is_student', 'is_applicant')
 
         def clean(self):
             is_student = self.cleaned_data.get('is_student')
@@ -123,12 +125,14 @@ class FacultyInfoInline(admin.StackedInline):
     verbose_name_plural = 'Faculty Profile'
     fk_name = 'facultyUser'
 
+
 class StudentInfoInline(admin.StackedInline):
     # To add fields from Faculty database to User creation in Admin Site
     model = StudentInfo
     can_delete = False
     verbose_name_plural = 'Student Profile'
     fk_name = 'studentUser'
+
 
 class UserAdmin(BaseUserAdmin):
     # The forms to add and change user instances
@@ -142,12 +146,12 @@ class UserAdmin(BaseUserAdmin):
      that reference specific fields on auth.User.
      '''
     list_display = ('email', 'firstName', 'middleName', 'lastName',
-                        'is_active', 'is_admin', 'is_chairperson', 'is_faculty', 'is_student')
+                        'is_active', 'is_admin', 'is_chairperson', 'is_faculty', 'is_student', 'is_applicant')
     list_filter = ('is_admin',)
     fieldsets = (
         (None, {'fields': ('email', 'email1', 'password')}),
         ('Personal info', {'fields': ('firstName', 'middleName', 'lastName')}),
-        ('Permissions', {'fields': ('is_active', 'is_admin', 'is_chairperson', 'is_faculty', 'is_student')}),
+        ('Permissions', {'fields': ('is_active', 'is_admin', 'is_chairperson', 'is_faculty', 'is_student', 'is_applicant')}),
     )
     # add_fieldsets is not a standard ModelAdmin attribute. UserAdmin
     # overrides get_fieldsets to use this attribute when creating a user.
