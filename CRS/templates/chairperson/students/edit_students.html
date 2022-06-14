@@ -3,7 +3,7 @@
 <html>
 
     <head>
-        <title> Chairperson | Department </title>
+        <title> Chairperson | Edit Students </title>
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,11 +17,10 @@
         <link rel="stylesheet" href="{% static '/CRS/css/cHome/cHomeStyleCP.css' %}">
         <link href="https://fonts.googleapis.com/css?family=Lato:200,300,400,600,700,900&subset=latin-ext" rel="stylesheet">
         <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900&subset=latin-ext' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>    
-        
+        <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />    
+
         <!--  ICON -->
-        <link rel="icon" href="{% static '/CRS/images/cHome/iPLM.png' %}" type="image/png" sizes="16x16">
+        <link rel="icon" href="https://i.postimg.cc/Z5Kc9KQv/iplm-logo.png" type="image/x-icon"/>
 
         <style>
             /********EDIT PROFILE*******/
@@ -86,9 +85,13 @@
             <a href="#menu-toggle" id="menu-toggle" class="navbar-brand unselectable d-xl-none" onclick="togglemenu()">
                 <span></span><img class="nav-collapse unselectable" src="{% static 'CRS/images/cIcons/collapse.png' %}" height="13"></span>
             </a>                 
-            <a id="iplm" href="{% url 'chairperson' %}">
-                <img class="iplmlogo unselectable" src="{% static 'CRS/images/fHomeAndProfile/iplmlogo.png' %}" height="35">
-            </a>          
+            <a href="{% url 'chairperson' %}" class="iplm-logo unselectable">
+                <img src="https://i.postimg.cc/Z5Kc9KQv/iplm-logo.png" class="logo" />
+                <div class="logo-text">
+                  <div class="logo-main">iPLM</div>
+                  <div class="logo-sub">Integrated PLM</div>
+                </div>
+            </a>       
 
             <!-- navbar user name and title  -->
             <p class="d-none d-sm-block usertitle unselectable">
@@ -109,7 +112,6 @@
                     <p id="profilemenuemail">{{user.email}}<br></p>
                     <div class="dropdown-divider"></div>
                     <li><a class="profilelinks" href="{% url 'chairperson_profile' %}">View Profile</a></li>
-                    <li><a class="profilelinks" href="{% url 'fHome' %}">Log in as Faculty</a></li>
                     <li><a class="profilelinks" href="{% url 'logout' %}">Log out</a></li>
                 </ul>
             </div>
@@ -160,11 +162,11 @@
                                                 {{ user_form }}
                                             </label>                                               
                                         </div> 
-                                        <a href="{% url 'students_bsit1' %}" id="button-edit" class="unselectable">
-                                            <button class="btn" type="submit" style="margin-top: 15px; margin-left: 270px;">
+                                        
+                                            <button class="btn" id="button-edit" type="submit" style="margin-top: 15px; height: 40px; margin-left: 290px;">
                                                 Save Changes
                                             </button>
-                                        </a>   
+                                        
                                             
                                 </div>                                
                             </form>
