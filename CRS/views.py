@@ -702,12 +702,12 @@ def students_bsit1(request):
     year = '1st Year'; block1 = '1'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 1 and blockSection = 1 and blockCourse like 'BSIT%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 1 and blockSection = 1 and blockCourse like 'BSIT%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -727,12 +727,12 @@ def students_bsit1_2(request):
     year = '1st Year'; block1 = '2'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 1 and blockSection = 2 and blockCourse like 'BSIT%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 1 and blockSection = 2 and blockCourse like 'BSIT%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -752,11 +752,11 @@ def students_bsit1_3(request):
     year = '1st Year'; block1 = '3'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 1 and blockSection = 3 and blockCourse like 'BSIT%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 1 and blockSection = 3 and blockCourse like 'BSIT%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
     adviserName = Q.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
@@ -777,12 +777,12 @@ def students_bsit1_4(request):
     year = '1st Year'; block1 = '4'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 1 and blockSection = 4 and blockCourse like 'BSIT%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 1 and blockSection = 4 and blockCourse like 'BSIT%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -802,12 +802,12 @@ def students_bsit1_5(request):
     year = '1st Year'; block1 = '5'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 1 and blockSection = 5 and blockCourse like 'BSIT%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 1 and blockSection = 5 and blockCourse like 'BSIT%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -827,12 +827,12 @@ def students_bsit1_6(request):
     year = '1st Year'; block1 = '6'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 1 and blockSection = 6 and blockCourse like 'BSIT%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 1 and blockSection = 6 and blockCourse like 'BSIT%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -860,12 +860,12 @@ def students_bsit2_1(request):
     year = '2nd Year'; block1 = '1'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 2 and blockSection = 1 and blockCourse like 'BSIT%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 2 and blockSection = 1 and blockCourse like 'BSIT%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -885,12 +885,12 @@ def students_bsit2_2(request):
     year = '2nd Year'; block1 = '2'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 2 and blockSection = 2 and blockCourse like 'BSIT%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 2 and blockSection = 2 and blockCourse like 'BSIT%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -910,12 +910,12 @@ def students_bsit2_3(request):
     year = '2nd Year'; block1 = '3'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 2 and blockSection = 3 and blockCourse like 'BSIT%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 2 and blockSection = 3 and blockCourse like 'BSIT%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -935,12 +935,12 @@ def students_bsit2_4(request):
     year = '2nd Year'; block1 = '4'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 2 and blockSection = 4 and blockCourse like 'BSIT%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 2 and blockSection = 4 and blockCourse like 'BSIT%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -960,12 +960,12 @@ def students_bsit2_5(request):
     year = '2nd Year'; block1 = '5'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 2 and blockSection = 5 and blockCourse like 'BSIT%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 2 and blockSection = 5 and blockCourse like 'BSIT%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -985,12 +985,12 @@ def students_bsit2_6(request):
     year = '2nd Year'; block1 = '6'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 2 and blockSection = 6 and blockCourse like 'BSIT%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 2 and blockSection = 6 and blockCourse like 'BSIT%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -1018,12 +1018,12 @@ def students_bsit3_1(request):
     year = '3rd Year'; block1 = '1'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 3 and blockSection = 1 and blockCourse like 'BSIT%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 3 and blockSection = 1 and blockCourse like 'BSIT%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -1043,12 +1043,12 @@ def students_bsit3_2(request):
     year = '3rd Year'; block1 = '2'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 3 and blockSection = 2 and blockCourse like 'BSIT%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 3 and blockSection = 2 and blockCourse like 'BSIT%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -1068,12 +1068,12 @@ def students_bsit3_3(request):
     year = '3rd Year'; block1 = '3'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 3 and blockSection = 3 and blockCourse like 'BSIT%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 3 and blockSection = 3 and blockCourse like 'BSIT%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -1093,12 +1093,12 @@ def students_bsit3_4(request):
     year = '3rd Year'; block1 = '4'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 3 and blockSection = 4 and blockCourse like 'BSIT%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 3 and blockSection = 4 and blockCourse like 'BSIT%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -1118,12 +1118,12 @@ def students_bsit3_5(request):
     year = '3rd Year'; block1 = '5'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 3 and blockSection = 5 and blockCourse like 'BSIT%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 3 and blockSection = 5 and blockCourse like 'BSIT%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -1143,12 +1143,12 @@ def students_bsit3_6(request):
     year = '3rd Year'; block1 = '6'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 3 and blockSection = 6 and blockCourse like 'BSIT%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 3 and blockSection = 6 and blockCourse like 'BSIT%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -1176,12 +1176,12 @@ def students_bsit4_1(request):
     year = '4th Year'; block1 = '1'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 4 and blockSection = 1 and blockCourse like 'BSIT%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 4 and blockSection = 1 and blockCourse like 'BSIT%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -1201,12 +1201,12 @@ def students_bsit4_2(request):
     year = '4th Year'; block1 = '2'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 4 and blockSection = 2 and blockCourse like 'BSIT%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 4 and blockSection = 2 and blockCourse like 'BSIT%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -1226,12 +1226,12 @@ def students_bsit4_3(request):
     year = '4th Year'; block1 = '3'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 4 and blockSection = 3 and blockCourse like 'BSIT%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 4 and blockSection = 3 and blockCourse like 'BSIT%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -1251,12 +1251,12 @@ def students_bsit4_4(request):
     year = '4th Year'; block1 = '4'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 4 and blockSection = 4 and blockCourse like 'BSIT%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 4 and blockSection = 4 and blockCourse like 'BSIT%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -1276,12 +1276,12 @@ def students_bsit4_5(request):
     year = '4th Year'; block1 = '5'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 4 and blockSection = 5 and blockCourse like 'BSIT%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 4 and blockSection = 5 and blockCourse like 'BSIT%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -1301,11 +1301,11 @@ def students_bsit4_6(request):
     year = '4th Year'; block1 = '6'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 4 and blockSection = 6 and blockCourse like 'BSIT%';")
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 4 and blockSection = 6 and blockCourse like 'BSIT%';")
     adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
     adviserName = Q.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
@@ -1334,12 +1334,12 @@ def students_bsit5_1(request):
     year = '5th Year'; block1 = '1'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 5 and blockSection = 1 and blockCourse like 'BSIT%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 5 and blockSection = 1 and blockCourse like 'BSIT%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -1359,12 +1359,12 @@ def students_bsit5_2(request):
     year = '5th Year'; block1 = '2'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 5 and blockSection = 2 and blockCourse like 'BSIT%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 5 and blockSection = 2 and blockCourse like 'BSIT%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -1384,12 +1384,12 @@ def students_bsit5_3(request):
     year = '5th Year'; block1 = '3'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 5 and blockSection = 3 and blockCourse like 'BSIT%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 5 and blockSection = 3 and blockCourse like 'BSIT%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -1409,12 +1409,12 @@ def students_bsit5_4(request):
     year = '5th Year'; block1 = '4'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 5 and blockSection = 4 and blockCourse like 'BSIT%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 5 and blockSection = 4 and blockCourse like 'BSIT%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -1434,12 +1434,12 @@ def students_bsit5_5(request):
     year = '5th Year'; block1 = '5'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 5 and blockSection = 5 and blockCourse like 'BSIT%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 5 and blockSection = 5 and blockCourse like 'BSIT%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -1459,12 +1459,12 @@ def students_bsit5_6(request):
     year = '5th Year'; block1 = '6'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 5 and blockSection = 6 and blockCourse like 'BSIT%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 5 and blockSection = 6 and blockCourse like 'BSIT%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -1492,12 +1492,12 @@ def students_bsit6_1(request):
     year = '6th Year'; block1 = '1'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 6 and blockSection = 1 and blockCourse like 'BSIT%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 6 and blockSection = 1 and blockCourse like 'BSIT%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -1517,12 +1517,12 @@ def students_bsit6_2(request):
     year = '6th Year'; block1 = '2'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 6 and blockSection = 2 and blockCourse like 'BSIT%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 6 and blockSection = 2 and blockCourse like 'BSIT%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -1542,12 +1542,12 @@ def students_bsit6_3(request):
     year = '6th Year'; block1 = '3'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 6 and blockSection = 3 and blockCourse like 'BSIT%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 6 and blockSection = 3 and blockCourse like 'BSIT%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -1567,12 +1567,12 @@ def students_bsit6_4(request):
     year = '6th Year'; block1 = '4'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 6 and blockSection = 4 and blockCourse like 'BSIT%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 6 and blockSection = 4 and blockCourse like 'BSIT%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -1592,12 +1592,12 @@ def students_bsit6_5(request):
     year = '6th Year'; block1 = '5'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 6 and blockSection = 5 and blockCourse like 'BSIT%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 6 and blockSection = 5 and blockCourse like 'BSIT%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -1617,12 +1617,12 @@ def students_bsit6_6(request):
     year = '6th Year'; block1 = '6'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 6 and blockSection = 6 and blockCourse like 'BSIT%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 6 and blockSection = 6 and blockCourse like 'BSIT%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -1651,12 +1651,12 @@ def students_bsee1(request):
     year = '1st Year'; block1 = '1'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 1 and blockSection = 1 and blockCourse like 'BSEE%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 1 and blockSection = 1 and blockCourse like 'BSEE%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -1676,12 +1676,12 @@ def students_bsee1_2(request):
     year = '1st Year'; block1 = '2'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 1 and blockSection = 2 and blockCourse like 'BSEE%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 1 and blockSection = 2 and blockCourse like 'BSEE%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -1701,12 +1701,12 @@ def students_bsee1_3(request):
     year = '1st Year'; block1 = '3'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 1 and blockSection = 3 and blockCourse like 'BSEE%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 1 and blockSection = 3 and blockCourse like 'BSEE%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -1726,12 +1726,12 @@ def students_bsee1_4(request):
     year = '1st Year'; block1 = '4'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 1 and blockSection = 4 and blockCourse like 'BSEE%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 1 and blockSection = 4 and blockCourse like 'BSEE%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -1751,12 +1751,12 @@ def students_bsee1_5(request):
     year = '1st Year'; block1 = '5'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 1 and blockSection = 5 and blockCourse like 'BSEE%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 1 and blockSection = 5 and blockCourse like 'BSEE%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -1776,12 +1776,12 @@ def students_bsee1_6(request):
     year = '1st Year'; block1 = '6'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 1 and blockSection = 6 and blockCourse like 'BSEE%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 1 and blockSection = 6 and blockCourse like 'BSEE%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -1809,12 +1809,12 @@ def students_bsee2_1(request):
     year = '2nd Year'; block1 = '1'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 2 and blockSection = 1 and blockCourse like 'BSEE%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 2 and blockSection = 1 and blockCourse like 'BSEE%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -1834,12 +1834,12 @@ def students_bsee2_2(request):
     year = '2nd Year'; block1 = '2'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 2 and blockSection = 2 and blockCourse like 'BSEE%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 2 and blockSection = 2 and blockCourse like 'BSEE%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -1859,12 +1859,12 @@ def students_bsee2_3(request):
     year = '2nd Year'; block1 = '3'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 2 and blockSection = 3 and blockCourse like 'BSEE%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 2 and blockSection = 3 and blockCourse like 'BSEE%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -1884,12 +1884,12 @@ def students_bsee2_4(request):
     year = '2nd Year'; block1 = '4'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 2 and blockSection = 4 and blockCourse like 'BSEE%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 2 and blockSection = 4 and blockCourse like 'BSEE%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -1909,12 +1909,12 @@ def students_bsee2_5(request):
     year = '2nd Year'; block1 = '5'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 2 and blockSection = 5 and blockCourse like 'BSEE%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 2 and blockSection = 5 and blockCourse like 'BSEE%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -1934,12 +1934,12 @@ def students_bsee2_6(request):
     year = '2nd Year'; block1 = '6'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 2 and blockSection = 6 and blockCourse like 'BSEE%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 2 and blockSection = 6 and blockCourse like 'BSEE%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -1967,12 +1967,12 @@ def students_bsee3_1(request):
     year = '3rd Year'; block1 = '1'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 3 and blockSection = 1 and blockCourse like 'BSEE%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 3 and blockSection = 1 and blockCourse like 'BSEE%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
     
     if request.GET.get('search'):
@@ -1992,12 +1992,12 @@ def students_bsee3_2(request):
     year = '3rd Year'; block1 = '2'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 3 and blockSection = 2 and blockCourse like 'BSEE%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 3 and blockSection = 2 and blockCourse like 'BSEE%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -2017,12 +2017,12 @@ def students_bsee3_3(request):
     year = '3rd Year'; block1 = '3'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 3 and blockSection = 3 and blockCourse like 'BSEE%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 3 and blockSection = 3 and blockCourse like 'BSEE%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -2042,12 +2042,12 @@ def students_bsee3_4(request):
     year = '3rd Year'; block1 = '4'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 3 and blockSection = 4 and blockCourse like 'BSEE%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 3 and blockSection = 4 and blockCourse like 'BSEE%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -2067,12 +2067,12 @@ def students_bsee3_5(request):
     year = '3rd Year'; block1 = '5'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 3 and blockSection = 5 and blockCourse like 'BSEE%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 3 and blockSection = 5 and blockCourse like 'BSEE%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -2092,12 +2092,12 @@ def students_bsee3_6(request):
     year = '3rd Year'; block1 = '6'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 3 and blockSection = 6 and blockCourse like 'BSEE%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 3 and blockSection = 6 and blockCourse like 'BSEE%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -2125,12 +2125,12 @@ def students_bsee4_1(request):
     year = '4th Year'; block1 = '1'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 4 and blockSection = 1 and blockCourse like 'BSEE%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 4 and blockSection = 1 and blockCourse like 'BSEE%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -2150,12 +2150,12 @@ def students_bsee4_2(request):
     year = '4th Year'; block1 = '2'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 4 and blockSection = 2 and blockCourse like 'BSEE%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 4 and blockSection = 2 and blockCourse like 'BSEE%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -2175,12 +2175,12 @@ def students_bsee4_3(request):
     year = '4th Year'; block1 = '3'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 4 and blockSection = 3 and blockCourse like 'BSEE%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 4 and blockSection = 3 and blockCourse like 'BSEE%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -2200,12 +2200,12 @@ def students_bsee4_4(request):
     year = '4th Year'; block1 = '4'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 4 and blockSection = 4 and blockCourse like 'BSEE%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 4 and blockSection = 4 and blockCourse like 'BSEE%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -2225,12 +2225,12 @@ def students_bsee4_5(request):
     year = '4th Year'; block1 = '5'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 4 and blockSection = 5 and blockCourse like 'BSEE%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 4 and blockSection = 5 and blockCourse like 'BSEE%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -2250,12 +2250,12 @@ def students_bsee4_6(request):
     year = '4th Year'; block1 = '6'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 4 and blockSection = 6 and blockCourse like 'BSEE%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 4 and blockSection = 6 and blockCourse like 'BSEE%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -2283,12 +2283,12 @@ def students_bsee5_1(request):
     year = '5th Year'; block1 = '1'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 5 and blockSection = 1 and blockCourse like 'BSEE%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 5 and blockSection = 1 and blockCourse like 'BSEE%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -2308,12 +2308,12 @@ def students_bsee5_2(request):
     year = '5th Year'; block1 = '2'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 5 and blockSection = 2 and blockCourse like 'BSEE%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 5 and blockSection = 2 and blockCourse like 'BSEE%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -2333,12 +2333,12 @@ def students_bsee5_3(request):
     year = '5th Year'; block1 = '3'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 5 and blockSection = 3 and blockCourse like 'BSEE%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 5 and blockSection = 3 and blockCourse like 'BSEE%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -2358,12 +2358,12 @@ def students_bsee5_4(request):
     year = '5th Year'; block1 = '4'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 5 and blockSection = 4 and blockCourse like 'BSEE%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 5 and blockSection = 4 and blockCourse like 'BSEE%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -2383,12 +2383,12 @@ def students_bsee5_5(request):
     year = '5th Year'; block1 = '5'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 5 and blockSection = 5 and blockCourse like 'BSEE%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 5 and blockSection = 5 and blockCourse like 'BSEE%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -2408,12 +2408,12 @@ def students_bsee5_6(request):
     year = '5th Year'; block1 = '6'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 5 and blockSection = 6 and blockCourse like 'BSEE%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 5 and blockSection = 6 and blockCourse like 'BSEE%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -2441,12 +2441,12 @@ def students_bsee6_1(request):
     year = '6th Year'; block1 = '1'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 6 and blockSection = 1 and blockCourse like 'BSEE%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 6 and blockSection = 1 and blockCourse like 'BSEE%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -2466,12 +2466,12 @@ def students_bsee6_2(request):
     year = '6th Year'; block1 = '2'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 6 and blockSection = 2 and blockCourse like 'BSEE%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 6 and blockSection = 2 and blockCourse like 'BSEE%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -2491,12 +2491,12 @@ def students_bsee6_3(request):
     year = '6th Year'; block1 = '3'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 6 and blockSection = 3 and blockCourse like 'BSEE%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 6 and blockSection = 3 and blockCourse like 'BSEE%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -2516,12 +2516,12 @@ def students_bsee6_4(request):
     year = '6th Year'; block1 = '4'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 6 and blockSection = 4 and blockCourse like 'BSEE%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 6 and blockSection = 4 and blockCourse like 'BSEE%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -2541,12 +2541,12 @@ def students_bsee6_5(request):
     year = '6th Year'; block1 = '5'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 6 and blockSection = 5 and blockCourse like 'BSEE%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 6 and blockSection = 5 and blockCourse like 'BSEE%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -2566,12 +2566,12 @@ def students_bsee6_6(request):
     year = '6th Year'; block1 = '6'
 
     _db = mysql.connector.connect(host = "localhost", user = "root", password = "")
-    Q = _db.cursor()
-    Q.execute("USE iplmdatabase")
-    Q.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 6 and blockSection = 6 and blockCourse like 'BSEE%';")
-    adviserID = Q.fetchone()
-    Q.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    Q1 = _db.cursor()
+    Q1.execute("USE iplmdatabase")
+    Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 6 and blockSection = 6 and blockCourse like 'BSEE%';")
+    adviserID = Q1.fetchone()
+    Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -7313,7 +7313,6 @@ def del_allFaculty(request, faculty_id):
     Faculty_applicant.credentials.delete()
     Faculty_applicant.TOR.delete()
     Faculty_applicant.PDS.delete()
-    Faculty_applicant.accomplishments.delete()
     messages.success(request, 'Files Succesfully Returned!')  
 def cfacultyapplicant_sortedlist(request):
     id = request.user.id
@@ -7843,7 +7842,7 @@ def pw_reset(request):
         'password_form': password_form,
     }
     return render(request, 'pw_reset/password_reset.html', context)
-
+    
 def events(request, event_id=None):
     if not event_id == None:
         try:
@@ -7929,4 +7928,4 @@ def eventsDelete(request, event_id):
 def eventsComponent(request):
     if request.GET.get('sortCategory'):
         return Event.objects.filter(eventCategory=request.GET['sortCategory']).order_by('eventStartDate')
-    return Event.objects.all().order_by('eventStartDate')
+    return Event.objects.all().order_by('eventStartDate')   
