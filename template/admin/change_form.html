@@ -33,7 +33,7 @@
   </ul>
 {% endif %}{% endif %}
 {% endblock %}
-<form {% if has_file_field %}enctype="multipart/form-data" {% endif %}{% if form_url %}action="{{ form_url }}" {% endif %}method="post" id="{{ opts.model_name }}_form">{% csrf_token %}{% block form_top %}{% endblock %}
+<form {% if has_file_field %}enctype="multipart/form-data" {% endif %}{% if form_url %}action="{{ form_url }}" {% endif %}method="post" id="{{ opts.model_name }}_form" novalidate>{% csrf_token %}{% block form_top %}{% endblock %}
 <div>
 {% if is_popup %}<input type="hidden" name="{{ is_popup_var }}" value="1">{% endif %}
 {% if request.path == '/admin/CRS/user/add/' %}
@@ -252,11 +252,33 @@
         else if (a.checked == true || b.checked == true || c.checked == true){
             document.getElementById('facultyinfo-group').style.display = "block";
             document.getElementById('perm').style.display = 'none'
+            document.getElementById('id_facultyinfo-0-facultyWorkstatus').value = "Full-Time";
+            document.getElementById('id_facultyinfo-0-facultyCivilstatus').value = "Single";
+            document.getElementById('id_facultyinfo-0-facultyContact').value = "09";
+            document.getElementById('id_studentinfo-0-studentGender').value = 0;
+            document.getElementById('id_studentinfo-0-studentCivilstatus').value = 0;
+            document.getElementById('id_studentinfo-0-studentContact').value = "";
+            document.getElementById('id_studentinfo-0-studentRegStatus').value = 0;
+            document.getElementById('id_studentinfo-0-studentType').value = 0;
+            document.getElementById('id_studentinfo-0-studentYearlevel').value = 0;
+            document.getElementById('id_studentinfo-0-studentSection').value = 0;
+            document.getElementById('id_studentinfo-0-studentCurriculum').value = "";
             return 'faculty';
         }
         else if(d.checked == true){
             document.getElementById('studentinfo-group').style.display = "block";
             document.getElementById('perm').style.display = 'none'
+            document.getElementById('id_studentinfo-0-studentCivilstatus').value = "Single";
+            document.getElementById('id_studentinfo-0-studentContact').value = "09";
+            document.getElementById('id_studentinfo-0-studentRegStatus').value = "Regular";
+            document.getElementById('id_studentinfo-0-studentType').value = 'New';
+            document.getElementById('id_studentinfo-0-studentYearlevel').value = 1;
+            document.getElementById('id_studentinfo-0-studentSection').value = 1;
+            document.getElementById('id_studentinfo-0-studentCurriculum').value = "2020";
+            document.getElementById('id_facultyinfo-0-facultyWorkstatus').value = 0;
+            document.getElementById('id_facultyinfo-0-facultyGender').value = 0;
+            document.getElementById('id_facultyinfo-0-facultyCivilstatus').value = "";
+            document.getElementById('id_facultyinfo-0-facultyContact').value = "";
             return 'student';
         }
         else{

@@ -198,7 +198,7 @@ class ChairpersonInfo (models.Model):
 class Department(models.Model):
     collegeId = ForeignKey(College, null=True, verbose_name='College', on_delete=models.CASCADE)
     courseName = models.CharField(max_length=150, null=True, verbose_name='Course')
-    courseDesc = models.CharField(max_length=200, null=True, blank=False, verbose_name='Course Description')
+    courseDesc = models.CharField(max_length=200, null=True, blank=True, verbose_name='Course Description')
     chairperson = ForeignKey(ChairpersonInfo, on_delete=models.PROTECT, null=True, blank=False)
 
     def __str__(self):
@@ -506,13 +506,13 @@ class StudentInfo(models.Model):
 
     studentUser = OneToOneField(User, on_delete=CASCADE, primary_key=True, verbose_name='Student Email')
     studentID = models.CharField(validators=[studentID_regex], max_length=50, unique=True, verbose_name='Student ID',
-                                 null=True, default = sid_default)
+                                 null=True, default=sid_default)
     collegeID = ForeignKey(College, null=True, verbose_name='College', on_delete=models.SET_NULL, blank=False, default=1)
     departmentID = ForeignKey(Department, null=True, verbose_name='Department', on_delete=models.SET_NULL, blank=False, default=1)
     studentGender = models.CharField(max_length=50, null=True, choices=Gender_CHOICES, verbose_name='Gender')
     studentCitizenship = models.CharField(max_length=50, null=True,default='Filipino', verbose_name='Citizenship')
     studentCivilstatus = models.CharField(max_length=150, null=True, choices=CivilStatus_CHOICES,
-                                          verbose_name='Civil Status', default=1)
+                                          verbose_name='Civil Status')
     studentContact = models.CharField(validators=[phone_regex], max_length=50, null=True, verbose_name='Contact Number')
     studentRegStatus = models.CharField(max_length=100, choices=Status_CHOICES, null=True,
                                         verbose_name='Student Status')
@@ -522,7 +522,7 @@ class StudentInfo(models.Model):
     studentSection = models.ForeignKey(BlockSection, null=True, verbose_name='Section', on_delete=models.SET_NULL,
                                        blank=False)
     studentCurriculum = models.CharField(validators=[curr_regex], max_length=50, verbose_name='Curriculum Year',
-                                         null=True, default= date.today().year)
+                                         null=True)
 
     # advisoryClasscode = ForeignKey(advisoryClass, null=True, verbose_name='Class Advisory', on_delete=DO_NOTHING)
 
