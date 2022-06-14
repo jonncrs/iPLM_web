@@ -67,7 +67,7 @@
 
         <div id="mainwrapper" class="toggled">
             <!-- Sidebar -->
-            <div id="sidebar-wrapper" class="custom-scrollbar">
+            <div id="sidebar-wrapper" class="custom-scrollbar d-xl-block">
                 <ul class="sidebar-nav">
                     <li class="active"> <a class="sb-links" href="{% url 'chairperson' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/home.png' %}" height="15"> Home</a> </li>
                     <li class="sb-section unselectable"><span>CRS</span></li>
@@ -91,7 +91,7 @@
             
              <!-- quick links-->
             <div id="mainwrapper" class="toggled">
-                <div id="qlinks" class="custom-scrollbar unselectable qlinks-wrapper">
+                <div id="qlinks" class="custom-scrollbar unselectable qlinks-wrapper d-xl-block">
                     
                     <!-- Search box -->
                     <div class="searchbox">
@@ -234,7 +234,7 @@
                     <div class="container table-border">  
                         <div class="container table-block content-scrollbar">                                               
                             <div class="row">
-                                <div class="table-title header-sticky"><span class="spanmarginleft">{{year}}</span></div>                           
+                                <div class="table-title header-sticky"><span class="spanmarginleft">{{year}} | Block {{block1}}</span></div>                           
                                 <table class="table table-style table-borderless table-sm">
                                     <tbody>
                                         <tr class="table-header header-sticky" style="top: 45px">

@@ -1,226 +1,242 @@
-{% load static  %}
-
+{% load static %}
 <!DOCTYPE html>
 <html>
 
-<head>
-    <title>Chairperson | Schedule</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
-
-    <script src="cHomeMain.js"> </script>
-    
-    <!-- static > CRS > css > cStudents -->
-    <link rel="stylesheet" type="text/css" href="{% static 'CRS/css/cStudents/cStudentSchedStyle.css' %}">
-
-    <!--Font-->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">
-    <!--Icon-->
-    <link rel="icon" href="{% static 'CRS/images/cStudents/iPLM.png'%}" type="image/png" sizes="16x16">
-
-    <style>
+    <head>
+        <title> Chairperson | Schedule </title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         
-        .alertError{
-        padding: 20px;
-        background-color: #f34e01;
-        border-radius: 15px;
-        color: white;
-        font-size: 18px;
-        width: auto;
-        height: 70px;
-        box-shadow: 0 0 10px rgb(216, 216, 216);
-        float: left;
-        margin-top: -80px;
-        animation: zoom-in-zoom-out 1s ease;
-        }
-
-        .alertSuccess{
-        padding: 20px;
-        background-color: #3fb328;
-        border-radius: 15px;
-        color:white;
-        font-size: 18px;
-        width: auto;
-        height: 70px;
-        box-shadow: 0 0 10px rgb(216, 216, 216);
-        float: right;
-        margin-top: -80px;
-        animation: zoom-in-zoom-out 1s ease;
+        <!-- include -->
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         
-        }
+        <!-- CSS -->
+        <link rel="stylesheet" href="{% static '/CRS/css/cHome/cHomeStyleCP.css' %}">
+        <link href="https://fonts.googleapis.com/css?family=Lato:200,300,400,600,700,900&subset=latin-ext" rel="stylesheet">
+        <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900&subset=latin-ext' rel='stylesheet' type='text/css'>
+        <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
 
-        .closebtnError {
-        margin-left: 15px;
-        color: white;
-        font-weight: bold;
-        float: right;
-        font-size: 22px;
-        line-height: 20px;
-        cursor: pointer;
-        transition: 0.3s;
-        }
+        <!--  ICON -->
+        <link rel="icon" href="https://i.postimg.cc/Z5Kc9KQv/iplm-logo.png" type="image/x-icon"/>
 
-        .closebtnError:hover {
-            color: #a33908;
-        }
+        <style>
+            .buttonSession {
+                margin: 10px -15px 10px -15px;
+                background-color: #06529b;
+                color: #fff;
+                font-family: 'Source Sans Pro', sans-serif;
+                border: none;
+                border-radius: 5px;
+                padding: 2px 0px 2px 0px;
+                width: 120px;
+                height: 60px;
+            }
 
-        .closebtnSuccess {
-        margin-left: 15px;
-        color: white;
-        font-weight: bold;
-        float: right;
-        font-size: 22px;
-        line-height: 20px;
-        cursor: pointer;
-        transition: 0.3s;
-        }
+            .buttonSession:hover {                
+                background-color: #0892dd;
+                transition: all 0.3s ease;
+            }
 
-        .closebtnSuccess:hover {
-            color: #1c6b0c;
-        }
+            .yearlabel {
+                color: #5F6E83;
+                font-family: 'Source Sans Pro', sans-serif;
+                margin-top: 20px;
+            }
+
+            .tr-border {
+                border-bottom: 1px solid #d7dff6;
+            }
+        </style>
+    </head>
 
 
+    <body class="content-scrollbar" onload="today()">
+        <img src="{% static 'CRS/images/cHome/bglogo.png' %}" id="bglogo" class="unselectable">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-sm navbar-dark flex-sm-nowrap flex-wrap">           
+            <a href="#menu-toggle" id="menu-toggle" class="navbar-brand unselectable d-xl-none" onclick="togglemenu()">
+                <span></span><img class="nav-collapse unselectable" src="{% static 'CRS/images/cIcons/collapse.png' %}" height="13"></span>
+            </a>                 
+           <a href="{% url 'chairperson' %}" class="iplm-logo unselectable">
+                <img src="https://i.postimg.cc/Z5Kc9KQv/iplm-logo.png" class="logo" />
+                <div class="logo-text">
+                  <div class="logo-main">iPLM</div>
+                  <div class="logo-sub">Integrated PLM</div>
+                </div>
+            </a>         
+                   
+            <!-- navbar user name and title  -->
+            <p class="d-none d-sm-block usertitle unselectable">
+                Chairperson
+            </p>
+            <p href="{% url 'chairperson_profile' %}" class="d-none d-sm-block user unselectable">
+                {{user.firstName}} {{user.middleName}} {{user.lastName}}
+            </p>
 
-        @keyframes zoom-in-zoom-out {
-        0% {
-            transform: scale(1, 1);
-        }
-        50% {
-            transform: scale(1.1, 1.1);
-        }
-        100% {
-            transform: scale(1, 1);
-        }
-        }
-    </style>
-
-</head>
-
-<body>
-
-    <div class="wrapper">
-        
-        <!-- Sidebar -->
-        <nav id="sidebar">
-            <div class="sidebar-header">
-                <li>
-                    <p><br><br><img src="{% static 'CRS/images/fHomeAndProfile/hat.png' %}" width="126px" height="87px"><br><br>
-                </li>
+            <!-- user profile dropdown -->
+            <div class="unselectable dropdown pficon">
+                <a class="dropdown-toggle profilehover" id="dropdownProfile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img id="profileicon" src="{% static 'CRS/images/fHomeAndProfile/userprofile.png' %}" width="35px" height="35px">
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end dropdownProfileMenu p-3 text-muted" aria-labelledby="dropdownProfile">
+                    <img id="profileicon" src="{% static 'CRS/images/fHomeAndProfile/userprofile.png' %}" width="40px" height="40px">
+                    <p id="profilemenutitle">{{user.firstName}}<br></p>
+                    <p id="profilemenuemail">{{user.email}}<br></p>
+                    <div class="dropdown-divider"></div>
+                    <li><a class="profilelinks" href="{% url 'chairperson_profile' %}">View Profile</a></li>
+                    <li><a class="profilelinks" href="{% url 'fHome' %}">Log in as Faculty</a></li>
+                    <li><a class="profilelinks" href="{% url 'logout' %}">Log out</a></li>
+                </ul>
             </div>
-            <ul class="sidebar components">
-                <li class="active"><a href="{% url 'chairperson' %}"><img src="{% static 'CRS/images/cIcons/home2.png' %}" width="97px" height="auto"></a></li>
-                <li><a href="{% url 'is_active' %}"><img src="{% static 'CRS/images/cIcons/department2.png' %}" width="97px" height="auto"></a></li>
-                <li><a href="{% url 'dept_student' %}"><img src="{% static 'CRS/images/cIcons/students2.png' %}" width="97px" height="auto"></a></li>
-                <li><a href="{% url 'full_time' %}"><img src="{% static 'CRS/images/cIcons/faculty2.png' %}" width="97px" height="auto"></a></li>
-                <li><a href="{% url 'cOthers-studyPlan' %}"><img src="{% static 'CRS/images/cIcons/others2.png' %}" width="97px" height="auto"></a></li>
-                <li><a href="{% url 'logout' %}"><img src="{% static 'CRS/images/cIcons/log-out2.png' %}" width="97px" height="auto"></a></li>
-            </ul>
-          </nav>
-        <!--End of Sidebar -->
+        </nav>
 
-        <!-- Content -->
-        <div id="content">
-            <!-- Container -->
-            <div class=" container-fluid">
-                <!-- Main Row -->
-                <div class="main row">
-                    <!-- Schedule -->
-                    <div class="col-lg-12">
-                        <div class="sched row">
-                            <!-- Templates > Chairperson > Student -->
-                            <a href="{% url 'dept_student' %}" ><img src="{% static 'CRS/images/cStudents/back.svg'%}" width="50" height="45" id="backlogo"></a>
-                            <p id="schedhead">&nbsp;&nbsp;Schedule</p>
-                        </div>
-                    </div>
-                    <!-- End Schedule -->
+        <div id="mainwrapper" class="toggled">
+            <!-- Sidebar -->
+            <div id="sidebar-wrapper" class="custom-scrollbar d-xl-block">
+                <ul class="sidebar-nav">
+                    <li class="active"> <a class="sb-links" href="{% url 'chairperson' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/home.png' %}" height="15"> Home</a> </li>
+                    <li class="sb-section unselectable"><span>CRS</span></li>
+                    <li> <a class="sb-links" href="{% url 'is_active' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/department.png' %}" height="15"> Department</a> </li>
+                    <li> <a class="sb-links" href="{% url 'dept_student' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/students.png' %}" height="15"> Students</a> </li>
+                    <li> <a class="sb-links" href="{% url 'full_time' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/faculty.png' %}" height="15"> Faculty</a> </li>
+                    <li class="sb-section unselectable"><span>Student Application</span></li>
+                    <li> <a class="sb-links" href="{% url 'cOthers-studyPlan' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/studyplan.png' %}" height="15"> Study Plan</a> </li>
+                    <li> <a class="sb-links" href="{% url 'cOthers-loa' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/loa.png' %}" height="15"> Leave of Absence</a> </li>
+                    <li> <a class="sb-links" href="{% url 'cOthers-hd' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/hd.png' %}" height="15"> Honorable Dismissal</a> </li>
+                    <li> <a class="sb-links" href="{% url 'cOthers-ojt' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/practicum.png' %}" height="15"> Practicum</a> </li>
+                    <li> <a class="sb-links" href="{% url 'cOthers-shifter' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/shifter.png' %}" height="15"> Shifter</a> </li>
+                    <li> <a class="sb-links" href="{% url 'cOthers-outshifter' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/shifter.png' %}" height="15"> Outbound Shifter</a> </li>
+                    <li> <a class="sb-links" href="{% url 'cOthers-transferee' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/transferee.png' %}" height="15"> Transferee</a> </li>
+                    <li class="sb-section unselectable"><span>Faculty Application</span></li>
+                    <li> <a class="sb-links" href="{% url 'cfaculty_applicant' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/applicant.png' %}" height="15"> Application</a> </li>
+                    <li> <a class="sb-links" href="{% url 'cOthers-partTime' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/pta.png' %}" height="15">    Part-time Availability</a> </li>
+                </ul>
+            </div> 
+            <!-- end sidebar -->            
+            
+            <!-- Page Content -->
+            <div id="page-content-wrapper">
+                <div class="container-fluid">  
+                    
+                    <!--------------------------------------- place content below this ------------------------------------------------------->                  
+                    <a href="{% url 'dept_student' %}"><button class="btn btn-back unselectable">Back</button></a>   
 
-                    <!-- DB REGULAR AND ONLINE BUTTONS-->
-                    <div class="col-lg-6">
-                        <div class="sub row">  
-                            <div class="col-lg"><p id="subject"><b>Year and Blocks</b></p></div>
-                            <!-- Templates > Chairperson > Student -->
-
-                            {% if messages %}
+                    <div class="container block-style" style="width: 1020px;">                        
+                        <div class="row">                                                                         
+                            <div class="col" style="padding: 5px 5px 10px 5px;">
+                                <img src="{% static '/CRS/images/cIcons/studentsdark.png' %}" height="45" style="margin-right: 8px; margin-top:-10px;" class="unselectable">
+                                <span class="ov-heading-1 student-profile" style="display: inline-block;">Year and Blocks</span>
+                            </div>                            
+                        </div>                        
+                        
+                        <div class="full-overview-block d-flex flex-wrap justify-content-start align-content-left">                            
+                            <table class="table table-sm table-borderless table-responsive content-scrollbar" style="margin-top: 5px;">
+                                <tbody>                                   
+                                    <tr class="tr-border">
+                                        <td><div class="yearlabel">1ST YEAR</div></td>
+                                        {% for block in blocks1 %}
+                                            <th scope="col">
+                                                <div class="col-lg">
+                                                    <a href="{% url 'cStudentSchedOnline2' block.id %}">
+                                                        <button class="buttonSession" id="buttonSessionRegular">
+                                                            Block {{ block }}
+                                                        </button>
+                                                    </a>
+                                                </div>
+                                        {% endfor %}
+                                            </th>                                        
+                                    </tr>      
+                                    <tr class="tr-border">
+                                        <td><div class="yearlabel">2ND YEAR</div></td>
+                                        {% for block in blocks2 %}
+                                            <th scope="col">
+                                                <div class="col-lg">
+                                                    <a href="{% url 'cStudentSchedOnline2' block.id %}">
+                                                        <button class="buttonSession" id="buttonSessionRegular">
+                                                            Block {{ block }}
+                                                        </button>
+                                                    </a>
+                                                </div>
+                                        {% endfor %}
+                                            </th>                                        
+                                    </tr>    
+                                    <tr class="tr-border">
+                                        <td><div class="yearlabel">3RD YEAR</div></td>
+                                        {% for block in blocks3 %}
+                                            <th scope="col">
+                                                <div class="col-lg">
+                                                    <a href="{% url 'cStudentSchedOnline2' block.id %}">
+                                                        <button class="buttonSession" id="buttonSessionRegular">
+                                                            Block {{ block }}
+                                                        </button>
+                                                    </a>
+                                                </div>
+                                        {% endfor %}
+                                            </th>                                        
+                                    </tr>    
+                                    <tr>
+                                        <td><div class="yearlabel">4TH YEAR</div></td>
+                                        {% for block in blocks4 %}
+                                            <th scope="col">
+                                                <div class="col-lg">
+                                                    <a href="{% url 'cStudentSchedOnline2' block.id %}">
+                                                        <button class="buttonSession" id="buttonSessionRegular">
+                                                            Block {{ block }}
+                                                        </button>
+                                                    </a>
+                                                </div>
+                                        {% endfor %}
+                                            </th>                                        
+                                    </tr>  
+                                                                          
+                                </tbody>
+                            </table>                              
+                        </div> 
+                        
+                        
+                        {% if messages %}
                             {% for message in messages %}
-                            {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
-                            <div class="alertError">
-                                <span class="closebtnError" onclick="this.parentElement.style.display='none';">&times;</span> 
-                                {{ message }}
-                            </div>
-                            {% endif %}
-        
-                            {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
-                            <div class="alertSuccess">
-                                <span class="closebtnSuccess" onclick="this.parentElement.style.display='none';">&times;</span> 
-                                {{ message }}
-                            </div>
-                            {% endif %}
-                                
+                                {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                                    <div class="alertError">
+                                        <span class="closebtnError" onclick="this.parentElement.style.display='none';">&times;</span> 
+                                        {{ message }}
+                                    </div>
+                                {% endif %}
+            
+                                {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                                    <div class="alertSuccess">
+                                        <span class="closebtnSuccess" onclick="this.parentElement.style.display='none';">&times;</span> 
+                                        {{ message }}
+                                    </div>
+                                {% endif %}                                
                             {% endfor %}
-                            {% endif %}
+                        {% endif %}
 
-                        </div>
-                    </div>
-                    <!-- Main Content -->
-                    <br>
-                        <div class="tablepanel table-responsive-lg">
-                            <table class="borderless table">
-                                <tr class="primary-att">
-                                    {% for block in blocks1 %}
-                                    <th scope="col"><div class="col-lg"><a href="{% url 'cStudentSchedOnline2' block.id %}"><button class="buttonSession" id="buttonSessionRegular">Block {{ block }}</button></a></div>
-                                        {% endfor %}
-                                    </th>
-                                </tr>
-                                <tr class="tabletext2">
-                                    {% for block in blocks2 %}
-                                    <th scope="col"><div class="col-lg"><a href="{% url 'cStudentSchedOnline2' block.id %}"><button class="buttonSession" id="buttonSessionRegular">Block {{ block }}</button></a></div>
-                                        {% endfor %}
-                                    </th></th>
-                                </tr>
-                                <tr class="tabletext2">
-                                    {% for block in blocks3 %}
-                                    <th scope="col"><div class="col-lg"><a href="{% url 'cStudentSchedOnline2' block.id %}"><button class="buttonSession" id="buttonSessionRegular">Block {{ block }}</button></a></div>
-                                        {% endfor %}
-                                    </th></th>
-                                </tr>
-                                <tr class="tabletext2">
-                                    {% for block in blocks4 %}
-                                    <th scope="col"><div class="col-lg"><a href="{% url 'cStudentSchedOnline2' block.id %}"><button class="buttonSession" id="buttonSessionRegular">Block {{ block }}</button></a></div>
-                                        {% endfor %}
-                                    </th></th>
-                                </tr>
+                      </div>                                      
+                    <!--------------------------------------- place content above this ------------------------------------------------------->   
+                </div>            
+            </div> <!-- /#page-content-wrapper -->  
+        </div> <!-- /#wrapper -->
 
-                               
-                                <!---------------------------------------------------------->
-                            </table>
-                        </div>
+        <img src="{% static 'CRS/images/cIcons/up-arrow.png' %}" id="btn-back-to-top" class="unselectable"> <!-- scroll to top -->
+        
+        <!-- Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        
+        <!-- JS -->
+        <script src="{% static '/CRS/js/cHome/cHomeMain.js' %}"></script>   
+        <script>
+            let mybutton = document.getElementById("btn-back-to-top");
+            window.onscroll = function () {
+              scrollFunction();
+            };
+            mybutton.addEventListener("click", backToTop);
+        </script>     
+    </body>
 
-                    <!-- End of Main Content -->
-                </form></div>
-                <!-- End of Main Row -->
-            </div>
-            <!-- End of Container -->
-        </div>
-        <!-- End of Content -->
-    </div>
-
-    <!-- Javascript -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
-    <script>
-        $(document).ready(function() {
-            $('#sidebarCollapse').on('click', function() {
-                $('#sidebar').toggleClass('active');
-            });
-        });
-    </script>
-
-</body>
 </html>

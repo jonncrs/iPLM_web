@@ -1,178 +1,457 @@
-{%load static%}
+{% load static %}
 <!DOCTYPE html>
 <html>
 
-<head>
-    <title> Edit Profile </title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
-    <link rel="stylesheet" href="{% static 'CRS/css/cHome/cHomeStyle.css'%}">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">
-    <link rel="icon" href="{% static 'CRS/images/cHome/iPLM.png'%}" type="image/png" sizes="16x16">
-</head>
+    <head>
+        <title> Chairperson | Home </title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <!-- include -->
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
+        <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        
+        <!-- CSS -->
+        <link rel="stylesheet" href="{% static '/CRS/css/cHome/cHomeStyleCP.css' %}">-->
+        <link rel="stylesheet" href="{% static 'CRS/css/fHomeAndProfile/fHomeStyle.css' %}">
+        <link href="https://fonts.googleapis.com/css?family=Lato:200,300,400,600,700,900&subset=latin-ext" rel="stylesheet">
+        <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900&subset=latin-ext' rel='stylesheet' type='text/css'>
+        <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
 
-<body>
+        <!--  ICON -->
+        <link rel="icon" href="https://i.postimg.cc/Z5Kc9KQv/iplm-logo.png" type="image/x-icon"/>
+        
+    </head>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;1,300&display=swap');
+        
+        body {
+            background: #F3F6FF;
+            position: fixed;
+            width: 1440px;
+            height: 675px;
+            
+        }
+        
+        /*-- Container --*/
+        .container {
+            position: fixed;
+            width: 993px;
+            height: 449px;
+            /*left: calc(50% - 1006px/2 + 138px);
+            top: calc(50% - 449px/2 + 18px);*/
+            background: #FFFFFF;
+            box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.07);
+            border-radius: 20px;
+            margin-top: 30px;
+            margin-left: 40px;
+            
+        }
+        
+        .page-title {
+            position: absolute;
+            width: 244px;
+            height: 30px;
+            /*left: 68px;
+            top:50px;*/
+            font-family: 'Lato';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 30px;
+            line-height: 28px;
+            color: #06529B;
+            margin-left: 53px;
+            margin-top: 58px;
+        }
+        
+        .vl {
+            position: fixed;
+            width: 449px;
+            height: 0px;
+            /*left: 640px;
+            top: 355px;*/
+            border: 0.1px solid #5F6E83;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            opacity: 0.3;
+            transform: rotate(-90deg);
+            margin-top: 255px;
+            margin-left: 313px;
+        }
+        
+        /*-- Forms --*/
+        
+        label {
+            position:fixed;
+            height: 20px;
+            font-family: 'Lato';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 15px;
+            line-height: 18px;
+            color: #5F6E83;
+            margin-left: -15px;
+            margin-top: -20px;
+        }
+        
+        input {
+            box-sizing: border-box;
+            position: fixed;
+            height: 29px;
+            background: #F3F6FF;
+            border: 0.5px solid #0892DD;
+            border-radius: 5px;
+            margin-left: -15px;
+            margin-top: -20px;
+        }
+        
+        ::placeholder {
+            padding-left: 6px;
+            height: 17px;
+            font-family: 'Lato';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 17px;
+            color: rgba(95, 110, 131, 0.5);
+            opacity: 1; 
+        }
+        
+        input:focus {outline: 1px solid #0892DD;}
+        
+            /*-- Personal Info --*/
+            #given {width: 96px; left: 420px; top: 235px;}
+            #giveninput {width: 365px; left: 420px; top: 258px;}
+        
+            #last {width: 100px; left: 610px; top: 305px;}
+            #lastinput {width:175px; left: 610px; top: 328px;}
+        
+            #mi {width: 120px; left: 420px; top: 305px;}
+            #miinput {width:175px; left: 420px; top: 328px;}
+        
+            #gender {width: 65px; left: 420px; top: 375px;}
+            #genderinput {width: 80px; left: 420px; top: 397px;}
+        
+            #civil {width: 100px; left: 514px; top: 375px;}
+            #civilinput {width:115px; left: 514px; top: 397px;}
+        
+            #citizen {width: 95px; left: 644px; top: 375px;}
+            #citizeninput {width:141px; left: 644px; top: 397px;}
+        
+            #contact {width: 138px;left: 597px;top: 458px;}
+            .contactinput {width: 186px;left: 597px;top: 480px;background: #FFFFFF;}
+        
+            /*-- Chairperson Info --*/
+            #number {width: 150px;left: 910px;top: 235px;}
+            #numberinput {width: 160px;left: 910px;top: 258px;}
+        
+            #college {width: 86px;left: 1087px;top: 235px;}
+            #collegeinput {width: 71px;left: 1087px;top: 258px;}
+        
+            #dept {width: 86px;left: 1175px;top: 235px;}
+            #deptinput {width: 100px;left: 1175px;top: 258px;}
+        
+            #email {width: 136px;left: 910px;top: 305px;}
+            #emailinput {width: 227px;left: 910px;top: 328px;}
+        
+            #status {width: 109px;left: 1155px;top: 305px;} /*Pedigree*/
+            #statusinput {width: 120px;left: 1155px;top: 328px;}
+        
+            #contact {width: 150px;left: 910px;top: 375px;}
+            .contactinput {width: 155px;left: 910px;top: 397px;}
+        
+        
+        /*-- Buttons in Edit Profile --*/
+        #changepw {
+            box-sizing: border-box;
+            position: fixed;
+            width: 42px;
+            height: 37px;
+            /*left: 1091px;
+            top: 472px;*/
+            background: #F3F6FF;
+            border: 0.5px solid #0892DD;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 380px;
+            margin-left: 760px;
+        }
+        
+        #changepw:hover {
+            background: #0892DD;
+        }
+        
+        .editpwimg { 
+            position: absolute; 
+            width: 22px;
+            height: 24px;
+            left: 12px;
+            top: 4px;
+        }
+        
+        .editpwimg:hover {filter: grayscale(100%) brightness(200%) saturate(0%) contrast(1000%);}
+        
+        #savec1 {left: 1145px;top: 472px;}
+        #savec1:hover {background: #0892DD;border: 1px solid #0892DD;}
+        
+        #savec1, #savec2 {
+            box-sizing: border-box;
+            position: fixed;
+            width: 138px;
+            height: 38px;
+            background: #06529B;
+            border: 1px solid #06529B;
+            border-radius: 5px;
+            font-family: 'Arial';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 15px;
+            line-height: 17px;
+            color: #FFFFFF;
+            cursor: pointer;
+            margin-top: -28px;
+            margin-left: -23px;
+        }
+        
+            /*-- Change Password Modal --*/
+            .bg-modal {
+                position: absolute;
+                left: 517px;
+                top: 121px;
+                width: 407px;
+                height: 433px;
+                background: #FFFFFF;
+                box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.25);
+                border-radius: 20px;
+                display: none;
+            }
+        
+            #changepwtitle {width: 216px;left: 52px;top: 44px;}
+        
+            #close {
+                color: #06529b; 
+                font-size: 27px;
+                position: absolute;
+                left: 326px;
+                top: 46px;
+                cursor: pointer;
+            }
+        
+            #close:hover {color: #0892dd}
+        
+            #savec2 {left: 216px;top: 335px;}
+            #savec2:hover {background: #0892DD;border: 1px solid #0892DD;}
+        
+                /*-- Change Password Fields --*/
+                #currentpw {width: 164px;left: 52px;top: 99px;}
+                #currentpwinput {width: 302px;height: 29px;left: 52px;top: 122px;}
+        
+                #eye1 {
+                    position: absolute;
+                    width: 25px;
+                    height: 23px;
+                    left: 320px;
+                    top: 125px;
+                }
+        
+                #newpw {width: 131px;left: 53px;top: 162px;}
+                #newpwinput {width: 302px;left: 53px;top: 184px;}
+        
+                #eye2 {
+                    position: absolute;
+                    width: 25px;
+                    height: 23px;
+                    left: 320px;
+                    top: 186px;
+                }
+                #retypenew {width: 98px;left: 54px;top: 225px;}
+                #retypepwinput {width: 302px;left: 53px;top: 184px;}
+                #eye3 {
+                    position: absolute;
+                    width: 25px;
+                    height: 23px;
+                    left: 320px;
+                    top: 288px;
+                }
+               
+                #eye1, #eye2,#eye3 {color: #0892dd;cursor: pointer;} 
+        
+        
+                #retypepw {width: 200px;left: 52px;top: 262px;}
+                #retypepwinput {width: 302px;left: 52px;top: 286px;}
+        </style>        
 
-    <div class="wrapper">
 
-        <!-- Sidebar -->
-       <nav id="sidebar">
-        <div class="sidebar-header">
-            <li>
-                <p><br><br><img src="{% static 'CRS/images/fHomeAndProfile/hat.png' %}" width="126px" height="87px"><br><br>
-            </li>
-        </div>
-        <ul class="sidebar components">
-            <li class="active"><a href="{% url 'chairperson' %}"><img src="{% static 'CRS/images/cIcons/home2.png' %}" width="97px" height="auto"></a></li>
-            <li><a href="{% url 'is_active' %}"><img src="{% static 'CRS/images/cIcons/department2.png' %}" width="97px" height="auto"></a></li>
-            <li><a href="{% url 'dept_student' %}"><img src="{% static 'CRS/images/cIcons/students2.png' %}" width="97px" height="auto"></a></li>
-            <li><a href="{% url 'full_time' %}"><img src="{% static 'CRS/images/cIcons/faculty2.png' %}" width="97px" height="auto"></a></li>
-            <li><a href="{% url 'cOthers-studyPlan' %}"><img src="{% static 'CRS/images/cIcons/others2.png' %}" width="97px" height="auto"></a></li>
-            <li><a href="{% url 'logout' %}"><img src="{% static 'CRS/images/cIcons/log-out2.png' %}" width="97px" height="auto"></a></li>
-        </ul>
-      </nav>
-    <!--End of Sidebar -->
-
-        <!-- Content -->
-        <div id="content">
-            <div class=" container-fluid">
-
-                <div class="edit-1 row">
-                    <div class="col-lg-12">
-                        <a href="{% url 'chairperson_profile'%}" id="back-edit"><img src="{% static 'CRS/images/cHome/back.svg'%}" width="50"></a>
-                        <!--Chairperson/Home/chairperson_view_profile-->
-                        <p class="text-edit">&nbsp;Edit Profile</p>
-                    </div>
-                </div>
-
-                <!-- EDIT FORM -->
-                
-                    <div class="edit-2 row">
-                        <div class="col-lg-6">
-                            <div class="form-group row">
-                                <label class="col-lg-5 col-form-label form-text-edit">Last Name:</label>
-                                <div class="col-lg-7"><!-- DB LAST NAME BELOW -->
-                                    <input type="text" placeholder=" {{info.facultyUser.lastName}}" class="form-control" id="editprofile" disabled>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label class="col-lg-5 col-form-label form-text-edit">First Name:</label>
-                                <div class="col-lg-7"><!-- DB FIRST NAME BELOW -->
-                                    <input type="text" placeholder="{{info.facultyUser.firstName}}" class="form-control" id="editprofile" disabled>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label class="col-lg-5 col-form-label form-text-edit">Middle Name:</label>
-                                <div class="col-lg-7"><!-- DB MIDDLE NAME BELOW -->
-                                    <input type="text" placeholder="{{info.facultyUser.middleName}}" class="form-control" id="editprofile" disabled>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label class="col-lg-5 col-form-label form-text-edit">Pedigree:</label>
-                                <div class="col-lg-7"><!-- DB PEDIGREE BELOW -->
-                                    <input type="text" placeholder="None" class="form-control" id="editprofile" disabled>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label class="col-lg-5 col-form-label form-text-edit">Gender:</label>
-                                <div class="col-lg-7"><!-- DB GENDER BELOW -->
-                                    <input type="text" placeholder="{{info.facultyGender}}" class="form-control" id="editprofile" disabled>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label class="col-lg-5 col-form-label form-text-edit">Civil Status:</label>
-                                <div class="col-lg-7"><!-- DB CIVIL STATUS BELOW -->
-                                    <input type="text" placeholder=" {{info.facultyCivilstatus}}" class="form-control" id="editprofile" disabled>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label class="col-lg-5 col-form-label form-text-edit"> Citizenship:</label>
-                                <div class="col-lg-7"><!-- DB COUNTRY OF CITIZENSHIP BELOW -->
-                                    <input type="text" placeholder="{{info.facultyCitizenship}}" class="form-control" id="editprofile" disabled>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6">
-
-                            <div class="form-group row">
-                                <label class="col-lg-5 col-form-label form-text-edit">Chairperson Number:</label>
-                                <div class="col-lg-7"><!-- DB CHAIRPERSON NO BELOW -->
-                                    <input type="text" placeholder=" {{info.facultyID}}" class="form-control" id="editprofile" disabled>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label class="col-lg-5 col-form-label form-text-edit">College:</label>
-                                <div class="col-lg-7"><!-- DB COLLEGE BELOW -->
-                                    <input type="text" placeholder="CET" class="form-control" id="editprofile" disabled>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label class="col-lg-5 col-form-label form-text-edit">Department:</label>
-                                <div class="col-lg-7"><!-- DB DEPARTMENT BELOW -->
-                                    <input type="text" placeholder="{{info.departmentID}}" class="form-control" id="editprofile" disabled>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label class="col-lg-5 col-form-label form-text-edit">PLM Email:</label>
-                                <div class="col-lg-7"><!-- DB PLM EMAIL BELOW -->
-                                    <input type="email" placeholder="{{info.facultyUser.email}}" class="form-control" id="editprofile" disabled>
-                                </div>
-                            </div>
-                            <form method="POST">
-                                {%csrf_token%}
-                            <div class="form-group row">
-                                <label class="col-lg-5 col-form-label form-text-edit">Contact Number:</label>
-                                <div class="col-lg-7"><!-- DB CONTACT  NUMBER BELOW -->
-                                    <input type="tel" pattern="[0-9]{11}" placeholder="{{info.facultyContact}}" name="newContact" class="form-control" id="editprofile" required>
-                                
-                                </div>
-                            </div>
-
-                            
-                        </div>
-
-                    </div>
-                    <div class="edit-3 row">
-                        <div class="col-lg-4 pr-4 pt-4">
-                            <img id="img" src="{% static 'CRS/images/cHome/edit_profile_img.png'%}" width="100%" height="300px">
-                        </div>
-                        <div class="col-lg-3 ml-auto">
-                            <a href="#" id="button-edit"><button type="submit" class="btn">Save Changes</button></a>
-                        </div>
-                    </div>
-                </form>
-                <!-- END FORM-->
-
+<body class="content-scrollbar" onload="today()">
+    <img src="{% static 'CRS/images/cHome/bglogo.png' %}" id="bglogo" class="unselectable">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-sm navbar-dark flex-sm-nowrap flex-wrap">           
+        <a href="#menu-toggle" id="menu-toggle" class="navbar-brand unselectable d-xl-none" onclick="togglemenu()">
+            <span></span><img class="nav-collapse unselectable" src="{% static 'CRS/images/cIcons/collapse.png' %}" height="13" style="margin-left: 190px;"></span>
+        </a> 
+        <a href="{% url 'chairperson' %}" class="iplm-logo unselectable">
+            <img src="https://i.postimg.cc/Z5Kc9KQv/iplm-logo.png" class="logo" />
+            <div class="logo-text">
+                <div class="logo-main">iPLM</div>
+                <div class="logo-sub">Integrated PLM</div>
             </div>
+        </a> 
 
+        <!-- navbar user name and title  -->
+        <p class="d-none d-sm-block usertitle unselectable">
+            Chairperson
+        </p>
+        <p href="{% url 'chairperson_profile' %}" class="d-none d-sm-block user unselectable">
+            {{user.firstName}} {{user.middleName}} {{user.lastName}}
+        </p>
+
+        <!-- user profile dropdown -->
+        <div class="unselectable dropdown pficon">
+            <a class="dropdown-toggle profilehover" id="dropdownProfile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <img id="profileicon" src="{% static 'CRS/images/fHomeAndProfile/userprofile.png' %}" width="35px" height="35px">
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end dropdownProfileMenu p-3 text-muted" aria-labelledby="dropdownProfile">
+                <img id="profileicon" src="{% static 'CRS/images/fHomeAndProfile/userprofile.png' %}" width="40px" height="40px">
+                <p id="profilemenutitle">{{user.firstName}}<br></p>
+                <p id="profilemenuemail">{{user.email}}<br></p>
+                <div class="dropdown-divider"></div>
+                <li><a class="profilelinks" href="{% url 'chairperson_profile' %}">View Profile</a></li>
+                <li><a class="profilelinks" href="{% url 'logout' %}">Log out</a></li>
+            </ul>
         </div>
-    </div>
+    </nav>
+
+    <div id="mainwrapper" class="toggled">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper" class="custom-scrollbar d-xl-block">
+            <ul class="sidebar-nav">
+                <li class="active"> <a class="sb-links" href="{% url 'chairperson' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/home.png' %}" height="15"> Home</a> </li>
+                <li class="sb-section unselectable"><span>CRS</span></li>
+                <li> <a class="sb-links" href="{% url 'is_active' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/department.png' %}" height="15"> Department</a> </li>
+                <li> <a class="sb-links" href="{% url 'dept_student' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/students.png' %}" height="15"> Students</a> </li>
+                <li> <a class="sb-links" href="{% url 'full_time' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/faculty.png' %}" height="15"> Faculty</a> </li>
+                <li class="sb-section unselectable"><span>Student Application</span></li>
+                <li> <a class="sb-links" href="{% url 'cOthers-studyPlan' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/studyplan.png' %}" height="15"> Study Plan</a> </li>
+                <li> <a class="sb-links" href="{% url 'cOthers-loa' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/loa.png' %}" height="15"> Leave of Absence</a> </li>
+                <li> <a class="sb-links" href="{% url 'cOthers-hd' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/hd.png' %}" height="15"> Honorable Dismissal</a> </li>
+                <li> <a class="sb-links" href="{% url 'cOthers-ojt' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/practicum.png' %}" height="15"> Practicum</a> </li>
+                <li> <a class="sb-links" href="{% url 'cOthers-shifter' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/shifter.png' %}" height="15"> Inbound Shifter</a> </li>
+                <li> <a class="sb-links" href="{% url 'cOthers-outshifter' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/shifter.png' %}" height="15"> Outbound Shifter</a> </li>
+                <li> <a class="sb-links" href="{% url 'cOthers-transferee' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/transferee.png' %}" height="15"> Transferee</a> </li>
+                <li class="sb-section unselectable"><span>Faculty Application</span></li>
+                <li> <a class="sb-links" href="{% url 'cfaculty_applicant' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/applicant.png' %}" height="15"> Faculty Application</a> </li>
+                <li> <a class="sb-links" href="{% url 'cOthers-partTime' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/pta.png' %}" height="15"> Part-time Availability</a> </li>
+            </ul>
+        </div> 
+        <!-- end sidebar -->        
 
 
-    <!-- END Content -->
+                    <!--------------------------------------- place content below this ------------------------------------------------------->                  
+                    <div class="container">
+                        <div class="page-title">Edit Profile</div> 
+                    </div>
+                            <div class="vl"></div>
+        
+                        <!-- EDIT FORM -->                       
+        
+                            <label class id="given">FIRST NAME</label>
+                                <input type="text" placeholder="{{info.facultyUser.firstName}}" id="giveninput" disabled>
+        
+                            <label class id="last">LAST NAME</label>
+                                <input type="text" placeholder="{{info.facultyUser.lastName}}" id="lastinput" disabled>
+        
+                            <label class id="mi">MIDDLE NAME</label>
+                                <input type="text" placeholder="{{info.facultyUser.middleName}}" id="miinput" disabled>
+        
+                            <label class id="gender">GENDER</label>
+                                <input type="text" placeholder="{{info.facultyGender}}" id="genderinput" disabled>
+        
+                             <label class id="civil">CIVIL STATUS</label>
+                                <input type="text" placeholder="{{info.facultyCivilstatus}}" id="civilinput" disabled>
+        
+                              <label class id="citizen">CITIZENSHIP</label>
+                                <input type="text" placeholder="{{info.facultyCitizenship}}" id="citizeninput" disabled>
+        
+                                <div class="col-lg-6">
+        
+                                     <div class="label">
+                                        <label class id="email">PLM EMAIL</label>
+                                        <div class="field">
+                                            <input type="email" placeholder="{{info.facultyUser.email}}" class="forms" id="emailinput" disabled>
+                                        </div>
+                                    </div>
+        
+                                    <div class="label">
+                                        <label class id="college">COLLEGE</label>
+                                        <div class="field">
+                                            <input type="text" placeholder="{{CET}}" class="forms" id="collegeinput" disabled>
+                                        </div>
+                                    </div>
+        
+                                    <div class="label">
+                                        <label class id="dept">DEPARTMENT</label>
+                                        <div class="field">
+                                            <input type="text" placeholder="{{info.departmentID}}" class="forms" id="deptinput" disabled>
+                                        </div>
+                                    </div>
+        
+                                    <div class="label">
+                                        <label class id="number">CHAIRPERSON ID</label>
+                                        <div class="field">
+                                            <input type="text" placeholder="{{info.facultyID}}" class="forms" id="numberinput" disabled>
+                                        </div>
+                                    </div>
+        
+                                   <div class="label">
+                                        <label class id="status">PEDIGREE</label>
+                                        <div class="field">
+                                            <input type="text" placeholder="{{None}}" class="forms" id="statusinput" disabled>
+                                        </div>
+                                    </div>
 
 
-    <!-- Javascript -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+                                    <form method="POST">
+                                            {%csrf_token%}
+                                        <div class="label">
+                                            <label class id="contact">Contact Number:</label>
+                                            <div class="field"><!-- DB CONTACT  NUMBER BELOW -->
+                                                <input type="tel" pattern="[0-9]{11}" placeholder="{{info.facultyContact}}" name="newContact" class="form-control forms contactinput" id="editprofile" required>
+                                                <a href="#" id="button-edit"><button type="submit" class="btn button" id="savec1">Save Changes</button></a>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div> 
+                               
+        
+                <a href="{% url 'chairperson_change_password'%}" id="changepw" class="button unselectable"> <img src="{% static 'CRS/images/fHomeAndProfile/editpw.svg' %}" class ="editpwimg" id="editpwicon"/></a>
+        
+            <!-- END Content -->
+                    
+                    <!--------------------------------------- place content above this ------------------------------------------------------->   
+                           
+    </div> <!-- /#page-content-wrapper -->  
 
-
-</body>
+        <img src="{% static 'CRS/images/cIcons/up-arrow.png' %}" id="btn-back-to-top" class="unselectable"> <!-- scroll to top -->
+        
+        <!-- Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        
+        <!-- JS -->
+        <script src="{% static '/CRS/js/cHome/cHomeMain.js' %}"></script>   
+        <script>
+            let mybutton = document.getElementById("btn-back-to-top");
+            window.onscroll = function () {
+              scrollFunction();
+            };
+            mybutton.addEventListener("click", backToTop);
+        </script>     
+    </body>
 
 </html>
