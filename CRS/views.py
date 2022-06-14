@@ -7313,7 +7313,6 @@ def del_allFaculty(request, faculty_id):
     Faculty_applicant.credentials.delete()
     Faculty_applicant.TOR.delete()
     Faculty_applicant.PDS.delete()
-    Faculty_applicant.accomplishments.delete()
     messages.success(request, 'Files Succesfully Returned!')  
 def cfacultyapplicant_sortedlist(request):
     id = request.user.id
