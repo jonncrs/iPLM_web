@@ -34,6 +34,7 @@ ALLOWED_HOSTS = ['*','iplm-site.herokuapp.com','.herokuapp.com']
 # Application definition
 
 INSTALLED_APPS = [
+    'simpleui',
     'admin_confirm',
     'django.contrib.admin',
     'django.contrib.auth',
