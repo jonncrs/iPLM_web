@@ -56,8 +56,8 @@
         .container {
             position: absolute;
             width: 750px;
-            height: 600px;
-            left: 300px;;
+            height: 550px;
+            left: 280px;;
             top: 100px;
             background: #FFFFFF;
             box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.07);
@@ -66,9 +66,9 @@
 
         .container2 {
             position: absolute;
-            width: 400px;
+            width: 320px;
             height: 400px;
-            left: 1080px;
+            left: 1050px;
             top: 100px;
             background: #FFFFFF;
             box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.07);
@@ -409,7 +409,7 @@
         }
 
         .cswBtn2 {
-            margin-left:295px;
+            margin-left:215px;
             background-color: #06529b;
             line-height: 13px;
             border: none;
@@ -440,7 +440,7 @@
     }
 
     .cswBtn3 {
-        margin-left:295px;
+        margin-left:215px;
         background-color: #d7dff6;
         line-height: 13px;
         border: none;
@@ -503,7 +503,7 @@
 
     #stat-slct1{
         background-color: white;
-        width:300px;
+        width:225px;
         color: #0C66CC;
         border-width: 2px;
         border-radius: 8px;
@@ -547,7 +547,7 @@
 
     .form-control{
         border-radius: 10px;
-        width: 350px;
+        width: 270px;
         border-color: none;
         border-width: 2px;
         margin-left: 30px;
@@ -643,7 +643,7 @@
             padding: 2px 10px;
             float: right;
             top: -3px;
-            right: 45px;
+            left:10px;
         }
         #note-text{
             font-family: 'Lato', sans-serif;
@@ -651,7 +651,7 @@
             line-height: 15px;
         }
         #horizontallineemail{
-            width: 345px;
+            width: 265px;
             position: absolute;
             opacity:0.4;
             height: 0px;
@@ -1169,7 +1169,7 @@
                                         <form method="POST">
                                             {% csrf_token %}
                                             <span class="status-select1">
-                                                <select name="slct" id="stat-slct1">'-=[]'
+                                                <select name="slct" id="stat-slct1">
                                                     {% if grade_file.remarks == "Submitted" %}
                                                     <option value="{{grade_file.remarks}}"> &nbsp; {{grade_file.remarks}} </option>
                                                     <option disabled style="font-style:italic">&nbsp;&nbsp;&nbsp;(Set Status to submitted if the student submitted the required file)</option>

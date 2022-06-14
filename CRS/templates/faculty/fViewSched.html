@@ -26,9 +26,9 @@
     <style>
     .container {
             position: absolute;
-            width: 930px;
-            height: 600px;
-            left: 280px;;
+            width: 845px;
+            height: 550px;
+            left: 270px;;
             top: 100px;
             background: #FFFFFF;
             box-shadow: 0 4px 8px 0 #d3dbe4, 0 6px 20px 0 #d3dbe4;
@@ -39,7 +39,7 @@
     border-collapse: collapse;
     text-align: center;
     font-family: 'Nunito', sans-serif;
-    padding-top: 8px;
+    padding-top: 5px;
     font-size: 16px;
     width: 100%;
     border-radius: 5px 5px 0 0;
@@ -53,10 +53,10 @@
         box-shadow: 0 4px 8px 0 #d3dbe4, 0 6px 20px 0 #d3dbe4;
         margin: 20px 20px 0px 0px;
         margin-top: 100px;
-        margin-left:1240px;
-        padding-left: 40px;
+        margin-left:1130px;
+        padding-left: 38px;
         padding-top: 15px;
-        width: 270px;
+        width: 250px;
         height: 150px;
     }
 
@@ -95,6 +95,14 @@
           width:180px;
           color: white;
       }
+      .thd4{
+          width:280px;
+          color: white;
+      }
+      .thd5{
+          width:50px;
+          color: white;
+      }
 
 
     #buttonPartTIme .btn {
@@ -121,7 +129,7 @@
         font-size: 14px;
         font-family: 'Nunito',sans-serif;
         color: #ffff;
-        width: 50px;
+        width: 40px;
         height: 30px;
         background-color: #0C66CC;
         padding-left: 5px;
@@ -148,14 +156,15 @@
     }
 
     .manage1 {
-            padding-right: 15px;
-            padding-left: 15px;
+            text-align: center;
+            margin-right:10px;
             padding-top: 3px;
             background: #06529B;
             border-radius: 10px 10px 10px 10px;
             color: white;
             border: none;
             font-size:12px;
+            width: 45px;
     }
 
     #schedtext-1{
@@ -308,7 +317,7 @@
                     <li class="sb-section unselectable"><span>Classroom</span></li>
                     <li> <a class="sb-links" href="{% url 'fViewSched' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/studyplan.png' %}" height="15"> Schedule</a> </li>
                     {% if facultyInfo.facultyWorkstatus == 'Part-Time' %} 
-                    <li> <a class="sb-links" href="{% url 'parttime_sched' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/parttime_avail.png' %}" height="17> Part-Time Availability</a> </li>
+                    <li> <a class="sb-links" href="{% url 'parttime_sched' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/parttime_avail.png' %}" height="17"> Part-Time Availability</a> </li>
                     {% endif %}
                     <!-- FILE PATH: Faculty/fStudents_advisoryChecklist-->
                     <li><a class="sb-links" href="{% url 'fStudents_advisoryChecklist' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/loa.png' %}" height="15"> Checklist Submissions</a> </li>
@@ -333,14 +342,14 @@
             <div class="container">
                 <div class="tableheader">
                 <table class="content-table">
-                    <thead>
+                    <thead class="content-table" style="width:90%;font-size: 14px;">
                       <tr>
-                        <th class="thd2">Code</th>
-                        <th class="thd1">Course Name</th>
-                        <th class="thd2">Units</th>
-                        <th class="thd2">Section</th>
-                        <th class="thd3">Day</th>
-                        <th class="thd1">Time</th>
+                        <th class="thd" style="padding-left:5px;">Course Code</th>
+                        <th class="thd4" style="padding-right:15px;">Course Name</th>
+                        <th class="thd5">Units</th>
+                        <th class="thd5" style="padding-left:15px;">Section</th>
+                        <th class="thd5" style="padding-left:15px;">Day</th>
+                        <th class="thd1" style="padding-left:40px;">Time</th>
                         <th class="thd2">Room</th>
                         <th class="thd">Type</th>
                         <th></th>
@@ -353,7 +362,7 @@
                              <tr class="tabletext2">
                                     <td id="schedtext-1">{{sched.subjectCode.subjectCode.subjectCode}}</td>
                                     <td><p class="dataStyle"><b>{{sched.subjectCode.subjectCode.subjectName}}</b></p></td>
-                                    <td id="schedtext-1">{{sched.subjectCode.subjectUnits}}</td>
+                                    <td id="schedtext-1" style="padding-right: 20px;">{{sched.subjectCode.subjectUnits}}</td>
                                     <td id="schedtext-1">{{sched.section}}</td>
                                     <td id="schedtext-1">{{sched.day}}</td>
                                     <td id="schedtext-1">{{sched.timeStart}} - {{sched.timeEnd}}</td>

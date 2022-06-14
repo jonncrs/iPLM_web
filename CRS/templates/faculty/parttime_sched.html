@@ -70,7 +70,7 @@
                           <li> <a class="sb-links" href="{% url 'fStudents_advisory' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/department.png' %}" height="15"> Advisory</a> </li>
                           
                           <li class="sb-section unselectable"><span>Classroom</span></li>
-                          <li> <a class="sb-links" href="{% url 'parttime_sched' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/studyplan.png' %}" height="15"> Schedule</a> </li>
+                          <li> <a class="sb-links" href="{% url 'fViewSched' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/studyplan.png' %}" height="15"> Schedule</a> </li>
                           {% if facultyInfo.facultyWorkstatus == 'Part-Time' %} 
                           <li> <a class="sb-links" href="{% url 'parttime_sched' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/parttime_avail.png' %}" height="17"> Part-Time Availability</a> </li>
                           {% endif %}
@@ -82,7 +82,6 @@
           <!-- Content -->
           <div id="content">
             <div class=" container-fluid">
-              <div class="headertitle unselectable d-none d-md-block">Classroom</div>
                 <div class="back row">
                     <object type="image/svg+xml" data="studclassroom_back.svg" id="backimg"></object>
   
@@ -119,7 +118,7 @@
 
                             <div class="custom-select dropdown-primary force-scroll" >
                                 <select name="in" id="in" form="sched">
-                                  <option selected>Time In</option>
+                                  <option selected value="0">Time In</option>
                                     <option value="7:00 AM">7:00 AM</option>
                                     <option value="7:30 AM">7:30 AM</option>
                                     <option value="8:00 AM">8:00 AM</option>
@@ -146,7 +145,7 @@
 
                               <div class="custom-select dropdown-primary force-scroll">
                                 <select name="out" id="out" form="sched">
-                                  <option selected>Time Out </option>
+                                  <option selected value="0">Time Out </option>
                                     <option value="12:00 PM">12:00 PM</option>
                                     <option value="12:30 PM">12:30 PM</option>
                                     <option value="1:00 PM">1:00 PM</option>

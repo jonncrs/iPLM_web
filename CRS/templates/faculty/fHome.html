@@ -90,7 +90,7 @@
                 <div id="notiftitle"><p>Notifications<br></p></div>
                 <div class="dropdown-divider-title"></div>
                 <!-- DB NOTIFICATION DATA BELOW -->
-                                   
+                    <!--Grade Submission-->      
                     {% for i in grade_file reversed %}
                       {% for x in stud_advisory %}
                          {% if i.studentID_id == x.studentUser_id and i.remarks != 'Approved' and i.remarks != 'Returned' %}
@@ -98,6 +98,17 @@
                          {% endif %}
                       {% endfor %}
                     {% endfor %}
+
+                    <!--Checklist Approval-->
+                    {% for i in stud_checklist reversed %}
+                        {% for x in stud_advisory %}
+                           {% if i.studentID_id == x.studentUser_id and i.remarks != 'Approved' and i.remarks != 'Returned' %}
+                              <a href="{% url 'fStudents_viewStudentChecklist' x.studentUser.id %}"><p id="notifdrops"><b class="notiftext">{{x.studentUser.lastName}}, {{x.studentUser.firstName}} {{x.studentUser.middleName}} - {{x.studentSection}}</b><br>Submitted a grade checklist! Please verify.</p></a>
+                           {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+
+                    <!--Subjects Assigned-->
                     {% for acads in acad %}
                          {% for sched in schedule reversed %}
                             {% for c in curric %}
@@ -107,6 +118,7 @@
                             {% endfor %}
                          {% endfor %}
                     {% endfor %}
+
                     <div class="dropdown-divider"></div>
             </ul>
         </div>
@@ -278,7 +290,7 @@
             </div>  
         </div>
         <!--Event View-->
-        <div class="p-2 overview-block sm-overview-block" style="width:760px;height:230px">
+        <div class="p-2 overview-block sm-overview-block" style="width:760px;height:210px">
             <div class="d-flex flex-wrap justify-content-center ov-block-content-2">                                
 
                     <h1 style="position: absolute;width: 143px;height: 26px;color: #06529b;font-family: 'Lato', sans-serif;font-weight: 900;font-size: 20px;line-height: 26px;margin-right:560px;margin-top:13px">Events</h1>
@@ -294,7 +306,7 @@
 
                     </form>
                 
-            <div id="scroll" class="content-scrollbar" style="width: 700px;height: 165px;overflow: auto;overflow-x: visible;margin: 0 auto;white-space: normal;margin-left:30px;border-style: solid; border-width:2px; border-color:#06529b; border-radius:5px;">
+            <div id="scroll" class="content-scrollbar" style="width: 700px;height: 140px;overflow: auto;overflow-x: visible;margin: 0 auto;white-space: normal;margin-left:30px;border-style: solid; border-width:2px; border-color:#06529b; border-radius:5px;">
                     <div class="body"style="margin-bottom:150px; padding-top:15px;">
                         {% for event in events_list %}
                         <div class="double" style="max-width:700px;color: #06529b;border-collapse: separate;">

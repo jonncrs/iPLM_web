@@ -3317,6 +3317,7 @@ def fHome(request):
         count_block = advisory.count()
         count_stud = stud_advisory.count()
         events_list=eventsComponent(request)
+        stud_checklist = crsChecklist.objects.all
         
         #FOR NOTIF SUBJS
         curric = curriculumInfo.objects.all
@@ -3329,7 +3330,7 @@ def fHome(request):
         except crsGrade.DoesNotExist:
             grade_file = None
 
-        return render(request,'./faculty/fHome.html',{'user':user,'facultyInfo':facultyInfo,'department':department,'college':college,'acad':acad, 'count_block':count_block, 'count_stud':count_stud, 'grade_file':grade_file, 'stud_advisory':stud_advisory, 'curric':curric, 'info':info, 'schedule':schedule, 'events_list': events_list})
+        return render(request,'./faculty/fHome.html',{'user':user,'facultyInfo':facultyInfo,'department':department,'college':college,'acad':acad, 'count_block':count_block, 'count_stud':count_stud, 'grade_file':grade_file, 'stud_advisory':stud_advisory, 'curric':curric, 'info':info, 'schedule':schedule, 'events_list': events_list, 'stud_checklist':stud_checklist})
     else:
         return redirect('index')
 
@@ -3409,6 +3410,10 @@ def parttime_sched(request):
             if (request.method=='POST'):
                 facultyin = request.POST.get('in')
                 facultyout = request.POST.get('out')
+
+                if facultyin == '0' or facultyout == '0':
+                   messages.error (request,'Invalid Input! Please select time.')
+                   return redirect('parttime_sched')
 
                 convertIn1 = facultyin.split(":")
                 convertIn2 = convertIn1[1].split(" ")
@@ -3548,7 +3553,7 @@ def parttime_sched(request):
                     if total_teaching_minutes < 90:
                         messages.error (request,'Time is below minimum hours!')
                     else:
-                        messages.error (request,'Time is above minimum hours!')
+                        messages.error (request,'Time is above maximum hours!')
         else:
             messages.error (request,'You are not eligible to interact with this page.') 
         return render(request,'./faculty/parttime_sched.html',{'user':user, 'facultyInfo':facultyInfo, 'facultyUser':facultyUser})
@@ -3624,6 +3629,7 @@ def fStudents_viewStudentChecklist(request, stud_id):
         stud_checklist = crsChecklist.objects.get(studentID_id=stud_id)
         user = request.user
         facultyInfo = request.user.facultyinfo
+        studInfo = StudentInfo.objects.get(studentUser_id = stud_id)
 
         if (request.method == 'POST'):
                 stud_checklist.crsApprovedChecklist = request.FILES.get('checkListApproved')
@@ -3644,7 +3650,6 @@ def fStudents_viewStudentChecklist(request, stud_id):
                     messages.success(request,'File is Returned! No file.')
                 elif status=='Approved':
                     stud_checklist.remarks = "Approved"
-                    messages.success(request,'File is Approved.')
                     stud_checklist.save()
                 #messages.success(request,'Feedback is successfully sent!')
                 #return redirect('fHome') 
@@ -3654,7 +3659,7 @@ def fStudents_viewStudentChecklist(request, stud_id):
         stud_advisory = StudentInfo.objects.filter(studentSection__in = advisory) 
         count = stud_advisory.count()"""
 
-        context = {'stud_checklist':stud_checklist, 'fcount':fcount, 'user':user, 'facultyInfo':facultyInfo}
+        context = {'stud_checklist':stud_checklist, 'fcount':fcount, 'user':user, 'facultyInfo':facultyInfo, 'studInfo':studInfo}
         return render(request, 'faculty/fStudents_viewStudentChecklist.html', context)
     else:
         return redirect('index')
@@ -3883,7 +3888,9 @@ def fStudents_viewStudentGrade (request,stud_id):
             if (request.method=='POST'):
                 status=request.POST.get('slct')
                 semester = request.POST.get('semester')
-                grade_file.comment = request.POST.get('message')
+                if grade_file != None:
+                   grade_file.comment = request.POST.get('message')
+
                 if semester == None:
                     semester = '1'
                 if status=='Submitted':
@@ -4205,13 +4212,9 @@ def sProfileChangePass(request):
                 user=form.save()
                 update_session_auth_hash(request, user)
                 messages.success(request,'Password Updated!')
-                return redirect('sProfile')
+                return redirect('logout')
             else:
-                messages.error(request, 'Your password must contain at least 1 uppercase letter, A-Z.')
-                messages.error(request, 'Your password must contain at least 1 lowercase letter, a-z.')
-                messages.error(request, 'Your password contain atleast 1 symbol character')
-                messages.error(request, 'Your password must have 8 minimum Characters')
-                messages.error(request, 'Re-typed password must match to the new password')
+                messages.error(request, 'Your password must have 8 minimum Characters and must contain at least 1 uppercase letter (A-Z), lowercase letter (a-z), symbol character')
         else:
             form = PasswordChangeForm(request.user)
         return render(request,'student/sHome/sProfileChangePass.html',{'form':form})

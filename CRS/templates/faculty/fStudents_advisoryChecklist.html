@@ -29,7 +29,7 @@
         .container {
             position: absolute;
             width: 930px;
-            height: 600px;
+            height: 550px;
             left: 330px;;
             top: 100px;
             background: #FFFFFF;
@@ -395,6 +395,7 @@
         .manage1 {
             padding-right: 15px;
             padding-left: 15px;
+            margin-right:5px;
             padding-top: 2px;
             background: #06529B;
             border-radius: 10px 10px 10px 10px;
@@ -486,7 +487,7 @@
                     <li class="sb-section unselectable"><span>Classroom</span></li>
                     <li> <a class="sb-links" href="{% url 'fViewSched' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/studyplan.png' %}" height="15"> Schedule</a> </li>
                     {% if facultyInfo.facultyWorkstatus == 'Part-Time' %} 
-                    <li> <a class="sb-links" href="{% url 'parttime_sched' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/parttime_avail.png' %}" height="17> Part-Time Availability</a> </li>
+                    <li> <a class="sb-links" href="{% url 'parttime_sched' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/parttime_avail.png' %}" height="17"> Part-Time Availability</a> </li>
                     {% endif %}
                     <!-- FILE PATH: Faculty/fStudents_advisoryChecklist-->
                     <li><a class="sb-links" href="{% url 'fStudents_advisoryChecklist' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/loa.png' %}" height="15"> Checklist Submissions</a> </li>
