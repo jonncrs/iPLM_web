@@ -4,6 +4,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 
+
 a:link {
   text-decoration: none;
   color: #5f6e83;
@@ -74,7 +75,7 @@ body {
 }
 
 .logo {
-  height: 4rem;
+  height: 3rem;
 }
 
 .logo-text {
@@ -87,6 +88,8 @@ body {
   font-family: Lato;
   font-weight: bold;
   font-size: 1.25rem;
+  margin-bottom: -8px;
+  margin-top: -1px;
 }
 
 .logo-sub {
@@ -225,6 +228,7 @@ body {
   font-family: Lato;
   font-weight: bold;
   color: #06529b;
+  margin-top:-4px;
 }
 
 .dropdown {
@@ -377,6 +381,7 @@ body {
   text-decoration: line-through;
   margin: auto 0.5em;
 }
+
 .main-content {
 
   display: flex;

@@ -1,0 +1,375 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Student | Study Plan </title>
+    <link rel="icon" href="https://i.postimg.cc/Z5Kc9KQv/iplm-logo.png">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source Sans Pro">
+    <link rel="stylesheet" href="{% static 'CRS/css/sOthers/sStudyplan1.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter&display=swap">
+
+
+    <style>
+        #nextbtn{
+            border: none;
+            padding-bottom: 15px;
+        }
+    </style>
+</head>
+<div class="wrapper">
+<body>
+           <!-- top bar -->
+    <div class="topbar">
+      <a href="{% url 'sHome' %}" class="iplm-logo">
+        <img src="https://i.postimg.cc/Z5Kc9KQv/iplm-logo.png" class="logo" />
+        <div class="logo-text">
+          <div class="logo-main">iPLM</div>
+          <div class="logo-sub">Integrated PLM</div>
+        </div>
+      </a>
+      <div class="center-region">
+        <div class="empty"></div>
+        <div id="notif-button" class="notif">
+          <img
+            class="notif-icon"
+            src="https://i.ibb.co/0XVd3kP/notification.png"
+            alt="notification"
+          />
+          <div id="notif-window" class="notif-content">
+            <div class="notif-triangle"></div>
+            <div class="notif-header">Notifications</div>
+            <div class="notif-items">
+              <a href="{% url 'LOANotifdetails' %}" class="notif-item">
+                <img
+                  class="notif-item-icon"
+                  src="https://i.postimg.cc/Gp0457xb/LOA.png"
+                  alt="img"
+                />
+                <div class="notif-item-text">
+                  <div class="notif-item-title">Leave of Absence Feedback</div>
+                  <div class="notif-item-detail">View details</div>
+                </div>
+              </a>
+
+              <a href="{% url 'HDNotifdetails' %}" class="notif-item">
+                <img
+                  class="notif-item-icon"
+                  src="https://i.postimg.cc/mkhZDCyd/honorabledismissal.png"
+                  alt="img"
+                />
+                <div class="notif-item-text">
+                  <div class="notif-item-title">
+                    Honorable Dismissal Feedback
+                  </div>
+                  <div class="notif-item-detail">View details</div>
+                </div>
+              </a>
+
+              <a href="{% url 'SPNotifdetails' %}" class="notif-item">
+                <img
+                  class="notif-item-icon"
+                  src="https://i.postimg.cc/PJfpMCzZ/studyplan.png"
+                  alt="img"
+                />
+                <div class="notif-item-text">
+                  <div class="notif-item-title">Study Plan Feedback</div>
+                  <div class="notif-item-detail">View details</div>
+                </div>
+              </a>
+
+              <a href="{% url 'GradesNotifdetails' %}" class="notif-item">
+                <img
+                  class="notif-item-icon"
+                  src="https://i.postimg.cc/NMm7n2Hz/mygrades.png"
+                  alt="img"
+                />
+                <div class="notif-item-text">
+                  <div class="notif-item-title">My Grades Feedback</div>
+                  <div class="notif-item-detail">View details</div>
+                </div>
+              </a>
+
+              <a href="{% url 'OJTNotifdetails' %}" class="notif-item">
+                <img
+                  class="notif-item-icon"
+                  src="https://i.postimg.cc/SK7xtyKG/practicum.png"
+                  alt="img"
+                />
+                <div class="notif-item-text">
+                  <div class="notif-item-title">Practicum Feedback</div>
+                  <div class="notif-item-detail">View details</div>
+                </div>
+              </a>
+
+              <a href="{% url 'OutboundNotifdetails' %}" class="notif-item">
+                <img
+                  class="notif-item-icon"
+                  src="https://i.postimg.cc/Kzf01wnM/shifting-form.png"
+                  alt="img"
+                />
+                <div class="notif-item-text">
+                  <div class="notif-item-title">Outbound Shifting Feedback</div>
+                  <div class="notif-item-detail">View details</div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="personal-info" id="dropdown-button">
+        <div class="user-details">
+          <div class="client-classification">Student</div>
+          <div class="client-name">
+            {{user.firstName}} {{user.middleName}} {{user.lastName}}
+          </div>
+        </div>
+        <div class="dropdown">
+          <img
+            src="{% static 'CRS/images/fHomeAndProfile/userprofile.png' %}"
+            class="profile-dropdown"
+          />
+          <div class="dropdown-content" id="dropdown-window">
+            <div class="dropdown-header">
+              <img
+                src="{% static 'CRS/images/fHomeAndProfile/userprofile.png' %}"
+                class="dropdown-icon"
+              />
+              <div class="dropdown-details">
+                <div class="dropdown-name">{{user.firstName}}</div>
+                <div class="dropdown-email">{{user.email}}</div>
+              </div>
+            </div>
+            <div class="dropdown-items">
+              <a href="{% url 'sProfile' %}" class="dropdown-item"
+                >View Profile</a
+              >
+              <a href="{% url 'logout' %}" class="dropdown-item">Logout</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+          <div class="content">
+            
+             <!-- side bar  -->
+           <!-- side bar  -->
+           <div class="sidebar">
+            <a href="{% url 'sHome' %}" class="sidebar-item">
+              <img
+                class="sidebar-icon"
+                src="https://i.postimg.cc/DZS58F2h/home-button-iplm.png"
+              />
+              <span class="sidebar-item-text">Home</span>
+            </a>
+            <div class="sidebar-divider">CLASSROOM</div>
+            <a href="{% url 'sScheduleView' %}" class="sidebar-item">
+              <img
+                class="sidebar-icon"
+                src="https://i.postimg.cc/3R4bxwDX/schedule.png"
+              />
+              <span class="sidebar-item-text">Schedule</span>
+            </a>
+            <a href="{% url 'sChecklist' %}" class="sidebar-item">
+              <img
+                class="sidebar-icon"
+                src="https://i.postimg.cc/J7jP6v3z/checklist.png"
+              />
+              <span class="sidebar-item-text">Checklist</span>
+            </a>
+            <a href="{% url 'donecrs' %}" class="sidebar-item">
+              <img
+                class="sidebar-icon"
+                src="https://i.postimg.cc/NMm7n2Hz/mygrades.png"
+              />
+              <span class="sidebar-item-text">My Grades</span>
+            </a>
+            <div class="sidebar-divider">OTHERS</div>
+            <a href="{% url 'donesp' %}" class="sidebar-item">
+              <img
+                class="sidebar-icon"
+                src="https://i.postimg.cc/PJfpMCzZ/studyplan.png"
+              />
+              <span class="sidebar-item-text">Study Plan</span>
+            </a>
+            <a href="{% url 'doneLoa' %}" class="sidebar-item">
+              <img
+                class="sidebar-icon"
+                src="https://i.postimg.cc/Gp0457xb/LOA.png"
+              />
+              <span class="sidebar-item-text">Leave of Absence</span>
+            </a>
+            <a href="{% url 'doneHd' %}" class="sidebar-item">
+              <img
+                class="sidebar-icon"
+                src="https://i.postimg.cc/mkhZDCyd/honorabledismissal.pngg"
+              />
+              <span class="sidebar-item-text">Honorable Dismissal</span>
+            </a>
+            <a href="{% url 'donepracticum' %}" class="sidebar-item">
+              <img
+                class="sidebar-icon"
+                src="https://i.postimg.cc/SK7xtyKG/practicum.png"
+              />
+              <span class="sidebar-item-text">Practicum</span>
+            </a>
+            <a href="{% url 'doneOSF' %}" class="sidebar-item">
+              <img
+                class="sidebar-icon"
+                src="https://i.postimg.cc/Kzf01wnM/shifting-form.png"
+              />
+              <span class="sidebar-item-text">Outbound Shifting</span>
+            </a>
+          </div>
+      
+            <!-- main content DITO NYO LAGAY MGA PUCHU PUCHU NYO -->
+            <div class="main-content"> 
+            <div class="container-fluid">
+                <div class="backrw row" style="margin-top: 0px;">
+                    <p id="head1">
+                         Study Plan
+                     </p>    
+                     </div>
+                    <!-- Sidebar -->
+
+                      <!-- Progress Bar -->
+                    <div class="row">
+                        <div class="container-fluid"> 
+                                <div class="progress row">
+                                    <div class="col-lg-12">
+                                        <div class="progress-bar "></div>
+                                        <div class="progressbar">
+                                            <div class="progress-bars "></div>
+                                            <li class="active progress-text-active">Upcoming<br>Semester</br></li>
+                                                <li class="progress-text">Subjects<br>Taken</li>
+                                                <li class="progress-text">Study<br>Plan</li>
+                                                <li class="progress-text">Upload<br>Documents</li>
+                                                <li class="progress-text">Confirmation<br>Submission</li>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                    
+                <!--END Progress Bar-->
+                <form method="POST">
+                    {% csrf_token %}
+                    <label for="dpyear" class="dpyears" style ="font-family: Lato; "><br />Select Semester</label>
+                    <span class="status-select">
+                        <select name="semester" id="stat-slct">
+                            {% if semester == '1' %}
+                                <option disabled selected hidden value="1">1st Year, 1st Semester</option>
+                            {% elif semester == '2' %}
+                                <option disabled selected hidden value="2">1st Year, 2nd Semester</option>
+                            {% elif semester == '3' %}
+                                <option disabled selected hidden value="3">2nd Year, 1st Semester</option>
+                            {% elif semester == '4' %}
+                                <option disabled selected hidden value="4">2nd Year, 2nd Semester</option>
+                            {% elif semester == '5' %} 
+                                <option disabled selected hidden value="5">3rd Year, 1st Semester</option>
+                            {% elif semester == '6' %}
+                                <option disabled selected hidden value="6">3rd Year, 2nd Semester</option>
+                            {% elif semester == '7' %}
+                                <option disabled selected hidden value="7">4th Year, 1st Semester</option>
+                            {% elif semester == '8' %}
+                                <option disabled selected hidden value="8">4th Year, 2nd Semester</option>
+                            {% elif semester == '9' %}
+                                <option disabled selected hidden value="9">5th Year, 1st Semester</option>
+                            {% elif semester == '10' %}
+                                <option disabled selected hidden value="10">5th Year, 2nd Semester</option>
+                            {% elif semester == '11' %}
+                                <option disabled selected hidden value="11">6th Year, 1st Semester</option>
+                            {% elif semester == '12' %}
+                                <option disabled selected hidden value="12">6th Year, 2nd Semester</option>
+                            {% endif %}
+                            <option value="1">1st Year, 1st Semester</option>
+                            <option value="2">1st Year, 2nd Semester</option>
+                            <option value="3">2nd Year, 1st Semester</option>
+                            <option value="4">2nd Year, 2nd Semester</option>
+                            <option value="5">3rd Year, 1st Semester</option>
+                            <option value="6">3rd Year, 2nd Semester</option>
+                            <option value="7">4th Year, 1st Semester</option>
+                            <option value="8">4th Year, 2nd Semester</option>
+                            <option value="9">5th Year, 1st Semester</option>
+                            <option value="10">5th Year, 2nd Semester</option>
+                            <option value="11">6th Year, 1st Semester</option>
+                            <option value="12">6th Year, 2nd Semester</option>
+                        </select>
+                    </span>
+                    <button name="submit" class="go-button" alt="submit" value="submit">Go</button>
+                </form>
+                </div>
+                </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+
+</body>
+    <!-- END Content -->
+
+            </div>
+          </div>
+        </body>
+
+    
+    <!-- Javascript -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script>          
+        var notifWindow = document.getElementById("notif-window");
+
+document
+  .getElementById("notif-button")
+  .addEventListener("click", function () {
+    var display = notifWindow.style.display === "flex" ? "none" : "flex";
+    notifWindow.style.display = display;
+  });
+var profileDropdown = document.getElementById("dropdown-window");
+document
+  .getElementById("dropdown-button")
+  .addEventListener("click", function () {
+    var display =
+      profileDropdown.style.display === "flex" ? "none" : "flex";
+    profileDropdown.style.display = display;
+  });
+          const selected = document.querySelector(".selected");
+          const optionsContainer = document.querySelector(".options-container");
+  
+          const optionsList = document.querySelectorAll(".option");
+  
+          selected.addEventListener("click", () => {
+              optionsContainer.classList.toggle("active");
+          });
+  
+          optionsList.forEach(o => {
+              o.addEventListener("click", () => {
+                  selected.innerHTML = o.querySelector("label").innerHTML;
+                  optionsContainer.classList.remove("active");
+              });
+          });
+          
+    </script>
+
+</body>
+
+</html>

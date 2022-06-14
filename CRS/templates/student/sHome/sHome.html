@@ -34,54 +34,84 @@
 
 <style>
   /*home-style*/
+* {
+  box-sizing: border-box;
+}
+  
+   /*container 1 - iplm*/
+.container {
+            display: flex;
+            margin: 1rem 5rem 1rem 3.3rem;
+            background-color: #fff;
+            border-radius: 20px;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            font-family: Lato;
+            min-width: 0;
+            }
+           .container-sub-headings {
+              color: #2fa2e3;
+              font-family: source sans Pro;
+              font-weight: 400;
+              font-size: 0.8rem;
+              margin-top: 0.5rem;
+            }
 
-    .child a:link {
-    text-decoration: none;
-    color: black ;
-  }
+            /*Welcome to iPLM text*/
+            .container-headings {
+                    font-family: Lato;
+                    font-weight: 700;
+                    font-size: 2rem;
+                    color: #06529b;
+                    margin-bottom: 1rem;
+                    margin-top: 1.5rem;
+                    margin-left: 4rem;
+                  }
 
-    .child a:hover {
-    text-decoration: none;
-    color: #06529b !important;
-  }
+            /*PLM picture*/
+            .PLM_picture{
+              width: 18rem;
+              height: 7rem;
+              background: url("https://i.postimg.cc/DydN5j9p/PLM-Facade.jpg");
+              background-repeat: no-repeat;
+              background-position: center center;
+              background-size: cover;
+              opacity: 1;
+              border-top-left-radius: 15px;
+              border-bottom-left-radius: 15px;
+              display:flex;
+              flex-direction: row;
+              }
 
 
-   
-  .container {
-          display: flex;
-          margin: 2rem 5rem 1rem 3.3rem;
-          background-color: #fff;
-          border-radius: 20px;
-          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-          font-family: Lato;
-          min-width: 0;
-        }
+/*container 2 - semester details*/
 
   .container-2 {
-          float: left;
+          float:left;
           display: flex;
-          margin: 1rem 5rem 1rem 3.3rem;
+          margin: 0.2rem 5rem 1rem 3.3rem;
           background-color: #fff;
           border-radius: 20px;
           box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-          max-width: 50.5%;
-          max-height: 13rem;}
+          width: 55%;
+          max-height: 8rem;}
 
-  .container-2-headings {
+    .container-2-headings {
+          color:#06529b;
           font-family: Source sans pro;
           font-weight: 700;
-          font-size: 1.5rem;
+          font-size: 1.2rem;
           color: black;
+          margin-top: -20px;
           margin-bottom: 1.5rem;
-          margin-left: 1rem;
+          margin-left: 0.9rem;
           max-width: 250px;
                 }
 
         .left-side {
           display: flex;
           flex-direction: column;
-          padding: 2rem 2rem 2rem 2rem;
-          max-width: 18rem;
+          padding: 2rem 2rem 2rem 0rem;
+          max-width: 14rem;
           margin-left: 5rem;
         }
 
@@ -91,23 +121,19 @@
          padding: 2rem 2rem 2rem 0rem;
           max-width: 18rem;
           margin-left: 2rem;
-
         }
 
         .semester_icon{
-         width:  3rem;
-         height: 3rem;
-         display:flex;
-         flex-direction: column;
-         align-content:left;
-         margin-left: -40px;   
-         padding: 2.5rem 2rem 2rem 2rem; 
-         margin-top: -30px;
-         margin-left: -80px;
+         width:  2rem;
+         height: 2rem;
+         margin-left: -50px;
          float:left;
+         display:flex;
+         flex-direction: column; 
+         margin-top: -10px;  
        }
 
-       .AcadSem {
+       div.AcadSem {
         font-size: 1.1rem;
         width: 14rem;
         font-weight: 100;
@@ -115,36 +141,44 @@
         font-family: Source Sans Pro;
         float:left;
         display: inline-block;
-        margin-top: 12px;
+        margin-top: -10px;
+       }
+
+       #ov-sem-details tr {
+        font-size: 0.8rem ;
+       margin-top: -20px;
+       }
+
+       #ov-student-details tr {
+        font-size: 0.8rem ;
+       margin-top: -20px;
+       max-width: 200px;
+       }
+
+       table td.ov-info {
+        width: 300px;
+        padding: 5px;
        }
 
        .dept_icon {
-        width: 30px;
-      height: 30px;
-      display:flex;
-      flex-direction:column;
-      padding: 1rem;
-      margin-left: -40px;
-
+         width:  1.5rem;
+         height: 1.5rem;
+         display:flex;
+         flex-direction: column; 
+         float:left;
        }
 
        .department_info {
         font-size: 1.1rem;
-        width: 13rem;
+        width: 14rem;
         font-weight: 100;
         color: #5F6E83;
         font-family: Source Sans Pro;
-        display: relative;
-        margin-top: -7.5rem;
-        margin-left: 1.5rem;
-        padding: 5px;
+        float:left;
+        margin-top: 0px;
             }
 
-        .adviser_name{
-          padding-top: 15px;
-        }
-
-
+        
   /*Welcome tO iPLM section*/
 
         .main-content {
@@ -160,65 +194,21 @@
 
         }
 
-  /*Welcome to iPLM text*/
-  .container-headings {
-          font-family: Lato;
-          font-weight: 700;
-          font-size: 3rem;
-          color: #06529b;
-          margin-bottom: 1.5rem;
-          margin-top: 3rem;
-          margin-left: 4rem;
-        }
-  .container-sub-headings {
-      color: #2fa2e3;
-      font-family: source sans Pro;
-      font-weight: 400;
-      font-size: 1.2rem;
-      margin-top: 0.5rem;
-  }
-
-  /*PLM picture*/
-  .PLM_picture{
-    width: 27rem;
-    height: 12rem;
-    background: url("https://i.postimg.cc/DydN5j9p/PLM-Facade.jpg");
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-    opacity: 1;
-    border-top-left-radius: 15px;
-    border-bottom-left-radius: 15px;
-    display:flex;
-    flex-direction: row;
-  }
 
   .container-3{
           display: flex;
-          margin:  1rem 5rem 1rem 3.3rem;
+          margin:  0.2rem 5rem 1rem 3.3rem;
           background-color: #fff;
           border-radius: 20px;
           box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
           font-family: Lato;
           min-width: 0;
+          max-height: 15rem;
           overflow-y : scroll;
+          overflow-x: hidden;
       }
 
-  /*select category*/
-  .form-select-mb-3{
-    margin-top: -80px;
-      margin-left: 950px;
-      display: flex;
-      min-width:0;
-      
-  }
 
-  .btn-btn-light-w-25{
-    color: #06529b;
-     margin-top: -30px;
-      margin-left: 1300px;
-      display:flex;}
-    
   .p-2-overview-block-sm-overview-block {
     width:760px;height:270px;}
 
@@ -227,7 +217,7 @@
     color: #06529b;
     font-family: Source sans pro;
           font-weight: 700;
-          font-size: 1.5rem;
+          font-size: 1.2rem;
           margin-bottom: 1.5rem;
           margin-left: 4rem;
           margin-top: 2rem;
@@ -242,11 +232,39 @@
           font-family: Lato;
           min-width: 0;}
 
+  h1#event-title {
+   text-align: left;
+   color: #06529b; 
+   font-family: 'Lato', sans-serif;
+   font-weight: 900;
+   padding: 5px;
+   font-size: 12px;}
+
+  h1#event-list {
+    text-align:left;
+    margin-top: 5px; 
+    font-size: 10px;
+    float:left;
+    padding: 5px;
+    color: #06529b;
+    width: 200px;
+  }
+
+  p#event-list-input {
+    text-align: left;
+    margin-top: 5px; 
+    font-size: 10px;
+    float:left;
+    padding: 5px;
+    color: #5F6E83;
+  }
 
   .flex-container {
       display: flex;
       margin-top: 30px;
-      margin-left: 80px;
+      margin-left: 20px;
+      max-width: 500px;
+      float: left;
   }
 
   .flex-child {
@@ -257,26 +275,18 @@
       margin-right: 10px;
   }  
 
-  .events_calendar {
-    width: 45px;
-    width: 45px;
-    height: 49px;
-    left: -200px;
-    display:flex;
-    display:inline-block;
-    position: relative;}
-
-  h1 {
-    text-align:center;
-    margin-top: 5px; 
-    font-size: 18px;
-    float:left;
-    padding: 5px;
-  }
+      /*features*/
+ .features_container {
+          float:left;
+          display: flex;
+          margin: 0.2rem 5rem 1rem 3.3rem;
+          width: 45%;
+          max-height: 7rem;}
 
   div.flex-child-events {
     margin-left: 3rem;
     margin-right: 3rem;
+  
   }
 
       div.parent{
@@ -284,51 +294,51 @@
           display: grid;
           grid-template-columns: 1fr 1fr 1fr 1fr;
           column-gap: 12px;
-          margin-top: -190px;
-          margin-left: 320px;
+          margin-top: -130px;
+          margin-left: 180px;
+          float: left;
       }
 
       div.child{
-      box-sizing: border-box;
-            width: 190px;
-            height: 208px;
+            box-sizing: border-box;
+            width: 100px;
+            height: 130px;
             background: white;
             text-align: center;
             border-top-left-radius: 15px;
-      border-top-right-radius: 15px;
-      border-bottom-left-radius: 15px;
-      border-bottom-right-radius: 15px;
-      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);  
-       margin: auto !important;
+            border-top-right-radius: 15px;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);  
       }
       
-  .child p {
-     font-family: Source Sans Pro;
+ 
+   span.features_titles{
+    font-family: Source Sans Pro;
     font-weight: bold;
-    font-size: 24px;
-   }
-   .child:hover {
-    background-color: #eee;
-    cursor: pointer
-}
-
-
-  .features_description {
-      font-family: Source Sans Pro;
-    font-weight:100 ;
     font-size: 16px;
+    color: #06529b;
+    align-self: center;
+  }
+  
+  span#features_description {
+    font-family: Source Sans Pro;
+    font-weight:100 ;
+    font-size: 8px;
     opacity: 1;
     text-align: center;
-     color: rgba(95,110,131,1);
+    color: rgba(95,110,131,1);
+   display: inline-block;
   }
 
+
   #features_icons {
-     width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     display:flex;
-    flex-direction: row;
+    flex-direction:row;
     margin-top: 20px;
-    margin-left: 70px;
+    margin-left: 25px;
   }
 
  /*navbarheader*/
@@ -801,17 +811,34 @@
   select::-ms-expand {
       display: none;
   }
-  .categ {
+
+  .form-select-mb-3{
+      margin-top: -80px;
+      margin-left: 550px;
+      display: flex;
+      width: 300px;
+  }
+
+.categ {
     top: 25px;
     left: 1100px;
     position: relative;
   }
 
+  /*end of select category*/
+
+
+ .btn-btn-light-w-25{
+    color: #06529b;
+     margin-top: -30px;
+      margin-left: 900px;
+      display:flex;}
   /*END OF CSS*/
   </style>
 
 </head>
 
+<div class="wrapper">        
  <body>
     <!-- top bar -->
     <div class="topbar">
@@ -879,10 +906,23 @@
                   alt="img"
                 />
                 <div class="notif-item-text">
-                  <div class="notif-item-title">My Grades Feedback</div>
-                  <div class="notif-item-detail">see more details.</div>
+                  <div class="notif-item-title">Study Plan Feedback</div>
+                  <div class="notif-item-detail">View details</div>
                 </div>
               </a>
+
+              <a href="{% url 'GradesNotifdetails' %}" class="notif-item">
+                <img
+                  class="notif-item-icon"
+                  src="https://i.postimg.cc/NMm7n2Hz/mygrades.png"
+                  alt="img"
+                />
+                <div class="notif-item-text">
+                  <div class="notif-item-title">My Grades Feedback</div>
+                  <div class="notif-item-detail">View details</div>
+                </div>
+              </a>
+
               <a href="{% url 'OJTNotifdetails' %}" class="notif-item">
                 <img
                   class="notif-item-icon"
@@ -891,10 +931,11 @@
                 />
                 <div class="notif-item-text">
                   <div class="notif-item-title">Practicum Feedback</div>
-                  <div class="notif-item-detail">see more details.</div>
+                  <div class="notif-item-detail">View details</div>
                 </div>
               </a>
-              <a href="{% url 'OutboundNotifdetails' %}" class="notif-item">
+
+              <a href="{% url 'OJTNotifdetails' %}" class="notif-item">
                 <img
                   class="notif-item-icon"
                   src="https://i.postimg.cc/Kzf01wnM/shifting-form.png"
@@ -902,7 +943,7 @@
                 />
                 <div class="notif-item-text">
                   <div class="notif-item-title">Outbound Shifting Feedback</div>
-                  <div class="notif-item-detail">see more details.</div>
+                  <div class="notif-item-detail">View details</div>
                 </div>
               </a>
             </div>
@@ -969,7 +1010,7 @@
           />
           <span class="sidebar-item-text">Checklist</span>
         </a>
-        <a href="{% url 'sGradeSubmission1' %}" class="sidebar-item">
+        <a href="{% url 'donecrs' %}" class="sidebar-item">
           <img
             class="sidebar-icon"
             src="https://i.postimg.cc/NMm7n2Hz/mygrades.png"
@@ -1016,145 +1057,126 @@
 
  <!-- main content -->
 <div class="main-content">
-        <!--END OF FEATURES-->
+        
         <div class="container">
         	              <div class="PLM_picture"></div>
         	              	  <div class="container-headings">Welcome to <font color="#ecc429">iPLM</font>
         	              	  	<div class="container-sub-headings">iPLM allows students to input and access their academic
 								information and various student processes.</div></div></div>
-                <!--semester details, department information!-->
 
+                <!--semester details, department information!-->
 		<div class="container-2">
-			<div class="left-side"> 
-				<div class="container-2-headings"> Semester Details </div>
-         <div class="sem_icon"><img src="https://i.postimg.cc/gr9XRgJS/semester-icon.png" class="semester_icon">
+			<div class="left-side">
+				<div class="container-2-headings"> <font color ="#06529b">Semester Details </div>
+         <div ><img src="https://i.postimg.cc/jSpphjBV/semester-icon.png" class="semester_icon">
           <div class ="AcadSem">
                               <table class="table table-sm table-borderless" id="ov-sem-details">
                                     <tbody>  
                                         <tr>
-                                        {% for acads in acad%}
+                                        <!--{% for acads in acad%}!-->
                                             <td>Academic Year: <br> Semester:</td>
-                                            <td> {{acads.yearstarted}} - {{acads.yearended}} <br> {{acads.semester}}</td>
-                                        {%endfor%}
+                                            <td>  <!--{{acads.yearstarted}} - {{acads.yearended}}!-->2001-2002 <br> {{acads.semester}}</td>
+                                        <!--{{%endfor%}!-->
                                         </tr>                                          
                                        
                                     </tbody>
                                 </table>
           </div></div></div>
           <div class="right-side"> 
-            <div class="container-2-headings"> Student Information   
-              <div> <img src="https://i.postimg.cc/QCbQ08gR/department-details.png" class="dept_icon">
-                <div><img src="https://i.postimg.cc/QCbQ08gR/department-details.png" class="dept_icon">
+            <div class="container-2-headings"><font color ="#06529b"> Student Information
+              <div> 
+                <div>
                 <div class ="department_info">
-                                     <table class="table table-sm table-borderless" id="ov-sem-details">
+                                     <table class="table table-sm table-borderless" id="ov-student-details">
                                     <tbody>  
                                         <tr>
-                                            <td>{{info.studentSection}}<br> Course & Section</td>
+                                            <td class="ov-info"><img src="https://i.postimg.cc/MKXg2RS2/department-details.png" class="dept_icon"> &nbsp  &nbsp  BSIT 1-1<!--{{info.studentSection}}!-->
+                                              <br>  &nbsp  &nbsp Course & Section</td>
                                         </tr>   
                                           <tr>
-                                            <td class="adviser_name">{{info.studentRegStatus}}<br> Status</td>
+                                            <td class="ov-info"><img src="https://i.postimg.cc/MKXg2RS2/department-details.png" class="dept_icon">  &nbsp  &nbsp Irregular <!--{{info.studentRegStatus}}!--><br>  &nbsp &nbsp Status</td>
                                         </tr>                                          
                                        
                                     </tbody>
                                 </table>
                                             </div>
 <!--features!-->
-                                            <div class="features_container"> 
 
-  <div class="parent">
+<div class="features_container"> 
 
-        <div class="child">
-            <a href="{% url 'sScheduleView' %}" id="features_hover"><img id="features_icons" src="https://i.postimg.cc/13VmHTch/schedule-feature.png">
-          <p id="features_non_hover">Schedule <br>
-            <span class="features_description">View current semester's schedule. </a></div> 
+      <div class="parent">
 
-        <div class="child">
-            <a href="{% url 'sChecklist' %}"><img id="features_icons" src="https://i.postimg.cc/cCsFhnS7/features-checklist.png">
-          <p id="features_non_hover"Checklist> Checklist <br>
-            <span class="features_description">View your subjects <br>and grades. </div></a>
+            <div class="child">
+                <img id="features_icons" src="https://i.postimg.cc/3wZtDJTF/schedule-feature.png">
+                  <span class="features_titles"> Schedule </span> <br>
+                   <span id="features_description"> View current semester's schedule. </span></div> 
 
-        <div class="child">
-            <a href="{% url 'sGradeSubmission1' %}"><img id="features_icons" src="https://i.postimg.cc/13VmHTch/schedule-feature.png">
-          <p id="features_non_hover">My Grades <br>
-            <span class="features_description">Submit your grades. </div></a>
-                                            </div></div>
+             <div class="child">
+                <img id="features_icons" src="https://i.postimg.cc/BQ87w0TJ/features-checklist.png">
+                  <span class="features_titles"> Checklist </span> <br>
+                    <span id="features_description">View your subjects <br>and grades. </span></div>
+
+            <div class="child">
+               <img id="features_icons" src="https://i.postimg.cc/5tWrCRFb/features-mygrades.png">
+                 <span class="features_titles"> My Grades </span> <br>
+                    <span id="features_description">Submit your grades. </span></div> 
+                                                </div></div>
 
 
 
-</div></div></div></div></div>
+    </div></div></div></div></div>  
 
 
 <div class="container-3">
         <!--Event View-->
-        <div class="p-2-overview-block-sm-overview-block">
-            <div class="d-flex flex-wrap justify-content-center ov-block-content-2">                                
+        <div class="p-2 overview-block sm-overview-block" style="width:760px;height:230px">
+          <div class="d-flex flex-wrap justify-content-center ov-block-content-2">                                
 
-                    <div class="events">Events</div>
-                    <form method="get" style="margin-top:50px;margin-left:-100px; width:500px">
-                    <select name="sortCategory" class="form-select-mb-3" >
-                        <option disabled selected>Select Category</option>
-                        <option value="Academics">Academics</option>
-                        <option value="Sports">Sports</option>
-                        <option value="Social">Social</option>
-                        <option value="Arts & Culture">Arts & Culture</option>
-                        <option value="Featured">Featured</option>
-                        <input type="submit" value="Apply Changes" class="btn-btn-light-w-25">
+                  <h1 style="position: absolute;width: 143px;height: 26px;color: #06529b;font-family: 'Lato', sans-serif;font-weight: 900;font-size: 20px;line-height: 26px;margin-left:30px;margin-top:7px">Events</h1>
+                  <form method="get" style="margin-top: 12px;margin-left:500px; width:200px; height:40px;">
+                  <select name="sortCategory" class="form-select mb-3" style="height: 27px; padding:2px; padding-left:6px; padding-bottom:4px;background-color: white;color: #06529b;border-width: 2px;border-radius: 8px;border-color: #06529b; font-size: 13px;font-family: 'Lato', sans-serif;margin-top:0px; margin-bottom: -600px">
+                      <option disabled selected>Select Category</option>
+                      <option value="Academics">Academics</option>
+                      <option value="Sports">Sports</option>
+                      <option value="Social">Social</option>
+                      <option value="Arts & Culture">Arts & Culture</option>
+                      <option value="Featured">Featured</option>
+                      <input type="submit" value="Go" class="btn btn-light w-25" style="color: #06529b;margin-left: 330px; margin-top: -22px;height:28px; position:absolute; background-color: #06529b; color:white; border-radius:7px;">
 
-                    </form>
+                  </form>
+              
+          <div id="scroll" class="content-scrollbar" style="width: 770px;height: 165px;overflow: auto;overflow-x: visible;margin: 0 auto;white-space: normal;margin-left:30px;border-style: solid; border-width:2px; border-color:#06529b; border-radius:5px;">
+                  <div class="body"style="margin-bottom:150px; padding-top:15px;">
+                      {% for event in events_list %}
+                      <div class="double" style="max-width:700px;color: #06529b;border-collapse: separate;">
+                          {% if event != None %}
+                          <div style="display:inline; padding-bottom:15px;">
+                          <p style="display:inline;text-align:left;color: #06529b; font-family: 'Lato', sans-serif;font-size: 16px;padding-top:5px; padding-left:15px;"><b>Event Title:</b></p><p style="display:inline;text-align:left;color: #545454; font-family: 'Lato', sans-serif;font-size: 16px;padding-top:5px; padding-left:7px;">{{ event.eventTitle }}</p>
+                          </div>
+
+                          <div style="display:block; margin-top:5px;">
+                              <p style="display:inline;text-align:left;color: #06529b; font-family: 'Lato', sans-serif;font-size: 14px;padding-top:5px; padding-left:15px;"><b>Start Date:</b></p><p style="display:inline;text-align:left;color: #545454; font-family: 'Lato', sans-serif;font-size: 14px;padding-top:5px; padding-left:7px;">{{ event.eventStartDate }}</p>
+                          </div>
+
+                          <div style="display:block; margin-top:5px;">
+                              <p style="display:inline;text-align:left;color: #06529b; font-family: 'Lato', sans-serif;font-size: 14px;padding-top:5px; padding-left:15px;"><b>End Date:</b></p><p style="display:inline;text-align:left;color: #545454; font-family: 'Lato', sans-serif;font-size: 14px;padding-top:5px; padding-left:7px;">{{ event.eventEndDate }}</p>
+                          </div>
+
+                          <div style="display:block; margin-top:5px; padding-bottom: 50px;">
+                              <p style="display:inline;text-align:left;color: #06529b; font-family: 'Lato', sans-serif;font-size: 14px;padding-top:5px; padding-left:15px;"><b>Description:</b></p><p style="display:inline;text-align:left;color: #545454; font-family: 'Lato', sans-serif;font-size: 14px;padding-top:5px; padding-left:7px;">{{ event.eventDescription }}</p>
+                          </div>
+                          
 
 
- 
-          <div class="flex-container">
-            {% for event in events_list %}  
-                {% if event.eventCategory == 'Academics'%}  
-                <div class="flex-child-events">
-                            <h1 style="text-align:center;color: #06529b; font-family: 'Lato', sans-serif;font-weight: 900;font-size: 20px;">{{ event.eventTitle }}</h1>
-                            <h1>{{event.eventDescription}}</h1>
-                            <h1>{{event.eventStartDate}}</h1>
-                            <h1>{{event.eventEndDate}}</h1>
-
-                              </div>
-                {% elif event.eventCategory == 'Sports'%} 
-                  <div class="flex-child-events">
-
-                       <h1 style="text-align:center;color: #06529b; font-family: 'Lato', sans-serif;font-weight: 900;font-size: 20px;">{{ event.eventTitle }}</h1>
-                            <h1>{{event.eventDescription}}</h1>
-                            <h1>{{event.eventStartDate}}</h1>
-                            <h1>{{event.eventEndDate}}</h1>
-                              </div>
-                
-                {% elif event.eventCategory == 'Social'%} 
-                  <div class="flex-child-events">
-
-                       <h1 style="text-align:center;color: #06529b; font-family: 'Lato', sans-serif;font-weight: 900;font-size: 20px;">{{ event.eventTitle }}</h1>
-                            <h1>{{event.eventDescription}}</h1>
-                            <h1>{{event.eventStartDate}}</h1>
-                            <h1>{{event.eventEndDate}}</h1>
-                              </div>
-
-                {% elif event.eventCategory == 'Arts & Culture'%} 
-                  <div class="flex-child-events">
-
-                       <h1 style="text-align:center;color: #06529b; font-family: 'Lato', sans-serif;font-weight: 900;font-size: 20px;">{{ event.eventTitle }}</h1>
-                            <h1>{{event.eventDescription}}</h1>
-                            <h1>{{event.eventStartDate}}</h1>
-                            <h1>{{event.eventEndDate}}</h1>
-                              </div>
-                
-                {% elif event.eventCategory == 'Featured'%} 
-                    <div class="flex-child-events">
-            
-                        <h1 style="text-align:center;color: #06529b; font-family: 'Lato', sans-serif;font-weight: 900;font-size: 20px;">{{ event.eventTitle }}</h1>
-                            <h1>{{event.eventDescription}}</h1>
-                            <h1>{{event.eventStartDate}}</h1>
-                            <h1>{{event.eventEndDate}}</h1>
-                                </div>
-                {%endif%}
-            {%endfor%}
-            
+                              {% endif %}
+                      </div>
+                  {% endfor %}
+              </div>
+          </div>
+      </div>
 
 </div>
-<div id="scroll" style=" height: 140px;overflow: auto;overflow-x: visible;margin: 0 auto;white-space: normal;margin-left:140px;" >
+<div id="scroll" style=" height: 140px;overflow: auto;overflow-x: hidden;margin: 0 auto;white-space: normal;margin-left:140px;" >
 </body>
  <script>
     var notifWindow = document.getElementById("notif-window");

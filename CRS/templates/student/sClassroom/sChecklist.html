@@ -3,10 +3,11 @@
 <html>
 
 <head>
-    <title>Student | Checklist</title>
+  <title>Student | Checklist </title>
+    <link rel="icon" href="https://i.postimg.cc/Z5Kc9KQv/iplm-logo.png">
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <link rel="icon" href="https://i.postimg.cc/Z5Kc9KQv/iplm-logo.png">
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -14,9 +15,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
     <link rel="stylesheet" href="{% static 'CRS/css/sClassroom/sChecklistStyle.css' %}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter&display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source Sans Pro">
-    <link rel="icon" href="{% static 'CRS/images/sClassroom/iPLM.png' %}" type="image/png" sizes="16x16">
 
     <style>
                .primary-att {
@@ -312,7 +312,7 @@
                 />
                 <span class="sidebar-item-text">Checklist</span>
               </a>
-              <a href="{% url 'sGradeSubmission1' %}" class="sidebar-item">
+              <a href="{% url 'donecrs' %}" class="sidebar-item">
                 <img
                   class="sidebar-icon"
                   src="https://i.postimg.cc/NMm7n2Hz/mygrades.png"
@@ -368,7 +368,7 @@
                     <div class="col-lg-8">
                             
                            
-                        <div style="background: #FFF; margin-left: 100px; padding: 60px 100px 60px 0px; box-shadow: 0px 7px 4px lightgray; border-radius: 25px;">
+                        <div style="background: #FFF; margin-left: 20px; padding: 60px 100px 60px 0px; box-shadow: 0px 7px 4px lightgray; border-radius: 25px;">
                     <div class="tablepanel table-responsive-lg">
                         <table class="borderless table">
                             <div>
@@ -440,7 +440,7 @@
                               <td style="background-color: #0892DD;">
                               <p id="head3"><b>GWA: </b>{{ ave|floatformat:2 }}</p></td>
                           </tr>
-                          {% for subject in checklist3 %}
+                          {% for subject in checklist %}
                           <tr class="tabletext2">
                               <td><p  class="dataStyle">
                                       {{subject.curriculumCode.subjectCode.subjectCode}}
@@ -464,9 +464,9 @@
                               <td style="font-size: 20px; background-color: #0892DD; text-align: center; color:#FFFFFF; font-family:Lato;"><b>1st Year, 2nd Semester</b></td>
                               <td colspan="4"  style="background-color: #0892DD;"></td>
                               <td style="background-color: #0892DD;">
-                              <p id="head3"><b>GWA: </b>{{ ave|floatformat:2 }}</p></td>
+                              <p id="head3"><b>GWA: </b>{{ ave2|floatformat:2 }}</p></td>
                           </tr>
-                          {% for subject in checklist3 %}
+                          {% for subject in checklist2 %}
                           <tr class="tabletext2">
                               <td><p  class="dataStyle">
                                       {{subject.curriculumCode.subjectCode.subjectCode}}
@@ -485,10 +485,10 @@
                             <!------------------------------------------------------->
                             {% elif semester == '3' %}
                             <tr class="tabletext1" style="box-shadow: 0 0 10px rgb(138, 138, 138);">
-                                <td style="font-size: 20px; background-color: #0892DD; text-align: center; color:#FFFFFF; font-family:Lato;"><b>2nd Year, 2nd Semester</b></td>
+                                <td style="font-size: 20px; background-color: #0892DD; text-align: center; color:#FFFFFF; font-family:Lato;"><b>2nd Year, 1st Semester</b></td>
                                 <td colspan="4"  style="background-color: #0892DD;"></td>
                                 <td style="background-color: #0892DD;">
-                                <p id="head3"><b>GWA: </b>{{ ave|floatformat:2 }}</p></td>
+                                <p id="head3"><b>GWA: </b>{{ ave3|floatformat:2 }}</p></td>
                             </tr>
                             {% for subject in checklist3 %}
                             <tr class="tabletext2">
@@ -509,10 +509,10 @@
                             <!---------------------------------------------------------->
                             {% elif semester == '4' %}
                             <tr class="tabletext1" style="box-shadow: 0 0 10px rgb(138, 138, 138);">
-                                <td style="font-size: 20px; background-color: #0892DD; text-align: center; color:#FFFFFF;  font-family:Lato;"><b>3rd Year, 1st Semester</b></td>
+                                <td style="font-size: 20px; background-color: #0892DD; text-align: center; color:#FFFFFF;  font-family:Lato;"><b>2nd Year, 2nd Semester</b></td>
                                 <td colspan="4"  style="background-color: #0892DD;"></td>
                                 <td style="background-color: #0892DD;">
-                                <p id="head3"><b>GWA: </b>{{ ave|floatformat:2 }}</p></td>
+                                <p id="head3"><b>GWA: </b>{{ ave4|floatformat:2 }}</p></td>
                             </tr>
                             {% for subject in checklist4 %}
                             <tr class="tabletext2">
@@ -533,10 +533,10 @@
                             <!---------------------------------------------------------->
                             {% elif semester == '5' %}
                             <tr class="tabletext1" style="box-shadow: 0 0 10px rgb(138, 138, 138);">
-                                <td style="font-size: 20px; background-color: #0892DD; text-align: center; color:#FFFFFF; font-family:Lato;"><b>3rd Year, 2nd Semester</b></td>
+                                <td style="font-size: 20px; background-color: #0892DD; text-align: center; color:#FFFFFF; font-family:Lato;"><b>3rd Year, 1st Semester</b></td>
                                 <td colspan="4"  style="background-color: #0892DD;"></td>
                                 <td style="background-color: #0892DD;">
-                                <p id="head3"><b>GWA: </b>{{ ave|floatformat:2 }}</p></td>
+                                <p id="head3"><b>GWA: </b>{{ ave5|floatformat:2 }}</p></td>
                             </tr>
                             {% for subject in checklist5 %}
                             <tr class="tabletext2">
@@ -557,10 +557,10 @@
                             <!---------------------------------------------------------->
                             {% elif semester == '6' %}
                             <tr class="tabletext1" style="box-shadow: 0 0 10px rgb(138, 138, 138);">
-                                <td style="font-size: 20px; background-color: #0892DD; text-align: center; color:#FFFFFF;  font-family:Lato;"><b>4th Year, 1st Semester</b></td>
+                                <td style="font-size: 20px; background-color: #0892DD; text-align: center; color:#FFFFFF;  font-family:Lato;"><b>3rd Year, 2nd Semester</b></td>
                                 <td colspan="4"  style="background-color: #0892DD;"></td>
                                 <td style="background-color: #0892DD;">
-                                <p id="head3"><b>GWA: </b>{{ ave|floatformat:2 }}</p></td>
+                                <p id="head3"><b>GWA: </b>{{ ave6|floatformat:2 }}</p></td>
                             </tr>
                             {% for subject in checklist6 %}
                             <tr class="tabletext2">
@@ -581,10 +581,10 @@
                             <!---------------------------------------------------------->
                             {% elif semester == '7' %}
                             <tr class="tabletext1" style="box-shadow: 0 0 10px rgb(138, 138, 138);">
-                                <td style="font-size: 20px; background-color: #0892DD; text-align: center; color:#FFFFFF; font-family:Lato;"><b>4th Year, 2nd Semester</b></td>
+                                <td style="font-size: 20px; background-color: #0892DD; text-align: center; color:#FFFFFF; font-family:Lato;"><b>4th Year, 1st Semester</b></td>
                                 <td colspan="4"  style="background-color: #0892DD;"></td>
                                 <td style="background-color: #0892DD;">
-                                <p id="head3"><b>GWA: </b>{{ ave|floatformat:2 }}</p></td>
+                                <p id="head3"><b>GWA: </b>{{ ave7|floatformat:2 }}</p></td>
                             </tr>
                             {% for subject in checklist7 %}
                             <tr class="tabletext2">
@@ -605,10 +605,10 @@
                             <!---------------------------------------------------------->
                             {% elif semester == '8' %}
                             <tr class="tabletext1" style="box-shadow: 0 0 10px rgb(138, 138, 138);">
-                                <td style="font-size: 20px; background-color: #0892DD; text-align: center; color:#FFFFFF; font-family:Lato;"><b>5th Year, 1st Semester</b></td>
+                                <td style="font-size: 20px; background-color: #0892DD; text-align: center; color:#FFFFFF; font-family:Lato;"><b>4th Year, 2nd Semester</b></td>
                                 <td colspan="4"  style="background-color: #0892DD;"></td>
                                 <td style="background-color: #0892DD;">
-                                <p id="head3"><b>GWA: </b>{{ ave|floatformat:2 }}</p></td>
+                                <p id="head3"><b>GWA: </b>{{ ave8|floatformat:2 }}</p></td>
                             </tr>
                             {% for subject in checklist8 %}
                             <tr class="tabletext2">
@@ -629,10 +629,10 @@
                             <!---------------------------------------------------------->
                             {% elif semester == '9' %}
                             <tr class="tabletext1" style="box-shadow: 0 0 10px rgb(138, 138, 138);">
-                                <td style="font-size: 20px; background-color: #0892DD; text-align: center; color:#FFFFFF; font-family:Lato;"><b>5th Year, 2nd Semester</b></td>
+                                <td style="font-size: 20px; background-color: #0892DD; text-align: center; color:#FFFFFF; font-family:Lato;"><b>5th Year, 1st Semester</b></td>
                                 <td colspan="4"  style="background-color: #0892DD;"></td>
                                 <td style="background-color: #0892DD;">
-                                <p id="head3"><b>GWA: </b>{{ ave|floatformat:2 }}</p></td>
+                                <p id="head3"><b>GWA: </b>{{ ave9|floatformat:2 }}</p></td>
                             </tr>
                             {% for subject in checklist9 %}
                             <tr class="tabletext2">
@@ -653,10 +653,10 @@
                             <!---------------------------------------------------------->
                             {% elif semester == '10' %}
                             <tr class="tabletext1" style="box-shadow: 0 0 10px rgb(138, 138, 138);">
-                                <td style="font-size: 20px; background-color: #0892DD; text-align: center; color:#FFFFFF; font-family:Lato;"><b>6th Year, 1st Semester</b></td>
+                                <td style="font-size: 20px; background-color: #0892DD; text-align: center; color:#FFFFFF; font-family:Lato;"><b>5th Year, 2nd Semester</b></td>
                                 <td colspan="4"  style="background-color: #0892DD;"></td>
                                 <td style="background-color: #0892DD;">
-                                <p id="head3"><b>GWA: </b>{{ ave|floatformat:2 }}</p></td>
+                                <p id="head3"><b>GWA: </b>{{ ave10|floatformat:2 }}</p></td>
                             </tr>
                             {% for subject in checklist10 %}
                             <tr class="tabletext2">
@@ -677,10 +677,10 @@
                             <!---------------------------------------------------------->
                             {% elif semester == '11' %}
                             <tr class="tabletext1" style="box-shadow: 0 0 10px rgb(138, 138, 138);">
-                                <td style="font-size: 20px; background-color: #0892DD; text-align: center; color:#FFFFFF; font-family:Lato;"><b>6th Year, 2nd Semester</b></td>
+                                <td style="font-size: 20px; background-color: #0892DD; text-align: center; color:#FFFFFF; font-family:Lato;"><b>6th Year, 1st Semester</b></td>
                                 <td colspan="4"  style="background-color: #0892DD;"></td>
                                 <td style="background-color: #0892DD;">
-                                <p id="head3"><b>GWA: </b>{{ ave|floatformat:2 }}</p></td>
+                                <p id="head3"><b>GWA: </b>{{ ave11|floatformat:2 }}</p></td>
                             </tr>
                             {% for subject in checklist11 %}
                             <tr class="tabletext2">
@@ -701,10 +701,10 @@
                             <!---------------------------------------------------------->
                             {% elif semester == '12' %}
                             <tr class="tabletext1" style="box-shadow: 0 0 10px rgb(138, 138, 138);">
-                                <td style="font-size: 20px; background-color: #0892DD; text-align: center; color:#FFFFFF; font-family:Lato;"><b>1st Yr, 1st Sem</b></td>
+                                <td style="font-size: 20px; background-color: #0892DD; text-align: center; color:#FFFFFF; font-family:Lato;"><b>6th Year, 2nd Semester</b></td>
                                 <td colspan="4"  style="background-color: #0892DD;"></td>
                                 <td style="background-color: #0892DD;">
-                                <p id="head3"><b>GWA: </b>{{ ave|floatformat:2 }}</p></td>
+                                <p id="head3"><b>GWA: </b>{{ ave12|floatformat:2 }}</p></td>
                             </tr>
                             {% for subject in checklist12 %}
                             <tr class="tabletext2">
@@ -769,15 +769,13 @@
                             </div>
 
                             <div style="margin-top: -55px; margin-left: 250px; position:relative;">
-                            <a href = "{% url 'cf' %}" download ><!--"{% url 'sptest' %}"-->
+                            <a href = "sChecklist" download ><!--"{% url 'sptest' %}"-->
                             <div id="saveacopybtn" style="margin-top: 200px; margin-left: -60px;"><img src="https://i.ibb.co/Bn7gDtW/download2.png" height="30" width="30">
                                 Save a Copy
                             </div>
                         </a>     
                                     
-        
-                            </div>
-
+                
                         </style>        
                      
                   

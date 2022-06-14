@@ -1,6 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 
 
 
@@ -12,22 +13,22 @@ a:link {
     text-decoration: none;
     color: #0892dd;
   }
-  
+
   a:visited {
     text-decoration: none;
     color: #5f6e83;
   }
-  
+
   a:hover {
     text-decoration: none;
     color: #0892dd;
   }
-  
+
   a:active {
     text-decoration: none;
     color: #0892dd;
   }
-  
+
   ::-webkit-scrollbar {
     width: 9px;
     height: 9px;
@@ -40,7 +41,7 @@ a:link {
     border-radius: 20px;
     border: transparent;
   }
-  
+
   body {
     margin: 0;
     display: flex;
@@ -51,7 +52,7 @@ a:link {
     width: 100%;
     position: absolute;
   }
-  
+
   .topbar {
     box-sizing: border-box;
     height: 65px;
@@ -59,51 +60,53 @@ a:link {
     display: flex;
     padding: 0.5rem 1rem;
   }
-  
+
   .iplm-logo {
     display: flex;
     flex-direction: row;
     text-decoration: none;
     margin-left: 0.5rem;
   }
-  
+
   .iplm-logo:hover {
     opacity: 0.7;
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
   }
-  
+
   .logo {
-    height: 4rem;
+    height: 3rem;
   }
-  
+
   .logo-text {
     margin-left: 5px;
     margin-top: 5px;
   }
-  
+
   .logo-main {
     color: rgba(6, 82, 155, 1);
     font-family: Lato;
     font-weight: bold;
     font-size: 1.25rem;
-  }
-  
+    margin-bottom: -8px;
+    margin-top: -1px;
+}
+
   .logo-sub {
     color: #0892dd;
     font-family: Inter;
     font-size: 0.875rem;
   }
-  
+
   .center-region {
     display: flex;
     flex: 1 0 auto;
   }
-  
+
   .empty {
     flex: 1 0 auto;
   }
-  
+
   .notif {
     display: flex;
     justify-content: center;
@@ -113,18 +116,18 @@ a:link {
     cursor: pointer;
     position: relative;
   }
-  
+
   .notif-icon {
     width: 20px;
     height: 20px;
   }
-  
+
   .notif-icon:hover {
     opacity: 0.7;
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
   }
-  
+
   .notif-content {
     position: absolute;
     top: 40px;
@@ -139,7 +142,7 @@ a:link {
     padding: 1rem;
     z-index: 100;
   }
-  
+
   .notif-header {
     display: flex;
     flex-direction: row;
@@ -149,13 +152,13 @@ a:link {
     font-size: 1rem;
     padding-bottom: 1rem;
   }
-  
+
   .notif-items {
     max-height: 20.625rem;
     overflow-y: auto;
     scrollbar-width: thin;
   }
-  
+
   .notif-item {
     box-sizing: border-box;
     display: flex;
@@ -165,17 +168,17 @@ a:link {
     border-top: 1px solid #fff;
     text-decoration: none;
   }
-  
+
   .notif-item:hover {
     background-color: #eee;
   }
-  
+
   .notif-item-icon {
     width: 40px;
     height: 40px;
     border-radius: 50%;
   }
-  
+
   .notif-item-text {
     display: flex;
     flex-direction: column;
@@ -184,61 +187,62 @@ a:link {
     gap: 0.25rem;
     font-family: "Source Sans Pro", sans-serif;
   }
-  
+
   .notif-item-title {
     font-weight: bolder;
     color: #06529b;
   }
-  
+
   .notif-item-detail {
     color: #5f6e83;
   }
-  
+
   .personal-info {
     display: flex;
     flex-direction: row;
     cursor: pointer;
   }
-  
+
   .personal-info:hover .profile-dropdown {
     opacity: 0.5;
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
   }
-  
+
   .user-details {
     display: flex;
     flex-direction: column;
     justify-content: center;
     margin-right: 1rem;
   }
-  
+
   .client-classification {
     font-size: 0.625rem;
     font-family: Lato;
     color: #5f6e83;
     text-align: right;
   }
-  
+
   .client-name {
     font-size: 13px;
     font-family: Lato;
     font-weight: bold;
     color: #06529b;
+    margin-top:-4px;
   }
-  
+
   .dropdown {
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
   }
-  
+
   .profile-dropdown {
     height: 35px;
     cursor: pointer;
   }
-  
+
   .dropdown-content {
     position: absolute;
     top: 45px;
@@ -253,7 +257,7 @@ a:link {
     box-sizing: border-box;
     z-index: 100;
   }
-  
+
   .dropdown-header {
     display: flex;
     flex-direction: row;
@@ -261,37 +265,37 @@ a:link {
     border-bottom: 1px solid #d3dbe4;
     padding-bottom: 1rem;
   }
-  
+
   .dropdown-details {
     display: flex;
     flex-direction: column;
     margin-left: 0.5rem;
   }
-  
+
   .dropdown-icon {
     width: 40px;
     height: 40px;
   }
-  
+
   .dropdown-name {
     color: #06529b;
     font-family: Lato;
     font-weight: 700;
     font-size: 0.875rem;
   }
-  
+
   .dropdown-email {
     color: #5f6e83;
     font-family: source sans pro;
     font-size: 0.625rem;
   }
-  
+
   .dropdown-items {
     display: flex;
     flex-direction: column;
     margin-top: 0.5rem;
   }
-  
+
   .dropdown-item {
     color: #5f6e83;
     font-family: source sans pro;
@@ -302,23 +306,23 @@ a:link {
     text-decoration: none;
     border-radius: 5px;
   }
-  
+
   .dropdown-item:hover {
     background-color: #f3f6ff;
     color: #06529b;
     transition: all 0.3s ease;
   }
-  
+
   .profile-dropdown:hover .dropdown-content {
     display: flex;
   }
-  
+
   .content {
     display: flex;
     flex: 1 1 auto;
     flex-direction: row;
   }
-  
+
   .sidebar {
     display: flex;
     flex-direction: column;
@@ -327,14 +331,14 @@ a:link {
     gap: 0.75em;
     padding: 15px 10px 10px 10px;
   }
-  
+
   .sidebar-icon {
     width: 15px;
     height: 15px;
     margin-left: 20px;
     margin-right: 7px;
   }
-  
+
   .sidebar-item {
     box-sizing: border-box;
     display: flex;
@@ -346,20 +350,20 @@ a:link {
     max-width: 12.5rem;
     line-height: 27px;
   }
-  
+
   .sidebar-item:hover {
     color: #0892dd;
     background-color: #d3dbe4;
     border-radius: 5px;
     transition: all 0.3s ease-in-out;
   }
-  
+
   .sidebar-item-text {
     font-family: Lato;
     font-size: 0.875rem;
     font-weight: 900;
   }
-  
+
   .sidebar-divider {
     color: #a8b4c2;
     font-family: Lato;
@@ -370,13 +374,15 @@ a:link {
     max-width: 180px;
     line-height: 27px;
   }
-  
+
   .sidebar-divider:after {
     color: #a8b4c2;
     content: "\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0";
     text-decoration: line-through;
     margin: auto 0.5em;
   }
+
+
   .main-content {
   
     display: flex;
@@ -649,7 +655,7 @@ body {
     background: rgba(95, 110, 131, 0.1);
     border: none;
     border: 0.5px solid #5F6E83;
-    width: 100%;
+    width: 111%;
     height: 50px;
     margin-left:-43px;
     margin-top:20px;
@@ -1086,8 +1092,8 @@ body {
     margin-top: -15px;
     margin-left: -44px;
     font-size: 25px;
-    color: #0C66CC;
-    font-family: 'Lato';
+    color: #06529B;
+    font-family: 'Source Sans Pro';
 }
 
 .change-pword {
@@ -1104,9 +1110,9 @@ body {
 .text {
     margin-top: 25px;
     font-size: 25px;
-    font-family: 'Lato';
-    color: #0C66CC;
-    margin-left: 31px;
+    font-family: 'Source Sans Pro';
+    color: #06529B;
+    margin-left: 30px;
 }
 
 .lfield {

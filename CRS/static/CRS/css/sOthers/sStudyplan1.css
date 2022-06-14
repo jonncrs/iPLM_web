@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
 
@@ -116,6 +116,8 @@ body {
   font-family: Lato;
   font-weight: bold;
   font-size: 1.25rem;
+  margin-bottom: -8px;
+  margin-top: -1px;
 }
 
 .logo-sub {
@@ -164,7 +166,7 @@ body {
   min-width: 21.875rem;
   border-radius: 10px;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  font-family: Lato;
+  font-family: 'Lato';
   padding: 1rem;
   z-index: 100;
 }
@@ -244,7 +246,7 @@ body {
 
 .client-classification {
   font-size: 0.625rem;
-  font-family: Lato;
+  font-family: 'Lato';
   color: #5f6e83;
   text-align: right;
 }
@@ -254,6 +256,7 @@ body {
   font-family: Lato;
   font-weight: bold;
   color: #06529b;
+  margin-top:-4px;
 }
 
 .dropdown {
@@ -304,7 +307,7 @@ body {
 
 .dropdown-name {
   color: #06529b;
-  font-family: Lato;
+  font-family: 'Lato';
   font-weight: 700;
   font-size: 0.875rem;
 }
@@ -384,14 +387,14 @@ body {
 }
 
 .sidebar-item-text {
-  font-family: Lato;
+  font-family: 'Lato';
   font-size: 0.875rem;
   font-weight: 900;
 }
 
 .sidebar-divider {
   color: #a8b4c2;
-  font-family: Lato;
+  font-family: 'Lato';
   font-weight: 900;
   font-size: 0.625rem;
   overflow: hidden;

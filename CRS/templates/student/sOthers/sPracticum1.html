@@ -16,7 +16,6 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source Sans Pro">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter&display=swap">
 
-    <link rel="icon" href="{% static 'CRS/images/sOthers/iPLM.png' %}" type="image/png" sizes="16x16">
 </head>
 {% block content %}
 <div class="wrapper">
@@ -104,7 +103,7 @@
                   </div>
                 </a>
   
-                <a href="{% url 'OutboundNotifdetails' %}" class="notif-item">
+                <a href="{% url 'OJTNotifdetails' %}" class="notif-item">
                   <img
                     class="notif-item-icon"
                     src="https://i.postimg.cc/Kzf01wnM/shifting-form.png"
@@ -179,7 +178,7 @@
           />
           <span class="sidebar-item-text">Checklist</span>
         </a>
-        <a href="{% url 'sGradeSubmission1' %}" class="sidebar-item">
+        <a href="{% url 'donecrs' %}" class="sidebar-item">
           <img
             class="sidebar-icon"
             src="https://i.postimg.cc/NMm7n2Hz/mygrades.png"
@@ -253,13 +252,11 @@
                     <div class="backrw row"  style="margin-top: 0px;">
             
          <!------Upload content------>
-            <form method="POST" enctype="multipart/form-data">
+            <form method="POST" enctype="multipart/form-data" onSubmit="alert('OJT Application Submitted')" style="
+            margin-left: 75px;
+        ">
                 {% csrf_token %}
-                <div class="upload row">
-                    <div class="col-lg-6">
-                   
-                        <div class="row">
-                            <div class="col-lg-12">
+                <div class="upload row">                  
                                 <p id="head2"><b>Upload Documents</b><br></p>
                                 <p id="head3">Please upload the following documents.</p>
                                 {% if messages %}
@@ -269,44 +266,58 @@
                                 {% endif %}
                             </div>
                         </div>
-
+                        <div class="col-lg-6" style="margin-left: 30px; margin-top: 0px;">
                         <div>
-                            <div>
-                                <button  id="button2hvr">&nbsp;&nbsp;&nbsp;Resume</button>
-                                <input type="file" name="resume" required>
-                            </div>
-                            <div>
-                                <button  id="button2hvr">&nbsp;&nbsp;&nbsp;Recommendation Letter</button>
-                                <input type="file" name="recletter" required>
-                            </div>
-                            <div>
-                                <button  id="button2hvr">&nbsp;&nbsp;&nbsp;Agreement/Waiver</button>
-                                <input type="file" name="waiver" required> 
-                            </div>
-                            <div>
-                                <button  id="button2hvr">&nbsp;&nbsp;&nbsp;Acceptance Form</button>
-                                <input type="file" name="acceptform" required>
-                            </div>
+                                <button  id="button1-hvr">&nbsp;&nbsp;&nbsp;Resume</button>
+                                <input type="file" id="resume" name="resume" accept=".pdf" required>
                         </div>
-                                             <div class="col-lg-6">
-                    
-                        <br><br><br><br><br>
                         <div>
-                            <div>
-								<button  id="button2hvr">&nbsp;&nbsp;&nbsp;Company Profile</button>
-								<input type="file" name="companyprofile" required>
-                            </div>
-                            <div>
-                                <button  id="button2hvr">&nbsp;&nbsp;&nbsp;OJT Company ID</button>
-                                <input type="file" name="companyid" required>
-                            </div>
-                            <div>
-                                <button  id="button2hvr">&nbsp;&nbsp;&nbsp;Medical Certificate</button>
-                                <input type="file" name="medcert" required>
-                            </div>
+                                <button  id="button2-hvr">&nbsp;&nbsp;&nbsp;Recommendation Letter</button>
+                                <input type="file" id="recletter" name="recletter" accept=".pdf"  required>
+                        </div>
+                        <div>
+                                <button  id="button3-hvr">&nbsp;&nbsp;&nbsp;Agreement/Waiver</button>
+                                <input type="file" id="waiver" name="waiver" accept=".pdf"  required>
+                        </div>
+                        <div>
+                                <button  id="button4-hvr">&nbsp;&nbsp;&nbsp;Acceptance Form</button>
+                                <input type="file" id="acceptform" name="acceptform" accept=".pdf"  required>
+                        </div></div></div>
+                              
+                        <div style="margin-left:200px;margin-top: -370px;margin-bottom: 600px;">
+                          <div>
+                              <button  id="button5-hvr">&nbsp;&nbsp;&nbsp;Company Profile</button>
+                              <input type="file" id="companyprofile" name="companyprofile" accept=".pdf" required>
+                              </div>
+
+                              <div>
+                                <button  id="button6-hvr">&nbsp;&nbsp;&nbsp;OJT Company ID</button>
+                                <input type="file" id="companyid" name="companyid" accept=".pdf" required>
+</div>
+                              <div>
+                                <button  id="button7-hvr">&nbsp;&nbsp;&nbsp;Medical Certificate</button>
+                                <input type="file" id="medcert" name="medcert" accept=".pdf" required>
+</div></div></div>
                         </div>
                     </div>
-                </div>           
+                </div>   
+                <script>
+                    const types = ["resume", "recletter", "waiver", "acceptform", "companyprofile", "companyid", "medcert"];
+                    for(let x=0; x<5; x++){
+                    var file = document.getElementById(types[x]);
+                    file.onchange = function(e) {
+                    var ext = this.value.match(/\.([^\.]+)$/)[1];
+                    switch (ext) {
+                        case 'pdf':
+                        case 'PDF':
+                        break;
+                        default:
+                        alert('File type you are uploading is incorrect. \nAccepted file is only PDF');
+                        this.value = '';
+                    }
+                    };
+                }
+                </script>        
                  <a class="btn1" href="{% url 'sPracticum2' %}">
                     <div>
                         <input type="submit" id="submitbtn"></input>

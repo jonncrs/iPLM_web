@@ -47,7 +47,7 @@
 
 <body>
 <!-- top bar -->
-<div class="container-fluid">
+<div class="container-fluid" style="padding-left: 0px; padding-right: 0px;">
 	<div class="topbar">
 		<a href="{% url 'sHome' %}" class="iplm-logo">
 		  <img src="https://i.postimg.cc/Z5Kc9KQv/iplm-logo.png" class="logo" />
@@ -130,7 +130,7 @@
 				  </div>
 				</a>
 	  
-				<a href="{% url 'OutboundNotifdetails' %}" class="notif-item">
+				<class="notif-item">
 				  <img
 					class="notif-item-icon"
 					src="https://i.postimg.cc/Kzf01wnM/shifting-form.png"
@@ -206,7 +206,7 @@
 			  />
 			  <span class="sidebar-item-text">Checklist</span>
 			</a>
-			<a href="{% url 'sGradeSubmission1' %}" class="sidebar-item">
+			<a href="{% url 'donecrs' %}" class="sidebar-item">
 			  <img
 				class="sidebar-icon"
 				src="https://i.postimg.cc/NMm7n2Hz/mygrades.png"
@@ -242,7 +242,7 @@
 			  />
 			  <span class="sidebar-item-text">Practicum</span>
 			</a>
-			<!--a href="{% url 'doneOSF' %}" class="sidebar-item"-->
+			<a href="{% url 'doneOSF' %}" class="sidebar-item">
 			  <img
 				class="sidebar-icon"
 				src="https://i.postimg.cc/Kzf01wnM/shifting-form.png"
@@ -311,7 +311,7 @@
                         </div>
 
                         
-                        <form method="POST" enctype="multipart/form-data" onSubmit="alert('Form Submitted, Save a Copy!')" style="
+                        <form method="POST" enctype="multipart/form-data" onSubmit="alert('Honorable Dismissal Application Submitted')" style="
                         margin-left: 75px;
                     ">
                             {%csrf_token%}

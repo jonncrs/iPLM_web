@@ -103,7 +103,7 @@ transition: all 0.3s ease-in-out;
 }
 
 .logo {
-height: 4rem;
+height: 3rem;
 }
 
 .logo-text {
@@ -443,8 +443,8 @@ overflow: hidden;
 
 #head2 {
     letter-spacing: 1px;
-    margin-left: 30px;
-    margin-top: 30px;
+    margin-left: 130px;
+    margin-top: -15px;
     font-size: 30px;
     color: #06529B;
     font-family: 'Lato';
@@ -453,7 +453,7 @@ overflow: hidden;
 
 #head3 {
     letter-spacing: 1px;
-    margin-left: 30px;
+    margin-left: 150px;
     font-size: 20px;
     color: #06529B;
     font-family: 'Lato';
@@ -543,21 +543,21 @@ overflow: hidden;
 /*****DONE BUTTON *****/
 
 #submitbtn {
-    width: 180px;
-    height: 60px;
+    width: 130px;
+    height: 50px;
     background: #06529B;
     color: white;
-    border-radius: 15px;
+    border-radius: 10px;
     text-align: center;
     padding-top: 1px;
-    font-size: 20px;
+    font-size: 15px;
     letter-spacing: 1px;
-    font-family: 'Lato';
+    font-family: 'Source Sans Pro';
     position: absolute;
     top: 700px;
     right: 170px;
     border: 2px solid #06529B;
-    margin-top: 150px;
+    margin-top: -10px;
 }
 
 #submitbtn:hover {
@@ -569,7 +569,7 @@ overflow: hidden;
 
 
 
-#button2hvr {
+/* #button2hvr {
         border: 1px solid #06529B;
         color: white;
         text-align: left;
@@ -591,9 +591,179 @@ overflow: hidden;
         background-color: #0360AD;
         color: white;
         border-radius: 20px 20px 20px 20px;
+} */
+
+
+#button1-hvr {
+  border: 1px solid #06529B;
+  color: white;
+  text-align: left;
+  width: 290px;
+  height: 60px;
+  margin-top: 20px;
+  margin-left: 40px;
+  font-size: 18px;
+  font-family: 'Source Sans Pro';
+  top: 10px;
+  background-color: #06529B;
+  border-radius: 15px;
+
 }
 
 
+#button1-hvr:hover {
+  margin-top: 20px;
+  background-color: #0360AD;
+  color: white;
+  border-radius: 20px 20px 20px 20px;
+}
+
+
+#button2-hvr {
+  border: 1px solid #06529B;
+  color: white;
+  text-align: left;
+  width: 290px;
+  height: 60px;
+  margin-top: 20px;
+  margin-left: 40px;
+  font-size: 18px;
+  font-family: 'Source Sans Pro';
+  top: 10px;
+  background-color: #06529B;
+  border-radius: 15px;
+
+}
+
+
+#button2-hvr:hover {
+  margin-top: 20px;
+  background-color: #0360AD;
+  color: white;
+  border-radius: 20px 20px 20px 20px;
+}
+
+#button3-hvr {
+  border: 1px solid #06529B;
+  color: white;
+  text-align: left;
+  width: 290px;
+  height: 60px;
+  margin-top: 20px;
+  margin-left: 40px;
+  font-size: 18px;
+  font-family: 'Source Sans Pro';
+  top: 10px;
+  background-color: #06529B;
+  border-radius: 15px;
+
+}
+
+
+#button3-hvr:hover {
+  margin-top: 20px;
+  background-color: #0360AD;
+  color: white;
+  border-radius: 20px 20px 20px 20px;
+}
+
+#button4-hvr {
+  border: 1px solid #06529B;
+  color: white;
+  text-align: left;
+  width: 290px;
+  height: 60px;
+  margin-top: 20px;
+  margin-left: 40px;
+  font-size: 18px;
+  font-family: 'Source Sans Pro';
+  top: 10px;
+  background-color: #06529B;
+  border-radius: 15px;
+
+}
+
+
+#button4-hvr:hover {
+
+  background-color: #0360AD;
+  color: white;
+  border-radius: 20px 20px 20px 20px;
+}
+
+#button5-hvr {
+  border: 1px solid #06529B;
+  color: white;
+  text-align: left;
+  width: 290px;
+  height: 60px;
+  font-size: 18px;
+  font-family: 'Source Sans Pro';
+  top: 10px;
+  margin-top: 20px;
+  margin-left: 40px;
+  background-color: #06529B;
+  border-radius: 15px;
+  margin-left: 700px;
+}
+
+
+#button5-hvr:hover {
+
+  background-color: #0360AD;
+  color: white;
+  border-radius: 20px 20px 20px 20px;
+}
+
+#button6-hvr {
+  border: 1px solid #06529B;
+  color: white;
+  text-align: left;
+  width: 290px;
+  height: 60px;
+  font-size: 18px;
+  font-family: 'Source Sans Pro';
+  top: 10px;
+  margin-top: 20px;
+  margin-left: 40px;
+  background-color: #06529B;
+  border-radius: 15px;
+  margin-left: 700px;
+}
+
+
+#button6-hvr:hover {
+  background-color: #0360AD;
+  color: white;
+  border-radius: 20px 20px 20px 20px;
+  
+}
+
+
+
+#button7-hvr {
+  border: 1px solid #06529B;
+  color: white;
+  text-align: left;
+  width: 290px;
+  height: 60px;
+  font-size: 18px;
+  font-family: 'Source Sans Pro';
+  top: 10px;
+  margin-top: 20px;
+  margin-left: 40px;
+  background-color: #06529B;
+  border-radius: 15px;
+  margin-left: 700px;
+}
+
+
+#button7-hvr:hover {
+
+  background-color: #0360AD;
+  color: white;
+  border-radius: 20px 20px 20px 20px;
+}
 .button4hvr {
     background-color: white;
     color: #0360AD;
@@ -800,7 +970,7 @@ overflow: hidden;
 /* For screens na 1920x1080 */
 @media (max-width: 1920px) {
   .main-content {
-    zoom: 80%;
+    zoom: 75%;
   }
 }
 
@@ -822,7 +992,7 @@ overflow: hidden;
 
 @media (max-width: 1366px) {
   .main-content {
-    zoom: 90%;
+    zoom: 80%;
   }
   .wrapper {
     zoom: 90%;

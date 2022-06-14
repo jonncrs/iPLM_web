@@ -21,6 +21,7 @@ body {
 
 
 /*Side Bar*/
+
 a:link {
   text-decoration: none;
   color: #5f6e83;
@@ -83,14 +84,7 @@ body {
   text-decoration: none;
   margin-left: 0.5rem;
 }
-.progress-barsloa2 {
-  height: 5px;
-  width: 40%;
-  position: relative;
-  bottom: 5px;
-  left: 0px;
-  background: #0892dd;
-}
+
 .iplm-logo:hover {
   opacity: 0.7;
   -webkit-transition: all 0.3s ease-in-out;
@@ -98,7 +92,7 @@ body {
 }
 
 .logo {
-  height: 4rem;
+  height: 3rem;
 }
 
 .logo-text {
@@ -111,6 +105,8 @@ body {
   font-family: Lato;
   font-weight: bold;
   font-size: 1.25rem;
+  margin-bottom: -8px;
+  margin-top: -1px;
 }
 
 .logo-sub {
@@ -249,6 +245,7 @@ body {
   font-family: Lato;
   font-weight: bold;
   color: #06529b;
+  margin-top:-4px;
 }
 
 .dropdown {
@@ -401,6 +398,7 @@ body {
   text-decoration: line-through;
   margin: auto 0.5em;
 }
+
 .main-content {
 
   display: flex;
