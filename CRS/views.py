@@ -7494,6 +7494,7 @@ def transferee_9applicationform(request):
             lname = request.POST.get("LastName")
             fname = request.POST.get("FirstName")
             mname = request.POST.get("MiddleName")
+            eadd = request.POST.get("EmailAddress")
             first = fname.lower()
             middle = mname.lower()
             last = lname.lower()
@@ -7507,7 +7508,6 @@ def transferee_9applicationform(request):
             log.is_admin = False
             log.is_applicant = True
             log.save()
-            eadd = request.POST.get("EmailAddress")
             sex = request.POST.get("sex")
             cnum = request.POST.get("Phone")
             studentStudyplan = request.FILES.get("studyPLan")
@@ -7520,7 +7520,6 @@ def transferee_9applicationform(request):
             transferee.save()
             return redirect('transferee_10success')
         except:          
-            messages.error(request,'You have already submitted an application!')
             return render(request,'./applicant/transferee_9applicationform.html')
     return render(request, './applicant/transferee_9applicationform.html')
 
@@ -7575,6 +7574,7 @@ def shifter9(request):
             lname = request.POST.get("lname")
             fname = request.POST.get("fname")
             mname = request.POST.get("mname")
+            eadd = request.POST.get("eadd")
             first = fname.lower()
             middle = mname.lower()
             last = lname.lower()
@@ -7594,7 +7594,6 @@ def shifter9(request):
             studentID = request.POST.get("StudID")
             sex = request.POST.get("sex")
             department = s_dept
-            eadd = request.POST.get("eadd")
             cnum = request.POST.get("cnum")
             studentshifterletter = request.FILES.get("LetterofIntentFile")
             studentGrade = request.FILES.get("GradeScreenshotFile")
@@ -7606,7 +7605,6 @@ def shifter9(request):
             shiftee.save()
             return redirect('shifter10')
         except:          
-            messages.error(request,'You have already submitted an application!')
             return render(request,'./applicant/shifter9.html')
     return render(request, './applicant/shifter9.html')
    
@@ -7643,6 +7641,7 @@ def applicant_facultyapplicationform(request):
             firstName = request.POST.get("firstName")
             lastName = request.POST.get("lastName")
             middleName = request.POST.get("middleName")
+            email = request.POST.get("email")
             pw = str(applicant_num)
             first = firstName.lower()
             middle = middleName.lower()
@@ -7660,7 +7659,6 @@ def applicant_facultyapplicationform(request):
             log.is_admin = False
             log.is_applicant = True
             log.save()
-            email = request.POST.get("email")
             phoneNumber = request.POST.get("phoneNumber")
             sex = request.POST.get("sex")
             department = request.POST.get("department")
@@ -7675,7 +7673,6 @@ def applicant_facultyapplicationform(request):
             facultyApplicantInfo.save()
             return redirect('applicant_facultyapplicationform_workexpsheet_submitted')
         except:
-            messages.error(request, 'You have already submitted an application')
             return render(request,'./applicant/applicant_facultyapplicationform.html')
     return render(request, './applicant/applicant_facultyapplicationform.html')
 
