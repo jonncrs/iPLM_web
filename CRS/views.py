@@ -4478,6 +4478,19 @@ def sClassroom(request):
     else:
          return redirect('index')
 
+def sGradeSubmission(request):
+    if request.user.is_authenticated and request.user.is_student:
+        id= request.user.id
+        semester = '1'
+        if 'submit' in request.POST:
+            semester = request.POST.get('semester')
+            return redirect('sGradeSubmission1')
+        if semester == None:
+            semester = '1'
+        context = {'semester' : semester}
+        return render(request, 'student/sClassroom/sGradeSubmission.html', context)
+    else:
+        return redirect ('index')
 
 def sGradeSubmission1(request):
     if request.user.is_authenticated and request.user.is_student:
@@ -4536,14 +4549,22 @@ def donecrs(request):
     if request.user.is_authenticated and request.user.is_student:
         id= request.user.id
         info = StudentInfo.objects.get(studentUser=id)
+
+
         try:
             grade_file = crsGrade.objects.get(studentID_id=id)
             if grade_file.remarks == "Returned":
-                return redirect('sGradeSubmission2') 
+                return redirect('sGradeSubmission2')
+
+            elif grade_file.remarks == "Approved":
+                return render(request,'student/sClassroom/sGradeSubmissionComplete.html')
             else:
-                return redirect('sGradeSubmission3') 
+                return redirect('sGradeSubmission3')
+
+
         except ObjectDoesNotExist:
-            return redirect('sGradeSubmission1')
+            return redirect('sGradeSubmission')
+
     else:
         return redirect('index')
 

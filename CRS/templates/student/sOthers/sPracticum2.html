@@ -178,7 +178,7 @@
           />
           <span class="sidebar-item-text">Checklist</span>
         </a>
-        <a href="{% url 'sGradeSubmission1' %}" class="sidebar-item">
+        <a href="{% url 'donecrs' %}" class="sidebar-item">
           <img
             class="sidebar-icon"
             src="https://i.postimg.cc/NMm7n2Hz/mygrades.png"
@@ -269,7 +269,7 @@
                             <div class="col-lg-12">
                                 <p id="sp4-txt1">Successfully submitted!</p>
                                 <p id="sp4-txt2">You have successfully submitted your <br> documents.</p>
-                                <p id="donebtn"><a href="{% url 'sOthers' %}" class="donebtn" style="color: #FFFFFF;">Done</a></p>
+                                <p id="donebtn"><a href="{% url 'sHome' %}" class="donebtn" style="color: #FFFFFF;">Done</a></p>
                             </div>
                         </div>
                         {% csrf_token %}

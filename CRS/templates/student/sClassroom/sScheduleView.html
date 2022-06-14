@@ -474,7 +474,7 @@
         background-image: url("https://i.postimg.cc/523r4DT9/leaf-logo.png");
         background-position: right -270px top -10px;
         background-repeat: no-repeat;
-        background-size: 800px;
+        background-size: 660px;
         display: flex;
         flex-direction: row;
         flex: 1 1 0px;
@@ -484,21 +484,22 @@
 
       .schedule-container {
         align-self: center;
-        max-height: 580px;
+        max-height: 460px;
         background-color: #fff;
         padding: 1.25rem;
         border-radius: 30px;
         filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.25));
-        margin-left: 1rem;
+        margin-left: 2rem;   
         overflow-x: auto;
         scrollbar-width: thin;
       }
 
       .schedule-header {
         display: grid;
-        grid-template-columns: 90px 150px 60px 75px 60px 90px 70px 130px;
+        grid-template-columns: 75px 135px 45px 60px 60px 75px 55px 115px;
         font-family: Lato;
         font-weight: 700;
+        font-size: 0.875rem;
       }
 
       .column-header {
@@ -506,13 +507,13 @@
         color: #fff;
         display: flex;
         align-items: center;
-        padding: 1rem 0 1rem 1rem;
+        padding: 0.5rem;
       }
 
       .schedule {
         display: grid;
-        height: 520px;
-        grid-template-columns: 90px 150px 60px 75px 60px 90px 70px 130px;
+        height: 400px;
+        grid-template-columns: 75px 135px 45px 60px 60px 75px 55px 115px;
         grid-auto-rows: minmax(min-content, max-content);
         font-family: Lato;
         font-weight: 700;
@@ -520,11 +521,11 @@
         overflow-x: hidden;
         color: #06529b;
         scrollbar-width: thin;
-        font-size: 0.875rem;
+        font-size: 0.65rem;
       }
 
       .schedule-item {
-        padding: 1rem;
+        padding: 0.5rem;
       }
 
       .schedule > .schedule-item:nth-child(16n + 1),
@@ -541,7 +542,7 @@
       .detail-container {
         display: flex;
         flex-direction: column;
-        padding: 2rem;
+        padding: 1.4rem;
         background-color: #fff;
         align-self: center;
         filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.25));
@@ -552,9 +553,9 @@
       .detail-header {
         font-family: Lato;
         font-weight: 700;
-        font-size: 1.5rem;
+        font-size: 0.875rem;
         color: #06529b;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1rem;
         text-align: center;
       }
 
@@ -562,7 +563,7 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
         font-family: Lato;
-        font-size: 1rem;
+        font-size: 0.75rem;
         font-weight: 700;
         grid-row-gap: 1rem;
       }
@@ -741,7 +742,7 @@
           />
           <span class="sidebar-item-text">Checklist</span>
         </a>
-        <a href="{% url 'sGradeSubmission1' %}" class="sidebar-item">
+        <a href="{% url 'donecrs' %}" class="sidebar-item">
           <img
             class="sidebar-icon"
             src="https://i.postimg.cc/NMm7n2Hz/mygrades.png"

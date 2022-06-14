@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&display=swap">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source Sans Pro">
     <link rel="stylesheet" href="{% static 'CRS/css/sOthers/sStudyplan3.css' %}">
@@ -24,7 +24,7 @@
 <div class="wrapper">        
 <body>
         <!-- top bar -->
-    <div class="container-fluid">
+    <div class="container-fluid" style="padding-left: 0px;">
       <div class="topbar">
         <a href="{% url 'sHome' %}" class="iplm-logo">
           <img src="https://i.postimg.cc/Z5Kc9KQv/iplm-logo.png" class="logo" />
@@ -451,7 +451,7 @@
                             </div>
                         </div>
 
-                        <a href="{% url 'DLstdpln' %}" style="width: 200px;" target="_blank"><!--"{% url 'sptest' %}"-->
+                        <a href="{% url 'DLstdpln' %}" style="width: 200px;"><!--"{% url 'sptest' %}"-->
                             <div id="saveacopybtn" style="margin-top: 200px; "><img src="https://i.ibb.co/Bn7gDtW/download2.png" height="30" width="30">
                                 Save a Copy
                             </div>

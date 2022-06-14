@@ -281,6 +281,7 @@ urlpatterns = [
     #classroon
     url(r'^sClassroom/$', views.sClassroom, name='sClassroom'),
     #grade submission
+    url(r'^sGradeSubmission/$', views.sGradeSubmission, name='sGradeSubmission'),
     url(r'^sGradeSubmission1/$', views.sGradeSubmission1, name='sGradeSubmission1'),
     url(r'^sGradeSubmission2/$', views.sGradeSubmission2, name='sGradeSubmission2'),
     url(r'^sGradeSubmission3/$', views.sGradeSubmission3, name='sGradeSubmission3'),
