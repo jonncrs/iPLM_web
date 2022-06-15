@@ -7877,7 +7877,7 @@ def eventsCreate(request):
             event.validate_frontend()
             event.save()
             messages.success(request, 'Event Created!')
-            return redirect('chairperson')
+            return redirect('events.create')
         except ValidationError as error:
             messages.error(request, error.message)
             return redirect('events.create')
@@ -7903,11 +7903,9 @@ def eventsUpdate(request, event_id):
                 eventDescription=request.POST['eventDescription'],
                 eventStartDate=request.POST['eventStartDate'],
                 eventEndDate=request.POST['eventEndDate']
-            )
-            messages.success(request, 'Event Updated!')
+            )            
             return redirect('chairperson')
-        except ValidationError as error:
-            messages.error(request, error.message)
+        except ValidationError as error:           
             return redirect('chairperson')
     else:
         event = Event.objects.filter(pk=event_id).first()
@@ -7918,8 +7916,7 @@ def eventsDelete(request, event_id):
         return redirect('chairperson')
     if (request.method == 'POST'):
         event = Event.objects.filter(pk = request.POST['eventID'])
-        event.delete()
-        messages.success(request, 'Event Deleted!')
+        event.delete()        
         return redirect('chairperson')
     else:
         event = Event.objects.filter(pk=event_id).first()
