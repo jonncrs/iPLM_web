@@ -2,257 +2,219 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <title>Chairperson | CSW</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
-	<link rel="stylesheet"href="https://fonts.googleapis.com/css?family=Nunito">
-  <link rel="stylesheet" href="{% static 'CRS/css/cOthers/forms.css' %}">
-  <link rel="stylesheet" href="{% static 'CRS/css/cOthers/chairOthers.css' %}">
-  <!--Icon-->
-  <link rel="icon" href="{% static 'CRS/images/cOthers/iPLM.png' %}" type="image/png" sizes="16x16">
+    <head>
+        <title> Chairperson | CSW </title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <!-- include -->
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        
+        <!-- CSS -->
+        <link rel="stylesheet" href="{% static '/CRS/css/cHome/cHomeStyleCP.css' %}">    
+        <link rel="stylesheet" type="text/css" href="{% static 'CRS/css/cOthers/cOthersCSW.css' %}">   
+        <link href="https://fonts.googleapis.com/css?family=Lato:200,300,400,600,700,900&subset=latin-ext" rel="stylesheet">
+        <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900&subset=latin-ext' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
 
-<style>
-.alertError{
-padding: 20px;
-background-color: #f34e01;
-border-radius: 15px;
-color: white;
-font-size: 18px;
-width: 30%;
-margin-left: 150px;
-box-shadow: 0 0 10px rgb(216, 216, 216);
-animation: zoom-in-zoom-out 1s ease;
-}
+        <!--  ICON -->
+        <link rel="icon" href="https://i.postimg.cc/Z5Kc9KQv/iplm-logo.png" type="image/x-icon"/>
 
-.alertSuccess{
-padding: 20px;
-background-color: #3fb328;
-border-radius: 15px;
-color:white;
-font-size: 18px;
-width: 30%;
-margin-left: 150px;
-box-shadow: 0 0 10px rgb(216, 216, 216);
-animation: zoom-in-zoom-out 1s ease;
+        <style>
+          
+        </style>
+       
+    </head>
 
-}
 
-.closebtnError {
-margin-left: 15px;
-color: white;
-font-weight: bold;
-float: right;
-font-size: 22px;
-line-height: 20px;
-cursor: pointer;
-transition: 0.3s;
-}
-
-.closebtnError:hover {
-color: #a33908;
-}
-
-.closebtnSuccess {
-margin-left: 15px;
-color: white;
-font-weight: bold;
-float: right;
-font-size: 22px;
-line-height: 20px;
-cursor: pointer;
-transition: 0.3s;
-}
-
-.closebtnSuccess:hover {
-color: #1c6b0c;
-}
-
-@keyframes zoom-in-zoom-out {
-0% {
-transform: scale(1, 1);
-}
-50% {
-transform: scale(1.1, 1.1);
-}
-100% {
-transform: scale(1, 1);
-}
-}
-</style>
-
-</head>
-
-<body>
-
-  <div class="wrapper">
- <!-- Sidebar -->
- <nav id="sidebar">
-  <div class="sidebar-header">
-      <li>
-          <p><br><br><img src="{% static 'CRS/images/fHomeAndProfile/hat.png' %}" width="126px" height="87px"><br><br>
-      </li>
-  </div>
-  <ul class="sidebar components">
-      <li class="active"><a href="{% url 'chairperson' %}"><img src="{% static 'CRS/images/cIcons/home2.png' %}" width="97px" height="auto"></a></li>
-      <li><a href="{% url 'is_active' %}"><img src="{% static 'CRS/images/cIcons/department2.png' %}" width="97px" height="auto"></a></li>
-      <li><a href="{% url 'dept_student' %}"><img src="{% static 'CRS/images/cIcons/students2.png' %}" width="97px" height="auto"></a></li>
-      <li><a href="{% url 'full_time' %}"><img src="{% static 'CRS/images/cIcons/faculty2.png' %}" width="97px" height="auto"></a></li>
-      <li><a href="{% url 'cOthers-studyPlan' %}"><img src="{% static 'CRS/images/cIcons/others2.png' %}" width="97px" height="auto"></a></li>
-      <li><a href="{% url 'logout' %}"><img src="{% static 'CRS/images/cIcons/log-out2.png' %}" width="97px" height="auto"></a></li>
-  </ul>
-</nav>
-<!--End of Sidebar -->
-
-        <!-- Content -->
-
-        <div class="container-fluid">
-            <div class="content">
-                <!-- Others -->
-
-                <div class="pword row">
-                  <div class="col-lg-1"><a href="{% url 'cOthers-transfereeView' trans_csw.id %}" class="back" ><img src="{% static 'CRS/images/cOthers/back.svg' %}" width="50" height="45" id="back"></a>
-                  </div>
-                  <div class="col-lg-11">
-                      <p id="phead">CSW</p>
-                  </div>
+    <body class="content-scrollbar" onload="today()"> 
+        <img src="{% static 'CRS/images/cHome/bglogo.png' %}" id="bglogo" class="unselectable">       
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-sm navbar-dark flex-sm-nowrap flex-wrap">           
+            <a href="#menu-toggle" id="menu-toggle" class="navbar-brand unselectable d-xl-none" onclick="togglemenu()">
+                <span></span><img class="nav-collapse unselectable" src="{% static 'CRS/images/cIcons/collapse.png' %}" height="13"></span>
+            </a>                 
+            <a href="{% url 'chairperson' %}" class="iplm-logo unselectable">
+                <img src="https://i.postimg.cc/Z5Kc9KQv/iplm-logo.png" class="logo" />
+                <div class="logo-text">
+                  <div class="logo-main">iPLM</div>
+                  <div class="logo-sub">Integrated PLM</div>
                 </div>
-
-                <!-- Students -->
-                <div align="left"> 
-                  {% if messages %}
-                  {% for message in messages %}
-                  {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
-                  <div class="alertError">
-                      <span class="closebtnError" onclick="this.parentElement.style.display='none';">&times;</span> 
-                      {{ message }}
-                  </div>
-                  {% endif %}
-
-                  {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
-                  <div class="alertSuccess">
-                      <span class="closebtnSuccess" onclick="this.parentElement.style.display='none';">&times;</span> 
-                      {{ message }}
-                  </div>
-                  {% endif %}
-                      
-                  {% endfor %}
-                  {% endif %}
-                  <br>
-                  </div>
-                <form class="cswForm" action="{% url 'attach' trans_csw.id %}"  method="POST" enctype="multipart/form-data"> {% csrf_token %}
-                  <div class="row">
-
-                        <div class="col-15"><!-- DB DATE -->
-                          <label for="date">Date</label>
-                        </div>
-                        <div class="col-75">
-                          <input type="text" name="date" placeholder="January 1, 2021"></input>
-                        </div>
-
-                        <div class="col-15"><!-- DB FROM -->
-                          <label for="from">From</label>
-                        </div>
-                        <div class="col-75">
-                          <input type="text" name="from" placeholder="Chairperson Name"></input>
-                        </div>
-
-                        <div class="col-15"><!-- DB SUBECT -->
-                          <label for="subject">Subject</label>
-                        </div>
-                        <div class="col-75">
-                          <input type="text" name="subject" placeholder="CSW"></input>
-                        </div>
-                        
-                   </div>
-                    
-
-                    <br><hr class="blue"><br><br><br>
+            </a>         
                    
-                    <div class="row"><!-- ACTION ACQUIRED -->
-                        <div class="col-25">
-                          <label for="actionRequired">Action Required</label>
-                        </div>
-                        <div class="col-75">
-                          <textarea id="actionRequired" name="actionRequired" placeholder="Write something.." style="height:200px"></textarea>
-                        </div>
-                    </div>
+            
+            <!-- navbar user name and title  -->
+            <p class="d-none d-sm-block usertitle unselectable">
+                Chairperson
+            </p>
+            <p href="{% url 'chairperson_profile' %}" class="d-none d-sm-block user unselectable">
+                {{user.firstName}} {{user.middleName}} {{user.lastName}}
+            </p>
 
-                    <div class="row"><!-- DB REFERENCE -->
-                        <div class="col-25">
-                          <label for="reference">Reference</label>
-                        </div>
-                        <div class="col-75">
-                          <textarea id="reference" name="reference" placeholder="Write something.." style="height:200px"></textarea>
-                        </div>
-                    </div>
-
-                    <div class="row"><!-- DB BACKGROUND -->
-                        <div class="col-25">
-                          <label for="background">Background</label>
-                        </div>
-                        <div class="col-75">
-                          <textarea id="background" name="background" placeholder="Write something.." style="height:200px"></textarea>
-                        </div>
-                    </div>
-
-                    <div class="row"><!-- DB ANALYSIS -->
-                        <div class="col-25">
-                          <label for="analysis">Analysis</label>
-                        </div>
-                        <div class="col-75">
-                          <textarea id="analysis" name="analysis" placeholder="Write something.." style="height:200px"></textarea>
-                        </div>
-                    </div>
-
-                    <div class="row"><!-- DB RECOMMENDATION -->
-                        <div class="col-25">
-                          <label for="recommendation">Recommendation</label>
-                        </div>
-                        <div class="col-75">
-                          <textarea id="recommendation" name="recommendation" placeholder="Write something.." style="height:200px"></textarea>
-                        </div>
-                    </div>
-
-                    <br><br><hr class="blue"><br><br><br><br>
-
-                    <div class="row">
-                        <div class = "col-25-4"><p id="chairpersonSignature" name="chairpersonSignature">Charito M. Molina <br>IT Department</p></div>
-                        <div class = "col-75"><input type="file" id="cSignatureFile" name="cSignatureFile1"></div><!-- DB CHAIRPERSON SIGNATURE UPLOAD BUTTON -->
-
-                        <div class = "col-25-3"><p id="chairpersonSignature" name="chairpersonSignature">Engr. Juan C. Tallara Jr.<br>Dean</p></div>
-                        <div class = "col-75"><input type="file" id="cSignatureFile-2" name="cSignatureFile2"></div><!-- DB CHAIRPERSON SIGNATURE UPLOAD BUTTON -->
-                    </div>
-
-                    <div class="row">
-                      <div class="col-75" align="right"><a href="{% url 'transferee_Pdf' trans_csw.id %}" class="submitButton" type="button" target="_blank">Generate PDF</a></div><!-- DB GENERATE PDF BUTTON -->
-                      <input class="submitButton" type="submit" value="Attach" name="transfer-attach"></div><!-- DB GENERATE PDF BUTTON -->
-                  </div>
-                    </form>
+            <!-- user profile dropdown -->
+            <div class="unselectable dropdown pficon">
+                <a class="dropdown-toggle profilehover" id="dropdownProfile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img id="profileicon" src="{% static 'CRS/images/fHomeAndProfile/userprofile.png' %}" width="35px" height="35px">
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end dropdownProfileMenu p-3 text-muted" aria-labelledby="dropdownProfile">
+                    <img id="profileicon" src="{% static 'CRS/images/fHomeAndProfile/userprofile.png' %}" width="40px" height="40px">
+                    <p id="profilemenutitle">{{user.firstName}}<br></p>
+                    <p id="profilemenuemail">{{user.email}}<br></p>
+                    <div class="dropdown-divider"></div>
+                    <li><a class="profilelinks" href="{% url 'chairperson_profile' %}">View Profile</a></li>
+                    <li><a class="profilelinks" href="{% url 'fHome' %}">Log in as Faculty</a></li>
+                    <li><a class="profilelinks" href="{% url 'logout' %}">Log out</a></li>
+                </ul>
             </div>
-        </div>
+        </nav>
+      <form class="cswForm" action="{% url 'attach' trans_csw.id %}"  method="POST" enctype="multipart/form-data"> {% csrf_token %}
+        <div id="mainwrapper" class="toggled">
+            <!-- Sidebar -->
+            <div id="sidebar-wrapper" class="custom-scrollbar d-xl-block">
+                <ul class="sidebar-nav">
+                    <li class="active"> <a class="sb-links" href="{% url 'chairperson' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/home.png' %}" height="15"> Home</a> </li>
+                    <li class="sb-section unselectable"><span>CRS</span></li>
+                    <li> <a class="sb-links" href="{% url 'is_active' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/department.png' %}" height="15"> Department</a> </li>
+                    <li> <a class="sb-links" href="{% url 'dept_student' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/students.png' %}" height="15"> Students</a> </li>
+                    <li> <a class="sb-links" href="{% url 'full_time' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/faculty.png' %}" height="15"> Faculty</a> </li>
+                    <li class="sb-section unselectable"><span>Student Application</span></li>
+                    <li> <a class="sb-links" href="{% url 'cOthers-studyPlan' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/studyplan.png' %}" height="15"> Study Plan</a> </li>
+                    <li> <a class="sb-links" href="{% url 'cOthers-loa' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/loa.png' %}" height="15"> Leave of Absence</a> </li>
+                    <li> <a class="sb-links" href="{% url 'cOthers-hd' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/hd.png' %}" height="15"> Honorable Dismissal</a> </li>
+                    <li> <a class="sb-links" href="{% url 'cOthers-ojt' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/practicum.png' %}" height="15"> Practicum</a> </li>
+                    <li> <a class="sb-links" href="{% url 'cOthers-shifter' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/shifter.png' %}" height="15"> Inbound Shifter</a> </li>
+                    <li> <a class="sb-links" href="{% url 'cOthers-outshifter' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/shifter.png' %}" height="15"> Outbound Shifter</a> </li>
+                    <li> <a class="sb-links" href="{% url 'cOthers-transferee' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/transferee.png' %}" height="15"> Transferee</a> </li>
+                    <li class="sb-section unselectable"><span>Faculty Application</span></li>
+                    <li> <a class="sb-links" href="{% url 'cfaculty_applicant' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/applicant.png' %}" height="15"> Faculty Application</a> </li>
+                    <li> <a class="sb-links" href="{% url 'cOthers-partTime' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/pta.png' %}" height="15"> Part-time Availability</a> </li>
+                </ul>
+            </div> 
+            <!-- end sidebar -->     
+            
+             <!-- quick links-->
+            <div id="mainwrapper" class="toggled">
+                <div id="qlinks" class="custom-scrollbar unselectable qlinks-wrapper d-xl-block" style="width: 400px">
+                  <table class="table table-borderless tablestyle">                            
+                    <tbody>
+                      <tr style="border-top: 1px solid #d7dff6;">                                
+                        <td class="col col-1 style1">Date</td>
+                        <td class="col">
+                          <input type="text" name="date" placeholder="January 1, 2021"></input>
+                        </td>
+                      </tr> 
+                      <tr>                                
+                        <td class="col col-1 style1">From</td>
+                        <td class="col">
+                          <input type="text" name="from" placeholder="Chairperson Name"></input>
+                        </td>
+                      </tr> 
+                      <tr style="border-bottom: 1px solid #d7dff6;">                                
+                        <td class="col col-1 style1">Subject</td>
+                        <td class="col">
+                          <input type="text" name="subject" placeholder="CSW"></input>
+                        </td>
+                      </tr>                                            
+                    </tbody>
+                  </table>  
+                  
+                  <table class="table table-borderless tablestyle2">                            
+                    <tbody>
+                      <tr style="border-top: 1px solid #d7dff6;">                                
+                        <td class="col col-6 style2"><b>Charito M. Molina</b><br>IT Department</td>
+                        <td class="col">
+                          <input type="file" id="cSignatureFile" name="cSignatureFile1">
+                        </td>
+                      </tr> 
+                      <tr style="border-bottom: 1px solid #d7dff6;">                                
+                        <td class="col col-6 style2"><b>Engr. Juan C. Tallara Jr.</b><br>Dean</td>
+                        <td class="col">
+                          <div class = "col-75"><input type="file" id="cSignatureFile-2" name="cSignatureFile2"></div>
+                        </td>
+                      </tr>                                            
+                    </tbody>
+                  </table> 
 
+                   <table class="table table-borderless tablestyle2">                            
+                    <tbody>
+                      <tr>                                
+                        <td class="col style2">
+                          <input class="submitButton" type="submit" value="Attach" name="transfer-attach">                          
+                        </td>
+                        <td class="col">
+                          <a href="{% url 'transferee_Pdf' trans_csw.id %}" class="submitButton" type="button" target="_blank">Generate PDF</a>
+                        </td>
+                      </tr>                                                                
+                    </tbody>
+                  </table>         
+                </div>
+                
+            </div>
+            <!-- end quick links-->
+            
+            <!-- Page Content -->
+            <div id="page-content-wrapper">
+                <div class="container-fluid">  
+                    
+                  <div align="left"> 
+                    {% if messages %}
+                    {% for message in messages %}
+                    {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                    <div class="alertError">
+                        <span class="closebtnError" onclick="this.parentElement.style.display='none';">&times;</span> 
+                        {{ message }}
+                    </div>
+                    {% endif %}
+  
+                    {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                    <div class="alertSuccess">
+                        <span class="closebtnSuccess" onclick="this.parentElement.style.display='none';">&times;</span> 
+                        {{ message }}
+                    </div>
+                    {% endif %}
+                        
+                    {% endfor %}
+                    {% endif %}
+                  </div>
 
+                    <!--------------------------------------- place content below this ------------------------------------------------------->                  
+                    <div class="title1 unselectable">CSW</div>
+                    <h1 class="depttitle csw-h1">Action Required</h1> 
+                    <textarea id="actionRequired" name="actionRequired" placeholder="Write something.."></textarea>
+                    <h1 class="depttitle csw-h1">Reference</h1> 
+                    <textarea id="reference" name="reference" placeholder="Write something.."></textarea>
+                    <h1 class="depttitle csw-h1">Background</h1> 
+                    <textarea id="background" name="background" placeholder="Write something.."></textarea>
+                    <h1 class="depttitle csw-h1">Analysis</h1> 
+                    <textarea id="analysis" name="analysis" placeholder="Write something.."></textarea>
+                    <h1 class="depttitle csw-h1">Recommendation</h1> 
+                    <textarea id="recommendation" name="recommendation" placeholder="Write something.."></textarea>                                        
+                    <!--------------------------------------- place content above this ------------------------------------------------------->   
+                </div>            
+            </div> <!-- /#page-content-wrapper -->  
+        </div> <!-- /#wrapper -->
+    </form>
 
-
-        <!-- Javascript -->
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
+        <img src="{% static 'CRS/images/cIcons/up-arrow.png' %}" id="btn-back-to-top" class="unselectable"> <!-- scroll to top -->
+        
+        <!-- Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        
+        <!-- JS -->
+        <script src="{% static '/CRS/js/cHome/cHomeMain.js' %}"></script>   
         <script>
-            $(document).ready(function() {
-                $('#sidebarCollapse').on('click', function() {
-                    $('#sidebar').toggleClass('active');
-                });
-            });
-        </script>
-
-</body>
+            let mybutton = document.getElementById("btn-back-to-top");
+            window.onscroll = function () {
+              scrollFunction();
+            };
+            mybutton.addEventListener("click", backToTop);
+        </script>     
+    </body>
 
 </html>
