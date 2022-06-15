@@ -3,7 +3,7 @@
 <html>
 
     <head>
-        <title> Chairperson | Home </title>
+        <title> Chairperson | CSW </title>
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,36 +14,39 @@
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         
         <!-- CSS -->
-        <link rel="stylesheet" href="{% static '/CRS/css/cHome/cHomeStyleCP.css' %}">
+        <link rel="stylesheet" href="{% static '/CRS/css/cHome/cHomeStyleCP.css' %}">    
+        <link rel="stylesheet" type="text/css" href="{% static 'CRS/css/cOthers/cOthersCSW.css' %}">   
         <link href="https://fonts.googleapis.com/css?family=Lato:200,300,400,600,700,900&subset=latin-ext" rel="stylesheet">
         <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900&subset=latin-ext' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
-        <link rel="stylesheet" type="text/css" href="{% static 'CRS/css/cOthers/cOthersCSW.css' %}">
-        
+
         <!--  ICON -->
         <link rel="icon" href="https://i.postimg.cc/Z5Kc9KQv/iplm-logo.png" type="image/x-icon"/>
+
+        <style>
+          
+        </style>
+       
     </head>
 
 
-    <body class="content-scrollbar" onload="today()">
-        
-        <img src="{% static 'CRS/images/cHome/bglogo.png' %}" id="bglogo" class="unselectable">
-
+    <body class="content-scrollbar" onload="today()"> 
+        <img src="{% static 'CRS/images/cHome/bglogo.png' %}" id="bglogo" class="unselectable">       
         <!-- Navbar -->
         <nav class="navbar navbar-expand-sm navbar-dark flex-sm-nowrap flex-wrap">           
             <a href="#menu-toggle" id="menu-toggle" class="navbar-brand unselectable d-xl-none" onclick="togglemenu()">
                 <span></span><img class="nav-collapse unselectable" src="{% static 'CRS/images/cIcons/collapse.png' %}" height="13"></span>
-            </a>                
-           
+            </a>                 
             <a href="{% url 'chairperson' %}" class="iplm-logo unselectable">
                 <img src="https://i.postimg.cc/Z5Kc9KQv/iplm-logo.png" class="logo" />
                 <div class="logo-text">
                   <div class="logo-main">iPLM</div>
                   <div class="logo-sub">Integrated PLM</div>
                 </div>
-            </a>
-
-
+            </a>         
+                   
+            
             <!-- navbar user name and title  -->
             <p class="d-none d-sm-block usertitle unselectable">
                 Chairperson
@@ -68,8 +71,7 @@
                 </ul>
             </div>
         </nav>
-        <!--End Navbar-->
-
+      <form class="cswForm" action="{% url 'attach' Loa_csw.id %}"  method="POST" enctype="multipart/form-data"> {% csrf_token %}
         <div id="mainwrapper" class="toggled">
             <!-- Sidebar -->
             <div id="sidebar-wrapper" class="custom-scrollbar d-xl-block">
@@ -92,114 +94,109 @@
                     <li> <a class="sb-links" href="{% url 'cOthers-partTime' %}"><img class="sb-icons" src="{% static 'CRS/images/cIcons/pta.png' %}" height="15"> Part-time Availability</a> </li>
                 </ul>
             </div> 
-            <!-- end sidebar -->
+            <!-- end sidebar -->     
             
-            <!-- right side-->
-        <form class="cswForm" action="{% url 'attach' Loa_csw.id %}"  method="POST" enctype="multipart/form-data"> {% csrf_token %}
+             <!-- quick links-->
             <div id="mainwrapper" class="toggled">
-                <div class="row">
-                    <div class = "col-25-4"><p id="chairpersonSignature" name="chairpersonSignature">Charito M. Molina <br>IT Department</p></div>
-                    <div class = "col-75"><input type="file" id="cSignatureFile" name="cSignatureFile1"></div><!-- DB CHAIRPERSON SIGNATURE UPLOAD BUTTON -->
+                <div id="qlinks" class="custom-scrollbar unselectable qlinks-wrapper d-xl-block" style="width: 400px">
+                  <table class="table table-borderless tablestyle">                            
+                    <tbody>
+                      <tr style="border-top: 1px solid #d7dff6;">                                
+                        <td class="col col-1 style1">Date</td>
+                        <td class="col">
+                          <input type="text" name="date" placeholder="January 1, 2021"></input>
+                        </td>
+                      </tr> 
+                      <tr>                                
+                        <td class="col col-1 style1">From</td>
+                        <td class="col">
+                          <input type="text" name="from" placeholder="Chairperson Name"></input>
+                        </td>
+                      </tr> 
+                      <tr style="border-bottom: 1px solid #d7dff6;">                                
+                        <td class="col col-1 style1">Subject</td>
+                        <td class="col">
+                          <input type="text" name="subject" placeholder="CSW"></input>
+                        </td>
+                      </tr>                                            
+                    </tbody>
+                  </table>  
+                  
+                  <table class="table table-borderless tablestyle2">                            
+                    <tbody>
+                      <tr style="border-top: 1px solid #d7dff6;">                                
+                        <td class="col col-6 style2"><b>Charito M. Molina</b><br>IT Department</td>
+                        <td class="col">
+                          <input type="file" id="cSignatureFile" name="cSignatureFile1">
+                        </td>
+                      </tr> 
+                      <tr style="border-bottom: 1px solid #d7dff6;">                                
+                        <td class="col col-6 style2"><b>Engr. Juan C. Tallara Jr.</b><br>Dean</td>
+                        <td class="col">
+                          <div class = "col-75"><input type="file" id="cSignatureFile-2" name="cSignatureFile2"></div>
+                        </td>
+                      </tr>                                            
+                    </tbody>
+                  </table> 
 
-                    <div class = "col-25-3"><p id="chairpersonSignature" name="chairpersonSignature">Engr. Juan C. Tallara Jr.<br>Dean</p></div>
-                    <div class = "col-75"><input type="file" id="cSignatureFile-2" name="cSignatureFile2"></div><!-- DB CHAIRPERSON SIGNATURE UPLOAD BUTTON -->
+                   <table class="table table-borderless tablestyle2">                            
+                    <tbody>
+                      <tr>                                
+                        <td class="col style2">
+                          <input class="submitButton" type="submit" value="Attach" name="loa-attach">                          
+                        </td>
+                        <td class="col">
+                          <a href="{% url 'loa_Pdf' Loa_csw.id %}" class="submitButton" type="button" target="_blank">Generate PDF</a>
+                        </td>
+                      </tr>                                                                
+                    </tbody>
+                  </table>         
                 </div>
-              <div class="col" style="margin-top:20px ;">
-                <label class="right-label" style="margin-left:-10px; margin-right: 13px;"> Date &nbsp;&nbsp;</label>     
-                <input type="text" name="date" >
-              </div>
-              <div class="col">
-                <label class="right-label" style="margin-left:-10px; margin-right: 10px;"> From  &nbsp;</label>     
-                <input type="text" name="from" >
-              </div>
-              <div class="col" >
-                <label class="right-label" style="margin-left: -10px; "> Subject</label>     
-                <input type="text" name="subject">
-              </div>
-
-              <b class="cplabel">Charito M. Molina</b>
-              <br>
-              <b class="deptlabel">IT Department</b>
-              <input type="file" id="cSignatureFile" name="cSignatureFile1">
-              
-              <div class="v2"></div>  
-
-              <b class="namelabel">Engr. Juan C. Tallara Jr.</b>
-              <br>
-              <b class="deanlabel">Dean</b>
-
-              <div class="v3"></div>  
-
+                
             </div>
-            <!-- end right side-->
-
+            <!-- end quick links-->
+            
             <!-- Page Content -->
             <div id="page-content-wrapper">
-                <div class="container-fluid">
+                <div class="container-fluid">  
                     
+                  <div align="left"> 
+                    {% if messages %}
+                    {% for message in messages %}
+                    {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                    <div class="alertError">
+                        <span class="closebtnError" onclick="this.parentElement.style.display='none';">&times;</span> 
+                        {{ message }}
+                    </div>
+                    {% endif %}
+  
+                    {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                    <div class="alertSuccess">
+                        <span class="closebtnSuccess" onclick="this.parentElement.style.display='none';">&times;</span> 
+                        {{ message }}
+                    </div>
+                    {% endif %}
+                        
+                    {% endfor %}
+                    {% endif %}
+                  </div>
+
                     <!--------------------------------------- place content below this ------------------------------------------------------->                  
-
-                    <div class="title1 unselectable d-none d-md-block">CSW</div>    
-                     
-                      <div class="vl"></div>  
-                    <b class="label">Action Required</b>
-                      <div class="col-80 unselectable">
-                        <textarea id="actionRequired" name="actionRequired" placeholder="Write something..." class=""></textarea>
-                      </div>
-                      <b class="label">Reference</b>
-                      <div class="col-80 unselectable">
-                        <textarea id="actionRequired" name="actionRequired" placeholder="Write something..." class=""></textarea>
-                      </div>
-                      <b class="label">Background</b>
-                      <div class="col-80 unselectable">
-                        <textarea id="actionRequired" name="actionRequired" placeholder="Write something..." class=""></textarea>
-                      </div>
-                      <b class="label">Analysis</b>
-                      <div class="col-80 unselectable">
-                        <textarea id="actionRequired" name="actionRequired" placeholder="Write something..." class=""></textarea>
-                      </div>
-                      <b class="label">Recommendation</b>
-                      <div class="col-80 unselectable">
-                        <textarea id="actionRequired" name="actionRequired" placeholder="Write something..." class=""></textarea>
-                      </div>
-
-
-            
-
-                    <div align="left"> 
-                      {% if messages %}
-                      {% for message in messages %}
-                      {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
-                      <div class="alertError">
-                          <span class="closebtnError" onclick="this.parentElement.style.display='none';">&times;</span> 
-                          {{ message }}
-                      </div>
-                      {% endif %}
-
-                      {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
-                      <div class="alertSuccess">
-                          <span class="closebtnSuccess" onclick="this.parentElement.style.display='none';">&times;</span> 
-                          {{ message }}
-                      </div>
-                      {% endif %}
-                          
-                      {% endfor %}
-                      {% endif %}
-                      
-                      </div>
-
-
-                    
-
-
-
-                    
-                    
-                    <!--------------------------------------- place content above this ------------------------------------------------------->
-                
+                    <div class="title1 unselectable">CSW</div>
+                    <h1 class="depttitle csw-h1">Action Required</h1> 
+                    <textarea id="actionRequired" name="actionRequired" placeholder="Write something.."></textarea>
+                    <h1 class="depttitle csw-h1">Reference</h1> 
+                    <textarea id="reference" name="reference" placeholder="Write something.."></textarea>
+                    <h1 class="depttitle csw-h1">Background</h1> 
+                    <textarea id="background" name="background" placeholder="Write something.."></textarea>
+                    <h1 class="depttitle csw-h1">Analysis</h1> 
+                    <textarea id="analysis" name="analysis" placeholder="Write something.."></textarea>
+                    <h1 class="depttitle csw-h1">Recommendation</h1> 
+                    <textarea id="recommendation" name="recommendation" placeholder="Write something.."></textarea>                                        
+                    <!--------------------------------------- place content above this ------------------------------------------------------->   
+                </div>            
             </div> <!-- /#page-content-wrapper -->  
         </div> <!-- /#wrapper -->
-
     </form>
 
         <img src="{% static 'CRS/images/cIcons/up-arrow.png' %}" id="btn-back-to-top" class="unselectable"> <!-- scroll to top -->
