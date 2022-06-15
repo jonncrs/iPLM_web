@@ -1,33 +1,50 @@
 {% extends 'chairperson/students/students_bsit.html' %}
-    {% block content %}
-        <form method="get">
-            {{result.form}}
-            <button type="submit">Search</button>
-        </form>
-        <br>
-        {{ year }}
-        Students:{{count}}
-        <a href="{% url 'students_allI' %}">Irregular</a>
-        <table>
-            <thead>
-                <h3></h3>
-                <tr>
-                    <th>Student No.</th>
-                    <th>Last Name</th>
-                    <th>First Name</th>
-                    <th>Middle Name</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for i in bsit %}
-                <tr>
-                    <td>{{ i.studentID }}</td>
-                    <td>{{ i.studentUser.lastName }}</td>
-                    <td>{{ i.studentUser.firstName }}</td>
-                    <td>{{ i.studentUser.middleName }}</td>
-                    <td><div class="container1"><a href="{% url 'profile1_1' i.pk %}"><button class="btn btn5">view</button></a></div></td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    {% endblock %}
+{% load static %}
+{% block body %}                    
+    <div class="container table-border">  
+        <div class="container table-block content-scrollbar">                                               
+            <div class="row">
+                <div class="table-title header-sticky"><span class="spanmarginleft">{{year}}</span></div>                           
+                <table class="table table-style table-borderless table-sm">
+                    <tbody>
+                        <tr class="table-header header-sticky" style="top: 45px">
+                            <td></td>
+                            <td>Student No.</td>
+                            <td class="col-3">Last Name</td>
+                            <td class="col-3">First Name</td>
+                            <td>Middle Name</td>
+                            <td class="col-1 unselectable">View</td>
+                            <td class="col-1 unselectable">Edit</td>
+                        </tr>
+                        {% for i in bsit %}
+                        <tr>
+                            <td></td>
+                            <td>{{ i.studentID }}<!-- DB FACULTY NO --></td>
+                            <td>{{ i.studentUser.lastName }}<!-- DB LAST NAME --></td>
+                            <td>{{ i.studentUser.firstName }}<!-- DB FIRST NAME --></td>
+                            <td>{{ i.studentUser.middleName }}<!-- DB MIDDLE NAME --></td>
+                            <td>
+                                <a href="{% url 'profile1_1' i.pk %}">
+                                    <button class="minibutton unselectable"><!-- DB MANAGE FACULTY BUTTON BELOW -->
+                                        View
+                                    </button>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="{% url 'edit_students' i.pk %}">
+                                    <button class="minibutton unselectable"><!-- DB MANAGE FACULTY BUTTON BELOW -->
+                                        Edit
+                                    </button>
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            
+            </div>  
+
+        </div>
+    </div>
+{% endblock %}
+                   

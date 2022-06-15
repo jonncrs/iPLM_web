@@ -757,7 +757,7 @@ def students_bsit1_3(request):
     Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 1 and blockSection = 3 and blockCourse like 'BSIT%';")
     adviserID = Q1.fetchone()
     Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -1304,9 +1304,9 @@ def students_bsit4_6(request):
     Q1 = _db.cursor()
     Q1.execute("USE iplmdatabase")
     Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 4 and blockSection = 6 and blockCourse like 'BSIT%';")
-    adviserID = Q.fetchone()
+    adviserID = Q1.fetchone()
     Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -7877,7 +7877,7 @@ def eventsCreate(request):
             event.validate_frontend()
             event.save()
             messages.success(request, 'Event Created!')
-            return redirect('chairperson')
+            return redirect('events.create')
         except ValidationError as error:
             messages.error(request, error.message)
             return redirect('events.create')
@@ -7903,11 +7903,9 @@ def eventsUpdate(request, event_id):
                 eventDescription=request.POST['eventDescription'],
                 eventStartDate=request.POST['eventStartDate'],
                 eventEndDate=request.POST['eventEndDate']
-            )
-            messages.success(request, 'Event Updated!')
+            )            
             return redirect('chairperson')
-        except ValidationError as error:
-            messages.error(request, error.message)
+        except ValidationError as error:           
             return redirect('chairperson')
     else:
         event = Event.objects.filter(pk=event_id).first()
@@ -7918,8 +7916,7 @@ def eventsDelete(request, event_id):
         return redirect('chairperson')
     if (request.method == 'POST'):
         event = Event.objects.filter(pk = request.POST['eventID'])
-        event.delete()
-        messages.success(request, 'Event Deleted!')
+        event.delete()        
         return redirect('chairperson')
     else:
         event = Event.objects.filter(pk=event_id).first()

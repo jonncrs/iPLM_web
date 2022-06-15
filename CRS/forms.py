@@ -12,7 +12,7 @@ class InputGrades(ModelForm):
 class StudentsForm(forms.ModelForm):
 	class Meta:
 		model = StudentInfo
-		fields = 'studentUser','studentSection', 'studentID', 'collegeID'
+		fields = ('studentUser','studentSection')
 		widgets = {
 			'studentUser': forms.Select(
 				attrs={"class": "form-control"}),
