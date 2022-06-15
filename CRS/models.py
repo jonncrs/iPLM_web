@@ -318,8 +318,8 @@ class BlockSection(models.Model):
         ('4', '4'),
     )
     Block_CHOICES = (
-    ('BS IT', 'BS IT'),
-    ('BS EE', 'BS EE'),
+    ('BSIT', 'BSIT'),
+    ('BSEE', 'BSEE'),
     )
     blockYear = models.CharField(max_length=150, null=True, choices= Year_CHOICES, verbose_name='Block Year Level')
     blockSection = models.CharField(max_length=50,null=True, verbose_name='Block Section')
@@ -543,7 +543,7 @@ class hdApplicant(models.Model):
     studentGrades = models.FileField(upload_to='hdSubmission/', blank=False, null=True, validators=[validate_file_extension], verbose_name="Student Grades")
     stdParentsig = models.FileField(upload_to='hdSubmission/', blank=False, null=True, validators=[validate_file_extension], verbose_name="Student\'s Parent Signature")
     remarks = models.CharField(default="Submitted", max_length=25)
-    comment = models.TextField(max_length=150, null=True, blank=False, verbose_name="Feedback")
+    comment = models.TextField(max_length=150, null=True, blank=True, verbose_name="Feedback")
     hd_dateSubmitted = models.DateField(default=now, verbose_name="HD Date Submitted")
 
     # dateApproved = models.DateTimeField()
@@ -820,7 +820,7 @@ class ShifterApplicant(models.Model):
     department = models.CharField(max_length=100, verbose_name="Department", null=True)
     lname = models.CharField(max_length=100, verbose_name="Last Name", null=True)
     fname = models.CharField(max_length=100, verbose_name="First Name", null=True)
-    mname = models.CharField(max_length=100, verbose_name="Middle Name", null=True)
+    mname = models.CharField(max_length=100, verbose_name="Middle Name", null=True, blank=False)
     eadd = models.CharField(max_length=100, verbose_name="Email Address", null=True)
     cnum = models.CharField(max_length=100, verbose_name="Contact Number", null=True)
     studentStudyplan = models.FileField(upload_to='ShifterSubmission/', blank=True, null=True, validators=[validate_file_extension], verbose_name='Student Study Plan')
@@ -850,8 +850,8 @@ class TransfereeApplicant(models.Model):
     department = models.CharField(max_length=100, verbose_name="Department", null=True)
     lname = models.CharField(max_length=100, verbose_name="Last Name", null=True)
     fname = models.CharField(max_length=100, verbose_name="First Name", null=True)
-    mname = models.CharField(max_length=100, verbose_name="Middle Name", null=True)
-    eadd = models.CharField(max_length=100, verbose_name="Email Address", null=True)
+    mname = models.CharField(max_length=100, verbose_name="Middle Name", null=True, blank=True)
+    eadd = models.CharField(max_length=100, verbose_name="PLM Email Address", null=True)
     cnum = models.CharField(max_length=100, verbose_name="Contact Number", null=True)
     studentStudyplan = models.FileField(upload_to='TransfereeSubmission/', blank=True, null=True, validators=[validate_file_extension], verbose_name='Student Study Plan')
     studentNote = models.FileField(upload_to='TransfereeSubmission/', blank=True, null=True, validators=[validate_file_extension], verbose_name='Student Note')
@@ -870,7 +870,7 @@ class TransfereeApplicant(models.Model):
     class Meta:
         verbose_name = "Transferee Applicant"
 
-    def str(self):
+    def __str__(self):
         return '| %s  %s ' % (self.studentID, self.lname)
 
     # dateApproved = models.DateTimeField()
@@ -887,7 +887,7 @@ class FacultyApplicant(models.Model):
     
     lastName = models.CharField(max_length=100, verbose_name="Last Name", null=True)
     firstName = models.CharField(max_length=100, verbose_name="First Name", null=True)
-    middleName = models.CharField(max_length=100, verbose_name="Middle Name", null=True)
+    middleName = models.CharField(max_length=100, verbose_name="Middle Name", null=True, blank=True)
     email = models.CharField(max_length=100, verbose_name="Email", null=True)
     phoneNumber = models.CharField(validators=[phone_regex], max_length=100, verbose_name='Phone Number', null=True)
     sex = models.CharField(max_length=100, verbose_name="sex", null=True)
@@ -944,6 +944,9 @@ class studentScheduling(models.Model):
 
     class Meta:
         verbose_name_plural = "Student Scheduling"
+
+    def __str__(self):
+        return '| %s -  %s ' % (self.instructor.facultyUser.lastName, self.realsection)
 
 
 
