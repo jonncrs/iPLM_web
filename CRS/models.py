@@ -38,9 +38,8 @@ for y in range((datetime.datetime.now().year) - 5, (datetime.datetime.now().year
     SchoolYearDropdown.append((y, y))
 
 CollegeDropdown = [
-    ('1', 'CET'),
-    ('2', 'CEE')
-]
+    ('1', 'CET')
+    ]
 
 PurposeDropdown = [
     ('1', 'Health Problems'),
