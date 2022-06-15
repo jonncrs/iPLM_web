@@ -18,8 +18,10 @@ from datetime import timedelta
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 SIMPLEUI_HOME_INFO = False
+SIMPLEUI_INDEX = 'http://127.0.0.1:8000/admin/'
 SIMPLEUI_LOGO = 'http://127.0.0.1:8000/static/CRS/images/landingPage/iplm01.png'
 SIMPLEUI_ANALYSIS = False
+SIMPLEUI_DEFAULT_THEME = 'e-blue.css'
 
 
 # Quick-start development settings - unsuitable for production
@@ -175,6 +177,7 @@ AUTO_LOGOUT = {
 }
 
 SIMPLEUI_ICON = {
+    'CRS': 'fas fa-window-restore',
     'Academic Year Information': 'fas fa-calendar',
     'Block Sections': 'fas fa-school',
     'CRS Checklist': 'fas fa-clipboard-list',
