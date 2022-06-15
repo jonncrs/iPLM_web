@@ -18,7 +18,7 @@ from datetime import timedelta
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 SIMPLEUI_HOME_INFO = False
-SIMPLEUI_LOGO = 'http://127.0.0.1:8000/static/CRS/images/landingPage/iPLMlogo.png'
+SIMPLEUI_LOGO = 'http://127.0.0.1:8000/static/CRS/images/landingPage/iplm01.png'
 SIMPLEUI_ANALYSIS = False
 
 
@@ -172,4 +172,41 @@ AUTO_LOGOUT = {
     'IDLE_TIME': timedelta(minutes=60), #sinet ko lang to test
     'MESSAGE': 'The session has expired. Please login again to continue.',
     'REDIRECT_TO_LOGIN_IMMEDIATELY': True,
+}
+
+SIMPLEUI_ICON = {
+    'Academic Year Information': 'fas fa-calendar',
+    'Block Sections': 'fas fa-school',
+    'CRS Checklist': 'fas fa-clipboard-list',
+    'CRS Grades': 'fas fa-clipboard',
+    'Chairperson Information': 'fas fa-user-check',
+    'Checklists': 'fas fa-clipboard-check',
+    'Colleges': 'fas fa-university',
+    'Course List': 'fas fa-list',
+    'Curricula': 'fas fa-calendar-day',
+    'Curriculum Information': 'fas fa-info',
+    'Departments': 'fas fa-building',
+    'Events': 'fas fa-calendar-day',
+    'Faculty Applicants': 'fas fa-chalkboard-teacher',
+    'Faculty Information': 'fas fa-sitemap',
+    'HD Applicants': 'fas fa-user-plus',
+    'HD Clearance Forms': 'fas fa-file-alt',
+    'HD Dropping Forms': 'fas fa-archive',
+    'HD Transfer Certificates': 'fas fa-certificate',
+    'LOA Applicants': 'fas fa-user-minus',
+    'LOA Clearance Forms': 'fas fa-file',
+    'LOA Forms': 'fas fa-folder-open',
+    'Notifications': 'fas fa-bell',
+    'OJT Applicants': 'fas fa-portrait',
+    'Outbound Shifter Applicants': 'fas fa-random',
+    'Room Information': 'fas fa-question',
+    'Shifter Applicants': 'fas fa-user-edit',
+    'Shifting Form': 'fas fa-file-export',
+    'Student Information': 'fas fa-user-graduate',
+    'Student Scheduling': 'fas fa-calendar-alt',
+    'Study Plan Applicants': 'fas fa-user-friends',
+    'Study Plans': 'fas fa-pencil-ruler',
+    'Subject Information': 'fas fa-info-circle',
+    'Transferee Applicants': 'fas fa-exchange-alt',
+    'Users': 'fas fa-users'
 }
