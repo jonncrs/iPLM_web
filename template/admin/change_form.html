@@ -62,8 +62,9 @@
   <script>
     const replaceSpecialChars = (str) => {
       return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '') // Remove accents
-        .replace(/([^\w]+|\s+)/g, '-') // Replace space and other characters by hyphen
-        .replace(/\-\-+/g, '-')	// Replaces multiple hyphens by one hyphen
+        .replace(/([^\w]+|\s+)/g, '') // Removes space and other characters
+        .replace(/\-\-+/g, '')	// Removes hyphen
+        .replace(/[0-9]/g, '') // Removes numbers etc.
         .replace(/(^-+|-+$)/g, ''); // Remove extra hyphens from beginning or end of the string
     }
     function generatePassword() {
@@ -171,7 +172,7 @@
     <fieldset class="module aligned wide">
       <div class="form-row field-automate">
         <input type="button" value="Generate PLM Email and Password" ng-if="showButton" onclick="
-        var perm = check()
+        var perm = check1()
         if(perm == 'faculty'){
           if(fieldc() == 'none'){
             document.getElementById('fill').style.display = 'block'
@@ -234,6 +235,22 @@
         if(d.checked == true){
             document.getElementById('studentinfo-group').style.display = "block";
         };
+      }
+    };
+    function check1(){
+        var a = document.getElementById('id_is_admin');
+        var b = document.getElementById('id_is_chairperson');
+        var c = document.getElementById('id_is_faculty');
+        var d = document.getElementById('id_is_student');
+
+        if (a.checked == true || b.checked == true || c.checked == true){
+            return 'faculty';
+        }
+        else if(d.checked == true){
+            return 'student';
+        }
+        else{
+          return 'none';
       }
     };
     function check(){

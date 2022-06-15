@@ -1,4 +1,5 @@
 from http.client import HTTPS_PORT
+from tabnanny import check
 from django import forms
 from django.contrib import admin
 from django.contrib.auth.models import Group
@@ -14,6 +15,8 @@ from django.contrib import messages
 from admin_confirm import AdminConfirmMixin
 from admin_confirm.admin import confirm_action
 import re
+from django.db.models import Q
+from CRS.views import student
 from iPLMver2.settings import EMAIL_HOST_USER
 from .models import *
 
@@ -63,27 +66,31 @@ class UserCreationForm(forms.ModelForm):
         return cleaned_data
         
     def save(self, commit=True):
-        iplm = self.cleaned_data.get('email')
-        email1 = self.cleaned_data.get('email1')
-        password = self.cleaned_data.get('password1')
-        lastname = self.cleaned_data.get('lastName')
-        subject = 'iPLM Offical Account'
-        email_template_name = "admin\initial_password_notice.txt"
-        parameters = {
-            'iplmemail': iplm,
-            'password': password,
-            'lastname': lastname,
-            'domain': '127.0.0.1:8000',
-            'site_name': 'iPLM',
-            'protocol': 'http'
-        }
-        email = render_to_string(email_template_name, parameters)
-        try:
-            send_mail(subject, email, EMAIL_HOST_USER, [email1], fail_silently=False)
-        except:
-            raise ValidationError("Sending of E-mail Failed.")
         # Save the provided password in hashed format
         user = super().save(commit=False)
+        if self.is_valid():
+            iplm = self.cleaned_data.get('email')
+            check_email = User.objects.filter(Q(email=iplm))
+            iplm1 = self.cleaned_data.get('email1')
+            check_email1 = User.objects.filter(Q(email1=iplm1))
+            if not check_email.exists() and not check_email1.exists():
+                password = self.cleaned_data.get('password1')
+                lastname = self.cleaned_data.get('lastName')
+                subject = 'iPLM Official Account'
+                email_template_name = "admin\initial_password_notice.txt"
+                parameters = {
+                    'iplmemail': iplm,
+                    'password': password,
+                    'lastname': lastname,
+                    'domain': '127.0.0.1:8000',
+                    'site_name': 'iPLM',
+                    'protocol': 'http'
+                }
+                email = render_to_string(email_template_name, parameters)
+                try:
+                    send_mail(subject, email, EMAIL_HOST_USER, [iplm1], fail_silently=False)
+                except:
+                    raise forms.ValidationError("Sending of E-mail Failed.")
         user.set_password(self.cleaned_data["password1"])
         if commit:
             user.save()
