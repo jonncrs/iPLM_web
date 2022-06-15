@@ -160,8 +160,8 @@ AUTH_USER_MODEL = 'CRS.User'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'iplm.haribon@gmail.com'
-EMAIL_HOST_PASSWORD = 'zcsedqhoedkiwtic'
+EMAIL_HOST_USER = 'iplmofficial@gmail.com'
+EMAIL_HOST_PASSWORD = 'nwfmgvcdsgfvdydf'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
