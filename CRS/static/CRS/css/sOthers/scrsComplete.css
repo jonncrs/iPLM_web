@@ -1,23 +1,32 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@700&display=swap');  
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter&family=Source+Sans+Pro&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
 
 body {
-    overflow: hidden;
-    background: rgb(245, 244, 255);
-    background-image: url("https://i.postimg.cc/523r4DT9/leaf-logo.png");
-    background-position: right -375px top 70px;
-    background-repeat: no-repeat;
-    background-size: 904px 1019px;
+  overflow: hidden;
+  background: rgb(245, 244, 255);
+  background-image: url("https://i.postimg.cc/523r4DT9/leaf-logo.png"); 
+  background-position: right -375px top 70px;
+  background-repeat: no-repeat;
+  background-size: 904px 1019px;
 }
 
 #content {
-    margin-left: 175px;
-    width: 100%;
-    min-height: 100vh;
-    transition: all 0.3s;
+  margin-left: -10%;
+  width: 100%;
+  min-height: 100vh;
+  transition: all 0.3s;
 
+}
+.box {
+  box-shadow: 0px 7px 4px lightgray; border-radius: 25px;
+  background: rgba(8,146,221,0.10000000149011612);
+  border-radius: 15px;
+  width: 600px;
+  height: 312px;
+  margin-top:50px;
+  margin-left: 550px;
 }
 
 
@@ -157,7 +166,7 @@ body {
   min-width: 21.875rem;
   border-radius: 10px;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  font-family: 'Lato';
+  font-family: Lato;
   padding: 1rem;
   z-index: 100;
 }
@@ -237,7 +246,7 @@ body {
 
 .client-classification {
   font-size: 0.625rem;
-  font-family: 'Lato';
+  font-family: Lato;
   color: #5f6e83;
   text-align: right;
 }
@@ -298,7 +307,7 @@ body {
 
 .dropdown-name {
   color: #06529b;
-  font-family: 'Lato';
+  font-family: Lato;
   font-weight: 700;
   font-size: 0.875rem;
 }
@@ -378,14 +387,14 @@ body {
 }
 
 .sidebar-item-text {
-  font-family: 'Lato';
+  font-family: Lato;
   font-size: 0.875rem;
   font-weight: 900;
 }
 
 .sidebar-divider {
   color: #a8b4c2;
-  font-family: 'Lato';
+  font-family: Lato;
   font-weight: 900;
   font-size: 0.625rem;
   overflow: hidden;
@@ -402,23 +411,21 @@ body {
 }
 
 .main-content {
-
-  display: flex;
-  flex-direction: column;
-  flex: 1 1 0px;
-  min-width: 0;
+display: flex;
+flex-direction: column;
+flex: 1 1 0px;
+min-width: 0;
+overflow: hidden;
 }
+/*End of Side Bar*/
 
-/***** CONTENT *****/
-.back {
-    margin-left: 100px;
-    margin-top: 65px;
-}
+
+/***** CONFIRM SUBMISSION *****/
 
 .backrw {
-    margin-top: 65px;
     margin-left: 100px;
-    margin-right: 100px;
+    margin-top: 65px;
+    margin-left: -100px;
 }
 
 #backimg {
@@ -430,364 +437,486 @@ body {
     filter: brightness(0) saturate(100%) invert(29%) sepia(100%) saturate(1155%) hue-rotate(190deg) brightness(91%) contrast(100%);
 }
 
-  #head1 {
+#head1 {
     letter-spacing: 1px;
-    margin-top: 20px;
+    margin-left: 200px;
+    margin-top: 100px;
     font-size: 35px;
     color: #06529B;
     font-family: 'Lato';
+    font-weight: bold;
 }
 
 
-#head2 {
-    letter-spacing: 1px;
-    margin-top: 30px;
-    font-size: 30px;
-    color: #06529B;
-    font-family: 'Lato';
-}
-
-#head3 {
-    letter-spacing: 1px;
-    font-size: 20px;
-    color: #06529B;
-    font-family: 'Source Sans Pro';
-    margin-top: -20px;
-}
 
 /***** PROGRESS BAR *****/
 .progress {
-    height: 150px;
-    margin-left: 90px;
-    margin-right: 90px;
-    border-radius: 50px;
-    background: #06529B;
-    padding-left: 150px;
-    padding-right: 150px;
-    padding-top: 50px;
+  height: 150px;
+  margin-left: 90px;
+  margin-right: 90px;
+  border-radius: 50px;
+  background: #06529B;
+  padding-left: 150px;
+  padding-right: 150px;
+  padding-top: 50px;
+  z-index:30;
+  margin-right: 115px;
 }
 
+.progress-loa4 {
+  height: 150px;
+  margin-left: 90px;
+  margin-right: 90px;
+  border-radius: 30px 30px 30px 30px;
+  background: #06529B;
+  padding-left: 150px;
+  padding-right: 150px;
+  padding-top: 50px;
+
+  margin-right: 140px;
+}
 .progress-bars {
-    height: 5px;
-    width: 80%;
-
-    position:relative; 
-    bottom: 5px;
-
-    background: #0892DD;
+  height: 5px;
+  width: 100%;
+  position: relative;
+  bottom: 5px;
+  left: 0px;
+  background: #0892dd;
 }
 .progress-bar {
-    height: 5px;
-    width: 100%;
-    background: #FFFFFF;
+  height: 5px;
+  width: 100%;
+  background: #ffffff;
 }
 
 .progress-text {
-    letter-spacing: 1px;
-    font-size: 15px;
-    color: rgba(243, 246, 255, 0.6);
-    font-family: 'Lato';
+  letter-spacing: 1px;
+  font-size: 15px;
+  color: rgba(243, 246, 255, 0.6);
+  font-family: 'Lato';
 }
 
 .progressbar li {
-    position: relative;
-    list-style-type: none;
-    float: left;
-    width: 20%;
-    text-align: center;
-    margin-top: -30px;
+  position: relative;
+  list-style-type: none;
+  float: left;
+  width: 20%;
+  text-align: center;
+  margin-top: -32px;
+  margin-left: 50px;
+
 }
 
 .progressbar li:before {
-    content: '';
-    width: 50px;
-    height: 50px;
-    line-height: 30px;
-    border: 1px solid #F3F6FF;
-    display: block;
-    text-align: center;
-    margin: 0 auto 10px auto;
-    border-radius: 50%;
-    background-color: #FFFFFF;
+  content: '';
+  width: 50px;
+  height: 50px;
+  line-height: 30px;
+
+  display: block;
+  text-align: center;
+  margin: 0 auto 10px auto;
+  border-radius: 50%;
+  background-color: #ffffff;
 }
 
 .progress-text-active {
-    letter-spacing: 1px;
-    font-size: 15px;
-    color: #FFFFFF;
-    font-family: 'Lato';
-    
+  letter-spacing: 1px;
+  font-size: 15px;
+  color: #ffffff;
+  font-family: 'Lato';
 }
 
 .progressbar li.active:before {
+  font-family: 'Lato';
+  border-color: #0892DD;
+  background-color: #0892DD;
+}
+
+/* END OF PROGRESS BAR */
+
+
+/***** SP4-CONFIRMATION *****/
+
+.img-row {
+    margin-top: 18px;
+    text-align: center;
+}
+
+
+#sp4-txt1 {
+    letter-spacing: 1px;
+    font-size: 36px;
+    color: #06529B;
     font-family: 'Lato';
-    border-color: #0892DD;
-    background-color: #0892DD;
+    font-weight: bold;
+    margin-top: 50px;
+    margin-left: -60px;
+}
+
+#sp4-txt2 {
+    letter-spacing: 1px;
+    font-size: 20px;
+    color: #0892dd;
+    font-family: 'Source Sans Pro';  
+    margin-top: -15px;
+    margin-left: -60px;
+    margin-bottom: 63px;
 }
 
 
-/*****END PROGRESS BAR *****/
-
-.upload {
-    margin-top: 40px;
-    margin-left: 80px;
-}
-::-webkit-scrollbar {
-  width: 9px;
-  height: 9px;
-}
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-::-webkit-scrollbar-thumb {
-  background-color: #d3dbe4;
-  border-radius: 20px;
-  border: transparent;
+#donebtn{
+    margin-top: 35px; 
+    margin-left: -60px;   
 }
 
-/*BOX*/
-
-          .box1 {
-            box-shadow: 0px 7px 4px lightgray; border-radius: 25px;
-            background: rgba(8,146,221,0.10000000149011612);
-            border-radius: 20px;
-            width: 50%;
-            height: 140%;
-            margin-top: 1%;
-            padding-left: 3%;
-          }
-          .upload-border {
-            height: 10%;
-            width:50%;
-            margin: 0px 100px;
-            margin-left:-0%;
-            margin-top:-5%;
-            border-bottom: solid;
-            border-bottom-width: 3px;
-            border-bottom-color: rgba(95, 110, 131, 0.3);
-
-          }
-/*****DONE BUTTON *****/
-
-#submitbtn {
-    width: 180px;
-    height: 66px;
-    margin-left: 1415px; 
-    background: #06529B;
-    color: white;
+.donebtn {
+    background-color:#06529B;
+    border: none;
+    color: #ffffff;
+    padding: 15px 60px;
     border-radius: 15px;
     text-align: center;
     font-size: 20px;
     letter-spacing: 1px;
     font-family: 'Lato';
-    margin-top: 150px;
-    border: none;
-    position: relative;
-
-    
+    cursor: pointer;
+    letter-spacing: 1px;
 }
 
-#submitbtn:hover {
-    background: #0892DD;
+.donebtn:hover {
+    background-color: #0892DD;
+    color: #ffffff;
 }
 
-
-#button2hvr {
-        border: none;
-        color: white;
-        text-align: left;
-        width: 370px;
-        height: 60px;
-        margin-top: 40px;
-        font-size: 18px;
-        font-family: 'Lato';
-        top: 10px;
-        background-color: #06529B;
-        border-radius: 15px;
-}
-
-#button2hvr:hover {
-        background-color: #0892DD;
-        color: white;
-        border-radius: 20px 20px 20px 20px;
-}
+/***** END SP4-CONFIRMATION  *****/
 
 
-.button4hvr {
-    height: 90px;
-    background-color: white;
-    color: #0360AD;
-    text-align: center;
-    margin-left: 25px;
-    margin-top: 20px;
-    font-size: 18px;
-    font-family: 'Lato';
-    border: none;
-    box-shadow: 0 3px 2px 0 rgba(0, 0, 0, 0.1), 0 3px 12px 0 rgba(0, 0, 0, 0.19); 
-    border-radius: 15px;
-    content: 'Choose File';
-}
-
-
-.button4hvr:hover {
-        margin-left: 25px;
-        margin-top: 20px;
-        background-color: #0892DD;
-        color: #0360AD;
-        border-radius: 20px 20px 20px 20px;   
-}
-
-::-webkit-file-upload-button
-	{
-		color: #0892DD;
-		background: white;
-		padding: 10px;
-		border: none;
-		cursor: pointer;
-        color: #0360AD;
-        margin-bottom: 20px;
-        text-align: center;
-        margin-left: 25px;
-        margin-top: 1px;
-        width: 170px;
-        height: auto;
-        font-size: 18px;
-        font-family: 'Lato';
-        box-shadow: 0 3px 2px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.19); 
-        border-radius: 15px;
-	}
-
-    ::-webkit-file-upload-button:hover
-	{
-		background: #f7f7f7;
-	}
-
-/***** END OF CONTENT *****/
 
 
 /********BREAKPOINTS*******/
-
-@media (max-width: 1366px) {
-  .main-content {
-   zoom: 70%;
-  }
-  .wrapper {
-   zoom: 80%;
- 
-  }
- }
-
 @media (max-width: 768px) {
-    body {
-        background: #fcfcfc;
-        overflow: auto;
-    }
+  body {
+      background: #fcfcfc;
+      overflow: auto;
+  }
 
-    #content {
-        margin-left: 0px;
-    }
+  #content {
+      margin-left: 0px;
+  }
 
-    /*****SIDEBAR*****/
-    #sidebar {
-        margin-left: -175px;
-    }
+  /*****SIDEBAR*****/
+  #sidebar {
+      margin-left: -175px;
+  }
 
-    /*****END SIDEBAR*****/
-    .progress {
-        padding-left: 50px;
-        padding-right: 50px;
-    }
+  /*****END SIDEBAR*****/
 
-    #submitbtn {
-        top: 550px;
-        right: 25px;
-    }
-	
-    .select-box .options-container.active {
-        max-height: 100px;
-        opacity: 1;
-        overflow-y: scroll;
-    }
+  /*****HOME*****/
+  .quickmargin {
+      margin-bottom: 10px;
+  }
 
-/********END BREAKPOINTS*******/    
-} 
+  .white-box {
+      width: 100%;
+  }
 
-.form {
+  .colwhite {
+      width: 100%;
+      padding: 0px;
+      margin-left: 25px;
+      margin-bottom: 10px;
+  }
 
-
+  /*****END HOME*****/
 }
 
-/* * Extra small devices (portrait phones, Less than 576px) /  */
+/* Extra small devices (portrait phones, Less than 576px) */ 
 @media (max-width: 575.98px) {
-    body {
-    overflow: auto;
-    }
-    .wrapper {
-      zoom: 100%;
+  body {
+  overflow: auto;
   }
+
+#sidebar {
+  margin-left: -175px;
 }
-/* / Small devices (Landscape phones, 576px and up)/  */
+
+.efrom {
+  margin-left: -100px;
+}
+
+#buttons .btn {
+  margin-left: 160px;
+}
+
+#clearanceForm-input {
+  margin: 0px 0px 0px 15px;
+}
+
+#nameSpan1 {
+  margin: -50px 0px 0px 220px;
+}
+#nameSpan2 {
+  margin: -50px 0px 0px 50px;
+}
+#nameSpan3 {
+  margin: -50px 0px 0px 50px;
+}
+
+.form-check {
+  margin-top: 50px;
+}
+
+.loaForm-buttons {
+  margin: 50px 0px 50px 0px;
+}
+
+#clearanceForm-input-college {
+margin: 0px 30px 0px 0px;
+}
+#clearanceForm-input-sy {
+margin: 0px 0px 0px 20px;
+}
+
+#collegeSpan {
+  margin: -150px 0px 0px 300px;
+}
+
+#sySpan {
+  margin: -150px 0px 0px 100px;
+}
+
+.progress {
+  height: 150px;
+  margin-left: 30px;
+  margin-right: 50px;
+  border-radius: 30px 30px 30px 30px;
+  background: #06529B;
+  padding-left: 150px;
+  padding-right: 150px;
+  padding-top: 50px;
+  
+  margin-right: 115px;
+}
+
+.clearance-done {
+  margin: 50px 0px 0px 50px;
+}
+
+#button .btn3 {
+  margin-left: 500px;
+}
+
+}
+/* Small devices (Landscape phones, 576px and up)*/ 
 @media (min-width: 576px) and (max-width: 767.98px) {
-    body {
-    overflow: auto;
-    }
-    .wrapper {
-      zoom: 100%;
+  body {
+  overflow: auto;
   }
 
+#sidebar {
+  margin-left: -175px;
 }
-/* / Medium devices (tablets, 768px and up) /  */
+
+.efrom {
+  margin-left: -50px;
+}
+
+#buttons .btn {
+  margin-left: 160px;
+}
+
+#clearanceForm-input {
+  margin: 0px -70px 0px 95px;
+}
+
+#nameSpan1 {
+  margin: -50px 0px 0px 300px;
+}
+#nameSpan2 {
+  margin: -50px 0px 0px 80px;
+}
+#nameSpan3 {
+  margin: -50px 0px 0px 60px;
+}
+
+.form-check {
+  margin-top: 45px;
+  margin-right: 0px;
+}
+
+.loaForm-buttons {
+  margin: 50px 0px 50px 0px;
+}
+
+#clearanceForm-input-college {
+margin: 0px 30px 0px 0px;
+}
+
+#collegeSpan {
+  margin: -150px 0px 0px 300px;
+}
+
+#sySpan {
+  margin: -150px 0px 0px 100px;
+}
+
+#clearanceForm-input-sy {
+  margin: 0px 0px 0px 0px;
+}
+
+#clearanceForm-input-college2 {
+  margin: 0px 0px 0px 30px;
+}
+
+.clearance-done {
+  margin: 50px 0px 0px 125px;
+}
+
+#button .btn3 {
+  margin-left: 700px;
+}
+
+}
+/* Medium devices (tablets, 768px and up) */ 
 @media (min-width: 768px) and (max-width: 991.98px) { 
-    body {
-    overflow: auto;
-    }
-    .wrapper {
-      zoom: 100%;
+  body {
+  overflow: auto;
   }
 
+.loaForm-buttons {
+  margin: 50px 0px 50px 250px;
 }
 
-/* / Large devices (desktops, 992px and up) / */
+#clearanceForm-input {
+  margin: 0px -70px 0px 95px;
+}
+
+#nameSpan1 {
+  margin: -50px 0px 0px 300px;
+}
+#nameSpan2 {
+  margin: -50px 0px 0px 110px;
+}
+#nameSpan3 {
+  margin: -50px 0px 0px 100px;
+}
+
+.form-check {
+  margin-top: 45px;
+  margin-right: 0px;
+}
+
+#clearanceForm-input-college {
+margin: 0px 30px 0px 0px;
+}
+
+#collegeSpan {
+  margin: -150px 0px 0px 290px;
+}
+
+#sySpan {
+  margin: -150px 0px 0px 150px;
+}
+
+#clearanceForm-input-college2 {
+  margin: 0px 50px 0px 30px;
+}
+
+#clearanceForm-input-sy {
+  margin: 0px 50px 0px 0px;
+}
+
+.clearance-done {
+  margin: 50px 0px 0px 300px;
+}
+
+#button .btn3 {
+  margin-left: 800px;
+}
+}
+
+/* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) and (max-width: 1199.98px) {
-    #content {
-        zoom: 67%
-    }
-    #sidebar {
-        zoom: 75%;
-    }
-    .wrapper {
+body {
+  overflow-x: auto;
+}
+  #content {
       zoom: 100%;
   }
-}
-/* / For screens na 1920x1080 / */
-@media (max-width: 1920px) {
-    .main-content {
-        zoom: 70%;
-    }
-    
-}
-
-@media (max-width: 516px){
-    .wrapper{
-        zoom: 58%;
-    }
-}
-
-/* / For screens na 1600 / */
-@media (min-width: 1600px) {
-    .wrapper {
-        zoom: 80%;
-    }
-    .body {
+  #sidebar {
       zoom: 67%;
   }
+.loaForm-buttons {
+  left: -50px;
 }
-@media (max-width: 1366px) {
-  .main-content {
-   zoom: 70%;
-  }
+.button2hvr {
+  margin-top: 20px;
+  margin-right: 100px;
+}
+#nameSpan1 {
+  margin: -50px 0px 0px 300px;
+}
+#nameSpan2 {
+  margin: -50px 0px 0px 210px;
+}
+#nameSpan3 {
+  margin: -50px 0px 0px 210px;
+}
+
+#sySpan {
+  margin: -75px 0px 0px 250px;
+}
+
+.clearance-done {
+  margin: 0px 0px 0px 700px;
+}
+
+.form-check {
+  margin-right: -100px;
+}
+
+}
+
+/* For screens na 1600x900 */
+@media (min-width: 1600px) {
   .wrapper {
-   zoom: 80%;
- 
+      zoom: 67%;                                
   }
- }
+#nameSpan1 {
+  margin: -50px 0px 0px 300px;
+}
+#nameSpan2 {
+  margin: -50px 0px 0px 370px;
+}
+#nameSpan3 {
+  margin: -50px 0px 0px 370px;
+}
+
+#sySpan {
+  margin: -75px 0px 0px 420px;
+}
+
+.clearance-done {
+  margin: 0px 0px 0px 700px;
+}
+
+.loaForm-buttons {
+  left: 200px;
+}
+
+}
+
+/* For screens na 1920x1080 */
+@media (max-width: 1920px) {
+.main-content {
+    zoom: 70%;
+                                            
+}
+.wrapper{
+    zoom: 100%;
+                                            
+}
+}
+
+/********END BREAKPOINTS*******/

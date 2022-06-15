@@ -53,7 +53,7 @@
               font-family: source sans Pro;
               font-weight: 400;
               font-size: 0.8rem;
-              margin-top: 0.5rem;
+              margin-top: 0.3rem;
             }
 
             /*Welcome to iPLM text*/
@@ -63,14 +63,14 @@
                     font-size: 2rem;
                     color: #06529b;
                     margin-bottom: 1rem;
-                    margin-top: 1.5rem;
+                    margin-top: 1.2rem;
                     margin-left: 4rem;
                   }
 
             /*PLM picture*/
             .PLM_picture{
               width: 18rem;
-              height: 7rem;
+              height: 7.5rem;
               background: url("https://i.postimg.cc/DydN5j9p/PLM-Facade.jpg");
               background-repeat: no-repeat;
               background-position: center center;
@@ -92,7 +92,7 @@
           background-color: #fff;
           border-radius: 20px;
           box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-          width: 55%;
+          width: 54.8%;
           max-height: 8rem;}
 
     .container-2-headings {
@@ -191,7 +191,6 @@
           min-width: 0;
           overflow: hidden;
           flex-direction: column;
-
         }
 
 
@@ -292,11 +291,10 @@
       div.parent{
          box-sizing: border-box;
           display: grid;
-          grid-template-columns: 1fr 1fr 1fr 1fr;
+          grid-template-columns: 1fr 1fr 1fr;
           column-gap: 12px;
           margin-top: -130px;
           margin-left: 180px;
-          float: left;
       }
 
       div.child{
@@ -791,48 +789,7 @@
       }
 
   /*select category*/
-        select {
-     background-border: black 1px solid;
-    width: 300px;
-    padding: 12px;
-    border-radius: 10px;
-    background-color: white;
-    font-family:source sans pro;
-    /* needed */
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    /* SVG background image */
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20viewBox%3D%220%200%2012%2012%22%3E%3Ctitle%3Edown-arrow%3C%2Ftitle%3E%3Cg%20fill%3D%22%23000000%22%3E%3Cpath%20d%3D%22M10.293%2C3.293%2C6%2C7.586%2C1.707%2C3.293A1%2C1%2C0%2C0%2C0%2C.293%2C4.707l5%2C5a1%2C1%2C0%2C0%2C0%2C1.414%2C0l5-5a1%2C1%2C0%2C1%2C0-1.414-1.414Z%22%20fill%3D%22%23000000%22%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fsvg%3E");
-      background-size: .6em;
-      background-position: calc(100% - 1.3em) center;
-      background-repeat: no-repeat;
-
-  }
-  select::-ms-expand {
-      display: none;
-  }
-
-  .form-select-mb-3{
-      margin-top: -80px;
-      margin-left: 550px;
-      display: flex;
-      width: 300px;
-  }
-
-.categ {
-    top: 25px;
-    left: 1100px;
-    position: relative;
-  }
-
-  /*end of select category*/
-
-
- .btn-btn-light-w-25{
-    color: #06529b;
-     margin-top: -30px;
-      margin-left: 900px;
-      display:flex;}
+  
   /*END OF CSS*/
   </style>
 
@@ -872,7 +829,7 @@
                 />
                 <div class="notif-item-text">
                   <div class="notif-item-title">Leave of Absence Feedback</div>
-                  <div class="notif-item-detail">see more details.</div>
+                  <div class="notif-item-detail">View details.</div>
                 </div>
               </a>
               <a href="{% url 'HDNotifdetails' %}" class="notif-item">
@@ -885,7 +842,7 @@
                   <div class="notif-item-title">
                     Honorable Dismissal Feedback
                   </div>
-                  <div class="notif-item-detail">see more details.</div>
+                  <div class="notif-item-detail">View details.</div>
                 </div>
               </a>
               <a href="{% url 'SPNotifdetails' %}" class="notif-item">
@@ -896,7 +853,7 @@
                 />
                 <div class="notif-item-text">
                   <div class="notif-item-title">Study Plan Feedback</div>
-                  <div class="notif-item-detail">see more details.</div>
+                  <div class="notif-item-detail">View details.</div>
                 </div>
               </a>
               <a href="{% url 'GradesNotifdetails' %}" class="notif-item">
@@ -907,7 +864,7 @@
                 />
                 <div class="notif-item-text">
                   <div class="notif-item-title">Study Plan Feedback</div>
-                  <div class="notif-item-detail">View details</div>
+                  <div class="notif-item-detail">View details.</div>
                 </div>
               </a>
 
@@ -919,7 +876,7 @@
                 />
                 <div class="notif-item-text">
                   <div class="notif-item-title">My Grades Feedback</div>
-                  <div class="notif-item-detail">View details</div>
+                  <div class="notif-item-detail">View details.</div>
                 </div>
               </a>
 
@@ -931,7 +888,7 @@
                 />
                 <div class="notif-item-text">
                   <div class="notif-item-title">Practicum Feedback</div>
-                  <div class="notif-item-detail">View details</div>
+                  <div class="notif-item-detail">View details.</div>
                 </div>
               </a>
 
@@ -943,7 +900,7 @@
                 />
                 <div class="notif-item-text">
                   <div class="notif-item-title">Outbound Shifting Feedback</div>
-                  <div class="notif-item-detail">View details</div>
+                  <div class="notif-item-detail">View details.</div>
                 </div>
               </a>
             </div>
@@ -1061,7 +1018,7 @@
         <div class="container">
         	              <div class="PLM_picture"></div>
         	              	  <div class="container-headings">Welcome to <font color="#ecc429">iPLM</font>
-        	              	  	<div class="container-sub-headings">iPLM allows students to input and access their academic
+        	              	  	<div class="container-sub-headings">iPLM allows students to input and access their <br> academic
 								information and various student processes.</div></div></div>
 
                 <!--semester details, department information!-->
@@ -1073,10 +1030,10 @@
                               <table class="table table-sm table-borderless" id="ov-sem-details">
                                     <tbody>  
                                         <tr>
-                                        <!--{% for acads in acad%}!-->
+                                        {% for acads in acad%}
                                             <td>Academic Year: <br> Semester:</td>
-                                            <td>  <!--{{acads.yearstarted}} - {{acads.yearended}}!-->2001-2002 <br> {{acads.semester}}</td>
-                                        <!--{{%endfor%}!-->
+                                            <td>  {{acads.yearstarted}} - {{acads.yearended}} <br> {{acads.semester}}</td>
+                                        {%endfor%}
                                         </tr>                                          
                                        
                                     </tbody>
@@ -1090,11 +1047,11 @@
                                      <table class="table table-sm table-borderless" id="ov-student-details">
                                     <tbody>  
                                         <tr>
-                                            <td class="ov-info"><img src="https://i.postimg.cc/MKXg2RS2/department-details.png" class="dept_icon"> &nbsp  &nbsp  BSIT 1-1<!--{{info.studentSection}}!-->
+                                            <td class="ov-info"><img src="https://i.postimg.cc/MKXg2RS2/department-details.png" class="dept_icon"> &nbsp  &nbsp {{info.studentSection}}
                                               <br>  &nbsp  &nbsp Course & Section</td>
                                         </tr>   
                                           <tr>
-                                            <td class="ov-info"><img src="https://i.postimg.cc/MKXg2RS2/department-details.png" class="dept_icon">  &nbsp  &nbsp Irregular <!--{{info.studentRegStatus}}!--><br>  &nbsp &nbsp Status</td>
+                                            <td class="ov-info"><img src="https://i.postimg.cc/MKXg2RS2/department-details.png" class="dept_icon">  &nbsp  &nbsp {{info.studentRegStatus}} <br>  &nbsp &nbsp Status</td>
                                         </tr>                                          
                                        
                                     </tbody>
@@ -1119,7 +1076,7 @@
             <div class="child">
                <img id="features_icons" src="https://i.postimg.cc/5tWrCRFb/features-mygrades.png">
                  <span class="features_titles"> My Grades </span> <br>
-                    <span id="features_description">Submit your grades. </span></div> 
+                    <span id="features_description">Submit <br> your grades. </span></div> 
                                                 </div></div>
 
 
@@ -1128,55 +1085,56 @@
 
 
 <div class="container-3">
-        <!--Event View-->
+   <!--Event View-->
         <div class="p-2 overview-block sm-overview-block" style="width:760px;height:230px">
-          <div class="d-flex flex-wrap justify-content-center ov-block-content-2">                                
+            <div class="d-flex flex-wrap justify-content-center ov-block-content-2">                                
 
-                  <h1 style="position: absolute;width: 143px;height: 26px;color: #06529b;font-family: 'Lato', sans-serif;font-weight: 900;font-size: 20px;line-height: 26px;margin-left:30px;margin-top:7px">Events</h1>
-                  <form method="get" style="margin-top: 12px;margin-left:500px; width:200px; height:40px;">
-                  <select name="sortCategory" class="form-select mb-3" style="height: 27px; padding:2px; padding-left:6px; padding-bottom:4px;background-color: white;color: #06529b;border-width: 2px;border-radius: 8px;border-color: #06529b; font-size: 13px;font-family: 'Lato', sans-serif;margin-top:0px; margin-bottom: -600px">
-                      <option disabled selected>Select Category</option>
-                      <option value="Academics">Academics</option>
-                      <option value="Sports">Sports</option>
-                      <option value="Social">Social</option>
-                      <option value="Arts & Culture">Arts & Culture</option>
-                      <option value="Featured">Featured</option>
-                      <input type="submit" value="Go" class="btn btn-light w-25" style="color: #06529b;margin-left: 330px; margin-top: -22px;height:28px; position:absolute; background-color: #06529b; color:white; border-radius:7px;">
+                    <h1 style="position: absolute;width: 143px;height: 26px;color: #06529b;font-family: 'Lato', sans-serif;font-weight: 900;font-size: 20px;line-height: 26px; margin-left:40px;margin-top:5px;">Events</h1>
+                    <form method="get" style="margin-top:12px;margin-left:400px; width:200px; height:40px;">
+                    <select name="sortCategory" class="form-select mb-3" style="height: 27px; margin-left: 230px; padding:2px; padding-left:6px; padding-bottom:4px;background-color: white;color: #06529b;border-width: 2px; width: 180px;border-radius: 8px;border-color: #06529b; font-size: 13px;font-family: 'Lato', sans-serif;margin-top:3px">
+                        <option disabled selected>Select Category</option>
+                        <option value="Academics">Academics</option>
+                        <option value="Sports">Sports</option>
+                        <option value="Social">Social</option>
+                        <option value="Arts & Culture">Arts & Culture</option>
+                        <option value="Featured">Featured</option>
+                        <input type="submit" value="Go" class="btn btn-light w-25" style="color: #06529b; margin-top:-28px; margin-left:420px; height:28px; width: 40px; padding-top:0px; background-color: #06529b; color:white; border-radius:7px; border:none; position:absolute;">
 
-                  </form>
-              
-          <div id="scroll" class="content-scrollbar" style="width: 770px;height: 165px;overflow: auto;overflow-x: visible;margin: 0 auto;white-space: normal;margin-left:30px;border-style: solid; border-width:2px; border-color:#06529b; border-radius:5px;">
-                  <div class="body"style="margin-bottom:150px; padding-top:15px;">
-                      {% for event in events_list %}
-                      <div class="double" style="max-width:700px;color: #06529b;border-collapse: separate;">
-                          {% if event != None %}
-                          <div style="display:inline; padding-bottom:15px;">
-                          <p style="display:inline;text-align:left;color: #06529b; font-family: 'Lato', sans-serif;font-size: 16px;padding-top:5px; padding-left:15px;"><b>Event Title:</b></p><p style="display:inline;text-align:left;color: #545454; font-family: 'Lato', sans-serif;font-size: 16px;padding-top:5px; padding-left:7px;">{{ event.eventTitle }}</p>
-                          </div>
+                    </form>
+                
+            <div id="scroll" class="content-scrollbar" style="width: 830px;height: 150px;overflow: auto;overflow-x: visible;margin: 0 auto;white-space: normal;margin-left:30px;border-style: solid; border-width:2px; border-color:#06529b; border-radius:5px;">
+                    <div class="body"style="margin-bottom:150px; padding-top:15px;">
+                        {% for event in events_list %}
+                        <div class="double" style="max-width:700px;color: #06529b;border-collapse: separate;">
+                            {% if event != None %}
+                            <div style="display:inline; padding-bottom:15px;">
+                            <p style="display:inline;text-align:left;color: #06529b; font-family: 'Lato', sans-serif;font-size: 16px;padding-top:5px; padding-left:15px;"><b>Event Title:</b></p><p style="display:inline;text-align:left;color: #545454; font-family: 'Lato', sans-serif;font-size: 16px;padding-top:5px; padding-left:7px;">{{ event.eventTitle }}</p>
+                            </div>
 
-                          <div style="display:block; margin-top:5px;">
-                              <p style="display:inline;text-align:left;color: #06529b; font-family: 'Lato', sans-serif;font-size: 14px;padding-top:5px; padding-left:15px;"><b>Start Date:</b></p><p style="display:inline;text-align:left;color: #545454; font-family: 'Lato', sans-serif;font-size: 14px;padding-top:5px; padding-left:7px;">{{ event.eventStartDate }}</p>
-                          </div>
+                            <div style="display:block; margin-top:5px;">
+                                <p style="display:inline;text-align:left;color: #06529b; font-family: 'Lato', sans-serif;font-size: 14px;padding-top:5px; padding-left:15px;"><b>Start Date:</b></p><p style="display:inline;text-align:left;color: #545454; font-family: 'Lato', sans-serif;font-size: 14px;padding-top:5px; padding-left:7px;">{{ event.eventStartDate }}</p>
+                            </div>
 
-                          <div style="display:block; margin-top:5px;">
-                              <p style="display:inline;text-align:left;color: #06529b; font-family: 'Lato', sans-serif;font-size: 14px;padding-top:5px; padding-left:15px;"><b>End Date:</b></p><p style="display:inline;text-align:left;color: #545454; font-family: 'Lato', sans-serif;font-size: 14px;padding-top:5px; padding-left:7px;">{{ event.eventEndDate }}</p>
-                          </div>
+                            <div style="display:block; margin-top:5px;">
+                                <p style="display:inline;text-align:left;color: #06529b; font-family: 'Lato', sans-serif;font-size: 14px;padding-top:5px; padding-left:15px;"><b>End Date:</b></p><p style="display:inline;text-align:left;color: #545454; font-family: 'Lato', sans-serif;font-size: 14px;padding-top:5px; padding-left:7px;">{{ event.eventEndDate }}</p>
+                            </div>
 
-                          <div style="display:block; margin-top:5px; padding-bottom: 50px;">
-                              <p style="display:inline;text-align:left;color: #06529b; font-family: 'Lato', sans-serif;font-size: 14px;padding-top:5px; padding-left:15px;"><b>Description:</b></p><p style="display:inline;text-align:left;color: #545454; font-family: 'Lato', sans-serif;font-size: 14px;padding-top:5px; padding-left:7px;">{{ event.eventDescription }}</p>
-                          </div>
-                          
+                            <div style="display:block; margin-top:5px; padding-bottom: 50px;">
+                                <p style="display:inline;text-align:left;color: #06529b; font-family: 'Lato', sans-serif;font-size: 14px;padding-top:5px; padding-left:15px;"><b>Description:</b></p><p style="display:inline;text-align:left;color: #545454; font-family: 'Lato', sans-serif;font-size: 14px;padding-top:5px; padding-left:7px;">{{ event.eventDescription }}</p>
+                            </div>
+                            
 
 
-                              {% endif %}
-                      </div>
-                  {% endfor %}
-              </div>
-          </div>
-      </div>
+                                {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <!--End of Events-->
+    </div> <!-- /#page-content-wrapper -->  
+</div> <!-- /#wrapper -->
 
-</div>
-<div id="scroll" style=" height: 140px;overflow: auto;overflow-x: hidden;margin: 0 auto;white-space: normal;margin-left:140px;" >
 </body>
  <script>
     var notifWindow = document.getElementById("notif-window");

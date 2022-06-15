@@ -13,10 +13,11 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source Sans Pro">
-    <link rel="stylesheet" href="{% static 'CRS/css/sOthers/sStudyplan1.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter&display=swap">
+    <link rel="stylesheet" href="{% static 'CRS/css/sOthers/sPracticumStyle.css' %}">
+    <link rel="stylesheet" href="{% static 'CRS/css/sOthers/sStudyplan1.css' %}">
 
 
     <style>
@@ -28,208 +29,206 @@
 </head>
 <div class="wrapper">
 <body>
-   <!-- top bar -->
-<div class="container-fluid"style="padding-left: 0px; padding-right: 0px;">
-	<div class="topbar">
-		<a href="{% url 'sHome' %}" class="iplm-logo">
-		  <img src="https://i.postimg.cc/Z5Kc9KQv/iplm-logo.png" class="logo" />
-		  <div class="logo-text">
-			<div class="logo-main">iPLM</div>
-			<div class="logo-sub">Integrated PLM</div>
-		  </div>
-		</a>
-		<div class="center-region">
-		  <div class="empty"></div>
-		  <div id="notif-button" class="notif">
-			<img
-			  class="notif-icon"
-			  src="https://i.ibb.co/0XVd3kP/notification.png"
-			  alt="notification"
-			/>
-			<div id="notif-window" class="notif-content">
-			  <div class="notif-triangle"></div>
-			  <div class="notif-header">
-				Notifications -
-				<div class="notif-n">5</div>
-			  </div>
-			  <div class="notif-items">
-				<a href="{% url 'LOANotifdetails' %}" class="notif-item">
-				  <img
-					class="notif-item-icon"
-					src="https://i.postimg.cc/Gp0457xb/LOA.png"
-					alt="img"
-				  />
-				  <div class="notif-item-text">
-					<div class="notif-item-title">Leave of Absence Feedback</div>
-					<div class="notif-item-detail">see more details.</div>
-				  </div>
-				</a>
-				<a href="{% url 'HDNotifdetails' %}" class="notif-item">
-				  <img
-					class="notif-item-icon"
-					src="https://i.postimg.cc/mkhZDCyd/honorabledismissal.png"
-					alt="img"
-				  />
-				  <div class="notif-item-text">
-					<div class="notif-item-title">
-					  Honorable Dismissal Feedback
-					</div>
-					<div class="notif-item-detail">see more details.</div>
-				  </div>
-				</a>
-				<a href="{% url 'SPNotifdetails' %}" class="notif-item">
-				  <img
-					class="notif-item-icon"
-					src="https://i.postimg.cc/PJfpMCzZ/studyplan.png"
-					alt="img"
-				  />
-				  <div class="notif-item-text">
-					<div class="notif-item-title">Study Plan Feedback</div>
-					<div class="notif-item-detail">see more details.</div>
-				  </div>
-				</a>
-				<a href="{% url 'GradesNotifdetails' %}" class="notif-item">
-				  <img
-					class="notif-item-icon"
-					src="https://i.postimg.cc/NMm7n2Hz/mygrades.png"
-					alt="img"
-				  />
-				  <div class="notif-item-text">
-					<div class="notif-item-title">My Grades Feedback</div>
-					<div class="notif-item-detail">see more details.</div>
-				  </div>
-				</a>
-				<a href="{% url 'OJTNotifdetails' %}" class="notif-item">
-				  <img
-					class="notif-item-icon"
-					src="https://i.postimg.cc/SK7xtyKG/practicum.png"
-					alt="img"
-				  />
-				  <div class="notif-item-text">
-					<div class="notif-item-title">Practicum Feedback</div>
-					<div class="notif-item-detail">see more details.</div>
-				  </div>
-				</a>
-				<a class="notif-item">
-				  <img
-					class="notif-item-icon"
-					src="https://i.postimg.cc/Kzf01wnM/shifting-form.png"
-					alt="img"
-				  />
-				  <div class="notif-item-text">
-					<div class="notif-item-title">Outbound Shifting Feedback</div>
-					<div class="notif-item-detail">see more details.</div>
-				  </div>
-				</a>
-			  </div>
-			</div>
-		  </div>
-		</div>
-	   <div class="personal-info" id="dropdown-button">
-		  <div class="user-details">
-			<div class="client-classification">Student</div>
-			<div class="client-name">
-			  {{user.firstName}} {{user.middleName}} {{user.lastName}}
-			</div>
-		  </div>
-		  <div class="dropdown">
-			<img
-			  src="{% static 'CRS/images/fHomeAndProfile/userprofile.png' %}"
-			  class="profile-dropdown"
-			/>
-			<div class="dropdown-content" id="dropdown-window">
-			  <div class="dropdown-header">
-				<img
-				  src="{% static 'CRS/images/fHomeAndProfile/userprofile.png' %}"
-				  class="dropdown-icon"
-				/>
-				<div class="dropdown-details">
-				  <div class="dropdown-name">{{info.studentUser.firstName}}</div>
-				  <div class="dropdown-email">{{user.email}}</div>
-				</div>
-			  </div>
-			  <div class="dropdown-items">
-				<a href="{% url 'sProfile' %}" class="dropdown-item"
-				  >View Profile</a
-				>
-				<a href="{% url 'logout' %}" class="dropdown-item">Logout</a>
-			</div>
-		  </div>
-		</div>
-	  </div>
-	</div>
-  
-	  <!-- content -->
-	  <div class="content">
-		<!-- side bar  -->
-		<div class="sidebar">
-		  <a href="{% url 'sHome' %}" class="sidebar-item">
-			<img
-			  class="sidebar-icon"
-			  src="https://i.postimg.cc/DZS58F2h/home-button-iplm.png"
-			/>
-			<span class="sidebar-item-text">Home</span>
-		  </a>
-		  <div class="sidebar-divider">CLASSROOM</div>
-		  <a href="{% url 'sScheduleView' %}" class="sidebar-item">
-			<img
-			  class="sidebar-icon"
-			  src="https://i.postimg.cc/3R4bxwDX/schedule.png"
-			/>
-			<span class="sidebar-item-text">Schedule</span>
-		  </a>
-		  <a href="{% url 'sChecklist' %}" class="sidebar-item">
-			<img
-			  class="sidebar-icon"
-			  src="https://i.postimg.cc/J7jP6v3z/checklist.png"
-			/>
-			<span class="sidebar-item-text">Checklist</span>
-		  </a>
-		  <a href="{% url 'donecrs' %}" class="sidebar-item">
-			<img
-			  class="sidebar-icon"
-			  src="https://i.postimg.cc/NMm7n2Hz/mygrades.png"
-			/>
-			<span class="sidebar-item-text">My Grades</span>
-		  </a>
-		  <div class="sidebar-divider">OTHERS</div>
-		  <a href="{% url 'donesp' %}" class="sidebar-item">
-			<img
-			  class="sidebar-icon"
-			  src="https://i.postimg.cc/PJfpMCzZ/studyplan.png"
-			/>
-			<span class="sidebar-item-text">Study Plan</span>
-		  </a>
-		  <a href="{% url 'doneLoa' %}" class="sidebar-item">
-			<img
-			  class="sidebar-icon"
-			  src="https://i.postimg.cc/Gp0457xb/LOA.png"
-			/>
-			<span class="sidebar-item-text">Leave of Absence</span>
-		  </a>
-		  <a href="{% url 'doneHd' %}" class="sidebar-item">
-			<img
-			  class="sidebar-icon"
-			  src="https://i.postimg.cc/mkhZDCyd/honorabledismissal.pngg"
-			/>
-			<span class="sidebar-item-text">Honorable Dismissal</span>
-		  </a>
-		  <a href="{% url 'donepracticum' %}" class="sidebar-item">
-			<img
-			  class="sidebar-icon"
-			  src="https://i.postimg.cc/SK7xtyKG/practicum.png"
-			/>
-			<span class="sidebar-item-text">Practicum</span>
-		  </a>
-		  <a href="{% url 'doneOSF' %}" class="sidebar-item">
-			<img
-			  class="sidebar-icon"
-			  src="https://i.postimg.cc/Kzf01wnM/shifting-form.png"
-			/>
-			<span class="sidebar-item-text">Outbound Shifting</span>
-		  </a>
-		</div>
-        <!--End of Sidebar -->
+    <!-- top bar -->
+    <div class="topbar">
+      <div class="iplm-logo">
+        <img src="https://i.postimg.cc/Z5Kc9KQv/iplm-logo.png" class="logo" />
+        <div class="logo-text">
+          <div class="logo-main">iPLM</div>
+          <div class="logo-sub">Integrated PLM</div>
+        </div>
+      </div>
+      <div class="center-region">
+        <div class="empty"></div>
+        <div id="notif-button" class="notif">
+          <img
+            class="notif-icon"
+            src="https://i.ibb.co/0XVd3kP/notification.png"
+            alt="notification"
+          />
+          <div id="notif-window" class="notif-content">
+            <div class="notif-triangle"></div>
+            <div class="notif-header">
+              Notifications -
+              <div class="notif-n">5</div>
+            </div>
+            <div class="notif-items">
+              <a href="{% url 'LOANotifdetails' %}" class="notif-item">
+                <img
+                  class="notif-item-icon"
+                  src="https://i.postimg.cc/Gp0457xb/LOA.png"
+                  alt="img"
+                />
+                <div class="notif-item-text">
+                  <div class="notif-item-title">Leave of Absence Feedback</div>
+                  <div class="notif-item-detail">see more details.</div>
+                </div>
+              </a>
+              <a href="{% url 'HDNotifdetails' %}" class="notif-item">
+                <img
+                  class="notif-item-icon"
+                  src="https://i.postimg.cc/mkhZDCyd/honorabledismissal.png"
+                  alt="img"
+                />
+                <div class="notif-item-text">
+                  <div class="notif-item-title">
+                    Honorable Dismissal Feedback
+                  </div>
+                  <div class="notif-item-detail">see more details.</div>
+                </div>
+              </a>
+              <a href="{% url 'SPNotifdetails' %}" class="notif-item">
+                <img
+                  class="notif-item-icon"
+                  src="https://i.postimg.cc/PJfpMCzZ/studyplan.png"
+                  alt="img"
+                />
+                <div class="notif-item-text">
+                  <div class="notif-item-title">Study Plan Feedback</div>
+                  <div class="notif-item-detail">see more details.</div>
+                </div>
+              </a>
+              <a href="{% url 'GradesNotifdetails' %}" class="notif-item">
+                <img
+                  class="notif-item-icon"
+                  src="https://i.postimg.cc/NMm7n2Hz/mygrades.png"
+                  alt="img"
+                />
+                <div class="notif-item-text">
+                  <div class="notif-item-title">My Grades Feedback</div>
+                  <div class="notif-item-detail">see more details.</div>
+                </div>
+              </a>
+              <a href="{% url 'OJTNotifdetails' %}" class="notif-item">
+                <img
+                  class="notif-item-icon"
+                  src="https://i.postimg.cc/SK7xtyKG/practicum.png"
+                  alt="img"
+                />
+                <div class="notif-item-text">
+                  <div class="notif-item-title">Practicum Feedback</div>
+                  <div class="notif-item-detail">see more details.</div>
+                </div>
+              </a>
+              <a href="{% url 'OutboundNotifdetails' %}" class="notif-item">
+                <img
+                  class="notif-item-icon"
+                  src="https://i.postimg.cc/Kzf01wnM/shifting-form.png"
+                  alt="img"
+                />
+                <div class="notif-item-text">
+                  <div class="notif-item-title">Outbound Shifting Feedback</div>
+                  <div class="notif-item-detail">see more details.</div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+     <div class="personal-info" id="dropdown-button">
+        <div class="user-details">
+          <div class="client-classification">Student</div>
+          <div class="client-name">
+            {{user.firstName}} {{user.middleName}} {{user.lastName}}
+          </div>
+        </div>
+        <div class="dropdown">
+          <img
+            src="{% static 'CRS/images/fHomeAndProfile/userprofile.png' %}"
+            class="profile-dropdown"
+          />
+          <div class="dropdown-content" id="dropdown-window">
+            <div class="dropdown-header">
+              <img
+                src="{% static 'CRS/images/fHomeAndProfile/userprofile.png' %}"
+                class="dropdown-icon"
+              />
+              <div class="dropdown-details">
+                <div class="dropdown-name">{{info.studentUser.firstName}}</div>
+                <div class="dropdown-email">{{user.email}}</div>
+              </div>
+            </div>
+            <div class="dropdown-items">
+              <a href="{% url 'sProfile' %}" class="dropdown-item"
+                >View Profile</a
+              >
+              <a href="{% url 'logout' %}" class="dropdown-item">Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+          <div class="content">
+            
+             <!-- side bar  -->
+           <!-- side bar  -->
+           <div class="sidebar">
+            <a href="{% url 'sHome' %}" class="sidebar-item">
+              <img
+                class="sidebar-icon"
+                src="https://i.postimg.cc/DZS58F2h/home-button-iplm.png"
+              />
+              <span class="sidebar-item-text">Home</span>
+            </a>
+            <div class="sidebar-divider">CLASSROOM</div>
+            <a href="{% url 'sScheduleView' %}" class="sidebar-item">
+              <img
+                class="sidebar-icon"
+                src="https://i.postimg.cc/3R4bxwDX/schedule.png"
+              />
+              <span class="sidebar-item-text">Schedule</span>
+            </a>
+            <a href="{% url 'sChecklist' %}" class="sidebar-item">
+              <img
+                class="sidebar-icon"
+                src="https://i.postimg.cc/J7jP6v3z/checklist.png"
+              />
+              <span class="sidebar-item-text">Checklist</span>
+            </a>
+            <a href="{% url 'donecrs' %}" class="sidebar-item">
+              <img
+                class="sidebar-icon"
+                src="https://i.postimg.cc/NMm7n2Hz/mygrades.png"
+              />
+              <span class="sidebar-item-text">My Grades</span>
+            </a>
+            <div class="sidebar-divider">OTHERS</div>
+            <a href="{% url 'donesp' %}" class="sidebar-item">
+              <img
+                class="sidebar-icon"
+                src="https://i.postimg.cc/PJfpMCzZ/studyplan.png"
+              />
+              <span class="sidebar-item-text">Study Plan</span>
+            </a>
+            <a href="{% url 'doneLoa' %}" class="sidebar-item">
+              <img
+                class="sidebar-icon"
+                src="https://i.postimg.cc/Gp0457xb/LOA.png"
+              />
+              <span class="sidebar-item-text">Leave of Absence</span>
+            </a>
+            <a href="{% url 'doneHd' %}" class="sidebar-item">
+              <img
+                class="sidebar-icon"
+                src="https://i.postimg.cc/mkhZDCyd/honorabledismissal.pngg"
+              />
+              <span class="sidebar-item-text">Honorable Dismissal</span>
+            </a>
+            <a href="{% url 'donepracticum' %}" class="sidebar-item">
+              <img
+                class="sidebar-icon"
+                src="https://i.postimg.cc/SK7xtyKG/practicum.png"
+              />
+              <span class="sidebar-item-text">Practicum</span>
+            </a>
+            <a href="{% url 'doneOSF' %}" class="sidebar-item">
+              <img
+                class="sidebar-icon"
+                src="https://i.postimg.cc/Kzf01wnM/shifting-form.png"
+              />
+              <span class="sidebar-item-text">Outbound Shifting</span>
+            </a>
+          </div>
       
             <!-- main content DITO NYO LAGAY MGA PUCHU PUCHU NYO -->
             <div class="main-content"> 
@@ -263,23 +262,19 @@
                     
                 <!--END Progress Bar-->
                 <div class="container-fluid">
-                    <div class="imgrow row">
-                        <div class="col-lg-12">
-                            <div class="center">
-                                <div class="col-lg-12">
-                                    <div class="box" style="margin: 4% auto;"></html><br/><br/> <style>* 
-                                    {
-                                        box-sizing: border-box;
-                                    }
-                                      </style>
-                                    <p id="head2" style="font-family: Source Sans Pro;"><b>Upcoming Semester<br></b></p>
-                                    <p id="head3">Choose current year and semester to take</p>    
-                            
-                            <form method="POST" enctype="multipart/form-data" >
-                            {%csrf_token%}
-                            <div class="row justify-content-center">
-                                <div class="col-lg-8 px-4" >
-                                    <div class="select-box">
+                  <div class="imgrow row">
+                      <div class="col-lg-12">
+                          <div class="center">
+                              <div class="col-lg-12">
+                                  <div class="box" style="margin: auto; padding-top: 50px;">
+                                  <p id="head2" style="font-family: Source Sans Pro;"><b>Upcoming Semester<br></b></p>
+                                  <p id="head3">Choose current year and semester to take</p><br>
+
+                          <form method="POST" enctype="multipart/form-data" >
+                          {%csrf_token%}
+                          <div class="row justify-content-center">
+                              <div class="col-lg-8 px-4" >
+                                  <div class="select-box">
     
                                         {{ form }}
     
@@ -301,7 +296,7 @@
                             </div>
                         </div>
                         </div>
-                            <div style="margin-left:1400px; margin-top:80px;">
+                            <div style="margin-left:1200px; margin-top:80px;">
                                 <a href="{% url 'sHome' %}" button id="back-edit" style="background: none; border: none;"><img src="https://i.ibb.co/yWY15ff/arrow-left.png" height="50" width="50"></button></a>
                                 <button type="submit" style="background: none; border: none;" value="Next" {{ magic }}><img src="https://i.ibb.co/mvNr5Xt/arrow-right.png" height="50" width="50"></button>
                             </div>
