@@ -222,13 +222,19 @@
                                 <button class="year">5th Year &nbsp;&nbsp;</button>
                             </a>                                                       
                            </div>
-                           <div class="col dropdownyear">               
+                           <div class="col dropdownyear dropdown-border">               
                             <a href="{% url 'students_bsit6' %}">             
                                 <button class="year">6th Year &nbsp;&nbsp;</button>
-                            </a>
-                                                       
+                            </a>                                                       
                            </div>
-                          
+                           <div class="col dropdownyear">     
+                            <a href="{% url 'students_all' %}">                          
+                                <button class="year">All &nbsp;&nbsp;<i class="fas fa-solid fa-angle-down fa-xs"></i></button>
+                            </a>
+                            <div class="dropdown-content">
+                                <a href="{% url 'students_allI' %}">Irregular</a>
+                            </div>                              
+                           </div>  
                         </div> 
                         <div class="row" style="border-bottom: 1px solid #d3dbe4; margin-top: 15px;"> 
                         </div>

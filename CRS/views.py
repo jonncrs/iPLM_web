@@ -757,7 +757,7 @@ def students_bsit1_3(request):
     Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 1 and blockSection = 3 and blockCourse like 'BSIT%';")
     adviserID = Q1.fetchone()
     Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
@@ -1304,9 +1304,9 @@ def students_bsit4_6(request):
     Q1 = _db.cursor()
     Q1.execute("USE iplmdatabase")
     Q1.execute("SELECT adviser_id from crs_blocksection WHERE blockYear = 4 and blockSection = 6 and blockCourse like 'BSIT%';")
-    adviserID = Q.fetchone()
+    adviserID = Q1.fetchone()
     Q1.execute("SELECT lastName, firstName, middleName from crs_user WHERE id = " + str(adviserID[0]))
-    adviserName = Q.fetchone()
+    adviserName = Q1.fetchone()
     adviserFullname = f"{adviserName[0]}, {adviserName[1]} {adviserName[2]}." 
 
     if request.GET.get('search'):
