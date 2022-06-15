@@ -13,9 +13,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
     <link rel="stylesheet" href="{% static 'CRS/css/sOthers/sStudyplan4.css' %}">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter&display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source Sans Pro">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter&display=swap">
 
 
     <style>
@@ -201,7 +201,7 @@
           />
           <span class="sidebar-item-text">Checklist</span>
         </a>
-        <a href="{% url 'sGradeSubmission1' %}" class="sidebar-item">
+        <a href="{% url 'donecrs' %}" class="sidebar-item">
           <img
             class="sidebar-icon"
             src="https://i.postimg.cc/NMm7n2Hz/mygrades.png"
@@ -296,9 +296,7 @@
                             {% endif %}
                         
 
-                        <form method="POST" enctype="multipart/form-data" onSubmit="alert('Study Plan Submitted')" style="
-                        margin-left: 75px;
-                    ">
+                        <form method="POST" enctype="multipart/form-data">
                             {%csrf_token%}   
                         <div>
                             <button style="padding-left: 20px;" id="button2hvr">Study Plan</button>

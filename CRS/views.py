@@ -4566,7 +4566,7 @@ def donecrs(request):
 
 
         except ObjectDoesNotExist:
-            return redirect('sGradeSubmission')
+            return redirect('sGradeSubmission1')
 
     else:
         return redirect('index')

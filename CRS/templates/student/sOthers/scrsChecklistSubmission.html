@@ -3,7 +3,8 @@
 <html>
 
 <head>
-    <title>Students | Checklist Submission</title>
+    <title>Student | Checklist Submission</title>
+    <link rel="icon" href="https://i.postimg.cc/Z5Kc9KQv/iplm-logo.png">
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,11 +13,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
     <!-- CSS -->
-	<link rel="stylesheet" href="{% static 'CRS/css/sOthers/sLoaStyle.css' %}">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">
+	<link rel="stylesheet" href="{% static 'CRS/css/sOthers/scrsChecklistSubmission.css' %}">
 	<!--  ICON -->
-    <link rel="icon" href="{% static 'CRS/images/sOthers/iPLM.png' %}" type="image/png" sizes="16x16">
-
 	<style>
         
         #subjectMessage {
@@ -85,48 +83,232 @@
 	</style>
 </head>
 
-<body>
-	{% block content %}
-    <div class="wrapper">
-
-        <!-- Sidebar -->
-        <nav id="sidebar">
-            <div class="sidebar-header">
-                <li>
-                    <p><br><br><img src="{% static 'CRS/images/fHomeAndProfile/hat.png' %}" width="126px" height="87px"><br><br>
-                </li>
+<div class="wrapper"></div>
+    <body>
+        {% block content %}
+               <!-- top bar -->
+        <div class="topbar">
+          <a href="{% url 'sHome' %}" class="iplm-logo">
+            <img src="https://i.postimg.cc/Z5Kc9KQv/iplm-logo.png" class="logo" />
+            <div class="logo-text">
+              <div class="logo-main">iPLM</div>
+              <div class="logo-sub">Integrated PLM</div>
             </div>
-            <ul class="sidebar components">
-                <li class="active"><a href="{% url 'sHome' %}"><img src="{% static 'CRS/images/cIcons/home2.png' %}"width="97px" height="auto"></a></li>
-                <li><a href="{% url 'sProfile' %}"><img src="{% static 'CRS/images/cIcons/profile2.png' %}" width="97px" height="auto"></a></li>
-                <li><a href="{% url 'sClassroom' %}"><img src="{% static 'CRS/images/cIcons/classroom2.png' %}" width="97px" height="auto"></a></li>
-                <li><a href="{% url 'sOthers' %}"><img src="{% static 'CRS/images/cIcons/others2.png' %}" width="97px" height="auto"></a></li>
-                <li><a href="{% url 'logout' %}"><img src="{% static 'CRS/images/cIcons/log-out2.png' %}" width="97px" height="auto"></a></li>
-            </ul>
-        </nav>
-        <!--End of Sidebar -->
-
-        <!-- Content -->
-        <div id="content">
-            <div class="container-fluid">
-
-                <!--Study Plan head-->
-                <div class="back row">
-					<!-- FILE PATH: Students/sOthers/sOthers.html-->
-					<a href="{% url 'sOthers' %}" id="back-edit"><img src="{% static 'CRS/images/sClassroom/back.svg' %}" width="50" style="margin-top: 30px;"></a>
-                    <p id="head1">
-                        Outbound Shifting
-                    </p>
+          </a>
+          <div class="center-region">
+            <div class="empty"></div>
+            <div id="notif-button" class="notif">
+              <img
+                class="notif-icon"
+                src="https://i.ibb.co/0XVd3kP/notification.png"
+                alt="notification"
+              />
+              <div id="notif-window" class="notif-content">
+                <div class="notif-triangle"></div>
+                <div class="notif-header">Notifications</div>
+                <div class="notif-items">
+                  <a href="{% url 'LOANotifdetails' %}" class="notif-item">
+                    <img
+                      class="notif-item-icon"
+                      src="https://i.postimg.cc/Gp0457xb/LOA.png"
+                      alt="img"
+                    />
+                    <div class="notif-item-text">
+                      <div class="notif-item-title">Leave of Absence Feedback</div>
+                      <div class="notif-item-detail">View details</div>
+                    </div>
+                  </a>
+    
+                  <a href="{% url 'HDNotifdetails' %}" class="notif-item">
+                    <img
+                      class="notif-item-icon"
+                      src="https://i.postimg.cc/mkhZDCyd/honorabledismissal.png"
+                      alt="img"
+                    />
+                    <div class="notif-item-text">
+                      <div class="notif-item-title">
+                        Honorable Dismissal Feedback
+                      </div>
+                      <div class="notif-item-detail">View details</div>
+                    </div>
+                  </a>
+    
+                  <a href="{% url 'SPNotifdetails' %}" class="notif-item">
+                    <img
+                      class="notif-item-icon"
+                      src="https://i.postimg.cc/PJfpMCzZ/studyplan.png"
+                      alt="img"
+                    />
+                    <div class="notif-item-text">
+                      <div class="notif-item-title">Study Plan Feedback</div>
+                      <div class="notif-item-detail">View details</div>
+                    </div>
+                  </a>
+    
+                  <a href="{% url 'GradesNotifdetails' %}" class="notif-item">
+                    <img
+                      class="notif-item-icon"
+                      src="https://i.postimg.cc/NMm7n2Hz/mygrades.png"
+                      alt="img"
+                    />
+                    <div class="notif-item-text">
+                      <div class="notif-item-title">My Grades Feedback</div>
+                      <div class="notif-item-detail">View details</div>
+                    </div>
+                  </a>
+    
+                  <a href="{% url 'OJTNotifdetails' %}" class="notif-item">
+                    <img
+                      class="notif-item-icon"
+                      src="https://i.postimg.cc/SK7xtyKG/practicum.png"
+                      alt="img"
+                    />
+                    <div class="notif-item-text">
+                      <div class="notif-item-title">Practicum Feedback</div>
+                      <div class="notif-item-detail">View details</div>
+                    </div>
+                  </a>
+    
+                  <a href="{% url 'OutboundNotifdetails' %}" class="notif-item">
+                    <img
+                      class="notif-item-icon"
+                      src="https://i.postimg.cc/Kzf01wnM/shifting-form.png"
+                      alt="img"
+                    />
+                    <div class="notif-item-text">
+                      <div class="notif-item-title">Outbound Shifting Feedback</div>
+                      <div class="notif-item-detail">View details</div>
+                    </div>
+                  </a>
                 </div>
-                <!--END Study Plan head-->
+              </div>
+            </div>
+          </div>
+          <div class="personal-info" id="dropdown-button">
+            <div class="user-details">
+              <div class="client-classification">Student</div>
+              <div class="client-name">
+                {{user.firstName}} {{user.middleName}} {{user.lastName}}
+              </div>
+            </div>
+            <div class="dropdown">
+              <img
+                src="{% static 'CRS/images/fHomeAndProfile/userprofile.png' %}"
+                class="profile-dropdown"
+              />
+              <div class="dropdown-content" id="dropdown-window">
+                <div class="dropdown-header">
+                  <img
+                    src="{% static 'CRS/images/fHomeAndProfile/userprofile.png' %}"
+                    class="dropdown-icon"
+                  />
+                  <div class="dropdown-details">
+                    <div class="dropdown-name">{{user.firstName}}</div>
+                    <div class="dropdown-email">{{user.email}}</div>
+                  </div>
+                </div>
+                <div class="dropdown-items">
+                  <a href="{% url 'sProfile' %}" class="dropdown-item"
+                    >View Profile</a
+                  >
+                  <a href="{% url 'logout' %}" class="dropdown-item">Logout</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+              <div class="content">
+                
+                 <!-- side bar  -->
+               <!-- side bar  -->
+               <div class="sidebar">
+                <a href="{% url 'sHome' %}" class="sidebar-item">
+                  <img
+                    class="sidebar-icon"
+                    src="https://i.postimg.cc/DZS58F2h/home-button-iplm.png"
+                  />
+                  <span class="sidebar-item-text">Home</span>
+                </a>
+                <div class="sidebar-divider">CLASSROOM</div>
+                <a href="{% url 'sScheduleView' %}" class="sidebar-item">
+                  <img
+                    class="sidebar-icon"
+                    src="https://i.postimg.cc/3R4bxwDX/schedule.png"
+                  />
+                  <span class="sidebar-item-text">Schedule</span>
+                </a>
+                <a href="{% url 'sChecklist' %}" class="sidebar-item">
+                  <img
+                    class="sidebar-icon"
+                    src="https://i.postimg.cc/J7jP6v3z/checklist.png"
+                  />
+                  <span class="sidebar-item-text">Checklist</span>
+                </a>
+                <a href="{% url 'donecrs' %}" class="sidebar-item">
+                  <img
+                    class="sidebar-icon"
+                    src="https://i.postimg.cc/NMm7n2Hz/mygrades.png"
+                  />
+                  <span class="sidebar-item-text">My Grades</span>
+                </a>
+                <div class="sidebar-divider">OTHERS</div>
+                <a href="{% url 'donesp' %}" class="sidebar-item">
+                  <img
+                    class="sidebar-icon"
+                    src="https://i.postimg.cc/PJfpMCzZ/studyplan.png"
+                  />
+                  <span class="sidebar-item-text">Study Plan</span>
+                </a>
+                <a href="{% url 'doneLoa' %}" class="sidebar-item">
+                  <img
+                    class="sidebar-icon"
+                    src="https://i.postimg.cc/Gp0457xb/LOA.png"
+                  />
+                  <span class="sidebar-item-text">Leave of Absence</span>
+                </a>
+                <a href="{% url 'doneHd' %}" class="sidebar-item">
+                  <img
+                    class="sidebar-icon"
+                    src="https://i.postimg.cc/mkhZDCyd/honorabledismissal.pngg"
+                  />
+                  <span class="sidebar-item-text">Honorable Dismissal</span>
+                </a>
+                <a href="{% url 'donepracticum' %}" class="sidebar-item">
+                  <img
+                    class="sidebar-icon"
+                    src="https://i.postimg.cc/SK7xtyKG/practicum.png"
+                  />
+                  <span class="sidebar-item-text">Practicum</span>
+                </a>
+                <a href="{% url 'doneOSF' %}" class="sidebar-item">
+                  <img
+                    class="sidebar-icon"
+                    src="https://i.postimg.cc/Kzf01wnM/shifting-form.png"
+                  />
+                  <span class="sidebar-item-text">Outbound Shifting</span>
+                </a>
+              </div>
+			  
+
+                <!-- main content DITO NYO LAGAY MGA PUCHU PUCHU NYO -->
+                <div class="main-content"> 
+                <div class="container-fluid">
+                        <p id="head1" style="
+						margin-top: 52px;
+					">
+                            Outbound Shifting
+                         </p>    
+                         </div>
+
 
                 <!-- Progress Bar -->
                 <div class="row">
-                    <div class="col-lg-12">
-                        <div class="progress row">
-                            <div class="col-lg-12">
-                                <div class="progress-bar "></div>
-                                <div class="progressbar">
+                    <div class="col-lg-12" style = "margin-left: -31px;">
+                              <div class="progress row">
+                                  <div class="col-lg-12">
+                                      <div class="progress-bar "></div>
+                                      <div class="progressbar">
+                                          <div class="progress-bars "></div>
                                         <li class="active progress-text-active">Checklist<br>Submission</li>
                                         <li class="progress-text">Shifting<br>Form</li>
                                         <li class="progress-text">Upload<br>Documents</li>
@@ -138,83 +320,121 @@
                 </div>
                 <!--END Progress Bar-->
 
-        <!-- Content -->
+         <!-- Content -->
         
-                    {% if messages %}
-                    {% for message in messages %}
-                    <p id="head3"> {{ message }} </p>
-                    {% endfor %}
-                    {% endif %}
+         {% if messages %}
+         {% for message in messages %}
+         <p id="head3"> {{ message }} </p>
+         {% endfor %}
+         {% endif %}
 
-                        <!------Upload content------>
-  
-                    {% if flag == 1 %}
-                    <div class="row">
+             <!------Upload content------>
+
+         {% if flag == 1 %}
+         <div class="container-fluid">
+            <div class="imgrow row">
+                <div class="col-lg-12">
+                    <div class="center">
                         <div class="col-lg-12">
-                            {% if approved_file.remarks == "Returned" %}
-                                <p>STATUS: {{approved_file.remarks}}</p>
-                                <p>FEEDBACK: {{approved_file.comment}}</p>
-                            {% endif %}
-                            <p id="head2"><b>Upload Documents</b><br></p>
-                            <p id="head3">Please upload the following documents.</p>
-                        </div>
-                    </div>
+                            <div class="box2" style="margin:2% auto; padding-top: 50px;">
+                 {% if approved_file.remarks == "Returned" %}
+                     <p>STATUS: {{approved_file.remarks}}</p>
+                     <p>FEEDBACK: {{approved_file.comment}}</p>
+                 {% endif %}
+                 <p id="head2"><b>Upload Documents</b><br></p>
+                 <div class="linebreak"></div>
+                 <p id="head3">Please upload the following documents.</p>
 
-                    <form method="POST" enctype="multipart/form-data">
-                        {%csrf_token%}	   
-                        <div>
-                            <button  id="button2hvr">&nbsp;&nbsp;&nbsp;Checklist</button>
-                            <input type="file" name="checkList" required>
-                        </div>
-                        {%csrf_token%}
-                        <div>
-                            <button  id="button2hvr">&nbsp;&nbsp;&nbsp;Screenshot Grades CRS</button>
-                            <input type="file" name="crsChecklist" required>
-                        </div>
 
-                        <!-----------SUBMIT BUTTON------->
-                        <div class="rows">
-                            <br>
-                            <div class="col-lg-12"><img src="{% static 'CRS/images/sClassroom/clip-remote.png' %}" height="210px" width="350px">
-                            </div>
-                        </div>
-                        
-                        <input type="submit" id="submitbtn" value="Submit">                        
-                    </form>
-                    {% else %}
-                    <p>YOU HAVE ALREADY SUBMITTED!<br>===========================</p>
-                        {% if approved_file.crsApprovedChecklist.url != null %}
-                        DOWNLOAD BUTTON-->
-                        <a href="{{approved_file.crsApprovedChecklist.url}}"  target="_blank" download><button type="button" class="cswBtn2"><img src="{% static 'CRS/images/cOthers/download2.png' %}" width="auto" height="42"><br>Download Approved Checklist</button></a> <!--DB DOWNLOAD CSW BUTTON -->
-                        {% else %}
-                        <button type="button" class="cswBtn2" disabled><img src="{% static 'CRS/images/cOthers/download2.png' %}" width="auto" height="42"><br>Download Approved Checklist</button>
-                        {% endif %}
-                    <p>CHECK STATUS BELOW!</p>
-                    <p id="head3">Please wait for the approval of the faculty to proceed.  </p>
-                    <p>STATUS: {{approved_file.remarks}}</p>
-                        {% if approved_file.remarks == 'Approved' %}
-                        <p>FEEDBACK: {{approved_file.comment}}</p>
-                        <a href="{% url 'scrsShiftingForm' %}" id="button-edit"><button type="button" class="btn"> Next</button></a> <!-- NEXT -->
-                        {%endif%}
-                    
+         <form method="POST" enctype="multipart/form-data" style="
+		 margin-left: 134px;
+		 margin-top: 57px;
+	 ">
+             {%csrf_token%}	   
+             <div>
+                 <button  id="button2hvr">&nbsp;&nbsp;&nbsp;Checklist</button>
+                 <input type="file" name="checkList" required>
+             </div>
+             {%csrf_token%}
+             <div>
+                 <button  id="button2hvr">&nbsp;&nbsp;&nbsp;Screenshot Grades CRS</button>
+                 <input type="file" name="crsChecklist" required>
+             </div>
+			 <input type="submit" id="submitbtn" value="Submit">     
+             <!-----------SUBMIT BUTTON------->
+             <div class="rows">
+                 <br>
+                 
+             </div>
+			 <div style=" margin-left: 89%; margin-top: -3.4%; margin-right: -60px;">   
+										
+										
+	
+				<a href="{% url 'sHome' %}" id="back-edit" style="background: none; border: none;"><img src="https://i.ibb.co/yWY15ff/arrow-left.png
+					" height="50" width="50" style = "margin-left: 200px;margin-top: -12px;"></a>
+                </form>
+                {% else %}
+                <div class="container-fluid">
+                   <div class="imgrow row">
+                       <div class="col-lg-12">
+                           <div class="center">
+                               <div class="col-lg-12">
+                                   <div class="box1" style="margin:2% auto; padding: 2% 5%;">
+                <div><img src="https://i.postimg.cc/P5698Dnq/confirm.png" height="80px" width="80px"><p id="head3" style="margin-left: 15%; margin-top:-60px;">You have already submitted your documents. Please check the status below<br></p></div>
+                <div class="linebreak" style="height: 3px; width:100%; margin-top:20px;"></div>   
+                   {% if approved_file.crsApprovedChecklist.url != null %}
                     
                     {% endif %}
-
+                   <p id="head3" style="text-align: center;"><b>A download button will appear once the faculty has approved your application. Kindly wait.</b></p>
+                   <p id="head3" style="text-align: center;"><br>STATUS: {{approved_file.remarks}}</p>
                     
-                </div>
-
-            </div>
-        </div>
-    </div>
-    <!-- END Upload Content -->
-
-    {% endblock content %}
+                    {% if approved_file.remarks == 'Approved' %}
+                    <p id="head3" style="text-align: center;">FEEDBACK: {{approved_file.comment}}</p>
+                    <a href="{{approved_file.crsApprovedChecklist.url}}"  target="_blank" download><button type="button" class="cswBtn2"><img src="{% static 'CRS/images/cOthers/download2.png' %}" height="30"><br><p id="droppingBtn2" style="text-align: center; margin-left: 40px; margin-top:-45px;">Download Approved<br>Checklist</p></button></a> <!--DB DOWNLOAD CSW BUTTON -->
+                    
+                    <a href="{% url 'scrsShiftingForm' %}" id="button-edit" style="background: none; border: none; margin-left: 150%; position: relative; margin-top:63px"><img src="https://i.ibb.co/mvNr5Xt/arrow-right.png" height="50" width="50"></button></a>
+                    
+                    {% else %}
+                
+                
+                {% endif %}
+       
+                           </div>
+                           <div style="margin-left:74%; margin-top:-65px;">
+                               <a href="{% url 'sHome' %}" id="back-edit" style="background: none; border: none;"><img src="https://i.ibb.co/yWY15ff/arrow-left.png" height="50" width="50"></button></a>        
+                               
+                               </div> <!-- NEXT -->
+                   
+                       </div>
+       
+                   </div>
+               </div>
+           </div>{%endif%}
+           <!-- END Upload Content -->
+       
+           {% endblock content %}
 
     <!-- Javascript -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script>
+        var notifWindow = document.getElementById("notif-window");
+
+document
+  .getElementById("notif-button")
+  .addEventListener("click", function () {
+    var display = notifWindow.style.display === "flex" ? "none" : "flex";
+    notifWindow.style.display = display;
+  });
+var profileDropdown = document.getElementById("dropdown-window");
+document
+  .getElementById("dropdown-button")
+  .addEventListener("click", function () {
+    var display =
+      profileDropdown.style.display === "flex" ? "none" : "flex";
+    profileDropdown.style.display = display;
+  });
         const selected = document.querySelector(".selected");
         const optionsContainer = document.querySelector(".options-container");
 
