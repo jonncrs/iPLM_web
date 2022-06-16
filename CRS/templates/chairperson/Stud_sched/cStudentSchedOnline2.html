@@ -122,30 +122,26 @@
                 <div class="container-fluid">  
                     
                     <!--------------------------------------- place content below this ------------------------------------------------------->                  
-                                        
-                    <!-- DB REGULAR AND ONLINE BUTTONS-->                                           
+                    {% if messages %}
+                    {% for message in messages %}
+                    {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                    <div class="alertError" style="width: 1020px;">
+                        <span class="closebtnError unselectable" onclick="this.parentElement.style.display='none';">&times;</span> 
+                        {{ message }}
+                    </div>
+                    {% endif %}
+
+                    {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                    <div class="alertSuccess" style="width: 1020px;">
+                        <span class="closebtnSuccess" onclick="this.parentElement.style.display='none';">&times;</span> 
+                        {{ message }}
+                    </div>
+                    {% endif %}
                         
+                    {% endfor %}
+                    {% endif %}
 
                     <a href="{% url 'cStudentSchedOnline' %}"><button class="btn btn-back unselectable">Back</button></a>
-
-                    {% if messages %}
-                        {% for message in messages %}
-                        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
-                        <div class="alertError" style="width: 1020px;">
-                            <span class="closebtnError unselectable" onclick="this.parentElement.style.display='none';">&times;</span> 
-                            {{ message }}
-                        </div>
-                        {% endif %}
-    
-                        {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
-                        <div class="alertSuccess" style="width: 1020px;">
-                            <span class="closebtnSuccess" onclick="this.parentElement.style.display='none';">&times;</span> 
-                            {{ message }}
-                        </div>
-                        {% endif %}
-                            
-                        {% endfor %}
-                        {% endif %}
 
                     <div class="container content-scrollbar schedborder" style="width:1020px; background-color: #fff;">  
                         <div class="container schedblock content-scrollbar" style="height: 120px; overflow:hidden;">                                               

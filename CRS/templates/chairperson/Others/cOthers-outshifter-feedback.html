@@ -93,7 +93,17 @@
                 <div class="container-fluid">  
                     
                     <!--------------------------------------- place content below this ------------------------------------------------------->                  
-                    <div class="title1 unselectable d-none d-md-block">Feedback</div>
+                    {% if messages %}
+                        {% for message in messages %}
+            
+                    <div class="alert">
+                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                            <b>{{ message }}</b>
+                    </div>
+                            {% endfor %}
+                            {% endif %}
+                            
+                    <div class="title1 unselectable">Feedback</div>
                         <div class="row">
                             <div class="table-title header-sticky">
                                 <table class="table table-style style=border-bottom: 1px solid;">
@@ -118,17 +128,7 @@
                                     <div class="col-80">
                                         <textarea id="actionRequired" name="actionRequired" placeholder= "Write something..."></textarea>
                                     </div>
-                        
-                              
-                                {% if messages %}
-                                {% for message in messages %}
-                   
-                            <div class="alert">
-                                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-                                    <b>{{ message }}</b>
-                            </div>
-                                    {% endfor %}
-                                    {% endif %}
+                         
                             <div class="button">
                                 <div class="col-60">
                                 <input type="submit" value="Submit" style="margin-top:0px; border-radius: 5px;">

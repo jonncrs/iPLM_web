@@ -20,7 +20,7 @@ textarea:focus, input:focus {
 }
 
 .tablestyle {
-  margin-top: 80px;
+  margin-top: 70px;
   font-family: 'Source Sans Pro';
   color: #06529b;
 }
@@ -39,8 +39,9 @@ input[type=text] {
   font-size: 15px;
   font-weight:400;
   font-family: 'Source Sans Pro', sans-serif;
-  text-indent: 20px;
+  text-indent: 10px;
   display: inline-block;
+  width: 290px;
 }
 
 .style1 {

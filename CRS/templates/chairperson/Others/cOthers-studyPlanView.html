@@ -17,6 +17,7 @@
         <link rel="stylesheet" href="{% static '/CRS/css/cHome/cHomeStyleCP.css' %}">
         <link rel="stylesheet" href="{% static '/CRS/css/cDepartment/deptstyle.css' %}">
         <link rel="stylesheet" href="{% static '/CRS/css/cStudents/cStudentsStyle.css' %}">
+        <link rel="stylesheet" href="{% static '/CRS/css/cOthers/cAlertStyle.css' %}">
         <link href="https://fonts.googleapis.com/css?family=Lato:200,300,400,600,700,900&subset=latin-ext" rel="stylesheet">
         <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900&subset=latin-ext' rel='stylesheet' type='text/css'>
         <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
@@ -146,7 +147,25 @@
                 font-size: 14px;
                 padding-top: 5px;
                 padding-bottom: 5px;
-                width: 105px;
+                width: 70px;
+            }
+
+            .downloadBtn:hover {
+                background-color: #0892dd;
+                color: #fff;   
+                transition: all 0.25s ease;                        
+            }
+
+            .col-style img, .col-padding img {
+                position: absolute;
+                right: 0;
+                height: 25px;
+                margin-top: 2px;
+            }
+
+            .col-style img:hover, .col-padding img:hover {
+                opacity: 0.5;
+                transition: all 0.25s ease;  
             }
 
             .saveBtn {
@@ -397,7 +416,16 @@
                 <div class="container-fluid">  
                     
                     <!--------------------------------------- place content below this ------------------------------------------------------>                  
-                    <div class="title1 unselectable d-none d-md-block">Study Plan</div>   
+                    {% if messages %}
+                    {% for message in messages %}
+           
+                    <div class="alert">
+                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                            <b>{{ message }}</b>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                    <div class="title1 unselectable">Study Plan</div>   
                     
                     <div class="container block-style"> 
                         <!-- HEADER -->
@@ -423,9 +451,12 @@
                                 {% if sp_applicant.sdplan.url != NULL %}
                               <b class="label"><a href="{{sp_applicant.sdplan.url}}">Study Plan</a></b>
                             </div>
-                            <div class="col-2 col-style col-padding border-top">                                
+                            <div class="col-2 col-style col-padding border-top unselectable">                                
+                                <a href="{{sp_applicant.sdplan.url}}">
+                                    <button class="downloadBtn unselectable">&nbsp;&nbsp;View</button>
+                                </a>
                                 <a href="{{sp_applicant.sdplan.url}}" download>
-                                    <button class="downloadBtn unselectable"><img src="{% static 'CRS/images/cOthers/download3.png' %}" height="18">&nbsp;&nbsp;Download</button>
+                                    <img src="{% static 'CRS/images/cOthers/downloaddb.png' %}">
                                 </a>
                                 {% else %}
                                 <b class="label">Study Plan</b>
@@ -435,11 +466,9 @@
                                 {% endif %}
                             </div>
 
-                            <div class="col-1 col-padding border-top"></div>
-                            <div class="col  col-padding border-top">                              
-                            </div>
-                            <div class="col-2 col-padding border-top">                                
-                            </div>
+                            <div class="col-1 col-padding border-top col-style"></div>
+                            <div class="col  col-padding border-top col-style"></div>
+                            <div class="col-2 col-padding border-top col-style"></div>
                           </div>
                           
                             <a href="{% url 'cOthers-studyPlan' %}"><button class="btn btn-back unselectable">Back</button></a>  

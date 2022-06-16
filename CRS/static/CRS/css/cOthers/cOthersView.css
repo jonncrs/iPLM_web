@@ -130,7 +130,25 @@
                 font-size: 14px;
                 padding-top: 5px;
                 padding-bottom: 5px;
-                width: 105px;
+                width: 70px;                
+            }
+
+            .downloadBtn:hover {
+                background-color: #0892dd;
+                color: #fff;   
+                transition: all 0.25s ease;                        
+            }
+
+            .col-style img, .col-padding img {
+                position: absolute;
+                right: 0;
+                height: 25px;
+                margin-top: 2px;
+            }
+
+            .col-style img:hover, .col-padding img:hover {
+                opacity: 0.5;
+                transition: all 0.25s ease;  
             }
 
             .saveBtn {

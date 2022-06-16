@@ -18,6 +18,7 @@
         <link rel="stylesheet" href="{% static '/CRS/css/cDepartment/deptstyle.css' %}">
         <link rel="stylesheet" href="{% static '/CRS/css/cStudents/cStudentsStyle.css' %}">
         <link rel="stylesheet" href="{% static '/CRS/css/cOthers/cOthersView.css' %}">
+        <link rel="stylesheet" href="{% static '/CRS/css/cOthers/cAlertStyle.css' %}">
         
         <link href="https://fonts.googleapis.com/css?family=Lato:200,300,400,600,700,900&subset=latin-ext" rel="stylesheet">
         <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900&subset=latin-ext' rel='stylesheet' type='text/css'>
@@ -183,7 +184,16 @@
                 <div class="container-fluid">  
                     
                     <!--------------------------------------- place content below this ------------------------------------------------------>                  
-                    <div class="title1 unselectable d-none d-md-block">Honorable Dismissal</div>   
+                    {% if messages %}
+                    {% for message in messages %}
+           
+                    <div class="alert">
+                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                            <b>{{ message }}</b>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                    <div class="title1 unselectable">Honorable Dismissal</div>   
                     
                     <div class="container block-style"> 
                         <!-- HEADER -->
@@ -208,9 +218,12 @@
                                 {% if hd_applicant.studentClearanceform.url != NULL %}
                               <b class="label"><a href="{{hd_applicant.studentClearanceform.url}}">Clearance Form</a></b>
                             </div>
-                            <div class="col-2 col-style col-padding border-top">                                
+                            <div class="col-2 col-style col-padding border-top unselectable">                                
+                                <a href="{{hd_applicant.studentClearanceform.url}}">
+                                    <button class="downloadBtn unselectable">&nbsp;&nbsp;View</button>
+                                </a>
                                 <a href="{{hd_applicant.studentClearanceform.url}}" download>
-                                    <button class="downloadBtn unselectable"><img src="{% static 'CRS/images/cOthers/download3.png' %}" height="18">&nbsp;&nbsp;Download</button>
+                                    <img src="{% static 'CRS/images/cOthers/downloaddb.png' %}">
                                 </a>
                                 {% else %}
                                 <b class="label">Clearance Form</b>
@@ -224,9 +237,12 @@
                                 {% if hd_applicant.studentDropform.url != NULL %}
                               <b class="label"><a href="{{hd_applicant.studentDropform.url}}">Dropping Form</a></b>
                             </div>
-                            <div class="col-2 col-style col-padding border-top">                                
+                            <div class="col-2 col-style col-padding border-top unselectable">                                
+                                <a href="{{hd_applicant.studentDropform.url}}">
+                                    <button class="downloadBtn unselectable">&nbsp;&nbsp;View</button>
+                                </a>
                                 <a href="{{hd_applicant.studentDropform.url}}" download>
-                                    <button class="downloadBtn unselectable"><img src="{% static 'CRS/images/cOthers/download3.png' %}" height="18">&nbsp;&nbsp;Download</button>
+                                    <img src="{% static 'CRS/images/cOthers/downloaddb.png' %}">
                                 </a>
                                 {% else %}
                                 <b class="label">Dropping Form</b>
@@ -242,9 +258,12 @@
                                 {% if hd_applicant.studentTransfercert.url != NULL %}
                                <b class="label"><a href="{{hd_applicant.studentTransfercert.url}}">Transfer Certificate</a></b>
                              </div>
-                             <div class="col-2 col-style col-padding">                                
+                             <div class="col-2 col-style col-padding unselectable">                                
+                                <a href="{{hd_applicant.studentTransfercert.url}}">
+                                    <button class="downloadBtn unselectable">&nbsp;&nbsp;View</button>
+                                </a>
                                 <a href="{{hd_applicant.studentTransfercert.url}}" download>
-                                    <button class="downloadBtn unselectable"><img src="{% static 'CRS/images/cOthers/download3.png' %}" height="18">&nbsp;&nbsp;Download</button>
+                                    <img src="{% static 'CRS/images/cOthers/downloaddb.png' %}">
                                 </a>
                                 {% else %}
                                 <b class="label">Transfer Certificate</b>
@@ -259,9 +278,12 @@
                                 {% if hd_applicant.studentHdletter.url != NULL %}
                                <b class="label"><a href="{{hd_applicant.studentHdletter.url}}">Student HD Letter</a></b>
                              </div>
-                             <div class="col-2 col-style col-padding">                                
+                             <div class="col-2 col-style col-padding unselectable">                                
+                                <a href="{{hd_applicant.studentHdletter.url}}">
+                                    <button class="downloadBtn unselectable">&nbsp;&nbsp;View</button>
+                                </a>
                                 <a href="{{hd_applicant.studentHdletter.url}}" download>
-                                    <button class="downloadBtn unselectable"><img src="{% static 'CRS/images/cOthers/download3.png' %}" height="18">&nbsp;&nbsp;Download</button>
+                                    <img src="{% static 'CRS/images/cOthers/downloaddb.png' %}">
                                 </a>
                                 {% else %}
                                 <b class="label">Student HD Letter</b>
@@ -273,35 +295,41 @@
                            </div>
                            <!-- ROW 3 -->
                            <div class="row row-style">                            
-                              <div class="col col-padding">
+                              <div class="col col-padding col-style">
                                 {% if hd_applicant.stdParentsig.url != NULL %}
                                 <b class="label"><a href="{{hd_applicant.stdParentsig.url}}">ID of Parents</a></b>
                               </div>
-                              <div class="col-2 col-padding">                               
+                              <div class="col-2 col-padding col-style unselectable">                               
+                                <a href="{{hd_applicant.stdParentsig.url}}">
+                                    <button class="downloadBtn unselectable">&nbsp;&nbsp;View</button>
+                                </a>
                                 <a href="{{hd_applicant.stdParentsig.url}}" download>
-                                    <button class="downloadBtn unselectable"><img src="{% static 'CRS/images/cOthers/download3.png' %}" height="18">&nbsp;&nbsp;Download</button>
+                                    <img src="{% static 'CRS/images/cOthers/downloaddb.png' %}">
                                 </a>
                                 {% else %}
                                 <b class="label">ID of Parents</b>
                                 </div>
-                                <div class="col-2 col-padding">  
+                                <div class="col-2 col-padding col-style">  
                                 <b class="output unselectable">No file</b>
                                 {% endif %}
                               </div>
-                              <div class="col-1 col-padding">                            
+                              <div class="col-1 col-padding col-style">                            
                               </div>
-                              <div class="col col-padding">
+                              <div class="col col-padding col-style">
                                 {% if hd_applicant.studentGrades.url != NULL %}
                                 <b class="label"><a href="{{hd_applicant.studentGrades.url}}">Student Grades</a></b>
                               </div>
-                              <div class="col-2 col-padding">                                
+                              <div class="col-2 col-padding col-style unselectable">                                
+                                <a href="{{hd_applicant.studentGrades.url}}">
+                                    <button class="downloadBtn unselectable">&nbsp;&nbsp;View</button>
+                                </a>
                                 <a href="{{hd_applicant.studentGrades.url}}" download>
-                                    <button class="downloadBtn unselectable"><img src="{% static 'CRS/images/cOthers/download3.png' %}" height="18">&nbsp;&nbsp;Download</button>
+                                    <img src="{% static 'CRS/images/cOthers/downloaddb.png' %}">
                                 </a>
                                 {% else %}
                                 <b class="label">Student Grades</b>
                                 </div>
-                                <div class="col-2 col-padding">   
+                                <div class="col-2 col-padding col-style">   
                                 <b class="output unselectable">No file</b>
                                 {% endif %}
                               </div>

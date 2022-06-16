@@ -39,14 +39,14 @@
             <!-- Modal body -->
             {% if events %}
               <br>
-              <h3 style="margin-left: 15px; color: #0892dd;font-family: 'Lato', sans-serif; font-size: 20px;">Confirm Delete {{ events.eventTitle }}?</h3>
+              <h3 style="margin-left: 15px; color: #5F6E83;font-family: 'Lato', sans-serif; font-size: 20px;">Confirm Delete {{ events.eventTitle }}?</h3>
               <form action="" method="post">
                 {% csrf_token %}
                 <input type="hidden" name="eventID" value="{{ events.id }}">
                 <input type="submit" value="Confirm" class="qlinks-btn btn" style="height: 40px;font-size: 15px; margin-left: 260px; margin-top: 10px; width: 160px;">
               </form>
             {% else %}
-              <h1>Event Does not exists</h1>
+              <h1>Event does not exist</h1>
             {% endif %}
             <br>
             <!-- Modal footer -->

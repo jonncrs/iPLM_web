@@ -17,7 +17,9 @@
         <link rel="stylesheet" href="{% static '/CRS/css/cHome/cHomeStyleCP.css' %}">
         <link href="https://fonts.googleapis.com/css?family=Lato:200,300,400,600,700,900&subset=latin-ext" rel="stylesheet">
         <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900&subset=latin-ext' rel='stylesheet' type='text/css'>
-        <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />    
+        <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>    
 
         <!--  ICON -->
         <link rel="icon" href="https://i.postimg.cc/Z5Kc9KQv/iplm-logo.png" type="image/x-icon"/>
@@ -146,6 +148,7 @@
                 <div class="container-fluid">  
                     
                     <!--------------------------------------- place content below this ------------------------------------------------------->                   
+                    <a href="{% url 'dept_student' %}"><button class="btn btn-back unselectable">Back</button></a>   
                     <div class="container block-style" style="width:450px; margin-top: 20px;">        
                         <span class="ov-heading-1 blocktitle unselectable">Edit Student</span>
                         <hr class="divstyle">              
@@ -154,11 +157,11 @@
                             <form method="POST" onsubmit="return confirm('Are you sure you want to save these changes?')">
 
                                 <div class="edit-2 row">
-                                    <div class="col-lg-6">
+                                    <div class="col">
 
                                         <div class="form-group row">
                                             {% csrf_token %}
-                                            <label for="" class="col-lg-7 col-form-label form-text-edit">
+                                            <label for="" class="col col-form-label form-text-edit">
                                                 {{ user_form }}
                                             </label>                                               
                                         </div> 
