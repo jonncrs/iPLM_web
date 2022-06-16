@@ -213,15 +213,7 @@
             <div id="page-content-wrapper">
                 <div class="container-fluid">  
                     
-                    <!--------------------------------------- place content below this ------------------------------------------------------->                  
-                                        
-                    <!-- DB REGULAR AND ONLINE BUTTONS-->
-                    
-                    
-
-                    <a href="{% url 'faculty_schedule' info.facultyUser.id  %}"><button class="btn btn-back unselectable">Back</button></a>
-
-
+                    <!--------------------------------------- place content below this ------------------------------------------------------->                   
                     {% if messages %}
                     {% for message in messages %}
                     {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
@@ -240,6 +232,8 @@
                         
                     {% endfor %}
                     {% endif %}
+                    
+                    <a href="{% url 'faculty_schedule' info.facultyUser.id  %}"><button class="btn btn-back unselectable">Back</button></a>
 
                     <div class="container content-scrollbar schedborder" style="background-color: #fff; width:730px; margin-left:0;">  
                         <div class="container schedblock content-scrollbar" style="height: 200px; overflow:hidden;">                                               

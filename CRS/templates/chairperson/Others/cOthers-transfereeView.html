@@ -18,6 +18,7 @@
         <link rel="stylesheet" href="{% static '/CRS/css/cDepartment/deptstyle.css' %}">
         <link rel="stylesheet" href="{% static '/CRS/css/cStudents/cStudentsStyle.css' %}">
         <link rel="stylesheet" href="{% static '/CRS/css/cOthers/cOthersView.css' %}">
+        <link rel="stylesheet" href="{% static '/CRS/css/cOthers/cAlertStyle.css' %}">
         
         <link href="https://fonts.googleapis.com/css?family=Lato:200,300,400,600,700,900&subset=latin-ext" rel="stylesheet">
         <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900&subset=latin-ext' rel='stylesheet' type='text/css'>
@@ -191,7 +192,17 @@
                 <div class="container-fluid">  
                     
                     <!--------------------------------------- place content below this ------------------------------------------------------>                  
-                    <div class="title1 unselectable d-none d-md-block">Transferee</div>   
+                    {% if messages %}
+                    {% for message in messages %}
+           
+                    <div class="alert">
+                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                            <b>{{ message }}</b>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+
+                    <div class="title1 unselectable">Transferee</div>   
                     
                     <div class="container block-style"> 
                         <!-- HEADER -->
@@ -216,9 +227,12 @@
                                 {% if trans.studentHD   %}
                               <b class="label"><a href="{{trans.studentHD.url}}">Honorable Dismissal</a></b>
                             </div>
-                            <div class="col-2 col-style col-padding border-top">                                
+                            <div class="col-2 col-style col-padding border-top unselectable">                                
+                                <a href="{{trans.studentHD.url}}">
+                                    <button class="downloadBtn unselectable">&nbsp;&nbsp;View</button>
+                                </a>
                                 <a href="{{trans.studentHD.url}}" download>
-                                    <button class="downloadBtn unselectable"><img src="{% static 'CRS/images/cOthers/download3.png' %}" height="18">&nbsp;&nbsp;Download</button>
+                                    <img src="{% static 'CRS/images/cOthers/downloaddb.png' %}">
                                 </a>
                                 {% else %}
                                 <b class="label">Honorable Dismissal</b>
@@ -232,9 +246,12 @@
                                 {% if trans.studentGoodmoral   %}
                               <b class="label"><a href="{{trans.studentGoodmoral.url}}">Good Moral</a></b>
                             </div>
-                            <div class="col-2 col-style col-padding border-top">                                
+                            <div class="col-2 col-style col-padding border-top unselectable">                                
+                                <a href="{{trans.studentGoodmoral.url}}">
+                                    <button class="downloadBtn unselectable">&nbsp;&nbsp;View</button>
+                                </a>
                                 <a href="{{trans.studentGoodmoral.url}}" download>
-                                    <button class="downloadBtn unselectable"><img src="{% static 'CRS/images/cOthers/download3.png' %}" height="18">&nbsp;&nbsp;Download</button>
+                                    <img src="{% static 'CRS/images/cOthers/downloaddb.png' %}">
                                 </a>
                                 {% else %}
                                 <b class="label">Good Moral</b>
@@ -251,10 +268,13 @@
                                 {% if trans.studentNote   %}
                               <b class="label"><a href="{{trans.studentNote.url}}">Note of Undertaking</a></b>
                             </div>
-                            <div class="col-2 col-style col-padding">                                
-                               <a href="{{trans.studentNote.url}}" download>
-                                   <button class="downloadBtn unselectable"><img src="{% static 'CRS/images/cOthers/download3.png' %}" height="18">&nbsp;&nbsp;Download</button>
+                            <div class="col-2 col-style col-padding unselectable">                                
+                               <a href="{{trans.studentNote.url}}">
+                                   <button class="downloadBtn unselectable">&nbsp;&nbsp;View</button>
                                </a>
+                               <a href="{{trans.studentNote.url}}" download>
+                                <img src="{% static 'CRS/images/cOthers/downloaddb.png' %}">
+                            </a>
                                {% else %}
                                <b class="label">Note of Undertaking</b>
                                </div>
@@ -268,10 +288,13 @@
                                 {% if trans.studentStudyplan   %}
                               <b class="label"><a href="{{trans.studentStudyplan.url}}">Study Plan</a></b>
                             </div>
-                            <div class="col-2 col-style col-padding">                                
-                               <a href="{{trans.studentStudyplan.url}}" download>
-                                   <button class="downloadBtn unselectable"><img src="{% static 'CRS/images/cOthers/download3.png' %}" height="18">&nbsp;&nbsp;Download</button>
+                            <div class="col-2 col-style col-padding unselectable">                                
+                               <a href="{{trans.studentStudyplan.url}}">
+                                   <button class="downloadBtn unselectable">&nbsp;&nbsp;View</button>
                                </a>
+                               <a href="{{trans.studentStudyplan.url}}" download>
+                                <img src="{% static 'CRS/images/cOthers/downloaddb.png' %}">
+                            </a>
                                {% else %}
                                <b class="label">Study Plan</b>
                             </div>
@@ -283,29 +306,32 @@
 
                            <!-- ROW 3 -->
                            <div class="row row-style">                            
-                              <div class="col col-padding">
+                              <div class="col col-padding col-style">
                                 {% if trans.studentGrade   %}
                                 <b class="label"><a href="{{trans.studentGrade.url}}">Student Grade</a></b>
                               </div>
-                              <div class="col-2 col-padding">                               
+                              <div class="col-2 col-padding col-style unselectable">                               
+                                <a href="{{trans.studentGrade.url}}">
+                                    <button class="downloadBtn unselectable">&nbsp;&nbsp;View</button>
+                                </a>
                                 <a href="{{trans.studentGrade.url}}" download>
-                                    <button class="downloadBtn unselectable"><img src="{% static 'CRS/images/cOthers/download3.png' %}" height="18">&nbsp;&nbsp;Download</button>
+                                    <img src="{% static 'CRS/images/cOthers/downloaddb.png' %}">
                                 </a>
                                 {% else %}
                                 <b class="label">Student Grade</b>
                                 </div>
-                                <div class="col-2 col-padding">  
+                                <div class="col-2 col-padding col-style">  
                                 <b class="output unselectable">No file</b>
                                 {% endif %}
                               </div>
-                              <div class="col-1 col-padding">                            
+                              <div class="col-1 col-padding col-style">                            
                               </div>
-                              <div class="col col-padding">
+                              <div class="col col-padding col-style">
                                
                                 
                               </div>
                               
-                                <div class="col-2 col-padding">   
+                                <div class="col-2 col-padding col-style">   
                                 
                               </div>
                             </div>

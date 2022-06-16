@@ -18,6 +18,7 @@
         <link rel="stylesheet" href="{% static '/CRS/css/cDepartment/deptstyle.css' %}">
         <link rel="stylesheet" href="{% static '/CRS/css/cStudents/cStudentsStyle.css' %}">
         <link rel="stylesheet" href="{% static '/CRS/css/cOthers/cOthersView.css' %}">
+        <link rel="stylesheet" href="{% static '/CRS/css/cOthers/cAlertStyle.css' %}">
         
         <link href="https://fonts.googleapis.com/css?family=Lato:200,300,400,600,700,900&subset=latin-ext" rel="stylesheet">
         <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900&subset=latin-ext' rel='stylesheet' type='text/css'>
@@ -184,7 +185,16 @@
                 <div class="container-fluid">  
                     
                     <!--------------------------------------- place content below this ------------------------------------------------------>                  
-                    <div class="title1 unselectable d-none d-md-block">Practicum</div>   
+                    {% if messages %}
+                    {% for message in messages %}
+           
+                    <div class="alert">
+                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                            <b>{{ message }}</b>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                    <div class="title1 unselectable">Practicum</div>   
                     
                     <div class="container block-style"> 
                         <!-- HEADER -->
@@ -209,9 +219,12 @@
                                 {% if ojt_applicant.ojtResume.url != NULL  %}
                               <b class="label"><a href="{{ojt_applicant.ojtResume.url}}">Resume</a></b>
                             </div>
-                            <div class="col-2 col-style col-padding border-top">                                
+                            <div class="col-2 col-style col-padding border-top unselectable">                                
+                                <a href="{{ojt_applicant.ojtResume.url}}">
+                                    <button class="downloadBtn unselectable">&nbsp;&nbsp;View</button>
+                                </a>
                                 <a href="{{ojt_applicant.ojtResume.url}}" download>
-                                    <button class="downloadBtn unselectable"><img src="{% static 'CRS/images/cOthers/download3.png' %}" height="18">&nbsp;&nbsp;Download</button>
+                                    <img src="{% static 'CRS/images/cOthers/downloaddb.png' %}">
                                 </a>
                                 {% else %}
                                 <b class="label">Resume</b>
@@ -225,9 +238,12 @@
                                 {% if ojt_applicant.ojtMedcert.url != NULL %}
                               <b class="label"><a href="{{ojt_applicant.ojtMedcert.url}}">Medical Certificate</a></b>
                             </div>
-                            <div class="col-2 col-style col-padding border-top">                                
+                            <div class="col-2 col-style col-padding border-top unselectable">                                
+                                <a href="{{ojt_applicant.ojtMedcert.url}}">
+                                    <button class="downloadBtn unselectable">&nbsp;&nbsp;View</button>
+                                </a>
                                 <a href="{{ojt_applicant.ojtMedcert.url}}" download>
-                                    <button class="downloadBtn unselectable"><img src="{% static 'CRS/images/cOthers/download3.png' %}" height="18">&nbsp;&nbsp;Download</button>
+                                    <img src="{% static 'CRS/images/cOthers/downloaddb.png' %}">
                                 </a>
                                 {% else %}
                                 <b class="label">Medical Certificate</b>
@@ -243,9 +259,12 @@
                                 {% if ojt_applicant.ojtAcceptForm.url != NULL%}
                                <b class="label"><a href="{{ojt_applicant.ojtAcceptForm.url}}">Acceptance Form</a></b>
                              </div>
-                             <div class="col-2 col-style col-padding">                                
+                             <div class="col-2 col-style col-padding unselectable">                                
+                                <a href="{{ojt_applicant.ojtAcceptForm.url}}">
+                                    <button class="downloadBtn unselectable">&nbsp;&nbsp;View</button>
+                                </a>
                                 <a href="{{ojt_applicant.ojtAcceptForm.url}}" download>
-                                    <button class="downloadBtn unselectable"><img src="{% static 'CRS/images/cOthers/download3.png' %}" height="18">&nbsp;&nbsp;Download</button>
+                                    <img src="{% static 'CRS/images/cOthers/downloaddb.png' %}">
                                 </a>
                                 {% else %}
                                 <b class="label">Acceptance Form</b>
@@ -260,9 +279,12 @@
                                 {% if ojt_applicant.ojtCompanyId.url != NULL %}
                                <b class="label"><a href="{{ojt_applicant.ojtCompanyId.url}}">OJT Company ID</a></b>
                              </div>
-                             <div class="col-2 col-style col-padding">                                
-                                <a href="{{ojt_applicant.ojtCompanyId.url}}" download>
-                                    <button class="downloadBtn unselectable"><img src="{% static 'CRS/images/cOthers/download3.png' %}" height="18">&nbsp;&nbsp;Download</button>
+                             <div class="col-2 col-style col-padding unselectable">                                
+                                <a href="{{ojt_applicant.ojtAcceptForm.url}}">
+                                    <button class="downloadBtn unselectable">&nbsp;&nbsp;View</button>
+                                </a>
+                                <a href="{{ojt_applicant.ojtAcceptForm.url}}" download>
+                                    <img src="{% static 'CRS/images/cOthers/downloaddb.png' %}">
                                 </a>
                                 {% else %}
                                 <b class="label">OJT Company ID</b>
@@ -278,9 +300,12 @@
                                 {% if ojt_applicant.ojtWaiver.url != NULL %}
                                 <b class="label"><a href="{{ojt_applicant.ojtWaiver.url}}">Waiver</a></b>
                               </div>
-                              <div class="col-2 col-style col-padding">                               
+                              <div class="col-2 col-style col-padding unselectable">                               
+                                <a href="{{ojt_applicant.ojtWaiver.url}}">
+                                    <button class="downloadBtn unselectable">&nbsp;&nbsp;View</button>
+                                </a>
                                 <a href="{{ojt_applicant.ojtWaiver.url}}" download>
-                                    <button class="downloadBtn unselectable"><img src="{% static 'CRS/images/cOthers/download3.png' %}" height="18">&nbsp;&nbsp;Download</button>
+                                    <img src="{% static 'CRS/images/cOthers/downloaddb.png' %}">
                                 </a>
                                 {% else %}
                                 <b class="label">Waiver</b>
@@ -295,9 +320,12 @@
                                 {% if ojt_applicant.ojtCompanyProfile.url != NULL %}
                                 <b class="label"><a href="{{ojt_applicant.ojtCompanyProfile.url}}">Company Profile</a></b>
                               </div>
-                              <div class="col-2 col-style col-padding">                                
+                              <div class="col-2 col-style col-padding unselectable">                                
+                                <a href="{{ojt_applicant.ojtCompanyProfile.url}}">
+                                    <button class="downloadBtn unselectable">&nbsp;&nbsp;View</button>
+                                </a>
                                 <a href="{{ojt_applicant.ojtCompanyProfile.url}}" download>
-                                    <button class="downloadBtn unselectable"><img src="{% static 'CRS/images/cOthers/download3.png' %}" height="18">&nbsp;&nbsp;Download</button>
+                                    <img src="{% static 'CRS/images/cOthers/downloaddb.png' %}">
                                 </a>
                                 {% else %}
                                 <b class="label">Company Profile</b>
@@ -309,27 +337,30 @@
                             </div>
                             <!-- ROW 4 -->
                             <div class="row row-style">                            
-                              <div class="col col-padding">
+                              <div class="col col-padding col-style">
                                 {% if ojt_applicant.ojtRecLetter.url != NULL %}
                                 <b class="label"><a href="{{ojt_applicant.ojtRecLetter.url}}">Recommendation Letter</a></b>
                               </div>
-                              <div class="col-2  col-padding">                               
+                              <div class="col-2  col-padding col-style unselectable">                               
+                                <a href="{{ojt_applicant.ojtRecLetter.url}}">
+                                    <button class="downloadBtn unselectable">&nbsp;&nbsp;View</button>
+                                </a>
                                 <a href="{{ojt_applicant.ojtRecLetter.url}}" download>
-                                    <button class="downloadBtn unselectable"><img src="{% static 'CRS/images/cOthers/download3.png' %}" height="18">&nbsp;&nbsp;Download</button>
+                                    <img src="{% static 'CRS/images/cOthers/downloaddb.png' %}">
                                 </a>
                                 {% else %}
                                 <b class="label">Recommendation Letter</b>
                                 </div>
-                                <div class="col-2  col-padding">                        
+                                <div class="col-2  col-padding col-style">                        
                                 <b class="output unselectable">No file</b>
                                 {% endif %}
                               </div>
-                              <div class="col-1 col-padding">                            
+                              <div class="col-1 col-padding col-style">                            
                               </div>
-                              <div class="col col-padding">
+                              <div class="col col-padding col-style">
                                 <b class="label"></b>
                               </div>
-                              <div class="col-2 col-padding">
+                              <div class="col-2 col-padding col-style">
                                 <b class="output"></b>
                               </div>
                             </div>   

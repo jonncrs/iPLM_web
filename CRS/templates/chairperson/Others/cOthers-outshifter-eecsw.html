@@ -98,24 +98,24 @@
             
              <!-- quick links-->
             <div id="mainwrapper" class="toggled">
-                <div id="qlinks" class="custom-scrollbar unselectable qlinks-wrapper d-xl-block" style="width: 400px">
+                <div id="qlinks" class="custom-scrollbar qlinks-wrapper d-xl-block" style="width: 400px">
                   <table class="table table-borderless tablestyle">                            
                     <tbody>
-                      <tr style="border-top: 1px solid #d7dff6;">                                
-                        <td class="col col-1 style1">Date</td>
-                        <td class="col">
+                      <tr>                                
+                        <td class="col col-3 style1">Date</td>
+                        <td class="col unselectable">
                           <input type="text" name="date" placeholder="January 1, 2021"></input>
                         </td>
                       </tr> 
                       <tr>                                
-                        <td class="col col-1 style1">From</td>
-                        <td class="col">
+                        <td class="col col-3 style1">From</td>
+                        <td class="col unselectable">
                           <input type="text" name="from" placeholder="Chairperson Name"></input>
                         </td>
                       </tr> 
-                      <tr style="border-bottom: 1px solid #d7dff6;">                                
-                        <td class="col col-1 style1">Subject</td>
-                        <td class="col">
+                      <tr>                                
+                        <td class="col col-3 style1">Subject</td>
+                        <td class="col unselectable">
                           <input type="text" name="subject" placeholder="CSW"></input>
                         </td>
                       </tr>                                            
@@ -126,14 +126,14 @@
                     <tbody>
                       <tr style="border-top: 1px solid #d7dff6;">                                
                         <td class="col col-6 style2"><b>Charito M. Molina</b><br>IT Department</td>
-                        <td class="col">
+                        <td class="col unselectable">
                           <input type="file" id="cSignatureFile" name="cSignatureFile1">
                         </td>
                       </tr> 
                       <tr style="border-bottom: 1px solid #d7dff6;">                                
                         <td class="col col-6 style2"><b>Engr. Juan C. Tallara Jr.</b><br>Dean</td>
                         <td class="col">
-                          <div class = "col-75"><input type="file" id="cSignatureFile-2" name="cSignatureFile2"></div>
+                          <div class = "col-75 unselectable"><input type="file" id="cSignatureFile-2" name="cSignatureFile2"></div>
                         </td>
                       </tr>                                            
                     </tbody>
@@ -143,10 +143,10 @@
                     <tbody>
                       <tr>                                
                         <td class="col style2">
-                          <input class="submitButton" type="submit" value="Attach" name="outshifter-attach">                          
+                          <input class="submitButton unselectable" type="submit" value="Attach" name="outshifter-attach">                          
                         </td>
                         <td class="col">
-                          <a href="{% url 'outshifter_Pdf' outshift_csw.id %}" class="submitButton" type="button" target="_blank">Generate PDF</a>
+                          <a href="{% url 'outshifter_Pdf' outshift_csw.id %}" class="submitButton unselectable" type="button" target="_blank">Generate PDF</a>
                         </td>
                       </tr>                                                                
                     </tbody>
@@ -184,15 +184,15 @@
                     <!--------------------------------------- place content below this ------------------------------------------------------->                  
                     <div class="title1 unselectable">CSW</div>
                     <h1 class="depttitle csw-h1">Action Required</h1> 
-                    <textarea id="actionRequired" name="actionRequired" placeholder="Write something.."></textarea>
+                    <textarea id="actionRequired" name="actionRequired" placeholder="Write something.." class="unselectable"></textarea>
                     <h1 class="depttitle csw-h1">Reference</h1> 
-                    <textarea id="reference" name="reference" placeholder="Write something.."></textarea>
+                    <textarea id="reference" name="reference" placeholder="Write something.." class="unselectable"></textarea>
                     <h1 class="depttitle csw-h1">Background</h1> 
-                    <textarea id="background" name="background" placeholder="Write something.."></textarea>
+                    <textarea id="background" name="background" placeholder="Write something.." class="unselectable"></textarea>
                     <h1 class="depttitle csw-h1">Analysis</h1> 
-                    <textarea id="analysis" name="analysis" placeholder="Write something.."></textarea>
+                    <textarea id="analysis" name="analysis" placeholder="Write something.." class="unselectable"></textarea>
                     <h1 class="depttitle csw-h1">Recommendation</h1> 
-                    <textarea id="recommendation" name="recommendation" placeholder="Write something.."></textarea>                                        
+                    <textarea id="recommendation" name="recommendation" placeholder="Write something.." class="unselectable"></textarea>                                        
                     <!--------------------------------------- place content above this ------------------------------------------------------->   
                 </div>            
             </div> <!-- /#page-content-wrapper -->  

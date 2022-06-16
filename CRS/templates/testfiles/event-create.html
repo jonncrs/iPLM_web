@@ -17,8 +17,8 @@
     <!-- CSS -->
     <link rel="stylesheet" href="{% static '/CRS/css/cHome/cHomeStyleCP.css' %}">
     <link href="https://fonts.googleapis.com/css?family=Lato:200,300,400,600,700,900&subset=latin-ext" rel="stylesheet">
-    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900&subset=latin-ext'
-        rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900&subset=latin-ext' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="{% static '/CRS/css/cOthers/cAlertStyle.css' %}">
 
     <!--  ICON -->
     <link rel="icon" href="{% static '/CRS/images/cHome/iPLM.png' %}" type="image/png" sizes="16x16">
@@ -124,12 +124,14 @@
         <div id="page-content-wrapper" >
             <!-- Create Events-->
             {% if messages %}
-            <ul class="messages">
-                {% for message in messages %}
-                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
+                    {% for message in messages %}
+           
+                    <div class="alert">
+                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                            <b>{{ message }}</b>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
         <div class="p-2 overview-block sm-overview-block" style="width:760px;height:480px;">
             <h3 style="position: absolute;width: 143px;height: 26px;color: #06529b;font-family: 'Lato', sans-serif;font-weight: 900;font-size: 18px;line-height: 26px;margin-left:20px; margin-top: 20px;">
                 CREATE EVENT

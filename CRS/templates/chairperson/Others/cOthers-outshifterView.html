@@ -18,6 +18,7 @@
         <link rel="stylesheet" href="{% static '/CRS/css/cDepartment/deptstyle.css' %}">
         <link rel="stylesheet" href="{% static '/CRS/css/cStudents/cStudentsStyle.css' %}">
         <link rel="stylesheet" href="{% static '/CRS/css/cOthers/cOthersView.css' %}">
+        <link rel="stylesheet" href="{% static '/CRS/css/cOthers/cAlertStyle.css' %}">
         
         <link href="https://fonts.googleapis.com/css?family=Lato:200,300,400,600,700,900&subset=latin-ext" rel="stylesheet">
         <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900&subset=latin-ext' rel='stylesheet' type='text/css'>
@@ -196,7 +197,17 @@
                 <div class="container-fluid">  
                     
                     <!--------------------------------------- place content below this ------------------------------------------------------>                  
-                    <div class="title1 unselectable d-none d-md-block">Outbound Shifter</div>   
+                    {% if messages %}
+                    {% for message in messages %}
+           
+                    <div class="alert">
+                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                            <b>{{ message }}</b>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+
+                    <div class="title1 unselectable">Outbound Shifter</div>   
                     
                     <div class="container block-style"> 
                         <!-- HEADER -->
@@ -221,9 +232,12 @@
                                 {% if outshifterView.studentStudyplan %}
                               <b class="label"><a href="{{outshifterView.studentStudyplan.url}}">Study Plan</a></b>
                             </div>
-                            <div class="col-2 col-style col-padding border-top">                                
+                            <div class="col-2 col-style col-padding border-top unselectable">                                
+                                <a href="{{outshifterView.studentStudyplan.url}}">
+                                    <button class="downloadBtn unselectable">&nbsp;&nbsp;View</button>
+                                </a>
                                 <a href="{{outshifterView.studentStudyplan.url}}" download>
-                                    <button class="downloadBtn unselectable"><img src="{% static 'CRS/images/cOthers/download3.png' %}" height="18">&nbsp;&nbsp;Download</button>
+                                    <img src="{% static 'CRS/images/cOthers/downloaddb.png' %}">
                                 </a>
                                 {% else %}
                                 <b class="label">Study Plan</b>
@@ -237,9 +251,12 @@
                                 {% if outshifterView.checklist %}
                               <b class="label"><a href="{{outshifterView.checklist.url}}">Student's Checklist</a></b>
                             </div>
-                            <div class="col-2 col-style col-padding border-top">                                
+                            <div class="col-2 col-style col-padding border-top unselectable">                                
+                                <a href="{{outshifterView.checklist.url}}">
+                                    <button class="downloadBtn unselectable">&nbsp;&nbsp;View</button>
+                                </a>
                                 <a href="{{outshifterView.checklist.url}}" download>
-                                    <button class="downloadBtn unselectable"><img src="{% static 'CRS/images/cOthers/download3.png' %}" height="18">&nbsp;&nbsp;Download</button>
+                                    <img src="{% static 'CRS/images/cOthers/downloaddb.png' %}">
                                 </a>
                                 {% else %}
                                 <b class="label">Student's Checklist</b>
@@ -252,35 +269,41 @@
                           
                            <!-- ROW 2 -->
                            <div class="row row-style">                            
-                              <div class="col col-padding">
+                              <div class="col col-padding col-style">
                                 {% if outshifterView.studentshifterletter %}
                                 <b class="label"><a href="{{outshifterView.studentshifterletter.url}}">Letter of Request</a></b>
                               </div>
-                              <div class="col-2 col-padding">                               
+                              <div class="col-2 col-padding col-style unselectable">                               
+                                <a href="{{outshifterView.studentshifterletter.url}}">
+                                    <button class="downloadBtn unselectable">&nbsp;&nbsp;View</button>
+                                </a>
                                 <a href="{{outshifterView.studentshifterletter.url}}" download>
-                                    <button class="downloadBtn unselectable"><img src="{% static 'CRS/images/cOthers/download3.png' %}" height="18">&nbsp;&nbsp;Download</button>
+                                    <img src="{% static 'CRS/images/cOthers/downloaddb.png' %}">
                                 </a>
                                 {% else %}
                                 <b class="label">Letter of Request</b>
                                 </div>
-                                <div class="col-2 col-padding">  
+                                <div class="col-2 col-padding col-style">  
                                 <b class="output unselectable">No file</b>
                                 {% endif %}
                               </div>
-                              <div class="col-1 col-padding">                            
+                              <div class="col-1 col-padding col-style">                            
                               </div>
-                              <div class="col col-padding">
+                              <div class="col col-padding col-style">
                                 {% if outshifterView.shiftingForm %}
                                 <b class="label"><a href="{{outshifterView.shiftingForm.url}}">Shifting Form</a></b>
                               </div>
-                              <div class="col-2 col-padding">                                
+                              <div class="col-2 col-padding col-style unselectable">                                
+                                <a href="{{outshifterView.shiftingForm.url}}">
+                                    <button class="downloadBtn unselectable">&nbsp;&nbsp;View</button>
+                                </a>
                                 <a href="{{outshifterView.shiftingForm.url}}" download>
-                                    <button class="downloadBtn unselectable"><img src="{% static 'CRS/images/cOthers/download3.png' %}" height="18">&nbsp;&nbsp;Download</button>
+                                    <img src="{% static 'CRS/images/cOthers/downloaddb.png' %}">
                                 </a>
                                 {% else %}
                                 <b class="label">Shifting Form</b>
                                 </div>
-                                <div class="col-2 col-padding">   
+                                <div class="col-2 col-padding col-style">   
                                 <b class="output unselectable">No file</b>
                                 {% endif %}
                               </div>

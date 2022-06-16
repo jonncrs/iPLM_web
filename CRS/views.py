@@ -5429,6 +5429,7 @@ def del_allHD(request, hd_id):
     hd_applicant.studentHdletter.delete()
     hd_applicant.studentGrades.delete()
     hd_applicant.stdParentsig.delete()
+    messages.success(request, 'Files Succesfully Returned!')  
     return HttpResponseRedirect(reverse('cOthers-hdView', args=(hd_id,)))
 
 def sendingemailHD(request, hd_id):
@@ -5528,12 +5529,11 @@ def sp_view(request,sp_id):
 
 def del_allSP(request, sp_id):
     try:
-        sp_applicant = spApplicant.objects.get(pk=sp_id)
-        deletestudyplan = studyPlan.objects.get(studentinfo=sp_applicant.studentID)
-        deletestudyplan.delete()
+        sp_applicant = spApplicant.objects.get(pk=sp_id)        
         sp_applicant.sdplan.delete()
     except studyPlan.DoesNotExist:
         deletestudyplan = None
+    messages.success(request, 'Files Succesfully Returned!')
     return HttpResponseRedirect(reverse('cOthers-studyPlanView', args=(sp_id,)))
 
 
@@ -5812,6 +5812,7 @@ def del_allojt(request,ojt_id):
     ojt_applicant.ojtCompanyProfile.delete()
     ojt_applicant.ojtMedcert.delete()
     ojt_applicant.ojtCompanyId.delete()
+    messages.success(request, 'Files Succesfully Returned!')  
     return HttpResponseRedirect(reverse('cOthers-ojtView', args=(ojt_id,)))
 
 def sendingemailOJT(request, ojt_id):
@@ -5960,7 +5961,8 @@ def del_allshifter(request, shift_id):
     shift_applicant.studentStudyplan.delete()
     shift_applicant.studentshifterletter.delete()
     shift_applicant.studentGrade.delete()
-    shift_applicant.studentshifterletter.delete()
+    shift_applicant.shiftingForm.delete()
+    shift_applicant.Checklist.delete()
     messages.success(request, 'Files Succesfully Returned!')  
     return HttpResponseRedirect(reverse('cOthers-shifterView', args=(shift_id,)))
 
@@ -6222,7 +6224,7 @@ def del_alltransferee(request, transf_id):
     transf_applicant.studentHD.delete()
     transf_applicant.studentGoodmoral.delete()
     transf_applicant.studentGrade.delete()
-    messages.success(request, 'Succesfully DELETED!')  
+    messages.success(request, 'Files Succesfully Returned!')  
     return HttpResponseRedirect(reverse('cOthers-transfereeView', args=(transf_id,)))
 
 
@@ -7317,6 +7319,8 @@ def del_allFaculty(request, faculty_id):
     Faculty_applicant.TOR.delete()
     Faculty_applicant.PDS.delete()
     messages.success(request, 'Files Succesfully Returned!')  
+    return HttpResponseRedirect(reverse('faculty_view', args=(faculty_id,)))
+
 def cfacultyapplicant_sortedlist(request):
     id = request.user.id
     info = FacultyInfo.objects.get(facultyUser=id)
@@ -7877,7 +7881,7 @@ def eventsCreate(request):
             event.validate_frontend()
             event.save()
             messages.success(request, 'Event Created!')
-            return redirect('events.create')
+            return redirect('chairperson')
         except ValidationError as error:
             messages.error(request, error.message)
             return redirect('events.create')
@@ -7903,9 +7907,11 @@ def eventsUpdate(request, event_id):
                 eventDescription=request.POST['eventDescription'],
                 eventStartDate=request.POST['eventStartDate'],
                 eventEndDate=request.POST['eventEndDate']
-            )            
+            )   
+            messages.success(request, 'Event Updated!')         
             return redirect('chairperson')
-        except ValidationError as error:           
+        except ValidationError as error:    
+            messages.error(request, error.message)       
             return redirect('chairperson')
     else:
         event = Event.objects.filter(pk=event_id).first()
@@ -7916,7 +7922,8 @@ def eventsDelete(request, event_id):
         return redirect('chairperson')
     if (request.method == 'POST'):
         event = Event.objects.filter(pk = request.POST['eventID'])
-        event.delete()        
+        event.delete()    
+        messages.success(request, 'Event Deleted!')    
         return redirect('chairperson')
     else:
         event = Event.objects.filter(pk=event_id).first()

@@ -15,7 +15,8 @@
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="{% static '/CRS/css/cHome/cHomeStyleCP.css' %}">
+    <link rel="stylesheet" href="{% static '/CRS/css/cHome/cHomeStyleCP.css' %}">    
+    <link rel="stylesheet" href="{% static '/CRS/css/cOthers/cAlertStyle.css' %}">
     <link href="https://fonts.googleapis.com/css?family=Lato:200,300,400,600,700,900&subset=latin-ext" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900&subset=latin-ext' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />    
@@ -243,6 +244,15 @@
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <div class="container-fluid">
+                {% if messages %}
+                    {% for message in messages %}
+           
+                    <div class="alert">
+                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                            <b>{{ message }}</b>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
                 <!-- navbar page title blue -->
                 <div class="headertitle title1 unselectable d-none d-md-block">Dashboard</div>
                 <!-- content start-->

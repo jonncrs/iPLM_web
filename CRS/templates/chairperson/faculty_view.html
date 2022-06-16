@@ -18,6 +18,7 @@
         <link rel="stylesheet" href="{% static '/CRS/css/cDepartment/deptstyle.css' %}">
         <link rel="stylesheet" href="{% static '/CRS/css/cStudents/cStudentsStyle.css' %}">
         <link rel="stylesheet" href="{% static '/CRS/css/cOthers/cOthersView.css' %}">
+        <link rel="stylesheet" href="{% static '/CRS/css/cOthers/cAlertStyle.css' %}">
         
         <link href="https://fonts.googleapis.com/css?family=Lato:200,300,400,600,700,900&subset=latin-ext" rel="stylesheet">
         <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900&subset=latin-ext' rel='stylesheet' type='text/css'>
@@ -188,7 +189,17 @@
                 <div class="container-fluid">  
                     
                     <!--------------------------------------- place content below this ------------------------------------------------------>                  
-                    <div class="title1 unselectable d-none d-md-block">Faculty Application</div>   
+                    {% if messages %}
+                    {% for message in messages %}
+           
+                    <div class="alert">
+                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                            <b>{{ message }}</b>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+
+                    <div class="title1 unselectable">Faculty Application</div>   
                     
                     <div class="container block-style"> 
                         <!-- HEADER -->
@@ -213,9 +224,12 @@
                                 {% if facultyapp.CV %}
                               <b class="label"><a href="{{facultyapp.CV.url}}">CV</a></b>
                             </div>
-                            <div class="col-2 col-style col-padding border-top">                                
+                            <div class="col-2 col-style col-padding border-top unselectable">                                
+                                <a href="{{facultyapp.CV.url}}">
+                                    <button class="downloadBtn unselectable">&nbsp;&nbsp;View</button>
+                                </a>
                                 <a href="{{facultyapp.CV.url}}" download>
-                                    <button class="downloadBtn unselectable"><img src="{% static 'CRS/images/cOthers/download3.png' %}" height="18">&nbsp;&nbsp;Download</button>
+                                    <img src="{% static 'CRS/images/cOthers/downloaddb.png' %}">
                                 </a>
                                 {% else %}
                                 <b class="label">CV</b>
@@ -229,9 +243,12 @@
                                 {% if facultyapp.certificates %}
                               <b class="label"><a href="{{facultyapp.certificates.url}}">Certificates</a></b>
                             </div>
-                            <div class="col-2 col-style col-padding border-top">                                
+                            <div class="col-2 col-style col-padding border-top unselectable">                                
+                                <a href="{{facultyapp.certificates.url}}">
+                                    <button class="downloadBtn unselectable">&nbsp;&nbsp;View</button>
+                                </a>
                                 <a href="{{facultyapp.certificates.url}}" download>
-                                    <button class="downloadBtn unselectable"><img src="{% static 'CRS/images/cOthers/download3.png' %}" height="18">&nbsp;&nbsp;Download</button>
+                                    <img src="{% static 'CRS/images/cOthers/downloaddb.png' %}">
                                 </a>
                                 {% else %}
                                 <b class="label">Certificates</b>
@@ -248,10 +265,13 @@
                                 {% if facultyapp.credentials %}
                               <b class="label"><a href="{{facultyapp.credentials.url}}">Credentials</a></b>
                             </div>
-                            <div class="col-2 col-style col-padding">                                
-                               <a href="{{facultyapp.credentials.url}}" download>
-                                   <button class="downloadBtn unselectable"><img src="{% static 'CRS/images/cOthers/download3.png' %}" height="18">&nbsp;&nbsp;Download</button>
+                            <div class="col-2 col-style col-padding unselectable">                                
+                               <a href="{{facultyapp.credentials.url}}">
+                                   <button class="downloadBtn unselectable">&nbsp;&nbsp;View</button>
                                </a>
+                               <a href="{{facultyapp.credentials.url}}" download>
+                                <img src="{% static 'CRS/images/cOthers/downloaddb.png' %}">
+                            </a>
                                {% else %}
                                <b class="label">Credentials</b>
                                </div>
@@ -265,10 +285,13 @@
                                 {% if facultyapp.PDS %}
                               <b class="label"><a href="{{facultyapp.PDS.url}}">PDS</a></b>
                             </div>
-                            <div class="col-2 col-style col-padding">                                
-                               <a href="{{facultyapp.PDS.url}}" download>
-                                   <button class="downloadBtn unselectable"><img src="{% static 'CRS/images/cOthers/download3.png' %}" height="18">&nbsp;&nbsp;Download</button>
+                            <div class="col-2 col-style col-padding unselectable">                                
+                               <a href="{{facultyapp.PDS.url}}">
+                                   <button class="downloadBtn unselectable">&nbsp;&nbsp;View</button>
                                </a>
+                               <a href="{{facultyapp.PDS.url}}" download>
+                                <img src="{% static 'CRS/images/cOthers/downloaddb.png' %}">
+                            </a>
                                {% else %}
                                <b class="label">PDS</b>
                             </div>
@@ -280,29 +303,32 @@
 
                            <!-- ROW 3 -->
                            <div class="row row-style">                            
-                              <div class="col col-padding">
+                              <div class="col col-padding col-style">
                                 {% if facultyapp.TOR %}
                                 <b class="label"><a href="{{facultyapp.TOR.url}}">TOR</a></b>
                               </div>
-                              <div class="col-2 col-padding">                               
+                              <div class="col-2 col-padding col-style unselectable">                               
+                                <a href="{{facultyapp.TOR.url}}">
+                                    <button class="downloadBtn unselectable">&nbsp;&nbsp;View</button>
+                                </a>
                                 <a href="{{facultyapp.TOR.url}}" download>
-                                    <button class="downloadBtn unselectable"><img src="{% static 'CRS/images/cOthers/download3.png' %}" height="18">&nbsp;&nbsp;Download</button>
+                                    <img src="{% static 'CRS/images/cOthers/downloaddb.png' %}">
                                 </a>
                                 {% else %}
                                 <b class="label">TOR</b>
                                 </div>
-                                <div class="col-2 col-padding">  
+                                <div class="col-2 col-padding col-style">  
                                 <b class="output unselectable">No file</b>
                                 {% endif %}
                               </div>
-                              <div class="col-1 col-padding">                            
+                              <div class="col-1 col-padding col-style">                            
                               </div>
-                              <div class="col col-padding">
+                              <div class="col col-padding col-style">
                                
                                 
                               </div>
                               
-                                <div class="col-2 col-padding">   
+                                <div class="col-2 col-padding col-style">   
                                 
                               </div>
                             </div>
