@@ -65,12 +65,13 @@
     bottom: 45.84%;
 
 }
+
 .progress {
     height: 90px;
-    width:800px;
+    width:1000px;
     margin-left: 90px;
     margin-right: 90px;
-    border-radius: 25px;
+    border-radius:25px;
     background: #06529B;
     padding-left: 150px;
     padding-right: 150px;
@@ -94,13 +95,21 @@
     margin-right: 140px;
 }
 
-.progress-bar {
+.progress-bar{
   position: absolute;
     height: 5px;
     top: 28px;
-    width: 63%;
-    background: #0892dd;
+    width: 72%;
+    background: #0892DD;
 }
+.progress-bar1{
+  position: absolute;
+    height: 5px;
+    top: 28px;
+    width: 60%;
+    background: #0892DD;
+}
+
 
 .progress-text {
     letter-spacing: 1px;
@@ -114,7 +123,7 @@
     list-style-type: none;
     float: left;
     top: 80%;
-    width:25%;
+    width:28%;
     text-align: center;
     margin-left: 35px;
     margin-top: -32px;
@@ -223,26 +232,19 @@
         font-size: 16px;
         width: 93px;
         height: 34px;
-        left: 666px;
-        top: 520px;
+        left: 755px;
+        top: 600px;
         color: #ffffff;
         background: #06529b;
         border-radius: 10px;
-      }
-      .done-button .close-button:hover {
-        background-color: #0892dd;
-        cursor: pointer;
-      }
-      .done-button .close-button:active {
-        background-color: #5f6e83;
-      }
+}
 .p{
   position: absolute;
   font-weight: bold;
   color:#06529b;
   font-family: Lato;
-  left:580px;
-  top:490px;
+  left:660px;
+  top:570px;
 }
 .Button{
 display: flex;
@@ -1157,7 +1159,7 @@ mix-blend-mode: normal;
           />
           <span class="sidebar-item-text">Checklist</span>
         </a>
-        <a href="{% url 'donecrs' %}" class="sidebar-item">
+        <a href="{% url 'sGradeSubmission1' %}" class="sidebar-item">
           <img
             class="sidebar-icon"
             src="https://i.postimg.cc/NMm7n2Hz/mygrades.png"
@@ -1232,11 +1234,11 @@ mix-blend-mode: normal;
 
         <h1> Submission of Semestral Grades </h1>
     </div>
-      <img id="gradepng" src="{% static 'CRS/images/sClassroom/DONE.png' %}"style= "position: absolute; width:400px;height:300px; top:240px; left:510px;">
+      <img id="gradepng" src="{% static 'CRS/images/sClassroom/DONE.png' %}"style= "position: absolute; width:460px;height:300px; top:230px; left:560px;">
       <div class="done-button"> 
-        <div class="p" style="top: 550px"> Your grades have now been submitted!</div>
         <a href="{% url 'sHome' %}">
-        <button data-close-button class="close-button" style="top: 590px">Done</button></a>
+        <div class="p" style="top:520px"> Your grades have now been submitted!</div>
+        <button data-close-button class="close-button" style="top:550px">Done</button></a>
       </div>
     <script>
       var notifWindow = document.getElementById("notif-window");
