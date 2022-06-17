@@ -1,151 +1,60 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Student | Grade Submission</title>
+   <link rel="icon" href="https://i.postimg.cc/Z5Kc9KQv/iplm-logo.png" type="image/x-icon">
+    <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Inter&display=swap"
+      rel="stylesheet"
+    />
 
-<head>
-    <title> Student | Grade Submission </title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">
-    <link rel="stylesheet" type="text/css" href="{% static 'CRS/css/sClassroom/sGradeSubmission1.css' %}"> 
-    <link rel="icon" href="{% static 'CRS/images/sClassroom/iPLM.png' %}" type="image/png" sizes="16x16">
-
-    <style>
-
-        body {
-            overflow-y: auto;
-        }
-
-        #yearHeader {
-            letter-spacing: 1px;
-            font-size: 18px;
-            color: #0C66CC;
-            font-family: 'Nunito';
-            padding-left: 5px;
-            padding-top: 20px;
-        }
-
-        #semHeader {
-            letter-spacing: 1px;
-            font-size: 18px;
-            color: #0C66CC;
-            font-family: 'Nunito';
-            padding-left: 55px;
-            padding-top: 20px;
-        }
-        
-        #subHeader {
-            letter-spacing: 1px;
-            font-size: 18px;
-            color: #0C66CC;
-            font-family: 'Nunito';
-            padding-left: 40px;
-            padding-top: 20px;
-        }
-        #gradeHeader {
-            letter-spacing: 1px;
-            font-size: 18px;
-            color: #0C66CC;
-            font-family: 'Nunito';
-            padding-left: 630px;
-            padding-top: 20px;
-        }
+      <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css" />
+  <script src="https://kit.fontawesome.com/3dd772d9ba.js"
+  crossorigin="anonymous"></script>
 
 
 
-        #subjectHeader-1 {
-            letter-spacing: 1px;
-            font-size: 18px;
-            color: #0C66CC;
-            font-family: 'Nunito';
-            margin-left: 60px;
-        }
+      <style>
+  
+        .title-page{
+          position: absolute;
+          width: 600px;
+          height: 12px;
+          left: 300px;
 
-        #nextbtn1 {
-            width: 180px;
-            height: 60px;
-            background: #ffff;
-            color: #0C66CC;
-            border-radius: 15px;
-            text-align: center;
-            padding-top: 13px;
-            font-size: 20px;
-            font-family: 'Nunito';
-            letter-spacing: 1px;
-            border: 2px solid #0C66CC;
-            float: left;
-        }
+          top: 100px;
+          font-family: Lato;
+          font-style: normal;
+          font-weight: 600;
+          font-size: 10px;
+          line-height: 25px;
+          /* or 100% */
 
-        #nextbtn1:hover {
-            background: #0C66CC;
-            color: #ffff;
-        }
+          display: flex;
+          align-items: center;
+          text-align: center;
+          letter-spacing: 0.20px;
 
-        #submitbtn3 {
-            width: 180px;
-            height: 60px;
-            background: #0C66CC;
-            color: #ffff;
-            border-radius: 15px;
-            text-align: center;
-            letter-spacing: 1px;
-            font-size: 20px;
-            font-family: 'Nunito';
-            border: none;
-            float: right;
-            margin-top: 10px;
-        }
-
-        #submitbtn3:hover {
-            background: #2852a4;
-            color: #ffff;
-        }
-
-        #head2 {
-            letter-spacing: 1px;
-            font-size: 20px;
-            color: #0C66CC;
-            font-family: 'Nunito';
-            margin-right: 40px;
-            margin-top:20px;
-        }
-
-        .fill-in {
-            border-radius: 20px;
-            background: #f5f5f5;
-            margin-left: -20px;
-            width: 110%;
-        }
-
-        .fill-in-1{
-            border-radius: 20px;
-            background: transparent;
-            margin-left: -20px;
-            width: 110%;
-        }
+          color: #06529B;
+      }
 
 
-
-
-        .imgSubmit{
-            margin-left: 20px;
-            margin-top: 150px;
-        }
-
-        .dropDown{
-            color:  #0C66CC;
-            margin-right: 10px;
-        }
-
-        .alertSuccess{
-        padding: 20px;
+      .alertSuccess{
+        padding: 10px;
         background-color: #3fb328;
         border-radius: 15px;
+        margin-top: 100px;
         color: white;
         box-shadow: 0 0 10px rgb(216, 216, 216);
         animation: zoom-in-zoom-out 1s ease;
@@ -158,6 +67,7 @@
         background-color: #ff5f02;
         border-radius: 15px;
         color: white;
+        margin-top: 100px;
         box-shadow: 0 0 10px rgb(216, 216, 216);
         animation: zoom-in-zoom-out 1s ease;
         font-size: 18px;
@@ -189,191 +99,1159 @@
         cursor: pointer;
         transition: 0.3s;
         }
-
         .closebtnSuccess:hover {
             color: #1c6b0c;
         }
+      .rect2{
+    
+    position: absolute;
+    font-family: Lato;
+    left: 40%;
+    right: 40.89%;
+    top: 68.00%;
+    bottom: 45.84%;
 
-        /*SCROLLBAR*/
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
+}
+.progress {
+    height: 90px;
+    width:800px;
+    margin-left: 90px;
+    margin-right: 90px;
+    border-radius:25px;
+    background: #06529B;
+    padding-left: 150px;
+    padding-right: 150px;
+    padding-top: 40px;
+    top:135px;
+    position:absolute;
+    z-index:30;
+    margin-right: 115px;
+}
 
-        /* Track */
-        ::-webkit-scrollbar-track {
-            background: #e4e4e4;
-            border-radius: 12px;
-        }
-        
-        /* Handle */
-        ::-webkit-scrollbar-thumb {
-            background: #cbcbcb;
-            border-radius: 12px;
-        }
+.progress-loa4 {
+    height: 150px;
+    margin-left: 90px;
+    margin-right: 90px;
+    border-radius: 30px 30px 30px 30px;
+    background: #06529B;
+    padding-left: 150px;
+    padding-right: 150px;
+    padding-top: 50px;
 
-        /* Handle on hover */
-        ::-webkit-scrollbar-thumb:hover {
-            background: #8f8f8f; 
-        }
+    margin-right: 140px;
+}
+
+.progress-bar{
+  position: absolute;
+    height: 5px;
+    top: 28px;
+    width: 63%;
+    background: #ffffff;
+}
+.progress-bar1{
+  position: absolute;
+    height: 5px;
+    top: 28px;
+    width: 20%;
+    background: #0892DD;
+}
 
 
-        @keyframes zoom-in-zoom-out {
-        0% {
-            transform: scale(1, 1);
-        }
-        50% {
-            transform: scale(1.1, 1.1);
-        }
-        100% {
-            transform: scale(1, 1);
-        }
-        }
+.progress-text {
+    letter-spacing: 1px;
+    font-size: 10px;
+    color: rgba(243, 246, 255, 0.6);
+    font-family: 'Lato';
+}
 
-        .borderless td,
-    .borderless th {
+.progressbar li {
+    position: relative;
+    list-style-type: none;
+    float: left;
+    top: 80%;
+    width:25%;
+    text-align: center;
+    margin-left: 35px;
+    margin-top: -32px;
+}
+
+.progressbar li:before {
+    content: '';
+    top:1px;
+    width: 40px;
+    height: 40px;
+    line-height: 30px;
+
+    display: block;
+    text-align: center;
+    margin: 0 auto 10px auto;
+    border-radius: 50%;
+    background-color: #ffffff;
+}
+
+.progress-text-active {
+    letter-spacing: 1px;
+    font-size: 10px;
+    color: #ffffff;
+    font-family: 'Lato';
+}
+
+.progressbar li.active:before {
+    font-family: 'Lato';
+    border-color: #0892DD;
+    background-color: #0892DD;
+}
+
+
+
+
+.fa-solid{
+    position: absolute;
+    display: flex;
+    left: 32.15%;
+    right: 20.89%;
+    top: 22.07%;
+    bottom: 45.84%;
+    color: #06529B;
+
+}
+
+.fa-trash-arrow-up{
+  color: #5f6e83;
+}
+
+.fa-circle-chevron-right{
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+     left: 275%;
+    gap: 10px;
+    right: 9%;
+    top: 140px;
+    bottom: 2%;
+    cursor: pointer;
+
+}
+
+
+
+
+
+.fa-circle-chevron-right:hover {
+
+        cursor: pointer;
+
+      } 
+
+
+
+.fa-circle-chevron-left:hover {
+
+        cursor: pointer;
+         
+      } 
+.fa-circle-chevron-left{
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+     left: 260%;
+    gap: 10px;
+    right: 9%;
+    top: 140px;
+    bottom: 2%;
+    cursor: pointer;
+
+}
+
+
+
+.Button{
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 9px 14px;
+gap: 10px;
+
+position: absolute;
+width: 300px;
+height: 54px;
+left: 789px;
+top: 650px;
+
+background: #06529B;
+mix-blend-mode: normal;
+border-radius: 5px;
+}
+
+.Delete{
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 9px 14px;
+gap: 10px;
+
+position: absolute;
+width: 300px;
+height: 54px;
+left: 789px;
+top: 720px;
+
+background: #A19A9A;
+mix-blend-mode: normal;
+border-radius: 5px;
+
+}
+
+.btn{
+ background-color: #06529B; /* Green */
+
+  border: none;
+  color: white;
+  width: 320px;
+height: 54px;
+    left: 790px;
+    top: 650px;
+padding: 13px 14px;
+     font-family: 'Sen', sans-serif, serif;
+    gap: 10px;
+  text-align: center;
+  text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  font-size: 17px;
+  margin: 4px 2px;
+  font-weight: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  background: #06529B;
+mix-blend-mode: normal;
+
+}
+.addbtn{
+  position:absolute;
+  left: 30px;
+  color:#06529B;
+}
+.btn-delete{
+background-color:  #A19A9A; /* Green */
+
+  border: none;
+  color: white;
+  width: 500px;
+height: 54px;
+    left: 790px;
+    top: 650px;
+padding: 13px 14px;
+  font-size: 17px;
+gap: 10px;
+  text-align: center;
+  text-decoration: none;
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+
+    font-family: 'Sen', sans-serif, serif;
+
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+
+mix-blend-mode: normal;
+
+
+
+}
+
+*, *::after, *::before {
+  box-sizing: border-box;
+}
+.header{
+  position:relative;
+  top:-45px;
+  margin:5px;
+}
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: 200ms ease-in-out;
+  border: 1px solid black;
+  border-radius: 10px;
+  z-index: 10;
+  background-color: white;
+  width: 500px;
+  max-width: 80%;
+}
+
+.modal.active {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.modal-header {
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid black;
+}
+
+.modal-header .title {
+  font-size: 1.25rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.modal-header .close-button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.modal-body {
+  padding: 10px 15px;
+  text-align: center;
+  position: relative;
+  top: 0;
+  left: -30%;
+  right: 50%;
+  bottom: 0;
+  justify-content: center;
+}
+
+#overlay {
+  position: fixed;
+  opacity: 0;
+  transition: 200ms ease-in-out;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, .5);
+  pointer-events: none;
+}
+
+#overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+      .modal {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        transition: 200ms ease-in-out;
         border: none;
-    }
+        z-index: 10;
+        width: 268px;
+        height: 333px;
+        background: #f3f6ff;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+        border-radius: 12px;
+      }
+      .circlecheck {
+        position: fixed;
+        color: #0892dd;
+        top: 63px;
+        left: 82px;
+        font-size: 106px;
+      }
+      .deletecheck {
+        position: fixed;
+        color: #5f6e83;
+        top: 63px;
+        left: 87px;
+        font-size: 106px;
+      }
 
+      .modal.active {
+        transform: translate(-50%, -50%) scale(1);
+      }
 
+      .modal-header {
+        position: fixed;
+        top: 266px;
+        left: 70px;
+        border: none;
+      }
 
-.primary-att {
-    position: sticky;
-    text-align: left;
-    position: sticky;
-    top: 0;
-    color: white;
-    background-color: #fcfcfc;
-    border-radius: 20px;
-    }
-
-    tr:nth-child(even) {background-color: #f2f2f2;}
-
-    .tablepanel::-webkit-scrollbar {
-        width: 10px;
-        background: white;
-        border-radius: 20px;
-        height: 200px;
-        
-    }
-
-    .tablepanel::-webkit-scrollbar-thumb {
-        background:#c5c5c5;
-        border-radius: 0 8px 8px 0;
-        height: 300px;
-    }
-
-    .tabletext1 {
-        text-align: left;
-        letter-spacing: 1px;
-        font-size: 14px;
-        font-family: 'Nunito';
-        color: #242424;
-        
-    }
-
-    .tablepanel {
-        overflow-y: scroll;
-        width: 100%;
-        height: 560px;
-        border-radius: 20px;
-        font-family: 'Nunito';
-        color: #242424;
-        font-size: 20px;
-    }
-
-    #addbtn:hover{
-        background-color: #359e20;
-    }
-
-        
-    #addbtn {
-        background-color: #3fb328;
+      .modal-header .close-button {
+        cursor: pointer;
+        border: none;
+        outline: none;
+        background: none;
+        font-size: 16px;
+        width: 93px;
+        height: 34px;
+        left: 90px;
+        top: 228px;
         color: #ffffff;
-        font-size: 22px;
-        border: #0C66CC;
+        background: #06529b;
         border-radius: 10px;
-        padding-left: 24px;
-        padding-right: 24px;
-        height: 40px;
+      }
+      .modal-header .close-button:hover {
+        background-color: #0892dd;
+        cursor: pointer;
+      }
+      .modal-header .close-button:active {
+        background-color: #5f6e83;
+      }
+
+      .modal-body {
+        position: fixed;
+        font-family: Lato;
+        font-size: 28px;
+        color: #06529b;
+        font-weight: 700;
+        top: 35%;
+        left: 90px;
+        text-align: center;
+        text-justify: inter-word;
+      }
+      .modal2-body {
+        position: fixed;
+        font-family: Lato;
+        font-size: 28px;
+        color: #06529b;
+        font-weight: 700;
+        top: 35%;
+        left: 74px;
+        text-align: center;
+        text-justify: inter-word;
+      }
+
+      #overlay {
+        position: fixed;
+        opacity: 0;
+        transition: 200ms ease-in-out;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(243, 246, 255, 0.5);
+        pointer-events: none;
+      }
+
+      #overlay.active {
+        opacity: 1;
+        pointer-events: all;
+      }
+      .container {
+        position: absolute;
+        top:-140px;
+        left:-102px;
+        max-width: 700px;
+        min-width: 700px;
+        background: linear-gradient(0deg, #ffffff, #ffffff),
+          linear-gradient(0deg, rgba(8, 146, 221, 0.3), rgba(8, 146, 221, 0.3)),
+          linear-gradient(0deg, #f3f6ff, #f3f6ff),
+          linear-gradient(0deg, #5f6e83, #5f6e83),
+          linear-gradient(0deg, #06529b, #06529b), #08090b;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 20px;
+      }
+      
+      .tablepanel{
+        height:150px;
+        overflow-y: scroll;
+      }
+     
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        font-family: Lato;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 12px;
+        color: #06529b;
+      }
+      th
+       {
+        text-align: center;
+        padding:5px;
+      }
+      td{
+        padding:5px;
+        width:50px;
+      }
+
+      tr:nth-child(odd) {
+        width: 100px;
+        background-color: #f3f6ff;
+      }
+      .go-button {
+        position: absolute;
+        width: 50px;
+        height: 30px;
+        top: 50px;
+        left: 630px;
+
+        bottom: 5px;
+        color: #ffffff;
+        background: #06529b;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 10px;
+        border: none;
+        font-family: Lato;
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 700;
+      }
+      .go-button:active {
+        background-color: #5f6e83;
+      }
+      .go-button:hover {
+        background-color: #0892dd;
+        cursor: pointer;
+      }
+      select {
+        position: relative;
+        margin-left:5px;
+        margin-right: 0px;
+        top:10px;
+        left:-10px;
+        bottom: 40px;
+        height: 27px;
+        width: 100px;
+        border: none;
+        border-radius: 10px;
+        background-color: #f1f1f1;
+      }
+      select:hover {
+        cursor: pointer;
+      }
+      select[name="subject"] {
+        width: 215px;
+        height: 27px;
+        border: none;
+        border-radius: 10px;
+        background-color: #f1f1f1;
+      }
+      label {
+        position: relative;
+        left: 10px;
+      }
+
+            
+      /*------------------ CSS NILA! -----------------------*/
+
+      body {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        background-color: #f3f6ff;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+        position: absolute;
+      }
+
+      body {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        background-color: #f3f6ff;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+        position: absolute;
+      }
+
+      .topbar {
+        box-sizing: border-box;
+        height: 65px;
+        border-bottom: 1px solid #d7dff6;
+        display: flex;
+        padding: 0.5rem 1rem;
+      }
+
+      .iplm-logo {
+        display: flex;
+        flex-direction: row;
+        text-decoration: none;
+        margin-left: 0.5rem;
+      }
+
+      .iplm-logo:hover {
+        opacity: 0.7;
+        -webkit-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+      }
+
+      .logo {
+        height: 3rem;
+      }
+
+      .logo-text {
+        margin-left: 5px;
         margin-top: 5px;
-    }
+      }
 
-    #head3 {
-    letter-spacing: 1px;
-    font-size: 20px;
-    color: #0C66CC;
-    font-family: 'Nunito';
-    }
+      .logo-main {
+        color: rgba(6, 82, 155, 1);
+        font-family: Lato;
+        font-weight: bold;
+        font-size: 1.25rem;
+      }
+       .logo-sub {
+        color: #0892dd;
+        font-family: Inter;
+        font-size: 0.875rem;
+      }
 
-    #head2 {
-    letter-spacing: 1px;
-    font-size: 30px;
-    color: #0C66CC;
-    font-family: 'Nunito';
-    }
+      .center-region {
+        display: flex;
+        flex: 1 0 auto;
+      }
+
+
+      .empty {
+        flex: 1 0 auto;
+      }
+
+      .notif {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 4rem;
+        color: #06529b;
+        cursor: pointer;
+        position: relative;
+      }
+
+      .notif-icon {
+        width: 20px;
+        height: 20px;
+      }
+
+      .notif-icon:hover {
+        opacity: 0.7;
+        -webkit-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+      }
+
+      .notif-content {
+        position: absolute;
+        top: 40px;
+        right: 0;
+        display: none;
+        flex-direction: column;
+        background-color: #fff;
+        min-width: 21.875rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px 0 #d3dbe4, 0 6px 20px 0 #d3dbe4;
+        font-family: Lato;
+        padding: 1rem;
+        z-index: 100;
+      }
+
+      .notif-header {
+        display: flex;
+        flex-direction: row;
+        border-bottom: 1px solid #d3dbe4;
+        color: #6c757d;
+        font-weight: 900;
+        font-size: 1rem;
+        padding-bottom: 1rem;
+      }
+
+      .notif-items {
+        max-height: 20.625rem;
+        overflow-y: auto;
+        scrollbar-width: thin;
+      }
+
+      .notif-item {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: row;
+        padding: 1.25rem;
+        border-bottom: 1px solid #eee;
+        border-top: 1px solid #fff;
+        text-decoration: none;
+      }
+
+      .notif-item:hover {
+        background-color: #eee;
+      }
+
+      .notif-item-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+      }
+
+      .notif-item-text {
+        display: flex;
+        flex-direction: column;
+        margin-left: 0.5rem;
+        font-size: 0.875rem;
+        gap: 0.25rem;
+        font-family: "Source Sans Pro", sans-serif;
+      }
+
+      .notif-item-title {
+        font-weight: bolder;
+        color: #06529b;
+      }
+
+      .notif-item-detail {
+        color: #5f6e83;
+      }
+
+      .personal-info {
+        display: flex;
+        flex-direction: row;
+      }
+
+      .user-details {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-right: 1rem;
+      }
+
+      .client-classification {
+        font-size: 0.625rem;
+        font-family: Lato;
+        color: #5f6e83;
+        text-align: right;
+      }
+
+      .client-name {
+        font-size: 13px;
+        font-family: Lato;
+        font-weight: bold;
+        color: #06529b;
+      }
+
+      .dropdown {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .profile-dropdown {
+        height: 35px;
+        cursor: pointer;
+      }
+
+      .profile-dropdown:hover {
+        opacity: 0.5;
+        -webkit-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+      }
+
+      .dropdown-content {
+        position: absolute;
+        top: 45px;
+        right: 0px;
+        display: none;
+        flex-direction: column;
+        background-color: #fff;
+        min-width: 13.125rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px 0 #d3dbe4, 0 6px 20px 0 #d3dbe4;
+        padding: 1rem;
+        box-sizing: border-box;
+        z-index: 100;
+      }
+
+      .dropdown-header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        border-bottom: 1px solid #d3dbe4;
+        padding-bottom: 1rem;
+      }
+
+      .dropdown-details {
+        display: flex;
+        flex-direction: column;
+        margin-left: 0.5rem;
+      }
+
+      .dropdown-icon {
+        width: 40px;
+        height: 40px;
+      }
+
+      .dropdown-name {
+        color: #06529b;
+        font-family: Lato;
+        font-weight: 700;
+        font-size: 0.875rem;
+      }
+
+      .dropdown-email {
+        color: #5f6e83;
+        font-family: source sans pro;
+        font-size: 0.625rem;
+      }
+
+      .dropdown-items {
+        display: flex;
+        flex-direction: column;
+        margin-top: 0.5rem;
+      }
+
+      .dropdown-item {
+        color: #5f6e83;
+        font-family: source sans pro;
+        font-size: 0.875rem;
+        font-weight: 500;
+        padding: 0.5rem;
+        cursor: pointer;
+        text-decoration: none;
+        border-radius: 5px;
+      }
+
+      .dropdown-item:hover {
+        background-color: #f3f6ff;
+        color: #06529b;
+        transition: all 0.3s ease;
+      }
+
+      .profile-dropdown:hover .dropdown-content {
+        display: flex;
+      }
+
+      .content {
+        display: flex;
+        flex: 1 1 auto;
+        flex-direction: row;
+      }
+
+      .sidebar {
+        display: flex;
+        flex-direction: column;
+        flex: 0 0 15.625rem;
+        min-width: 0px;
+        gap: 0.75em;
+        padding: 15px 10px 10px 10px;
+      }
+
+      .sidebar-icon {
+        width: 15px;
+        height: 15px;
+        margin-left: 20px;
+        margin-right: 7px;
+      }
+
+      .sidebar-item {
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        color: rgba(95, 110, 131, 1);
+        cursor: pointer;
+        text-decoration: none;
+        max-width: 12.5rem;
+        line-height: 27px;
+      }
+
+      .sidebar-item:hover {
+        color: #0892dd;
+        background-color: #d3dbe4;
+        border-radius: 5px;
+        transition: all 0.3s ease-in-out;
+      }
+
+      .sidebar-item-text {
+        font-family: Lato;
+        font-size: 0.875rem;
+        font-weight: 900;
+      }
+
+      .sidebar-divider {
+        color: #a8b4c2;
+        font-family: Lato;
+        font-weight: 900;
+        font-size: 0.625rem;
+        overflow: hidden;
+        margin-left: 1.25rem;
+        max-width: 180px;
+        line-height: 27px;
+      }
+
+      .sidebar-divider:after {
+        color: #a8b4c2;
+        content: "\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0";
+        text-decoration: line-through;
+        margin: auto 0.5em;
+      }
+
+      .main-content {
+        background-image: url("https://i.postimg.cc/523r4DT9/leaf-logo.png");
+        background-position: right -270px top -10px absolute;
+        background-repeat: no-repeat;
+        background-size: 730px;
+        display: flex;
+        flex: 1 1 0px;
+        min-width: 0;
+        overflow: hidden;
+      }
     </style>
-</head>
+  </head>
+  <body>
+     <!-- top bar -->
+    <div class="topbar">
+      <a href="{% url 'sHome' %}" class="iplm-logo">
+        <img src="https://i.postimg.cc/Z5Kc9KQv/iplm-logo.png" class="logo" />
+        <div class="logo-text">
+          <div class="logo-main">iPLM</div>
+          <div class="logo-sub">Integrated PLM</div>
+        </div>
+      </a>
+      <div class="center-region">
+        <div class="empty"></div>
+        <div id="notif-button" class="notif">
+          <img
+            class="notif-icon"
+            src="https://i.ibb.co/0XVd3kP/notification.png"
+            alt="notification"
+          />
+          <div id="notif-window" class="notif-content">
+            <div class="notif-triangle"></div>
+            <div class="notif-header">Notifications</div>
+            <div class="notif-items">
+              <a href="{% url 'LOANotifdetails' %}" class="notif-item">
+                <img
+                  class="notif-item-icon"
+                  src="https://i.postimg.cc/Gp0457xb/LOA.png"
+                  alt="img"
+                />
+                <div class="notif-item-text">
+                  <div class="notif-item-title">Leave of Absence Feedback</div>
+                  <div class="notif-item-detail">View details</div>
+                </div>
+              </a>
 
-<body>
-    {%block content %}
-    <div class="wrapper">
+              <a href="{% url 'HDNotifdetails' %}" class="notif-item">
+                <img
+                  class="notif-item-icon"
+                  src="https://i.postimg.cc/mkhZDCyd/honorabledismissal.png"
+                  alt="img"
+                />
+                <div class="notif-item-text">
+                  <div class="notif-item-title">
+                    Honorable Dismissal Feedback
+                  </div>
+                  <div class="notif-item-detail">View details</div>
+                </div>
+              </a>
 
-        <!-- Sidebar -->
-        <nav id="sidebar">
-            <div class="sidebar-header">
-                <li>
-                    <p><br><br><img src="{% static 'CRS/images/fHomeAndProfile/hat.png' %}" width="126px" height="87px"><br><br>
-                </li>
+              <a href="{% url 'SPNotifdetails' %}" class="notif-item">
+                <img
+                  class="notif-item-icon"
+                  src="https://i.postimg.cc/PJfpMCzZ/studyplan.png"
+                  alt="img"
+                />
+                <div class="notif-item-text">
+                  <div class="notif-item-title">Study Plan Feedback</div>
+                  <div class="notif-item-detail">View details</div>
+                </div>
+              </a>
+
+              <a href="{% url 'GradesNotifdetails' %}" class="notif-item">
+                <img
+                  class="notif-item-icon"
+                  src="https://i.postimg.cc/NMm7n2Hz/mygrades.png"
+                  alt="img"
+                />
+                <div class="notif-item-text">
+                  <div class="notif-item-title">My Grades Feedback</div>
+                  <div class="notif-item-detail">View details</div>
+                </div>
+              </a>
+
+              <a href="{% url 'OJTNotifdetails' %}" class="notif-item">
+                <img
+                  class="notif-item-icon"
+                  src="https://i.postimg.cc/SK7xtyKG/practicum.png"
+                  alt="img"
+                />
+                <div class="notif-item-text">
+                  <div class="notif-item-title">Practicum Feedback</div>
+                  <div class="notif-item-detail">View details</div>
+                </div>
+              </a>
+
+              <a href="{% url 'OJTNotifdetails' %}" class="notif-item">
+                <img
+                  class="notif-item-icon"
+                  src="https://i.postimg.cc/Kzf01wnM/shifting-form.png"
+                  alt="img"
+                />
+                <div class="notif-item-text">
+                  <div class="notif-item-title">Outbound Shifting Feedback</div>
+                  <div class="notif-item-detail">View details</div>
+                </div>
+              </a>
             </div>
-            <ul class="sidebar components">
-                <li class="active"><a href="{% url 'sHome' %}"><img src="{% static 'CRS/images/cIcons/home2.png' %}"width="97px" height="auto"></a></li>
-                <li><a href="{% url 'sProfile' %}"><img src="{% static 'CRS/images/cIcons/profile2.png' %}" width="97px" height="auto"></a></li>
-                <li><a href="{% url 'sClassroom' %}"><img src="{% static 'CRS/images/cIcons/classroom2.png' %}" width="97px" height="auto"></a></li>
-                <li><a href="{% url 'sOthers' %}"><img src="{% static 'CRS/images/cIcons/others2.png' %}" width="97px" height="auto"></a></li>
-                <li><a href="{% url 'logout' %}"><img src="{% static 'CRS/images/cIcons/log-out2.png' %}" width="97px" height="auto"></a></li>
-            </ul>
-        </nav>
-        <!--End of Sidebar -->
+          </div>
+        </div>
+      </div>
+      <div class="personal-info">
+        <div class="user-details">
+          <div class="client-classification">Student</div>
+          <div class="client-name">
+            {{user.firstName}} {{user.middleName}} {{user.lastName}}
+          </div>
+        </div>
+        <div class="dropdown">
+          <img
+            src="{% static 'CRS/images/fHomeAndProfile/userprofile.png' %}"
+            class="profile-dropdown"
+            id="dropdown-button"
+          />
+          <div class="dropdown-content" id="dropdown-window">
+            <div class="dropdown-header">
+              <img
+                src="{% static 'CRS/images/fHomeAndProfile/userprofile.png' %}"
+                class="dropdown-icon"
+              />
+              <div class="dropdown-details">
+                <div class="dropdown-name">{{info.studentUser.firstName}}</div>
+                <div class="dropdown-email">{{user.email}}</div>
+              </div>
+            </div>
+            <div class="dropdown-items">
+              <a href="{% url 'sProfile' %}" class="dropdown-item"
+                >View Profile</a
+              >
+              <a href="{% url 'logout' %}" class="dropdown-item">Logout</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- content -->
+    <div class="content">
+      <!-- side bar  -->
+      <div class="sidebar">
+        <a href="{% url 'sHome' %}" class="sidebar-item">
+          <img
+            class="sidebar-icon"
+            src="https://i.postimg.cc/DZS58F2h/home-button-iplm.png"
+          />
+          <span class="sidebar-item-text">Home</span>
+        </a>
+        <div class="sidebar-divider">CLASSROOM</div>
+        <a href="{% url 'sScheduleView' %}" class="sidebar-item">
+          <img
+            class="sidebar-icon"
+            src="https://i.postimg.cc/3R4bxwDX/schedule.png"
+          />
+          <span class="sidebar-item-text">Schedule</span>
+        </a>
+        <a href="{% url 'sChecklist' %}" class="sidebar-item">
+          <img
+            class="sidebar-icon"
+            src="https://i.postimg.cc/J7jP6v3z/checklist.png"
+          />
+          <span class="sidebar-item-text">Checklist</span>
+        </a>
+        <a href="{% url 'donecrs' %}" class="sidebar-item">
+          <img
+            class="sidebar-icon"
+            src="https://i.postimg.cc/NMm7n2Hz/mygrades.png"
+          />
+          <span class="sidebar-item-text">My Grades</span>
+        </a>
+        <div class="sidebar-divider">OTHERS</div>
+        <a href="{% url 'donesp' %}" class="sidebar-item">
+          <img
+            class="sidebar-icon"
+            src="https://i.postimg.cc/PJfpMCzZ/studyplan.png"
+          />
+          <span class="sidebar-item-text">Study Plan</span>
+        </a>
+        <a href="{% url 'doneLoa' %}" class="sidebar-item">
+          <img
+            class="sidebar-icon"
+            src="https://i.postimg.cc/Gp0457xb/LOA.png"
+          />
+          <span class="sidebar-item-text">Leave of Absence</span>
+        </a>
+        <a href="{% url 'doneHd' %}" class="sidebar-item">
+          <img
+            class="sidebar-icon"
+            src="https://i.postimg.cc/mkhZDCyd/honorabledismissal.pngg"
+          />
+          <span class="sidebar-item-text">Honorable Dismissal</span>
+        </a>
+        <a href="{% url 'donepracticum' %}" class="sidebar-item">
+          <img
+            class="sidebar-icon"
+            src="https://i.postimg.cc/SK7xtyKG/practicum.png"
+          />
+          <span class="sidebar-item-text">Practicum</span>
+        </a>
+        <a href="{% url 'doneOSF' %}" class="sidebar-item">
+          <img
+            class="sidebar-icon"
+            src="https://i.postimg.cc/Kzf01wnM/shifting-form.png"
+          />
+          <span class="sidebar-item-text">Outbound Shifting</span>
+        </a>
+      </div>
+
+      <!-- HTML KO -->
+       <div class="main-content">
+
+
+         
+        <div class="row">
+					
+          <div class="container-fluid"> 
+              <div class="progress row">
+                <div class="col-lg-12">
+                  <div class="progress-bar"></div>
+                  <div class="progress-bar1"></div>
+                  <div class="progressbar">
+                    <div class="progress-bars "></div>
+                    <li class="active progress-text-active">Grade<br>Submission</li>
+                      <li class="progress-text">Grade<br>Screenshot</li>
+                      <li class="progress-text">Grade<br>Submitted</li>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <!-- Content -->
-        <div id="content">
-            <div class="container-fluid">
+        <div class="title-page">
 
-                <div class="backrw row">
-                    <a href="{% url 'sClassroom' %}" id="back-edit"><img src="{% static 'CRS/images/sClassroom/back.svg' %}" width="50" style="margin-top: 30px;"></a>
-                    <p id="head1">
-                        Grade Submission
-                    </p>
+            <h1> Submission of Semestral Grades </h1>
+        </div>
+        
+        <div class="rect">
+    
+         
+    
+        </div>
+    
+      
+        
+        <div class="rect2">
+    
+            
 
-                </div>
-
-                <!-- Progress Bar -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="progress row">
-                            <div class="col-lg-12">
-                                <div class="progress-bar "></div>
-                                <div class="progressbar">
-                                        <li class="active progress-text-active">Grade<br>Submission</li>
-                                        <li class="progress-text">Grade<br>Screenshot</li>
-                                        <li class="progress-text">Confirmation<br>Submission</li>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--END Progress Bar-->
-
-                <div class="subtaken row pt-5">
-                    <div class="col-lg-4">
-
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <p id="head2"><b>Submit Grades</b></p>
-                                <hr>
-                                <p id="head3">Input the semester, year, subject, and its' grade.</p>
-                            </div>
-                        </div>
+            
+        
                         <form action="" method="POST">
                             {% csrf_token %}
 
@@ -383,37 +1261,32 @@
                             {% for message in messages %}
                             {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
                             <div class="alertError">
-                                <span class="closebtnError" onclick="this.parentElement.style.display='none';">&times;</span> 
+                                <span class="closebtnError" onclick="this.parentElement.style.display='none';"></span> 
                                 {{ message }}
                             </div>
                             {% endif %}
 
                             {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
                             <div class="alertSuccess">
-                                <span class="closebtnSuccess" onclick="this.parentElement.style.display='none';">&times;</span> 
+                                <span class="closebtnSuccess" onclick="this.parentElement.style.display='none';"></span> 
                                 {{ message }}
                             </div>
                             {% endif %}
                                 
                             {% endfor %}
                             {% endif %}
-                            <div><br><br><br><br><br><br><br><img src="{% static 'CRS/images/sClassroom/clip-1397.png' %}" width="300px" height="auto"></div>
                         </div>
                         <br>
-                        <a href="{% url 'sGradeSubmission2' %}">
-                            <div id="nextbtn1">
-                                Next
-                            </div>
-                        </a>
+                       
                     </div>
 
 
-                    <div class="fill-in-1 col-lg-8 pr-0">
+                    <div class="fill-in-1 col-lg-8 pr-0" style="margin-top: 200px; margin-right: 500; position: relative; padding-right: 450px;">
                         
                             
-                        <table class="borderless table">
+                        <table class="borderless table" style="margin-right: 200px">
                             
-                            <tr class="primary-att" style="font-size: 20px; border-radius: 20px; background-color: #0C66CC; box-shadow: 0 0 10px rgb(138, 138, 138);">
+                            <tr class="primary-att" style="font-size: 20px; color: white;border-radius: 20px; background-color: #0C66CC; box-shadow: 0 0 10px rgb(138, 138, 138);">
                                 <td>Year</td>
                                 <td>Semester</td>
                                 <td>Subject</td>
@@ -442,7 +1315,7 @@
                                 </td>
 
                                 <td>
-                                    <input type="submit" id="addbtn" value="+">
+                                    <input type="submit" id="addbtn" value="+" style="margin-top: 20px">
 
                                 </td>
                                 <br>
@@ -458,7 +1331,7 @@
                                 <div class="tablepanel table-responsive-lg">
                                 <table class="borderless table">
 
-                                    <tr class="primary-att" style="font-size: 20px; background-color: #0C66CC; box-shadow: 0 0 10px rgb(138, 138, 138);">
+                                    <tr class="primary-att" style="font-size: 20px; color: white;background-color: #0C66CC; box-shadow: 0 0 10px rgb(138, 138, 138);">
                                         <td>Year</td>
                                         <td>Semester</td>
                                         <td>Subject</td>
@@ -473,15 +1346,17 @@
                                             <td><p>{{subject.semTaken}}</p></td>
                                             <td><p class="subjectName">{{subject.curriculumCode}}</p></td>
                                             <td><p>{{subject.subjectGrades}}</p></td>
+                                            <td><a href="{% url 'sGradeSubEmptyConfirmation' subject.id %}"><button id="delete" ><img id="delete" src="{% static 'CRS/images/sClassroom/deleteSubject.png' %}" width="24px" height="auto"></button></a></td>
                                         </tr>
                                     
                                     {% endfor %}
 
-                                </table>
-                            
+                                    
+
+                                  
                         </div>
 
-
+                        <a href="{%url 'sGradeSubmission2' %}"><button type="submit" style="background: none; border: none; cursor: pointer; margin-top: 200px; margin-left: 900px;position: absolute" value="Next"><img src="https://i.ibb.co/mvNr5Xt/arrow-right.png" height="35" width="35"></button></a>
                   
 
                             <!-- DATABASE -->
@@ -499,16 +1374,54 @@
 
     </div>
 
-    <!-- END Content -->
-
-    {% endblock content %}
 
     <!-- Javascript -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function(){
+          $('[data-toggle="tooltip"]').tooltip();   
+        });
+        </script>
+    <script>
 
-
+        var notifWindow = document.getElementById("notif-window");
+        
+        document
+          .getElementById("notif-button")
+          .addEventListener("click", function () {
+            var display = notifWindow.style.display === "flex" ? "none" : "flex";
+            notifWindow.style.display = display;
+          });
+        var profileDropdown = document.getElementById("dropdown-window");
+        document
+          .getElementById("dropdown-button")
+          .addEventListener("click", function () {
+            var display =
+              profileDropdown.style.display === "flex" ? "none" : "flex";
+            profileDropdown.style.display = display;
+          });
+                const selected = document.querySelector(".selected");
+                const optionsContainer = document.querySelector(".options-container");
+        
+                const optionsList = document.querySelectorAll(".option");
+        
+                selected.addEventListener("click", () => {
+                    optionsContainer.classList.toggle("active");
+                });
+        
+                optionsList.forEach(o => {
+                    o.addEventListener("click", () => {
+                        selected.innerHTML = o.querySelector("label").innerHTML;
+                        optionsContainer.classList.remove("active");
+                    });
+                });
+        
+        
+        
+                
+            </script>
 </body>
 
 </html>
