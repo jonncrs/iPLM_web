@@ -281,6 +281,7 @@ urlpatterns = [
     #classroon
     url(r'^sClassroom/$', views.sClassroom, name='sClassroom'),
     #grade submission
+    path(r'^sGradeSubEmptyConfirmation/<currchecklist_id>$', views.sGradeSubEmptyConfirmation, name='sGradeSubEmptyConfirmation'),
     url(r'^sGradeSubmission/$', views.sGradeSubmission, name='sGradeSubmission'),
     url(r'^sGradeSubmission1/$', views.sGradeSubmission1, name='sGradeSubmission1'),
     url(r'^sGradeSubmission2/$', views.sGradeSubmission2, name='sGradeSubmission2'),

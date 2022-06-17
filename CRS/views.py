@@ -4571,6 +4571,18 @@ def donecrs(request):
     else:
         return redirect('index')
 
+def sGradeSubEmptyConfirmation(request, currchecklist_id):
+    if request.user.is_authenticated and request.user.is_student:
+        subject = currchecklist.objects.get(id = currchecklist_id)
+        if request.method =='POST':
+            subject.delete()
+            messages.success(request, "Successfully Deleted!")
+            return redirect('sGradeSubmission1')
+        context = {'subj': subject}
+        return render(request, 'student/sClassroom/sGradeSubEmptyConfirmation.html', context)
+    else:
+        return redirect('index')
+
 def sChecklistSubmission(request):
     if request.user.is_authenticated and request.user.is_student:
         id= request.user.id
