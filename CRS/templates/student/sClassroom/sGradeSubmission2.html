@@ -67,7 +67,7 @@
 }
 .progress {
     height: 90px;
-    width:800px;
+    width:1000px;
     margin-left: 90px;
     margin-right: 90px;
     border-radius:25px;
@@ -98,14 +98,14 @@
   position: absolute;
     height: 5px;
     top: 28px;
-    width: 63%;
+    width: 72%;
     background: #ffffff;
 }
 .progress-bar1{
   position: absolute;
     height: 5px;
     top: 28px;
-    width: 40%;
+    width: 48%;
     background: #0892DD;
 }
 
@@ -122,7 +122,7 @@
     list-style-type: none;
     float: left;
     top: 80%;
-    width:25%;
+    width:28%;
     text-align: center;
     margin-left: 35px;
     margin-top: -32px;
@@ -539,10 +539,10 @@ mix-blend-mode: normal;
 
      .myfile{
       position: absolute;
-      left:50%;
+      left:47%;
       font-family: Lato;
       color: #06529b;
-      top:90%
+      top:88%
      }
       
       .fa-pen-to-square{
@@ -1095,7 +1095,7 @@ mix-blend-mode: normal;
           />
           <span class="sidebar-item-text">Checklist</span>
         </a>
-        <a href="{% url 'donecrs' %}" class="sidebar-item">
+        <a href="{% url 'sGradeSubmission1' %}" class="sidebar-item">
           <img
             class="sidebar-icon"
             src="https://i.postimg.cc/NMm7n2Hz/mygrades.png"
@@ -1168,12 +1168,22 @@ mix-blend-mode: normal;
 
         <h1> Submission of Semestral Grades </h1>
     </div>
-      <img id="gradepng" src="{% static 'CRS/images/sClassroom/sGradeSub2.png' %}"style= "position: absolute; width:600px;height:250px; top:250px; left:450px;">
-    <div class="myfile" style="left: 625px; top: 550px"> 
-      <div class="p" > Please insert your Grade Screenshot</div>
-    <input type="file" id="myfile" name="myfile" accept=".pdf" required>
+      <img id="gradepng" src="{% static 'CRS/images/sClassroom/sGradeSub2.png' %}"style= "position: absolute; width:350px;height:220px; top:250px; left:650px;">
+    <div class="myfile" style ="top: 520px"> 
+      <div class="p" style = "left: 40px"> Please insert your Grade Screenshot</div>
+      <form method="POST" enctype="multipart/form-data">
+        {%csrf_token%}	   
+       <div>
+           <input type="file" name="crsFile" required>
+           <input type="submit" id="submitbtn" value="Submit"> 
+       </div>
     </div>
-
+    <a href="{% url 'sGradeSubmission1' %}">
+      <div id="bckbtn1">
+    <i class="fa-solid fa-circle-chevron-left fa-2x"></i>
+      </a>
+</div>
+       
     <script>
       const types = ["myfile"];
       for(let x=0; x<5; x++){
@@ -1190,19 +1200,6 @@ mix-blend-mode: normal;
       }
       };
   }
-  </script>
-
-    <a href="{% url 'sGradeSubmission1' %}">
-      <div id="bckbtn1">
-    <i class="fa-solid fa-circle-chevron-left fa-2x"></i>
-      </a>
-</div>
-        <a href="{% url 'sGradeSubmission3' %}">
-          <div id="nextbtn1">
-        <i class="fa-solid fa-circle-chevron-right fa-2x"></i>
-          </a>
-  </div>
-    <script>
       var notifWindow = document.getElementById("notif-window");
   document
     .getElementById("notif-button")
